@@ -134,7 +134,6 @@ else:
 
 
 # Creating Shotmap DataFrame
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -159,6 +158,7 @@ df.reset_index(inplace=True, )
 df.drop(columns=['index'], inplace=True)
 
 ## transforming columns
+df['isHome'] = df['Team']
 df['Team'] = np.where(df['Team'] == True, home_name, away_name)
 df['team_cumulative_xG'] = df.groupby('Team')['xG'].cumsum()
 
@@ -184,19 +184,17 @@ df_home = pd.DataFrame(home_lineup)
 df_away = pd.DataFrame(away_lineup)
 
 # Add a column to identify the team
-df_home['Team'] = 'Home'
-df_away['Team'] = 'Away'
+df_home['isHome'] = True
+df_away['isHome'] = False
 
 # Combine the DataFrames
 df_lineup = pd.concat([df_home, df_away], ignore_index=True)
 
 # Sort the DataFrame by team and substitute status
-df_lineup = df_lineup.sort_values(['Team', 'Substitute', 'Position'])
-
-# Reset the index
+df_lineup = df_lineup.sort_values(['isHome', 'Substitute', 'Position'])
 df_lineup = df_lineup.reset_index(drop=True)
 
-df_lineup.Team = np.where(df_lineup.Team == 'Home',
+df_lineup['Team'] = np.where(df_lineup.isHome == True,
                           home_name,
                           away_name)
 
@@ -233,7 +231,7 @@ plt.plot(plot_x_away_extended/60, plot_y_away_extended, color='r', label= away_n
 
 plt.scatter(
             df[df['Shot Type'] == "goal"].iloc[:,0]/60, 
-            df[df['Shot Type'] == "goal"].iloc[:,9],
+            df[df['Shot Type'] == "goal"].iloc[:,10],
             label='Goals')
 
 ## Setting limits, making it nicer
@@ -321,4 +319,65 @@ plt.show()
 
 
 
-## Seeing players' xG vs xGOT individually
+# Analyzing goalkeeper performances
+
+## The goalies
+df_goalies = df_lineup[(df_lineup.Position == 'G') & (df_lineup.Substitute == False)]
+df_goalies['Player_team'] = df_goalies['Player Name'].astype(str) + ' (' + df_goalies['Team'].astype(str) + ')'
+
+## Shots against keepers
+df_on_target = df[df["Shot Type"].isin(['goal', 'save'])]
+
+## Getting the xgot and goals values from shots on target
+if home_name in df_on_target.Team.unique():
+    home_xgot = df_on_target.groupby('Team')['xGOT'].sum()[home_name]
+else:
+    home_xgot = 0
+
+if 'goal' in df_on_target[df_on_target.Team == home_name]['Shot Type'].unique():
+    home_goals_ot = df_on_target.groupby(['Team','Shot Type'])['Shot Type'].count()[home_name]['goal']
+else:
+    home_goals_ot = 0
+        
+if away_name in df_on_target.Team.unique():
+    away_xgot = df_on_target.groupby('Team')['xGOT'].sum()[away_name]
+else:
+    away_xgot = 0
+
+if 'goal' in df_on_target[df_on_target.Team == away_name]['Shot Type'].unique():
+    away_goals_ot = df_on_target.groupby(['Team','Shot Type'])['Shot Type'].count()[away_name]['goal']
+else:
+    away_goals_ot = 0
+
+df_goalies['xGOT_against'] = np.where(df_goalies.isHome == True,
+                                      away_xgot,
+                                      home_xgot)
+df_goalies['Goals_against'] = np.where(df_goalies.isHome == True,
+                                      away_goals_ot,
+                                      home_goals_ot)
+
+## Visualising xGOT and Goals against on barplot
+goalies_plot_indexes = np.arange(2)
+goalies_bar_width = 0.3
+
+plt.bar(goalies_plot_indexes - goalies_bar_width/2,
+        df_goalies['xGOT_against'],
+        color='orange',
+        label='xGOT against',
+        width= goalies_bar_width)
+plt.bar(goalies_plot_indexes + goalies_bar_width/2,
+        df_goalies.Goals_against,
+        color='green',
+        label='Goals against',
+        width= goalies_bar_width)
+plt.xticks(ticks= goalies_plot_indexes,
+           labels= df_goalies['Player_team'])
+
+plt.title('xGOT & Goals against keepers')
+plt.legend()
+plt.grid(axis='y')
+plt.text(-0.3,
+         df_goalies[['xGOT_against', 'Goals_against']].max().max()*0.8,
+         '@adamjakus99',
+         fontsize = 10,
+         color='darkblue')
