@@ -1,3 +1,4 @@
+#%%
 import json
 import requests
 import time
@@ -7,8 +8,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = str(input('Give me the SofaScore URL of the match.'))
+URL = 'https://www.sofascore.com/hu/football/match/barcelona-fc-bayern-munchen/xdbsrgb#id:12764014'
 
+#%%
 if type(URL) != str:
     print("Error. URL is not a string.")
 else:
@@ -29,7 +31,7 @@ else:
         print("Error loading page:", e)
     
     ## Wait for some time
-    time.sleep(5)
+    time.sleep(15)
     
     # Scrolling down
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -131,8 +133,7 @@ else:
     
     driver.quit()
 
-
-
+#%%
 # Creating Shotmap DataFrame
 import numpy as np
 import matplotlib.pyplot as plt
@@ -161,6 +162,7 @@ df.drop(columns=['index'], inplace=True)
 df['isHome'] = df['Team']
 df['Team'] = np.where(df['Team'] == True, home_name, away_name)
 df['team_cumulative_xG'] = df.groupby('Team')['xG'].cumsum()
+df['team_cumulative_xGOT'] = df.groupby('Team')['xGOT'].cumsum()
 
 # Function to extract player information from lineup_data
 def extract_player_info(player_data):
@@ -199,7 +201,7 @@ df_lineup['Team'] = np.where(df_lineup.isHome == True,
                           away_name)
 
 
-
+#%%
 # Displaying Cumulative xG by time
 
 ## Defining the values for each graph
@@ -226,8 +228,8 @@ plot_y_away_extended.loc[len(plot_y_away_extended)] = 0
 plot_y_away_extended.sort_values(by="team_cumulative_xG", ascending = True, inplace=True)
 
 ## Showing the plots
-plt.plot(plot_x_home_extended/60, plot_y_home_extended, color='g', label= home_name)
-plt.plot(plot_x_away_extended/60, plot_y_away_extended, color='r', label= away_name)
+plt.plot(plot_x_home_extended/60, plot_y_home_extended, color='darkblue', label= home_name)
+plt.plot(plot_x_away_extended/60, plot_y_away_extended, color='red', label= away_name)
 
 plt.scatter(
             df[df['Shot Type'] == "goal"].iloc[:,0]/60, 
@@ -246,14 +248,63 @@ plt.legend()
 plt.text(10, df['team_cumulative_xG'].max()*0.7,
          '@adamjakus99',
          fontsize = 11,
-         color='darkblue')
+         color='green')
 
 ## Finalllyyy
 plt.show()
 
+#%%Displaying Cumulative xGOT by time
 
+## Defining the values for each graph
+xgot_x_home = df[df['Team'] == home_name]['timeSeconds']
+xgot_y_home = df[df['Team'] == home_name]['team_cumulative_xGOT']
+xgot_x_away = df[df['Team'] == away_name]['timeSeconds']
+xgot_y_away = df[df['Team'] == away_name]['team_cumulative_xGOT']
 
-# Seeing players individually
+## Extending the Time column, and adding max, because that's how we can shape it like a staircase 
+xgot_x_home_extended = pd.concat([xgot_x_home, xgot_x_home-1], ignore_index=True).sort_values(ascending=True).reset_index().drop(columns=['index'])
+xgot_x_away_extended = pd.concat([xgot_x_away, xgot_x_away-1], ignore_index=True).sort_values(ascending=True).reset_index().drop(columns=['index'])
+
+xgot_x_home_extended.loc[len(xgot_x_home_extended)] = df['timeSeconds'].max()
+xgot_x_away_extended.loc[len(xgot_x_away_extended)] = df['timeSeconds'].max()
+
+## Doing the same for cum. xG, but here adding 0 as a value
+xgot_y_home_extended = pd.concat([xgot_y_home, xgot_y_home], ignore_index=True).sort_values(ascending=True).reset_index().drop(columns=['index'])
+xgot_y_away_extended = pd.concat([xgot_y_away, xgot_y_away], ignore_index=True).sort_values(ascending=True).reset_index().drop(columns=['index'])
+
+xgot_y_home_extended.loc[len(xgot_y_home_extended)] = 0
+xgot_y_home_extended.sort_values(by="team_cumulative_xGOT", ascending = True, inplace=True)
+
+xgot_y_away_extended.loc[len(xgot_y_away_extended)] = 0
+xgot_y_away_extended.sort_values(by="team_cumulative_xGOT", ascending = True, inplace=True)
+
+## Showing the plots
+plt.plot(xgot_x_home_extended/60, xgot_y_home_extended, color='darkblue', label= home_name)
+plt.plot(xgot_x_away_extended/60, xgot_y_away_extended, color='red', label= away_name)
+
+plt.scatter(
+            df[df['Shot Type'] == "goal"].iloc[:,0]/60, 
+            df[df['Shot Type'] == "goal"].iloc[:,11],
+            label='Goals')
+
+## Setting limits, making it nicer
+plt.xlim(df['timeSeconds'].min()/60, df['timeSeconds'].max()/60+0.05)
+plt.ylim(df['team_cumulative_xGOT'].min(), df['team_cumulative_xGOT'].max()*1.05)
+
+plt.xlabel('Minutes')
+plt.ylabel('Expected goals')
+plt.title('Cumulative expected goals after shot on goal')
+plt.grid(axis='x')
+plt.legend()
+plt.text(10, df['team_cumulative_xGOT'].max()*0.7,
+         '@adamjakus99',
+         fontsize = 11,
+         color='green')
+
+## Finalllyyy
+plt.show()
+#%%
+# Seeing players' shots individually
 df_players_shots = df[['Player Name', 'xG', 'xGOT', 'Shot Type']]
 df_players_shots['Goal'] = np.where(df_players_shots['Shot Type'] == 'goal', 1, 0)
 df_playersum = df_players_shots.groupby('Player Name', as_index=False)[['xG','xGOT', 'Goal']].sum()
@@ -317,8 +368,7 @@ plt.text(df_playersum[['xG', 'xGOT', 'Goal']].max().max()*0.7, (len(sort_by_min[
 
 plt.show()
 
-
-
+#%%
 # Analyzing goalkeeper performances
 
 ## The goalies
@@ -381,3 +431,8 @@ plt.text(-0.3,
          '@adamjakus99',
          fontsize = 10,
          color='darkblue')
+
+#%%
+with pd.ExcelWriter(r"C:\TwitterSportsDataProject\SofaScore scrapes\SofaScore_Scrape.xlsx") as writer:
+    df_playersum.to_excel(writer, sheet_name="Player shots", index=False)
+    df_goalies.to_excel(writer, sheet_name="Goalkeepers", index=False)
