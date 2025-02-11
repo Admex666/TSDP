@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = 'https://www.sofascore.com/hu/football/match/barcelona-fc-bayern-munchen/xdbsrgb#id:12764014'
+URL = 'https://www.sofascore.com/hu/football/match/monza-fiorentina/TdbsEeb#id:12504435'
 
 #%%
 if type(URL) != str:
@@ -133,8 +133,7 @@ else:
     
     driver.quit()
 
-#%%
-# Creating Shotmap DataFrame
+#%%Creating Shotmap DataFrame
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -149,13 +148,12 @@ for shot in shotmap_data:
         'Y Coordinate': shot['playerCoordinates']['y'],
         'Position': shot['player']['position'],
         'xG': shot['xg'],
-        'xGOT': shot['xgot']
-    }
+        'xGOT': shot['xgot']}
     data.append(shot_info)
 
 df = pd.DataFrame(data)
 df = df.sort_values(by='timeSeconds', ascending=True)
-df.reset_index(inplace=True, )
+df.reset_index(inplace=True)
 df.drop(columns=['index'], inplace=True)
 
 ## transforming columns
@@ -196,10 +194,7 @@ df_lineup = pd.concat([df_home, df_away], ignore_index=True)
 df_lineup = df_lineup.sort_values(['isHome', 'Substitute', 'Position'])
 df_lineup = df_lineup.reset_index(drop=True)
 
-df_lineup['Team'] = np.where(df_lineup.isHome == True,
-                          home_name,
-                          away_name)
-
+df_lineup['Team'] = np.where(df_lineup.isHome == True, home_name, away_name)
 
 #%%
 # Displaying Cumulative xG by time
@@ -228,8 +223,8 @@ plot_y_away_extended.loc[len(plot_y_away_extended)] = 0
 plot_y_away_extended.sort_values(by="team_cumulative_xG", ascending = True, inplace=True)
 
 ## Showing the plots
-plt.plot(plot_x_home_extended/60, plot_y_home_extended, color='darkblue', label= home_name)
-plt.plot(plot_x_away_extended/60, plot_y_away_extended, color='red', label= away_name)
+plt.plot(plot_x_home_extended/60, plot_y_home_extended, color='red', label= home_name)
+plt.plot(plot_x_away_extended/60, plot_y_away_extended, color='purple', label= away_name)
 
 plt.scatter(
             df[df['Shot Type'] == "goal"].iloc[:,0]/60, 
@@ -248,7 +243,7 @@ plt.legend()
 plt.text(10, df['team_cumulative_xG'].max()*0.7,
          '@adamjakus99',
          fontsize = 11,
-         color='green')
+         color='black')
 
 ## Finalllyyy
 plt.show()
@@ -368,11 +363,9 @@ plt.text(df_playersum[['xG', 'xGOT', 'Goal']].max().max()*0.7, (len(sort_by_min[
 
 plt.show()
 
-#%%
-# Analyzing goalkeeper performances
-
+#%%Analyzing goalkeeper performances
 ## The goalies
-df_goalies = df_lineup[(df_lineup.Position == 'G') & (df_lineup.Substitute == False)]
+df_goalies = df_lineup[df_lineup.Position == 'G']
 df_goalies['Player_team'] = df_goalies['Player Name'].astype(str) + ' (' + df_goalies['Team'].astype(str) + ')'
 
 ## Shots against keepers
