@@ -88,3 +88,16 @@ def linreg(col1, col2):
     b0 = model.intercept_
     b1 = model.coef_[0]
     return [r2, b0, b1]
+
+def team_dict_get(countrycode):
+    team_dict = {'ENG': {'comp_id':'9', 'league':'Premier-League'},
+                 'ESP': {'comp_id':'12', 'league':'La-Liga'},
+                 'GER': {'comp_id':'20', 'league':'Bundesliga'},
+                 'ITA': {'comp_id':'11', 'league':'Serie-A'},
+                 'FRA': {'comp_id':'13', 'league':'Ligue-1'},
+                 'UEL': {'comp_id':'19', 'league':'Europa-League'}}
+    
+    comp_id = team_dict.get(countrycode).get('comp_id')
+    league_name = team_dict.get(countrycode).get('league')
+    
+    return comp_id, league_name

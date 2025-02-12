@@ -29,14 +29,7 @@ def year_of_url(URL, year):
     URL_new = '/'.join(URL_new_list)
     return URL_new
 
-team_dict = {'ENG': {'comp_id':'9', 'league':'Premier-League'},
-             'ESP': {'comp_id':'12', 'league':'La-Liga'},
-             'GER': {'comp_id':'20', 'league':'Bundesliga'},
-             'ITA': {'comp_id':'11', 'league':'Serie-A'},
-             'UEL': {'comp_id':'19', 'league':'Europa-League'}}
-
-comp_id = team_dict.get(league).get('comp_id')
-league_name = team_dict.get(league).get('league')
+comp_id, league_name = fbref.team_dict_get(league)
 
 #%% 
 if pos == 'FW':
@@ -130,7 +123,7 @@ def create_df_analyse(pos, matches_at_least, stats_list, cols_all_list, year):
 
     # Building tables for analysis
     for stat in stats_list[1:]:
-        df_analyse = pd.merge(df_analyse, globals()[f'df_{stat}'],
+        df_analyse = pd.merge(df_analyse, globals()[f'df_{stat}{y}'],
                               on=['Player', 'Squad'], how='left',
                               suffixes=['','_remove'])
         # Remove the duplicate columns
@@ -182,12 +175,11 @@ def create_df_kpi(analysis_df, player_index):
     df_kpi_player = df_kpi_player.reset_index(drop=True)
     
     df_kpi_player['Percentile'] = None
-    for x in range(len(df_kpi_player['Statistic'].unique())):
-        column_name = df_kpi_player['Statistic'].unique()[x]
-        temp = df_kpi_player.loc[df_kpi_player['Statistic'] == column_name,'Value']
-        value = temp.iloc[0]
-        percentile = round(percentileofscore(analysis_df[column_name], value, kind='rank'), 0)
-        df_kpi_player['Percentile'][x] = percentile
+    for metric in df_kpi_player['Statistic'].unique():
+        v = df_kpi_player.loc[df_kpi_player['Statistic'] == metric,'Value']
+        value = v.iloc[0]
+        percentile = round(percentileofscore(analysis_df[metric], value, kind='rank'), 0)
+        df_kpi_player.loc[df_kpi_player.Statistic == metric, 'Percentile'] = percentile
     
     return [df_kpi_player, df_kpi_player_dim]
 
