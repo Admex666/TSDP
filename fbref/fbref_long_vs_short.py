@@ -119,38 +119,79 @@ df_merged.rename(columns={'Playing Time_Min': 'Min',
                  inplace=True)
 
 df_merged_match = pd.concat([df_merged0, df_merged1]).reset_index(drop=True)
-
 df_merged_match.drop(columns=missing_cols[4:]+['#'],
                                    inplace=True)
 # and remove unnecessary summarizing row
-df_merged_match = df_merged_match.iloc[:-1,:]
+index_to_drop = df_merged_match[df_merged_match.Player.str.contains('Player')].index
+df_merged_match.drop(index=index_to_drop, inplace=True)
+df_merged_match = df_merged_match.reset_index(drop=True)
 
-df_merged = df_merged.loc[:,df_merged0.columns.unique()]
+df_merged = df_merged.loc[:,df_merged_match.columns.unique()]
 df_merged.iloc[:,5:] = df_merged.iloc[:,5:].astype(float)
 
 #%% Get league per90 values
 df_merged_p90 = df_merged.copy()
 league_avg_dict = {}
-for col in df_merged_p90.columns[6:]:
+stat_cols = df_merged_p90.columns[6:]
+for col in stat_cols:
     if ('%' in col) or ('90' in col):
         pass
     else:
         df_merged_p90[col] = df_merged_p90[col]/df_merged_p90.Min*90
-    league_avg_dict[col] = df_merged_p90[col].median()
+    league_avg_dict[col] = df_merged_p90[col].mean()
+
+# Get per90 averages for positions as well
+# df_merged_match.Pos.unique()
+df_merged_match.Pos = df_merged_match.Pos.str.split(',').str[0].str.strip()
+pos_dict = {'GK': ['GK'],
+            'DF': ['CB', 'RB', 'LB'],
+            'MF': ['DM', 'RM', 'CM', 'LM', 'AM'],
+            'FW': ['FW', 'LW', 'RW']
+            }
+wing_dict = {'Winger':['RB','LB','RM','LM','FW','LW', 'RW'],
+             'Not Winger':['GK','CB','DM','CM','AM','FW']
+             }
+
+df_merged_match['pos_group'] = None
+df_merged_match['winger'] = None
+for posnr in range(len(df_merged_match.Pos)):
+    position = df_merged_match.Pos[posnr]
+    
+    for kp in pos_dict.keys():
+        poslist = pos_dict.get(kp)
+        for lp in range(len(poslist)):
+            if poslist[lp] in position:
+                df_merged_match['pos_group'][posnr] = kp
+    for kw in wing_dict.keys():
+        wlist =  wing_dict.get(kw)
+        for lw in range(len(wlist)):
+            if wlist[lw] in position:
+                df_merged_match['winger'][posnr] = kw
+
+# Get position group averages in league
+pos_avg_dict = {'GK':{}, 'DF':{}, 'MF':{}, 'FW': {}}
+for posgr in pos_dict.keys():
+    globals()[f'df_{posgr}'] = df_merged_p90[df_merged_p90.Pos.str.contains(posgr)]
+    tempdict = {}
+    for col in stat_cols:
+        tempdict[col] = globals()[f'df_{posgr}'][col].mean()
+    pos_avg_dict[posgr] = tempdict
 
 #%% Create dataframes that include all stats
 # Only want relevant squads' season data
 if (teams_df.team_name[0] in df_standard.Squad.unique()) & (teams_df.team_name[1] in df_standard.Squad.unique()):
-    df_merged_squadonly = df_merged[df_merged.Squad.isin([teams_df.team_name[0], teams_df.team_name[1]])]
+    df_merged_sq = df_merged[df_merged.Squad.isin([teams_df.team_name[0], teams_df.team_name[1]])]
+    df_merged_p90_sq = df_merged_p90[df_merged_p90.Squad.isin([teams_df.team_name[0], teams_df.team_name[1]])]
     print('Team names found')
 else:
     print('Error: team names not found')
 
 #%%
 # seperate the seasonal data of the players who played in this match
-df_mseason = df_merged_squadonly.set_index('Player').reindex(df_merged_match.Player).reset_index()
+df_mseason = df_merged_sq.set_index('Player').reindex(df_merged_match.Player).reset_index()
+df_mseason_p90 = df_merged_p90_sq.set_index('Player').reindex(df_merged_match.Player).reset_index()
 
-for dfs in [df_merged, df_mseason]:
+for dfs in [df_merged_match, df_mseason, df_mseason_p90]:
     dfs.fillna(0, inplace=True)
 # Compare these tables by minutes played:
 # if the seasonstat/season_minutes < matchstat/matchmins -> overperform the avg
@@ -254,23 +295,14 @@ combined_stats = {
 #    else:
 #        missing_keys.append(c)
 
-# df_merged_match.Pos.unique()
-pos_dict = {'GK': ['GK'],
-            'DF': ['CB', 'RB', 'LB'],
-            'MF': ['DM', 'RM', 'CM', 'LM', 'AM'],
-            'FW': ['FW', 'LW', 'RW']}
-wing_dict = {'Winger':['RB','LB','RM','LM','FW','LW'],
-             'Not Winger':['GK','CB','DM','CM','AM','FW']
-             }
-
-df_merged_match.Pos = df_merged_match.Pos.str.split(',').str[0]
 
 #%% Create performance difference list
-def op_list_append(listname, plus_minus, overpercent):
-    if plus_minus == '+':
-        overpercent = +overpercent
-    elif plus_minus == '-':
-        overpercent = -overpercent
+def op_list_append(listname, plus_minus, overpercent_dict):
+    for x in overpercent_dict.keys():
+        if plus_minus == '+':
+            globals()[f'{x}'] = +overpercent_dict.get(x)
+        elif plus_minus == '-':
+            globals()[f'{x}'] = -overpercent_dict.get(x)
         
     listname.append({'squad': squad,
                      'position': pos,
@@ -278,76 +310,54 @@ def op_list_append(listname, plus_minus, overpercent):
                      'player': player,
                      'stat_category': stat_category,
                      'stat': stat_name_long,
-                     'overperformance%': overpercent,
-                     'match_avg_value': match_avg,
-                     'season_avg_value': season_avg,
+                     'overperformance%_season': overpercent_season,
                      'match_value': matchstat,
-                     'season_value': seasonstat})
+                     'season_avg_value': season_avg,
+                     'season_value': seasonstat,
+                     'league_avg': league_avg,
+                     'overperformance%_league': overpercent_league,
+                     'pos_avg': pos_avg,
+                     'overperformance%_pos': overpercent_pos})
 
 overperform_list = []
 for row in range(len(df_merged_match)):
     squad = df_merged_match.Squad[row]
     player = df_merged_match.Player[row]
-    position = df_merged_match.Pos[row]
-    for k in pos_dict.keys():
-        poslist = pos_dict.get(k)
-        for l in range(len(poslist)):
-            if poslist[l] in position:
-                pos = k
-    for k in wing_dict.keys():
-        wlist =  wing_dict.get(k)
-        for l in range(len(wlist)):
-            if wlist[l] in position:
-                winger = k
+    pos = df_merged_match.pos_group[row]
+    winger = df_merged_match.winger[row]
     matchmins = 90 #df_merged_match.Min[row]
     seasonmins = df_mseason.Min[row]
     
-    for col in range(6, len(df_merged_match.columns)):
+    for col in range(6, len(df_merged_match.columns[:-2])):
         stat_name = df_merged_match.columns[col]
         stat_category = combined_stats.get(stat_name).get('category')
         stat_name_long = combined_stats.get(stat_name).get('name')
         matchstat = df_merged_match.iloc[row, col]
-        seasonstat = df_merged_match.iloc[row, col]
+        seasonstat = df_mseason.iloc[row, col]
+        season_avg = df_mseason_p90.iloc[row, col]
+        league_avg = league_avg_dict.get(stat_name)
+        pos_avg = pos_avg_dict.get(pos).get(stat_name)
         
-        if '%' in stat_name:
-            match_avg = matchstat
-            season_avg = seasonstat
-            if matchstat == 0:
-                if matchstat == seasonstat:
-                    overpercent = 0
-                else:
-                    overpercent = -100
-            elif seasonstat == 0:
-                overpercent = 100
-            else:
-                overpercent = round((match_avg/season_avg-1)*100)
-                # see if the stat is a negative or positive one
-            if combined_stats.get(stat_name).get('significance') == 'positive':
-                op_list_append(overperform_list, '+', overpercent)
-            elif combined_stats.get(stat_name).get('significance') == 'negative':
-                op_list_append(overperform_list, '-', overpercent)
-
-        else:
-            match_avg = matchstat
-            season_avg = seasonstat/seasonmins*90
-            if matchstat == 0:
-                if matchstat == seasonstat:
-                    overpercent = 0 
-                else:
-                    overpercent = -100
-            elif seasonstat == 0:
-                overpercent = 100
-            else:
-                overpercent = round(((matchstat / (seasonstat*matchmins/seasonmins)-1)*100))
-                # see if the stat is a negative or positive one
-            if combined_stats.get(stat_name).get('significance') == 'positive':
-                op_list_append(overperform_list, '+', overpercent)
-            elif combined_stats.get(stat_name).get('significance') == 'negative':
-                op_list_append(overperform_list, '-', overpercent)
-
+        overpercent_dict = {}
+        for t in ['season', 'league', 'pos']:
+            if (matchstat != 0) & (globals()[f'{t}_avg'] != 0):
+                overpercent_dict[f'overpercent_{t}'] = round(((matchstat / globals()[f'{t}_avg'] -1)*100))
+            elif (matchstat == 0) & (globals()[f'{t}_avg'] != 0):
+                overpercent_dict[f'overpercent_{t}'] = -100
+            elif (matchstat == 0) & (globals()[f'{t}_avg'] != 0):
+                overpercent_dict[f'overpercent_{t}'] = 100
+            elif (matchstat == 0) & (globals()[f'{t}_avg'] == 0):
+                overpercent_dict[f'overpercent_{t}'] = 0
+        
+        
+        # see if the stat is a negative or positive one
+        if combined_stats.get(stat_name).get('significance') == 'positive':
+            op_list_append(overperform_list, '+', overpercent_dict)
+        elif combined_stats.get(stat_name).get('significance') == 'negative':
+            op_list_append(overperform_list, '-', overpercent_dict)
 
 df_overperform_merged = pd.DataFrame(overperform_list)
 
 #%% To excel
-path = r'C:\Users\Ádám\Dropbox\TSDP\fbref\long_short_OP.xlsx'
+path = r'C:\Users\Ádám\Dropbox\TSDP_output\fbref\long_short_OP.xlsx'
 df_overperform_merged.to_excel(path, index=False)
