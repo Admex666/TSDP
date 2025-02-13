@@ -10,16 +10,10 @@ import fbref_module as fbref
 from bs4 import BeautifulSoup
 import requests
 
-league = 'GER'
-URL_match = 'https://fbref.com/en/matches/0967d02c/Holstein-Kiel-Dortmund-January-14-2025-Bundesliga'
+league = 'FRA'
+URL_match = 'https://fbref.com/en/matches/7f0d9a30/Brest-Paris-Saint-Germain-February-11-2025-Champions-League'
 
-team_dict = {'ENG': {'comp_id':'9', 'league':'Premier-League'},
-             'ESP': {'comp_id':'12', 'league':'La-Liga'},
-             'GER': {'comp_id':'20', 'league':'Bundesliga'},
-             'ITA': {'comp_id':'11', 'league':'Serie-A'}}
-
-comp_id = team_dict.get(league).get('comp_id')
-league_name = team_dict.get(league).get('league')
+comp_id, league_name = fbref.team_dict_get(league)
 
 #URLs
 URL_standard = (
@@ -286,6 +280,8 @@ for team in [0,1]:
                         overpercent = 0
                     else:
                         overpercent = -100
+                elif seasonstat == 0:
+                    overpercent = 100
                 else:
                     overpercent = round((match_avg/season_avg-1)*100)
                     # see if the stat is a negative or positive one
@@ -302,6 +298,8 @@ for team in [0,1]:
                         overpercent = 0 
                     else:
                         overpercent = -100
+                elif seasonstat == 0:
+                    overpercent = 100
                 else:
                     overpercent = round(((matchstat / (seasonstat*matchmins/seasonmins)-1)*100))
                     # see if the stat is a negative or positive one
@@ -316,5 +314,5 @@ for team in [0,1]:
 df_overperform_merged = pd.concat([df_overperform0, df_overperform1])    
 
 #%% To excel
-path = r'C:\TSDP\fbref\long_short_OP.xlsx'
+path = r'C:\Users\Ádám\Dropbox\TSDP\fbref\long_short_OP.xlsx'
 df_overperform_merged.to_excel(path, index=False)

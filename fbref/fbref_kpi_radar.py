@@ -12,8 +12,8 @@ import numpy as np
 from scipy.stats import percentileofscore
 
 # choose from ENG, ESP, GER, ITA...
-league = 'GER'
-pos = 'GK' # FW, MF, DF, GK
+league = 'UEL'
+pos = 'FW' # FW, MF, DF, GK
 matches_at_least = 2
 year = '2023-2024' # the year of comparison
 
@@ -91,7 +91,7 @@ for stat, url in zip(stats_list, url_list):
                                 + f'/{url}/' + league_name 
                                 + '-Stats#all_stats_' + stat)
     globals()[f'URL_{stat}_year'] = ("https://fbref.com/en/comps/" + comp_id 
-                                     + f'/{year}/' + f'/{url}/{year}-' 
+                                     + f'/{year}/{url}/{year}-' 
                                      + league_name + '-Stats')
 
 #%% Scraping the data
