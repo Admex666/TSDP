@@ -38,18 +38,11 @@ import fbref_module as fbref
 import matplotlib.pyplot as plt
 
 # Set parameters
-league = 'UEL'
+league = 'HUN'
 min_90_played = 0 # how many matches at least
-only_position = 'MF' # DF, MF, FW or GK
+only_position = '' # DF, MF, FW or GK
 
-team_dict = {'ENG': {'comp_id':'9', 'league':'Premier-League'},
-             'ESP': {'comp_id':'12', 'league':'La-Liga'},
-             'GER': {'comp_id':'20', 'league':'Bundesliga'},
-             'ITA': {'comp_id':'11', 'league':'Serie-A'},
-             'UEL': {'comp_id':'19', 'league':'Europa-League'}}
-
-comp_id = team_dict.get(league).get('comp_id')
-league_name = team_dict.get(league).get('league')
+comp_id, league_name = fbref.team_dict_get(league)
 
 urllist = ['passing', 'shooting', 'defense', 'misc', 'keepers', 'keepersadv']
 #URLs
@@ -58,11 +51,9 @@ URL_standard = ("https://fbref.com/en/comps/" + comp_id + '/stats/'
                 )
 for stat in urllist:
     globals()[f'URL_{stat}'] = ("https://fbref.com/en/comps/" + comp_id
-                                + '/{}/'.format(stat) + league_name
+                                + f'/{stat}/' + league_name
                                 + '-Stats#all_stats_' + stat
                                 )
-
-del comp_id, league
 
 #%% Preparing df and functions for scrape
 def scrape(URL, table_id):       
@@ -113,7 +104,7 @@ for col in df_super.columns[8:]:
         df_super.rename(columns={col:f'{col}_p90'}, inplace=True)
 
 #%% To excel
-path = r'C:\TSDP\fbref\player_scatters.xlsx'
+path = r'C:\Users\Ádám\Dropbox\TSDP_output\fbref\player_scatters.xlsx'
 df_super.to_excel(path, index=False)
 
 #%% Plotting (defining function)
