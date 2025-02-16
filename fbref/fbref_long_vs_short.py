@@ -295,6 +295,21 @@ combined_stats = {
 #    else:
 #        missing_keys.append(c)
 
+#%% Filter statistics by correlation
+corr_matrix = df_merged_p90.iloc[:, 6:].corr().abs()
+
+# Define redundant metrics
+d_redundant_stats = []
+for i in range(len(corr_matrix.columns)):
+    for j in range(i):
+        if corr_matrix.iloc[i, j] > 0.8:
+            d_redundant_stats.append(corr_matrix.columns[i])
+
+# Define non-redundant stats
+d_filtered_keys = []
+for k in combined_stats.keys():
+    if k not in d_redundant_stats:
+        d_filtered_keys.append(k)
 
 #%% Create performance difference list
 def op_list_append(listname, plus_minus, overpercent_dict):
@@ -317,7 +332,8 @@ def op_list_append(listname, plus_minus, overpercent_dict):
                      'league_avg': league_avg,
                      'overperformance%_league': overpercent_league,
                      'pos_avg': pos_avg,
-                     'overperformance%_pos': overpercent_pos})
+                     'overperformance%_pos': overpercent_pos,
+                     'redundant': redundancy})
 
 overperform_list = []
 for row in range(len(df_merged_match)):
@@ -337,6 +353,7 @@ for row in range(len(df_merged_match)):
         season_avg = df_mseason_p90.iloc[row, col]
         league_avg = league_avg_dict.get(stat_name)
         pos_avg = pos_avg_dict.get(pos).get(stat_name)
+        redundancy = True if stat_name in d_redundant_stats else ('ERROR' if stat_name not in d_filtered_keys else False)
         
         overpercent_dict = {}
         for t in ['season', 'league', 'pos']:
@@ -361,3 +378,11 @@ df_overperform_merged = pd.DataFrame(overperform_list)
 #%% To excel
 path = r'C:\Users\Ádám\Dropbox\TSDP_output\fbref\long_short_OP.xlsx'
 df_overperform_merged.to_excel(path, index=False)
+
+#%%
+from sklearn.decomposition import FactorAnalysis
+# Faktoranalízis 5 főkomponenssel
+df_merged_p90_forFA = df_merged_p90.copy().dropna()
+fa = FactorAnalysis(n_components=5)
+factors = fa.fit_transform(df_merged_p90_forFA.iloc[:, 6:])
+
