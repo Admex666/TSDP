@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="10.5.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.5.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_excel" compatibility="10.5.000" expanded="true" height="68" name="Read Excel (2)" width="90" x="45" y="289">
+        <parameter key="excel_file" value="C:\Users\Adam\.Data files\ML_PL_new\model_input_predict.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="use_header_row" value="true"/>
+        <parameter key="header_row" value="1"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="Europe/Prague"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="Date.false.date.attribute"/>
+          <parameter key="1" value="HomeTeam.true.polynominal.id"/>
+          <parameter key="2" value="AwayTeam.false.polynominal.attribute"/>
+          <parameter key="3" value="FullTimeResult.true.polynominal.attribute"/>
+          <parameter key="4" value="BTTS.true.polynominal.attribute"/>
+          <parameter key="5" value="O/U2\.5.true.polynominal.attribute"/>
+          <parameter key="6" value="Goals_Home_RAvg.true.real.attribute"/>
+          <parameter key="7" value="Shots_Home_RAvg.true.real.attribute"/>
+          <parameter key="8" value="ShotsOnTarget_Home_RAvg.true.real.attribute"/>
+          <parameter key="9" value="Corners_Home_RAvg.true.real.attribute"/>
+          <parameter key="10" value="Yellows_Home_RAvg.true.real.attribute"/>
+          <parameter key="11" value="Goals_Away_RAvg.true.real.attribute"/>
+          <parameter key="12" value="Shots_Away_RAvg.true.real.attribute"/>
+          <parameter key="13" value="ShotsOnTarget_Away_RAvg.true.real.attribute"/>
+          <parameter key="14" value="Corners_Away_RAvg.true.real.attribute"/>
+          <parameter key="15" value="Yellows_Away_RAvg.true.real.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="10.5.000" expanded="true" height="68" name="Retrieve model_input_SP1_23-24" width="90" x="45" y="136">
+        <parameter key="repository_entry" value="//Local Repository/model_input_SP1_23-24"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="10.5.000" expanded="true" height="124" name="Multiply train" width="90" x="179" y="136"/>
+      <operator activated="true" class="blending:select_attributes" compatibility="10.5.000" expanded="true" height="82" name="Select Attributes BTTS" width="90" x="313" y="187">
+        <parameter key="type" value="exclude attributes"/>
+        <parameter key="attribute_filter_type" value="a subset"/>
+        <parameter key="select_attribute" value=""/>
+        <parameter key="select_subset" value="AwayTeam␞Date␞HomeTeam␞O/U2.5␞FullTimeResult"/>
+        <parameter key="also_apply_to_special_attributes_(id,_label..)" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:select_attributes" compatibility="10.5.000" expanded="true" height="82" name="Select Attributes FTR" width="90" x="313" y="34">
+        <parameter key="type" value="exclude attributes"/>
+        <parameter key="attribute_filter_type" value="a subset"/>
+        <parameter key="select_attribute" value=""/>
+        <parameter key="select_subset" value="AwayTeam␞Date␞HomeTeam␞BTTS␞O/U2.5"/>
+        <parameter key="also_apply_to_special_attributes_(id,_label..)" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:set_role" compatibility="10.5.000" expanded="true" height="82" name="Set Role FTR" width="90" x="447" y="34">
+        <list key="set_roles">
+          <parameter key="FullTimeResult" value="label"/>
+        </list>
+      </operator>
+      <operator activated="true" class="concurrency:cross_validation" compatibility="10.5.000" expanded="true" height="145" name="Cross Validation" width="90" x="581" y="34">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="10"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="naive_bayes" compatibility="10.5.000" expanded="true" height="82" name="Naive Bayes" width="90" x="45" y="34">
+            <parameter key="laplace_correction" value="true"/>
+          </operator>
+          <connect from_port="training set" to_op="Naive Bayes" to_port="training set"/>
+          <connect from_op="Naive Bayes" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="10.5.000" expanded="true" height="82" name="Apply Model" width="90" x="45" y="34">
+            <list key="application_parameters"/>
+          </operator>
+          <operator activated="true" class="performance" compatibility="10.5.000" expanded="true" height="82" name="Performance" width="90" x="179" y="34">
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model" to_port="unlabelled data"/>
+          <connect from_op="Apply Model" from_port="labelled data" to_op="Performance" to_port="labelled data"/>
+          <connect from_op="Performance" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Performance" from_port="example set" to_port="test set results"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="10.5.000" expanded="true" height="124" name="Multiply test" width="90" x="179" y="238"/>
+      <operator activated="true" class="apply_model" compatibility="10.5.000" expanded="true" height="82" name="Apply Model (2)" width="90" x="715" y="34">
+        <list key="application_parameters"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="10.5.000" expanded="true" height="103" name="Write Excel" width="90" x="849" y="34">
+        <parameter key="excel_file" value="C:/TwitterSportsDataProject/PL ML model/ML_predictions2.0_1X2.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names">
+          <parameter key="sheet_name_element" value="1X2"/>
+        </enumeration>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
+        <parameter key="number_format" value="0.00"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="blending:set_role" compatibility="10.5.000" expanded="true" height="82" name="Set Role BTTS" width="90" x="447" y="187">
+        <list key="set_roles">
+          <parameter key="BTTS" value="label"/>
+        </list>
+      </operator>
+      <operator activated="true" class="concurrency:cross_validation" compatibility="10.5.000" expanded="true" height="145" name="Cross Validation (2)" width="90" x="648" y="187">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="10"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="naive_bayes" compatibility="10.5.000" expanded="true" height="82" name="Naive Bayes (2)" width="90" x="45" y="34">
+            <parameter key="laplace_correction" value="true"/>
+          </operator>
+          <connect from_port="training set" to_op="Naive Bayes (2)" to_port="training set"/>
+          <connect from_op="Naive Bayes (2)" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="10.5.000" expanded="true" height="82" name="Apply Model (3)" width="90" x="45" y="34">
+            <list key="application_parameters"/>
+          </operator>
+          <operator activated="true" class="performance" compatibility="10.5.000" expanded="true" height="82" name="Performance (2)" width="90" x="179" y="34">
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (3)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (3)" to_port="unlabelled data"/>
+          <connect from_op="Apply Model (3)" from_port="labelled data" to_op="Performance (2)" to_port="labelled data"/>
+          <connect from_op="Performance (2)" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Performance (2)" from_port="example set" to_port="test set results"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="10.5.000" expanded="true" height="82" name="Apply Model (4)" width="90" x="782" y="187">
+        <list key="application_parameters"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="10.5.000" expanded="true" height="103" name="Write Excel (2)" width="90" x="983" y="187">
+        <parameter key="excel_file" value="C:/TwitterSportsDataProject/PL ML model/ML_predictions2.0_BTTS.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names">
+          <parameter key="sheet_name_element" value="BTTS"/>
+        </enumeration>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
+        <parameter key="number_format" value="0.00"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="blending:select_attributes" compatibility="10.5.000" expanded="true" height="82" name="Select Attributes FTR (2)" width="90" x="313" y="340">
+        <parameter key="type" value="exclude attributes"/>
+        <parameter key="attribute_filter_type" value="a subset"/>
+        <parameter key="select_attribute" value=""/>
+        <parameter key="select_subset" value="AwayTeam␞BTTS␞Date␞HomeTeam␞FullTimeResult"/>
+        <parameter key="also_apply_to_special_attributes_(id,_label..)" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:set_role" compatibility="10.5.000" expanded="true" height="82" name="Set Role FTR (2)" width="90" x="447" y="340">
+        <list key="set_roles">
+          <parameter key="O/U2.5" value="label"/>
+        </list>
+      </operator>
+      <operator activated="true" class="concurrency:cross_validation" compatibility="10.5.000" expanded="true" height="145" name="Cross Validation (3)" width="90" x="581" y="340">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="10"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="naive_bayes" compatibility="10.5.000" expanded="true" height="82" name="Naive Bayes (3)" width="90" x="45" y="34">
+            <parameter key="laplace_correction" value="true"/>
+          </operator>
+          <connect from_port="training set" to_op="Naive Bayes (3)" to_port="training set"/>
+          <connect from_op="Naive Bayes (3)" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="10.5.000" expanded="true" height="82" name="Apply Model (5)" width="90" x="45" y="34">
+            <list key="application_parameters"/>
+          </operator>
+          <operator activated="true" class="performance" compatibility="10.5.000" expanded="true" height="82" name="Performance (3)" width="90" x="179" y="34">
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (5)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (5)" to_port="unlabelled data"/>
+          <connect from_op="Apply Model (5)" from_port="labelled data" to_op="Performance (3)" to_port="labelled data"/>
+          <connect from_op="Performance (3)" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Performance (3)" from_port="example set" to_port="test set results"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="10.5.000" expanded="true" height="82" name="Apply Model (6)" width="90" x="715" y="340">
+        <list key="application_parameters"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="10.5.000" expanded="true" height="103" name="Write Excel (3)" width="90" x="849" y="340">
+        <parameter key="excel_file" value="C:/TwitterSportsDataProject/PL ML model/ML_predictions2.0_OU2.5.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names">
+          <parameter key="sheet_name_element" value="O/U"/>
+        </enumeration>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
+        <parameter key="number_format" value="0.00"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <connect from_op="Read Excel (2)" from_port="output" to_op="Multiply test" to_port="input"/>
+      <connect from_op="Retrieve model_input_SP1_23-24" from_port="output" to_op="Multiply train" to_port="input"/>
+      <connect from_op="Multiply train" from_port="output 1" to_op="Select Attributes FTR" to_port="example set input"/>
+      <connect from_op="Multiply train" from_port="output 2" to_op="Select Attributes BTTS" to_port="example set input"/>
+      <connect from_op="Multiply train" from_port="output 3" to_op="Select Attributes FTR (2)" to_port="example set input"/>
+      <connect from_op="Select Attributes BTTS" from_port="example set output" to_op="Set Role BTTS" to_port="example set input"/>
+      <connect from_op="Select Attributes FTR" from_port="example set output" to_op="Set Role FTR" to_port="example set input"/>
+      <connect from_op="Set Role FTR" from_port="example set output" to_op="Cross Validation" to_port="example set"/>
+      <connect from_op="Cross Validation" from_port="model" to_op="Apply Model (2)" to_port="model"/>
+      <connect from_op="Multiply test" from_port="output 1" to_op="Apply Model (2)" to_port="unlabelled data"/>
+      <connect from_op="Multiply test" from_port="output 2" to_op="Apply Model (4)" to_port="unlabelled data"/>
+      <connect from_op="Multiply test" from_port="output 3" to_op="Apply Model (6)" to_port="unlabelled data"/>
+      <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Write Excel" to_port="input"/>
+      <connect from_op="Set Role BTTS" from_port="example set output" to_op="Cross Validation (2)" to_port="example set"/>
+      <connect from_op="Cross Validation (2)" from_port="model" to_op="Apply Model (4)" to_port="model"/>
+      <connect from_op="Apply Model (4)" from_port="labelled data" to_op="Write Excel (2)" to_port="input"/>
+      <connect from_op="Select Attributes FTR (2)" from_port="example set output" to_op="Set Role FTR (2)" to_port="example set input"/>
+      <connect from_op="Set Role FTR (2)" from_port="example set output" to_op="Cross Validation (3)" to_port="example set"/>
+      <connect from_op="Cross Validation (3)" from_port="model" to_op="Apply Model (6)" to_port="model"/>
+      <connect from_op="Apply Model (6)" from_port="labelled data" to_op="Write Excel (3)" to_port="input"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+    </process>
+  </operator>
+</process>
