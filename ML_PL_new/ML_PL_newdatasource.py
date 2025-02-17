@@ -2,13 +2,15 @@ import pandas as pd
 import numpy as np
 
 # Loading data
-df = pd.read_csv(r'C:\Users\Adam\.Data files\ML_PL_new\SP1_23-24.csv')
+path = r'C:\Users\Ádám\Downloads\E0.csv'
+df = pd.read_csv(path)
 # Only needed columns
 needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
 df = df[needed_cols]
 # create BTTS and O2,5 labels
 df['BTTS'] = np.where((df.FTHG!=0)&(df.FTAG!=0),'Yes','No')
 df['O/U2.5'] = np.where(df.FTHG+df.FTAG>2.5,'Over','Under')
+
 #%% Transforming data
 def df_to_model_input(df):  
     # Writing it out

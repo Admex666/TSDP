@@ -12,7 +12,7 @@ import numpy as np
 from scipy.stats import percentileofscore
 
 # choose from ENG, ESP, GER, ITA...
-league = 'UEL'
+league = 'GER'
 pos = 'FW' # FW, MF, DF, GK
 matches_at_least = 2
 year = '2023-2024' # the year of comparison
@@ -183,8 +183,11 @@ def create_df_kpi(analysis_df, player_index):
     
     return [df_kpi_player, df_kpi_player_dim]
 
-[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 22)
+[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 2)
 player_name = df_kpi_player_dim[df_kpi_player_dim.Statistic=='Player']['Value'].get(1)
+
+player_index_year = df_analyse_year[df_analyse_year.Player == player_name].index[0]
+[df_kpi_player_fact_year, df_kpi_player_dim_year] = create_df_kpi(df_analyse_year, player_index_year)
 
 #%% Creating a table of percentiles
 def create_df_percentiles(analysis_df):
@@ -214,9 +217,6 @@ for col in cols_all_list_p90:
 del col
 
 #%% KPI comparison prepare for export
-player_index_year = df_analyse_year[df_analyse_year.Player == player_name].index[0]
-[df_kpi_player_fact_year, df_kpi_player_dim_year] = create_df_kpi(df_analyse_year, player_index_year)
-
 path = r'C:\TSDP\fbref\scout_summary.xlsx'
 if df_kpi_player_dim.loc[1,'Value'] == df_kpi_player_dim_year.loc[1,'Value']:
     df_kpi_player_fact_both = pd.merge(df_kpi_player_fact,
@@ -225,8 +225,66 @@ if df_kpi_player_dim.loc[1,'Value'] == df_kpi_player_dim_year.loc[1,'Value']:
                                        how='inner')
     df_kpi_player_fact_both.columns = ['Statistic', 'Value', 'Percentile',
                                        'Value_year', 'Percentile_year']
-    df_kpi_player_fact_both.to_excel(path, index=False)
+    #df_kpi_player_fact_both.to_excel(path, index=False)
     print("Names were matching.")
 else:
     print("Error: name is not matching")
     
+#%%
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+import numpy as np
+
+# Calculate the differences
+differences = df_kpi_player_fact_both['Percentile'] - df_kpi_player_fact_both['Percentile_year']
+
+# Normalize the differences for colormap
+norm = mcolors.Normalize(vmin=-75, vmax=75)
+cmap = plt.get_cmap('RdYlGn')  # Red-Yellow-Green colormap
+
+# Create the plot
+plt.figure(figsize=(10, 6))
+y = range(len(df_kpi_player_fact_both))
+
+# Plot the two percentiles
+dot_size = 125
+plt.scatter(df_kpi_player_fact_both['Percentile'], y, color='blue', label='Current season', zorder=2, s=dot_size)
+plt.scatter(df_kpi_player_fact_both['Percentile_year'], y, color='red', label='Last season', zorder=2, s=dot_size)
+
+# Add connecting lines with color based on differences
+for i, (pct, pct_year, diff) in enumerate(zip(df_kpi_player_fact_both['Percentile'], df_kpi_player_fact_both['Percentile_year'], differences)):
+    color = cmap(norm(diff))  # Get color from colormap based on normalized difference
+    plt.plot([pct_year, pct], [i, i], color=color, linestyle='-', alpha=0.8, zorder=1)
+
+# Prettify statistic names
+stats_nop90 = df_kpi_player_fact_both['Statistic'].str.strip('_p90')
+df_kpi_player_fact_both['Statistic_pretty'] = None
+for i, s in enumerate(stats_nop90):
+    if s in fbref.stats_dict():
+        df_kpi_player_fact_both['Statistic_pretty'][i] = fbref.stats_dict().get(s).get('name')
+    else:
+        df_kpi_player_fact_both['Statistic_pretty'][i] = df_kpi_player_fact_both['Statistic'][i]
+
+
+# Customize axes and labels
+plt.yticks(y, df_kpi_player_fact_both['Statistic_pretty'])
+plt.gca().invert_yaxis()  # Show first row at the top
+plt.xlabel('Percentile')
+
+# Add title and subtitle
+plt.title(f'{player_name} percentile changes', fontsize=20, pad=20)
+plt.suptitle('Comparison of current season vs. last season percentiles', fontsize=14, y=0.95, x=0.5, style='italic')
+
+# Add legend
+plt.legend(loc='lower center')
+
+# Add grid for readability
+plt.grid(True, axis='x', linestyle='--', alpha=0.6, zorder=1)
+
+# Add a colorbar to show the mapping of differences to colors
+sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+sm.set_array([])
+plt.colorbar(sm, label='Percentile difference')
+
+plt.tight_layout()
+plt.show()
