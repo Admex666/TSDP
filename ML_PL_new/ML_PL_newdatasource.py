@@ -1,5 +1,14 @@
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+)
 
 # Loading data
 path = r'C:\Users\Ádám\Downloads\E0.csv'
@@ -65,17 +74,34 @@ def df_to_model_input(df):
 
 model_input = df_to_model_input(df)
 
-#%% Input to excel
-model_input.to_excel(r'C:\Users\Adam\.Data files\ML_PL_new\model_input_SP1_23-24.xlsx',
-                     index=False)
+#%% Build ML model
+df_accs = pd.DataFrame()
 
-
-
-
-
+for btype in ['FullTimeResult', 'BTTS', 'O/U2.5']:
+    x = model_input.iloc[:,6:]
+    y = model_input.loc[:, btype]
+    for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier']:
+        acc_list = []
+        for n in range(170, 220):
+            x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
+            
+            GaussianNB()
+            model = globals()[f"{m}"]()
+            model.fit(x_train, y_train)
+            
+    # Evaluation
+            y_pred = model.predict(x_test)
+            accuracy= accuracy_score(y_pred, y_test)
+            acc_list.append(accuracy)
+        df_accs[f'{m}_{btype}'] = acc_list
+    
+accs_describe = df_accs.describe().iloc[1:, :]
+df_accs.boxplot(rot=90)
+    
 #%% Getting the fresh data for predictions
 import pandas as pd
-df_pred = pd.read_csv(r'C:\Users\Adam\Downloads\E0.csv')
+path_pred = path
+df_pred = pd.read_csv(path_pred)
 
 #%% Transform
 import numpy as np
@@ -86,7 +112,7 @@ df_pred = df_pred[needed_cols]
 df_pred['BTTS'] = np.where((df_pred.FTHG!=0)&(df_pred.FTAG!=0),'Yes','No')
 df_pred['O/U2.5'] = np.where(df_pred.FTHG+df_pred.FTAG>2.5,'Over','Under')
 
-teams = df_pred.HomeTeam.unique()
+teams = np.sort(df_pred.HomeTeam.unique())
 
 # Add current matches
 select_date = '03/01/2025'
