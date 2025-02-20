@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -29,7 +29,6 @@ def df_to_model_input(df):
         'HST': 'HomeShotsOnTarget', 'AST': 'AwayShotsOnTarget',
         'HC': 'HomeCorners', 'AC': 'AwayCorners',
         'HY': 'HomeYellows', 'AY': 'AwayYellows',
-        'FTR': 'FullTimeResult'
     }, inplace=True)
     
     # Date form
@@ -56,7 +55,7 @@ def df_to_model_input(df):
     # Summing rolling averages
     rolling_df = pd.concat(rolling_features).sort_values(['Date', 'HomeTeam'])
     
-    final_df = df[['Date', 'HomeTeam', 'AwayTeam', 'FullTimeResult', 'BTTS', 'O/U2.5']].copy()
+    final_df = df[['Date', 'HomeTeam', 'AwayTeam', 'FTR', 'BTTS', 'O/U2.5']].copy()
     
     # Home team rolling average merge
     home_rolling = rolling_df[['Date', 'HomeTeam'] + [stat + '_Home_RAvg' for stat in stats]]
@@ -77,27 +76,60 @@ model_input = df_to_model_input(df)
 #%% Build ML model
 df_accs = pd.DataFrame()
 
-for btype in ['FullTimeResult', 'BTTS', 'O/U2.5']:
+params_grid = {'GaussianNB':{},
+               'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
+                                          'min_samples_leaf': 2, 'criterion':'entropy'
+                                          },
+               'RandomForestClassifier': {'max_depth': 7, 'min_samples_split': 5,
+                                          'min_samples_leaf': 2, 'max_features': 'sqrt', 
+                                          'bootstrap': True      
+                                          }
+               }
+model_short_dict = {'GaussianNB':'gNB', 
+                    'RandomForestClassifier': 'RF',
+                    'DecisionTreeClassifier': 'DT'}
+
+
+for btype in ['FTR', 'BTTS', 'O/U2.5']:
     x = model_input.iloc[:,6:]
     y = model_input.loc[:, btype]
     for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier']:
         acc_list = []
+        m_short = model_short_dict[m]
         for n in range(170, 220):
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
             
-            GaussianNB()
             model = globals()[f"{m}"]()
+            model.set_params(**params_grid[m])
+            
             model.fit(x_train, y_train)
             
-    # Evaluation
+# Evaluation
             y_pred = model.predict(x_test)
             accuracy= accuracy_score(y_pred, y_test)
             acc_list.append(accuracy)
-        df_accs[f'{m}_{btype}'] = acc_list
+        df_accs[f'{btype}_{m_short}'] = acc_list
     
 accs_describe = df_accs.describe().iloc[1:, :]
 df_accs.boxplot(rot=90)
     
+#%% Optimizing parameters
+"""
+params_all = list(model.get_params().keys())
+params = {
+    'max_depth': [None, 5, 7, 10, 12, 15, 17, 20, 25, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'max_features': ['sqrt', 'log2'],
+    'bootstrap': [True, False]
+}
+rsearch = RandomizedSearchCV(estimator=model,
+                             param_distributions=params,
+                             n_iter=100)
+rsearch.fit(x_train, y_train)
+print(rsearch.best_score_)
+rs_results = pd.DataFrame(rsearch.cv_results_)
+"""
 #%% Getting the fresh data for predictions
 import pandas as pd
 path_pred = path
