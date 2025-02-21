@@ -9,10 +9,11 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
+import fbref_module as fbref
 
-# Loading data
-path = r'C:\Users\Ádám\Downloads\E0.csv'
-df = pd.read_csv(path)
+# Loading data from website
+url = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
+df = pd.read_csv(url)
 # Only needed columns
 needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
 df = df[needed_cols]
@@ -132,12 +133,12 @@ rs_results = pd.DataFrame(rsearch.cv_results_)
 """
 #%% Getting the fresh data for predictions
 import pandas as pd
-path_pred = path
+import numpy as np
+from thefuzz import fuzz
+path_pred = "https://www.football-data.co.uk/mmz4281/2425/E0.csv"
 df_pred = pd.read_csv(path_pred)
 
 #%% Transform
-import numpy as np
-
 needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
 df_pred = df_pred[needed_cols]
 # create BTTS and O2,5 labels
@@ -147,7 +148,7 @@ df_pred['O/U2.5'] = np.where(df_pred.FTHG+df_pred.FTAG>2.5,'Over','Under')
 teams = np.sort(df_pred.HomeTeam.unique())
 
 # Add current matches
-select_date = '03/01/2025'
+select_date = '22/02/2025'
 
 #%% Create next round's pairings
 df_current = df_pred.copy()
@@ -156,23 +157,65 @@ df_current.Date = select_date
 df_current.iloc[:,3:-3] = 0
 df_current[['FTR','BTTS','O/U2.5']] = 'none'
 
-# select matches from teams list
-df_current.loc[0, ['HomeTeam', 'AwayTeam']] = [teams[15], teams[4]]
-df_current.loc[1, ['HomeTeam', 'AwayTeam']] = [teams[17], teams[3]]
-df_current.loc[2, ['HomeTeam', 'AwayTeam']] = [teams[16], teams[9]]
-df_current.loc[3, ['HomeTeam', 'AwayTeam']] = [teams[11], teams[8]]
-df_current.loc[4, ['HomeTeam', 'AwayTeam']] = [teams[13], teams[6]]
-df_current.loc[5, ['HomeTeam', 'AwayTeam']] = [teams[14], teams[7]]
-df_current.loc[6, ['HomeTeam', 'AwayTeam']] = [teams[10], teams[2]]
-df_current.loc[7, ['HomeTeam', 'AwayTeam']] = [teams[12], teams[1]]
-df_current.loc[8, ['HomeTeam', 'AwayTeam']] = [teams[19], teams[0]]
-df_current.loc[9, ['HomeTeam', 'AwayTeam']] = [teams[18], teams[5]]
+comp_id, league = fbref.team_dict_get('ENG')
+url_fixtures = f'https://fbref.com/en/comps/{comp_id}/schedule/{league}-Scores-and-Fixtures'
+df_fixtures = fbref.scrape(url_fixtures, 'sched_2024-2025_9_1')
+mask = (df_fixtures.Wk != 'Wk') & (df_fixtures.Score.isna()) & (df_fixtures.Wk.notna())
+weeknr = df_fixtures.loc[mask,:].reset_index(drop=True).loc[0,'Wk']
+df_week = df_fixtures.loc[df_fixtures.Wk == weeknr, :].reset_index(drop=True)
+
+fuzz_teams = pd.DataFrame({'Team': teams,
+                           'fbref_team': None,
+                           'ratio': None,
+                           'home_away':None,
+                           'matchnr':None}
+                          )
+for i, team in enumerate(teams):
+    highest_ratio = 0
+    for fbrteam in [*df_week['Home'].unique(), *df_week['Away'].unique()]:
+        ratio = fuzz.ratio(team, fbrteam)
+        if fbrteam in df_week['Home'].unique():
+            home_away = 'Home'
+        else:
+            home_away = 'Away'
+        
+        if ratio > highest_ratio:
+            highest_ratio = ratio
+            highest_team = fbrteam
+            highest_ha = home_away
+            match_nr = df_week.loc[df_week[highest_ha] == highest_team, :].index[0]
+            
+    #print(i, home)
+    fuzz_teams.loc[i, 'fbref_team'] = highest_team
+    fuzz_teams.loc[i, 'ratio'] = highest_ratio
+    fuzz_teams.loc[i, 'home_away'] = highest_ha
+    fuzz_teams.loc[i, 'matchnr'] = match_nr
+
+for x in range(10):
+    mask_home = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Home')
+    mask_away = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Away')
+    df_current.loc[x, ['HomeTeam', 'AwayTeam']] = [fuzz_teams.loc[mask_home,'Team'].iloc[0],
+                                                   fuzz_teams.loc[mask_away,'Team'].iloc[0]]
 
 df_all = pd.concat([df_pred,df_current], ignore_index=True)
 
 model_input_pred = df_to_model_input(df_all)
 model_input_pred = model_input_pred.iloc[-10:,:].reset_index(drop=True)
 
-#%% To excel
-
-model_input_pred.to_excel(r'C:\Users\Adam\.Data files\ML_PL_new\model_input_predict.xlsx', index=False)
+#%% Build model
+predictions = model_input_pred[['HomeTeam', 'AwayTeam']].copy()
+for btype in ['FTR', 'BTTS', 'O/U2.5']:
+    x_test = model_input_pred.iloc[:,6:]
+    # train on previous season
+    x_train = model_input.iloc[:,6:]
+    y_train = model_input.loc[:, btype]
+    for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier']:
+        m_short = model_short_dict[m]
+        
+        model = globals()[f"{m}"]()
+        model.set_params(**params_grid[m])
+        
+        model.fit(x_train, y_train)
+        y_pred = model.predict(x_test)
+        
+        predictions[f'{btype}_{m_short}'] = y_pred
