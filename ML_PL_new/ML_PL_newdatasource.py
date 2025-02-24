@@ -90,7 +90,7 @@ model_short_dict = {'GaussianNB':'gNB',
                     'RandomForestClassifier': 'RF',
                     'DecisionTreeClassifier': 'DT'}
 
-#%% Build ML model
+#%% Build and test ML model
 for btype in ['FTR', 'BTTS', 'O/U2.5']:
     x = model_input.iloc[:,6:]
     y = model_input.loc[:, btype]
@@ -144,6 +144,7 @@ csv_name_dict = {'ENG':'E0',
                  'FRA': 'F1'}
 
 predictions_merged = pd.DataFrame()
+predicition_probs_merged = pd.DataFrame()
 #fuzz_teams_merged = pd.DataFrame()
 for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     csv_name = csv_name_dict[countrycode]
@@ -173,6 +174,8 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     mask = (df_fixtures.Wk != 'Wk') & (df_fixtures.Score.isna()) & (df_fixtures.Wk.notna())
     weeknr = df_fixtures.loc[mask,:].reset_index(drop=True).loc[0,'Wk']
     df_week = df_fixtures.loc[df_fixtures.Wk == weeknr, :].reset_index(drop=True)
+    df_week['DateTime'] = df_week.Date + ' ' + df_week.Time.str.split(' ').str.get(0)
+    df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
 
     # Fuzzy matched squads list:
     teams_fdcouk = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton',
@@ -234,8 +237,7 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
         mask_away = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Away')
         df_current.loc[x, ['HomeTeam', 'AwayTeam']] = [fuzz_teams.loc[mask_home,'Team_fdcouk'].iloc[0],
                                                        fuzz_teams.loc[mask_away,'Team_fdcouk'].iloc[0]]
-        df_current.loc[x, 'Date'] = df_week.loc[x, 'Date']
-    df_current['Date'] = pd.to_datetime(df_current['Date'], format='%Y-%m-%d')
+        df_current.loc[x, 'Date'] = df_week.loc[x, 'DateTime']
     
     df_all = pd.concat([df_pred,df_current], ignore_index=True)
     
@@ -244,6 +246,8 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     
     # Build model
     predictions = model_input_pred[['Date','HomeTeam', 'AwayTeam']].copy()
+    predictions['Country'] = countrycode
+    prediction_probs = predictions.copy()
     for btype in ['FTR', 'BTTS', 'O/U2.5']:
         x_test = model_input_pred.iloc[:,6:]
         # train on previous season
@@ -263,10 +267,28 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
             proba = model.predict_proba(x_test)
             classes = model.classes_
             for i, clss in enumerate(classes):
-                predictions[f'{clss}_{m_short}_prob'] = proba[:, i]
+                prediction_probs[f'{clss}_{m_short}_prob'] = proba[:, i]
         
     predictions_merged = pd.concat([predictions_merged, predictions])
+    predicition_probs_merged = pd.concat([predicition_probs_merged, prediction_probs])
     
-#%% To excel
 predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
-predictions_merged.to_excel(r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx', index=False)
+predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
+
+#%% To excel
+output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
+output_sheets = ['predictions', 'pred_probabilities']
+# Read the file first
+xlsx_preds = pd.read_excel(output_path, sheet_name=output_sheets[0])
+xlsx_predprobs = pd.read_excel(output_path, sheet_name=output_sheets[1])
+#Add new data
+xlsx_preds_new = pd.concat([xlsx_preds, predictions_merged]).sort_values(by='Date').reset_index(drop=True)
+xlsx_predprobs_new = pd.concat([xlsx_predprobs, predicition_probs_merged]).sort_values(by='Date').reset_index(drop=True)
+#Drop duplicates
+xlsx_preds_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
+xlsx_predprobs_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
+
+# Modify excel file
+with pd.ExcelWriter(output_path) as writer:
+    predictions_merged.to_excel(writer, sheet_name=output_sheets[0], index=False)
+    predicition_probs_merged.to_excel(writer, sheet_name=output_sheets[1], index=False)
