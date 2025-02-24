@@ -144,6 +144,7 @@ csv_name_dict = {'ENG':'E0',
                  'FRA': 'F1'}
 
 predictions_merged = pd.DataFrame()
+#fuzz_teams_merged = pd.DataFrame()
 for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     csv_name = csv_name_dict[countrycode]
 
@@ -158,14 +159,11 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     df_pred['O/U2.5'] = np.where(df_pred.FTHG+df_pred.FTAG>2.5,'Over','Under')
     
     teams = np.sort(df_pred.HomeTeam.unique())
-    
-    # Add current matches
-    select_date = '22/02/2025'
+    nr_matches = int(len(teams)/2)
     
     # Create next round's pairings
     df_current = df_pred.copy()
-    df_current = df_current.iloc[:10]
-    df_current.Date = select_date
+    df_current = df_current.iloc[:nr_matches]
     df_current.iloc[:,3:-3] = 0
     df_current[['FTR','BTTS','O/U2.5']] = 'none'
     
@@ -175,44 +173,74 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     mask = (df_fixtures.Wk != 'Wk') & (df_fixtures.Score.isna()) & (df_fixtures.Wk.notna())
     weeknr = df_fixtures.loc[mask,:].reset_index(drop=True).loc[0,'Wk']
     df_week = df_fixtures.loc[df_fixtures.Wk == weeknr, :].reset_index(drop=True)
+
+    # Fuzzy matched squads list:
+    teams_fdcouk = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton',
+           'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Ipswich',
+           'Leicester', 'Liverpool', 'Man City', 'Man United', 'Newcastle',
+           "Nott'm Forest", 'Southampton', 'Tottenham', 'West Ham', 'Wolves',
+           'Alaves', 'Ath Bilbao', 'Ath Madrid', 'Barcelona', 'Betis',
+           'Celta', 'Espanol', 'Getafe', 'Girona', 'Las Palmas', 'Leganes',
+           'Mallorca', 'Osasuna', 'Real Madrid', 'Sevilla', 'Sociedad',
+           'Valencia', 'Valladolid', 'Vallecano', 'Villarreal', 'Augsburg',
+           'Bayern Munich', 'Bochum', 'Dortmund', 'Ein Frankfurt', 'Freiburg',
+           'Heidenheim', 'Hoffenheim', 'Holstein Kiel', 'Leverkusen',
+           "M'gladbach", 'Mainz', 'RB Leipzig', 'St Pauli', 'Stuttgart',
+           'Union Berlin', 'Werder Bremen', 'Wolfsburg', 'Atalanta',
+           'Bologna', 'Cagliari', 'Como', 'Empoli', 'Fiorentina', 'Genoa',
+           'Inter', 'Juventus', 'Lazio', 'Lecce', 'Milan', 'Monza', 'Napoli',
+           'Parma', 'Roma', 'Torino', 'Udinese', 'Venezia', 'Verona',
+           'Angers', 'Auxerre', 'Brest', 'Le Havre', 'Lens', 'Lille', 'Lyon',
+           'Marseille', 'Monaco', 'Montpellier', 'Nantes', 'Nice', 'Paris SG',
+           'Reims', 'Rennes', 'St Etienne', 'Strasbourg', 'Toulouse']
+    teams_fbref = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton',
+           'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Ipswich Town',
+           'Leicester City', 'Liverpool', 'Manchester City', 'Manchester Utd',
+           'Newcastle Utd', "Nott'ham Forest", 'Southampton', 'Tottenham',
+           'West Ham', 'Wolves', 'Alavés', 'Athletic Club', 'Atlético Madrid',
+           'Barcelona', 'Betis', 'Celta Vigo', 'Espanyol', 'Getafe', 'Girona',
+           'Las Palmas', 'Leganés', 'Mallorca', 'Osasuna', 'Real Madrid',
+           'Sevilla', 'Real Sociedad', 'Valencia', 'Valladolid',
+           'Rayo Vallecano', 'Villarreal', 'Augsburg', 'Bayern Munich',
+           'Bochum', 'Dortmund', 'Eint Frankfurt', 'Freiburg', 'Heidenheim',
+           'Hoffenheim', 'Holstein Kiel', 'Leverkusen', 'Gladbach',
+           'Mainz 05', 'RB Leipzig', 'St. Pauli', 'Stuttgart', 'Union Berlin',
+           'Werder Bremen', 'Wolfsburg', 'Atalanta', 'Bologna', 'Cagliari',
+           'Como', 'Empoli', 'Fiorentina', 'Genoa', 'Inter', 'Juventus',
+           'Lazio', 'Lecce', 'Milan', 'Monza', 'Napoli', 'Parma', 'Roma',
+           'Torino', 'Udinese', 'Venezia', 'Hellas Verona', 'Angers',
+           'Auxerre', 'Brest', 'Le Havre', 'Lens', 'Lille', 'Lyon',
+           'Marseille', 'Monaco', 'Montpellier', 'Nantes', 'Nice',
+           'Paris S-G', 'Reims', 'Rennes', 'Saint-Étienne', 'Strasbourg',
+           'Toulouse']
+    fuzz_teams_all = pd.DataFrame({'Team_fdcouk':teams_fdcouk, 'Team_fbref':teams_fbref})
+    fuzz_teams_all['Country']=[*['ENG']*20,*['ESP']*20,*['GER']*18,*['ITA']*20,*['FRA']*18]
+    fuzz_teams = fuzz_teams_all[fuzz_teams_all.Country == countrycode]
+   
+    for fbrteam in fuzz_teams.Team_fbref:
+        i = fuzz_teams[fuzz_teams.Team_fbref == fbrteam].index[0]
+        if fbrteam in df_week['Home'].unique():
+            home_away = 'Home'
+        elif fbrteam in df_week['Away'].unique():
+            home_away = 'Away'
+        else:
+            home_away = 'ERROR'
+        
+        fuzz_teams.loc[i, 'home_away'] = home_away
+        fuzz_teams.loc[i, 'matchnr'] = df_week.loc[df_week[home_away] == fbrteam, :].index[0]
     
-    fuzz_teams = pd.DataFrame({'Team': teams,
-                               'fbref_team': None,
-                               'ratio': None,
-                               'home_away':None,
-                               'matchnr':None}
-                              )
-    for i, team in enumerate(teams):
-        highest_ratio = 0
-        for fbrteam in [*df_week['Home'].unique(), *df_week['Away'].unique()]:
-            ratio = fuzz.ratio(team, fbrteam)
-            if fbrteam in df_week['Home'].unique():
-                home_away = 'Home'
-            else:
-                home_away = 'Away'
-            
-            if ratio > highest_ratio:
-                highest_ratio = ratio
-                highest_team = fbrteam
-                highest_ha = home_away
-                match_nr = df_week.loc[df_week[highest_ha] == highest_team, :].index[0]
-                
-        #print(i, home)
-        fuzz_teams.loc[i, 'fbref_team'] = highest_team
-        fuzz_teams.loc[i, 'ratio'] = highest_ratio
-        fuzz_teams.loc[i, 'home_away'] = highest_ha
-        fuzz_teams.loc[i, 'matchnr'] = match_nr
-    
-    for x in range(int(len(teams)/2)):
+    for x in range(nr_matches):
         mask_home = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Home')
         mask_away = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Away')
-        df_current.loc[x, ['HomeTeam', 'AwayTeam']] = [fuzz_teams.loc[mask_home,'Team'].iloc[0],
-                                                       fuzz_teams.loc[mask_away,'Team'].iloc[0]]
+        df_current.loc[x, ['HomeTeam', 'AwayTeam']] = [fuzz_teams.loc[mask_home,'Team_fdcouk'].iloc[0],
+                                                       fuzz_teams.loc[mask_away,'Team_fdcouk'].iloc[0]]
+        df_current.loc[x, 'Date'] = df_week.loc[x, 'Date']
+    df_current['Date'] = pd.to_datetime(df_current['Date'], format='%Y-%m-%d')
     
     df_all = pd.concat([df_pred,df_current], ignore_index=True)
     
     model_input_pred = df_to_model_input(df_all)
-    model_input_pred = model_input_pred.iloc[-10:,:].reset_index(drop=True)
+    model_input_pred = model_input_pred.iloc[-nr_matches:,:].reset_index(drop=True)
     
     # Build model
     predictions = model_input_pred[['Date','HomeTeam', 'AwayTeam']].copy()
@@ -240,4 +268,5 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     predictions_merged = pd.concat([predictions_merged, predictions])
     
 #%% To excel
+predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
 predictions_merged.to_excel(r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx', index=False)
