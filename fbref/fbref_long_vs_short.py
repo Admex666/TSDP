@@ -10,31 +10,17 @@ import fbref_module as fbref
 from bs4 import BeautifulSoup
 import requests
 
-league = 'FRA'
-URL_match = 'https://fbref.com/en/matches/7f0d9a30/Brest-Paris-Saint-Germain-February-11-2025-Champions-League'
+league = 'ITA'
+URL_match = 'https://fbref.com/en/matches/e00a9736/Roma-Monza-February-24-2025-Serie-A'
 
 comp_id, league_name = fbref.team_dict_get(league)
 
 #URLs
-URL_standard = (
-    "https://fbref.com/en/comps/" 
-    + comp_id
-    + '/stats/'
-    + league_name
-    + '-Stats#all_stats_'
-    + 'standard'
-)
+URL_standard = f"https://fbref.com/en/comps/{comp_id}/stats/{league_name}-Stats#all_stats_standard"
 
 stats_list = ['passing', 'possession', 'shooting', 'defense', 'misc']
 for stat in stats_list:
-    globals()[f'URL_{stat}'] = (
-        "https://fbref.com/en/comps/" 
-        + comp_id
-        + f'/{stat}/'
-        + league_name
-        + '-Stats#all_stats_'
-        + stat
-    )
+    globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{stat}/{league_name}-Stats#all_stats_{stat}" 
 
 #%% Scrape the competition stat dfs
 stats_list.append('standard')
@@ -144,11 +130,11 @@ for col in stat_cols:
 # df_merged_match.Pos.unique()
 df_merged_match.Pos = df_merged_match.Pos.str.split(',').str[0].str.strip()
 pos_dict = {'GK': ['GK'],
-            'DF': ['CB', 'RB', 'LB'],
+            'DF': ['CB', 'RB', 'LB', 'WB'],
             'MF': ['DM', 'RM', 'CM', 'LM', 'AM'],
             'FW': ['FW', 'LW', 'RW']
             }
-wing_dict = {'Winger':['RB','LB','RM','LM','FW','LW', 'RW'],
+wing_dict = {'Winger':['RB','LB','RM','LM','FW','LW', 'RW', 'WB'],
              'Not Winger':['GK','CB','DM','CM','AM','FW']
              }
 
