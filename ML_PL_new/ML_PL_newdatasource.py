@@ -10,6 +10,7 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay,
 )
 import fbref_module as fbref
+from scrape_oddsportal import get_odds
 
 # Loading data from website
 url = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
@@ -274,6 +275,12 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     
 predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
 predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
+
+#%% Scrape and add odds
+url_odds = "https://www.oddsportal.com/football/england/premier-league/"
+nr_of_matches = 3
+
+df_odds_all = get_odds(url_odds, nr_of_matches)
 
 #%% To excel
 output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
