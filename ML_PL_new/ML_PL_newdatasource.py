@@ -9,74 +9,27 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
-import fbref_module as fbref
-from scrape_oddsportal import get_odds
+from fbref import fbref_module as fbref
+from ML_PL_new import ML_PL_transform_data as mlpl 
 
 # Loading data from website
-url = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
-df = pd.read_csv(url)
+url_train = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
+df_tr = pd.read_csv(url_train)
 # Only needed columns
 needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
-df = df[needed_cols]
+df_tr = df_tr[needed_cols]
 # create BTTS and O2,5 labels
-df['BTTS'] = np.where((df.FTHG!=0)&(df.FTAG!=0),'Yes','No')
-df['O/U2.5'] = np.where(df.FTHG+df.FTAG>2.5,'Over','Under')
+df_tr['BTTS'] = np.where((df_tr.FTHG!=0)&(df_tr.FTAG!=0),'Yes','No')
+df_tr['O/U2.5'] = np.where(df_tr.FTHG+df_tr.FTAG>2.5,'Over','Under')
+model_input = mlpl.df_to_model_input(df_tr)
 
-#%% Transforming data
-def df_to_model_input(df):  
-    # Writing it out
-    df.rename(columns={
-        'FTHG': 'HomeGoals', 'FTAG': 'AwayGoals',
-        'HS': 'HomeShots', 'AS': 'AwayShots',
-        'HST': 'HomeShotsOnTarget', 'AST': 'AwayShotsOnTarget',
-        'HC': 'HomeCorners', 'AC': 'AwayCorners',
-        'HY': 'HomeYellows', 'AY': 'AwayYellows',
-    }, inplace=True)
-    
-    # Date form
-    df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y')
-    df.sort_values('Date', inplace=True)
-    
-    # Stats list for rolling averages
-    stats = ['Goals', 'Shots', 'ShotsOnTarget', 'Corners', 'Yellows']
-    home_stats = ['Home' + stat for stat in stats]
-    away_stats = ['Away' + stat for stat in stats]
-    
-    # Rolling average calculations for each team
-    rolling_features = []
-    for team in pd.concat([df['HomeTeam'], df['AwayTeam']]).unique():
-        team_home = df[df['HomeTeam'] == team].copy()
-        team_away = df[df['AwayTeam'] == team].copy()
-    
-        for stat, home_stat, away_stat in zip(stats, home_stats, away_stats):
-            team_home[stat + '_Home_RAvg'] = team_home[home_stat].shift(1).rolling(window=3).mean()
-            team_away[stat + '_Away_RAvg'] = team_away[away_stat].shift(1).rolling(window=3).mean()
-    
-        rolling_features.append(pd.concat([team_home, team_away]))
-    
-    # Summing rolling averages
-    rolling_df = pd.concat(rolling_features).sort_values(['Date', 'HomeTeam'])
-    
-    final_df = df[['Date', 'HomeTeam', 'AwayTeam', 'FTR', 'BTTS', 'O/U2.5']].copy()
-    
-    # Home team rolling average merge
-    home_rolling = rolling_df[['Date', 'HomeTeam'] + [stat + '_Home_RAvg' for stat in stats]]
-    home_rolling.columns = ['Date', 'HomeTeam'] + [stat + '_Home_RAvg' for stat in stats]
-    final_df = final_df.merge(home_rolling, on=['Date', 'HomeTeam'])
-    
-    # Away team rolling average merge
-    away_rolling = rolling_df[['Date', 'AwayTeam'] + [stat + '_Away_RAvg' for stat in stats]]
-    away_rolling.columns = ['Date', 'AwayTeam'] + [stat + '_Away_RAvg' for stat in stats]
-    final_df = final_df.merge(away_rolling, on=['Date', 'AwayTeam'], how='left')
-    
-    # Final data structure
-    model_input = final_df.copy().dropna().reset_index(drop=True)
-    return model_input
-
-model_input = df_to_model_input(df)
-
-# Prepare ML model
-df_accs = pd.DataFrame()
+#%% Getting the fresh data for predictions
+# football-data.co.uk historical data urls:
+csv_name_dict = {'ENG':'E0',
+                 'ESP':'SP1', 
+                 'GER': 'D1', 
+                 'ITA': 'I1',
+                 'FRA': 'F1'}
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
@@ -87,62 +40,10 @@ params_grid = {'GaussianNB':{},
                                           'bootstrap': True      
                                           }
                }
+
 model_short_dict = {'GaussianNB':'gNB', 
                     'RandomForestClassifier': 'RF',
                     'DecisionTreeClassifier': 'DT'}
-
-#%% Build and test ML model
-for btype in ['FTR', 'BTTS', 'O/U2.5']:
-    x = model_input.iloc[:,6:]
-    y = model_input.loc[:, btype]
-    for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier']:
-        acc_list = []
-        m_short = model_short_dict[m]
-        for n in range(170, 220):
-            x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
-            
-            model = globals()[f"{m}"]()
-            model.set_params(**params_grid[m])
-            
-            model.fit(x_train, y_train)
-            
-# Evaluation
-            y_pred = model.predict(x_test)
-            accuracy= accuracy_score(y_pred, y_test)
-            acc_list.append(accuracy)
-        df_accs[f'{btype}_{m_short}'] = acc_list
-    
-accs_describe = df_accs.describe().iloc[1:, :]
-df_accs.boxplot(rot=90)
-    
-#%% Optimizing parameters
-"""
-params_all = list(model.get_params().keys())
-params = {
-    'max_depth': [None, 5, 7, 10, 12, 15, 17, 20, 25, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'max_features': ['sqrt', 'log2'],
-    'bootstrap': [True, False]
-}
-rsearch = RandomizedSearchCV(estimator=model,
-                             param_distributions=params,
-                             n_iter=100)
-rsearch.fit(x_train, y_train)
-print(rsearch.best_score_)
-rs_results = pd.DataFrame(rsearch.cv_results_)
-"""
-#%% Getting the fresh data for predictions
-import pandas as pd
-import numpy as np
-from thefuzz import fuzz
-
-# football-data.co.uk historical data urls:
-csv_name_dict = {'ENG':'E0',
-                 'ESP':'SP1', 
-                 'GER': 'D1', 
-                 'ITA': 'I1',
-                 'FRA': 'F1'}
 
 predictions_merged = pd.DataFrame()
 predicition_probs_merged = pd.DataFrame()
@@ -179,47 +80,9 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
 
     # Fuzzy matched squads list:
-    teams_fdcouk = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton',
-           'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Ipswich',
-           'Leicester', 'Liverpool', 'Man City', 'Man United', 'Newcastle',
-           "Nott'm Forest", 'Southampton', 'Tottenham', 'West Ham', 'Wolves',
-           'Alaves', 'Ath Bilbao', 'Ath Madrid', 'Barcelona', 'Betis',
-           'Celta', 'Espanol', 'Getafe', 'Girona', 'Las Palmas', 'Leganes',
-           'Mallorca', 'Osasuna', 'Real Madrid', 'Sevilla', 'Sociedad',
-           'Valencia', 'Valladolid', 'Vallecano', 'Villarreal', 'Augsburg',
-           'Bayern Munich', 'Bochum', 'Dortmund', 'Ein Frankfurt', 'Freiburg',
-           'Heidenheim', 'Hoffenheim', 'Holstein Kiel', 'Leverkusen',
-           "M'gladbach", 'Mainz', 'RB Leipzig', 'St Pauli', 'Stuttgart',
-           'Union Berlin', 'Werder Bremen', 'Wolfsburg', 'Atalanta',
-           'Bologna', 'Cagliari', 'Como', 'Empoli', 'Fiorentina', 'Genoa',
-           'Inter', 'Juventus', 'Lazio', 'Lecce', 'Milan', 'Monza', 'Napoli',
-           'Parma', 'Roma', 'Torino', 'Udinese', 'Venezia', 'Verona',
-           'Angers', 'Auxerre', 'Brest', 'Le Havre', 'Lens', 'Lille', 'Lyon',
-           'Marseille', 'Monaco', 'Montpellier', 'Nantes', 'Nice', 'Paris SG',
-           'Reims', 'Rennes', 'St Etienne', 'Strasbourg', 'Toulouse']
-    teams_fbref = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton',
-           'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Ipswich Town',
-           'Leicester City', 'Liverpool', 'Manchester City', 'Manchester Utd',
-           'Newcastle Utd', "Nott'ham Forest", 'Southampton', 'Tottenham',
-           'West Ham', 'Wolves', 'Alavés', 'Athletic Club', 'Atlético Madrid',
-           'Barcelona', 'Betis', 'Celta Vigo', 'Espanyol', 'Getafe', 'Girona',
-           'Las Palmas', 'Leganés', 'Mallorca', 'Osasuna', 'Real Madrid',
-           'Sevilla', 'Real Sociedad', 'Valencia', 'Valladolid',
-           'Rayo Vallecano', 'Villarreal', 'Augsburg', 'Bayern Munich',
-           'Bochum', 'Dortmund', 'Eint Frankfurt', 'Freiburg', 'Heidenheim',
-           'Hoffenheim', 'Holstein Kiel', 'Leverkusen', 'Gladbach',
-           'Mainz 05', 'RB Leipzig', 'St. Pauli', 'Stuttgart', 'Union Berlin',
-           'Werder Bremen', 'Wolfsburg', 'Atalanta', 'Bologna', 'Cagliari',
-           'Como', 'Empoli', 'Fiorentina', 'Genoa', 'Inter', 'Juventus',
-           'Lazio', 'Lecce', 'Milan', 'Monza', 'Napoli', 'Parma', 'Roma',
-           'Torino', 'Udinese', 'Venezia', 'Hellas Verona', 'Angers',
-           'Auxerre', 'Brest', 'Le Havre', 'Lens', 'Lille', 'Lyon',
-           'Marseille', 'Monaco', 'Montpellier', 'Nantes', 'Nice',
-           'Paris S-G', 'Reims', 'Rennes', 'Saint-Étienne', 'Strasbourg',
-           'Toulouse']
-    fuzz_teams_all = pd.DataFrame({'Team_fdcouk':teams_fdcouk, 'Team_fbref':teams_fbref})
-    fuzz_teams_all['Country']=[*['ENG']*20,*['ESP']*20,*['GER']*18,*['ITA']*20,*['FRA']*18]
+    fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
     fuzz_teams = fuzz_teams_all[fuzz_teams_all.Country == countrycode]
+
    
     for fbrteam in fuzz_teams.Team_fbref:
         i = fuzz_teams[fuzz_teams.Team_fbref == fbrteam].index[0]
@@ -242,7 +105,7 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     
     df_all = pd.concat([df_pred,df_current], ignore_index=True)
     
-    model_input_pred = df_to_model_input(df_all)
+    model_input_pred = mlpl.df_to_model_input(df_all)
     model_input_pred = model_input_pred.iloc[-nr_matches:,:].reset_index(drop=True)
     
     # Build model
@@ -277,8 +140,8 @@ predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=
 predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
 
 #%% Scrape and add odds
-path_odds = r'C:\Users\Adam\.Data files\TSDP\ML_PL_new\modinput_odds.xlsx'
-df_odds_all = pd.read_excel(path_odds)
+#path_odds = r'C:\Users\Adam\.Data files\TSDP\ML_PL_new\modinput_odds.xlsx' 
+df_odds_all = pd.read_excel('ML_PL_new/modinput_odds.xlsx') # just set working directory right
 
 #%% To excel
 output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
