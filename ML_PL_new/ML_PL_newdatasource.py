@@ -11,6 +11,7 @@ from sklearn.metrics import (
 )
 from fbref import fbref_module as fbref
 from ML_PL_new import ML_PL_transform_data as mlpl 
+import datetime
 
 # Loading data from website
 url_train = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
@@ -62,29 +63,32 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     df_pred['O/U2.5'] = np.where(df_pred.FTHG+df_pred.FTAG>2.5,'Over','Under')
     
     teams = np.sort(df_pred.HomeTeam.unique())
-    nr_matches = int(len(teams)/2)
-    
+
     # Create next round's pairings
     df_current = df_pred.copy()
-    df_current = df_current.iloc[:nr_matches]
     df_current.iloc[:,3:-3] = 0
     df_current[['FTR','BTTS','O/U2.5']] = 'none'
     
     comp_id, league = fbref.team_dict_get(countrycode)
     url_fixtures = f'https://fbref.com/en/comps/{comp_id}/schedule/{league}-Scores-and-Fixtures'
     df_fixtures = fbref.scrape(url_fixtures, f'sched_2024-2025_{comp_id}_1')
-    mask = (df_fixtures.Wk != 'Wk') & (df_fixtures.Score.isna()) & (df_fixtures.Wk.notna())
-    weeknr = df_fixtures.loc[mask,:].reset_index(drop=True).loc[0,'Wk']
-    df_week = df_fixtures.loc[df_fixtures.Wk == weeknr, :].reset_index(drop=True)
-    df_week['DateTime'] = df_week.Date + ' ' + df_week.Time.str.split(' ').str.get(0)
+    # Set datetime format
+    df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
+    df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
+    today = datetime.datetime.today()
+    mask_date = (df_fixtures.Date < today + pd.to_timedelta('3D')) & (df_fixtures.Date > today - pd.to_timedelta('3D'))
+    # Find games in 8 days span
+    df_week = df_fixtures.loc[mask_date, :].reset_index(drop=True)
+    df_week['DateTime'] = df_week.Date.astype(str) + ' ' + df_week.Time.str.split(' ').str.get(0)
     df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
-
+    nr_matches = len(df_week)
+    df_current = df_current.iloc[:nr_matches]
+    
     # Fuzzy matched squads list:
     fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
     fuzz_teams = fuzz_teams_all[fuzz_teams_all.Country == countrycode]
-
    
-    for fbrteam in fuzz_teams.Team_fbref:
+    for fbrteam in [*df_week.Home.unique(), *df_week.Away.unique()]:
         i = fuzz_teams[fuzz_teams.Team_fbref == fbrteam].index[0]
         if fbrteam in df_week['Home'].unique():
             home_away = 'Home'
@@ -95,13 +99,15 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
         
         fuzz_teams.loc[i, 'home_away'] = home_away
         fuzz_teams.loc[i, 'matchnr'] = df_week.loc[df_week[home_away] == fbrteam, :].index[0]
+        
+        df_current[['Date', 'fbrHomeTeam', 'fbrAwayTeam']] = df_week[['DateTime', 'Home', 'Away']]
     
-    for x in range(nr_matches):
-        mask_home = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Home')
-        mask_away = (fuzz_teams.matchnr == x) & (fuzz_teams.home_away == 'Away')
+    for x in range(len(df_current)):
+        mask_home = fuzz_teams.Team_fbref == df_current.fbrHomeTeam[x]
+        mask_away = fuzz_teams.Team_fbref == df_current.fbrAwayTeam[x]
         df_current.loc[x, ['HomeTeam', 'AwayTeam']] = [fuzz_teams.loc[mask_home,'Team_fdcouk'].iloc[0],
                                                        fuzz_teams.loc[mask_away,'Team_fdcouk'].iloc[0]]
-        df_current.loc[x, 'Date'] = df_week.loc[x, 'DateTime']
+    df_current.drop(columns=['fbrHomeTeam', 'fbrAwayTeam'], inplace=True)
     
     df_all = pd.concat([df_pred,df_current], ignore_index=True)
     
@@ -138,6 +144,8 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     
 predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
 predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
+
+all_matches = predictions_merged[['Date', 'HomeTeam', 'AwayTeam', 'Country']].copy()
 
 #%% Scrape and add odds
 #path_odds = r'C:\Users\Adam\.Data files\TSDP\ML_PL_new\modinput_odds.xlsx' 
