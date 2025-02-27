@@ -277,10 +277,8 @@ predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=
 predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
 
 #%% Scrape and add odds
-url_odds = "https://www.oddsportal.com/football/england/premier-league/"
-nr_of_matches = 3
-
-df_odds_all = get_odds(url_odds, nr_of_matches)
+path_odds = r'C:\Users\Adam\.Data files\TSDP\ML_PL_new\modinput_odds.xlsx'
+df_odds_all = pd.read_excel(path_odds)
 
 #%% To excel
 output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
