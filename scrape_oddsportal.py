@@ -1,25 +1,33 @@
-url = "https://www.oddsportal.com/football/england/premier-league/"
-nr_of_matches = 2
+links = ['https://www.oddsportal.com/football/england/premier-league/',
+         'https://www.oddsportal.com/football/spain/laliga/',
+         'https://www.oddsportal.com/football/germany/bundesliga/',
+         'https://www.oddsportal.com/football/italy/serie-a/',
+         'https://www.oddsportal.com/football/france/ligue-1/']
+nr_of_matches = 5
+match_links_list_merged = []
 
-from selenium import webdriver 
-from bs4 import BeautifulSoup
-import pandas as pd
-
-
-driver = webdriver.Chrome()
-driver.get(url)
-
-soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-match_links = soup.find_all("a", href=True)
-
-# Filtering match links only
-match_links_list = []
-for link in match_links:
-    if "/football/england/premier-league/" in link['href'] and link['href'].count('/') >= 5 and link['href'].count('-') >= 3:
-        match_links_list.append(f"https://www.oddsportal.com{link['href']}")
-
-driver.close()
+for url in links:
+    from selenium import webdriver 
+    from bs4 import BeautifulSoup
+    import pandas as pd
+    
+    
+    driver = webdriver.Chrome()
+    driver.get(url)
+    
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    
+    match_links = soup.find_all("a", href=True)
+    
+    # Filtering match links only
+    match_links_list = []
+    for link in match_links:
+        if "/football/england/premier-league/" in link['href'] and link['href'].count('/') >= 5 and link['href'].count('-') >= 3:
+            match_links_list.append(f"https://www.oddsportal.com{link['href']}")
+    
+    driver.close()
+    
+    match_links_list_merged.append(match_links_list)
 
 #%%
 df_all = pd.DataFrame()

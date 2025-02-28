@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -76,8 +75,13 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
     today = datetime.datetime.today()
-    mask_date = (df_fixtures.Date < today + pd.to_timedelta('3D')) & (df_fixtures.Date > today - pd.to_timedelta('3D'))
-    # Find games in 8 days span
+    span = pd.to_timedelta('7D')
+    mask_date = (df_fixtures.Date < today + span) & (df_fixtures.Date > today)
+    while True not in mask_date.unique():
+        #while True not in mask_date:
+        span += pd.to_timedelta('1D')
+        mask_date = (df_fixtures.Date < today + span) & (df_fixtures.Date > today)
+    # Find games in n days span
     df_week = df_fixtures.loc[mask_date, :].reset_index(drop=True)
     df_week['DateTime'] = df_week.Date.astype(str) + ' ' + df_week.Time.str.split(' ').str.get(0)
     df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
