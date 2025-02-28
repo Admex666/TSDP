@@ -10,7 +10,7 @@ link_dict = {'ENG': {'country': 'england', 'league':'premier-league'},
              'FRA': {'country': 'france', 'league':'ligue-1'},
              }
 
-nr_of_matches = 5
+nr_of_matches = 10
 
 match_links_list_merged = []
 for countrycode in ccodes:
@@ -130,6 +130,11 @@ for league_list in match_links_list_merged:
     #df_odds_all[['1','X','2']].median()
 
 #%%
-path = r'C:\Users\Adam\.Data files\TSDP\ML_PL_new\modinput_odds.xlsx'
-df_all.to_excel(path, index=False)
+path = r'ML_PL_new\modinput_odds.xlsx'
+previous_table = pd.read_excel(path)
+
+new_table = pd.concat([previous_table, df_all]).sort_values(by="Date").reset_index(drop=True)
+new_table.drop_duplicates(subset=['Date', 'Home', 'Away', 'bookie'], inplace=True)
+
+new_table.to_excel(path, index=False)
 

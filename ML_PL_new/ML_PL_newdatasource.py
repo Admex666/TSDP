@@ -29,7 +29,8 @@ csv_name_dict = {'ENG':'E0',
                  'ESP':'SP1', 
                  'GER': 'D1', 
                  'ITA': 'I1',
-                 'FRA': 'F1'}
+                 'FRA': 'F1'
+                 }
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
