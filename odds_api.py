@@ -32,7 +32,7 @@ for SPORT in sport_list:
 #%% DataFrame összeállítása
 rows = []
 
-for match in data_league:
+for match in data:
     # Alap adatok kinyerése
     home_team = match["home_team"]
     away_team = match["away_team"]
@@ -76,18 +76,18 @@ for match in data_league:
         rows.append({
             "Home": home_team,
             "Away": away_team,
-            "commence_time": commence_time,
+            "Date": commence_time,
             "bookmaker": bookmaker_name,
-            "home_odds": odds["home"],
-            "draw_odds": odds["draw"],
-            "away_odds": odds["away"],
-            "over_2.5": odds["over_2.5"],
-            "under_2.5": odds["under_2.5"]
+            "H_odds": odds["home"],
+            "D_odds": odds["draw"],
+            "A_odds": odds["away"],
+            "Over_odds": odds["over_2.5"],
+            "Under_odds": odds["under_2.5"]
         })
 
 # DataFrame létrehozása
 df = pd.DataFrame(rows)
-df.commence_time = pd.to_datetime(df.commence_time).dt.tz_localize(None)
+df.Date = pd.to_datetime(df.Date).dt.tz_localize(None)
 
 # Eredmények megjelenítése
 print(f"Összesen {len(df)} odds bejegyzés:")

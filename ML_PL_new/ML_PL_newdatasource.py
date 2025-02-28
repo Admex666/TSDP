@@ -102,9 +102,6 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
         else:
             home_away = 'ERROR'
         
-        fuzz_teams.loc[i, 'home_away'] = home_away
-        fuzz_teams.loc[i, 'matchnr'] = df_week.loc[df_week[home_away] == fbrteam, :].index[0]
-        
         df_current[['Date', 'fbrHomeTeam', 'fbrAwayTeam']] = df_week[['DateTime', 'Home', 'Away']]
     
     for x in range(len(df_current)):
@@ -150,11 +147,27 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
 predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
 predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
 
-all_matches = predictions_merged[['Date', 'HomeTeam', 'AwayTeam', 'Country']].copy()
-
 #%% Scrape and add odds
-#path_odds = r'C:\Users\Adam\.Data files\TSDP\ML_PL_new\modinput_odds.xlsx' 
-df_odds_all = pd.read_excel('ML_PL_new/modinput_odds.xlsx') # just set working directory right
+path_odds = r'ML_PL_new\modinput_odds.xlsx' # just set working directory right
+df_odds_all = pd.read_excel(path_odds) 
+df_wh = df_odds_all.loc[df_odds_all.bookmaker=='William Hill', :].reset_index(drop=True)
+
+# Merge data
+predicition_probs_merged[['Home', 'Away']] = None
+for i in range(len(predicition_probs_merged)):
+    fdcouk_home = predicition_probs_merged.loc[i, 'HomeTeam']
+    fdcouk_away = predicition_probs_merged.loc[i, 'AwayTeam']
+    odds_home = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_home, 'Team_odds'].iloc[0]
+    odds_away = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_away, 'Team_odds'].iloc[0]
+    predicition_probs_merged.loc[i, ['Home', 'Away']] = odds_home, odds_away
+
+df_predprob_odds = pd.merge(predicition_probs_merged, df_wh,
+                            on=['Home', 'Away'])
+
+# See value
+for out in ['H', 'D', 'A', 'Over', 'Under']:
+    for m_short in model_short_dict.values():
+        df_predprob_odds[f'{out}_{m_short}_value'] = (1/df_predprob_odds[f'{out}_odds'] / df_predprob_odds[f'{out}_{m_short}_prob'] -1) *100
 
 #%% To excel
 output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
