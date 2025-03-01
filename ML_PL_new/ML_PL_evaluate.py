@@ -2,6 +2,8 @@ import pandas as pd
 from fbref import fbref_module as fbref
 from datetime import datetime
 
+fuzz_teams = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
+
 preds_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
 preds_sheets = ['predictions', 'pred_probabilities']
 
@@ -15,6 +17,19 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     # Set datetime format
     df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
+    # only played games
+    #df_fixtures = df_fixtures[df_fixtures.Date <= datetime.today()]
     
-    
-    df_fixtures[df_fixtures.Date == df_preds.loc[0, 'Date'].normalize()]
+    df_preds[['HomeGoals', 'AwayGoals']] = None
+    for i, fdcouk_home in enumerate(df_preds.HomeTeam):
+        fbref_home = fuzz_teams.loc[fuzz_teams.Team_fdcouk == fdcouk_home,'Team_fbref'].iloc[0]
+        mask = (df_fixtures.Date == df_preds.loc[i, 'Date'].normalize()) & (df_fixtures.Home == fbref_home)
+        score = df_fixtures.loc[mask, 'Score'].iloc[0]
+
+        if df_fixtures.loc[mask, 'Score'].isna().iloc[0]:
+            goals_home, goals_away = None, None
+        else:
+            goals_home, goals_away = score.split('–')
+        
+        df_preds.loc[i,['HomeGoals', 'AwayGoals']] = goals_home, goals_away
+        

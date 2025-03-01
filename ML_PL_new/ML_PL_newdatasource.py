@@ -77,7 +77,7 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
     today = datetime.datetime.today()
     span = pd.to_timedelta('7D')
-    mask_date = (df_fixtures.Date < today + span) & (df_fixtures.Date > today)
+    mask_date = (df_fixtures.Date <= today + span) & (df_fixtures.Date >= today)
     while True not in mask_date.unique():
         #while True not in mask_date:
         span += pd.to_timedelta('1D')
@@ -203,6 +203,7 @@ xlsx_predprobs_new = pd.concat([xlsx_predprobs, df_predprob_odds]).sort_values(b
 #Drop duplicates
 xlsx_preds_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
 xlsx_predprobs_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
+print(f'Number of new rows: {len(xlsx_preds_new) - len(xlsx_preds)}')
 
 # Modify excel file
 with pd.ExcelWriter(output_path) as writer:

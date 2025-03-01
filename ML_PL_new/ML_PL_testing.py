@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import (
     accuracy_score,
     confusion_matrix,
@@ -26,8 +27,6 @@ df['O/U2.5'] = np.where(df.FTHG+df.FTAG>2.5,'Over','Under')
 model_input = mlpl.df_to_model_input(df)
 
 # Prepare ML model
-df_accs = pd.DataFrame()
-
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
                                           'min_samples_leaf': 2, 'criterion':'entropy'
@@ -35,20 +34,30 @@ params_grid = {'GaussianNB':{},
                'RandomForestClassifier': {'max_depth': 7, 'min_samples_split': 5,
                                           'min_samples_leaf': 2, 'max_features': 'sqrt', 
                                           'bootstrap': True      
-                                          }
+                                          },
+               'KNeighborsClassifier': {'algorithm': 'brute',
+                                        'leaf_size': 10,
+                                        'n_neighbors': 8,
+                                        'p': 2,
+                                        'weights': 'distance'
+                                        }
                }
+
 model_short_dict = {'GaussianNB':'gNB', 
                     'RandomForestClassifier': 'RF',
-                    'DecisionTreeClassifier': 'DT'}
+                    'DecisionTreeClassifier': 'DT',
+                    'KNeighborsClassifier': 'KNN'}
 
 #%% Build and test ML model
+df_accs = pd.DataFrame()
+
 for btype in ['FTR', 'BTTS', 'O/U2.5']:
     x = model_input.iloc[:,6:]
     y = model_input.loc[:, btype]
-    for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier']:
+    for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier', 'KNeighborsClassifier']:
         acc_list = []
         m_short = model_short_dict[m]
-        for n in range(170, 220):
+        for n in range(300, 340):
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
             
             model = globals()[f"{m}"]()
@@ -64,15 +73,17 @@ for btype in ['FTR', 'BTTS', 'O/U2.5']:
     
 accs_describe = df_accs.describe().iloc[1:, :]
 df_accs.boxplot(rot=90)
+
+accs_describe.to_excel('ML_PL_new/accuracy_scores.xlsx')
     
 #%% Optimizing parameters
 params_all = list(model.get_params().keys())
 params = {
-    'max_depth': [None, 5, 7, 10, 12, 15, 17, 20, 25, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'max_features': ['sqrt', 'log2'],
-    'bootstrap': [True, False]
+    'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
+    'leaf_size': [2, 5, 10, 20],
+    'n_neighbors': [3, 5, 6, 7, 8, 9, 10, 11, 13, 15],
+    'p': [1, 2, 3, 4],
+    'weights': ['uniform', 'distance']
 }
 rsearch = RandomizedSearchCV(estimator=model,
                              param_distributions=params,
