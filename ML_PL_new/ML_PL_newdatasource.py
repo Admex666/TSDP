@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import (
     accuracy_score,
     confusion_matrix,
@@ -39,12 +40,19 @@ params_grid = {'GaussianNB':{},
                'RandomForestClassifier': {'max_depth': 7, 'min_samples_split': 5,
                                           'min_samples_leaf': 2, 'max_features': 'sqrt', 
                                           'bootstrap': True      
-                                          }
+                                          },
+               'KNeighborsClassifier': {'algorithm': 'brute',
+                                        'leaf_size': 10,
+                                        'n_neighbors': 8,
+                                        'p': 2,
+                                        'weights': 'distance'
+                                        }
                }
 
 model_short_dict = {'GaussianNB':'gNB', 
                     'RandomForestClassifier': 'RF',
-                    'DecisionTreeClassifier': 'DT'}
+                    'DecisionTreeClassifier': 'DT',
+                    'KNeighborsClassifier': 'KNN'}
 
 predictions_merged = pd.DataFrame()
 predicition_probs_merged = pd.DataFrame()
@@ -125,7 +133,7 @@ for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
         # train on previous season
         x_train = model_input.iloc[:,6:]
         y_train = model_input.loc[:, btype]
-        for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier']:
+        for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier', 'KNeighborsClassifier']:
             m_short = model_short_dict[m]
             
             model = globals()[f"{m}"]()
