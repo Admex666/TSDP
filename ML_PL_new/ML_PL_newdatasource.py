@@ -150,24 +150,46 @@ predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset
 #%% Scrape and add odds
 path_odds = r'ML_PL_new\modinput_odds.xlsx' # just set working directory right
 df_odds_all = pd.read_excel(path_odds) 
-df_wh = df_odds_all.loc[df_odds_all.bookmaker=='William Hill', :].reset_index(drop=True)
+df_wh = df_odds_all.loc[df_odds_all.bookmaker=='William Hill', :].drop(columns='Date').reset_index(drop=True)
 
-# Merge data
-predicition_probs_merged[['Home', 'Away']] = None
-for i in range(len(predicition_probs_merged)):
-    fdcouk_home = predicition_probs_merged.loc[i, 'HomeTeam']
-    fdcouk_away = predicition_probs_merged.loc[i, 'AwayTeam']
-    odds_home = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_home, 'Team_odds'].iloc[0]
-    odds_away = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_away, 'Team_odds'].iloc[0]
-    predicition_probs_merged.loc[i, ['Home', 'Away']] = odds_home, odds_away
-
-df_predprob_odds = pd.merge(predicition_probs_merged, df_wh,
-                            on=['Home', 'Away'])
+for dfname, newdfname in zip(['predicition_probs', 'predictions'], ['predprob', 'pred']):
+    # Merge data
+    globals()[f'{dfname}_merged'][['Home', 'Away']] = None
+    for i in range(len(globals()[f'{dfname}_merged'])):
+        fdcouk_home = globals()[f'{dfname}_merged'].loc[i, 'HomeTeam']
+        fdcouk_away = globals()[f'{dfname}_merged'].loc[i, 'AwayTeam']
+        odds_home = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_home, 'Team_odds'].iloc[0]
+        odds_away = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_away, 'Team_odds'].iloc[0]
+        globals()[f'{dfname}_merged'].loc[i, ['Home', 'Away']] = odds_home, odds_away
+    
+    globals()[f'df_{newdfname}_odds'] = pd.merge(globals()[f'{dfname}_merged'], df_wh,
+                                             on=['Home', 'Away'])
+    globals()[f'df_{newdfname}_odds'].drop(columns=['Home','Away'], inplace=True)
 
 # See value
 for out in ['H', 'D', 'A', 'Over', 'Under']:
     for m_short in model_short_dict.values():
         df_predprob_odds[f'{out}_{m_short}_value'] = (1/df_predprob_odds[f'{out}_odds'] / df_predprob_odds[f'{out}_{m_short}_prob'] -1) *100
+
+# Calculate bet size
+for out in ['H', 'D', 'A', 'Over', 'Under']:
+    for m_short in model_short_dict.values():
+        df_predprob_odds[f'{out}_{m_short}_bet'] = np.where(df_predprob_odds[f'{out}_{m_short}_value'] > 0,
+                                                            1/(df_predprob_odds[f'{out}_odds']-1),
+                                                            0)
+
+# Calculate bets for df_pred_odds     
+for out in ['H', 'D', 'A']:
+    for m_short in model_short_dict.values():
+        df_pred_odds[f'{out}_{m_short}_bet'] = np.where(df_pred_odds[f'FTR_{m_short}'] == out,
+                                                        1/(df_pred_odds[f'{out}_odds']-1),
+                                                        0)
+        
+for out in ['Over', 'Under']:
+    for m_short in model_short_dict.values():
+        df_pred_odds[f'{out}_{m_short}_bet'] = np.where(df_pred_odds[f'O/U2.5_{m_short}'] == out,
+                                                        1/(df_pred_odds[f'{out}_odds']-1),
+                                                        0)
 
 #%% To excel
 output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
@@ -176,13 +198,13 @@ output_sheets = ['predictions', 'pred_probabilities']
 xlsx_preds = pd.read_excel(output_path, sheet_name=output_sheets[0])
 xlsx_predprobs = pd.read_excel(output_path, sheet_name=output_sheets[1])
 #Add new data
-xlsx_preds_new = pd.concat([xlsx_preds, predictions_merged]).sort_values(by='Date').reset_index(drop=True)
-xlsx_predprobs_new = pd.concat([xlsx_predprobs, predicition_probs_merged]).sort_values(by='Date').reset_index(drop=True)
+xlsx_preds_new = pd.concat([xlsx_preds, df_pred_odds]).sort_values(by='Date').reset_index(drop=True)
+xlsx_predprobs_new = pd.concat([xlsx_predprobs, df_predprob_odds]).sort_values(by='Date').reset_index(drop=True)
 #Drop duplicates
 xlsx_preds_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
 xlsx_predprobs_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
 
 # Modify excel file
 with pd.ExcelWriter(output_path) as writer:
-    predictions_merged.to_excel(writer, sheet_name=output_sheets[0], index=False)
-    predicition_probs_merged.to_excel(writer, sheet_name=output_sheets[1], index=False)
+    xlsx_preds_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
+    xlsx_predprobs_new.to_excel(writer, sheet_name=output_sheets[1], index=False)
