@@ -96,7 +96,8 @@ def team_dict_get(countrycode):
                  'ITA': {'comp_id':'11', 'league':'Serie-A'},
                  'FRA': {'comp_id':'13', 'league':'Ligue-1'},
                  'UEL': {'comp_id':'19', 'league':'Europa-League'},
-                 'HUN': {'comp_id':'46', 'league':'NB-I'}}
+                 'HUN': {'comp_id':'46', 'league':'NB-I'},
+                 'BRA': {'comp_id':'24', 'league':'Serie-A'}}
     
     comp_id = team_dict.get(countrycode).get('comp_id')
     league_name = team_dict.get(countrycode).get('league')

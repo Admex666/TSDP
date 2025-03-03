@@ -38,8 +38,8 @@ import fbref_module as fbref
 import matplotlib.pyplot as plt
 
 # Set parameters
-league = 'HUN'
-min_90_played = 0 # how many matches at least
+league = 'BRA'
+min_90_played = 5 # how many matches at least
 only_position = '' # DF, MF, FW or GK
 
 comp_id, league_name = fbref.team_dict_get(league)
@@ -105,7 +105,8 @@ for col in df_super.columns[8:]:
 
 #%% To excel
 path = r'C:\Users\Ádám\Dropbox\TSDP_output\fbref\player_scatters.xlsx'
-df_super.to_excel(path, index=False)
+other_path = 'E:/player_scatters.xlsx'
+df_super.to_excel(other_path, index=False)
 
 #%% Plotting (defining function)
 """
