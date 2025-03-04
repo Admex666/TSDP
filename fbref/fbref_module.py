@@ -11,6 +11,7 @@ def read_html_upd(URL, table_id):
     from selenium.webdriver.support import expected_conditions as EC
     from selenium.webdriver.chrome.service import Service
     from webdriver_manager.chrome import ChromeDriverManager
+    from io import StringIO
     
     options = webdriver.ChromeOptions()
     #options.add_argument('--headless')
@@ -25,7 +26,7 @@ def read_html_upd(URL, table_id):
         
         table_html = table.get_attribute('outerHTML')
         
-        df = pd.read_html(table_html)[0]
+        df = pd.read_html(StringIO(table_html))[0]
         
         return [df]
     finally:
@@ -67,6 +68,10 @@ def format_column_names(df):
 
 def scrape(URL, table_id):
     df = column_joiner(to_dataframe(read_html_upd(URL, table_id)))
+    return df
+
+def scrape_prev(URL, table_id):
+    df = column_joiner(to_dataframe(read_html(URL, table_id)))
     return df
 
 def season_to_next(season):

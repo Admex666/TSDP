@@ -200,7 +200,7 @@ for out in ['Over', 'Under']:
                                                         0)
 
 #%% To excel
-output_path = r'C:\Users\Ádám\Dropbox\TSDP_output\PL ML model\ML_predictions.xlsx'
+output_path = 'ML_PL_new/fuzz_teams.xlsx'
 output_sheets = ['predictions', 'pred_probabilities']
 # Read the file first
 xlsx_preds = pd.read_excel(output_path, sheet_name=output_sheets[0])
