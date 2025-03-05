@@ -1,7 +1,13 @@
 import requests
 import pandas as pd
+import json
 
-sport_list = ['soccer_epl', 'soccer_spain_la_liga', 'soccer_germany_bundesliga', 'soccer_italy_serie_a', 'soccer_france_ligue_one']
+sport_key_list = ['soccer_epl', 'soccer_spain_la_liga', 'soccer_germany_bundesliga',
+              'soccer_italy_serie_a', 'soccer_france_ligue_one', 'soccer_uefa_champs_league',
+              'soccer_uefa_europa_league', 'soccer_uefa_europa_conference_league',
+              'soccer_austria_bundesliga', 'soccer_belgium_first_div',
+              'soccer_usa_mls', 'soccer_portugal_primeira_liga', 
+              'soccer_netherlands_eredivisie']
 data = []
 
 API_KEY = "0b93191de8a5f41daa6feb716be14a2a"  # Helyettesítsd a saját API kulcsoddal
@@ -9,7 +15,7 @@ REGIONS = "eu"  # Európai oddszok
 MARKETS = "h2h,totals"  # Háromirányú oddsok, BTTS és Over/Under piacok
 ODDS_FORMAT = "decimal"  # Decimális oddsformátum
 
-for SPORT in sport_list:
+for SPORT in sport_key_list:
     # API kérés elküldése
     url = f"https://api.the-odds-api.com/v4/sports/{SPORT}/odds"
     params = {
@@ -98,7 +104,7 @@ path = r'ML_PL_new\modinput_odds.xlsx'
 previous_table = pd.read_excel(path)
 
 new_table = pd.concat([previous_table, df]).sort_values(by="Date").reset_index(drop=True)
-new_table.drop_duplicates(subset=['commence_time', 'Home', 'Away', 'bookmaker'], inplace=True)
+new_table.drop_duplicates(subset=['Date', 'Home', 'Away', 'bookmaker'], inplace=True)
 
 new_table.to_excel(path, index=False)
 

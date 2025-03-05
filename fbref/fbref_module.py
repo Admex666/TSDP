@@ -100,9 +100,17 @@ def team_dict_get(countrycode):
                  'GER': {'comp_id':'20', 'league':'Bundesliga'},
                  'ITA': {'comp_id':'11', 'league':'Serie-A'},
                  'FRA': {'comp_id':'13', 'league':'Ligue-1'},
+                 'UCL': {'comp_id': '8', 'league': 'Champions-League'},
                  'UEL': {'comp_id':'19', 'league':'Europa-League'},
+                 'UECL': {'comp_id':'882', 'league':'Conference-League'},
                  'HUN': {'comp_id':'46', 'league':'NB-I'},
-                 'BRA': {'comp_id':'24', 'league':'Serie-A'}}
+                 'BRA': {'comp_id':'24', 'league':'Serie-A'},
+                 'AUT': {'comp_id': '56', 'league': 'Austrian-Bundesliga'},
+                 'BEL': {'comp_id': '37', 'league': 'Belgian-Pro-League'},
+                 'USA': {'comp_id': '22', 'league': 'Major-League-Soccer'},
+                 'POR': {'comp_id': '32', 'league': 'Primeira-Liga'},
+                 'NED': {'comp_id': '23', 'league': 'Eredivisie'},
+                 }
     
     comp_id = team_dict.get(countrycode).get('comp_id')
     league_name = team_dict.get(countrycode).get('league')

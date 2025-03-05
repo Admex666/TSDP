@@ -30,8 +30,10 @@ csv_name_dict = {'ENG':'E0',
                  'ESP':'SP1', 
                  'GER': 'D1', 
                  'ITA': 'I1',
-                 'FRA': 'F1'
-                 }
+                 'FRA': 'F1',
+                 'NED': 'N1',
+                 'BEL': 'B1',
+                 'POR': 'P1'}
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
@@ -57,7 +59,7 @@ model_short_dict = {'GaussianNB':'gNB',
 predictions_merged = pd.DataFrame()
 predicition_probs_merged = pd.DataFrame()
 #fuzz_teams_merged = pd.DataFrame()
-for countrycode in ['ENG', 'ESP', 'GER', 'ITA', 'FRA']:
+for countrycode in csv_name_dict.keys():
     csv_name = csv_name_dict[countrycode]
 
     path_pred = f"https://www.football-data.co.uk/mmz4281/2425/{csv_name}.csv"
