@@ -3,11 +3,11 @@ import pandas as pd
 import json
 
 sport_key_list = ['soccer_epl', 'soccer_spain_la_liga', 'soccer_germany_bundesliga',
-              'soccer_italy_serie_a', 'soccer_france_ligue_one', 'soccer_uefa_champs_league',
-              'soccer_uefa_europa_league', 'soccer_uefa_europa_conference_league',
-              'soccer_austria_bundesliga', 'soccer_belgium_first_div',
-              'soccer_usa_mls', 'soccer_portugal_primeira_liga', 
-              'soccer_netherlands_eredivisie']
+              'soccer_italy_serie_a', 'soccer_france_ligue_one', 
+              'soccer_belgium_first_div','soccer_portugal_primeira_liga', 
+              'soccer_netherlands_eredivisie',
+              #'soccer_usa_mls','soccer_austria_bundesliga', 'soccer_uefa_champs_league','soccer_uefa_europa_league', 'soccer_uefa_europa_conference_league'
+              ]
 data = []
 
 API_KEY = "0b93191de8a5f41daa6feb716be14a2a"  # Helyettesítsd a saját API kulcsoddal

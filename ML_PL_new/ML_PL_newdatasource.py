@@ -26,14 +26,8 @@ model_input = mlpl.df_to_model_input(df_tr)
 
 #%% Getting the fresh data for predictions
 # football-data.co.uk historical data urls:
-csv_name_dict = {'ENG':'E0',
-                 'ESP':'SP1', 
-                 'GER': 'D1', 
-                 'ITA': 'I1',
-                 'FRA': 'F1',
-                 'NED': 'N1',
-                 'BEL': 'B1',
-                 'POR': 'P1'}
+csv_name_dict = {'ENG':'E0', 'ESP':'SP1', 'GER': 'D1', 'ITA': 'I1', 'FRA': 'F1',
+                 'NED': 'N1', 'BEL': 'B1', 'POR': 'P1'}
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
@@ -58,7 +52,8 @@ model_short_dict = {'GaussianNB':'gNB',
 
 predictions_merged = pd.DataFrame()
 predicition_probs_merged = pd.DataFrame()
-#fuzz_teams_merged = pd.DataFrame()
+fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
+
 for countrycode in csv_name_dict.keys():
     csv_name = csv_name_dict[countrycode]
 
@@ -66,13 +61,11 @@ for countrycode in csv_name_dict.keys():
     df_pred = pd.read_csv(path_pred)
     
     # Transform
-    needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
     df_pred = df_pred[needed_cols]
     # create BTTS and O2,5 labels
     df_pred['BTTS'] = np.where((df_pred.FTHG!=0)&(df_pred.FTAG!=0),'Yes','No')
     df_pred['O/U2.5'] = np.where(df_pred.FTHG+df_pred.FTAG>2.5,'Over','Under')
-    
-    teams = np.sort(df_pred.HomeTeam.unique())
+    teams = np.sort(df_pred.HomeTeam.dropna().unique())
 
     # Create next round's pairings
     df_current = df_pred.copy()
@@ -100,9 +93,8 @@ for countrycode in csv_name_dict.keys():
     df_current = df_current.iloc[:nr_matches]
     
     # Fuzzy matched squads list:
-    fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
     fuzz_teams = fuzz_teams_all[fuzz_teams_all.Country == countrycode]
-   
+    
     for fbrteam in [*df_week.Home.unique(), *df_week.Away.unique()]:
         i = fuzz_teams[fuzz_teams.Team_fbref == fbrteam].index[0]
         if fbrteam in df_week['Home'].unique():
@@ -202,7 +194,7 @@ for out in ['Over', 'Under']:
                                                         0)
 
 #%% To excel
-output_path = 'ML_PL_new/fuzz_teams.xlsx'
+output_path = 'ML_PL_new/predictions.xlsx'
 output_sheets = ['predictions', 'pred_probabilities']
 # Read the file first
 xlsx_preds = pd.read_excel(output_path, sheet_name=output_sheets[0])

@@ -94,17 +94,17 @@ xlsx_prev1 = xlsx_prev1.dropna()
 df_preds_played_clean = df_preds_played[df_preds_played.FTR_result.isin(['H', 'D', 'A'])]
 
 # Add new
-xlsx_prev1_new = pd.concat([xlsx_prev1,df_preds_played_clean], ignore_index=True)
+xlsx_new1 = pd.concat([xlsx_prev1,df_preds_played_clean], ignore_index=True)
 # Drop duplicates
-xlsx_prev1_new = xlsx_prev1_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam']).sort_values(by='Date').reset_index(drop=True)
+xlsx_new1 = xlsx_new1.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam']).sort_values(by='Date').reset_index(drop=True)
 
 # Summarize profits
-profits = pd.concat([xlsx_prev1_new.iloc[:,-8:].sum(),
-                     xlsx_prev1_new.iloc[:,-8:].sum() / xlsx_prev1_new.FTR_result.count()],
+profits = pd.concat([xlsx_new1.iloc[:,-8:].sum(),
+                     xlsx_new1.iloc[:,-8:].sum() / xlsx_new1.FTR_result.count()],
                     axis=1)
 
 profits.columns = ['Total', 'Average']
 
 with pd.ExcelWriter(output_path) as writer:
-    xlsx_prev1_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
-    profits.to_excel(writer, sheet_name=output_sheets[1], index=False)
+    xlsx_new1.to_excel(writer, sheet_name=output_sheets[0], index=False)
+    profits.to_excel(writer, sheet_name=output_sheets[1], index=True)
