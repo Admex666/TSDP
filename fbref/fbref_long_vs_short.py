@@ -6,12 +6,12 @@ Created on Mon Jan 13 09:24:05 2025
 """
 # Set and scrape league dataframes
 import pandas as pd
-import fbref_module as fbref
+from fbref import fbref_module as fbref
 from bs4 import BeautifulSoup
 import requests
 
-league = 'ITA'
-URL_match = 'https://fbref.com/en/matches/e00a9736/Roma-Monza-February-24-2025-Serie-A'
+league = 'UEL'
+URL_match = 'https://fbref.com/en/matches/7a455b62/AZ-Alkmaar-Tottenham-Hotspur-March-6-2025-Europa-League'
 
 comp_id, league_name = fbref.team_dict_get(league)
 
@@ -165,7 +165,11 @@ for posgr in pos_dict.keys():
 
 #%% Create dataframes that include all stats
 # Only want relevant squads' season data
-if (teams_df.team_name[0] in df_standard.Squad.unique()) & (teams_df.team_name[1] in df_standard.Squad.unique()):
+
+for suffix in ['', '_p90']:
+    globals()[f'df_merged{suffix}'].Squad = globals()[f'df_merged{suffix}'].Squad.replace(to_replace=['nl AZ Alkmaar', 'eng Tottenham'], value=['AZ Alkmaar', 'Tottenham Hotspur'])
+
+if (teams_df.team_name[0] in df_merged.Squad.unique()) & (teams_df.team_name[1] in df_merged.Squad.unique()):
     df_merged_sq = df_merged[df_merged.Squad.isin([teams_df.team_name[0], teams_df.team_name[1]])]
     df_merged_p90_sq = df_merged_p90[df_merged_p90.Squad.isin([teams_df.team_name[0], teams_df.team_name[1]])]
     print('Team names found')
@@ -276,7 +280,7 @@ for row in range(len(df_merged_match)):
 df_overperform_merged = pd.DataFrame(overperform_list)
 
 #%% To excel
-path = r'C:\Users\Ádám\Dropbox\TSDP_output\fbref\long_short_OP.xlsx'
+path = r'fbref\long_short_OP.xlsx'
 df_overperform_merged.to_excel(path, index=False)
 
 #%%

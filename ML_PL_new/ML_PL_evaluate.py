@@ -1,6 +1,7 @@
 import pandas as pd
 from fbref import fbref_module as fbref
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 fuzz_teams = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
 
@@ -14,6 +15,7 @@ output_path = 'ML_PL_new/paperbets.xlsx'
 output_sheets = ['bet_results', 'profits']
 # Get evaluated predictions
 xlsx_prev1 = pd.read_excel(output_path, sheet_name=output_sheets[0])
+xlsx_prev2 = pd.read_excel(output_path, sheet_name=output_sheets[1])
 
 df_preds[['HomeGoals', 'AwayGoals']] = None
 
@@ -39,7 +41,7 @@ for countrycode in df_preds_played.Country.unique():
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
     # only played games
     #df_fixtures = df_fixtures[df_fixtures.Date <= datetime.today()]
-    
+        
     for i, fdcouk_home in enumerate(df_preds_played.HomeTeam):
         if df_preds_played.loc[i, 'HomeGoals'] == None:
             fbref_home = fuzz_teams.loc[fuzz_teams.Team_fdcouk == fdcouk_home,'Team_fbref'].iloc[0]
@@ -104,6 +106,26 @@ profits = pd.concat([xlsx_new1.iloc[:,-8:].sum(),
                     axis=1)
 
 profits.columns = ['Total', 'Average']
+
+# Change of profit
+profit_cols = [col for col in xlsx_new1.columns if ('_profit' in col) & ('cumsum' not in col)]
+print(f'\n Changes of profit ({len(df_preds_played_clean)} games):\n \n', df_preds_played_clean.loc[:,profit_cols].sum())
+print(f'\n Total profits ({len(xlsx_new1)} games):\n \n', xlsx_new1.loc[:,profit_cols].sum())
+
+# Cumulated profits
+for btype in ['FTR', 'O/U2.5']:
+    for m_short in ['gNB', 'RF', 'DT', 'KNN']:
+        xlsx_new1[f'{btype}_{m_short}_profit_cumsum'] = xlsx_new1[f'{btype}_{m_short}_profit'].cumsum()
+
+# Plot the cumulated profits
+plt.figure(figsize=(10,6))
+plt.plot(xlsx_new1.iloc[:,-8:], label=xlsx_new1.columns[-8:])
+plt.title('Profits by matches', fontsize=18) 
+plt.xlabel('Matches')
+plt.ylabel('Profit')
+plt.legend()
+plt.axhline(y=0, linestyle='--', color='grey')
+plt.show()
 
 with pd.ExcelWriter(output_path) as writer:
     xlsx_new1.to_excel(writer, sheet_name=output_sheets[0], index=False)
