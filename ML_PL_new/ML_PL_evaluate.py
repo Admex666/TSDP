@@ -30,6 +30,7 @@ for i, row in xlsx_prev1.iterrows():
 # Only check matches that weren't played
 today = datetime.today()
 df_preds_played = df_preds[df_preds.Date <= today].reset_index(drop=True)
+df_predprobs_played = df_predprobs[df_predprobs.Date <= today].reset_index(drop=True)
 
 #%%
 for countrycode in df_preds_played.Country.unique():
@@ -56,7 +57,7 @@ for countrycode in df_preds_played.Country.unique():
                     goals_home, goals_away = None, None
                 
             df_preds_played.loc[i,['HomeGoals', 'AwayGoals']] = goals_home, goals_away
-                        
+
 #%% Check results
 df_preds_played[['HomeGoals', 'AwayGoals']] = df_preds_played[['HomeGoals', 'AwayGoals']].astype(float) # handle NoneTypes
 df_preds_played['FTR_result'] = None
@@ -75,6 +76,11 @@ for i in range(len(df_preds_played)):
         o_u = 'Over' if (goals_home+goals_away) > 2.5 else 'Under' if (goals_home+goals_away) < 2.5 else None
         df_preds_played.loc[i, 'O/U2.5_result'] = o_u
 
+                        
+df_predprobs_played = pd.merge(df_predprobs_played, 
+                               xlsx_prev1[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
+                               on=['Date', 'HomeTeam'], how='left')
+
 # Calculate profits
 for btype in ['FTR', 'O/U2.5']:
     for m_short in ['gNB', 'RF', 'DT', 'KNN']:
@@ -90,6 +96,23 @@ for btype in ['FTR', 'O/U2.5']:
                     df_preds_played.loc[i, f'{btype}_{m_short}_profit'] += stake*odds - stake
                 else:
                     df_preds_played.loc[i, f'{btype}_{m_short}_profit'] += -stake
+
+for btype in ['FTR', 'O/U2.5']:
+    for m_short in ['gNB', 'RF', 'DT', 'KNN']:
+        df_predprobs_played[f'{btype}_{m_short}_profit'] = 0
+        for i, outcome in enumerate(df_predprobs_played[f'{btype}_result']):
+            if str(outcome) == 'nan':
+                pass
+            else:
+                outcome_list = ['H', 'D', 'A'] if btype == 'FTR' else ['Over', 'Under']
+                bets_won = df_predprobs_played.loc[i, f'{outcome}_{m_short}_bet']
+                odds = df_predprobs_played.loc[i, f'{outcome}_odds']
+                
+                outcome_list.remove(outcome)
+                bets_lost = df_predprobs_played.loc[i, [f'{col}_{m_short}_bet' for col in outcome_list]].sum()
+                
+                
+                df_predprobs_played.loc[i, f'{btype}_{m_short}_profit'] = (bets_won*odds - bets_won) - bets_lost
 
 #%% To excel
 xlsx_prev1 = xlsx_prev1.dropna()

@@ -96,7 +96,7 @@ df = pd.DataFrame(rows)
 df.Date = pd.to_datetime(df.Date).dt.tz_localize(None)
 
 # Eredmények megjelenítése
-print(f"Összesen {len(df)} odds bejegyzés:")
+print(f"{len(df)} odds found:")
 print(df.head())
 
 # Save to excel

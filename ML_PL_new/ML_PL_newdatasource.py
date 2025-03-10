@@ -205,7 +205,7 @@ xlsx_predprobs_new = pd.concat([xlsx_predprobs, df_predprob_odds]).sort_values(b
 #Drop duplicates
 xlsx_preds_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
 xlsx_predprobs_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
-print(f'Number of new rows: {len(xlsx_preds_new) - len(xlsx_preds)}')
+print(f'Number of new rows: {len(df_pred_odds)}')
 
 # Modify excel file
 with pd.ExcelWriter(output_path) as writer:
