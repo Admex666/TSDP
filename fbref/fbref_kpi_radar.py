@@ -6,15 +6,15 @@ Created on Wed Nov  6 12:04:02 2024
 """
 
 # Importing libraries
-import fbref_module as fbref
+from fbref import fbref_module as fbref
 import pandas as pd
 import numpy as np
 from scipy.stats import percentileofscore
 
 # choose from ENG, ESP, GER, ITA...
 league = 'GER'
-pos = 'FW' # FW, MF, DF, GK
-matches_at_least = 2
+pos = 'MF' # FW, MF, DF, GK
+matches_at_least = 4
 year = '2023-2024' # the year of comparison
 
 #%%
@@ -165,30 +165,6 @@ for c in cols_to_include:
     if c in cols_all_list_p90:
         cols_all_list_p90.remove(c)
         
-#%% Final table of KPIs for radar chart: Stat, Value, Percentile
-def create_df_kpi(analysis_df, player_index):
-    df_kpi_player = analysis_df.T[player_index].reset_index()
-    df_kpi_player.columns = ['Statistic', 'Value']
-    # split the string and numeric values
-    df_kpi_player_dim = df_kpi_player.loc[0:7,:]
-    df_kpi_player.drop(index=(range(0,8)), inplace=True)
-    df_kpi_player = df_kpi_player.reset_index(drop=True)
-    
-    df_kpi_player['Percentile'] = None
-    for metric in df_kpi_player['Statistic'].unique():
-        v = df_kpi_player.loc[df_kpi_player['Statistic'] == metric,'Value']
-        value = v.iloc[0]
-        percentile = round(percentileofscore(analysis_df[metric], value, kind='rank'), 0)
-        df_kpi_player.loc[df_kpi_player.Statistic == metric, 'Percentile'] = percentile
-    
-    return [df_kpi_player, df_kpi_player_dim]
-
-[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 2)
-player_name = df_kpi_player_dim[df_kpi_player_dim.Statistic=='Player']['Value'].get(1)
-
-player_index_year = df_analyse_year[df_analyse_year.Player == player_name].index[0]
-[df_kpi_player_fact_year, df_kpi_player_dim_year] = create_df_kpi(df_analyse_year, player_index_year)
-
 #%% Creating a table of percentiles
 def create_df_percentiles(analysis_df):
     df_percentiles = analysis_df.copy()
@@ -216,21 +192,59 @@ for col in cols_all_list_p90:
     df_percentiles_diff[col] = df_percentiles[col] - df_percentiles_year[col]
 del col
 
+df_percentiles_diff['diff_sum'] = [row.loc[cols_all_list_p90].sum() for i, row in df_percentiles_diff.iterrows()]
+
+#%% Final table of KPIs for radar chart: Stat, Value, Percentile
+def create_df_kpi(analysis_df, player_index):
+    df_kpi_player = analysis_df.T[player_index].reset_index()
+    df_kpi_player.columns = ['Statistic', 'Value']
+    # split the string and numeric values
+    df_kpi_player_dim = df_kpi_player.loc[0:7,:]
+    df_kpi_player.drop(index=(range(0,8)), inplace=True)
+    df_kpi_player = df_kpi_player.reset_index(drop=True)
+    
+    df_kpi_player['Percentile'] = None
+    for metric in df_kpi_player['Statistic'].unique():
+        v = df_kpi_player.loc[df_kpi_player['Statistic'] == metric,'Value']
+        value = v.iloc[0]
+        percentile = round(percentileofscore(analysis_df[metric], value, kind='rank'), 0)
+        df_kpi_player.loc[df_kpi_player.Statistic == metric, 'Percentile'] = percentile
+    
+    return [df_kpi_player, df_kpi_player_dim]
+
+[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 124)
+player_name = df_kpi_player_dim[df_kpi_player_dim.Statistic=='Player']['Value'].get(1)
+
+player_index_year = df_analyse_year[df_analyse_year.Player == player_name]
+if player_index_year.empty:
+    [df_kpi_player_fact_year, df_kpi_player_dim_year] = [df_kpi_player_fact.copy(), df_kpi_player_dim.copy()]
+    df_kpi_player_fact_year[['Value', 'Percentile']] = 0
+    df_kpi_player_dim_year[['Value', 'Percentile']] = None
+    print(f'Player index not found in {year} dataframe.')
+else:
+    player_index_year = player_index_year.index[0]
+    [df_kpi_player_fact_year, df_kpi_player_dim_year] = create_df_kpi(df_analyse_year, player_index_year)
+
+df_kpi_player_fact_year.columns = ['Statistic_year', 'Value_year', 'Percentile_year']
+
 #%% KPI comparison prepare for export
-path = r'C:\TSDP\fbref\scout_summary.xlsx'
+df_kpi_player_fact_both = pd.concat([df_kpi_player_fact, df_kpi_player_fact_year], axis=1)
+
 if df_kpi_player_dim.loc[1,'Value'] == df_kpi_player_dim_year.loc[1,'Value']:
-    df_kpi_player_fact_both = pd.merge(df_kpi_player_fact,
-                                       df_kpi_player_fact_year,
-                                       on='Statistic',
-                                       how='inner')
-    df_kpi_player_fact_both.columns = ['Statistic', 'Value', 'Percentile',
-                                       'Value_year', 'Percentile_year']
-    #df_kpi_player_fact_both.to_excel(path, index=False)
     print("Names were matching.")
 else:
-    print("Error: name is not matching")
+    print("Names are not matching")
     
-#%%
+if df_kpi_player_fact_both.Statistic.all() == df_kpi_player_fact_both.Statistic_year.all():
+    df_kpi_player_fact_both.drop(columns='Statistic_year', inplace=True)
+else:
+    print('Statistics are not matching.')
+    
+#%% To Excel
+path = 'fbref\scout_summary.xlsx'
+df_kpi_player_fact_both.to_excel(path, index=False)
+    
+#%% Visualize
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
