@@ -207,7 +207,7 @@ xlsx_preds_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=
 xlsx_predprobs_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
 print(f'Number of new rows: {len(df_pred_odds)}')
 
-# Modify excel file
+#%% Modify excel file
 with pd.ExcelWriter(output_path) as writer:
     xlsx_preds_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
     xlsx_predprobs_new.to_excel(writer, sheet_name=output_sheets[1], index=False)
