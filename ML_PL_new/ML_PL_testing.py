@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.model_selection import train_test_split, RandomizedSearchCV, GridSearchCV
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import (
     accuracy_score,
     confusion_matrix,
@@ -28,7 +29,8 @@ df['O/U2.5'] = np.where(df.FTHG+df.FTAG>2.5,'Over','Under')
 model_input = mlpl.df_to_model_input(df)
 
 # Prepare ML model
-model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier', 'KNeighborsClassifier']
+model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier',
+              'KNeighborsClassifier', 'GradientBoostingClassifier']
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
@@ -43,13 +45,18 @@ params_grid = {'GaussianNB':{},
                                         'n_neighbors': 8,
                                         'p': 2,
                                         'weights': 'distance'
-                                        }
+                                        },
+               'GradientBoostingClassifier': {'n_estimators': 500,
+                                              'learning_rate': 0.001,
+                                              'max_depth': 3
+                                               }
                }
 
 model_short_dict = {'GaussianNB':'gNB', 
                     'RandomForestClassifier': 'RF',
                     'DecisionTreeClassifier': 'DT',
-                    'KNeighborsClassifier': 'KNN'}
+                    'KNeighborsClassifier': 'KNN',
+                    'GradientBoostingClassifier': 'GB'}
 
 #%% Build and test ML model
 df_accs = pd.DataFrame()
@@ -144,7 +151,7 @@ with pd.ExcelWriter('ML_PL_new/test_scores.xlsx') as writer:
     accs_describe_relative.to_excel(writer, sheet_name='describe_relative')
     profits_describe.to_excel(writer, sheet_name='profit_stats')
 
-#%% Optimizing parameters
+#%% Hypertune parameters
 params_all = list(model.get_params().keys())
 params = {
     'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
@@ -159,3 +166,16 @@ rsearch = RandomizedSearchCV(estimator=model,
 rsearch.fit(x_train, y_train)
 print(rsearch.best_score_)
 rs_results = pd.DataFrame(rsearch.cv_results_)
+
+#%% Hypertune v2
+param_grid = {
+    'n_estimators': [10,50,100,500],
+    'learning_rate': [0.0001, 0.001, 0.01, 0.1, 1.0],
+    'max_depth': [3, 5, 7, 9]
+    }
+
+model2 = GridSearchCV(model, param_grid, cv=4, n_jobs=-1)
+model2.fit(x_train, y_train)
+
+# See results
+print('Best params:',model2.best_params_, '\nScore:', model2.best_score_)
