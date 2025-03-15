@@ -14,7 +14,7 @@ df_wys_raw['90s'] = df_wys_raw['Minutes played'] / 90
 df_wys_raw.rename(columns={'Team within selected timeframe': 'Squad', 
                            'Birth country': 'Nation', 'Position': 'Pos_exact'},
                   inplace=True)
-"""
+
 all_positions = []
 for i in df_wys_raw.index:
     poses = df_wys_raw.loc[i, 'Pos_exact']
@@ -23,7 +23,7 @@ for i in df_wys_raw.index:
         pos = pos.strip()
         if pos not in all_positions:
             all_positions.append(pos)
-"""
+
 
 for i in df_wys_raw.index:
     pos_first = df_wys_raw.loc[i, 'Pos_exact'].split(',')[0]
@@ -270,12 +270,54 @@ def assign_player_archetypes(df, all_metrics, n_clusters=4):
 
     return df
 
+def calculate_possession_proxy(df90):
+    """
+    Calculates a possession proxy based on team pass volume relative to league average.
+    Adds a 'team_possession_proxy' column to the dataframe.
+    """
+    df_padj = df90.copy()
+    
+    # 1. Számítsuk ki az összesített csapat passzokat (Total_Att) és a 90 perces átlagot
+    # Feltételezve, hogy van 'Total_Att' oszlop a játékos szinten, és 'Squad' oszlop
+    team_total_pass = df_padj.groupby('Squad')['Total_Att'].sum().reset_index()
+    team_total_pass.rename(columns={'Total_Att': 'Team_Total_Pass'}, inplace=True)
+    
+    # 2. Egyesítsük a csapat összpassz adatot vissza a fő dataframe-be
+    df_padj = df_padj.merge(team_total_pass, on='Squad', how='left')
+    
+    # 3. Számoljuk ki a liga átlagos összpassz számát
+    league_avg_pass = df_padj['Team_Total_Pass'].mean()
+    
+    # 4. Számoljuk ki a possession proxy-t minden csapatra: (CsapatPassz / LigaÁtlagPassz)
+    # Ez lesz a relativ passzvolumen. 1 -> atlagos, >1 -> tobb passz, <1 -> kevesebb passz
+    df_padj['team_possession_proxy'] = df_padj['Team_Total_Pass'] / league_avg_pass
+    
+    return df_padj
+
+# 5. PAdj számító függvény a proxy val használatával
+def calculate_padj_stats(df, defense_metrics):
+    """
+    Calculate Possession-Adjusted stats using the possession proxy.
+    """
+    df_padj = df.copy()
+    for stat in defense_metrics:
+        raw_col = stat # pl. 'Tackles_Tkl'
+        padj_col = f'PAdj_{stat}' # pl. 'PAdj_Tackles_Tkl'
+        # A módosított képlet: PAdj = Raw / (1 - Possession_Proxy)
+        # Megjegyzés: A proxy értéke lehet >1 is. Korlátozzuk 0.9 és 1.1 közé, ha szükséges.
+        df_padj[padj_col] = df_padj[raw_col] / (1 - df_padj['team_possession_proxy'])
+    return df_padj
+
 #----------------------#
 #      PIPELINE        #
 #----------------------#
 
 def analyze_player_similarity(df, cols_basic, numeric_cols, all_metrics, matches_at_least=5, team_name=None, pos=None, player_id=None):
     df90 = create_df90(df, numeric_cols)
+    
+    df90 = calculate_possession_proxy(df90)
+    defense_metrics_to_adjust = ['Tackles_Tkl', 'Performance_Int', 'Blocks_Blocks', 'Performance_Recov']
+    df90 = calculate_padj_stats(df90, defense_metrics_to_adjust)
 
     team_aggregates = weighted_team_avg(df90, 'Squad', all_metrics)
     df90 = add_team_and_positional_comparisons(df90, all_metrics, matches_at_least=matches_at_least)
@@ -303,9 +345,9 @@ def analyze_player_similarity(df, cols_basic, numeric_cols, all_metrics, matches
 
 #%% Execution
 matches_at_least = 10
-team_name = 'Bournemouth'
-pos = 'DF'
-player_id = 1189
+team_name = 'Newcastle Utd'
+pos = 'FW'
+player_id = 1219
 
 
 results = analyze_player_similarity(
@@ -439,20 +481,20 @@ def plot_mplsoccer_team_comparison(df, team1, team2, params, position=None, reve
           save_folder=save_folder, save_name=save_name, save=save)
 
 #%% Viz execution
-plot_radar_single_player(df90, 1189,
+plot_radar_single_player(df90, player_id,
                          ['offense_median_pos_comp', 'creativity_median_pos_comp', 
                           'progression_median_pos_comp', 'activity_median_pos_comp',
                           'defense_median_pos_comp'])
 
 #%% Két játékos összehasonlítása zscore alapján
-plot_mplsoccer_player_comparison(df90, 1189, 2263,
-                                 params=(metrics['defense']+metrics['creativity']+metrics['progression']),
+plot_mplsoccer_player_comparison(df90, player_id, 2785,
+                                 params=(metrics['offense']+metrics['creativity']),
                                  reversed_list=['errors'],
                                  league_name='Big 5 leagues',
-                                 only_pos='DF',
+                                 only_pos='FW',
                                  use_zscore=False,
-                                 save_folder=r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.06', 
-                                 save_name='2025.06.17., Gartenmann-Katona L.', 
+                                 save_folder=r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.09', 
+                                 save_name='2025.09.02., Isak-Woltemade', 
                                  save=False)
 
 #%% Csapat összehasonlítás egy pozícióban
@@ -463,3 +505,6 @@ plot_mplsoccer_team_comparison(team_pos_aggregates, 'Paksi FC', 'Debrecen',
                                position='DF',
                                league_name='OTP Bank liga',
                                save_folder=False, save_name=False, save=False)
+
+#%%
+t = df90[['Player', 'Squad', 'Pos']+[col for col in df90.columns if 'PAdj' in col]]
