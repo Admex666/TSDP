@@ -77,7 +77,7 @@ for countrycode in csv_name_dict.keys():
     
     comp_id, league = fbref.team_dict_get(countrycode)
     url_fixtures = f'https://fbref.com/en/comps/{comp_id}/schedule/{league}-Scores-and-Fixtures'
-    df_fixtures = fbref.scrape(url_fixtures, f'sched_2024-2025_{comp_id}_1')
+    df_fixtures = fbref.scrape_ffox(url_fixtures, f'sched_2024-2025_{comp_id}_1')
     # Set datetime format
     df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)

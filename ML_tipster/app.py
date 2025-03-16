@@ -241,15 +241,13 @@ with st.sidebar:
         st.markdown("**Home Team**")
         home_goals_for_last_5 = st.slider("Goals scored per game", 0.0, 5.0, 1.4, 0.1, key="home_goals_for")
         home_goals_against_last_5 = st.slider("Goals conceded per game", 0.0, 5.0, 1.2, 0.1, key="home_goals_against")
-        home_form_last_5 = st.slider("Total points", 0, 15, 8, key="home_form")
-        home_points_last_5 = home_form_last_5 / 5
+        home_points_last_5 = st.slider("Avg points", 0, 3.0, 2.1, 0.1, key="home_form")
 
     with col2:
         st.markdown("**Away Team**")
         away_goals_for_last_5 = st.slider("Goals scored per game", 0.0, 5.0, 2.1, 0.1, key="away_goals_for")
         away_goals_against_last_5 = st.slider("Goals conceded per game", 0.0, 5.0, 0.8, 0.1, key="away_goals_against")
-        away_form_last_5 = st.slider("Total points", 0, 15, 12, key="away_form")
-        away_points_last_5 = away_form_last_5 / 5
+        away_points_last_5 = st.slider("Avg points", 0, 3.0, 2.8, 0.1, key="away_form")
 
     # További paraméterek
     st.subheader("⚙️ Additional Parameters")
@@ -277,8 +275,6 @@ if st.button("🔮 Predict Match", type="primary"):
         'Away_Goals_For_Last_5': away_goals_for_last_5,
         'Home_Goals_Against_Last_5': home_goals_against_last_5,
         'Away_Goals_Against_Last_5': away_goals_against_last_5,
-        'Home_Form_Last_5': home_form_last_5,
-        'Away_Form_Last_5': away_form_last_5,
         'Home_Advantage': home_advantage,
         'Days_Since_Last_Home_Match': days_since_last_home,
         'Days_Since_Last_Away_Match': days_since_last_away
