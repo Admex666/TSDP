@@ -4,7 +4,11 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
+<<<<<<< HEAD
 recent_files = ['fbref\\fbref_module.py', 'fbref\\fbref_teamstyle_cluster.py', 'strongstart\\odds_based_pred.py', 'fbref\\WWYI_Varga.py', 'fbref\\fbref_player_style_to_team.py']
+=======
+recent_files = ['fbref\\fbref_module.py', 'ML_PL_new\\ML_PL_evaluate.py']
+>>>>>>> e6888ca (.)
 
 [main]
 version = 0.2.0

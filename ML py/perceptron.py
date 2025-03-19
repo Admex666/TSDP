@@ -33,7 +33,10 @@ model2.best_params_
 model2.best_score_
 
 from sklearn.metrics import classification_report
+<<<<<<< HEAD
 y_pred = perceptron.predict(X_test)
+=======
+>>>>>>> e6888ca (.)
 print(classification_report(y_test, y_pred))
 
 import matplotlib.pyplot as plt

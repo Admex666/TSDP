@@ -77,7 +77,7 @@ for countrycode in csv_name_dict.keys():
     
     comp_id, league = fbref.team_dict_get(countrycode)
     url_fixtures = f'https://fbref.com/en/comps/{comp_id}/schedule/{league}-Scores-and-Fixtures'
-    df_fixtures = fbref.scrape_ffox(url_fixtures, f'sched_2024-2025_{comp_id}_1')
+    df_fixtures = fbref.scrape(url_fixtures, f'sched_2024-2025_{comp_id}_1')
     # Set datetime format
     df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
@@ -92,8 +92,11 @@ for countrycode in csv_name_dict.keys():
     if df_week.empty:
         print(f"No games found in {span.days} days span in {league}.")
         continue
+<<<<<<< HEAD
     else:
         print(f'{len(df_week)} games found in the {league}.')
+=======
+>>>>>>> e6888ca (.)
     df_week['DateTime'] = df_week.Date.astype(str) + ' ' + df_week.Time.str.split(' ').str.get(0)
     df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
     nr_matches = len(df_week)

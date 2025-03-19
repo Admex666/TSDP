@@ -75,8 +75,13 @@ for i in range(len(df_predprobs_played)):
         df_predprobs_played.loc[i, 'O/U2.5_result'] = o_u
 
                         
+<<<<<<< HEAD
 df_preds_played = pd.merge(df_preds_played, 
                                df_predprobs_played[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
+=======
+df_predprobs_played = pd.merge(df_predprobs_played, 
+                               df_preds_played[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
+>>>>>>> e6888ca (.)
                                on=['Date', 'HomeTeam'], how='left')
 
 # Calculate profits
