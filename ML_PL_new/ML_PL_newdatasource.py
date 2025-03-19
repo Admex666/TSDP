@@ -81,12 +81,14 @@ for countrycode in csv_name_dict.keys():
     today = datetime.datetime.today()
     span = pd.to_timedelta('7D')
     mask_date = (df_fixtures.Date <= today + span) & (df_fixtures.Date >= today)
-    while True not in mask_date.unique():
-        #while True not in mask_date:
+    while (True not in mask_date.unique()) and (span < pd.to_timedelta('10D')):
         span += pd.to_timedelta('1D')
         mask_date = (df_fixtures.Date < today + span) & (df_fixtures.Date > today)
     # Find games in n days span
     df_week = df_fixtures.loc[mask_date, :].reset_index(drop=True)
+    if df_week.empty:
+        print(f"No games found in {span.days} days span in {league}.")
+        continue
     df_week['DateTime'] = df_week.Date.astype(str) + ' ' + df_week.Time.str.split(' ').str.get(0)
     df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
     nr_matches = len(df_week)
@@ -142,12 +144,13 @@ for countrycode in csv_name_dict.keys():
             classes = model.classes_
             for i, clss in enumerate(classes):
                 prediction_probs[f'{clss}_{m_short}_prob'] = proba[:, i]
-        
+                
     predictions_merged = pd.concat([predictions_merged, predictions])
     predicition_probs_merged = pd.concat([predicition_probs_merged, prediction_probs])
     
-predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
-predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
+if predictions_merged.empty == False:
+    predictions_merged = predictions_merged.sort_values(by='Date').reset_index(drop=True)
+    predicition_probs_merged = predicition_probs_merged.sort_values(by='Date').reset_index(drop=True)
 
 #%% Scrape and add odds
 path_odds = r'ML_PL_new\modinput_odds.xlsx' # just set working directory right

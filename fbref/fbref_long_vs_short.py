@@ -10,8 +10,8 @@ from fbref import fbref_module as fbref
 from bs4 import BeautifulSoup
 import requests
 
-league = 'UEL'
-URL_match = 'https://fbref.com/en/matches/7a455b62/AZ-Alkmaar-Tottenham-Hotspur-March-6-2025-Europa-League'
+league = 'UCL'
+URL_match = 'https://fbref.com/en/matches/11701266/Internazionale-Feyenoord-March-11-2025-Champions-League'
 
 comp_id, league_name = fbref.team_dict_get(league)
 
@@ -167,7 +167,7 @@ for posgr in pos_dict.keys():
 # Only want relevant squads' season data
 
 for suffix in ['', '_p90']:
-    globals()[f'df_merged{suffix}'].Squad = globals()[f'df_merged{suffix}'].Squad.replace(to_replace=['nl AZ Alkmaar', 'eng Tottenham'], value=['AZ Alkmaar', 'Tottenham Hotspur'])
+    globals()[f'df_merged{suffix}'].Squad = globals()[f'df_merged{suffix}'].Squad.replace(to_replace=['it Inter', 'nl Feyenoord'], value=['Internazionale', 'Feyenoord'])
 
 if (teams_df.team_name[0] in df_merged.Squad.unique()) & (teams_df.team_name[1] in df_merged.Squad.unique()):
     df_merged_sq = df_merged[df_merged.Squad.isin([teams_df.team_name[0], teams_df.team_name[1]])]
@@ -240,21 +240,18 @@ def op_list_append(listname, plus_minus, overpercent_dict):
                      'redundant': redundancy})
 
 overperform_list = []
-for row in range(len(df_merged_match)):
-    squad = df_merged_match.Squad[row]
-    player = df_merged_match.Player[row]
-    pos = df_merged_match.pos_group[row]
-    winger = df_merged_match.winger[row]
+for i, row in df_merged_match.iterrows():
+    squad, player, pos, winger = row[['Squad', 'Player', 'pos_group', 'winger']]
     matchmins = 90 #df_merged_match.Min[row]
-    seasonmins = df_mseason.Min[row]
+    seasonmins = df_mseason.Min[i]
     
     for col in range(6, len(df_merged_match.columns[:-2])):
         stat_name = df_merged_match.columns[col]
         stat_category = combined_stats.get(stat_name).get('category')
         stat_name_long = combined_stats.get(stat_name).get('name')
-        matchstat = df_merged_match.iloc[row, col]
-        seasonstat = df_mseason.iloc[row, col]
-        season_avg = df_mseason_p90.iloc[row, col]
+        matchstat = df_merged_match.iloc[i, col]
+        seasonstat = df_mseason.iloc[i, col]
+        season_avg = df_mseason_p90.iloc[i, col]
         league_avg = league_avg_dict.get(stat_name)
         pos_avg = pos_avg_dict.get(pos).get(stat_name)
         redundancy = True if stat_name in d_redundant_stats else ('ERROR' if stat_name not in d_filtered_keys else False)

@@ -14,7 +14,7 @@ model.fit(X_train, y_train)
 
 cross_val_score(model, X_train, y_train, cv=3, n_jobs=1).mean()
 
-# Hypertune
+# Tune
 model.get_params()
 param_grid = {
     'n_estimators': [10,50,100,500],

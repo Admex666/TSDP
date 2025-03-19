@@ -76,7 +76,7 @@ for i in range(len(df_preds_played)):
 
                         
 df_predprobs_played = pd.merge(df_predprobs_played, 
-                               xlsx_preds[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
+                               df_preds_played[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
                                on=['Date', 'HomeTeam'], how='left')
 
 # Calculate profits
@@ -99,7 +99,7 @@ for btype in ['FTR', 'O/U2.5']:
     for m_short in ['gNB', 'RF', 'DT', 'KNN']:
         df_predprobs_played[f'{btype}_{m_short}_profit'] = 0
         for i, outcome in enumerate(df_predprobs_played[f'{btype}_result']):
-            if str(outcome) == 'nan':
+            if str(outcome) == 'nan' or outcome == None:
                 pass
             else:
                 outcome_list = ['H', 'D', 'A'] if btype == 'FTR' else ['Over', 'Under']
@@ -112,7 +112,7 @@ for btype in ['FTR', 'O/U2.5']:
                 
                 df_predprobs_played.loc[i, f'{btype}_{m_short}_profit'] = (bets_won*odds - bets_won) - bets_lost
 
-#%% To excel
+#%% Prepare for export
 # Import previous
 xlsx_preds = xlsx_preds.dropna()
 xlsx_predprobs = xlsx_predprobs.dropna()
@@ -140,6 +140,8 @@ profits.columns = ['Total_preds', 'Average_preds', 'Total_predprobs', 'Average_p
 # Change of profit
 print(f'\n Changes of profit ({len(df_preds_played_clean)} games):\n \n', df_preds_played_clean.loc[:,profit_cols].sum())
 print(f'\n Total profits ({len(xlsx_preds_new)} games):\n \n', xlsx_preds_new.loc[:,profit_cols].sum())
+print(f'\n Changes of profit ({len(df_predprobs_played_clean)} games):\n \n', df_predprobs_played_clean.loc[:,profit_cols].sum())
+print(f'\n Total profits ({len(xlsx_predprobs_new)} games):\n \n', xlsx_predprobs_new.loc[:,profit_cols].sum())
 
 for dfname in ['preds', 'predprobs']:
     # Cumulated profits
@@ -157,6 +159,7 @@ for dfname in ['preds', 'predprobs']:
     plt.axhline(y=0, linestyle='--', color='grey')
     plt.show()
 
+#%% To excel
 with pd.ExcelWriter(output_path) as writer:
     xlsx_preds_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
     xlsx_predprobs_new.to_excel(writer, sheet_name=output_sheets[1], index=False)

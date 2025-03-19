@@ -16,6 +16,38 @@ def read_html_upd(URL, table_id):
     options = webdriver.ChromeOptions()
     #options.add_argument('--headless')
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    #driver = webdriver.Chrome(service=Service(r"C:\Users\Adam\.wdm\drivers\chromedriver\win64\114.0.5735.90\chromedriver.exe"), options=options)
+
+    
+    driver.get(URL)
+    
+    try:
+        table = WebDriverWait(driver, 25).until(
+            EC.presence_of_element_located((By.ID, table_id))
+        )
+        
+        table_html = table.get_attribute('outerHTML')
+        
+        df = pd.read_html(StringIO(table_html))[0]
+        
+        return [df]
+    finally:
+        driver.quit()
+        
+def read_html_upd_firefox(URL, table_id):
+    import pandas as pd
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.firefox.service import Service as FirefoxService
+    from webdriver_manager.firefox import GeckoDriverManager
+    from io import StringIO
+    
+    options = webdriver.FirefoxOptions()
+    # options.add_argument('--headless')
+    
+    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
     
     driver.get(URL)
     
@@ -68,6 +100,10 @@ def format_column_names(df):
 
 def scrape(URL, table_id):
     df = column_joiner(to_dataframe(read_html_upd(URL, table_id)))
+    return df
+
+def scrape_ffox(URL, table_id):
+    df = column_joiner(to_dataframe(read_html_upd_firefox(URL, table_id)))
     return df
 
 def scrape_prev(URL, table_id):
@@ -204,7 +240,11 @@ def stats_dict():
         'Performance_2CrdY': {'name': 'Second Yellow Cards', 'category': 'Disciplinary', 'significance': 'negative'},
         'Performance_PKwon': {'name': 'Penalties Won', 'category': 'Offensive', 'significance': 'positive'},
         'Performance_PKcon': {'name': 'Penalties Conceded', 'category': 'Defensive', 'significance': 'negative'},
-        'Performance_OG': {'name': 'Own Goals', 'category': 'Defensive', 'significance': 'negative'}
+        'Performance_OG': {'name': 'Own Goals', 'category': 'Defensive', 'significance': 'negative'},
+        'Expected_PSxG+/-': {'name': 'Goals Prevented', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Performance_Save%': {'name': 'Save Rate %', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Passes_Launch%': {'name': 'Launched Pass Rate %', 'category': 'Passing', 'significance': 'positive'},
+        'SoTA/GA': {'name': 'Shots on target per Goals against', 'category': 'Goalkeeping', 'significance': 'positive'}
     }
     
     return combined_stats

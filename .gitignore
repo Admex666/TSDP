@@ -1,0 +1,4 @@
+"object_detection/runs/detect/predict/*.avi" 
+"object_detection/models/*.pt" 
+"object_detection/runs/detect/predict/*.avi" 
+"object_detection/models/*.pt" 

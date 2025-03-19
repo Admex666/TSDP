@@ -151,7 +151,7 @@ with pd.ExcelWriter('ML_PL_new/test_scores.xlsx') as writer:
     accs_describe_relative.to_excel(writer, sheet_name='describe_relative')
     profits_describe.to_excel(writer, sheet_name='profit_stats')
 
-#%% Hypertune parameters
+#%% Tune hyperparameters
 params_all = list(model.get_params().keys())
 params = {
     'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
@@ -167,7 +167,7 @@ rsearch.fit(x_train, y_train)
 print(rsearch.best_score_)
 rs_results = pd.DataFrame(rsearch.cv_results_)
 
-#%% Hypertune v2
+#%% Tune v2
 param_grid = {
     'n_estimators': [10,50,100,500],
     'learning_rate': [0.0001, 0.001, 0.01, 0.1, 1.0],
