@@ -61,25 +61,38 @@ cols_not_gnb = [col for col in df_paperbets_predprob.columns if ('_prob' in col)
 df_test = df_paperbets_predprob.drop(columns=cols_to_drop+cols_not_gnb).copy()
 
 #%% Making bets 
+# loop outcomes then methods for bets
+# loop outcomes then methods for profits
+# sum profits and cumsum
+FTR_outs = ['H', 'D', 'A']
 for method in methods[:-2]:
-    for out in ['H', 'D', 'A']:
-        df_test[f'FTR_{out}_{method}_bet'] = None
-        df_test[f'FTR_{out}_{method}_profit'] = None
-        df_test[f'FTR_{out}_{method}_profit_cumsum'] = None
+    # Create columns in order
+    for out in FTR_outs:
+        df_test[f'FTR_{out}_{method}_bet'] = 0
+    for out in FTR_outs:
+        df_test[f'FTR_{out}_{method}_profit'] = 0
+    df_test[f'FTR_{method}_profits'] = 0
+    df_test[f'FTR_{method}_balance'] = 0
+    
+    for out in FTR_outs:
         for i, row in df_test.iterrows():
+            # Calc bet sizes
             odds_bookie = row[f'{out}_odds']
             prob_fair = row[f'{out}_gNB_prob']
             
             previous_bet = df_test.loc[i-1, f'FTR_{out}_{method}_bet'] if i!= 0 else 0
-            #iswin = 
-            #m_balance =
+            if i != 0:
+                iswin = df_test.loc[i-1, f'FTR_{method}_profits'] >= 0
+                m_balance = df_test.loc[i-1, f'FTR_{method}_balance']
+            else:
+                iswin = False
+                m_balance = m_bankroll
             
             if prob_fair >= 1/odds_bookie:
                 if method == 'kelly':
                     bet_size = bet_size_kelly(m_bankroll, odds_bookie, prob_fair)
                 elif method == 'fixed':
-                    #bet_size = bet_size_fixed(balance, bankroll_percent)
-                    bet_size = 0
+                    bet_size = bet_size_fixed(m_balance, bankroll_percent)
                 elif method == 'flat':
                     bet_size = bet_size_flat(m_bankroll, bankroll_percent)
                 elif method == 'proportional':
@@ -91,22 +104,18 @@ for method in methods[:-2]:
                 bet_size = 0
             
             df_test.loc[i, f'FTR_{out}_{method}_bet'] = bet_size
-            # Calc profit
+            
+            # Calc profits for each outcome
             result = row['FTR_result']
             profit = bet_size * (odds_bookie-1) if result == out else - bet_size
             df_test.loc[i, f'FTR_{out}_{method}_profit'] = profit
-            
-            # Add to cumsum
-            if i == 0:
-                df_test.loc[i, f'FTR_{out}_{method}_profit_cumsum'] = profit
-            else:
-                df_test.loc[i, f'FTR_{out}_{method}_profit_cumsum'] = df_test.loc[i-1, f'FTR_{out}_{method}_profit_cumsum'] + profit 
-
-for method in methods[:-2]:
-    df_test[f'FTR_{method}_profits'] = 0
-    for i, row in df_test.iterrows():
-        df_test.loc[i, f'FTR_{method}_profits'] = np.array([df_test.loc[i, f'FTR_{out}_{method}_profit'] for out in ['H', 'D', 'A']]).sum()
-
-        df_test[f'FTR_{method}_profits_cumsum'] = df_test[f'FTR_{method}_profits'].cumsum()
-            
+       
+            # Sum and cumsum profits
+            if out == FTR_outs[-1]:
+                profit_row = np.array([df_test.loc[i, f'FTR_{out}_{method}_profit'] for out in ['H', 'D', 'A']]).sum()
+                df_test.loc[i, f'FTR_{method}_profits'] = profit_row
+                
+                df_test.loc[i, f'FTR_{method}_balance'] = (m_bankroll + profit_row) if i==0 else df_test.loc[i-1, f'FTR_{method}_balance'] + profit_row
+                # let the bankroll be negative
+        
 #%% Calculating profit/loss
