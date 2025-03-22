@@ -146,6 +146,7 @@ def team_dict_get(countrycode):
                  'USA': {'comp_id': '22', 'league': 'Major-League-Soccer'},
                  'POR': {'comp_id': '32', 'league': 'Primeira-Liga'},
                  'NED': {'comp_id': '23', 'league': 'Eredivisie'},
+                 'WCQ_SA': {'comp_id': '4', 'league': 'WCQ----CONMEBOL-M'}
                  }
     
     comp_id = team_dict.get(countrycode).get('comp_id')
@@ -244,7 +245,15 @@ def stats_dict():
         'Expected_PSxG+/-': {'name': 'Goals Prevented', 'category': 'Goalkeeping', 'significance': 'positive'},
         'Performance_Save%': {'name': 'Save Rate %', 'category': 'Goalkeeping', 'significance': 'positive'},
         'Passes_Launch%': {'name': 'Launched Pass Rate %', 'category': 'Passing', 'significance': 'positive'},
-        'SoTA/GA': {'name': 'Shots on target per Goals against', 'category': 'Goalkeeping', 'significance': 'positive'}
+        'SoTA/GA': {'name': 'Shots on target per Goals against', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Per 90 Minutes_G-PK': {'name': 'Non-Penalty Goals per 90', 'category': 'Offense', 'significance': 'positive'},
+        'Per 90 Minutes_npxG': {'name': 'Non-Penalty Expected Goals per 90', 'category': 'Offense', 'significance': 'positive'},
+        'Per 90 Minutes_Ast': {'name': 'Assists per 90', 'category': 'Offense', 'significance': 'positive'},
+        'Per 90 Minutes_xAG':  {'name': 'Expected Assisted Goals per 90', 'category': 'Offense', 'significance': 'positive'},
+        'Progression_PrgP':  {'name': 'Progressive Passes', 'category': 'Passing', 'significance': 'positive'},
+        'Progression_PrgC':  {'name': 'Progressive Carries', 'category': 'Possession', 'significance': 'positive'},
+        'Progression_PrgR':  {'name': 'Progressive Runs', 'category': 'Possession', 'significance': 'positive'},
+        'SCA_SCA90':  {'name': 'Shot Creating Actions per 90', 'category': 'Offense', 'significance': 'positive'},
     }
     
     return combined_stats

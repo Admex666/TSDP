@@ -12,8 +12,8 @@ import numpy as np
 from scipy.stats import percentileofscore
 
 # choose from ENG, ESP, GER, ITA...
-league = 'GER'
-pos = 'MF' # FW, MF, DF, GK
+league = 'FRA'
+pos = 'FW' # FW, MF, DF, GK
 matches_at_least = 4
 year = '2023-2024' # the year of comparison
 
@@ -212,7 +212,8 @@ def create_df_kpi(analysis_df, player_index):
     
     return [df_kpi_player, df_kpi_player_dim]
 
-[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 124)
+# Choose the player
+[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 30)
 player_name = df_kpi_player_dim[df_kpi_player_dim.Statistic=='Player']['Value'].get(1)
 
 player_index_year = df_analyse_year[df_analyse_year.Player == player_name]
@@ -235,8 +236,21 @@ if df_kpi_player_dim.loc[1,'Value'] == df_kpi_player_dim_year.loc[1,'Value']:
 else:
     print("Names are not matching")
     
+stats_dict = fbref.stats_dict()
 if df_kpi_player_fact_both.Statistic.all() == df_kpi_player_fact_both.Statistic_year.all():
     df_kpi_player_fact_both.drop(columns='Statistic_year', inplace=True)
+    df_kpi_player_fact_both['Statistic_pretty'] = None
+    
+    for i, stat in enumerate(df_kpi_player_fact_both.Statistic):
+        stat_pretty = stat.replace('_p90', '')
+        if stat_pretty in stats_dict.keys():
+            if '_p90' in stat:
+                df_kpi_player_fact_both.loc[i, 'Statistic_pretty'] = stats_dict[stat_pretty]['name']+' per 90'
+            else:
+                df_kpi_player_fact_both.loc[i, 'Statistic_pretty'] = stats_dict[stat_pretty]['name']
+        else:
+            df_kpi_player_fact_both.loc[i, 'Statistic_pretty'] = f'ERROR_{stat_pretty}'
+    
 else:
     print('Statistics are not matching.')
     

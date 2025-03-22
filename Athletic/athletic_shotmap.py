@@ -37,7 +37,7 @@ points_avg_distance = df['X'].mean()
 actual_avg_distance = 120 - (df['X'] * 1.2).mean()
 
 #%% Colors
-background_color = '#0C0D0E'
+background_color = '#3c3d3d'
 mycolor = '#5ECB43'
 
 font_path = 'Athletic/Arvo-Regular.ttf'
@@ -139,3 +139,5 @@ ax1.axis('off')
 ax2.axis('off')
 ax3.axis('off')
 ax_img.axis('off')
+
+plt.show()
