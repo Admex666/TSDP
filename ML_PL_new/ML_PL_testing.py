@@ -167,7 +167,7 @@ rsearch.fit(x_train, y_train)
 print(rsearch.best_score_)
 rs_results = pd.DataFrame(rsearch.cv_results_)
 
-#%% Tune v2
+#%% Tune GB
 param_grid = {
     'n_estimators': [10,50,100,500],
     'learning_rate': [0.0001, 0.001, 0.01, 0.1, 1.0],

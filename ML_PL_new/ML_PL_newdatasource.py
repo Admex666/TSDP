@@ -50,6 +50,9 @@ model_short_dict = {'GaussianNB':'gNB',
                     'DecisionTreeClassifier': 'DT',
                     'KNeighborsClassifier': 'KNN'}
 
+model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier',
+              'KNeighborsClassifier']
+
 predictions_merged = pd.DataFrame()
 predicition_probs_merged = pd.DataFrame()
 fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
@@ -129,7 +132,7 @@ for countrycode in csv_name_dict.keys():
         # train on previous season
         x_train = model_input.iloc[:,6:]
         y_train = model_input.loc[:, btype]
-        for m in ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier', 'KNeighborsClassifier']:
+        for m in model_list:
             m_short = model_short_dict[m]
             
             model = globals()[f"{m}"]()
