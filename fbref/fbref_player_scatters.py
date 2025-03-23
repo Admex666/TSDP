@@ -34,12 +34,12 @@ Sources (fbref dfs):
 #%% Scrape the data from fbref
 import pandas as pd
 import numpy as np
-import fbref_module as fbref
+from fbref import fbref_module as fbref
 import matplotlib.pyplot as plt
 
 # Set parameters
-league = 'BRA'
-min_90_played = 5 # how many matches at least
+league = 'UNL'
+min_90_played = 0 # how many matches at least
 only_position = '' # DF, MF, FW or GK
 
 comp_id, league_name = fbref.team_dict_get(league)
@@ -104,9 +104,8 @@ for col in df_super.columns[8:]:
         df_super.rename(columns={col:f'{col}_p90'}, inplace=True)
 
 #%% To excel
-path = r'C:\Users\Ádám\Dropbox\TSDP_output\fbref\player_scatters.xlsx'
-other_path = 'E:/player_scatters.xlsx'
-df_super.to_excel(other_path, index=False)
+path = r'fbref\player_scatters.xlsx'
+df_super.to_excel(path, index=False)
 
 #%% Plotting (defining function)
 """

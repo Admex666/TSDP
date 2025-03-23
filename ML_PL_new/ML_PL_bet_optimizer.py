@@ -20,7 +20,7 @@ martingale_percent = 0.015
 #%% Functions for bet sizes
 def bet_size_kelly(bankroll, odds_bookie, prob_fair):
     # kelly = bankroll * ( (prob*(odds-1)) - (1-prob) / (odds-1))
-    bet_size_calc = bankroll * ( (prob_fair*(odds_bookie-1)) - (1-prob_fair) ) / (odds_bookie-1)
+    bet_size_calc = bankroll * ( (prob_fair*(odds_bookie-1)) - (1-prob_fair) ) / (odds_bookie-1) /2.5
     bet_size = 0 if bet_size_calc <= 0 else bet_size_calc
     
     return bet_size
@@ -69,9 +69,6 @@ cols_not_gnb = [col for col in df_paperbets_predprob.columns if ('_prob' in col)
 df_test = df_paperbets_predprob.drop(columns=cols_to_drop+cols_not_gnb).copy()
 
 #%% Making bets 
-# loop outcomes then methods for bets
-# loop outcomes then methods for profits
-# sum profits and cumsum
 FTR_outs = ['H', 'D', 'A']
 for method in methods:
     # Create columns in order
@@ -151,7 +148,13 @@ plt.figure(figsize=(10,6))
 plt.plot(df_test[balances], label=methods)
 plt.title('Balances over time', fontsize=20)
 plt.grid(axis='y')
-plt.ylim(top=23000, bottom=7000)
+#plt.ylim(top=23000, bottom=7000)
 plt.legend()
 
 plt.show()
+
+profits = [column for column in df_test.columns if '_profits' in column]
+profits_describe = df_test[profits].describe()
+profits_describe.columns = methods
+
+profits_describe.loc['risk_reward', :] = profits_describe.loc['std', :] / profits_describe.loc['mean', :]

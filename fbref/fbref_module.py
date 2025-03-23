@@ -146,7 +146,8 @@ def team_dict_get(countrycode):
                  'USA': {'comp_id': '22', 'league': 'Major-League-Soccer'},
                  'POR': {'comp_id': '32', 'league': 'Primeira-Liga'},
                  'NED': {'comp_id': '23', 'league': 'Eredivisie'},
-                 'WCQ_SA': {'comp_id': '4', 'league': 'WCQ----CONMEBOL-M'}
+                 'WCQ_SA': {'comp_id': '4', 'league': 'WCQ----CONMEBOL-M'},
+                 'UNL': {'comp_id': '677', 'league': 'UEFA-Nations-League'}
                  }
     
     comp_id = team_dict.get(countrycode).get('comp_id')
