@@ -425,6 +425,8 @@ plt.text(-0.3,
          fontsize = 10,
          color='darkblue')
 
+plt.show()
+
 #%%
 with pd.ExcelWriter(r"C:\TwitterSportsDataProject\SofaScore scrapes\SofaScore_Scrape.xlsx") as writer:
     df_playersum.to_excel(writer, sheet_name="Player shots", index=False)

@@ -92,6 +92,8 @@ for countrycode in csv_name_dict.keys():
     if df_week.empty:
         print(f"No games found in {span.days} days span in {league}.")
         continue
+    else:
+        print(f'{len(df_week)} games found in the {league}.')
     df_week['DateTime'] = df_week.Date.astype(str) + ' ' + df_week.Time.str.split(' ').str.get(0)
     df_week['DateTime'] = pd.to_datetime(df_week.DateTime, format='%Y-%m-%d %H:%M')
     nr_matches = len(df_week)

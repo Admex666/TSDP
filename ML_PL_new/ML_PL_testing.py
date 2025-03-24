@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.linear_model import Perceptron
 from sklearn.metrics import (
     accuracy_score,
     confusion_matrix,
@@ -15,8 +16,11 @@ from fbref import fbref_module as fbref
 from ML_PL_new import ML_PL_transform_data as mlpl 
 
 # Loading data from website
-url = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
-df = pd.read_csv(url)
+url22 = "https://www.football-data.co.uk/mmz4281/2223/E0.csv"
+url23 = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
+df22 = pd.read_csv(url22)
+df23 = pd.read_csv(url23)
+df = pd.concat([df22, df23]).reset_index()
 # Only needed columns
 needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
 betting_cols = ['B365H', 'B365D', 'B365A', 'B365>2.5', 'B365<2.5']
@@ -30,7 +34,7 @@ model_input = mlpl.df_to_model_input(df)
 
 # Prepare ML model
 model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier',
-              'KNeighborsClassifier', 'GradientBoostingClassifier']
+              'KNeighborsClassifier', 'GradientBoostingClassifier', 'Perceptron']
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
@@ -49,14 +53,17 @@ params_grid = {'GaussianNB':{},
                'GradientBoostingClassifier': {'n_estimators': 500,
                                               'learning_rate': 0.001,
                                               'max_depth': 3
-                                               }
+                                               },
+               'Perceptron': {'alpha': 0.01, 'eta0': 0.001,
+                              'max_iter': 100, 'penalty': 'l1'}
                }
 
 model_short_dict = {'GaussianNB':'gNB', 
                     'RandomForestClassifier': 'RF',
                     'DecisionTreeClassifier': 'DT',
                     'KNeighborsClassifier': 'KNN',
-                    'GradientBoostingClassifier': 'GB'}
+                    'GradientBoostingClassifier': 'GB',
+                    'Perceptron': 'ptron'}
 
 #%% Build and test ML model
 df_accs = pd.DataFrame()
@@ -67,7 +74,7 @@ for btype in ['FTR', 'BTTS', 'O/U2.5']:
     for m in model_list:
         acc_list = []
         m_short = model_short_dict[m]
-        for n in range(600, 800):
+        for n in range(1000, 1100):
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
             
             model = globals()[f"{m}"]()
@@ -130,7 +137,7 @@ for btype in ['FTR', 'O/U2.5']:
     for m in model_list:
         profit_list = []
         m_short = model_short_dict[m]
-        for n in range(600, 900):
+        for n in range(1000, 1100):
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
             odds_test = odds_data.loc[y_test.index]
             
@@ -141,7 +148,7 @@ for btype in ['FTR', 'O/U2.5']:
             y_pred = model.predict(x_test)
             profit = calculate_profit(y_test, y_pred, df, btype)
             profit_list.append(profit)
-        
+            
         df_profits[f'{btype}_{m_short}'] = profit_list
 profits_describe = df_profits.describe()
 

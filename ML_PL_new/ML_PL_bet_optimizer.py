@@ -23,7 +23,7 @@ url_test23esp = "https://www.football-data.co.uk/mmz4281/2324/SP1.csv" #spanish 
 df_tr = pd.read_csv(url_tr)
 df_tst22esp = pd.read_csv(url_test22esp)
 df_tst23esp = pd.read_csv(url_test23esp)
-df_tst = pd.concat([df_tst22esp, df_tst23esp])
+df_tst = pd.concat([df_tst22esp, df_tst23esp]).reset_index()
 df_tst = df_tst.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam']).reset_index(drop=True)
 # Only needed columns
 needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
@@ -77,7 +77,7 @@ martingale_percent = 0.015
 #%% Functions for bet sizes
 def bet_size_kelly(bankroll, odds_bookie, prob_fair):
     # kelly = bankroll * ( (prob*(odds-1)) - (1-prob) / (odds-1))
-    bet_size_calc = bankroll * ( (prob_fair*(odds_bookie-1)) - (1-prob_fair) ) / (odds_bookie-1) /2.5
+    bet_size_calc = bankroll * ( (prob_fair*(odds_bookie-1)) - (1-prob_fair) ) / (odds_bookie-1) / 15
     bet_size = 0 if bet_size_calc <= 0 else bet_size_calc
     
     return bet_size
@@ -95,7 +95,7 @@ def bet_size_flat(bankroll, bankroll_percent):
 def bet_size_proportional(bankroll, odds_bookie, prob_fair):
     # proportional = ( (myprob-prob) * bankroll / (odds-1))
     prob_bookie = 1/odds_bookie
-    bet_size = (prob_fair - prob_bookie) * bankroll / (odds_bookie-1) if prob_fair > prob_bookie else 0
+    bet_size = (prob_fair - prob_bookie) * bankroll / (odds_bookie-1) /7 if prob_fair > prob_bookie else 0
     
     return bet_size
 
@@ -126,7 +126,7 @@ cols_not_gnb = [col for col in df_paperbets_predprob.columns if ('_prob' in col)
 df_test = df_paperbets_predprob.drop(columns=cols_to_drop+cols_not_gnb).copy()
 
 #%% Making bets 
-def calc_profits(df_test):
+def calc_profits(df_test, prob_min=0.15, prob_max=0.85):
     FTR_outs = ['H', 'D', 'A']
     for method in methods:
         # Create columns in order
@@ -166,7 +166,7 @@ def calc_profits(df_test):
                     iswin = False
                     m_balance = m_bankroll
                 
-                if (prob_fair >= prob_bookie) and (prob_bookie < 0.85) and (prob_bookie > 0.15):
+                if (prob_fair >= prob_bookie) and (prob_bookie < prob_max) and (prob_bookie > prob_min):
                     if method == 'kelly':
                         bet_size = bet_size_kelly(m_bankroll, odds_bookie, prob_fair)
                     elif method == 'fixed':
@@ -200,8 +200,34 @@ def calc_profits(df_test):
                 #m_balance += profit_row
     
     return df_test
+
+def get_profits_describe(df_test):
+    profits = [column for column in df_test.columns if '_profits' in column]
+    profits_describe = df_test[profits].describe()
+    profits_describe.columns = methods
+    
+    profits_describe.loc['risk_reward', :] = profits_describe.loc['std', :] / profits_describe.loc['mean', :]
+
+    return profits_describe
+
+#%%
+probtest_dict = {'prob_min':[0.1, 0.15, 0.20, 0.25], 
+                 'prob_max': [0.9, 0.85, 0.80, 0.75]}
+probtest_out = pd.DataFrame()
+
+i = -1
+for prob_min in probtest_dict['prob_min']:
+    for prob_max in probtest_dict['prob_max']:
+        i += 1
+        df_test2_calc = calc_profits(df_test2, prob_min, prob_max)
+        profits_describe = get_profits_describe(df_test2_calc)
         
-df_test2_calc = calc_profits(df_test2)
+        probtest_out.loc[i, ['prob_min', 'prob_max']] = prob_min, prob_max
+        for col in profits_describe.columns:
+            probtest_out.loc[i, col] = profits_describe.loc['mean', col]
+        
+        print(f'{prob_min} & {prob_max} done')
+# 0.9 and 0.15 seem the most optimal
 
 #%% Calculating profit/loss
 def viz_profit(df_test, zoom=False):
@@ -225,6 +251,6 @@ def viz_profit(df_test, zoom=False):
     
     profits_describe.loc['risk_reward', :] = profits_describe.loc['std', :] / profits_describe.loc['mean', :]
     
-    return profits_describe
     
-profits_describe = viz_profit(df_test2_calc, zoom=True)
+    
+viz_profit(df_test2_calc, zoom=False)
