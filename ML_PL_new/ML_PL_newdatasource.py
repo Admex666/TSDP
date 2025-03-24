@@ -55,7 +55,7 @@ model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier',
 
 predictions_merged = pd.DataFrame()
 predicition_probs_merged = pd.DataFrame()
-fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx')
+fuzz_teams_all = pd.read_excel('ML_PL_new/fuzz_teams.xlsx', sheet_name='cities')
 
 for countrycode in csv_name_dict.keys():
     csv_name = csv_name_dict[countrycode]

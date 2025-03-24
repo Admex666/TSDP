@@ -13,7 +13,7 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay,
 )
 from fbref import fbref_module as fbref
-from ML_PL_new import ML_PL_transform_data as mlpl 
+from ML_PL_new.ML_PL_transform_data import df_to_model_input 
 
 # Loading data from website
 url22 = "https://www.football-data.co.uk/mmz4281/2223/E0.csv"
@@ -30,11 +30,11 @@ df['BTTS'] = np.where((df.FTHG!=0)&(df.FTAG!=0),'Yes','No')
 df['O/U2.5'] = np.where(df.FTHG+df.FTAG>2.5,'Over','Under')
 
 #%% Transforming data
-model_input = mlpl.df_to_model_input(df)
+model_input = df_to_model_input(df)
 
 # Prepare ML model
 model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier',
-              'KNeighborsClassifier', 'GradientBoostingClassifier', 'Perceptron']
+              'KNeighborsClassifier', 'GradientBoostingClassifier'] #'Perceptron'
 
 params_grid = {'GaussianNB':{},
                'DecisionTreeClassifier': {'max_depth': 4, 'min_samples_split': 6,
@@ -74,13 +74,15 @@ for btype in ['FTR', 'BTTS', 'O/U2.5']:
     for m in model_list:
         acc_list = []
         m_short = model_short_dict[m]
-        for n in range(1000, 1100):
+        for n in range(600, 800):
             x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=n)
             
             model = globals()[f"{m}"]()
             model.set_params(**params_grid[m])
             
             model.fit(x_train, y_train)
+            if n % 20 == 0:
+                print(f'{btype}, {m}, {n}')
             
 # Evaluation
             y_pred = model.predict(x_test)
@@ -89,7 +91,7 @@ for btype in ['FTR', 'BTTS', 'O/U2.5']:
         df_accs[f'{btype}_{m_short}'] = acc_list
     
 accs_describe = df_accs.describe().iloc[1:, :]
-df_accs.boxplot(rot=90)
+df_accs.boxplot()
 
 accs_describe_relative = pd.DataFrame()
 for btype in ['FTR', 'BTTS', 'O/U2.5']:
@@ -99,7 +101,11 @@ for btype in ['FTR', 'BTTS', 'O/U2.5']:
         else:
             denominator = 1/2
         accs_describe_relative[f'{btype}_{m}'] = round((accs_describe[f'{btype}_{m}'] / denominator -1)*100,1)
-    
+
+#%%
+accs_describe_prev = pd.read_excel(output_path, index_col=0)
+accs_diff = accs_describe / accs_describe_prev - 1
+
 #%% Test profit/loss
 df.rename(columns={'B365H': 'H_odds',
                     'B365D': 'D_odds',
@@ -153,7 +159,8 @@ for btype in ['FTR', 'O/U2.5']:
 profits_describe = df_profits.describe()
 
 #%% Saving to excel
-with pd.ExcelWriter('ML_PL_new/test_scores.xlsx') as writer:
+output_path = 'ML_PL_new/test_scores.xlsx'
+with pd.ExcelWriter(output_path) as writer:
     accs_describe.to_excel(writer, sheet_name='describe')
     accs_describe_relative.to_excel(writer, sheet_name='describe_relative')
     profits_describe.to_excel(writer, sheet_name='profit_stats')
