@@ -37,12 +37,12 @@ cross_val_score(gnb, X_scaled, y, n_jobs=5, scoring='accuracy')
 # 6️⃣ Modell kiértékelése
 loss, acc = model.evaluate(X_test, y_test)
 gnb.evaluate(X_test, y_test)
-print(f"Teszt pontosság: {acc:.4f}")
+print(f"Accuracy: {acc:.4f}")
 
 # 7️⃣ Egy mintapélda megtekintése és predikció
 sample = X_test[2].reshape(1, -1)
 prediction = np.argmax(model.predict(sample))
 
 plt.imshow(X_test[2].reshape(8, 8), cmap='gray')
-plt.title(f"Predikció: {prediction}")
+plt.title(f"Prediction: {prediction}")
 plt.show()
