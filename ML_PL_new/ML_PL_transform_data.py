@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from ML_PL_new.historical_weather_api import get_coordinates, get_hourly_weather
 
-def df_to_model_input(df):  
+def df_to_model_input(df, weather=False):  
     # Writing it out
     df.rename(columns={
         'FTHG': 'HomeGoals', 'FTAG': 'AwayGoals',
@@ -92,18 +92,18 @@ def df_to_model_input(df):
         weathers_historic = pd.concat([weathers_historic, weather_team])
     weathers_historic.to_excel('ML_PL_new/weathers_ENG_22_24.xlsx', index=False)
     """
-    
-    weathers_historic = pd.read_excel('ML_PL_new/weathers_ENG_22_24.xlsx')
-    model_input[['temp_celsius', 'wind_speed_kmh', 'weathercode']] = float(0)
-    for i, row in model_input.iterrows():
-        date = row['Date']
-        #date = date.strftime('%Y-%m-%d')
-        team = row['HomeTeam']
-        mask = (weathers_historic.Team == team) & (date == weathers_historic['date'].dt.normalize())
-        date_weather = weathers_historic[mask]
-        temp_mean, wind_mean = date_weather[['temp_celsius', 'wind_speed_kmh']].mean()
-        weather_mode = date_weather['weathercode'].mode().iloc[0]
+    if weather:
+        weathers_historic = pd.read_excel('ML_PL_new/weathers_ENG_22_24.xlsx')
+        model_input[['temp_celsius', 'wind_speed_kmh', 'weathercode']] = float(0)
+        for i, row in model_input.iterrows():
+            date = row['Date']
+            #date = date.strftime('%Y-%m-%d')
+            team = row['HomeTeam']
+            mask = (weathers_historic.Team == team) & (date == weathers_historic['date'].dt.normalize())
+            date_weather = weathers_historic[mask]
+            temp_mean, wind_mean = date_weather[['temp_celsius', 'wind_speed_kmh']].mean()
+            weather_mode = date_weather['weathercode'].mode().iloc[0]
+            
+            model_input.loc[i, ['temp_celsius', 'wind_speed_kmh', 'weathercode']] = temp_mean, wind_mean, weather_mode
         
-        model_input.loc[i, ['temp_celsius', 'wind_speed_kmh', 'weathercode']] = temp_mean, wind_mean, weather_mode
-    
     return model_input

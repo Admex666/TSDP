@@ -12,10 +12,16 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
+import os
+wd_old = os.getcwd()
+if wd_old != 'C:\\Users\\Adam\\..Data\\TSDP':
+    wd_base = wd_old.split('\\')[:4]
+    wd_new = '\\'.join(wd_base)+'\\TSDP'
+    os.chdir(wd_new)
 from fbref import fbref_module as fbref
 from ML_PL_new.ML_PL_transform_data import df_to_model_input 
 
-# Loading data from website
+#%% Loading data from website
 url22 = "https://www.football-data.co.uk/mmz4281/2223/E0.csv"
 url23 = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
 df22 = pd.read_csv(url22)
@@ -30,7 +36,7 @@ df['BTTS'] = np.where((df.FTHG!=0)&(df.FTAG!=0),'Yes','No')
 df['O/U2.5'] = np.where(df.FTHG+df.FTAG>2.5,'Over','Under')
 
 #%% Transforming data
-model_input = df_to_model_input(df)
+model_input = df_to_model_input(df, weather=False)
 
 # Prepare ML model
 model_list = ['GaussianNB', 'RandomForestClassifier', 'DecisionTreeClassifier',

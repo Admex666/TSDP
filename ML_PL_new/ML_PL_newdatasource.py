@@ -9,11 +9,17 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
+import os
+wd_old = os.getcwd()
+if wd_old != 'C:\\Users\\Adam\\..Data\\TSDP':
+    wd_base = wd_old.split('\\')[:4]
+    wd_new = '\\'.join(wd_base)+'\\TSDP'
+    os.chdir(wd_new)
 from fbref import fbref_module as fbref
-from ML_PL_new import ML_PL_transform_data as mlpl 
+from ML_PL_new.ML_PL_transform_data import df_to_model_input
 import datetime
 
-# Loading data from website
+#%% Loading data from website
 url_train = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
 df_tr = pd.read_csv(url_train)
 # Only needed columns
@@ -22,7 +28,7 @@ df_tr = df_tr[needed_cols]
 # create BTTS and O2,5 labels
 df_tr['BTTS'] = np.where((df_tr.FTHG!=0)&(df_tr.FTAG!=0),'Yes','No')
 df_tr['O/U2.5'] = np.where(df_tr.FTHG+df_tr.FTAG>2.5,'Over','Under')
-model_input = mlpl.df_to_model_input(df_tr)
+model_input = df_to_model_input(df_tr, weather=False)
 
 #%% Getting the fresh data for predictions
 # football-data.co.uk historical data urls:
@@ -122,7 +128,7 @@ for countrycode in csv_name_dict.keys():
     
     df_all = pd.concat([df_pred,df_current], ignore_index=True)
     
-    model_input_pred = mlpl.df_to_model_input(df_all)
+    model_input_pred = df_to_model_input(df_all, weather=False)
     model_input_pred = model_input_pred.iloc[-nr_matches:,:].reset_index(drop=True)
     
     # Build model
@@ -182,12 +188,22 @@ for out in ['H', 'D', 'A', 'Over', 'Under']:
         df_predprob_odds[f'{out}_{m_short}_value'] = (1/df_predprob_odds[f'{out}_odds'] / df_predprob_odds[f'{out}_{m_short}_prob'] -1) *100
 
 # Calculate bet size
+def calc_bet_size_propo(bankroll, odds_bookie, prob_fair):
+    # proportional = ( (myprob-prob) * bankroll / (odds-1))
+    prob_bookie = 1/odds_bookie
+    bet_size = (prob_fair - prob_bookie) * bankroll / (odds_bookie-1) /7
+    return bet_size
+
 for out in ['H', 'D', 'A', 'Over', 'Under']:
     for m_short in model_short_dict.values():
-        df_predprob_odds[f'{out}_{m_short}_bet'] = np.where(df_predprob_odds[f'{out}_{m_short}_value'] > 0,
-                                                            1/(df_predprob_odds[f'{out}_odds']-1),
+        criterion = (df_predprob_odds[f'{out}_{m_short}_bet'] >= 0)
+        odds_bookie = df_predprob_odds[f'{out}_odds']
+        prob_fair = df_predprob_odds[f'{out}_{m_short}_prob']
+        bet_col = calc_bet_size_propo(100/3, odds_bookie, prob_fair)
+        df_predprob_odds[f'{out}_{m_short}_bet'] = bet_col
+        df_predprob_odds[f'{out}_{m_short}_bet'] = np.where(criterion,
+                                                            df_predprob_odds[f'{out}_{m_short}_bet'],
                                                             0)
-
 # Calculate bets for df_pred_odds     
 for out in ['H', 'D', 'A']:
     for m_short in model_short_dict.values():
