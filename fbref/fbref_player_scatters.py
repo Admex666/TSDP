@@ -38,7 +38,7 @@ from fbref import fbref_module as fbref
 import matplotlib.pyplot as plt
 
 # Set parameters
-league = 'UNL'
+league = 'ESP'
 min_90_played = 0 # how many matches at least
 only_position = '' # DF, MF, FW or GK
 

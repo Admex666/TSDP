@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['..\\mplsoccer\\shotmaps.py', '..\\mplsoccer\\field_tilt.py']
+recent_files = ['ML py\\art_neural_net.py', 'ML_PL_new\\ML_PL_testing.py', 'ML_PL_new\\ann_test.py', 'fbref\\fbref_player_scatters.py', '..\\mplsoccer\\field_tilt.py']
 
 [main]
 version = 0.2.0
