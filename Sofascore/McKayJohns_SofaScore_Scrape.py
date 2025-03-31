@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = 'https://www.sofascore.com/football/match/hungary-turkiye/aUbsjUb#id:13157442'
+URL = 'https://www.sofascore.com/football/match/napoli-milan/Rdbsoeb#id:12501548'
 
 #%%
 if type(URL) != str:
@@ -95,27 +95,14 @@ else:
     except Exception as e:
         print("Error retrieving lineup data:", e)
         
-    
     # Scraping team names
-    from bs4 import BeautifulSoup
-    import time
-    
-    # Set up WebDriver
-    # Open the webpage
-    driver.get(URL)
-    
-    # Wait for the page to fully load
-    time.sleep(5)  # You can adjust this or replace with WebDriverWait
-    
-    # Get the fully rendered page source
-    page_source = driver.page_source
-    
     # Parse the page source with BeautifulSoup
     soup = BeautifulSoup(page_source, 'html.parser')
     
     # Locate the image element using the CSS selector provided
     image_element1 = soup.select_one('div:nth-child(1) > div > a > div > img')
     image_element2 = soup.select_one('div:nth-child(3) > div > a > div > img')
+    date_raw = soup.find_all('span', class_='textStyle_body.small c_neutrals.nLv1 lh_1')[0].text
     
     if image_element1:
         # Extract the 'alt' attribute from the image element
@@ -130,6 +117,11 @@ else:
         print(away_name)
     else:
         print("Image element (away team) not found")
+    
+    if date_raw:
+        print('Date found')
+    else:
+        print("Date not found")
     
     driver.quit()
 
@@ -160,7 +152,7 @@ df.rename(columns={'X Coordinate': 'X', 'Y Coordinate': 'Y'}, inplace=True)
 df['isHome'] = df['Team']
 df['Team'] = np.where(df['Team'] == True, home_name, away_name)
 
-if df.xG.unique() == None:
+if df.xG.all() == None:
     print('No xG found.')
 else:
     count_none = 0
@@ -183,7 +175,7 @@ else:
     if count_none != 0:
         print(f'{count_none} X coordinate values not found.')
     else:
-        print(f'Values found for every shot.')
+        print(f'Coordinate values found for every shot.')
 
 #%%
 # calculating cumxg
@@ -224,26 +216,17 @@ df_lineup = df_lineup.reset_index(drop=True)
 
 df_lineup['Team'] = np.where(df_lineup.isHome == True, home_name, away_name)
 
-#%%Displaying Cumulative xG and xGOT by time
+#%% Displaying Cumulative xG and xGOT by time
 import matplotlib.font_manager as font_manager
 # Colors and styling
 mycolor = '#5ECB43'
 background_color = '#3c3d3d'
-t1_color = 'orange'
-t2_color = 'purple'
-my_font_path = 'Athletic/Nexa-ExtraLight.ttf'
+t1_color = '#12a0d7'
+t2_color = '#fb090b'
+my_font_path = r'C:\Users\Adam\..Data\TSDP\Athletic\Nexa-ExtraLight.ttf'
 my_font_props = font_manager.FontProperties(fname=my_font_path)
 
 def plot_cumulative_metric(df, home_name, away_name, metric, title):
-    my_font_path = 'Athletic/Nexa-ExtraLight.ttf'
-    my_font_props = font_manager.FontProperties(fname=my_font_path)
-    
-    # Colors and styling
-    mycolor = '#5ECB43'
-    background_color = '#3c3d3d'
-    t1_color = 'orange'
-    t2_color = 'purple'
-    
     # Extract values for each team
     plot_x_home = df[df['Team'] == home_name]['timeSeconds']
     plot_y_home = df[df['Team'] == home_name][metric]
@@ -293,16 +276,16 @@ def plot_cumulative_metric(df, home_name, away_name, metric, title):
     plt.title(title, color='white')
     plt.grid(axis='x')
     plt.legend()
-    plt.text(-5, -0.13 if metric == 'team_cumulative_xG' else -0.18,
+    plt.text(-5, -0.25 if metric == 'team_cumulative_xG' else -0.25,
              'ADAM JAKUS', color=mycolor, fontsize=13, fontproperties=my_font_props)
     
     plt.show()
 
 # Usage
-plot_cumulative_metric(df, home_name, away_name, 'team_cumulative_xG', 'Cumulative expected goals')
 plot_cumulative_metric(df, home_name, away_name, 'team_cumulative_xGOT', 'Cumulative expected goals after shot on goal')
+plot_cumulative_metric(df, home_name, away_name, 'team_cumulative_xG', 'Cumulative expected goals')
 
-#%%
+#%% xG and xGOT by each player
 sort_by_min_in = 'xg' #xg or xgot
 sort_by_min_value_in = 0.3 #min value
 
@@ -332,7 +315,7 @@ else:
     print("I am not able to execute that, sorry.")
     
 
-### do the plots
+### Create the plots
 plt.figure(facecolor=background_color)
 bar_width = 0.25
 x_indexes = np.arange(len(sort_by_min['Player_team']))
@@ -354,7 +337,7 @@ plt.barh(x_indexes,
          color='r')
 
 plt.yticks(ticks= x_indexes,
-           labels= sort_by_min['Player_team'], c='white')
+           labels= sort_by_min['Player Name'], c='white')
 
 plt.tick_params(colors='white')
 ax = plt.gca()
@@ -375,7 +358,7 @@ plt.show()
 
 #%%Analyzing goalkeeper performances
 ## The goalies
-df_goalies = df_lineup[df_lineup.Position == 'G']
+df_goalies = df_lineup[(df_lineup.Position == 'G') & (df_lineup.Substitute == False)]
 df_goalies['Player_team'] = df_goalies['Player Name'].astype(str) + ' (' + df_goalies['Team'].astype(str) + ')'
 
 ## Shots against keepers
@@ -472,7 +455,7 @@ for i,shot in df.iterrows():
             shotCircle=plt.Circle((x,pitchWidthY-y),circleSize,color=circleColor, alpha=1)
             plt.text(x,pitchWidthY-y-3,shot['Player Name'],ha='center',va='center', c="white")
             if shot['xG'] != None:
-                plt.text(x,pitchWidthY-y,round(shot['xG'],2),ha='center',va='center', fontsize=9, c="white")
+                plt.text(x,pitchWidthY-y,round(shot['xG'],2),ha='center',va='center', fontsize=9, c=background_color)
         else:
             shotCircle=plt.Circle((x,pitchWidthY-y),circleSize,color=circleColor, alpha=0.5)
             
@@ -482,7 +465,7 @@ for i,shot in df.iterrows():
             shotCircle=plt.Circle((pitchLengthX-x,y),circleSize,color=circleColor, alpha=1)
             plt.text(pitchLengthX-x,y - 3 ,shot['Player Name'],ha='center',va='center', c="white")
             if shot['xG'] != None:
-                plt.text(pitchLengthX-x,y,round(shot['xG'],2),ha='center',va='center', fontsize=9, c="white")
+                plt.text(pitchLengthX-x,y,round(shot['xG'],2),ha='center',va='center', fontsize=9, c=background_color)
         else:
             shotCircle=plt.Circle((pitchLengthX-x, y),circleSize,color=circleColor, alpha=0.5)
     ax.add_patch(shotCircle)
@@ -490,16 +473,21 @@ for i,shot in df.iterrows():
 fig.set_facecolor(background_color)
 ax.set_facecolor(background_color)
 
-plt.title(f"{home_name} vs {away_name} shotmap", fontsize=22, va='center', c='white')
+plt.title(f"Shotmap", fontsize=22, va='center', c='white')
 # Plot goal numbers
 home_goals = len(df.loc[(df['Shot Type'] == 'goal') & (df['Team'] == home_name)])
 away_goals = len(df.loc[(df['Shot Type'] == 'goal') & (df['Team'] == away_name)])
-plt.text(0.25, 0.8, home_goals, fontsize=50, color='white',
+plt.text(0.25, 0.81, home_goals, fontsize=36, color=t1_color,
          ha='center', va='center', transform=ax.transAxes)
-plt.text(0.75, 0.8, away_goals, fontsize=50, color='white',
+plt.text(0.25, 0.9, home_name, fontsize=36, color=t1_color,
          ha='center', va='center', transform=ax.transAxes)
 
-plt.text(0.5, 0.979, '23 Mar 2025 | Source: SofaScore', ha='center', va='center', fontsize=13, color='white', transform=ax.transAxes)
+plt.text(0.75, 0.81, away_goals, fontsize=36, color=t2_color,
+         ha='center', va='center', transform=ax.transAxes)
+plt.text(0.75, 0.9, away_name, fontsize=36, color=t2_color,
+         ha='center', va='center', transform=ax.transAxes)
+
+plt.text(0.5, 0.979, f'{date_raw} | Source: SofaScore', ha='center', va='center', fontsize=13, color='white', transform=ax.transAxes)
 plt.text(100, -4,
          'ADAM JAKUS', color=mycolor,
          fontsize=20, fontproperties=my_font_props)
