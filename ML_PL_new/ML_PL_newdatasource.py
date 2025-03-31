@@ -196,7 +196,7 @@ def calc_bet_size_propo(bankroll, odds_bookie, prob_fair):
 
 for out in ['H', 'D', 'A', 'Over', 'Under']:
     for m_short in model_short_dict.values():
-        criterion = (df_predprob_odds[f'{out}_{m_short}_bet'] >= 0)
+        criterion = (df_predprob_odds[f'{out}_{m_short}_value'] >= 0)
         odds_bookie = df_predprob_odds[f'{out}_odds']
         prob_fair = df_predprob_odds[f'{out}_{m_short}_prob']
         bet_col = calc_bet_size_propo(100/3, odds_bookie, prob_fair)
