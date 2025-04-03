@@ -12,8 +12,8 @@ import numpy as np
 from scipy.stats import percentileofscore
 
 # choose from ENG, ESP, GER, ITA...
-league = 'FRA'
-pos = 'FW' # FW, MF, DF, GK
+league = 'GER'
+pos = 'DF' # FW, MF, DF, GK
 matches_at_least = 4
 year = '2023-2024' # the year of comparison
 
@@ -213,7 +213,8 @@ def create_df_kpi(analysis_df, player_index):
     return [df_kpi_player, df_kpi_player_dim]
 
 # Choose the player
-[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, 30)
+player_index = 98
+[df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, player_index)
 player_name = df_kpi_player_dim[df_kpi_player_dim.Statistic=='Player']['Value'].get(1)
 
 player_index_year = df_analyse_year[df_analyse_year.Player == player_name]
@@ -225,6 +226,7 @@ if player_index_year.empty:
 else:
     player_index_year = player_index_year.index[0]
     [df_kpi_player_fact_year, df_kpi_player_dim_year] = create_df_kpi(df_analyse_year, player_index_year)
+    print(f'Index of {player_name} found in {year} dataframe.')
 
 df_kpi_player_fact_year.columns = ['Statistic_year', 'Value_year', 'Percentile_year']
 
