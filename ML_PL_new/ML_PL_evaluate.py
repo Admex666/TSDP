@@ -34,7 +34,7 @@ df_preds_played = df_preds[df_preds.Date <= today].reset_index(drop=True)
 df_predprobs_played = df_predprobs[df_predprobs.Date <= today].reset_index(drop=True)
 
 #%% scrape fbref for scores
-for countrycode in df_preds_played.Country.unique():
+for countrycode in df_predprobs_played.Country.unique():
     comp_id, league = fbref.team_dict_get(countrycode)
     url_fixtures = f'https://fbref.com/en/comps/{comp_id}/schedule/{league}-Scores-and-Fixtures'
     df_fixtures = fbref.scrape(url_fixtures, f'sched_2024-2025_{comp_id}_1')
@@ -42,9 +42,9 @@ for countrycode in df_preds_played.Country.unique():
     df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
         
-    for i, fdcouk_home in enumerate(df_preds_played.HomeTeam):
+    for i, fdcouk_home in enumerate(df_predprobs_played.HomeTeam):
         fbref_home = fuzz_teams.loc[fuzz_teams.Team_fdcouk == fdcouk_home,'Team_fbref'].iloc[0]
-        mask = (df_fixtures.Date == df_preds_played.loc[i, 'Date'].normalize()) & (df_fixtures.Home == fbref_home)
+        mask = (df_fixtures.Date == df_predprobs_played.loc[i, 'Date'].normalize()) & (df_fixtures.Home == fbref_home)
         if df_fixtures.loc[mask, 'Score'].empty:
             goals_home, goals_away = None, None
         else:
@@ -54,29 +54,29 @@ for countrycode in df_preds_played.Country.unique():
             else:
                 goals_home, goals_away = None, None
             
-        df_preds_played.loc[i,['HomeGoals', 'AwayGoals']] = goals_home, goals_away
+        df_predprobs_played.loc[i,['HomeGoals', 'AwayGoals']] = goals_home, goals_away
 
 #%% Check results
-df_preds_played[['HomeGoals', 'AwayGoals']] = df_preds_played[['HomeGoals', 'AwayGoals']].astype(float) # handle NoneTypes
-df_preds_played['FTR_result'] = None
-df_preds_played['O/U2.5_result'] = None
+df_predprobs_played[['HomeGoals', 'AwayGoals']] = df_predprobs_played[['HomeGoals', 'AwayGoals']].astype(float) # handle NoneTypes
+df_predprobs_played['FTR_result'] = None
+df_predprobs_played['O/U2.5_result'] = None
 
-for i in range(len(df_preds_played)):
-    goals_home = df_preds_played.loc[i, 'HomeGoals']
-    goals_away = df_preds_played.loc[i, 'AwayGoals']
+for i in range(len(df_predprobs_played)):
+    goals_home = df_predprobs_played.loc[i, 'HomeGoals']
+    goals_away = df_predprobs_played.loc[i, 'AwayGoals']
     if (str(goals_home) or str(goals_away)) == 'nan':
         pass
     else:
         # Full time result
         ftr = 'H' if goals_home > goals_away else 'D' if goals_home == goals_away else 'A' if goals_home < goals_away else None
-        df_preds_played.loc[i, 'FTR_result'] = ftr
+        df_predprobs_played.loc[i, 'FTR_result'] = ftr
         # Over/under result
         o_u = 'Over' if (goals_home+goals_away) > 2.5 else 'Under' if (goals_home+goals_away) < 2.5 else None
-        df_preds_played.loc[i, 'O/U2.5_result'] = o_u
+        df_predprobs_played.loc[i, 'O/U2.5_result'] = o_u
 
                         
-df_predprobs_played = pd.merge(df_predprobs_played, 
-                               df_preds_played[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
+df_preds_played = pd.merge(df_preds_played, 
+                               df_predprobs_played[['Date', 'HomeTeam', 'FTR_result', 'O/U2.5_result']], 
                                on=['Date', 'HomeTeam'], how='left')
 
 # Calculate profits
