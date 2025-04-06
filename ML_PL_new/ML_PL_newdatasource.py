@@ -88,7 +88,7 @@ for countrycode in csv_name_dict.keys():
     df_fixtures.drop(index=df_fixtures[df_fixtures.Wk=='Wk'].index, inplace=True)
     df_fixtures.Date = pd.to_datetime(df_fixtures.Date)
     today = datetime.datetime.today()
-    span = pd.to_timedelta('7D')
+    span = pd.to_timedelta('8D')
     mask_date = (df_fixtures.Date <= today + span) & (df_fixtures.Date >= today)
     while (True not in mask_date.unique()) and (span < pd.to_timedelta('10D')):
         span += pd.to_timedelta('1D')
