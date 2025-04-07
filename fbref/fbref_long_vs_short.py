@@ -10,8 +10,8 @@ from fbref import fbref_module as fbref
 from bs4 import BeautifulSoup
 import requests
 
-league = 'UCL'
-URL_match = 'https://fbref.com/en/matches/11701266/Internazionale-Feyenoord-March-11-2025-Champions-League'
+league = 'FRA'
+URL_match = 'https://fbref.com/en/matches/37a1d2be/Marseille-Toulouse-April-6-2025-Ligue-1'
 
 comp_id, league_name = fbref.team_dict_get(league)
 
@@ -103,6 +103,7 @@ df_merged.rename(columns={'Playing Time_Min': 'Min',
                           'Standard_SoT': 'Performance_SoT',
                           },
                  inplace=True)
+df_merged = df_merged.dropna(subset=['Pos']).reset_index(drop=True)
 
 df_merged_match = pd.concat([df_merged0, df_merged1]).reset_index(drop=True)
 df_merged_match.drop(columns=missing_cols[4:]+['#'],
@@ -165,7 +166,6 @@ for posgr in pos_dict.keys():
 
 #%% Create dataframes that include all stats
 # Only want relevant squads' season data
-
 for suffix in ['', '_p90']:
     globals()[f'df_merged{suffix}'].Squad = globals()[f'df_merged{suffix}'].Squad.replace(to_replace=['it Inter', 'nl Feyenoord'], value=['Internazionale', 'Feyenoord'])
 
