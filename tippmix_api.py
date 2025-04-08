@@ -16,7 +16,7 @@ matches = data['data']
 
 #%%
 today_date = datetime.today().date()
-span = timedelta(days=8)
+span = timedelta(days=200)
 
 # Filter matches
 leagues_dict = {'ESP1': 1596, 'ENG1': 1486, 'POR1': 1462, 'ITA1': 1385,
@@ -69,3 +69,40 @@ for match_f in matches_f:
         odds.append(match_odds)
 
 df_odds = pd.DataFrame(odds)
+
+#%% Fuzz_teams fuzzy matching
+path_fuzz = 'ML_PL_new/fuzz_teams.xlsx'
+fuzz_teams = pd.read_excel(path_fuzz, sheet_name='cities')
+
+from fuzzywuzzy import fuzz
+fuzz_teams['Team_tippmix'] = None
+
+for i_t, row_t in df_odds.iterrows():
+    team_tippmix1 = row_t['HomeTeam']
+    team_tippmix2 = row_t['AwayTeam']
+    country_code = row_t['league_name'][:3]
+    
+    best_ratio1, best_ratio2 = 0, 0
+    for i_fuzz, row_fuzz in fuzz_teams.iterrows():
+        if row_fuzz['Country'] == country_code:
+            fteam1, fteam2, fteam3 = row_fuzz[['Team_fdcouk', 'Team_fbref', 'Team_odds']]
+            
+            for teamnr in ['1', '2']:
+                for teamcompnr in ['1', '2', '3']:
+                    globals()[f'r{teamnr}{teamcompnr}'] = fuzz.ratio(globals()[f'team_tippmix{teamnr}'], globals()[f'fteam{teamcompnr}']) if pd.isna(globals()[f'fteam{teamcompnr}']) == False else 0 
+                    
+                    #r11 = fuzz.ratio(team_tippmix1, fteam1) if fteam1 != None else 0
+                    #r12 = fuzz.ratio(team_tippmix1, fteam2) if fteam2 != None else 0
+                    #r13 = fuzz.ratio(team_tippmix1, fteam3) if fteam3 != None else 0
+                ratios = [r11, r12, r13] if teamnr == '1' else [r21, r22, r23]
+                globals()[f'ratio{teamnr}'] = np.array(ratios).mean()
+                if globals()[f'ratio{teamnr}'] > globals()[f'best_ratio{teamnr}']:
+                    globals()[f'best_ratio{teamnr}'] = globals()[f'ratio{teamnr}']
+                    globals()[f'best_index{teamnr}'] = i_fuzz
+    
+    fuzz_teams.loc[best_index1, 'Team_tippmix'] = team_tippmix1
+    fuzz_teams.loc[best_index2, 'Team_tippmix'] = team_tippmix2
+    
+#%% Modify 
+with pd.ExcelWriter(path_fuzz) as writer:
+    fuzz_teams.to_excel(writer, sheet_name='cities', index=False)
