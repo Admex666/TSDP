@@ -41,17 +41,17 @@ for match_f in matches_f:
     match_odds = {}
     match_date_iso = datetime.fromisoformat(match_f['eventDate'])
     match_odds['Date'] = datetime.combine(match_date_iso.date(), match_date_iso.time())
-    match_odds['HomeTeam'] = match_f['eventParticipants'][0]['participantName']
-    match_odds['AwayTeam'] = match_f['eventParticipants'][1]['participantName']
+    match_odds['Home'] = match_f['eventParticipants'][0]['participantName']
+    match_odds['Away'] = match_f['eventParticipants'][1]['participantName']
     match_odds['league_name'] = leagues_dict_inv[match_f['competitionId']]
     
-    found_1X2, found_Double = False, False
+    found_1X2, found_Double, found_o_u = False, False, False
     for market in match_f['markets']:
         # Get 1X2 odds
         if market['marketName'] == '1X2':
-            match_odds['1X2_1'] = market['outcomes'][0]['fixedOdds']
-            match_odds['1X2_X'] = market['outcomes'][1]['fixedOdds']
-            match_odds['1X2_2'] = market['outcomes'][2]['fixedOdds']
+            match_odds['H_odds'] = market['outcomes'][0]['fixedOdds']
+            match_odds['D_odds'] = market['outcomes'][1]['fixedOdds']
+            match_odds['A_odds'] = market['outcomes'][2]['fixedOdds']
             found_1X2 = True
         else:
             pass
@@ -65,25 +65,44 @@ for match_f in matches_f:
         else:
             pass
         
+        # O/U odds
+        if market['marketName'] == 'Gólszám 2,5':
+            match_odds['Under_odds'] = market['outcomes'][0]['fixedOdds']
+            match_odds['Over_odds'] = market['outcomes'][1]['fixedOdds']
+            found_o_u = True
+        else:
+            pass
+        
     if found_1X2 or found_Double:
         odds.append(match_odds)
 
 df_odds = pd.DataFrame(odds)
 
+#%% Update excel
+path = 'ML_PL_new/modinput_odds_tx.xlsx'
+odds_tx_prev = pd.read_excel(path)
+odds_tx_combined = pd.concat([odds_tx_prev, df_odds], ignore_index=True)
+odds_tx_new = odds_tx_combined.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'],
+                                               keep='first').reset_index(drop=True)
+
+odds_tx_new.to_excel(path, index=False)
+print(f'Appended data with {len(odds_tx_new) - len(odds_tx_prev)} games.')
+
 #%% Fuzz_teams fuzzy matching
 path_fuzz = 'ML_PL_new/fuzz_teams.xlsx'
-fuzz_teams = pd.read_excel(path_fuzz, sheet_name='cities')
+fuzz_teams_og = pd.read_excel(path_fuzz, sheet_name='cities')
+# Only None values to modify
+fuzz_teams = fuzz_teams_og[pd.isna(fuzz_teams_og.Team_tippmix)]
 
 from fuzzywuzzy import fuzz
-fuzz_teams['Team_tippmix'] = None
 
-for i_t, row_t in df_odds.iterrows():
-    team_tippmix1 = row_t['HomeTeam']
-    team_tippmix2 = row_t['AwayTeam']
-    country_code = row_t['league_name'][:3]
-    
+for i_fuzz, row_fuzz in fuzz_teams.iterrows():
     best_ratio1, best_ratio2 = 0, 0
-    for i_fuzz, row_fuzz in fuzz_teams.iterrows():
+    for i_t, row_t in df_odds.iterrows():
+        team_tippmix1 = row_t['HomeTeam']
+        team_tippmix2 = row_t['AwayTeam']
+        country_code = row_t['league_name'][:3]
+        
         if row_fuzz['Country'] == country_code:
             fteam1, fteam2, fteam3 = row_fuzz[['Team_fdcouk', 'Team_fbref', 'Team_odds']]
             
@@ -99,10 +118,12 @@ for i_t, row_t in df_odds.iterrows():
                 if globals()[f'ratio{teamnr}'] > globals()[f'best_ratio{teamnr}']:
                     globals()[f'best_ratio{teamnr}'] = globals()[f'ratio{teamnr}']
                     globals()[f'best_index{teamnr}'] = i_fuzz
-    
-    fuzz_teams.loc[best_index1, 'Team_tippmix'] = team_tippmix1
-    fuzz_teams.loc[best_index2, 'Team_tippmix'] = team_tippmix2
+        else:
+            continue
+        
+        fuzz_teams_og.loc[best_index1, 'Team_tippmix'] = team_tippmix1 if best_ratio1 > 70 else None
+        fuzz_teams_og.loc[best_index2, 'Team_tippmix'] = team_tippmix2 if best_ratio2 > 70 else None
     
 #%% Modify 
 with pd.ExcelWriter(path_fuzz) as writer:
-    fuzz_teams.to_excel(writer, sheet_name='cities', index=False)
+    fuzz_teams_og.to_excel(writer, sheet_name='cities', index=False)

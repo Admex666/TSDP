@@ -168,70 +168,88 @@ path_odds = r'ML_PL_new\modinput_odds.xlsx' # just set working directory right
 df_odds_all = pd.read_excel(path_odds) 
 df_wh = df_odds_all.loc[df_odds_all.bookmaker=='William Hill', :].drop(columns='Date').reset_index(drop=True)
 
-for dfname, newdfname in zip(['predicition_probs', 'predictions'], ['predprob', 'pred']):
-    # Merge data
-    globals()[f'{dfname}_merged'][['Home', 'Away']] = None
-    for i in range(len(globals()[f'{dfname}_merged'])):
-        fdcouk_home = globals()[f'{dfname}_merged'].loc[i, 'HomeTeam']
-        fdcouk_away = globals()[f'{dfname}_merged'].loc[i, 'AwayTeam']
-        odds_home = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_home, 'Team_odds'].iloc[0]
-        odds_away = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_away, 'Team_odds'].iloc[0]
-        globals()[f'{dfname}_merged'].loc[i, ['Home', 'Away']] = odds_home, odds_away
-    
-    globals()[f'df_{newdfname}_odds'] = pd.merge(globals()[f'{dfname}_merged'], df_wh,
-                                             on=['Home', 'Away'])
-    globals()[f'df_{newdfname}_odds'].drop(columns=['Home','Away'], inplace=True)
+path_odds_tx = r'ML_PL_new\modinput_odds_tx.xlsx'
+df_tx = pd.read_excel(path_odds_tx)
 
-# See value
-for out in ['H', 'D', 'A', 'Over', 'Under']:
-    for m_short in model_short_dict.values():
-        df_predprob_odds[f'{out}_{m_short}_value'] = (1/df_predprob_odds[f'{out}_odds'] / df_predprob_odds[f'{out}_{m_short}_prob'] -1) *100
-
-# Calculate bet size
-def calc_bet_size_propo(bankroll, odds_bookie, prob_fair):
-    # proportional = ( (myprob-prob) * bankroll / (odds-1))
-    prob_bookie = 1/odds_bookie
-    bet_size = (prob_fair - prob_bookie) * bankroll / (odds_bookie-1) /7
-    return bet_size
-
-for out in ['H', 'D', 'A', 'Over', 'Under']:
-    for m_short in model_short_dict.values():
-        criterion = (df_predprob_odds[f'{out}_{m_short}_value'] >= 0)
-        odds_bookie = df_predprob_odds[f'{out}_odds']
-        prob_fair = df_predprob_odds[f'{out}_{m_short}_prob']
-        bet_col = calc_bet_size_propo(100/3, odds_bookie, prob_fair)
-        df_predprob_odds[f'{out}_{m_short}_bet'] = bet_col
-        df_predprob_odds[f'{out}_{m_short}_bet'] = np.where(criterion,
-                                                            df_predprob_odds[f'{out}_{m_short}_bet'],
-                                                            0)
-# Calculate bets for df_pred_odds     
-for out in ['H', 'D', 'A']:
-    for m_short in model_short_dict.values():
-        df_pred_odds[f'{out}_{m_short}_bet'] = np.where(df_pred_odds[f'FTR_{m_short}'] == out,
-                                                        1/(df_pred_odds[f'{out}_odds']-1),
-                                                        0)
+for book in ['wh', 'tx']:
+    for dfname, newdfname in zip(['predicition_probs', 'predictions'], ['predprob', 'pred']):
+        # Merge data
+        globals()[f'{dfname}_merged'][[f'Home_{book}', f'Away_{book}']] = None
+        for i in range(len(globals()[f'{dfname}_merged'])):
+            fdcouk_home = globals()[f'{dfname}_merged'].loc[i, 'HomeTeam']
+            fdcouk_away = globals()[f'{dfname}_merged'].loc[i, 'AwayTeam']
+            
+            fuzzcol = 'odds' if book == 'wh' else 'tippmix'
+            globals()[f'home_{book}'] = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_home, f'Team_{fuzzcol}'].iloc[0]
+            globals()[f'away_{book}'] = fuzz_teams_all.loc[fuzz_teams_all.Team_fdcouk == fdcouk_away, f'Team_{fuzzcol}'].iloc[0]
+            globals()[f'{dfname}_merged'].loc[i, [f'Home_{book}', f'Away_{book}']] = globals()[f'home_{book}'], globals()[f'away_{book}']
         
-for out in ['Over', 'Under']:
-    for m_short in model_short_dict.values():
-        df_pred_odds[f'{out}_{m_short}_bet'] = np.where(df_pred_odds[f'O/U2.5_{m_short}'] == out,
-                                                        1/(df_pred_odds[f'{out}_odds']-1),
-                                                        0)
+        cols_for_merge = ['Home', 'Away', 'H_odds', 'D_odds', 'A_odds', 'Over_odds', 'Under_odds']
+        globals()[f'df_{newdfname}_{book}'] = pd.merge(globals()[f'{dfname}_merged'],
+                                                       globals()[f'df_{book}'][cols_for_merge],
+                                                       left_on=[f'Home_{book}', f'Away_{book}'],
+                                                       right_on=['Home', 'Away']
+                                                       )
+        globals()[f'df_{newdfname}_{book}'].drop(columns=[f'Home_{book}',f'Away_{book}'],
+                                                 inplace=True)
+    
+    # See value
+    for out in ['H', 'D', 'A', 'Over', 'Under']:
+        for m_short in model_short_dict.values():
+            globals()[f'df_predprob_{book}'][f'{out}_{m_short}_value'] = (1/globals()[f'df_predprob_{book}'][f'{out}_odds'] / globals()[f'df_predprob_{book}'][f'{out}_{m_short}_prob'] -1) *100
+    
+    # Calculate bet size
+    def calc_bet_size_propo(bankroll, odds_bookie, prob_fair):
+        # proportional = ( (myprob-prob) * bankroll / (odds-1))
+        prob_bookie = 1/odds_bookie
+        bet_size = (prob_fair - prob_bookie) * bankroll / (odds_bookie-1) /7
+        return bet_size
+    
+    for out in ['H', 'D', 'A', 'Over', 'Under']:
+        for m_short in model_short_dict.values():
+            criterion = (globals()[f'df_predprob_{book}'][f'{out}_{m_short}_value'] >= 0)
+            odds_bookie = globals()[f'df_predprob_{book}'][f'{out}_odds']
+            prob_fair = globals()[f'df_predprob_{book}'][f'{out}_{m_short}_prob']
+            bet_col = calc_bet_size_propo(100/3, odds_bookie, prob_fair)
+            globals()[f'df_predprob_{book}'][f'{out}_{m_short}_bet'] = bet_col
+            globals()[f'df_predprob_{book}'][f'{out}_{m_short}_bet'] = np.where(criterion,
+                                                                globals()[f'df_predprob_{book}'][f'{out}_{m_short}_bet'],
+                                                                0)
+    # Calculate bets for df_pred_odds     
+    for out in ['H', 'D', 'A']:
+        for m_short in model_short_dict.values():
+            globals()[f'df_pred_{book}'][f'{out}_{m_short}_bet'] = np.where(globals()[f'df_pred_{book}'][f'FTR_{m_short}'] == out,
+                                                            1/(globals()[f'df_pred_{book}'][f'{out}_odds']-1),
+                                                            0)
+            
+    for out in ['Over', 'Under']:
+        for m_short in model_short_dict.values():
+            globals()[f'df_pred_{book}'][f'{out}_{m_short}_bet'] = np.where(globals()[f'df_pred_{book}'][f'O/U2.5_{m_short}'] == out,
+                                                            1/(globals()[f'df_pred_{book}'][f'{out}_odds']-1),
+                                                            0)
 
-#%% To excel
-output_path = 'ML_PL_new/predictions.xlsx'
+#%% Append excel data
 output_sheets = ['predictions', 'pred_probabilities']
-# Read the file first
-xlsx_preds = pd.read_excel(output_path, sheet_name=output_sheets[0])
-xlsx_predprobs = pd.read_excel(output_path, sheet_name=output_sheets[1])
-#Add new data
-xlsx_preds_new = pd.concat([xlsx_preds, df_pred_odds]).sort_values(by='Date').reset_index(drop=True)
-xlsx_predprobs_new = pd.concat([xlsx_predprobs, df_predprob_odds]).sort_values(by='Date').reset_index(drop=True)
-#Drop duplicates
-xlsx_preds_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
-xlsx_predprobs_new.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
-print(f'Number of new rows: {len(df_pred_odds)}')
+for book in ['wh', 'tx']:
+    globals()[f'output_path_{book}'] = f'ML_PL_new/predictions_{book}.xlsx'
+    for dfname in ['preds', 'predprobs']:
+        # Read the file first
+        sheet_nr = 0 if dfname == 'preds' else 1
+        globals()[f'xlsx_{dfname}_{book}'] = pd.read_excel(globals()[f'output_path_{book}'], sheet_name=output_sheets[sheet_nr])
+        #Add new data
+        created_df_name = 'pred' if dfname == 'preds' else 'predprob'
+        globals()[f'xlsx_{dfname}_{book}_new'] = pd.concat([globals()[f'xlsx_{dfname}_{book}'],
+                                                     globals()[f'df_{created_df_name}_{book}']
+                                                     ]).sort_values(by='Date').reset_index(drop=True)
+        #Drop duplicates
+        globals()[f'xlsx_{dfname}_{book}_new'].drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'], inplace=True)
+print(f'Number of new rows: {len(df_pred_wh)}')
 
 #%% Modify excel file
-with pd.ExcelWriter(output_path) as writer:
-    xlsx_preds_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
-    xlsx_predprobs_new.to_excel(writer, sheet_name=output_sheets[1], index=False)
+with pd.ExcelWriter(output_path_wh) as writer:
+    xlsx_preds_wh_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
+    xlsx_predprobs_wh_new.to_excel(writer, sheet_name=output_sheets[1], index=False)
+
+with pd.ExcelWriter(output_path_tx) as writer:
+    xlsx_preds_tx_new.to_excel(writer, sheet_name=output_sheets[0], index=False)
+    xlsx_predprobs_tx_new.to_excel(writer, sheet_name=output_sheets[1], index=False)
