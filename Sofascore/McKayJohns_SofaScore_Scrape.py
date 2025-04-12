@@ -4,11 +4,12 @@ import requests
 import time
 import pandas as pd
 
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = 'https://www.sofascore.com/football/match/napoli-milan/Rdbsoeb#id:12501548'
+URL = 'https://www.sofascore.com/football/match/inter-fc-bayern-munchen/xdbsXdb#id:13513402'
 
 #%%
 if type(URL) != str:
@@ -43,6 +44,7 @@ else:
     ## Debugging: print all network requests to check if 'shotmap' exists
     for x in logs:
         url_path = x.get('params', {}).get('request', {}).get('url', '')
+        print(url_path)
         if 'shotmap' in url_path:
             print(f"Found shotmap request: {url_path}")
             print(f"Request ID: {x['params'].get('requestId')}")
@@ -97,6 +99,7 @@ else:
         
     # Scraping team names
     # Parse the page source with BeautifulSoup
+    page_source = driver.page_source
     soup = BeautifulSoup(page_source, 'html.parser')
     
     # Locate the image element using the CSS selector provided
@@ -221,8 +224,8 @@ import matplotlib.font_manager as font_manager
 # Colors and styling
 mycolor = '#5ECB43'
 background_color = '#3c3d3d'
-t1_color = '#12a0d7'
-t2_color = '#fb090b'
+t1_color = "#dc052d"
+t2_color = "#010E80"
 my_font_path = r'C:\Users\Adam\..Data\TSDP\Athletic\Nexa-ExtraLight.ttf'
 my_font_props = font_manager.FontProperties(fname=my_font_path)
 
@@ -477,14 +480,15 @@ plt.title(f"Shotmap", fontsize=22, va='center', c='white')
 # Plot goal numbers
 home_goals = len(df.loc[(df['Shot Type'] == 'goal') & (df['Team'] == home_name)])
 away_goals = len(df.loc[(df['Shot Type'] == 'goal') & (df['Team'] == away_name)])
-plt.text(0.25, 0.81, home_goals, fontsize=36, color=t1_color,
+goals_size = 28
+plt.text(0.25, 0.81, home_goals, fontsize=goals_size, color=t1_color,
          ha='center', va='center', transform=ax.transAxes)
-plt.text(0.25, 0.9, home_name, fontsize=36, color=t1_color,
+plt.text(0.25, 0.9, home_name, fontsize=goals_size, color=t1_color,
          ha='center', va='center', transform=ax.transAxes)
 
-plt.text(0.75, 0.81, away_goals, fontsize=36, color=t2_color,
+plt.text(0.75, 0.81, away_goals, fontsize=goals_size, color=t2_color,
          ha='center', va='center', transform=ax.transAxes)
-plt.text(0.75, 0.9, away_name, fontsize=36, color=t2_color,
+plt.text(0.75, 0.9, away_name, fontsize=goals_size, color=t2_color,
          ha='center', va='center', transform=ax.transAxes)
 
 plt.text(0.5, 0.979, f'{date_raw} | Source: SofaScore', ha='center', va='center', fontsize=13, color='white', transform=ax.transAxes)
