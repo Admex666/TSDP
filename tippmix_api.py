@@ -148,7 +148,7 @@ with pd.ExcelWriter(path_fuzz) as writer:
 path_fuzz = 'ML_PL_new/fuzz_teams.xlsx'
 fuzz_teams_og = pd.read_excel(path_fuzz, sheet_name='cities')
 
-input_path = 'ML_PL_new/predictions.xlsx'
+input_path = 'ML_PL_new/predictions_wh.xlsx'
 df_predprobs = pd.read_excel(input_path, sheet_name='pred_probabilities')
 today = datetime.today()
 end_date = datetime.combine((today + span), time(23,59))
