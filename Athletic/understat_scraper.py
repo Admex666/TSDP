@@ -5,8 +5,8 @@ import understatapi
 client = understatapi.UnderstatClient()
 # Set season, player and league
 season = '2024'
-player_id = '6552'
-league = 'EPL'
+player_id = '1119'
+league = 'Serie A'
 
 #%% Get shot data of a player
 shot_data = pd.DataFrame(client.player(player_id).get_shot_data())

@@ -7,11 +7,12 @@ Created on Mon Jan 13 09:24:05 2025
 # Set and scrape league dataframes
 import pandas as pd
 from fbref import fbref_module as fbref
+from selenium import webdriver
 from bs4 import BeautifulSoup
 import requests
 
-league = 'FRA'
-URL_match = 'https://fbref.com/en/matches/37a1d2be/Marseille-Toulouse-April-6-2025-Ligue-1'
+league = 'UCL'
+URL_match = 'https://fbref.com/en/matches/b3039bb2/Real-Madrid-Arsenal-April-16-2025-Champions-League'
 
 comp_id, league_name = fbref.team_dict_get(league)
 
@@ -34,11 +35,20 @@ for stat in stats_list:
 match_stats_list = ['summary', 'passing', 'defense', 'possession', 'misc']
 
 # Get the team ids
-response = requests.get(URL_match)
-soup = BeautifulSoup(response.text, 'html.parser')
+driver = webdriver.Chrome()
+driver.get(URL_match)
+# Wait for the page to load completely
+driver.implicitly_wait(10)
+# Get page source and parse with BeautifulSoup
+soup = BeautifulSoup(driver.page_source, 'html.parser')
+teamlogos = soup.find_all(class_='teamlogo')
+if teamlogos:
+    print('Teamlogos found')
+else:
+    print("No clublogo found.")
+driver.quit()
 
 # Find the table with team links
-teamlogos = soup.find_all(class_='teamlogo')
 teams = []
 for logo in teamlogos:
     src = logo.get("src")

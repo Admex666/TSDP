@@ -9,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = 'https://www.sofascore.com/football/match/inter-fc-bayern-munchen/xdbsXdb#id:13513402'
+URL = 'https://www.sofascore.com/football/match/real-madrid-arsenal/RsEgb#id:13513422'
 
 #%%
 if type(URL) != str:
@@ -70,12 +70,11 @@ else:
     for y in logs:
         url_path_lineup = y.get('params', {}).get('request', {}).get('url', '')
         if 'lineups' in url_path_lineup:
-            print(f"Found lineups request: {url_path}")
-            print(f"Request ID: {x['params'].get('requestId')}")
+            print(f"Found lineups request: {url_path_lineup}")
+            print(f"Request ID: {y['params'].get('requestId')}")
             lineup_request = y
             break
-        
-        
+
     else:
         print("No lineup request found.")
         driver.quit()  # Properly close the browser
@@ -84,23 +83,16 @@ else:
     try:
         request_id_lineup = lineup_request['params']['requestId']
         # Make a GET request to the API
-        lineup_response = requests.get(url_path_lineup)
-        
-        # Raise an exception for bad status codes
-        lineup_response.raise_for_status()
-        
-        # Get the response text as a string
-        json_string_lineup = lineup_response.text
+        lineup_response = driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id_lineup})
+        lineup_data = json.loads(lineup_response['body'])
 
-        lineup_data = json.loads(json_string_lineup)
         print('Lineups found')
     except Exception as e:
         print("Error retrieving lineup data:", e)
         
     # Scraping team names
     # Parse the page source with BeautifulSoup
-    page_source = driver.page_source
-    soup = BeautifulSoup(page_source, 'html.parser')
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
     
     # Locate the image element using the CSS selector provided
     image_element1 = soup.select_one('div:nth-child(1) > div > a > div > img')

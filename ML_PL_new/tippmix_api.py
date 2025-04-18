@@ -145,11 +145,13 @@ with pd.ExcelWriter(path_fuzz) as writer:
     fuzz_teams_og.to_excel(writer, sheet_name='cities', index=False)
     
 #%%
+# Import fuzzy matching xlsx
 path_fuzz = 'ML_PL_new/fuzz_teams.xlsx'
 fuzz_teams_og = pd.read_excel(path_fuzz, sheet_name='cities')
-
-input_path = 'ML_PL_new/predictions_wh.xlsx'
+# Import previous predictions of model
+input_path = 'ML_PL_new/predictions.xlsx'
 df_predprobs = pd.read_excel(input_path, sheet_name='pred_probabilities')
+
 today = datetime.today()
 end_date = datetime.combine((today + span), time(23,59))
 mask_dates = (df_predprobs.Date > today) & (df_predprobs.Date <= end_date)
@@ -182,7 +184,15 @@ for i in range(len(df_actual_odds)):
         odds = df_actual_odds[[col for col in df_actual_odds.columns if (out+'_' in col) and ('odds' in col)]].loc[i].values[0]
         
         df_actual_odds.loc[i, f'{out}_bet'] = round(calc_bet_size_propo(10000, odds, probs),0)
-        
+
+print(f'{len(df_odds) - len(df_actual_odds)} games not converted from tippmix.')    
+missing_rows = []
+for i, row in df_odds.iterrows():
+    if (row['HomeTeam'] not in df_actual_odds.HomeTeam.unique()) or (row['AwayTeam'] not in df_actual_odds.AwayTeam.unique()):
+        missing_rows.append(row)
+    
+df_missing = pd.DataFrame(missing_rows)
+    
 #%% To Excel
 output_tx_path = 'ML_PL_new/actual_tx.xlsx'
 df_actual_odds.to_excel(output_tx_path, index=False)
