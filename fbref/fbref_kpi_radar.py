@@ -12,9 +12,9 @@ import numpy as np
 from scipy.stats import percentileofscore
 
 # choose from ENG, ESP, GER, ITA...
-league = 'GER'
-pos = 'DF' # FW, MF, DF, GK
-matches_at_least = 4
+league = 'UEL'
+pos = 'MF' # FW, MF, DF, GK
+matches_at_least = 3
 year = '2023-2024' # the year of comparison
 
 #%%
@@ -174,9 +174,9 @@ def create_df_percentiles(analysis_df):
             percentile = round(percentileofscore(analysis_df[col], value, kind='rank'), 0)
             df_percentiles.loc[row, col] = percentile
     
-    df_percentiles['Combined'] = None
+    df_percentiles['Combined_mean'] = None
     for row in range(len(df_percentiles)):
-        df_percentiles.loc[row, 'Combined'] = df_percentiles.loc[row, cols_all_list_p90].sum()
+        df_percentiles.loc[row, 'Combined_mean'] = df_percentiles.loc[row, cols_all_list_p90].mean()
 
     return df_percentiles
 
@@ -213,7 +213,7 @@ def create_df_kpi(analysis_df, player_index):
     return [df_kpi_player, df_kpi_player_dim]
 
 # Choose the player
-player_index = 98
+player_index = 20
 [df_kpi_player_fact, df_kpi_player_dim] = create_df_kpi(df_analyse, player_index)
 player_name = df_kpi_player_dim[df_kpi_player_dim.Statistic=='Player']['Value'].get(1)
 
@@ -257,7 +257,7 @@ else:
     print('Statistics are not matching.')
     
 #%% To Excel
-path = 'fbref\scout_summary.xlsx'
+path = r'fbref\scout_summary.xlsx'
 df_kpi_player_fact_both.to_excel(path, index=False)
     
 #%% Visualize

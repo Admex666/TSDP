@@ -258,3 +258,35 @@ def stats_dict():
     }
     
     return combined_stats
+
+def get_all_player_data(countrycode, year=False):
+    import pandas as pd
+    comp_id, league_name = team_dict_get(countrycode)
+    stats_list = ['standard', 'keeper', 'keeper_adv', 'defense', 'passing', 'gca', 'misc', 'shooting']
+    url_list = ['stats', 'keepers', 'keepersadv', 'defense', 'passing', 'gca', 'misc', 'shooting']
+    
+    for stat, url in zip(stats_list, url_list):
+        if year:
+            globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{year}/{url}/{year}-{league_name}-Stats" 
+        else:
+            globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{url}/{league_name}-Stats#all_stats_{stat}"
+        
+    for stat in stats_list:
+        globals()[f'df_{stat}'] = format_column_names(scrape(globals()[f'URL_{stat}'], f'stats_{stat}'))
+        globals()[f'df_{stat}'].drop(globals()[f'df_{stat}'][globals()[f'df_{stat}']['Rk']=='Rk'].index, inplace=True)
+        
+    df_standard.rename(columns={'Playing Time_90s': '90s'}, inplace=True)    
+    df_keeper_adv.drop(columns='90s')
+    
+    df_analyse = df_standard.copy()
+    for stat in stats_list[1:]:
+        df_analyse = pd.merge(df_analyse, globals()[f'df_{stat}'],
+                              on=['Player', 'Squad'], how='left',
+                              suffixes=['','_remove'])
+        # Remove the duplicate columns
+        df_analyse.drop([i for i in df_analyse.columns if 'remove' in i],
+                       axis=1, inplace=True)
+    df_analyse.drop(columns='Matches', inplace=True)
+    df_analyse.iloc[:, 7:] = df_analyse.iloc[:, 7:].astype(float)
+    
+    return df_analyse

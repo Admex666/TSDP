@@ -42,69 +42,26 @@ league = 'ESP'
 min_90_played = 0 # how many matches at least
 only_position = '' # DF, MF, FW or GK
 
-comp_id, league_name = fbref.team_dict_get(league)
-
-urllist = ['passing', 'shooting', 'defense', 'misc', 'keepers', 'keepersadv']
-#URLs
-URL_standard = ("https://fbref.com/en/comps/" + comp_id + '/stats/'
-                + league_name + '-Stats#all_stats_' + 'standard'
-                )
-for stat in urllist:
-    globals()[f'URL_{stat}'] = ("https://fbref.com/en/comps/" + comp_id
-                                + f'/{stat}/' + league_name
-                                + '-Stats#all_stats_' + stat
-                                )
-
-#%% Preparing df and functions for scrape
-def scrape(URL, table_id):       
-    df = fbref.read_html_upd(URL, table_id)
-    df = df[0]
-    df = fbref.format_column_names(fbref.column_joiner(df))
-    df = df.iloc[:-1,:]
-    return df
-
-#%% Scraping the actual data
-urllist.append('standard')
-statlist = ['passing', 'shooting', 'defense', 'misc', 'keeper', 'keeper_adv', 'standard']
-
-for stat, url in zip(statlist, urllist):
-    globals()[f'df_{stat}'] = scrape(globals()[f'URL_{url}'], f'stats_{stat}')
-    # remove header rows
-    ind = globals()[f'df_{stat}'].loc[globals()[f'df_{stat}'].Rk=='Rk', 'Rk'].index
-    globals()[f'df_{stat}'].drop(index=ind, inplace=True)
-    globals()[f'df_{stat}'].reset_index(drop=True, inplace=True)
-    
-df_keeper.rename(columns={'Performance_SoTA': 'SoT_against'}, inplace=True)
-
-#%% Create a merged dataframe
-df_super = df_passing.copy()
-
-for stat in statlist[1:]:
-    df_super = pd.merge(df_super, globals()[f'df_{stat}'], 
-                        on=['Player', 'Squad'], how='outer', 
-                        suffixes=('', '_remove'))
-    df_super.drop([i for i in df_super.columns if 'remove' in i], 
-                  axis=1, inplace=True)
-
-# Filter by parameters
-df_super = df_super.loc[df_super['90s'].astype(float) > min_90_played, :]
-df_super = df_super.loc[df_super['Pos'].str.contains(only_position), :]
+df = fbref.get_all_player_data(league, year=False)
 
 #%% Format the merged data a bit
-df_super.drop(columns='Matches', inplace=True)
-df_super.iloc[:,6:] = df_super.iloc[:,6:].astype(float) # set dtype
+# Filter by parameters
+df_super = df.loc[df['90s'].astype(float) >= min_90_played, :]
+df_super = df_super.loc[df_super['Pos'].str.contains(only_position), :]
+
 df_super.Age = df_super.Age.str.split('-').str.get(0).astype(float) # get age as number
-df_super.drop(index=df_super.loc[df_super['90s'] == 0].index, inplace=True)
+df_super = df_super[df_super['90s'] != 0]
 
 for col in df_super.columns[8:]:
-    if ('90' in col) or ('%' in col):
+    if ('90' in col) or ('%' in col) or ('Playing Time' in col):
         pass
     else:
         df_super[col] = df_super[col]/df_super['90s']
         df_super.rename(columns={col:f'{col}_p90'}, inplace=True)
+df_super['league'] = fbref.team_dict_get(league)[1].replace('-', ' ')
 
 #%% To excel
-path = r'fbref\player_scatters.xlsx'
+path = 'player_scatters.xlsx'
 df_super.to_excel(path, index=False)
 
 #%% Plotting (defining function)

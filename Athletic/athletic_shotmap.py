@@ -5,11 +5,17 @@ import matplotlib.image as mpimg
 import matplotlib.font_manager as font_manager
 import urllib.request
 from PIL import Image
+from Athletic.understat_scraper import get_player_shotmap
 
+# Set season, player and league
+season = '2024'
+player_id = '6160'
+league = 'Serie_A'
 
-df = pd.read_csv('Athletic/shot_data.csv')
-url_logo = 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/Brentford_FC_crest.svg/1200px-Brentford_FC_crest.svg.png'
-league = 'Premier League'
+df = get_player_shotmap(season, player_id, league)
+url_logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Bologna_F.C._1909_logo.svg/800px-Bologna_F.C._1909_logo.svg.png'
+league_pretty = league.replace('_', ' ')
+save = True
 
 if len(df.player.unique()) > 1:
     print('Too many players.')
@@ -24,6 +30,7 @@ else:
     print(f'Year found: {year}')
 
 season = f'{year}-{int(year[-2:])+1}'
+team = pd.Series([*df.h_team, *df.a_team]).mode()[0]
 
 #%% Data shown
 df['X'] = df['X']*100
@@ -60,7 +67,7 @@ ax1.text(x=0.5, y=0.85,
 
 # subtitle
 ax1.text(x=0.5, y=0.75,
-         s=f'All shots in the {league} {season}', fontsize=14, fontproperties=font_props,
+         s=f'All shots in the {league_pretty} {season}', fontsize=14, fontproperties=font_props,
          fontweight='bold', color='white', ha='center')
 
 # Low- and high qual chance text
@@ -92,9 +99,9 @@ ax1.text(x=0.55, y=0.27, s='No Goal', fontsize=10, fontproperties=font_props,
 # Show images
 
 # Download image 
-urllib.request.urlretrieve(url_logo, 'Athletic/temp_logo.png')
+urllib.request.urlretrieve(url_logo, 'temp_logo.png')
 
-img = mpimg.imread('Athletic/temp_logo.png')
+img = mpimg.imread('temp_logo.png')
 ax_img = fig.add_axes([0.85, 0.81, 0.1, 0.1])
 ax_img.imshow(img, alpha=0.99)
 
@@ -140,4 +147,12 @@ ax2.axis('off')
 ax3.axis('off')
 ax_img.axis('off')
 
-plt.show()
+# save or show
+if save:
+    from datetime import datetime
+    todaystr = datetime.strftime(datetime.today(), format='%Y.%m.%d.')
+    file_name = f'{todaystr}, {player} ({team})'
+    save_path = f'C:/Users/Adam/Dropbox/TSDP_output/Athletic shotmaps/{file_name}.png'
+    plt.savefig(save_path, bbox_inches='tight', dpi=300)
+else:
+    plt.show()
