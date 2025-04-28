@@ -216,6 +216,7 @@ for out in ['Over', 'Under']:
         df_pred_odds[f'{out}_{m_short}_bet'] = np.where(df_pred_odds[f'O/U2.5_{m_short}'] == out,
                                                         1/(df_pred_odds[f'{out}_odds']-1),
                                                         0)
+print(f'Predictions were made for {len(df_pred_odds)} matches out of {len(predictions_merged)}.')
 
 #%% To excel
 output_path = 'ML_PL_new/predictions.xlsx'
