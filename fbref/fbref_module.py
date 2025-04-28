@@ -159,6 +159,7 @@ def team_dict_get(countrycode):
 def stats_dict():
     combined_stats = {
         'Performance_Sh': {'name': 'Shots', 'category': 'Offensive', 'significance': 'positive'},
+        'Standard_Sh': {'name': 'Shots', 'category': 'Offensive', 'significance': 'positive'},
         'Carries_Carries': {'name': 'Carries', 'category': 'Possession', 'significance': 'positive'},
         'Carries_PrgC': {'name': 'Progressive Carries', 'category': 'Possession', 'significance': 'positive'},
         'Total_Cmp': {'name': 'Passes Completed', 'category': 'Passing', 'significance': 'positive'},
@@ -193,6 +194,7 @@ def stats_dict():
         'Aerial Duels_Lost': {'name': 'Aerial Duels Lost', 'category': 'Aerial Duels', 'significance': 'negative'},
         'Aerial Duels_Won%': {'name': 'Aerial Duels Won %', 'category': 'Aerial Duels', 'significance': 'positive'},
         'Performance_SoT': {'name': 'Shots on Target', 'category': 'Offensive', 'significance': 'positive'},
+        'Standard_SoT': {'name': 'Shots on Target', 'category': 'Offensive', 'significance': 'positive'},
         'Expected_xG': {'name': 'Expected Goals', 'category': 'Offensive', 'significance': 'positive'},
         'Expected_npxG': {'name': 'Non-Penalty Expected Goals', 'category': 'Offensive', 'significance': 'positive'},
         'Long_Att': {'name': 'Long Passes Attempted', 'category': 'Passing', 'significance': 'positive'},
@@ -262,8 +264,8 @@ def stats_dict():
 def get_all_player_data(countrycode, year=False):
     import pandas as pd
     comp_id, league_name = team_dict_get(countrycode)
-    stats_list = ['standard', 'keeper', 'keeper_adv', 'defense', 'passing', 'gca', 'misc', 'shooting']
-    url_list = ['stats', 'keepers', 'keepersadv', 'defense', 'passing', 'gca', 'misc', 'shooting']
+    stats_list = ['standard', 'keeper', 'keeper_adv', 'defense', 'passing', 'gca', 'misc', 'shooting', 'possession', 'passing_types']
+    url_list = ['stats', 'keepers', 'keepersadv', 'defense', 'passing', 'gca', 'misc', 'shooting', 'possession', 'passing_types']
     
     for stat, url in zip(stats_list, url_list):
         if year:
@@ -274,6 +276,7 @@ def get_all_player_data(countrycode, year=False):
     for stat in stats_list:
         globals()[f'df_{stat}'] = format_column_names(scrape(globals()[f'URL_{stat}'], f'stats_{stat}'))
         globals()[f'df_{stat}'].drop(globals()[f'df_{stat}'][globals()[f'df_{stat}']['Rk']=='Rk'].index, inplace=True)
+        print(f'df_{stat} found.')
         
     df_standard.rename(columns={'Playing Time_90s': '90s'}, inplace=True)    
     df_keeper_adv.drop(columns='90s')
