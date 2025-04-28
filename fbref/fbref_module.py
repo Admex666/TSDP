@@ -89,13 +89,10 @@ def column_joiner(df):
         return df
 
 def format_column_names(df):
-    for ncol in range(len(df.columns)):
-        if 'Unnamed' in df.columns[ncol]:
-            col_old_name = df.columns[ncol]
-            col_new_name = df.columns[ncol].split('_')[3]
-            df.rename(columns={col_old_name:col_new_name}, inplace=True)
-        else:
-            pass
+    for col in df.columns:
+        if 'Unnamed' in col:
+            col_new= col.split('_')[-1]
+            df.rename(columns={col:col_new}, inplace=True)
     return df
 
 def scrape(URL, table_id):
