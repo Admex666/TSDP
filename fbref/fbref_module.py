@@ -22,7 +22,7 @@ def read_html_upd(URL, table_id):
     driver.get(URL)
     
     try:
-        table = WebDriverWait(driver, 25).until(
+        table = WebDriverWait(driver, 40).until(
             EC.presence_of_element_located((By.ID, table_id))
         )
         
