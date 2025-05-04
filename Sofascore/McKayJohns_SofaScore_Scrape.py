@@ -9,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = 'https://www.sofascore.com/football/match/real-madrid-arsenal/RsEgb#id:13513422'
+URL = 'https://www.sofascore.com/football/match/wqf3-wqf4/Xdbsrgb#id:13513414'
 
 #%%
 if type(URL) != str:
@@ -174,6 +174,7 @@ else:
 
 #%%
 # calculating cumxg
+df[['xG', 'xGOT']] = df[['xG', 'xGOT']].fillna(0)
 df['team_cumulative_xG'] = df.groupby('Team')['xG'].cumsum()
 df['team_cumulative_xGOT'] = df.groupby('Team')['xGOT'].cumsum()
 
@@ -216,7 +217,7 @@ import matplotlib.font_manager as font_manager
 # Colors and styling
 mycolor = '#5ECB43'
 background_color = '#3c3d3d'
-t1_color = "#dc052d"
+t1_color = "#edbb00"
 t2_color = "#010E80"
 my_font_path = r'C:\Users\Adam\..Data\TSDP\Athletic\Nexa-ExtraLight.ttf'
 my_font_props = font_manager.FontProperties(fname=my_font_path)

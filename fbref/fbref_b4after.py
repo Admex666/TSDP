@@ -1,7 +1,8 @@
 import pandas as pd
 import fbref.fbref_module as fbref
 
-URL = "https://fbref.com/en/squads/8602292d/2024-2025/matchlogs/all_comps/shooting/Aston-Villa-Match-Logs-All-Competitions"
+# get fbref match logs -> shooting
+URL = "https://fbref.com/en/squads/acbb6a5b/2024-2025/matchlogs/all_comps/shooting/RB-Leipzig-Match-Logs-All-Competitions"
 table_id = 'matchlogs_for'
 team = URL.split('/')[-1].split('-Match-')[0].replace('-', ' ')
 league = URL.split('Match-Logs-')[-1].replace('-', ' ')
@@ -67,11 +68,11 @@ def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path,
     
     plt.annotate("",
                  xy=(x_max, y_bottom), xytext=(x_max, y_top),
-                 arrowprops=dict(arrowstyle='<->', color='white', lw=1.5))
+                 arrowprops=dict(arrowstyle='<->', color='green', lw=1.5))
     
     plt.text(x_max + 0.3, (y_top + y_bottom)/2,
              f"{diff_max:.2f}",
-             color='white', fontsize=10, va='center')
+             color='green', fontsize=10, va='center')
     
     # MIN arrow
     x_min = df.loc[min_idx, x]
@@ -83,11 +84,11 @@ def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path,
     
     plt.annotate("",
                  xy=(x_min, y_bottom), xytext=(x_min, y_top),
-                 arrowprops=dict(arrowstyle='<->', color='white', lw=1.5))
+                 arrowprops=dict(arrowstyle='<->', color='red', lw=1.5))
     
     plt.text(x_min + 0.3, (y_top + y_bottom)/2,
              f"{diff_min:.2f}",
-             color='white', fontsize=10, va='center')
+             color='red', fontsize=10, va='center')
     
     plt.xlabel('Match number', color='white')
     plt.ylabel(y_title, color='white')
@@ -104,9 +105,9 @@ def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path,
              color="white", ha='center', va='center', fontsize=12)
 
     ax.spines['bottom'].set_color('white')
-    ax.spines['top'].set_color('white')
+    ax.spines['top'].set_visible(False)
     ax.spines['left'].set_color('white')
-    ax.spines['right'].set_color('white')
+    ax.spines['right'].set_visible(False)
     plt.grid(True)
     plt.tick_params(colors='white')
     xmax = int(len(df)*1.1)
@@ -143,22 +144,26 @@ def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path,
         plt.savefig(save_path, bbox_inches="tight", dpi=300)
     else:
         plt.show()
+        
 #%% 
-url_logo = 'https://logos-world.net/wp-content/uploads/2020/07/Aston-Villa-Logo.png'
-b4a_line, b4a_text, b4a_color = [33, 'Debut of winter signings','orange']
+url_logo = 'https://upload.wikimedia.org/wikipedia/en/thumb/0/04/RB_Leipzig_2014_logo.svg/1200px-RB_Leipzig_2014_logo.svg.png'
+b4a_line, b4a_text, b4a_color = [35, 'Zsolt Lőw appointed','orange']
 y_title = 'Value'
 
+save_path = r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.05'
 col1, col2 = 'Goals', 'xG'
+save_name = f'{team} {col1} & {col2}.png'
 create_mavg_chart(df, x='nr', col1=col1, col2=col2, window=4, 
                   y_title=y_title,
                   b4a_line=b4a_line, b4a_text= b4a_text, b4a_color=b4a_color,
                   url_logo=url_logo,
-                  save=False, save_path=r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.04', save_name='Aston Villa Goals & xG.png')
+                  save=True, save_path=save_path, save_name=save_name)
 
 #%% 
 col1, col2 = 'Goal/Shot', 'Goal/Shot on Goal'
+save_name = f'{team} {col1} & {col2}.png'
 create_mavg_chart(df, x='nr', col1=col1, col2=col2, window=4,
                   y_title=y_title,
                   b4a_line=b4a_line, b4a_text= b4a_text, b4a_color=b4a_color,
                   url_logo=url_logo,
-                  save=False, save_path=r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.04', save_name='Aston Villa Goals & xG.png')
+                  save=False, save_path=save_path, save_name=save_name)

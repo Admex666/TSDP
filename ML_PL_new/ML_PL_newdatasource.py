@@ -20,15 +20,8 @@ from ML_PL_new.ML_PL_transform_data import df_to_model_input
 import datetime
 
 #%% Loading data from website
-url_train = "https://www.football-data.co.uk/mmz4281/2324/E0.csv"
-df_tr = pd.read_csv(url_train)
-# Only needed columns
-needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
-df_tr = df_tr[needed_cols]
-# create BTTS and O2,5 labels
-df_tr['BTTS'] = np.where((df_tr.FTHG!=0)&(df_tr.FTAG!=0),'Yes','No')
-df_tr['O/U2.5'] = np.where(df_tr.FTHG+df_tr.FTAG>2.5,'Over','Under')
-model_input = df_to_model_input(df_tr, weather=False)
+path_train = "ML_PL_new/df_tr.csv"
+model_input = pd.read_csv(path_train)
 
 #%% Getting the fresh data for predictions
 # football-data.co.uk historical data urls:
