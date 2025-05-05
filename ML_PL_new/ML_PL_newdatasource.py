@@ -63,6 +63,7 @@ for countrycode in csv_name_dict.keys():
     df_pred = pd.read_csv(path_pred)
     
     # Transform
+    needed_cols = ['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG', 'HS', 'AS', 'HST', 'AST', 'HC', 'AC', 'HY', 'AY', 'FTR']
     df_pred = df_pred[needed_cols]
     # create BTTS and O2,5 labels
     df_pred['BTTS'] = np.where((df_pred.FTHG!=0)&(df_pred.FTAG!=0),'Yes','No')
