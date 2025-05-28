@@ -2,14 +2,14 @@ import pandas as pd
 import fbref.fbref_module as fbref
 
 # get fbref match logs -> shooting
-URL = "https://fbref.com/en/squads/acbb6a5b/2024-2025/matchlogs/all_comps/shooting/RB-Leipzig-Match-Logs-All-Competitions"
+URL = "https://fbref.com/en/squads/44c4d76e/Nyiregyhaza-Stats"
 table_id = 'matchlogs_for'
 team = URL.split('/')[-1].split('-Match-')[0].replace('-', ' ')
 league = URL.split('Match-Logs-')[-1].replace('-', ' ')
 
-df = fbref.scrape(URL, table_id)
-df = df[(df.Expected_xG != 'Expected') & (df.Expected_xG != 'xG')]
-df.dropna(inplace=True)
+df_raw = fbref.scrape(URL, table_id)
+df = df_raw[(df_raw.Expected_xG != 'Expected') & (df_raw.Expected_xG != 'xG')].copy()
+df.dropna(subset='GF',inplace=True)
 
 df.rename(columns={[col for col in df.columns if '_Date' in col][0]:'Date'}, inplace=True)
 df['nr'] = range(len(df))
@@ -20,7 +20,7 @@ df.rename(columns={'Standard_Gls': 'Goals', 'Expected_xG': 'xG',
                    'Standard_G/SoT': 'Goal/Shot on Goal'}, inplace=True)
 
 #%% Line chart
-def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path, save_name, url_logo, colors=['blue', 'skyblue'], b4a_color='orange',  window=4, save=False):
+def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path, save_name, url_logo, colors=['blue', 'skyblue'], b4a_color='orange',  fill_between=True, arrows=True, window=4, save=False):
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
@@ -45,50 +45,53 @@ def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path,
     # Draw lines
     plt.plot(df[x], df[f'{col1}_mavg'], label=col1, color=c1)
     plt.plot(df[x], df[f'{col2}_mavg'], label=col2, color=c2)
-    # Fill area between
-    plt.fill_between(df[x], df[f'{col1}_mavg'], df[f'{col2}_mavg'],
-                     where=(df[f'{col1}_mavg'] > df[f'{col2}_mavg']),
-                     interpolate=True, color=c1, alpha=0.3)
     
-    plt.fill_between(df[x], df[f'{col1}_mavg'], df[f'{col2}_mavg'],
-                     where=(df[f'{col1}_mavg'] < df[f'{col2}_mavg']),
-                     interpolate=True, color=c2, alpha=0.3)
+    # Fill area between
+    if fill_between:
+        plt.fill_between(df[x], df[f'{col1}_mavg'], df[f'{col2}_mavg'],
+                         where=(df[f'{col1}_mavg'] > df[f'{col2}_mavg']),
+                         interpolate=True, color=c1, alpha=0.3)
+        
+        plt.fill_between(df[x], df[f'{col1}_mavg'], df[f'{col2}_mavg'],
+                         where=(df[f'{col1}_mavg'] < df[f'{col2}_mavg']),
+                         interpolate=True, color=c2, alpha=0.3)
     
     # Find max and min of xG difference
-    max_idx = df['mavg_diff'].idxmax()
-    min_idx = df['mavg_diff'].idxmin()
-    
-    # MAX arrow
-    x_max = df.loc[max_idx, x]
-    y1_max = df.loc[max_idx, f'{col1}_mavg']
-    y2_max = df.loc[max_idx, f'{col2}_mavg']
-    diff_max = y1_max - y2_max
-    y_top = max(y1_max, y2_max)
-    y_bottom = min(y1_max, y2_max)
-    
-    plt.annotate("",
-                 xy=(x_max, y_bottom), xytext=(x_max, y_top),
-                 arrowprops=dict(arrowstyle='<->', color='green', lw=1.5))
-    
-    plt.text(x_max + 0.3, (y_top + y_bottom)/2,
-             f"{diff_max:.2f}",
-             color='green', fontsize=10, va='center')
-    
-    # MIN arrow
-    x_min = df.loc[min_idx, x]
-    y1_min = df.loc[min_idx, f'{col1}_mavg']
-    y2_min = df.loc[min_idx, f'{col2}_mavg']
-    diff_min = y1_min - y2_min
-    y_top = max(y1_min, y2_min)
-    y_bottom = min(y1_min, y2_min)
-    
-    plt.annotate("",
-                 xy=(x_min, y_bottom), xytext=(x_min, y_top),
-                 arrowprops=dict(arrowstyle='<->', color='red', lw=1.5))
-    
-    plt.text(x_min + 0.3, (y_top + y_bottom)/2,
-             f"{diff_min:.2f}",
-             color='red', fontsize=10, va='center')
+    if arrows:
+        max_idx = df['mavg_diff'].idxmax()
+        min_idx = df['mavg_diff'].idxmin()
+        
+        # MAX arrow
+        x_max = df.loc[max_idx, x]
+        y1_max = df.loc[max_idx, f'{col1}_mavg']
+        y2_max = df.loc[max_idx, f'{col2}_mavg']
+        diff_max = y1_max - y2_max
+        y_top = max(y1_max, y2_max)
+        y_bottom = min(y1_max, y2_max)
+        
+        plt.annotate("",
+                     xy=(x_max, y_bottom), xytext=(x_max, y_top),
+                     arrowprops=dict(arrowstyle='<->', color='green', lw=1.5))
+        
+        plt.text(x_max + 0.3, (y_top + y_bottom)/2,
+                 f"{diff_max:.2f}",
+                 color='green', fontsize=10, va='center')
+        
+        # MIN arrow
+        x_min = df.loc[min_idx, x]
+        y1_min = df.loc[min_idx, f'{col1}_mavg']
+        y2_min = df.loc[min_idx, f'{col2}_mavg']
+        diff_min = y1_min - y2_min
+        y_top = max(y1_min, y2_min)
+        y_bottom = min(y1_min, y2_min)
+        
+        plt.annotate("",
+                     xy=(x_min, y_bottom), xytext=(x_min, y_top),
+                     arrowprops=dict(arrowstyle='<->', color='red', lw=1.5))
+        
+        plt.text(x_min + 0.3, (y_top + y_bottom)/2,
+                 f"{diff_min:.2f}",
+                 color='red', fontsize=10, va='center')
     
     plt.xlabel('Match number', color='white')
     plt.ylabel(y_title, color='white')
@@ -145,19 +148,44 @@ def create_mavg_chart(df, x, col1, col2, y_title, b4a_line, b4a_text, save_path,
     else:
         plt.show()
         
-#%% 
-url_logo = 'https://upload.wikimedia.org/wikipedia/en/thumb/0/04/RB_Leipzig_2014_logo.svg/1200px-RB_Leipzig_2014_logo.svg.png'
-b4a_line, b4a_text, b4a_color = [35, 'Zsolt Lőw appointed','orange']
+#%% Basics
+url_logo = 'https://upload.wikimedia.org/wikipedia/en/8/8c/Ny%C3%ADregyh%C3%A1za_Spartacus_FC_logo.png'
+b4a_line, b4a_text, b4a_color = [27, 'István Szabó appointed','orange']
 y_title = 'Value'
-
 save_path = r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.05'
+
+#%%
+df['Goal Difference'] = df.GF - df.GA
+
+def calculate_points(result):
+    if result == 'W':
+        return 3 
+    elif result =='D':
+        return 1 
+    elif result == 'L':
+        return 0 
+    else:
+        return None 
+df['Points'] = df.Result.apply(calculate_points)
+
+col1, col2 = 'Goal Difference', 'Points'
+save_name = f'{team} {col1} & {col2}.png'
+create_mavg_chart(df, x='nr', col1=col1, col2=col2, window=4, 
+                  y_title=y_title,
+                  b4a_line=b4a_line, b4a_text= b4a_text, b4a_color=b4a_color,
+                  url_logo=url_logo,
+                  save=True, save_path=save_path, save_name=save_name,
+                  fill_between=False, arrows=False)
+
+#%%
 col1, col2 = 'Goals', 'xG'
 save_name = f'{team} {col1} & {col2}.png'
 create_mavg_chart(df, x='nr', col1=col1, col2=col2, window=4, 
                   y_title=y_title,
                   b4a_line=b4a_line, b4a_text= b4a_text, b4a_color=b4a_color,
                   url_logo=url_logo,
-                  save=True, save_path=save_path, save_name=save_name)
+                  save=True, save_path=save_path, save_name=save_name,
+                  fill_between=True, arrows=True)
 
 #%% 
 col1, col2 = 'Goal/Shot', 'Goal/Shot on Goal'

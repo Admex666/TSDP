@@ -66,48 +66,66 @@ for i, row in df.iterrows():
     df.loc[i, ['HomePoints', 'HomeGF', 'HomeGA']] = points_home, gf_home, ga_home
     df.loc[i, ['AwayPoints', 'AwayGF', 'AwayGA']] = points_away, gf_away, ga_away
 
-# Max points, hopes
-df[['MinPointsEur', 'MaxPointsReleg']] = None
+#%% Monte carlo
 games_per_season = 38
-df['HomeMaxPoints'] = df['HomePoints'] + (games_per_season - df['Week'])*3
-df['AwayMaxPoints'] = df['AwayPoints'] + (games_per_season - df['Week'])*3
-# Best placements (7th: Europe; 18th: relegation)
-place_eur, place_releg = 7, 18
-for week_nr in df.Week.unique():
-    df_week = df[df.Week == week_nr]
-    # european spot
-    standings = [*df_week.HomePoints, *df_week.AwayPoints]
-    standings.sort(reverse=True)
-    MinPointsEur = standings[place_eur - 1]
-    # relegation spot
-    standings_max = [*df_week.HomeMaxPoints, *df_week.AwayMaxPoints]
-    standings_max.sort(reverse=True)
-    MaxPointsReleg = standings_max[place_releg -1]
-    
-    df.loc[df.Week == week_nr, ['MinPointsEur', 'MaxPointsReleg']] = MinPointsEur, MaxPointsReleg
-    
-# check hopes
-df['HomeSafe'] = np.where((df['HomeMaxPoints'] < df['MinPointsEur']) & (df['HomePoints'] > df['MaxPointsReleg']), 
-                          True, False)
-df['AwaySafe'] = np.where((df['AwayMaxPoints'] < df['MinPointsEur']) & (df['AwayPoints'] > df['MaxPointsReleg']), 
-                          True, False)
+europe_threshold = 62
+relegation_threshold = 33
+simulations = 1000
 
-def classify_match_tension(home_safe, away_safe):
-    if not home_safe and not away_safe:
-        return "Tension for both"
+def simulate_finish(current_points, matches_remaining, simulations=10000):
+    matches_remaining = int(matches_remaining)
+    results = []
+    for _ in range(simulations):
+        simulated_results = np.random.choice([0, 1, 3], size=matches_remaining, p=[0.4, 0.3, 0.3])
+        results.append(current_points + simulated_results.sum())
+    return results
+
+
+def probability_to_reach(points_list, target):
+    return np.mean(np.array(points_list) >= target)
+
+def compute_probabilities(row):
+    home_remaining = games_per_season - row["Week"]
+    away_remaining = games_per_season - row["Week"]
+
+    home_sim = simulate_finish(row["HomePoints"], home_remaining, simulations)
+    away_sim = simulate_finish(row["AwayPoints"], away_remaining, simulations)
+
+    home_prob_eur = probability_to_reach(home_sim, europe_threshold)
+    home_prob_releg = 1 - probability_to_reach(home_sim, relegation_threshold)
+
+    away_prob_eur = probability_to_reach(away_sim, europe_threshold)
+    away_prob_releg = 1 - probability_to_reach(away_sim, relegation_threshold)
+
+    return pd.Series({
+        "HomeProbEur": home_prob_eur,
+        "HomeProbReleg": home_prob_releg,
+        "AwayProbEur": away_prob_eur,
+        "AwayProbReleg": away_prob_releg
+    })
+
+df[["HomeProbEur", "HomeProbReleg", "AwayProbEur", "AwayProbReleg"]] = df.apply(compute_probabilities, axis=1)
+
+def classify_probabilistic_tension(row, threshold=0.3):
+    if (row["HomeProbEur"] < threshold and row["HomeProbReleg"] < threshold and
+        row["AwayProbEur"] < threshold and row["AwayProbReleg"] < threshold):
+        return "No realistic tension"
     else:
-        return "Tension for one or none"
-df["MatchTension"] = df.apply(lambda row: classify_match_tension(row["HomeSafe"], row["AwaySafe"]), axis=1)
+        return "Tension possible"
 
-# Boxplot: goals
-sns.boxplot(data=df, x="Period", y="TotalGoals")
-plt.title("Distribution of Goals in Periods")
-plt.show()
+df["ProbabilisticTension"] = df.apply(classify_probabilistic_tension, axis=1)
 
-# Boxplot: xG
+#%% Boxplots
+# xG
 sns.boxplot(data=df, x="Period", y="TotalXG")
 plt.title("Distribution of Expected Goals in Periods")
 plt.show()
+
+# Goals
+sns.boxplot(data=df, x="Period", y="TotalGoals")
+plt.title("Distribution of Goals, Serie A 24/25")
+plt.show()
+#plt.savefig(r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.05\2025.05.21., LSE, Serie A.png',dpi=300, bbox_inches='tight')
 
 #%% Test significance of season period
 early = df[df["Period"] == "Early"]["TotalGoals"]
@@ -117,31 +135,67 @@ t_stat, p_val = ttest_ind(early, late, equal_var=False)
 print(f"T-test on goals (Early vs Late): t={t_stat:.3f}, p={p_val:.3f}")
 
 #%% Test significance of tension
-tension0 = df[df["MatchTension"] == "Tension for one or none"]["TotalGoals"]
-tension1 = df[df["MatchTension"] == "Tension for both"]["TotalGoals"]
+tension0 = df[df["ProbabilisticTension"] == "No realistic tension"]["TotalGoals"]
+tension1 = df[df["ProbabilisticTension"] == "Tension possible"]["TotalGoals"]
 t_stat, p_val = ttest_ind(tension0, tension1, equal_var=False)
-print(f"T-test on goals (No tension for one vs Tension for both): t={t_stat:.3f}, p={p_val:.3f}")
+print(f"T-test on goals (No tension for one vs Tension possible): t={t_stat:.3f}, p={p_val:.3f}")
 
-# Visualize
-sns.boxplot(x="MatchTension", y="TotalXG", data=df)
-plt.title("Match tension and total xG")
-plt.ylabel("Total xG")
-plt.xticks(rotation=15)
+# viz
+bar_t0 = df[df.ProbabilisticTension == "No realistic tension"].groupby('TotalGoals').TotalGoals.count()
+bar_t1 = df[df.ProbabilisticTension == "Tension possible"].groupby('TotalGoals').TotalGoals.count()
+
+# Az összes lehetséges x érték, hogy minden oszlopra jusson
+all_goals = sorted(set(bar_t0.index).union(set(bar_t1.index)))
+
+bar_width = 0.4
+
+# X pozíciók az eltoláshoz
+x = np.array(all_goals)
+x0 = x - bar_width / 2
+x1 = x + bar_width / 2
+
+# Heights
+y0 = [bar_t0.get(val, 0) for val in x]
+y1 = [bar_t1.get(val, 0) for val in x]
+
+# Plot
+plt.bar(x0, y0, width=bar_width, label="No realistic tension", color="skyblue", edgecolor="black")
+plt.bar(x1, y1, width=bar_width, label="Tension possible", color="salmon", edgecolor="black")
+
+# Numbers outwritten
+for xi, yi in zip(x0, y0):
+    rel0 = int(yi/sum(bar_t0)*100)
+    plt.text(xi, yi + 0.3, f'{rel0}%', ha='center', va='bottom', fontsize=8)
+
+for xi, yi in zip(x1, y1):
+    rel1 = int(yi/sum(bar_t1)*100)
+    plt.text(xi, yi + 0.3, f'{rel1}%', ha='center', va='bottom', fontsize=8)
+    
+# Legend, title
+plt.title("Goals in Matches With or Without Probabilistic Tension")
+plt.xlabel("Total Goals")
+plt.ylabel("Match Count")
+plt.xticks(x)
+plt.legend()
+plt.tight_layout()
 plt.show()
 
 #%% Trend analysis
 slope, intercept, r_value, p_value, std_err = linregress(x=df["Week"], y=df["TotalGoals"])
 print(f"Goal trend regression: slope={slope:.3f}, p={p_value:.3f}, R2={r_value**2}")
 
-# Ábra a trendről
+# Plot trend
 sns.regplot(data=df, x="Week", y="TotalGoals", scatter_kws={"alpha":0.4})
 plt.title("Trend of goals during the season")
 plt.show()
 
 #%% Difference in xG: do teams get closer or further
 df["XG_Diff"] = abs(df["HomeXG"] - df["AwayXG"])
-sns.lineplot(x="Week", y="XG_Diff", data=df)
+slope, intercept, r_value, p_value, std_err = linregress(x=df["Week"], y=df["XG_Diff"])
+print(f"Goal trend regression: slope={slope:.3f}, p={p_value:.3f}, R2={r_value**2}")
+#sns.lineplot(x="Week", y="XG_Diff", data=df)
 sns.regplot(data=df, x="Week", y="XG_Diff", scatter_kws={"alpha":0.4})
 plt.ylim(top=3)
 plt.title('Difference of Expected Goals in a match, during the season')
 plt.show()
+
