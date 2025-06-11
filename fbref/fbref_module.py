@@ -255,7 +255,58 @@ def stats_dict():
         'Progression_PrgC':  {'name': 'Progressive Carries', 'category': 'Possession', 'significance': 'positive'},
         'Progression_PrgR':  {'name': 'Progressive Runs', 'category': 'Possession', 'significance': 'positive'},
         'SCA_SCA90':  {'name': 'Shot Creating Actions per 90', 'category': 'Offense', 'significance': 'positive'},
-    }
+        'Standard_SoT%': {'name': 'Shots on Target %', 'category': 'Offensive', 'significance': 'positive'},
+        'Standard_Sh/90': {'name': 'Shots per 90', 'category': 'Offensive', 'significance': 'positive'},
+        'SCA Types_PassLive': {'name': 'Shot-Creating Actions (Live Passes)', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Poss': {'name': 'Possession', 'category': 'Possession', 'significance': 'positive'},
+        'SCA Types_TO': {'name': 'Shot-Creating Actions (Take-Ons)', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Launched_Att': {'name': 'Launched Goal Kicks Attempted', 'category': 'Goalkeeping', 'significance': 'neutral'},
+        'SCA_SCA': {'name': 'Total Shot-Creating Actions', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Crosses_Stp': {'name': 'Crosses Stopped', 'category': 'Defending', 'significance': 'positive'},
+        'Performance_Saves': {'name': 'Saves', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Pass Types_TB': {'name': 'Through Balls', 'category': 'Passing', 'significance': 'positive'},
+        'Crosses_Opp': {'name': 'Opponent Crosses', 'category': 'Defending', 'significance': 'neutral'},
+        'Standard_FK': {'name': 'Free Kicks Taken', 'category': 'Offensive', 'significance': 'neutral'},
+        'Standard_PKatt': {'name': 'Penalty Kicks Attempted', 'category': 'Offensive', 'significance': 'positive'},
+        'Goal Kicks_Att': {'name': 'Goal Kicks Attempted', 'category': 'Goalkeeping', 'significance': 'neutral'},
+        'SCA Types_PassDead': {'name': 'Shot-Creating Actions (Dead Balls)', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Passes_AvgLen': {'name': 'Average Pass Length', 'category': 'Passing', 'significance': 'neutral'},
+        'Goal Kicks_AvgLen': {'name': 'Average Goal Kick Length', 'category': 'Goalkeeping', 'significance': 'neutral'},
+        'Sweeper_AvgDist': {'name': 'Sweeper Keeper Avg Distance', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Standard_Dist': {'name': 'Shot Distance', 'category': 'Offensive', 'significance': 'neutral'},
+        'Performance_SoTA': {'name': 'Shots on Target Against', 'category': 'Goalkeeping', 'significance': 'negative'},
+        'Launched_Cmp': {'name': 'Launched Passes Completed', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Launched_Cmp%': {'name': 'Launched Pass Completion %', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'SCA Types_Sh': {'name': 'Shot-Creating Actions (Shots)', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Outcomes_Off': {'name': 'Offsides', 'category': 'Discipline', 'significance': 'negative'},
+        'Passes_Thr': {'name': 'Through Passes', 'category': 'Passing', 'significance': 'positive'},
+        'Pass Types_CK': {'name': 'Corner Kicks', 'category': 'Passing', 'significance': 'positive'},
+        'Standard_PK': {'name': 'Penalty Goals', 'category': 'Offensive', 'significance': 'positive'},
+        'Outcomes_Blocks': {'name': 'Blocked Shots', 'category': 'Offensive', 'significance': 'negative'},
+        'SCA Types_Def': {'name': 'Shot-Creating Actions (Defensive Actions)', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Corner Kicks_Out': {'name': 'Outswinging Corners', 'category': 'Set Pieces', 'significance': 'neutral'},
+        'Pass Types_TI': {'name': 'Throw-Ins', 'category': 'Passing', 'significance': 'neutral'},
+        'Crosses_Stp%': {'name': 'Crosses Stopped %', 'category': 'Defending', 'significance': 'positive'},
+        'Pass Types_Crs': {'name': 'Crosses', 'category': 'Passing', 'significance': 'positive'},
+        'Goal Kicks_Launch%': {'name': 'Goal Kicks Launch %', 'category': 'Goalkeeping', 'significance': 'neutral'},
+        'Pass Types_Live': {'name': 'Live-Ball Passes', 'category': 'Passing', 'significance': 'positive'},
+        'Passes_Att (GK)': {'name': 'Passes Attempted by GK', 'category': 'Goalkeeping', 'significance': 'neutral'},
+        'Corner Kicks_In': {'name': 'Inswinging Corners', 'category': 'Set Pieces', 'significance': 'neutral'},
+        'Penalty Kicks_PKA': {'name': 'Penalty Kicks Allowed', 'category': 'Goalkeeping', 'significance': 'negative'},
+        'Penalty Kicks_PKatt': {'name': 'Penalty Kicks Faced', 'category': 'Goalkeeping', 'significance': 'neutral'},
+        'Sweeper_#OPA': {'name': 'Sweeper Keeper Actions Outside Penalty Area', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Penalty Kicks_PKm': {'name': 'Penalty Misses', 'category': 'Offensive', 'significance': 'negative'},
+        'Pass Types_Dead': {'name': 'Dead-Ball Passes', 'category': 'Passing', 'significance': 'neutral'},
+        'Corner Kicks_Str': {'name': 'Straight Corners', 'category': 'Set Pieces', 'significance': 'neutral'},
+        'Pass Types_FK': {'name': 'Free Kick Passes', 'category': 'Passing', 'significance': 'positive'},
+        'Att': {'name': 'Total Attacking Actions', 'category': 'Attacking', 'significance': 'positive'},
+        'Penalty Kicks_PKsv': {'name': 'Penalty Saves', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'SCA Types_Fld': {'name': 'Shot-Creating Actions (Fouls Drawn)', 'category': 'Shot Creation', 'significance': 'positive'},
+        'Penalty Kicks_Save%': {'name': 'Penalty Save %', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Pass Types_Sw': {'name': 'Switches of Play', 'category': 'Passing', 'significance': 'positive'},
+        'Sweeper_#OPA/90': {'name': 'Sweeper Keeper Actions/90', 'category': 'Goalkeeping', 'significance': 'positive'},
+        'Outcomes_Cmp': {'name': 'Completed Actions', 'category': 'General', 'significance': 'positive'}
+        }
     
     return combined_stats
 
@@ -305,7 +356,41 @@ def get_all_team_data(countrycode, year=False):
             globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{url}/squads/{league_name}-Stats"
     for stat in stats_list:
         globals()[f'df_{stat}'] = format_column_names(scrape(globals()[f'URL_{stat}'], f'stats_teams_{stat}_for'))
+        
         globals()[f'df_{stat}'].drop(globals()[f'df_{stat}'][globals()[f'df_{stat}']['Rk']=='Rk'].index, inplace=True)
+        print(f'df_{stat} found.')
+        
+    df_standard.rename(columns={'Playing Time_90s': '90s'}, inplace=True)    
+    df_keeper_adv.drop(columns='90s')
+    
+    df_analyse = df_standard.copy()
+    for stat in stats_list[1:]:
+        df_analyse = pd.merge(df_analyse, globals()[f'df_{stat}'],
+                              on='Squad', how='left',
+                              suffixes=['','_remove'])
+        # Remove the duplicate columns
+        df_analyse.drop([i for i in df_analyse.columns if 'remove' in i],
+                       axis=1, inplace=True)
+    #df_analyse.drop(columns='Matches', inplace=True)
+    #df_analyse.iloc[:, 7:] = df_analyse.iloc[:, 7:].astype(float)
+    
+    return df_analyse
+
+def get_all_team_data_huv(countrycode, year=False):
+    import pandas as pd
+    comp_id, league_name = team_dict_get(countrycode)
+    stats_list = ['standard', 'keeper', 'keeper_adv', 'defense', 'passing', 'gca', 'misc', 'shooting', 'possession', 'passing_types']
+    url_list = ['stats', 'keepers', 'keepersadv', 'defense', 'passing', 'gca', 'misc', 'shooting', 'possession', 'passing_types']
+    
+    for stat, url in zip(stats_list, url_list):
+        if year:
+            globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{year}/{url}/squads/{year}-{league_name}-Stats"
+        else:
+            globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{url}/squads/{league_name}-Stats"
+    for stat in stats_list:
+        globals()[f'df_{stat}'] = format_column_names(scrape(globals()[f'URL_{stat}'], f'stats_squads_{stat}_for'))
+        
+        globals()[f'df_{stat}'].drop(globals()[f'df_{stat}'][globals()[f'df_{stat}']['Squad']=='Squad'].index, inplace=True)
         print(f'df_{stat} found.')
         
     df_standard.rename(columns={'Playing Time_90s': '90s'}, inplace=True)    

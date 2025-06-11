@@ -1,0 +1,498 @@
+time,player,team,score,HomeGoals,AwayGoals,match_id
+90+2,Marin Jurina,MTK Budapest,0:1,0,1,0
+ 29,Márk Kovácsréti,Nyíregyháza,1:0,1,0,1
+ 55,Péter Beke,Nyíregyháza,2:0,2,0,1
+ 78,Matija Krivokapić,Győr,2:1,2,1,1
+ 55,Lamin Colley,Puskás Akadémia,0:1,0,1,3
+ 58,Matija Ljujić,Újpest,1:1,1,1,3
+ 60,Lamin Colley,Puskás Akadémia,1:2,1,2,3
+ 40,Marko Rakonjac,Diósgyőr,1:0,1,0,4
+ 47,Dániel Böde,Paks,1:1,1,1,4
+ 86,Bright Edomwonyi,Diósgyőr,2:2,2,2,4
+ 55,Brandon Domingues,Debrecen,0:1,0,1,5
+ 60,Donát Bárány,Debrecen,0:2,0,2,5
+ 85,Dognimani Silue,Debrecen,0:3,0,3,5
+ 1,Nikola Serafimov,Vidi,1:0,1,0,6
+ 20,Franchu Feuillassier,Diósgyőr,1:1,1,1,6
+ 75,Bence Babos,Vidi,2:1,2,1,6
+90+4,Mátyás Katona,Vidi,3:1,3,1,6
+ 22,Adama Traoré,Ferencváros,1:0,1,0,7
+ 24,Ilia Beriashvili,MTK Budapest,1:0,1,0,8
+ 77,Zoltán Stieber,MTK Budapest,2:0,2,0,8
+ 81,Matija Ljujić,Újpest,1:1,1,1,9
+90+2,József Windecker,Paks,2:1,2,1,9
+ 5,Jakub Plšek,Puskás Akadémia,1:0,1,0,10
+ 66,Máté Sajbán,Zalaegerszeg,1:1,1,1,10
+ 90,Zsolt Nagy,Puskás Akadémia,2:1,2,1,10
+ 19,Brandon Domingues,Debrecen,0:1,0,1,11
+45+2,Levente Vágó,Kecskemét,1:1,1,1,11
+90+3,Mohamed Ali Ben Romdhane,Ferencváros,0:2,0,2,12
+ 21,Balázs Bakti,Zalaegerszeg,1:0,1,0,13
+ 62,Gergely Mim,Zalaegerszeg,2:0,2,0,13
+ 68,Dániel Németh,Zalaegerszeg,3:0,3,0,13
+ 83,Bence Ötvös,Paks,3:1,3,1,13
+ 2,Nenad Lukić,Győr,1:0,1,0,14
+ 24,Matija Ljujić,Újpest,1:0,1,0,15
+ 42,Fran Brodić,Újpest,2:0,2,0,15
+45+2,João Nunes,Újpest,3:0,3,0,15
+ 53,Mátyás Tajti,Újpest,4:0,4,0,15
+ 90,Patrik Kovács,Vidi,4:1,4,1,15
+ 3,György Komáromi,Puskás Akadémia,1:0,1,0,16
+ 35,Jonathan Levi,Puskás Akadémia,2:0,2,0,16
+ 64,Péter Beke,Nyíregyháza,2:1,2,1,16
+ 9,Tamás Nikitscher,Kecskemét,1:0,1,0,17
+45+3,Tamás Nikitscher,Kecskemét,2:0,2,0,17
+ 90,Mamady Diarra,Győr,2:1,2,1,17
+ 30,Bozhidar Chorbadzhiyski,Diósgyőr,0:1,0,1,18
+90+2,Tosin Kehinde,Ferencváros,1:0,1,0,19
+ 54,Csanad Denes,Zalaegerszeg,0:1,0,1,20
+90+5,Patrik Kovács,Vidi,1:1,1,1,20
+ 5,Ákos Kinyik,Paks,1:0,1,0,21
+ 16,Olivér Tamás,Nyíregyháza,1:1,1,1,21
+ 44,Erik Silye,Paks,2:1,2,1,21
+ 51,Jonathan Levi,Puskás Akadémia,1:0,1,0,22
+ 20,Barnabás Bese,Újpest,1:0,1,0,23
+ 29,Matija Ljujić,Újpest,2:0,2,0,23
+ 74,Elton Acolatse,Diósgyőr,1:0,1,0,24
+ 5,Márton Eppel,Nyíregyháza,1:0,1,0,25
+ 40,Márk Kovácsréti,Nyíregyháza,2:0,2,0,25
+ 45,Nejc Gradišar,Vidi,2:1,2,1,25
+ 88,Slobodan Babić,Nyíregyháza,3:3,3,3,25
+45+1,Nejc Gradišar,Vidi,1:0,1,0,26
+ 5,Csanad Denes,Zalaegerszeg,0:1,0,1,27
+ 65,János Ferenczi,Debrecen,2:1,2,1,27
+90+6,Brandon Domingues,Debrecen,3:1,3,1,27
+ 30,Levente Katona,Kecskemét,1:0,1,0,29
+ 34,Márk Mucsányi,Újpest,1:1,1,1,29
+ 64,Fran Brodić,Újpest,1:2,1,2,29
+ 76,Matija Ljujić,Újpest,1:3,1,3,29
+ 15,György Komáromi,Puskás Akadémia,0:1,0,1,30
+ 60,József Windecker,Paks,2:1,2,1,30
+ 18,Stefan Gartenmann,Ferencváros,1:0,1,0,31
+ 65,Márk Kovácsréti,Nyíregyháza,2:1,2,1,31
+ 25,Barnabás Varga,Ferencváros,1:1,1,1,32
+ 44,Raul Bicalho,Ferencváros,1:2,1,2,32
+ 80,Saldanha,Ferencváros,1:3,1,3,32
+ 23,Máté Sajbán,Zalaegerszeg,1:0,1,0,33
+ 34,Dániel Lukács,Kecskemét,1:1,1,1,33
+ 69,Dániel Csóka,Zalaegerszeg,2:1,2,1,33
+ 8,Jorgo Pellumbi,Debrecen,0:1,0,1,35
+ 23,Barnabás Nagy,Nyíregyháza,1:1,1,1,35
+ 36,Jaroslav Navrátil,Nyíregyháza,2:1,2,1,35
+ 65,Jaroslav Navrátil,Nyíregyháza,3:1,3,1,35
+ 12,Lamin Colley,Puskás Akadémia,1:0,1,0,36
+ 62,Urho Nissilä,Puskás Akadémia,2:0,2,0,36
+ 78,Jonathan Levi,Puskás Akadémia,3:0,3,0,36
+ 9,Nadhir Benbouali,Győr,1:0,1,0,37
+ 27,Nadhir Benbouali,Győr,2:0,2,0,37
+ 30,Bence Ötvös,Paks,2:1,2,1,37
+ 10,Marko Rakonjac,Diósgyőr,1:0,1,0,39
+ 54,Gergely Mim,Zalaegerszeg,1:1,1,1,39
+ 68,Csaba Szatmári,Diósgyőr,2:1,2,1,39
+ 27,Márk Kovácsréti,Nyíregyháza,0:1,0,1,40
+ 42,Jaroslav Navrátil,Nyíregyháza,0:2,0,2,40
+ 33,Marin Jurina,MTK Budapest,0:1,0,1,41
+ 41,Dominik Kocsis,Debrecen,1:1,1,1,41
+ 59,István Bognár,MTK Budapest,1:2,1,2,41
+ 76,Tamás Szűcs,Debrecen,2:2,2,2,41
+ 85,Viktor Hey,MTK Budapest,2:3,2,3,41
+ 45,Filip Holender,Vidi,1:0,1,0,42
+90+6,József Windecker,Paks,1:2,1,2,42
+ 65,Saldanha,Ferencváros,1:0,1,0,43
+ 77,Saldanha,Ferencváros,2:0,2,0,43
+ 82,Saldanha,Ferencváros,3:0,3,0,43
+ 89,Wojciech Golla,Puskás Akadémia,1:0,1,0,44
+ 9,Daniel Štefulj,Győr,1:0,1,0,45
+ 14,Željko Gavrić,Győr,2:0,2,0,45
+90+3,Deian Boldor,Győr,3:1,3,1,45
+ 13,Dániel Lukács,Kecskemét,0:1,0,1,46
+ 18,Márk Kosznovszky,MTK Budapest,1:1,1,1,46
+ 22,Rajmund Molnár,MTK Budapest,2:1,2,1,46
+ 87,Ilia Beriashvili,MTK Budapest,3:1,3,1,46
+ 14,Bright Edomwonyi,Diósgyőr,0:1,0,1,47
+ 46,Dániel Gera,Diósgyőr,0:2,0,2,47
+ 7,Fran Brodić,Újpest,0:1,0,1,48
+ 2,Attila Osváth,Paks,1:0,1,0,49
+ 35,Dániel Böde,Paks,2:0,2,0,49
+ 62,Kady Borges,Ferencváros,2:1,2,1,49
+ 69,Barna Tóth,Paks,3:1,3,1,49
+ 9,Bálint Vécsei,Paks,0:1,0,1,50
+ 32,Barna Tóth,Paks,0:2,0,2,50
+ 41,Szabolcs Mezei,Paks,0:3,0,3,50
+ 65,Kristóf Papp,Paks,0:4,0,4,50
+ 2,Márk Kosznovszky,MTK Budapest,0:1,0,1,51
+ 42,Rajmund Molnár,MTK Budapest,0:2,0,2,51
+ 90,André Duarte,Újpest,1:0,1,0,52
+ 31,Lamin Colley,Puskás Akadémia,0:1,0,1,53
+ 36,Zsolt Nagy,Puskás Akadémia,0:2,0,2,53
+ 75,Urho Nissilä,Puskás Akadémia,0:3,0,3,53
+ 25,Yohan Croizet,Zalaegerszeg,1:0,1,0,54
+ 72,Eneo Bitri,Győr,1:1,1,1,54
+ 82,Claudiu Bumba,Győr,1:2,1,2,54
+ 56,Kady Borges,Ferencváros,2:0,2,0,55
+ 3,Lamin Colley,Puskás Akadémia,1:0,1,0,56
+ 68,Ágoston Bényei,Diósgyőr,1:1,1,1,56
+ 36,Nejc Gradišar,Vidi,1:0,1,0,57
+ 55,Nejc Gradišar,Vidi,2:0,2,0,57
+ 2,Márk Mucsányi,Újpest,0:1,0,1,58
+ 15,Marin Jurina,MTK Budapest,1:1,1,1,58
+ 66,Márk Kosznovszky,MTK Budapest,3:1,3,1,58
+ 71,Ádin Molnár,MTK Budapest,4:1,4,1,58
+ 15,Gergely Mim,Zalaegerszeg,0:1,0,1,59
+ 90,Dominik Nagy,Nyíregyháza,1:1,1,1,59
+ 45,Samsindin Ouro,Győr,1:0,1,0,61
+ 66,Adama Traoré,Ferencváros,1:1,1,1,61
+ 10,Yohan Croizet,Zalaegerszeg,0:1,0,1,62
+ 87,Krisztián Németh,MTK Budapest,1:1,1,1,62
+ 6,Lamin Colley,Puskás Akadémia,1:0,1,0,63
+ 41,Márk Mucsányi,Újpest,1:1,1,1,63
+ 38,Eneo Bitri,Győr,1:0,1,0,64
+ 64,Nika Kvekveskiri,Nyíregyháza,1:1,1,1,64
+ 5,Elton Acolatse,Diósgyőr,0:1,0,1,65
+ 21,Dániel Böde,Paks,1:1,1,1,65
+ 30,Bright Edomwonyi,Diósgyőr,1:2,1,2,65
+ 36,Gábor Jurek,Diósgyőr,1:3,1,3,65
+ 43,Dániel Böde,Paks,2:3,2,3,65
+ 72,Siniša Saničanin,Diósgyőr,2:4,2,4,65
+ 85,Barna Tóth,Paks,3:4,3,4,65
+ 61,Adama Traoré,Ferencváros,1:0,1,0,66
+ 72,Donát Bárány,Debrecen,1:1,1,1,66
+ 80,Meldin Drešković,Debrecen,1:2,1,2,66
+ 85,Zsombor Gruber,Ferencváros,2:2,2,2,66
+ 11,Gergő Pálinkás,Kecskemét,0:1,0,1,67
+ 18,Bálint Szabó,Vidi,1:1,1,1,67
+ 67,Nejc Gradišar,Vidi,2:1,2,1,67
+ 71,Nicolás Stefanelli,Vidi,3:1,3,1,67
+ 80,Zsolt Kalmár,Vidi,4:1,4,1,67
+90+2,Nicolás Stefanelli,Vidi,5:1,5,1,67
+90+4,Aron Csongvai,Vidi,6:1,6,1,67
+ 32,Dominik Nagy,Nyíregyháza,1:0,1,0,68
+ 31,Gergely Mim,Zalaegerszeg,1:0,1,0,69
+ 33,Bence Kiss,Zalaegerszeg,2:0,2,0,69
+ 35,Yohan Croizet,Zalaegerszeg,3:0,3,0,69
+ 41,Patrizio Stronati,Puskás Akadémia,3:1,3,1,69
+ 68,Yohan Croizet,Zalaegerszeg,4:1,4,1,69
+ 74,Artem Favorov,Puskás Akadémia,4:2,4,2,69
+ 9,Claudiu Bumba,Győr,0:1,0,1,70
+ 42,Donát Bárány,Debrecen,1:1,1,1,70
+ 73,Aranđel Stojković,Debrecen,2:1,2,1,70
+ 89,Eneo Bitri,Győr,2:2,2,2,70
+ 4,Elton Acolatse,Diósgyőr,1:0,1,0,72
+ 85,Tosin Kehinde,Ferencváros,0:1,0,1,73
+ 41,Jonathan Levi,Puskás Akadémia,0:1,0,1,74
+90+5,Jakov Puljić,Puskás Akadémia,0:3,0,3,74
+ 27,Marin Jurina,MTK Budapest,1:0,1,0,75
+ 63,Eneo Bitri,Győr,1:1,1,1,75
+ 68,Claudiu Bumba,Győr,1:2,1,2,75
+ 73,Benedek Varju,MTK Budapest,2:2,2,2,75
+ 64,Mátyás Tajti,Újpest,0:1,0,1,76
+ 40,Attila Osváth,Paks,1:0,1,0,77
+ 45,Gergely Mim,Zalaegerszeg,1:1,1,1,77
+ 74,Gergely Mim,Zalaegerszeg,1:2,1,2,77
+ 81,Dániel Böde,Paks,2:2,2,2,77
+ 7,Elton Acolatse,Diósgyőr,0:1,0,1,78
+ 19,Marcell Huszár,Diósgyőr,0:2,0,2,78
+ 41,Ágoston Bényei,Diósgyőr,0:3,0,3,78
+ 42,Barnabás Varga,Ferencváros,1:3,1,3,78
+ 68,Philippe Rommens,Ferencváros,2:3,2,3,78
+ 70,Mohammad Abu Fani,Ferencváros,3:3,3,3,78
+ 17,Donát Bárány,Debrecen,1:0,1,0,79
+ 29,Gergő Pálinkás,Kecskemét,1:1,1,1,79
+ 55,Dániel Lukács,Kecskemét,1:2,1,2,79
+ 80,Soma Szuhodovszki,Debrecen,2:2,2,2,79
+ 2,Péter Beke,Nyíregyháza,1:0,1,0,80
+ 18,Márk Kovácsréti,Nyíregyháza,2:0,2,0,80
+ 20,Péter Beke,Nyíregyháza,3:0,3,0,80
+ 84,Dániel Böde,Paks,3:2,3,2,80
+ 90,Slobodan Babić,Nyíregyháza,4:2,4,2,80
+ 29,Barnabas Kovacs,Kecskemét,0:1,0,1,82
+ 50,Wajdi Sahli,Győr,1:1,1,1,82
+ 75,Dániel Lukács,Kecskemét,1:2,1,2,82
+ 25,Vladislav Klimovich,Diósgyőr,1:0,1,0,83
+ 43,Dániel Gera,Diósgyőr,2:0,2,0,83
+ 62,Brandon Domingues,Debrecen,2:1,2,1,83
+ 84,Marko Rakonjac,Diósgyőr,3:1,3,1,83
+ 71,Bohdan Melnyk,Vidi,0:1,0,1,84
+ 15,Marin Jurina,MTK Budapest,1:0,1,0,86
+ 17,Barna Tóth,Paks,1:1,1,1,86
+ 68,Viktor Hey,MTK Budapest,2:1,2,1,86
+ 77,Benedek Varju,MTK Budapest,3:1,3,1,86
+ 11,Zsolt Nagy,Puskás Akadémia,0:1,0,1,87
+ 64,Wojciech Golla,Puskás Akadémia,0:2,0,2,87
+ 2,Donát Bárány,Debrecen,1:0,1,0,88
+ 5,Donát Bárány,Debrecen,2:0,2,0,88
+ 17,Donát Bárány,Debrecen,3:0,3,0,88
+ 42,Barnabás Varga,Ferencváros,3:2,3,2,88
+45+2,Saldanha,Ferencváros,3:3,3,3,88
+ 50,Brandon Domingues,Debrecen,4:3,4,3,88
+ 59,Brandon Domingues,Debrecen,5:3,5,3,88
+ 82,Ibrahim Cissé,Ferencváros,5:4,5,4,88
+ 35,Nadhir Benbouali,Győr,0:1,0,1,90
+ 48,Claudiu Bumba,Győr,0:2,0,2,90
+ 68,Claudiu Bumba,Győr,0:3,0,3,90
+ 8,Barna Tóth,Paks,1:0,1,0,91
+ 15,Marin Jurina,MTK Budapest,1:1,1,1,91
+ 39,Marin Jurina,MTK Budapest,1:2,1,2,91
+ 63,Dániel Böde,Paks,2:2,2,2,91
+ 66,Dániel Böde,Paks,3:2,3,2,91
+ 73,József Windecker,Paks,4:2,4,2,91
+ 70,Nejc Gradišar,Vidi,1:0,1,0,92
+ 13,Fran Brodić,Újpest,0:1,0,1,93
+ 53,Márk Szécsi,Debrecen,1:1,1,1,93
+ 67,Tom Lacoux,Újpest,1:2,1,2,93
+ 11,Barnabás Varga,Ferencváros,1:0,1,0,94
+ 2,Nejc Gradišar,Vidi,0:1,0,1,95
+ 27,Bence Végh,MTK Budapest,1:1,1,1,95
+ 68,Bálint Szabó,Vidi,1:2,1,2,95
+ 86,Marin Jurina,MTK Budapest,2:2,2,2,95
+ 22,Gergely Mim,Zalaegerszeg,1:0,1,0,96
+ 63,Meldin Drešković,Debrecen,1:1,1,1,96
+ 81,Bence Várkonyi,Zalaegerszeg,2:1,2,1,96
+ 24,Bence Bárdos,Diósgyőr,0:1,0,1,97
+ 32,Bright Edomwonyi,Diósgyőr,0:2,0,2,97
+ 44,Bence Bárdos,Diósgyőr,0:3,0,3,97
+ 51,Vladislav Klimovich,Diósgyőr,0:4,0,4,97
+ 59,Wajdi Sahli,Győr,1:4,1,4,97
+ 83,Daniel Štefulj,Győr,3:4,3,4,97
+ 67,Barna Tóth,Paks,1:1,1,1,98
+ 81,Jakub Plšek,Puskás Akadémia,2:1,2,1,98
+ 88,Lamin Colley,Puskás Akadémia,3:1,3,1,98
+45+1,Donát Zsótér,Kecskemét,0:1,0,1,99
+ 48,Adrián Dénes,Újpest,1:1,1,1,99
+ 83,Barnabás Varga,Ferencváros,0:1,0,1,100
+ 76,Bence Ötvös,Paks,1:0,1,0,101
+ 79,Nadhir Benbouali,Győr,1:1,1,1,101
+ 13,Mátyás Katona,Vidi,1:0,1,0,102
+ 21,Mamoudou Karamoko,Újpest,0:1,0,1,103
+ 55,Csaba Szatmári,Diósgyőr,1:1,1,1,103
+ 8,Donát Bárány,Debrecen,1:0,1,0,104
+ 77,Maurides,Debrecen,2:1,2,1,104
+ 90,Maurides,Debrecen,3:1,3,1,104
+ 7,Csanad Denes,Zalaegerszeg,1:0,1,0,107
+ 15,Barnabás Varga,Ferencváros,1:1,1,1,107
+ 25,Barnabás Varga,Ferencváros,1:2,1,2,107
+ 35,Csanad Denes,Zalaegerszeg,2:2,2,2,107
+ 29,Brandon Domingues,Debrecen,0:1,0,1,108
+ 69,Tamás Szűcs,Debrecen,0:2,0,2,108
+ 56,Bence Lenzsér,Paks,1:0,1,0,110
+90+2,Dániel Böde,Paks,2:0,2,0,110
+ 8,Željko Gavrić,Győr,1:0,1,0,111
+ 41,Nadhir Benbouali,Győr,2:0,2,0,111
+ 76,Claudiu Bumba,Győr,3:0,3,0,111
+ 8,Bence Bárdos,Diósgyőr,0:1,0,1,112
+ 72,Vince Nyíri,Zalaegerszeg,1:1,1,1,112
+90+5,Dániel Németh,Zalaegerszeg,2:1,2,1,112
+ 35,Zsolt Nagy,Puskás Akadémia,1:0,1,0,113
+ 72,Daniel Štefulj,Győr,0:1,0,1,114
+ 18,Bálint Katona,Kecskemét,1:0,1,0,115
+ 26,Márió Zeke,Kecskemét,2:0,2,0,115
+ 45,Milán Májer,Kecskemét,3:0,3,0,115
+ 69,Bálint Katona,Kecskemét,4:0,4,0,115
+ 87,Driton Camaj,Kecskemét,5:0,5,0,115
+ 39,Péter Beke,Nyíregyháza,0:1,0,1,116
+90+1,Slobodan Babić,Nyíregyháza,1:2,1,2,116
+ 29,Botond Vajda,Debrecen,1:0,1,0,117
+90+5,Jakub Plšek,Puskás Akadémia,1:2,1,2,117
+ 17,Mamoudou Karamoko,Újpest,1:0,1,0,118
+ 83,Csanad Denes,Zalaegerszeg,1:1,1,1,118
+90+4,Sinan Medgyes,Zalaegerszeg,1:2,1,2,118
+ 64,Dániel Böde,Paks,0:1,0,1,119
+90+5,Dániel Böde,Paks,0:2,0,2,119
+ 26,Patrik Kovacs,MTK Budapest,1:0,1,0,120
+ 41,Marin Jurina,MTK Budapest,2:0,2,0,120
+ 58,Tamás Kádár,MTK Budapest,3:0,3,0,120
+ 78,Benedek Varju,MTK Budapest,4:0,4,0,120
+ 6,Urho Nissilä,Puskás Akadémia,1:0,1,0,121
+ 20,Zsolt Nagy,Puskás Akadémia,2:0,2,0,121
+ 30,Jonathan Levi,Puskás Akadémia,3:0,3,0,121
+ 48,Donát Zsótér,Kecskemét,3:1,3,1,121
+ 59,Márió Zeke,Kecskemét,3:2,3,2,121
+ 90,Artem Favorov,Puskás Akadémia,4:2,4,2,121
+ 38,Erik Silye,Paks,2:0,2,0,122
+ 63,Brandon Domingues,Debrecen,2:1,2,1,122
+ 70,Maurides,Debrecen,2:2,2,2,122
+ 73,Norbert Könyves,Paks,3:2,3,2,122
+ 89,Norbert Könyves,Paks,4:2,4,2,122
+90+5,Maurides,Debrecen,4:3,4,3,122
+ 82,Nadhir Benbouali,Győr,2:0,2,0,124
+ 2,Mohammad Abu Fani,Ferencváros,0:1,0,1,125
+ 7,Cebrails Makreckis,Ferencváros,0:2,0,2,125
+ 84,Mohamed Ali Ben Romdhane,Ferencváros,1:3,1,3,125
+ 6,Rudi Požeg Vancaš,Diósgyőr,1:0,1,0,127
+ 28,Artem Favorov,Puskás Akadémia,1:1,1,1,127
+ 89,Gábor Jurek,Diósgyőr,2:1,2,1,127
+ 56,Fran Brodić,Újpest,1:1,1,1,128
+ 60,Marin Jurina,MTK Budapest,1:2,1,2,128
+ 64,Zsombor Gruber,MTK Budapest,1:3,1,3,128
+ 72,Benedek Varju,MTK Budapest,1:4,1,4,128
+ 8,Ivan Šaponjić,Vidi,0:1,0,1,129
+ 53,Mátyás Katona,Vidi,0:2,0,2,129
+ 59,Brandon Domingues,Debrecen,1:2,1,2,129
+ 35,Ádám Martin,Paks,0:1,0,1,130
+ 37,Driton Camaj,Kecskemét,1:1,1,1,130
+ 58,Bence Ötvös,Paks,1:2,1,2,130
+ 11,Albion Marku,Győr,0:1,0,1,131
+ 79,Aleksandar Pešić,Ferencváros,1:2,1,2,131
+ 84,Saldanha,Ferencváros,2:2,2,2,131
+ 5,Bálint Katona,Kecskemét,1:0,1,0,132
+ 41,Donát Zsótér,Kecskemét,2:0,2,0,132
+ 65,Ivan Šaponjić,Vidi,2:1,2,1,132
+ 64,János Szépe,Győr,0:1,0,1,133
+ 3,Yohan Croizet,Zalaegerszeg,1:0,1,0,134
+90+1,Róbert Polievka,MTK Budapest,1:1,1,1,134
+ 23,János Szabó,Paks,0:1,0,1,135
+ 48,Attila Osváth,Paks,0:2,0,2,135
+ 54,Lamin Colley,Puskás Akadémia,0:1,0,1,136
+ 59,Fran Brodić,Újpest,1:1,1,1,136
+ 35,Aleksandar Pešić,Ferencváros,0:1,0,1,137
+ 9,Fran Brodić,Újpest,0:1,0,1,139
+ 25,Barna Tóth,Paks,1:1,1,1,139
+ 48,Barna Tóth,Paks,2:1,2,1,139
+ 52,Barna Tóth,Paks,3:1,3,1,139
+ 57,Szabolcs Mezei,Paks,4:1,4,1,139
+ 68,Barna Tóth,Paks,5:1,5,1,139
+ 90,Kristóf Hinora,Paks,6:1,6,1,139
+ 9,Aleksandar Pešić,Ferencváros,1:0,1,0,141
+ 31,Habib Maïga,Ferencváros,2:0,2,0,141
+ 78,Raul Bicalho,Ferencváros,4:0,4,0,141
+ 48,Artúr Horváth,MTK Budapest,1:0,1,0,142
+ 75,Krisztián Németh,MTK Budapest,2:0,2,0,142
+90+3,Róbert Polievka,MTK Budapest,3:0,3,0,142
+ 62,Zsolt Nagy,Puskás Akadémia,1:1,1,1,143
+ 78,Lamin Colley,Puskás Akadémia,2:1,2,1,143
+ 7,Márk Szécsi,Debrecen,0:1,0,1,144
+ 21,Botond Vajda,Debrecen,0:2,0,2,144
+ 27,Lóránd Pászka,Kecskemét,1:2,1,2,144
+45+1,Kristiyan Malinov,Debrecen,1:3,1,3,144
+ 73,Krisztián Németh,MTK Budapest,1:1,1,1,145
+ 78,Claudiu Bumba,Győr,2:1,2,1,145
+ 28,Norbert Könyves,Paks,0:1,0,1,146
+ 81,Ábel Krajcsovics,Zalaegerszeg,1:1,1,1,146
+ 5,Urho Nissilä,Puskás Akadémia,0:1,0,1,147
+ 30,Urho Nissilä,Puskás Akadémia,0:2,0,2,147
+ 22,Barnabás Bese,Újpest,1:0,1,0,148
+ 58,Ivan Šaponjić,Vidi,2:1,2,1,148
+90+2,Bálint Szabó,Vidi,2:2,2,2,148
+ 40,Rudi Požeg Vancaš,Diósgyőr,1:1,1,1,149
+ 88,Dániel Lukács,Kecskemét,1:0,1,0,150
+90+6,Eneo Bitri,Győr,1:1,1,1,150
+ 21,Kristóf Papp,Paks,1:0,1,0,151
+ 66,Attila Osváth,Paks,2:0,2,0,151
+ 17,Bright Edomwonyi,Diósgyőr,0:1,0,1,152
+ 25,Donát Bárány,Debrecen,1:1,1,1,152
+ 51,Donát Bárány,Debrecen,2:1,2,1,152
+ 55,Brandon Domingues,Debrecen,3:1,3,1,152
+ 24,Yohan Croizet,Zalaegerszeg,0:1,0,1,153
+ 55,Yohan Croizet,Zalaegerszeg,0:2,0,2,153
+ 38,Rajmund Molnár,MTK Budapest,0:1,0,1,154
+ 42,Jonathan Levi,Puskás Akadémia,1:1,1,1,154
+ 18,Habib Maïga,Ferencváros,1:0,1,0,155
+ 45,Aleksandar Pešić,Ferencváros,2:0,2,0,155
+ 87,Elton Acolatse,Diósgyőr,1:1,1,1,156
+ 89,Bright Edomwonyi,Diósgyőr,2:1,2,1,156
+ 37,Barna Tóth,Paks,0:1,0,1,157
+ 75,István Bognár,MTK Budapest,1:1,1,1,157
+ 77,Dániel Böde,Paks,1:2,1,2,157
+ 85,Mamady Diarra,Győr,1:0,1,0,158
+ 79,Gábor Szalai,Ferencváros,0:1,0,1,159
+ 84,Saldanha,Ferencváros,0:2,0,2,159
+ 48,Giorgi Beridze,Újpest,1:0,1,0,160
+ 57,Damian Rasak,Újpest,2:0,2,0,160
+ 62,Donát Bárány,Debrecen,2:1,2,1,160
+ 72,Krisztián Keresztes,Nyíregyháza,1:0,1,0,161
+ 5,Donát Bárány,Debrecen,1:0,1,0,162
+ 25,Gergely Mim,Zalaegerszeg,1:1,1,1,162
+ 29,Ábel Krajcsovics,Zalaegerszeg,1:2,1,2,162
+ 52,Tamás Szűcs,Debrecen,2:2,2,2,162
+ 81,Jack Ipalibo,Zalaegerszeg,2:3,2,3,162
+ 88,Brandon Domingues,Debrecen,3:3,3,3,162
+90+6,Brandon Domingues,Debrecen,4:3,4,3,162
+ 8,Kevin Bánáti,Győr,0:1,0,1,163
+ 19,Claudiu Bumba,Győr,0:2,0,2,163
+ 30,Dániel Gera,Diósgyőr,1:2,1,2,163
+ 40,Milán Vitális,Győr,1:3,1,3,163
+ 67,Bright Edomwonyi,Diósgyőr,2:3,2,3,163
+ 86,Samsindin Ouro,Győr,2:4,2,4,163
+ 32,Zsolt Nagy,Puskás Akadémia,1:1,1,1,164
+ 73,Barna Tóth,Paks,2:1,2,1,164
+90+2,Joel Fameyeh,Puskás Akadémia,2:2,2,2,164
+ 75,Nicolás Stefanelli,Vidi,1:0,1,0,165
+ 81,Marin Jurina,MTK Budapest,1:1,1,1,165
+ 2,Aleksandar Pešić,Ferencváros,1:0,1,0,166
+ 18,Saldanha,Ferencváros,2:0,2,0,166
+ 35,Aleksandar Pešić,Ferencváros,3:0,3,0,166
+ 53,Saldanha,Ferencváros,4:0,4,0,166
+ 58,Alex Tóth,Ferencváros,5:0,5,0,166
+ 81,Lenny Joseph,Ferencváros,6:0,6,0,166
+ 84,Barnabás Varga,Ferencváros,7:0,7,0,166
+ 27,Lamin Colley,Puskás Akadémia,1:0,1,0,169
+45+1,Jonathan Levi,Puskás Akadémia,2:0,2,0,169
+ 76,Laros Duarte,Puskás Akadémia,3:0,3,0,169
+ 88,Lirim Kastrati,Vidi,3:1,3,1,169
+ 66,Samsindin Ouro,Győr,1:0,1,0,170
+ 87,Daniel Štefulj,Győr,2:0,2,0,170
+ 48,Tom Lacoux,Újpest,1:0,1,0,171
+ 68,Bence Szakos,Diósgyőr,1:1,1,1,171
+ 9,Stefan Gartenmann,Ferencváros,0:1,0,1,172
+ 13,Gábor Szalai,Ferencváros,0:2,0,2,172
+ 39,Aleksandar Pešić,Ferencváros,0:3,0,3,172
+ 58,Marin Jurina,MTK Budapest,1:3,1,3,172
+ 63,Róbert Polievka,MTK Budapest,2:3,2,3,172
+ 52,Samsindin Ouro,Győr,0:1,0,1,174
+ 71,Claudiu Bumba,Győr,0:2,0,2,174
+ 84,János Szépe,Győr,1:3,1,3,174
+90+3,Matija Ljujić,Újpest,2:3,2,3,174
+ 52,Barnabás Varga,Ferencváros,1:1,1,1,176
+ 58,Marko Rakonjac,Diósgyőr,1:0,1,0,177
+ 80,Jack Ipalibo,Zalaegerszeg,1:1,1,1,177
+ 1,Péter Beke,Nyíregyháza,0:1,0,1,178
+ 73,Cristóbal Montiel,Kecskemét,1:1,1,1,178
+ 74,Dominik Nagy,Nyíregyháza,1:2,1,2,178
+90+3,Levente Katona,Kecskemét,2:2,2,2,178
+ 44,Dániel Böde,Paks,0:1,0,1,179
+ 81,Bence Ötvös,Paks,0:2,0,2,179
+ 51,Miljan Krpić,Győr,1:0,1,0,180
+ 10,Jonathan Levi,Puskás Akadémia,1:0,1,0,181
+ 37,Zsolt Nagy,Puskás Akadémia,2:0,2,0,181
+ 79,Amos Youga,Debrecen,2:1,2,1,181
+ 88,Jonathan Levi,Puskás Akadémia,3:1,3,1,181
+90+4,Shedrach Kaye,Debrecen,3:2,3,2,181
+90+8,Kevin Mondovics,Puskás Akadémia,4:2,4,2,181
+ 36,Marin Jurina,MTK Budapest,1:0,1,0,182
+ 52,Gergő Pálinkás,Kecskemét,1:1,1,1,182
+ 72,Róbert Polievka,MTK Budapest,2:1,2,1,182
+ 27,Gergő Gyurkits,Paks,1:0,1,0,183
+ 57,Gábor Szalai,Ferencváros,1:1,1,1,183
+ 72,Lenny Joseph,Ferencváros,1:2,1,2,183
+ 89,Kristóf Hinora,Paks,2:2,2,2,183
+90+3,Lenny Joseph,Ferencváros,2:3,2,3,183
+ 70,Márton Eppel,Nyíregyháza,1:0,1,0,185
+ 83,Jakub Plšek,Puskás Akadémia,0:1,0,1,186
+ 25,Krisztofer Horváth,Újpest,1:0,1,0,187
+ 29,Márton Eppel,Nyíregyháza,1:1,1,1,187
+ 60,Milán Kovács,Nyíregyháza,1:2,1,2,187
+ 68,Fran Brodić,Újpest,2:2,2,2,187
+ 17,Zsombor Gruber,MTK Budapest,0:1,0,1,189
+ 49,Marko Rakonjac,Diósgyőr,1:1,1,1,189
+ 66,Kevin Kállai,Diósgyőr,2:1,2,1,189
+ 12,Stefan Gartenmann,Ferencváros,1:0,1,0,191
+ 51,Aleksandar Pešić,Ferencváros,2:0,2,0,191
+ 82,Alex Tóth,Ferencváros,3:0,3,0,191
+90+2,Milán Májer,Kecskemét,1:1,1,1,192
+ 1,Matija Ljujić,Újpest,0:1,0,1,193
+ 27,Artúr Horváth,MTK Budapest,1:1,1,1,193
+45+1,Krisztofer Horváth,Újpest,1:2,1,2,193
+ 56,Giorgi Beridze,Újpest,1:3,1,3,193
+ 21,Soma Szuhodovszki,Debrecen,0:1,0,1,194
+ 66,Maximilian Hofmann,Debrecen,0:2,0,2,194
+ 84,Maurides,Debrecen,0:3,0,3,194
+45+1,Gábor Szalai,Ferencváros,0:1,0,1,195
+ 54,Lenny Joseph,Ferencváros,0:2,0,2,195
+ 80,Miljan Krpić,Győr,1:2,1,2,195
+ 22,Jonathan Levi,Puskás Akadémia,1:0,1,0,196
+ 42,Elton Acolatse,Diósgyőr,1:1,1,1,196
+ 51,Dániel Gera,Diósgyőr,1:2,1,2,196
+ 71,Jonathan Levi,Puskás Akadémia,2:2,2,2,196
+ 81,Alen Martin Skribek,Diósgyőr,2:3,2,3,196
+ 89,Jakub Plšek,Puskás Akadémia,3:3,3,3,196
+90+3,Jakub Plšek,Puskás Akadémia,4:3,4,3,196

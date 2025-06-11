@@ -1,12 +1,13 @@
 #%% 1. Fetch data
 import pandas as pd
-from fbref import fbref_module as fbref
+from TSDP.fbref import fbref_module as fbref
 import numpy as np
 from sklearn.metrics.pairwise import euclidean_distances
 
 #df_raw = fbref.get_all_player_data('ESP', year='2024-2025')
 #df_raw.to_excel('laligaplayers24-25.xlsx', index=False)
-df_raw = pd.read_excel('laligaplayers24-25.xlsx')
+df_raw = pd.read_excel('TSDP/laligaplayers24-25.xlsx')
+matches_at_least = 5
 
 #%%
 cols_basic = ['Rk', 'Player', 'Nation', 'Pos', 'Squad', 'Age', 'Born', '90s']
@@ -31,7 +32,7 @@ df[['Age', 'Born']] = df[['Age', 'Born']].astype(float)
 # make it per 90
 df90 = df.copy()
 for metric in all_metrics:
-    if ('90' in metric) or ('%' in metric):
+    if ('90' in metric) or ('%' in metric) or ('G/S' in metric):
         pass
     else:
         df90[metric] = df90[metric] / df90['90s']
@@ -87,6 +88,7 @@ for metric in all_metrics:
 team_std = df90.groupby('Squad')[all_metrics].std().reset_index()
 team_std = team_std.rename(columns={col: col + '_team_std' for col in all_metrics})
 df90 = df90.merge(team_std, on='Squad')
+df90 = df90[df90['90s'] > matches_at_least]
 
 ## Z-score for players
 for metric in all_metrics:
@@ -104,14 +106,14 @@ for k in metrics.keys():
         metrics_of_group[n] = metrics_of_group[n]+'_zscore'
     df90[f'{k}_median_zscore'] = df90[metrics_of_group].median(axis=1)
     print(f'\n Top players in {k}:')
-    print(df90.loc[df90['90s'] >= 5,['Player', 'Squad', 'Pos', '90s', f'{k}_median_zscore']].sort_values(f'{k}_median_zscore', ascending=False).head(10))
+    print(df90[['Player', 'Squad', 'Pos', '90s', f'{k}_median_zscore']].sort_values(f'{k}_median_zscore', ascending=False).head(10))
     
 #%% Distance to team
 from sklearn.preprocessing import StandardScaler
 
 # 1. Válassz csapatot
 team_name = 'Barcelona'
-pos = 'FW'
+pos = 'DF'
 
 # 2. Csapat játékosainak adatai
 team_players = df90[(df90['Squad'] == team_name) & (df90['Pos'] == pos)]
@@ -141,10 +143,11 @@ closest_players = other_players.sort_values('distance_to_team').head(10)
 
 # 10. Kiírás vagy további feldolgozás
 print(f"Top 10 hasonló játékos a csapathoz ({team_name}) képest, akik nem a csapat játékosai:")
-print(closest_players[['Player', 'Squad', 'distance_to_team']])
+print(closest_players[['Player', 'Squad', 'Pos', 'distance_to_team']])
 
 #%% Distance to player
-player_name = 'Tamás Nikitscher'
+player_id = 336
+player_name = df90.at[player_id, 'Player']
 selected_player = df90[df90['Player'] ==player_name]
 zscore_cols = [col for col in df90.columns if col.endswith('_zscore')]
 candidates = df90[df90['Player'] != player_name]
@@ -191,3 +194,96 @@ def radar_chart(player_name, df, metrics):
 metrics_for_radar = [f'{k}_median' for k in metrics.keys()]
 radar_chart(player_name, df90, metrics_for_radar)
 
+#%% mplsoccer radar comparison: zscores
+from mlpsoccer.radar_module import radar
+# parameters
+params = [f'{k}_median_zscore' for k in metrics.keys()]
+low = []
+high = []
+for param in params:
+    low.append(df90.loc[:,param].min())
+    high.append(df90.loc[:,param].max())
+reversed_list = ['errors_median_zscore']
+
+params_pretty = params.copy()
+#params_pretty = []
+
+# player one
+nr1_name = player_name
+nr1_squad = df90.loc[df90['Player']==nr1_name, 'Squad'].iloc[0]
+nr1_values = df90.loc[df90['Player']==nr1_name, params].values[0].tolist()
+# player two
+nr2_id = 211
+nr2_name = df90.at[nr2_id, 'Player']
+nr2_squad = df90.loc[df90['Player']==nr2_name, 'Squad'].iloc[0]
+nr2_values = df90.loc[df90['Player']==nr2_name, params].values[0].tolist()
+# other infos:
+league_name, pos = 'La Liga', 'All position'
+
+radar(params_pretty, low, high, reversed_list, 
+      nr1_name, nr1_squad, nr1_values, 
+      nr2_name, nr2_squad, nr2_values, 
+      league_name, pos, matches_at_least,
+      save=False, save_folder='C:/Users/Adam/Dropbox/TSDP_output/fbref/2025.06',
+      save_name='2025.06.01, Álvarez-Olmo')
+
+#%% mplsoccer radar comparison: per90 values
+# parameters
+params = metrics['defense'].copy() + metrics['activity'].copy() + metrics['progression'].copy()
+low = []
+high = []
+for param in params:
+    low.append(df90.loc[:,param].min())
+    high.append(df90.loc[:,param].max())
+
+params_pretty = params.copy()
+#params_pretty = ['Goals per 90', 'xG per 90', 'Goals per Shot', 'Goals per Shot on Target',
+#                 'Shots on Target per 90', 'Assists per 90', 'xA per 90', 'Key Passes per 90',
+#                 'Shot-Creating Actions per 90', 'Goal-Creating Actions per 90']
+
+nr1_values = df90.loc[df90['Player']==nr1_name, params].values[0].tolist()
+nr2_values = df90.loc[df90['Player']==nr2_name, params].values[0].tolist()
+
+radar(params_pretty, low, high, reversed_list, 
+      nr1_name, nr1_squad, nr1_values, 
+      nr2_name, nr2_squad, nr2_values, 
+      league_name, pos, matches_at_least,
+      save=False, save_folder='C:/Users/Adam/Dropbox/TSDP_output/fbref/2025.06',
+      save_name='2025.06.01, Álvarez-Olmo')
+
+#%% mplsoccer radar: teams
+position = 'FW'
+nr1_name = 'Atlético Madrid'
+nr2_name = 'Barcelona'
+
+if position != '':
+    teams_df = team_pos_aggregates.copy()
+    mask1 = (teams_df['Squad'] == nr1_name) & (teams_df['Pos_single'] == position)
+    mask2 = (teams_df['Squad'] == nr2_name) & (teams_df['Pos_single'] == position)
+else:
+    teams_df = team_aggregates.copy()
+    mask1 = (teams_df['Squad'] == nr1_name)
+    mask2 = (teams_df['Squad'] == nr2_name)
+
+# parameters
+params = metrics['offense'].copy() + metrics['creativity'].copy()
+low = []
+high = []
+for param in params:
+    low.append(teams_df.loc[teams_df.Pos_single.str.contains(position),param].min())
+    high.append(teams_df.loc[teams_df.Pos_single.str.contains(position),param].max())
+
+#params_pretty = params.copy()
+params_pretty = ['Goals per 90', 'xG per 90', 'Goals per Shot', 'Goals per Shot on Target',
+                 'Shots on Target per 90', 'Assists per 90', 'xA per 90', 'Key Passes per 90',
+                 'Shot-Creating Actions per 90', 'Goal-Creating Actions per 90']
+# values
+nr1_values = teams_df.loc[mask1, params].values[0].tolist()
+nr2_values = teams_df.loc[mask2, params].values[0].tolist()
+
+radar(params_pretty, low, high, reversed_list, 
+      nr1_name, '', nr1_values, 
+      nr2_name, '', nr2_values, 
+      league_name, position, matches_at_least,
+      save=False, save_folder='C:/Users/Adam/Dropbox/TSDP_output/fbref/2025.06',
+      save_name='2025.06.01, Atleti-Barca')
