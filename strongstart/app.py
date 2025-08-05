@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
+import plotly.express as px
 
 # Load models and features
 @st.cache_resource
@@ -171,9 +172,20 @@ if st.button("🔍 Predict Season Outcome", use_container_width=True):
         'Outcome': ['Top 4', 'Relegation', 'Mid-table'],
         'Probability': [top4_prob, releg_prob, 1 - top4_prob - releg_prob]
     })
-
-    st.bar_chart(prob_data.set_index('Outcome'))
-
+    
+    # Create the pie chart using Plotly
+    fig = px.pie(
+        prob_data,
+        values='Probability',
+        names='Outcome',
+        title='End of Season Outcome Probabilities',
+        hole=0.4, # Creates a donut chart
+        color_discrete_sequence=['#4CAF50', '#FF4B4B', '#FFD700'] # Custom colors
+    )
+    
+    # Display the chart in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+    
     st.markdown("---")
     st.info("Note: The 'Mid-table' category represents the remaining probability after accounting for Top 4 and Relegation.")
 
