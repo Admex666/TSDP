@@ -317,11 +317,17 @@ def get_all_player_data(countrycode, year=False):
     url_list = ['stats', 'keepers', 'keepersadv', 'defense', 'passing', 'gca', 'misc', 'shooting', 'possession', 'passing_types']
     
     for stat, url in zip(stats_list, url_list):
-        if year:
-            globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{year}/{url}/{year}-{league_name}-Stats" 
+        if countrycode == "Big5":
+            if year:
+                globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{year}/{url}/players/{year}-{league_name}-Stats" 
+            else:
+                globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{url}/players/{league_name}-Stats"
         else:
-            globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{url}/{league_name}-Stats#all_stats_{stat}"
-        
+            if year:
+                globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{year}/{url}/{year}-{league_name}-Stats" 
+            else:
+                globals()[f'URL_{stat}'] = f"https://fbref.com/en/comps/{comp_id}/{url}/{league_name}-Stats#all_stats_{stat}"
+            
     for stat in stats_list:
         globals()[f'df_{stat}'] = format_column_names(scrape(globals()[f'URL_{stat}'], f'stats_{stat}'))
         globals()[f'df_{stat}'].drop(globals()[f'df_{stat}'][globals()[f'df_{stat}']['Rk']=='Rk'].index, inplace=True)

@@ -7,7 +7,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-df_raw = pd.read_excel('TSDP/laligaplayers24-25.xlsx')
+df_raw = pd.read_csv('TSDP/fbref/Big5_playerdata.csv')
 
 df_wys_raw = pd.read_excel('TSDP/Wys_NB_I_players_stats_20250604.xlsx')
 df_wys_raw['90s'] = df_wys_raw['Minutes played'] / 90
@@ -73,7 +73,7 @@ settings = {
         }
     }
 
-platform = 'wyscout'
+platform = 'fbref'
 
 df = settings[platform]['df']
 cols_basic = settings[platform]['cols_basic']
@@ -302,10 +302,10 @@ def analyze_player_similarity(df, cols_basic, numeric_cols, all_metrics, matches
     return results
 
 #%% Execution
-matches_at_least = 5
-team_name = 'Paksi FC'
+matches_at_least = 10
+team_name = 'Bournemouth'
 pos = 'DF'
-player_id = 47
+player_id = 1189
 
 
 results = analyze_player_similarity(
@@ -338,7 +338,17 @@ for k in results.keys():
         print(f"\nLeginkább hasonló játékosok {df90.loc[player_id, 'Player']}-hoz:")
         print(k)
         print(results[k][['Player', 'Squad', 'Pos']])
-        
+
+sim_eucl_pos_comp = results['similar_to_player_euclidean_pos_comp'].copy()
+sim_cos_pos_comp = results['similar_to_player_cosine_pos_comp'].copy()
+
+print("Euclidean similarity:\n"
+      f"{sim_eucl_pos_comp[sim_eucl_pos_comp.Age <= 25][['index', 'Player', 'Pos','Squad']].head(10)}")
+
+print("\nCosine similarity:\n"
+      f"{sim_cos_pos_comp[sim_cos_pos_comp.Age <= 25][['index', 'Player', 'Pos', 'Squad']].head(10)}")
+
+
 #%% Viz functions
 import matplotlib.pyplot as plt
 import numpy as np
@@ -429,21 +439,21 @@ def plot_mplsoccer_team_comparison(df, team1, team2, params, position=None, reve
           save_folder=save_folder, save_name=save_name, save=save)
 
 #%% Viz execution
-plot_radar_single_player(df90, 47,
+plot_radar_single_player(df90, 1189,
                          ['offense_median_pos_comp', 'creativity_median_pos_comp', 
                           'progression_median_pos_comp', 'activity_median_pos_comp',
                           'defense_median_pos_comp'])
 
 #%% Két játékos összehasonlítása zscore alapján
-plot_mplsoccer_player_comparison(df90, 47, 226,
-                                 params=(metrics['activity']+metrics['defense']+metrics['progression']),
+plot_mplsoccer_player_comparison(df90, 1189, 2263,
+                                 params=(metrics['defense']+metrics['creativity']+metrics['progression']),
                                  reversed_list=['errors'],
-                                 league_name='OTP Bank liga',
+                                 league_name='Big 5 leagues',
                                  only_pos='DF',
                                  use_zscore=False,
                                  save_folder=r'C:\Users\Adam\Dropbox\TSDP_output\fbref\2025.06', 
                                  save_name='2025.06.17., Gartenmann-Katona L.', 
-                                 save=True)
+                                 save=False)
 
 #%% Csapat összehasonlítás egy pozícióban
 team_pos_aggregates = weighted_team_pos_avg(df90, ['Squad', 'Pos'], all_metrics)
