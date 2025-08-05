@@ -8,10 +8,10 @@ import pandas as pd
 def load_models():
     """Loads the machine learning models and feature list."""
     try:
-        clf_top4 = joblib.load("clf_top4.pkl")
-        reg_avgpts = joblib.load("reg_avgpts.pkl")
-        clf_kieses = joblib.load("clf_kieses.pkl")
-        features = joblib.load("features.pkl")
+        clf_top4 = joblib.load("strongstart/clf_top4.pkl")
+        reg_avgpts = joblib.load("strongstart/reg_avgpts.pkl")
+        clf_kieses = joblib.load("strongstart/clf_kieses.pkl")
+        features = joblib.load("strongstart/features.pkl")
         return clf_top4, reg_avgpts, clf_kieses, features
     except FileNotFoundError as e:
         st.error(f"Error: One of the model files was not found. Please ensure all required files are in the same directory: {e}")
