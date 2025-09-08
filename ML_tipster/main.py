@@ -29,12 +29,12 @@ def main():
     models, scaler, feature_columns, loaded = load_models()
     if not loaded:
         print("Modellek betöltése sikertelen")
-        return
+        return []  # Visszaadunk egy üres listát ahelyett, hogy None-t adnánk
     
     fuzz_data = load_fuzz_data()
     if fuzz_data is None:
         print("Fuzz adatok betöltése sikertelen")
-        return
+        return []  # Visszaadunk egy üres listát
     
     predictor = MatchPredictor(models, scaler, feature_columns)
     
@@ -51,6 +51,8 @@ def main():
         
         # Tippmix adatok
         tippmix_data = get_tippmix_data(10)
+        if tippmix_data is None:
+            continue
         
         # Mérkőzések feldolgozása
         for _, match in tippmix_data.iterrows():
@@ -59,8 +61,14 @@ def main():
                 away_team = match['Away']
                 
                 # Csapatnév mapping
-                home_fd = fuzz_data[fuzz_data['Team_tippmix'] == home_team]['Team_fdcouk'].iloc[0]
-                away_fd = fuzz_data[fuzz_data['Team_tippmix'] == away_team]['Team_fdcouk'].iloc[0]
+                home_matches = fuzz_data[fuzz_data['Team_tippmix'] == home_team]
+                away_matches = fuzz_data[fuzz_data['Team_tippmix'] == away_team]
+                
+                if len(home_matches) == 0 or len(away_matches) == 0:
+                    continue
+                
+                home_fd = home_matches['Team_fdcouk'].iloc[0]
+                away_fd = away_matches['Team_fdcouk'].iloc[0]
                 
                 # Statisztikák számítása
                 home_points, home_gf, home_ga, home_days = get_last5_stats(home_fd, df_league)
@@ -94,6 +102,9 @@ def main():
 
 def filter_predictions(predictions, min_value_bets=1):
     """Szűrés érték fogadások alapján"""
+    if predictions is None:
+        return []  # Ha None, visszaadunk üres listát
+    
     filtered = []
     for pred in predictions:
         value_count = sum(1 for model_bets in pred['value_bets'].values() 

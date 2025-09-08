@@ -8,13 +8,18 @@ from config import MODEL_PATH, FUZZ_PATH
 def load_models():
     """Modellek betöltése"""
     try:
-        model_files = glob.glob(f'{MODEL_PATH}football_model_*_artifacts.pkl')
+        # Abszolút útvonal használata
+        model_path = os.path.join(os.path.dirname(__file__), MODEL_PATH)
+        model_files = glob.glob(os.path.join(model_path, 'football_model_*_artifacts.pkl'))
+        
         if model_files:
             latest_model = max(model_files, key=os.path.getctime)
             with open(latest_model, 'rb') as f:
                 model_artifacts = pickle.load(f)
             return model_artifacts['models'], model_artifacts['scaler'], model_artifacts['feature_columns'], True
-        return None, None, None, False
+        else:
+            print(f"Nem találhatóak model fájlok a következő útvonalon: {model_path}")
+            return None, None, None, False
     except Exception as e:
         print(f"Model load error: {e}")
         return None, None, None, False
@@ -32,7 +37,9 @@ def load_league_data(season, league_code):
 def load_fuzz_data():
     """Csapatnév mapping betöltése"""
     try:
-        return pd.read_excel(FUZZ_PATH)
+        # Abszolút útvonal használata
+        fuzz_path = os.path.join(os.path.dirname(__file__), FUZZ_PATH)
+        return pd.read_excel(fuzz_path)
     except Exception as e:
         print(f"Fuzz data load error: {e}")
         return None
