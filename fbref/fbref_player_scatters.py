@@ -38,11 +38,11 @@ from fbref import fbref_module as fbref
 import matplotlib.pyplot as plt
 
 # Set parameters
-league = 'ESP'
-min_90_played = 0 # how many matches at least
-only_position = '' # DF, MF, FW or GK
+league = 'FRA'
+min_90_played = 5 # how many matches at least
+only_position = 'MF' # DF, MF, FW or GK
 
-df = fbref.get_all_player_data(league, year=False)
+df = fbref.get_all_player_data(league, year='2024-2025')
 
 #%% Format the merged data a bit
 # Filter by parameters
@@ -65,100 +65,127 @@ path = 'player_scatters.xlsx'
 df_super.to_excel(path, index=False)
 
 #%% Plotting (defining function)
-"""
-la_liga_team_colors = {
-    "Alavés": (10/255, 63/255, 245/255),  # Blue
-    "Athletic Club": (238/255, 37/255, 35/255),  # Red
-    "Atlético Madrid": (206/255, 53/255, 36/255),  # Red
-    "Barcelona": (0/255, 77/255, 152/255),  # Blue
-    "Celta Vigo": (138/255, 195/255, 238/255),  # Light Blue
-    "Espanyol": (30/255, 107/255, 192/255),  # Blue
-    "Getafe": (0/255, 77/255, 152/255),  # Blue
-    "Girona": (200/255, 16/255, 46/255),  # Red
-    "Las Palmas": (255/255, 204/255, 0/255),  # Yellow
-    "Leganés": (0/255, 128/255, 0/255),  # Green
-    "Mallorca": (227/255, 27/255, 35/255),  # Red
-    "Osasuna": (0/255, 0/255, 191/255),  # Blue
-    "Betis": (0/255, 149/255, 76/255),  # Green
-    "Real Madrid": (255/255, 255/255, 255/255),  # White
-    "Real Sociedad": (0/255, 77/255, 152/255),  # Blue
-    "Sevilla": (218/255, 41/255, 28/255),  # Red
-    "Valencia": (251/255, 181/255, 18/255),  # Yellow
-    "Villarreal": (250/255, 220/255, 0/255),  # Yellow
-    "Rayo Vallecano": (229/255, 48/255, 41/255),  # Red
-    "Valladolid": (146/255, 30/255, 127/255),  # Purple
-}
 
-def data_to_scatter(xname, yname, xlabel, ylabel, title):
-    xcol = df_super[xname]
-    ycol = df_super[yname]
+def data_to_scatter(xname, yname, xlabel, ylabel, title, ids=None):
+    # Ellenőrizzük, hogy a megadott oszlopok léteznek
+    if xname not in df_super.columns or yname not in df_super.columns:
+        print(f"Hiba: {xname} vagy {yname} nem található az adatkeretben!")
+        return
     
-    #np.random.seed(10)
-    #colors = np.random.rand(len(df_super.Squad), 3)  # Generate random RGB colors for each team
-    #team_color_dict = dict(zip(df_super.Squad, colors))
-    team_color_dict = la_liga_team_colors
+    # Szűrjük ki a hiányzó értékeket
+    valid_data = df_super[[xname, yname, 'Player', 'Squad']].dropna()
+    xcol = valid_data[xname]
+    ycol = valid_data[yname]
     
-    plt.figure(figsize=(12, 8))
-    for team, color in team_color_dict.items():
-        # Filter data for the current team
-        team_data = df_super[df_super['Squad'] == team]
-        # Plot with the team's color and label
-        xdata = team_data[xname]
-        ydata = team_data[yname]    
-        plt.scatter(
-            x=xdata,
-            y=ydata,
-            color=color,
-            label=team,
-            alpha=1
-        )
+    # Colors and styling
+    background_color = '#3c3d3d'
+    mycolor = '#5ECB43'
+    highlight_colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3', '#54A0FF', '#5F27CD']
     
-    # Plot median lines
+    fig = plt.figure(figsize=(12, 8), facecolor=background_color)
+    ax = plt.gca()
+    ax.set_facecolor(background_color)
+    
+    # Minden játékos szürke színnel
+    plt.scatter(
+        x=xcol,
+        y=ycol,
+        color='#AAAAAA',
+        alpha=0.6,
+        s=50,
+        edgecolors='#888888',
+        linewidth=0.5
+    )
+    
+    # Kiemelt játékosok (ha meg vannak adva ID-k)
+    if ids is not None:
+        if isinstance(ids, list):
+            highlighted_players = valid_data.loc[ids]
+        else:
+            highlighted_players = valid_data.loc[[ids]]
+        
+        for idx, (player_idx, row) in enumerate(highlighted_players.iterrows()):
+            color_idx = idx % len(highlight_colors)
+            plt.scatter(
+                x=row[xname],
+                y=row[yname],
+                color=highlight_colors[color_idx],
+                s=120,
+                edgecolors='white',
+                linewidth=2,
+                alpha=0.9,
+                zorder=5
+            )
+            
+            # Szöveges címke hozzáadása
+            plt.annotate(
+                row['Player'],
+                xy=(row[xname], row[yname]),
+                xytext=(10, 10),
+                textcoords='offset points',
+                fontsize=11,
+                fontweight='bold',
+                color=highlight_colors[color_idx],
+                alpha=0.9,
+                ha='left',
+                va='bottom',
+                bbox=dict(boxstyle="round,pad=0.3", facecolor=background_color, 
+                         edgecolor=highlight_colors[color_idx], alpha=0.8)
+            )
+    
+    # Medián vonalak
     xmedian = xcol.median()
     ymedian = ycol.median()
-    plt.axvline(x=xmedian, color='blue', linestyle='--', alpha=0.5)
-    plt.axhline(y=ymedian, color='blue', linestyle='--', alpha=0.5)
+    plt.axvline(x=xmedian, color='white', linestyle='--', alpha=0.8, linewidth=1.5)
+    plt.axhline(y=ymedian, color='white', linestyle='--', alpha=0.8, linewidth=1.5)
     
-    # Text next to median lines
-    plt.text(xmedian + 0.1, plt.ylim()[0] + 0.1, 'Median', c='blue', alpha=0.5)
-    plt.text(plt.xlim()[0] + 0.1, ymedian + 0.1, 'Median', c='blue', alpha=0.5, ha='left', va='bottom')
+    # Medián szövegek
+    plt.text(xmedian + 0.01, plt.ylim()[0] + 0.01, 'Median', 
+             c='white', alpha=0.8, fontsize=10, fontweight='bold')
+    plt.text(plt.xlim()[0] + 0.01, ymedian + 0.01, 'Median', 
+             c='white', alpha=0.8, fontsize=10, fontweight='bold')
     
-    # Identify outliers and add player names
-    def find_outliers(column):
-        Q1 = column.quantile(0.25)
-        Q3 = column.quantile(0.75)
-        IQR = Q3 - Q1
-        lower_bound = Q1 - 1.5 * IQR
-        upper_bound = Q3 + 1.5 * IQR
-        return (column < lower_bound) | (column > upper_bound)
+    # Styling
+    plt.xlabel(xlabel, fontsize=14, color='white', fontweight='bold')
+    plt.ylabel(ylabel, fontsize=14, color='white', fontweight='bold')
+    plt.title(title, fontsize=20, color='white', fontweight='bold', pad=20)
     
-    x_outliers = find_outliers(xcol)
-    y_outliers = find_outliers(ycol)
-    outliers = x_outliers | y_outliers  # Combine x and y outliers
+    # Axis styling
+    ax.spines['bottom'].set_color('white')
+    ax.spines['top'].set_visible(False)
+    ax.spines['left'].set_color('white')
+    ax.spines['right'].set_visible(False)
     
-    # Add text labels for outliers
-    for i, row in df_super[outliers].iterrows():
-        plt.text(
-            x=row[xname] + 0.1,  # Offset text slightly to the right of the point
-            y=row[yname] + 0.1,  # Offset text slightly above the point
-            s=row['Player'],  # Player name
-            fontsize=9,
-            color='black',
-            ha='left',  # Horizontal alignment
-            va='bottom'  # Vertical alignment
-        )
+    # Grid and ticks
+    plt.grid(True, color='#555555', alpha=0.3, linestyle='--')
+    plt.tick_params(colors='white')
     
-    plt.xlabel(xlabel, fontsize=14)
-    plt.ylabel(ylabel, fontsize=14)
-    #plt.legend(loc="lower right")
-    plt.title(title, fontsize=24)
+    # Add signature
+    fig.text(0.88, -0.00, 'ADAM JAKUS', color=mycolor, fontsize=16, 
+              ha='center', va='center')
+    
+    # Add league info
+    league_name = df_super['league'].iloc[0] if 'league' in df_super.columns else league
+    fig.text(0.10, 0.95, f'{league_name} | {only_position}', color='white', 
+             fontsize=12, fontweight='normal', ha='left', va='center')
+    
+    # Add min 90s played info
+    fig.text(0.10, 0.92, f'Min {min_90_played} games played', color='#AAAAAA', 
+             fontsize=10, fontweight='normal', ha='left', va='center')
+    
+    plt.tight_layout()
+    
+    # Show plot
     plt.show()
 
 #%% 
 # Pass nr. - Pass comp% -> Total_Att - Total_Cmp%
-data_to_scatter('Total_Att_p90', 'Total_Cmp%', 'Attempted passes per90', 'Pass completion (%)', 'Passing')
+data_to_scatter('Total_Att_p90', 'Total_Cmp%', 'Attempted passes per90', 'Pass completion (%)', 'Passing', ids=[393])
 # Shots nr.  - shot% -> Standard_Sh_p90 - ShConversion%
 df_super.drop(index= df_super[df_super.Standard_Sh_p90 == 0].index, inplace=True)
 df_super['ShConversion%'] = (df_super['Standard_Gls_p90'] / df_super['Standard_Sh_p90'])*100
-data_to_scatter('Standard_Sh_p90', 'ShConversion%', 'Shots per90', 'Shot conversion (%)', 'Shooting')
-"""
+data_to_scatter('Standard_Sh_p90', 'ShConversion%', 'Shots per90', 'Shot conversion (%)', 'Shooting', ids=[393])
+data_to_scatter('Touches_Touches_p90', 'GCA_GCA_p90', 'Touches per 90', 'Goal creating actions per 90', 'Activity', ids=[393])
+data_to_scatter('Progression_PrgC_p90', 'Progression_PrgP_p90', 'Progressive Carries per 90', 'Progressive Passes per 90', 'Progression', ids=[393])
+
+[col for col in df_super.columns if 'Prg' in col]

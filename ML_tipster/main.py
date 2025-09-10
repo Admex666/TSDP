@@ -24,6 +24,23 @@ def format_telegram_message(home, away, probs, odds, value_bets):
     message += f"Tippmix odds (1x2): {odds['home']:.2f} | {odds['draw']:.2f} | {odds['away']:.2f}"
     return message
 
+def format_detailed_explanation(home_team, away_team, impacts, prediction):
+    """Részletes magyarázat generálása"""
+    
+    message = f"🔍 {home_team} vs {away_team} - PREDIKCIÓ MAGYARÁZAT\n\n"
+    message += f"🏠 Otthoni győzelem: {prediction[0]*100:.1f}%\n"
+    message += f"⚖️ Döntetlen: {prediction[1]*100:.1f}%\n" 
+    message += f"✈️ Vendég győzelem: {prediction[2]*100:.1f}%\n\n"
+    
+    message += "📊 LEGFONTOSABB TÉNYEZŐK:\n"
+    message += "-" * 40 + "\n"
+    
+    for i, impact in enumerate(impacts[:5]):  # Top 5 tényező
+        sign = "+" if impact['impact'] > 0 else ""
+        message += f"{i+1}. {impact['feature']}: {impact['original_value']:.2f} → {sign}{impact['impact']:+.1f}%\n"
+    
+    return message
+
 def main():
     # Adatok betöltése
     models, scaler, feature_columns, loaded = load_models()
@@ -41,6 +58,11 @@ def main():
     # Liga végigiterálása
     all_predictions = []
     
+    # Tippmix adatok
+    tippmix_data = get_tippmix_data(10)
+    if tippmix_data is None:
+        print("tippmix_data not found")
+
     for league_name, league_config in LEAGUES.items():
         print(f"Processing {league_name} league...")
         
@@ -49,39 +71,88 @@ def main():
         if df_league is None:
             continue
         
-        # Tippmix adatok
-        tippmix_data = get_tippmix_data(10)
-        if tippmix_data is None:
-            continue
-        
         # Mérkőzések feldolgozása
         for _, match in tippmix_data.iterrows():
+            if match['league_name'] != f"{league_name}1":
+                continue
             try:
                 home_team = match['Home']
                 away_team = match['Away']
                 
-                # Csapatnév mapping
-                home_matches = fuzz_data[fuzz_data['Team_tippmix'] == home_team]
-                away_matches = fuzz_data[fuzz_data['Team_tippmix'] == away_team]
+                # Csapatnév mapping - case insensitive és strip
+                home_matches = fuzz_data[fuzz_data['Team_tippmix'].str.strip().str.lower() == home_team.strip().lower()]
+                away_matches = fuzz_data[fuzz_data['Team_tippmix'].str.strip().str.lower() == away_team.strip().lower()]
                 
-                if len(home_matches) == 0 or len(away_matches) == 0:
-                    continue
-                
-                home_fd = home_matches['Team_fdcouk'].iloc[0]
-                away_fd = away_matches['Team_fdcouk'].iloc[0]
+                if len(home_matches) == 0:
+                    print(f"WARNING: No matching found for home team: {home_team}")
+                    # Próbáljunk fuzzy matching-et
+                    from fuzzywuzzy import fuzz
+                    best_match = None
+                    best_score = 0
+                    for _, row in fuzz_data.iterrows():
+                        score = fuzz.ratio(home_team.lower(), row['Team_tippmix'].lower())
+                        if score > best_score and score > 80:  # 80% threshold
+                            best_score = score
+                            best_match = row
+                    
+                    if best_match is not None:
+                        print(f"Found fuzzy match: {home_team} -> {best_match['Team_tippmix']}")
+                        home_fd = best_match['Team_fdcouk']
+                    else:
+                        continue
+                else:
+                    home_fd = home_matches['Team_fdcouk'].iloc[0]
+                    
+                # Ugyanez az away team-re
+                if len(away_matches) == 0:
+                    print(f"WARNING: No matching found for away team: {away_team}")
+                    from fuzzywuzzy import fuzz
+                    best_match = None
+                    best_score = 0
+                    for _, row in fuzz_data.iterrows():
+                        score = fuzz.ratio(away_team.lower(), row['Team_tippmix'].lower())
+                        if score > best_score and score > 80:
+                            best_score = score
+                            best_match = row
+                    
+                    if best_match is not None:
+                        print(f"Found fuzzy match: {away_team} -> {best_match['Team_tippmix']}")
+                        away_fd = best_match['Team_fdcouk']
+                    else:
+                        continue
+                else:
+                    away_fd = away_matches['Team_fdcouk'].iloc[0]
                 
                 # Statisztikák számítása
                 home_points, home_gf, home_ga, home_days = get_last5_stats(home_fd, df_league)
                 away_points, away_gf, away_ga, away_days = get_last5_stats(away_fd, df_league)
-                
+                print(home_team)
+                print(home_fd, home_points)
                 home_stats = {'points': home_points, 'goals_for': home_gf, 'goals_against': home_ga, 'days_since': home_days}
                 away_stats = {'points': away_points, 'goals_for': away_gf, 'goals_against': away_ga, 'days_since': away_days}
                 
                 odds = {'home': match['H_odds'], 'draw': match['D_odds'], 'away': match['A_odds']}
                 
-                # Predikció
-                probs = predictor.predict(home_stats, away_stats, odds)
+                print(f"DEBUG: {home_team} vs {away_team}")
+                print(f"DEBUG: Home stats: {home_stats}")
+                print(f"DEBUG: Away stats: {away_stats}") 
+                print(f"DEBUG: Odds: {odds}")
+
+                # Predikció - most már 3 értéket ad vissza
+                probs, X_original, X_scaled = predictor.predict(home_stats, away_stats, odds)
+                print(f"DEBUG: Prepared features: {X_original.iloc[0].to_dict()}")
+
+                # Ellenőrizd, hogy minden feature megvan-e
+                if X_original.empty:
+                    print(f"HIBA: Nincsenek feature-ök ehhez a mérkőzéshez: {home_team} vs {away_team}")
+                    continue
                 value_bets = predictor.analyze_value(probs, odds)
+                
+                # Magyarázat generálása
+                explanations = {}
+                for model_name, prob in probs.items():
+                    impacts = predictor.explain_prediction(model_name, X_original, X_scaled, prob)
+                    explanations[model_name] = impacts
                 
                 # Eredmények mentése
                 prediction_data = {
@@ -90,7 +161,10 @@ def main():
                     'away_team': away_team,
                     'probs': probs,
                     'odds': odds,
-                    'value_bets': value_bets
+                    'value_bets': value_bets,
+                    'explanations': explanations,  # Új: magyarázatok
+                    'X_original': X_original,     # Új: original adatok
+                    'X_scaled': X_scaled          # Új: scaled adatok
                 }
                 all_predictions.append(prediction_data)
                 
