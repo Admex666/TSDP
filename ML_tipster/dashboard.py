@@ -174,7 +174,7 @@ def run_app():
                             pred['value_bets']
                         )
                         if message:
-                            send_to_telegram(message, to="group", topic_id='12')
+                            send_to_telegram(message, to="group", topic_id='6')
                             st.success("Elküldve felhasználóknak!")
                         else:
                             st.warning("Nincs érték fogadás!")
@@ -206,7 +206,7 @@ def run_app():
                         pred['odds'], pred['value_bets']
                     )
                     if message:
-                        send_to_telegram(message, to="group", topic_id='12')
+                        send_to_telegram(message, to="group", topic_id='6')
                         sent_count += 1
                 st.success(f"{sent_count} mérkőzés elküldve felhasználóknak!")
         
