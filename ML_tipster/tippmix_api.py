@@ -15,6 +15,10 @@ def get_tippmix_data(days=10):
         response.raise_for_status()
 
         data = response.json()
+        if data is None:
+            print("No data received")
+            return None
+
         matches = data['data']
 
         today_date = datetime.today().date()
