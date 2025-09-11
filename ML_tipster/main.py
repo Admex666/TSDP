@@ -8,20 +8,79 @@ from tippmix_api import get_tippmix_data
 from telegram import send_to_telegram
 from config import LEAGUES
 
-def format_telegram_message(home, away, probs, odds, value_bets):
-    """Telegram üzenet formázása"""
-    message = f"⚽ {home} vs {away}\n\n"
+def format_telegram_message_group(home, away, probs, odds, value_bets):
+    """Egyszerűsített üzenet felhasználóknak"""
+    # Legjobb value bet keresése
+    best_bet = None
+    best_strength = 0
     
     for model_name, prob in probs.items():
         if model_name == 'LogisticRegression':
             continue
-        else:
-            message += f"{model_name}:\n"
-            message += f"🏠 {prob[0]*100:.1f}% ({1/prob[0]:.2f}) {'✅' if value_bets[model_name]['home'] else ''}\n"
-            message += f"⚖️ {prob[1]*100:.1f}% ({1/prob[1]:.2f}) {'✅' if value_bets[model_name]['draw'] else ''}\n"
-            message += f"✈️ {prob[2]*100:.1f}% ({1/prob[2]:.2f}) {'✅' if value_bets[model_name]['away'] else ''}\n\n"
         
-    message += f"Tippmix odds (1x2): {odds['home']:.2f} | {odds['draw']:.2f} | {odds['away']:.2f}"
+        value_marks = value_bets[model_name]
+        for outcome, has_value in value_marks.items():
+            if has_value:
+                if outcome == 'home':
+                    strength = (1/odds['home']) / prob[0] * 10
+                    if strength > best_strength:
+                        best_strength = strength
+                        best_bet = f"{home} győzelem"
+                elif outcome == 'draw':
+                    strength = (1/odds['draw']) / prob[1] * 10
+                    if strength > best_strength:
+                        best_strength = strength
+                        best_bet = "Döntetlen"
+                elif outcome == 'away':
+                    strength = (1/odds['away']) / prob[2] * 10
+                    if strength > best_strength:
+                        best_strength = strength
+                        best_bet = f"{away} győzelem"
+    
+    if not best_bet:
+        return None
+    
+    # Erősség 1-10 skálán
+    strength_score = min(10, max(1, int(best_strength)))
+    
+    message = f"🚨 ÉRTÉK FOGADÁS (Erősség: {strength_score}/10)\n\n"
+    message += f"⚽ {home} vs {away}\n\n"
+    message += f"🎯 AJÁNLAT: {best_bet}\n\n"
+    message += "Kellemes szórakozást! 🍀"
+    
+    return message
+
+def format_telegram_message_owner(home, away, probs, odds, value_bets, explanations=None):
+    """Részletes üzenet tulajdonosnak"""
+    message = f"🔍 SAJÁT ELEMZÉS: {home} vs {away}\n\n"
+    
+    # Modell predikciók
+    message += "🤖 MODELL PREDIKCIÓK:\n"
+    for model_name, prob in probs.items():
+        if model_name == 'LogisticRegression':
+            continue
+        
+        value_marks = value_bets[model_name]
+        message += f"{model_name}:\n"
+        message += f"H: {prob[0]*100:.0f}% ({1/prob[0]:.2f}) {'✅' if value_marks['home'] else '❌'} | "
+        message += f"D: {prob[1]*100:.0f}% ({1/prob[1]:.2f}) {'✅' if value_marks['draw'] else '❌'} | "
+        message += f"A: {prob[2]*100:.0f}% ({1/prob[2]:.2f}) {'✅' if value_marks['away'] else '❌'}\n"
+    
+    message += f"\n🎯 TIPPMIX ODDS: {odds['home']:.2f} | {odds['draw']:.2f} | {odds['away']:.2f}\n\n"
+    
+    # Magyarázat (ha van)
+    if explanations and 'GradientBoosting' in explanations:
+        impacts = explanations['GradientBoosting'][:5]  # Top 5
+        message += "📊 MAGYARÁZAT (Top 5):\n"
+        for i, impact in enumerate(impacts):
+            sign = "+" if impact['impact'] > 0 else ""
+            message += f"{i+1}. {impact['feature']} ({impact['original_value']:.1f}) → {sign}{impact['impact']:.1f}%\n"
+    
+    # Value bets összesítése
+    value_count = sum(1 for model_bets in value_bets.values() 
+                     for bet in model_bets.values() if bet)
+    message += f"\n💰 ÉRTÉK FOGADÁSOK SZÁMA: {value_count}\n"
+    
     return message
 
 def format_detailed_explanation(home_team, away_team, impacts, prediction):
@@ -162,9 +221,9 @@ def main():
                     'probs': probs,
                     'odds': odds,
                     'value_bets': value_bets,
-                    'explanations': explanations,  # Új: magyarázatok
-                    'X_original': X_original,     # Új: original adatok
-                    'X_scaled': X_scaled          # Új: scaled adatok
+                    'explanations': explanations,  # magyarázatok
+                    'X_original': X_original,     # original adatok
+                    'X_scaled': X_scaled          # scaled adatok
                 }
                 all_predictions.append(prediction_data)
                 
@@ -186,52 +245,6 @@ def filter_predictions(predictions, min_value_bets=1):
         if value_count >= min_value_bets:
             filtered.append(pred)
     return filtered
-
-if __name__ == "__main__":
-    predictions = main()
-    
-    # Streamlit UI
-    st.title("🏈 Mérkőzés Predikciók")
-    
-    # Szűrési opciók
-    min_value = st.slider("Minimum érték fogadások száma", 1, 5, 1)
-    selected_league = st.selectbox("Liga", ["Összes"] + list(LEAGUES.keys()))
-    
-    # Szűrés
-    filtered = filter_predictions(predictions, min_value)
-    if selected_league != "Összes":
-        filtered = [p for p in filtered if p['league'] == selected_league]
-    
-    # Mérkőzések listázása
-    for i, pred in enumerate(filtered):
-        col1, col2 = st.columns([4, 1])
-        
-        with col1:
-            st.subheader(f"{pred['home_team']} vs {pred['away_team']} ({pred['league']})")
-            
-            for model_name, prob in pred['probs'].items():
-                if model_name == 'LogisticRegression':
-                    continue
-                
-                value_marks = pred['value_bets'][model_name]
-                st.write(f"**{model_name}:**")
-                st.write(f"🏠 {prob[0]*100:.1f}% ({1/prob[0]:.2f}) {'✅' if value_marks['home'] else ''}")
-                st.write(f"⚖️ {prob[1]*100:.1f}% ({1/prob[1]:.2f}) {'✅' if value_marks['draw'] else ''}")
-                st.write(f"✈️ {prob[2]*100:.1f}% ({1/prob[2]:.2f}) {'✅' if value_marks['away'] else ''}")
-        
-        with col2:
-            if st.button("Küldés", key=f"send_{i}"):
-                message = format_telegram_message(
-                    pred['home_team'], 
-                    pred['away_team'], 
-                    pred['probs'], 
-                    pred['odds'], 
-                    pred['value_bets']
-                )
-                send_to_telegram(message, to="owner")
-                st.success("Elküldve!")
-        
-        st.divider()
 
 if __name__ == "__main__":
     main()

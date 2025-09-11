@@ -1,6 +1,6 @@
 # dashboard.py - BŐVÍTETT VERZIÓ MAGYARÁZATTAL
 import streamlit as st
-from main import main, format_telegram_message, filter_predictions
+from main import main, format_telegram_message_group, format_telegram_message_owner, filter_predictions
 from telegram import send_to_telegram
 from config import LEAGUES
 import pandas as pd
@@ -161,49 +161,65 @@ def run_app():
                             elif 'Away' in row['feature'] and row['impact'] < 0:
                                 st.write(f"✅ {row['feature']}: gyenge vendég forma")
                     
-                # Küldés gomb
-                col_send, col_explain = st.columns(2)
-                
-                with col_send:
-                    if st.button("📤 Küldés Telegramra", key=f"single_{i}"):
-                        message = format_telegram_message(
+                # Egyedüli küldés gombjai helyett:
+                col_group, col_owner = st.columns(2)
+
+                with col_group:
+                    if st.button("📤 Küldés Felhasználóknak", key=f"group_{i}"):
+                        message = format_telegram_message_group(
                             pred['home_team'], 
                             pred['away_team'], 
                             pred['probs'], 
                             pred['odds'], 
                             pred['value_bets']
                         )
+                        if message:
+                            send_to_telegram(message, to="group", topic_id='12')
+                            st.success("Elküldve felhasználóknak!")
+                        else:
+                            st.warning("Nincs érték fogadás!")
+
+                with col_owner:
+                    if st.button("🔍 Küldés Magamnak", key=f"owner_{i}"):
+                        message = format_telegram_message_owner(
+                            pred['home_team'], 
+                            pred['away_team'], 
+                            pred['probs'], 
+                            pred['odds'], 
+                            pred['value_bets'],
+                            pred.get('explanations')
+                        )
                         send_to_telegram(message, to="owner")
                         st.success("Elküldve!")
-                
-                with col_explain:
-                    if st.button("🔍 Részletes magyarázat", key=f"detail_{i}"):
-                        if 'explanations' in pred:
-                            impacts = pred['explanations'].get('GradientBoosting', [])
-                            detailed_msg = format_detailed_explanation(
-                                pred['home_team'], 
-                                pred['away_team'], 
-                                impacts, 
-                                pred['probs']['GradientBoosting'],
-                                pred['odds']
-                            )
-                            st.text_area("Teljes magyarázat", detailed_msg, height=300)
     
     # Tömeges küldés
     if selected_matches:
-        if st.button("📤 Kijelöltek küldése", key="send_selected"):
-            for match_idx in selected_matches:
-                pred = filtered[match_idx]
-                message = format_telegram_message(
-                    pred['home_team'], 
-                    pred['away_team'], 
-                    pred['probs'], 
-                    pred['odds'], 
-                    pred['value_bets']
-                )
-                send_to_telegram(message, to="owner")
-            
-            st.success(f"{len(selected_matches)} mérkőzés elküldve!")
+        col_bulk_group, col_bulk_owner = st.columns(2)
+        
+        with col_bulk_group:
+            if st.button("📤 Kijelöltek → Felhasználók", key="send_selected_group"):
+                sent_count = 0
+                for match_idx in selected_matches:
+                    pred = filtered[match_idx]
+                    message = format_telegram_message_group(
+                        pred['home_team'], pred['away_team'], pred['probs'], 
+                        pred['odds'], pred['value_bets']
+                    )
+                    if message:
+                        send_to_telegram(message, to="group", topic_id='12')
+                        sent_count += 1
+                st.success(f"{sent_count} mérkőzés elküldve felhasználóknak!")
+        
+        with col_bulk_owner:
+            if st.button("🔍 Kijelöltek → Magam", key="send_selected_owner"):
+                for match_idx in selected_matches:
+                    pred = filtered[match_idx]
+                    message = format_telegram_message_owner(
+                        pred['home_team'], pred['away_team'], pred['probs'], 
+                        pred['odds'], pred['value_bets'], pred.get('explanations')
+                    )
+                    send_to_telegram(message, to="owner")
+                st.success(f"{len(selected_matches)} mérkőzés elküldve!")
 
 if __name__ == "__main__":
     run_app()
