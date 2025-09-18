@@ -11,6 +11,7 @@ import pandas as pd
 from mlb_main import main, format_telegram_message_group, format_telegram_message_owner, filter_mlb_predictions
 from mlb_sheets_integration import MLBSheetsIntegration
 from datetime import datetime
+import requests
 
 def run_mlb_app():
     st.set_page_config(page_title="MLB Predictor", layout="wide")
@@ -28,24 +29,51 @@ def run_mlb_app():
     with st.sidebar:
         st.header("📊 Fogadási Statisztikák")
         
+        # AUTOMATIKUS FRISSÍTÉS GOMB IDE
+        if st.button("🤖 Összes Eredmény Frissítése", type="primary", key="sidebar_update_all"):
+            if st.session_state.sheets_integration.client:
+                with st.spinner("Eredmények frissítése..."):
+                    success, message = st.session_state.sheets_integration.update_all_pending_results()
+                    if success:
+                        st.success(message)
+                        st.rerun()
+                    else:
+                        st.error(message)
+            else:
+                st.warning("Google Sheets kapcsolat szükséges")
+        
+        st.markdown("---")  # Elválasztó vonal
+        
         if st.session_state.sheets_integration.client:
-            stats = st.session_state.sheets_integration.get_stats()
-            if stats:
-                st.metric("Total Bets", stats.get('Total Bets', 0))
-                st.metric("Win Rate", stats.get('Win Rate (%)', '0%'))
-                st.metric("Total Profit", stats.get('Total Profit', '$0'))
-                st.metric("ROI", stats.get('ROI (%)', '0%'))
+            try:
+                stats = st.session_state.sheets_integration.get_stats()
+                if stats:
+                    st.metric("Total Bets", stats.get('Total Bets', 0))
+                    st.metric("Win Rate", stats.get('Win Rate (%)', '0%'))
+                    st.metric("Total Profit", stats.get('Total Profit', '$0'))
+                    st.metric("ROI", stats.get('ROI (%)', '0%'))
+            except Exception as e:
+                if "429" in str(e):
+                    st.warning("⏳ Rate limit - várj egy kicsit")
+                else:
+                    st.error("Hiba a statisztikák betöltésében")
             
             # Pending bets
             st.subheader("⏳ Függő Fogadások")
-            pending_bets = st.session_state.sheets_integration.get_pending_bets()
-            if pending_bets:
-                for bet in pending_bets[-5:]:  # Show last 5
-                    st.write(f"**{bet['Home_Team']} vs {bet['Away_Team']}**")
-                    st.write(f"Bet: {bet['Bet_Type']} @ {bet['Odds']}")
-                    st.write("---")
-            else:
-                st.write("Nincsenek függő fogadások")
+            try:
+                pending_bets = st.session_state.sheets_integration.get_pending_bets()
+                if pending_bets:
+                    for bet in pending_bets[-5:]:
+                        st.write(f"**{bet['Home_Team']} vs {bet['Away_Team']}**")
+                        st.write(f"Bet: {bet['Bet_Type']} @ {bet['Odds']}")
+                        st.write("---")
+                else:
+                    st.write("Nincsenek függő fogadások")
+            except Exception as e:
+                if "429" in str(e):
+                    st.warning("⏳ Függő fogadások: rate limit")
+                else:
+                    st.error("Hiba a függő fogadások betöltésében")
         else:
             st.warning("Google Sheets kapcsolat nincs beállítva")
     
@@ -232,9 +260,26 @@ def run_mlb_app():
     
     # Manual result update section
     st.markdown("---")
-    st.subheader("🏆 Eredmények Frissítése")
-    
-    if st.session_state.sheets_integration.client:
+    st.subheader("🔄 Automatikus Eredmény Frissítés")
+
+    col_auto_update, col_manual_section = st.columns([1, 2])
+
+    with col_auto_update:
+        if st.button("🤖 Összes Eredmény Frissítése", type="primary"):
+            if st.session_state.sheets_integration.client:
+                with st.spinner("Eredmények frissítése..."):
+                    success, message = st.session_state.sheets_integration.update_all_pending_results()
+                    if success:
+                        st.success(message)
+                        st.rerun()
+                    else:
+                        st.error(message)
+            else:
+                st.warning("Google Sheets kapcsolat szükséges")
+
+    with col_manual_section:
+        st.subheader("🏆 Manuális Eredmény Frissítés")
+        
         col_game_id, col_winner, col_update = st.columns(3)
         
         with col_game_id:

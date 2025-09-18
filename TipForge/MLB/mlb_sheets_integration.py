@@ -2,6 +2,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
+import requests
+import time
 from datetime import datetime
 import streamlit as st
 from mlb_config import GOOGLE_SHEETS_ID, GOOGLE_CREDENTIALS_FILE
@@ -122,8 +124,8 @@ class MLBSheetsIntegration:
                     odds = float(record['Odds'])
                     
                     if won:
-                        payout = stake * odds
-                        profit_loss = payout - stake
+                        payout = stake * odds  # JAVÍTÁS: nem kell *100, az odds már helyes formátumban van
+                        profit_loss = payout - stake  # Nyeremény = teljes visszafizetés - eredeti tét
                         status = 'Won'
                     else:
                         payout = 0
@@ -143,13 +145,14 @@ class MLBSheetsIntegration:
                     ]])
             
             # Update overall stats
+            time.sleep(1)  # Várakozás a rate limit elkerülése érdekében
             self.update_stats()
             return True
             
         except Exception as e:
             print(f"Update result error: {e}")
             return False
-    
+        
     def update_stats(self):
         """Összesített statisztikák frissítése"""
         if not self.client:
@@ -221,3 +224,107 @@ class MLBSheetsIntegration:
         except Exception as e:
             print(f"Get pending bets error: {e}")
             return []
+        
+    def update_all_pending_results(self):
+        """Összes függő fogadás eredményének automatikus frissítése"""
+        if not self.client:
+            return False, "Google Sheets kapcsolat hiányzik"
+        
+        try:
+            # Egyszer olvassuk be az összes adatot
+            bets_sheet = self.spreadsheet.worksheet('MLB_Bets')
+            records = bets_sheet.get_all_records()
+            
+            pending_bets = [r for r in records if r['Status'] == 'Pending' and r['Game_ID']]
+            
+            if not pending_bets:
+                return True, "Nincsenek frissítendő fogadások"
+            
+            updated_count = 0
+            errors = []
+            updates_batch = []  # Batch frissítéshez
+            
+            for i, bet in enumerate(pending_bets):
+                try:
+                    game_id = bet['Game_ID']
+                    
+                    # MLB API lekérdezés
+                    url = f"https://statsapi.mlb.com/api/v1/schedule?gamePk={game_id}"
+                    resp = requests.get(url, timeout=10)
+                    resp.raise_for_status()
+                    data = resp.json()
+                    
+                    if not data["dates"] or not data["dates"][0]["games"]:
+                        continue
+                    
+                    game = data["dates"][0]["games"][0]
+                    
+                    # Ellenőrizzük, hogy befejezett-e a meccs
+                    if game["status"]["statusCode"] not in ["F", "O"]:  # Final, Official
+                        continue
+                    
+                    home_runs = game["teams"]["home"]["score"]
+                    away_runs = game["teams"]["away"]["score"]
+                    
+                    # Győztes meghatározása
+                    winner = "Home" if home_runs > away_runs else "Away"
+                    final_score = f"{home_runs}-{away_runs}"
+                    
+                    # Batch frissítéshez készítjük elő az adatokat
+                    row_num = None
+                    for j, record in enumerate(records):
+                        if str(record['Game_ID']) == str(game_id) and record['Status'] == 'Pending':
+                            row_num = j + 2  # +2 mert az első sor header
+                            break
+                    
+                    if row_num:
+                        # Profit számítás javítása
+                        bet_type = bet['Bet_Type']
+                        won = (bet_type == 'Home' and winner == 'Home') or (bet_type == 'Away' and winner == 'Away')
+                        
+                        stake = float(bet['Stake'])
+                        odds = float(bet['Odds'])
+                        
+                        if won:
+                            payout = stake * odds  # Teljes visszafizetés (tét + nyeremény)
+                            profit_loss = payout - stake  # Csak a nyeremény
+                            status = 'Won'
+                        else:
+                            payout = 0
+                            profit_loss = -stake  # Elveszített tét
+                            status = 'Lost'
+                        
+                        roi = (profit_loss / stake) * 100
+                        
+                        updates_batch.append({
+                            'range': f'J{row_num}:O{row_num}',
+                            'values': [[winner, payout, profit_loss, status, final_score, f"{roi:.2f}%"]]
+                        })
+                        updated_count += 1
+                    
+                    # Rate limit elkerülése - várakozás minden 3. kérés után
+                    if i % 3 == 0 and i > 0:
+                        time.sleep(1)
+                    
+                except Exception as e:
+                    errors.append(f"Game ID {game_id}: {str(e)}")
+                    continue
+            
+            # Batch frissítés végrehajtása
+            if updates_batch:
+                for update in updates_batch:
+                    bets_sheet.update(update['range'], update['values'])
+                    time.sleep(0.5)  # Kis várakozás minden frissítés között
+                
+                # Stats frissítése egyszer a végén
+                time.sleep(1)
+                self.update_stats()
+            
+            message = f"{updated_count} fogadás frissítve"
+            if errors:
+                message += f". Hibák: {len(errors)}"
+            
+            return True, message
+            
+        except Exception as e:
+            return False, f"Frissítési hiba: {str(e)}"
