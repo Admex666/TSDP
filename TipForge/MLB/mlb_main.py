@@ -42,10 +42,10 @@ def format_telegram_message_group(home, away, predictions, odds, value_bets):
     # Erősség 1-10 skálán
     strength_score = min(10, max(1, int(best_strength)))
     
-    message = f"🚨 MLB ÉRTÉK FOGADÁS (Erősség: {strength_score}/10)\n\n"
-    message += f"⚾ {home} vs {away}\n\n"
-    message += f"🎯 AJÁNLAT: {best_bet}\n\n"
-    message += "Kellemes szórakozást! 🤞"
+    #message = f"🚨 MLB ÉRTÉK FOGADÁS (Erősség: {strength_score}/10)\n\n"
+    message = f"⚾ {home} vs {away}\n\n"
+    message += f"🎯 TIPP: {best_bet}\n\n"
+    message += "Sok sikert! 🤞🍀"
     
     return message
 
@@ -81,13 +81,14 @@ def main():
     predictor = MLBPredictor(model, scaler, features)
     
     # Közelgő mérkőzések
-    upcoming_games = get_upcoming_mlb_games(1)
+    days = 1
+    upcoming_games = get_upcoming_mlb_games(days)
     if upcoming_games.empty:
         print("Nincsenek közelgő MLB mérkőzések")
         return []
     
     # Tippmix odds
-    tippmix_data = get_mlb_tippmix_data(1)
+    tippmix_data = get_mlb_tippmix_data(days+1)
     if tippmix_data.empty:
         print("Tippmix adatok nem elérhetőek")
         return []
@@ -108,30 +109,43 @@ def main():
             if predictions is None:
                 continue
             
-            # Tippmix odds keresése - NOTEBOOK verzió alapján
-            home_tippmix_name = API_TO_TIPPMIX.get(home_team)
-            away_tippmix_name = API_TO_TIPPMIX.get(away_team)
+           # Tippmix odds keresése - JAVÍTOTT VERZIÓ
+            home_tippmix = API_TO_TIPPMIX.get(home_team, home_team)
+            away_tippmix = API_TO_TIPPMIX.get(away_team, away_team)
 
-            if home_tippmix_name is None or away_tippmix_name is None:
-                print(f"Nincs mapping: {home_team} -> {home_tippmix_name}, {away_team} -> {away_tippmix_name}")
-                continue
+            odds_row = None
 
-            try:
-                # Keresés úgy mint a notebook-ban
-                home_odds_value = tippmix_data.loc[(tippmix_data['Home'] == home_tippmix_name)]['H_odds'].iloc[0]
-                away_odds_value = tippmix_data.loc[(tippmix_data['Away'] == away_tippmix_name)]['A_odds'].iloc[0]
-                
-                odds_dict = {
-                    'Home_odds': home_odds_value,
-                    'Away_odds': away_odds_value
-                }
-                
-            except (IndexError, KeyError) as e:
-                print(f"Odds nem található: {home_tippmix_name} vs {away_tippmix_name}")
+            # Először pontos egyezést keresünk
+            for _, odds in tippmix_data.iterrows():
+                if (odds['Home'].strip().lower() == home_tippmix.strip().lower() and 
+                    odds['Away'].strip().lower() == away_tippmix.strip().lower()):
+                    odds_row = odds
+                    break
+
+            # Ha nincs pontos egyezés, fuzzy matching
+            if odds_row is None:
+                best_match_score = 0
+                for _, odds in tippmix_data.iterrows():
+                    home_match = fuzz.ratio(home_tippmix.lower(), odds['Home'].lower())
+                    away_match = fuzz.ratio(away_tippmix.lower(), odds['Away'].lower())
+                    combined_score = (home_match + away_match) / 2
+                    
+                    if combined_score > best_match_score and combined_score > 70:  # Csökkentett threshold
+                        best_match_score = combined_score
+                        odds_row = odds
+
+            # Debug információ
+            if odds_row is None:
+                print(f"DEBUG: Keresett: {home_tippmix} vs {away_tippmix}")
+                print(f"DEBUG: Elérhető mérkőzések:")
+                for _, odds in tippmix_data.iterrows():
+                    print(f"  {odds['Home']} vs {odds['Away']}")
                 continue
-            
+            else:
+                print(f"DEBUG: Találat - {odds_row['Home']} vs {odds_row['Away']} (score: {best_match_score if 'best_match_score' in locals() else 'exact'})")
+                        
             # Value betting elemzés
-            value_bets = predictor.analyze_value(predictions, odds_dict)
+            value_bets = predictor.analyze_value(predictions, odds_row)
             
             # Explanation
             explanation = predictor.get_prediction_explanation(
@@ -146,7 +160,7 @@ def main():
                 'home_stats': home_stats,
                 'away_stats': away_stats,
                 'predictions': predictions,
-                'odds': odds_dict,
+                'odds': odds_row.to_dict(),
                 'value_bets': value_bets,
                 'explanation': explanation,
                 'venue': game.get('venue', '')

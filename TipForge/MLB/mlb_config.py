@@ -74,5 +74,5 @@ THRESHOLD = 0.05
 MODEL_PATH = 'models/'
 
 # Google Sheets configuration
-GOOGLE_SHEETS_ID = "your_google_sheets_id_here"
-GOOGLE_CREDENTIALS_FILE = "credentials.json"
+GOOGLE_SHEETS_ID = "1UI3DHmfeNwl0XhBDY1Z0UGX8HMmxqXNogyQxhiBc7fI"
+GOOGLE_CREDENTIALS_FILE = "MLB/credentials.json"
