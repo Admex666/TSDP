@@ -13,7 +13,6 @@ from mlb_tippmix_api import get_mlb_tippmix_data
 from mlb_predictor import MLBPredictor
 from mlb_config import API_TO_TIPPMIX
 from telegram import send_to_telegram
-from fuzzywuzzy import fuzz
 
 def format_telegram_message_group(home, away, predictions, odds, value_bets):
     """Egyszerű üzenet felhasználóknak"""
@@ -122,18 +121,6 @@ def main():
                     odds_row = odds
                     break
 
-            # Ha nincs pontos egyezés, fuzzy matching
-            if odds_row is None:
-                best_match_score = 0
-                for _, odds in tippmix_data.iterrows():
-                    home_match = fuzz.ratio(home_tippmix.lower(), odds['Home'].lower())
-                    away_match = fuzz.ratio(away_tippmix.lower(), odds['Away'].lower())
-                    combined_score = (home_match + away_match) / 2
-                    
-                    if combined_score > best_match_score and combined_score > 70:  # Csökkentett threshold
-                        best_match_score = combined_score
-                        odds_row = odds
-
             # Debug információ
             if odds_row is None:
                 print(f"DEBUG: Keresett: {home_tippmix} vs {away_tippmix}")
@@ -141,9 +128,7 @@ def main():
                 for _, odds in tippmix_data.iterrows():
                     print(f"  {odds['Home']} vs {odds['Away']}")
                 continue
-            else:
-                print(f"DEBUG: Találat - {odds_row['Home']} vs {odds_row['Away']} (score: {best_match_score if 'best_match_score' in locals() else 'exact'})")
-                        
+                                    
             # Value betting elemzés
             value_bets = predictor.analyze_value(predictions, odds_row)
             
