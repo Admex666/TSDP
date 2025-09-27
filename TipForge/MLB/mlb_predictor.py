@@ -72,8 +72,8 @@ class MLBPredictor:
         home_prob = predictions['home_prob']
         away_prob = predictions['away_prob']
         
-        home_implied = 1 / odds['Home_odds'] if 'Home_odds' in odds else 0
-        away_implied = 1 / odds['Away_odds'] if 'Away_odds' in odds else 0
+        home_implied = 1 / odds['H_odds'] if 'H_odds' in odds else 0
+        away_implied = 1 / odds['A_odds'] if 'A_odds' in odds else 0
         
         value_bets = {
             'home_value': home_prob > home_implied + threshold,

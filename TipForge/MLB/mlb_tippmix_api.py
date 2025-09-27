@@ -52,8 +52,8 @@ def get_mlb_tippmix_data(days=1):
             for market in match['markets']:
                 if market['marketName'] == 'A mérkőzés győztese':
                     if len(market['outcomes']) >= 2:
-                        match_odds['Home_odds'] = market['outcomes'][0]['fixedOdds']  # Változott
-                        match_odds['Away_odds'] = market['outcomes'][1]['fixedOdds']  # Változott
+                        match_odds['H_odds'] = market['outcomes'][0]['fixedOdds']
+                        match_odds['A_odds'] = market['outcomes'][1]['fixedOdds']
                         found_odds = True
                     break
             

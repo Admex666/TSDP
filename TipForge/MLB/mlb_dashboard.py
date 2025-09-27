@@ -116,7 +116,7 @@ def run_mlb_app():
                 
                 # Game info
                 st.markdown(f"**📍 Venue:** {pred['venue']}")
-                st.markdown(f"**🎯 Odds:** Home: {pred['odds']['Home_odds']:.2f} | Away: {pred['odds']['Away_odds']:.2f}")
+                st.markdown(f"**🎯 Odds:** Home: {pred['odds']['H_odds']:.2f} | Away: {pred['odds']['A_odds']:.2f}")
                 
                 # Value betting indicators
                 value_count = sum(1 for v in pred['value_bets'].values() if v)
@@ -178,9 +178,9 @@ def run_mlb_app():
                 with col_odds_select:
                     if bet_selection:
                         if "Home" in bet_selection:
-                            selected_odds = pred['odds']['Home_odds']
+                            selected_odds = pred['odds']['H_odds']
                         else:
-                            selected_odds = pred['odds']['Away_odds']
+                            selected_odds = pred['odds']['A_odds']
                         st.number_input("Odds", value=selected_odds, key=f"odds_{i}", disabled=True)
                 
                 with col_stake:
