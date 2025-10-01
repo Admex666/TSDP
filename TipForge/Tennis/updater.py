@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-from scrape import get_date_matches
+from scrape import scrape_tennis_match
 from predictor import predict_tennis_match_simple
 import os
 
@@ -87,3 +87,152 @@ def update_tennis_paper(match_ids, csv_path='Tennis/tennis_paper.csv'):
     print(f"✅ CSV frissítve: {csv_path} ({len(combined_df)} sor)")
     
     return combined_df
+
+
+def update_betting_results(csv_path='Tennis/tennis_paper.csv'):
+    """
+    Fogadási eredmények frissítése a befejezett meccsekre
+    """
+    if not os.path.exists(csv_path):
+        print("❌ CSV fájl nem található!")
+        return None
+    
+    # CSV betöltése
+    df = pd.read_csv(csv_path)
+    
+    # Csak a nem lezárt fogadások
+    unsettled_bets = df[df['bet_settled'] == False]
+    
+    if unsettled_bets.empty:
+        print("✅ Nincs függőben lévő fogadás")
+        return df
+    
+    print(f"🔍 {len(unsettled_bets)} függőben lévő fogadás ellenőrzése...")
+    
+    updated_count = 0
+    total_profit = 0
+    results_summary = {
+        'total_checked': 0,
+        'settled_bets': 0,
+        'won_bets': 0,
+        'lost_bets': 0,
+        'total_profit': 0,
+        'total_stake': 0
+    }
+    
+    for index, row in unsettled_bets.iterrows():
+        event_id = row['event_id']
+        
+        try:
+            # Meccs adatok lekérése
+            match_data = scrape_tennis_match(event_id)
+            
+            if not match_data:
+                continue
+                
+            event = match_data['event']
+            status_code = event.get('status', {}).get('code')
+            
+            # Csak befejezett meccseket nézünk
+            if status_code == 100:  # Ended
+                results_summary['total_checked'] += 1
+                winner_code = event.get('winnerCode')
+                actual_winner = ""
+                
+                # Győztes meghatározása
+                if winner_code == 1:
+                    actual_winner = row['player1_name']
+                elif winner_code == 2:
+                    actual_winner = row['player2_name']
+                else:
+                    # Döntetlen vagy ismeretlen eredmény
+                    actual_winner = "DRAW"
+                
+                # Eredmény és profit számítás
+                result = ""
+                profit = 0
+                stake_percent = row['bet_stake_percent']
+                
+                if row['bet_recommendation'] != 'NO_BET' and actual_winner != "DRAW":
+                    if actual_winner == row['bet_placed_on']:
+                        # NYERESÉG
+                        result = "WON"
+                        if row['bet_placed_on'] == row['player1_name']:
+                            profit = stake_percent * (row['player1_odds'] - 1)
+                        else:
+                            profit = stake_percent * (row['player2_odds'] - 1)
+                        results_summary['won_bets'] += 1
+                    else:
+                        # VESZTESÉG
+                        result = "LOST"
+                        profit = -stake_percent
+                        results_summary['lost_bets'] += 1
+                    
+                    results_summary['settled_bets'] += 1
+                    results_summary['total_profit'] += profit
+                    results_summary['total_stake'] += stake_percent
+                
+                # DataFrame frissítése
+                df.at[index, 'actual_winner'] = actual_winner
+                df.at[index, 'result'] = result
+                df.at[index, 'profit'] = profit
+                df.at[index, 'bet_settled'] = True
+                
+                updated_count += 1
+                
+                print(f"✅ {row['player1_name']} vs {row['player2_name']}: {result} ({profit:+.1f}%)")
+                
+        except Exception as e:
+            print(f"❌ Hiba a meccs {event_id} feldolgozásakor: {str(e)}")
+            continue
+    
+    # CSV mentése
+    if updated_count > 0:
+        df.to_csv(csv_path, index=False)
+        print(f"✅ {updated_count} fogadás eredménye frissítve")
+        
+        # Összegzés megjelenítése
+        print_summary(results_summary)
+    else:
+        print("ℹ️  Nincs új eredmény a függőben lévő fogadásokhoz")
+    
+    return df
+
+def print_summary(results_summary):
+    """
+    Eredmények összegzésének megjelenítése
+    """
+    print("\n📊 FOGADÁSI EREDMÉNYEK ÖSSZEGZÉSE")
+    print("=" * 50)
+    
+    total_checked = results_summary['total_checked']
+    settled_bets = results_summary['settled_bets']
+    won_bets = results_summary['won_bets']
+    lost_bets = results_summary['lost_bets']
+    total_profit = results_summary['total_profit']
+    total_stake = results_summary['total_stake']
+    
+    print(f"🔍 Átfésült meccsek: {total_checked}")
+    print(f"🎯 Lezárt fogadások: {settled_bets}")
+    
+    if settled_bets > 0:
+        hit_rate = (won_bets / settled_bets) * 100
+        roi = (total_profit / total_stake) * 100 if total_stake > 0 else 0
+        
+        print(f"✅ Nyert fogadások: {won_bets}")
+        print(f"❌ Vesztett fogadások: {lost_bets}")
+        print(f"🎯 Találati arány: {hit_rate:.1f}%")
+        print(f"💰 Összes profit: {total_profit:+.1f}%")
+        print(f"📈 ROI (Return on Investment): {roi:+.1f}%")
+        
+        # Teljesítmény értékelés
+        if roi > 0:
+            performance = "KIVÁLÓ 🔥" if roi > 10 else "JÓ ✅"
+        else:
+            performance = "GYENGE 📉" if roi > -5 else "ROSSZ ❌"
+            
+        print(f"🏆 Teljesítmény: {performance}")
+    else:
+        print("ℹ️  Nincs lezárt fogadás az átfésült meccsek között")
+    
+    print("=" * 50)
