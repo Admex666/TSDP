@@ -25,13 +25,16 @@ def update_tennis_paper(match_ids, csv_path='Tennis/tennis_paper.csv'):
                 # Kelly formula biztonságos változata
                 kelly_p1 = max(0, (p1_prob * (odds1 - 1) - p2_prob) / (odds1 - 1)) if odds1 > 1 else 0
                 kelly_p2 = max(0, (p2_prob * (odds2 - 1) - p1_prob) / (odds2 - 1)) if odds2 > 1 else 0
+
+                date_int = int(result['match_info']['date'])
+                date = datetime.fromtimestamp(date_int).strftime('%Y-%m-%d %H:%M')
             except:
                 kelly_p1 = 0
                 kelly_p2 = 0
             
             # DataFrame sor létrehozása
             row = {
-                'date': datetime.now().strftime('%Y-%m-%d'),
+                'date': date,
                 'event_id': match_id,
                 'player1_name': result['match_info']['player1_name'],
                 'player2_name': result['match_info']['player2_name'],

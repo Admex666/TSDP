@@ -38,6 +38,9 @@ def get_tennis_match_data(event_id):
         # Alap meccs információk
         event = match_data['event']
         tournament = event.get('tournament', {})
+        date_int = int(event.get('startTimestamp', 0))
+        date = datetime.fromtimestamp(date_int).strftime('%Y-%m-%d %H:%M')
+        date_str = str(date)
         
         # Játékos információk
         home_player = match_data['event']['homeTeam']
@@ -68,6 +71,7 @@ def get_tennis_match_data(event_id):
         
         # Összesített adatok
         match_info = {
+            'date': date_str,
             'player1_name': home_player['name'],
             'player2_name': away_player['name'],
             'player1_rank': home_rank,
