@@ -127,10 +127,10 @@ const TipForgeLanding = () => {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-8">
             <div className="inline-block px-4 py-2 bg-[#FF6B35] rounded-full text-sm font-semibold mb-6 animate-pulse">
-              🔥 300-ból már csak 47 hely maradt
+              🔥 50-ból már csak 14 hely maradt
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Nyerj, vagy <span className="text-[#00D4FF]">ingyen folytatod</span>
+              Nyersz, vagy <span className="text-[#00D4FF]">eltippelgeted a pénzed?</span>
             </h1>
             <p className="text-xl text-[#C0C0C0] mb-4">
               30 napos profitgarancia magyar fogadóknak
