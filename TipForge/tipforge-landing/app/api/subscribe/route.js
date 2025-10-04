@@ -9,22 +9,30 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Érvénytelen email' }, { status: 400 });
     }
 
-    // Private key dekódolása base64-ből
-    const privateKey = Buffer.from(
-      process.env.GOOGLE_PRIVATE_KEY_BASE64 || '',
-      'base64'
-    ).toString('utf-8');
+    // Private key dekódolása
+    let privateKey;
+    try {
+      privateKey = Buffer.from(
+        process.env.GOOGLE_PRIVATE_KEY_BASE64 || '',
+        'base64'
+      ).toString('utf-8');
+      
+      // Tisztítás: távolítsuk el a felesleges whitespace-eket
+      privateKey = privateKey.trim();
+    } catch (e) {
+      console.error('Private key dekódolási hiba:', e);
+      return NextResponse.json({ error: 'Konfiguráció hiba' }, { status: 500 });
+    }
 
     if (!process.env.GOOGLE_CLIENT_EMAIL || !privateKey || !process.env.GOOGLE_SHEET_ID) {
       console.error('Hiányzó environment változók');
       return NextResponse.json({ error: 'Konfiguráció hiba' }, { status: 500 });
     }
 
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: privateKey,
-      },
+    // JWT auth (modernebb, deprecation warnings nélkül)
+    const auth = new google.auth.JWT({
+      email: process.env.GOOGLE_CLIENT_EMAIL,
+      key: privateKey,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
@@ -45,10 +53,10 @@ export async function POST(request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Hiba részletei:', error);
+    console.error('Teljes hiba:', error);
     return NextResponse.json({ 
       error: 'Szerver hiba',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      message: error.message
     }, { status: 500 });
   }
 }
