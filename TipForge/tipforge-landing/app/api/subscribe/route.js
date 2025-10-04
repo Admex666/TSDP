@@ -12,13 +12,12 @@ export async function POST(request) {
 
     // Google Sheets auth
     const auth = new google.auth.GoogleAuth({
-        credentials: {
-          client_email: process.env.GOOGLE_CLIENT_EMAIL,
-          // Töröld a .replace() részt, ha a Vercel-be sima \n-nel vitted be a kulcsot
-          private_key: process.env.GOOGLE_PRIVATE_KEY, // Eredeti: .replace(/\\n/g, '\n')
-        },
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      });
+      credentials: {
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      },
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
 
     const sheets = google.sheets({ version: 'v4', auth });
 
