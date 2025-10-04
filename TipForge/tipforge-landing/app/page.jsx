@@ -21,18 +21,35 @@ const TipForgeLanding = () => {
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [showExitPopup]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Google Analytics Event
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'waitlist_signup', {
-        'event_category': 'conversion',
-        'event_label': 'hero_cta',
-        'value': email
+    
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
       });
+  
+      if (response.ok) {
+        // Google Analytics Event
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'waitlist_signup', {
+            'event_category': 'conversion',
+            'event_label': 'hero_cta',
+            'value': email
+          });
+        }
+        
+        alert(`Sikeres feliratkozás: ${email}`);
+        setEmail('');
+      } else {
+        alert('Hiba történt, próbáld újra!');
+      }
+    } catch (error) {
+      console.error('Hiba:', error);
+      alert('Hiba történt, próbáld újra!');
     }
-    alert(`Sikeres feliratkozás: ${email}`);
-    setEmail('');
   };
 
   const testimonials = [
