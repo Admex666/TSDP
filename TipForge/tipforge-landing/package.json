@@ -26,5 +26,8 @@
     "eslint-config-next": "15.5.4",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.14"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
