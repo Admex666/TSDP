@@ -5,6 +5,7 @@ import { CheckCircle, TrendingUp, Users, Shield, BarChart3, MessageCircle, Arrow
 
 const TipForgeLanding = () => {
   const [showExitPopup, setShowExitPopup] = useState(false);
+  const [hasSeenExitPopup, setHasSeenExitPopup] = useState(false);
   const [waitlistCount, setWaitlistCount] = useState(36);
   const [activeTab, setActiveTab] = useState('algorithm');
   const [openFaq, setOpenFaq] = useState(null);
@@ -25,21 +26,115 @@ const TipForgeLanding = () => {
 
   // Exit intent detection
   useEffect(() => {
+    // Ellenőrizd localStorage-ban, látta-e már
+    const hasSeenPopup = localStorage.getItem('tipforge_exit_popup_seen');
+    if (hasSeenPopup) {
+      setHasSeenExitPopup(true);
+    }
+
     const handleMouseLeave = (e) => {
-      if (e.clientY <= 0 && !showExitPopup) {
+      if (e.clientY <= 0 && !showExitPopup && !hasSeenExitPopup) {
         setShowExitPopup(true);
+        setHasSeenExitPopup(true);
+        localStorage.setItem('tipforge_exit_popup_seen', 'true');
+        
+        // Google Analytics tracking
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'exit_popup_shown', {
+            'event_category': 'engagement',
+          });
+        }
       }
     };
+    
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
-  }, [showExitPopup]);
+  }, [showExitPopup, hasSeenExitPopup]);
 
-  const handleWaitlistClick = () => {
-    // Google Analytics Event
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      // 25%, 50%, 75%, 100% mérföldkövek
+      if (scrollPercent > 25 && !window.scrollTracked25) {
+        window.scrollTracked25 = true;
+        window.gtag?.('event', 'scroll_depth', {
+          'event_category': 'engagement',
+          'event_label': '25%'
+        });
+      }
+      if (scrollPercent > 50 && !window.scrollTracked50) {
+        window.scrollTracked50 = true;
+        window.gtag?.('event', 'scroll_depth', {
+          'event_category': 'engagement',
+          'event_label': '50%'
+        });
+      }
+      if (scrollPercent > 75 && !window.scrollTracked75) {
+        window.scrollTracked75 = true;
+        window.gtag?.('event', 'scroll_depth', {
+          'event_category': 'engagement',
+          'event_label': '75%'
+        });
+      }
+      if (scrollPercent > 90 && !window.scrollTracked100) {
+        window.scrollTracked100 = true;
+        window.gtag?.('event', 'scroll_depth', {
+          'event_category': 'engagement',
+          'event_label': '100%'
+        });
+      }
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleCloseExitPopup = () => {
+    setShowExitPopup(false);
+    localStorage.setItem('tipforge_exit_popup_seen', 'true');
+    
+    // Analytics - popup bezárva
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'waitlist_signup_attempt', {
+      window.gtag('event', 'exit_popup_dismissed', {
         'event_category': 'engagement',
-        'event_label': 'hero_cta',
+      });
+    }
+  };
+
+  const handleFaqClick = (index, question) => {
+    const newOpenFaq = openFaq === index ? null : index;
+    setOpenFaq(newOpenFaq);
+    
+    // Track FAQ nyitás
+    if (newOpenFaq !== null && typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'faq_open', {
+        'event_category': 'engagement',
+        'event_label': question.substring(0, 50), // Első 50 karakter
+        'faq_index': index
+      });
+    }
+  };
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    
+    // Track tab váltás
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'tab_switch', {
+        'event_category': 'engagement',
+        'event_label': tabId // 'algorithm' / 'results' / 'team'
+      });
+    }
+  };
+
+  const handleWaitlistClick = (source) => {
+    // Google Analytics Event - forrás alapján
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'cta_click', {
+        'event_category': 'engagement',
+        'event_label': source, // 'hero' / 'final_cta' / 'exit_popup' / 'mobile_sticky'
+        'source_section': source
       });
     }
     
@@ -52,11 +147,31 @@ const TipForgeLanding = () => {
           text: '📧',
           animation: 'wave'
         },
+        onOpen: () => {
+          // Popup megnyílt
+          if (window.gtag) {
+            window.gtag('event', 'popup_open', {
+              'event_category': 'conversion_funnel',
+              'event_label': source
+            });
+          }
+        },
         onSubmit: () => {
+          // Sikeres form submit
           if (window.gtag) {
             window.gtag('event', 'waitlist_signup', {
               'event_category': 'conversion',
-              'event_label': 'hero_cta'
+              'event_label': source,
+              'value': 1
+            });
+          }
+        },
+        onClose: () => {
+          // Popup bezárva (submit nélkül = abandonment)
+          if (window.gtag) {
+            window.gtag('event', 'popup_close', {
+              'event_category': 'conversion_funnel',
+              'event_label': source
             });
           }
         }
@@ -172,12 +287,12 @@ const TipForgeLanding = () => {
 
           {/* CTA Button - Hero */}
           <div className="max-w-md mx-auto mb-8">
-            <button
-              onClick={handleWaitlistClick}
-              className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
-            >
-              Csatlakozom a várólistára
-            </button>
+          <button
+            onClick={() => handleWaitlistClick('hero')}
+            className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
+          >
+            Csatlakozom a TipForge várólistára
+          </button>
             <p className="text-sm text-[#A9A9A9] mt-3 text-center">
               ✓ Nincs fizetési kötelezettség • ✓ Bármikor leiratkozhatsz
             </p>
@@ -252,7 +367,7 @@ const TipForgeLanding = () => {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">A TipForge Módszer</h2>
+            <h2 className="text-4xl font-bold mb-4">A <span className="text-[#00D4FF]">TipForge</span> Módszer</h2>
             <p className="text-xl text-[#C0C0C0]">Nem varázslat. Adat + Emberek + Védelem.</p>
           </div>
 
@@ -296,7 +411,7 @@ const TipForgeLanding = () => {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4">
-            Nem kérünk vak bizalmat. Mutassuk meg, hogyan működik.
+            Nem várjuk el a vak bizalmad. Elmondjuk, hogyan működik.
           </h2>
           
           {/* Tabs */}
@@ -307,8 +422,7 @@ const TipForgeLanding = () => {
               { id: 'team', label: '👨‍💻 Csapat' }
             ].map(tab => (
               <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabChange(tab.id)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                   activeTab === tab.id 
                     ? 'bg-[#00D4FF] text-[#1E1E1E]' 
@@ -324,13 +438,12 @@ const TipForgeLanding = () => {
           <div className="bg-[#121212] rounded-xl p-8 border border-[#2A2A2A]">
             {activeTab === 'algorithm' && (
               <div>
-                <h3 className="text-2xl font-bold mb-6">Az Algoritmus Működése (emberi nyelven)</h3>
+                <h3 className="text-2xl font-bold mb-6">Az Algoritmus Működése (érthetően)</h3>
                 <div className="space-y-6">
                   {[
                     { num: '1', title: 'Adat Begyűjtés', text: '15+ forrásból szedi össze az élő adatokat: expected goals (xG), shot accuracy, possession stats, form (utolsó 5 meccs), head-to-head mérleg, sérültek, motiváció index.' },
-                    { num: '2', title: 'Mintázat Felismerés', text: '5 év történeti adat (~50.000 meccs) alapján tanult: "milyen csapat profilok nyernek adott szituációban". Pl.: high xG csapat rossz formában lévő ellen = value bet.' },
-                    { num: '3', title: 'Érték Azonosítás', text: 'Összeveti a fogadóirodák oddsait az algoritmus által kalkulált "valós esélyekkel". Ha eltérés van = value bet. Példa: Valós esély 65%, de az odds 2.10-et ad (47.6% implied).' },
-                    { num: '4', title: 'Confidence Score', text: 'Minden tipp kap egy 1-10 "magabiztosság" pontot. 8+ = high confidence (ajánlott követni). 5-7 = közepes (opcionális). Alatta = nem kerül kiadásra.' }
+                    { num: '2', title: 'Mintázat Felismerés', text: '5 év adatai (~50.000 meccs) alapján tanult: "milyen csapat profilok nyernek adott szituációban". Pl.: high xG csapat rossz formában lévő ellen = value bet.' },
+                    { num: '3', title: 'Érték Azonosítás', text: 'Összeveti a fogadóirodák oddsait az algoritmus által kalkulált "valós esélyekkel". Ha eltérés van = value bet. Példa: Valós esély 65%, de az odds 2.10-es, tehát csak 47.6%.' },
                   ].map(step => (
                     <div key={step.num} className="flex gap-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-[#00D4FF] text-[#1E1E1E] rounded-full flex items-center justify-center font-bold text-xl">
@@ -454,7 +567,7 @@ const TipForgeLanding = () => {
             {faqs.map((faq, i) => (
               <div key={i} className="bg-[#1E1E1E] rounded-xl border border-[#2A2A2A] overflow-hidden">
                 <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  onClick={() => handleFaqClick(i, faq.q)}
                   className="w-full px-6 py-4 flex justify-between items-center hover:bg-[#2A2A2A] transition-colors text-left"
                 >
                   <span className="font-semibold text-lg">{faq.q}</span>
@@ -502,13 +615,13 @@ const TipForgeLanding = () => {
 
           {/* Form */}
           <div className="max-w-md mx-auto mb-6">
-            <button
-              onClick={handleWaitlistClick}
-              className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-            >
-              Feliratkozom a várólistára
-              <ArrowRight className="w-5 h-5" />
-            </button>
+          <button
+            onClick={() => handleWaitlistClick('final_cta')}
+            className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+          >
+            Feliratkozom a TipForge várólistára
+            <ArrowRight className="w-5 h-5" />
+          </button>
           </div>
 
           <p className="text-sm text-[#A9A9A9]">
@@ -526,8 +639,8 @@ const TipForgeLanding = () => {
               <p className="text-sm text-[#A9A9A9]">Adat-alapú sportfogadás</p>
             </div>
             <div className="flex gap-8 text-sm">
-              <a href="mailto:hello@tipforge.hu" className="text-[#C0C0C0] hover:text-[#00D4FF]">
-                hello@tipforge.hu
+              <a href="mailto:tipforgehq@gmail.com" className="text-[#C0C0C0] hover:text-[#00D4FF]">
+                tipforgehq@gmail.com
               </a>
               <a href="#" className="text-[#C0C0C0] hover:text-[#00D4FF]">
                 Discord
@@ -548,7 +661,7 @@ const TipForgeLanding = () => {
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6">
           <div className="bg-[#1E1E1E] rounded-xl max-w-md w-full p-8 relative border border-[#2A2A2A]">
             <button
-              onClick={() => setShowExitPopup(false)}
+              onClick={handleCloseExitPopup}
               className="absolute top-4 right-4 text-[#A9A9A9] hover:text-white"
             >
               <X className="w-6 h-6" />
@@ -576,22 +689,23 @@ const TipForgeLanding = () => {
               Csak az <strong className="text-white">emailedet</strong> kérjük, nincs kötelezettség:
             </p>
             <form onSubmit={(e) => { e.preventDefault(); handleWaitlistClick(); setShowExitPopup(false); }} className="mb-4">
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all"
-              >
-                Igen, lefoglalom a helyem
-              </button>
-            </form>
             <button
-              onClick={() => setShowExitPopup(false)}
-              className="w-full text-sm text-[#A9A9A9] hover:text-white"
+              onClick={() => { handleWaitlistClick('exit_popup'); setShowExitPopup(false); }}
+              className="w-full px-6 py-3 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all"
             >
-              Nem, inkább fizetek teljes árat később
+              Igen, lefoglalom a helyem
             </button>
-          </div>
+            </form>
+
+            <button
+            onClick={handleCloseExitPopup}
+            className="w-full text-sm text-[#A9A9A9] hover:text-white"
+          >
+            Nem, inkább fizetek teljes árat később
+          </button>
         </div>
-      )}
+      </div>
+    )}
 
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1E1E1E] border-t border-[#2A2A2A] p-4 z-40 shadow-lg">
@@ -601,7 +715,7 @@ const TipForgeLanding = () => {
             <div className="text-xs text-[#A9A9A9]">Várolista zárul okt 10-én</div>
           </div>
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => handleWaitlistClick('mobile_sticky')}
             className="px-6 py-3 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg whitespace-nowrap text-sm"
           >
             Feliratkozom
