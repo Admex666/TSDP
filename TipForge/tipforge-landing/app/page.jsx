@@ -4,11 +4,24 @@ import React, { useState, useEffect } from 'react';
 import { CheckCircle, TrendingUp, Users, Shield, BarChart3, MessageCircle, ArrowRight, X, ChevronDown } from 'lucide-react';
 
 const TipForgeLanding = () => {
-  const [email, setEmail] = useState('');
   const [showExitPopup, setShowExitPopup] = useState(false);
-  const [waitlistCount, setWaitlistCount] = useState(287);
+  const [waitlistCount, setWaitlistCount] = useState(36);
   const [activeTab, setActiveTab] = useState('algorithm');
   const [openFaq, setOpenFaq] = useState(null);
+
+  // Tally widget betöltése
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://tally.so/widgets/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   // Exit intent detection
   useEffect(() => {
@@ -21,34 +34,33 @@ const TipForgeLanding = () => {
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [showExitPopup]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
+  const handleWaitlistClick = () => {
+    // Google Analytics Event
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'waitlist_signup_attempt', {
+        'event_category': 'engagement',
+        'event_label': 'hero_cta',
       });
-  
-      if (response.ok) {
-        // Google Analytics Event
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'waitlist_signup', {
-            'event_category': 'conversion',
-            'event_label': 'hero_cta',
-            'value': email
-          });
+    }
+    
+    // Tally popup megnyitása
+    if (typeof window !== 'undefined' && window.Tally) {
+      window.Tally.openPopup('wA1JkN', {
+        layout: 'modal',
+        width: 500,
+        emoji: {
+          text: '📧',
+          animation: 'wave'
+        },
+        onSubmit: () => {
+          if (window.gtag) {
+            window.gtag('event', 'waitlist_signup', {
+              'event_category': 'conversion',
+              'event_label': 'hero_cta'
+            });
+          }
         }
-        
-        alert(`Sikeres feliratkozás: ${email}`);
-        setEmail('');
-      } else {
-        alert('Hiba történt, próbáld újra!');
-      }
-    } catch (error) {
-      console.error('Hiba:', error);
-      alert('Hiba történt, próbáld újra!');
+      });
     }
   };
 
@@ -158,28 +170,18 @@ const TipForgeLanding = () => {
             </p>
           </div>
 
-          {/* Email Form */}
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-8">
-            <div className="flex gap-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="pelda@email.com"
-                required
-                className="flex-1 px-6 py-4 bg-[#2A2A2A] border-2 border-[#3A3A3A] rounded-lg focus:border-[#00D4FF] focus:outline-none text-white"
-              />
-              <button
-                type="submit"
-                className="px-8 py-4 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
-              >
-                Feliratkozom
-              </button>
-            </div>
+          {/* CTA Button - Hero */}
+          <div className="max-w-md mx-auto mb-8">
+            <button
+              onClick={handleWaitlistClick}
+              className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
+            >
+              Csatlakozom a várólistára
+            </button>
             <p className="text-sm text-[#A9A9A9] mt-3 text-center">
               ✓ Nincs fizetési kötelezettség • ✓ Bármikor leiratkozhatsz
             </p>
-          </form>
+          </div>
 
           {/* Social Proof */}
           <div className="flex items-center justify-center gap-3 text-sm text-[#C0C0C0]">
@@ -499,25 +501,15 @@ const TipForgeLanding = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-6">
-            <div className="flex gap-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="pelda@email.com"
-                required
-                className="flex-1 px-6 py-4 bg-[#2A2A2A] border-2 border-[#3A3A3A] rounded-lg focus:border-[#00D4FF] focus:outline-none text-white"
-              />
-              <button
-                type="submit"
-                className="px-8 py-4 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center gap-2"
-              >
-                Feliratkozom
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </form>
+          <div className="max-w-md mx-auto mb-6">
+            <button
+              onClick={handleWaitlistClick}
+              className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              Feliratkozom a várólistára
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
 
           <p className="text-sm text-[#A9A9A9]">
             ✓ Nincs fizetési kötelezettség • ✓ Bármikor leiratkozhatsz • ✓ Email csak tippekre megy, spam 0%
@@ -583,20 +575,12 @@ const TipForgeLanding = () => {
             <p className="text-[#C0C0C0] mb-4">
               Csak az <strong className="text-white">emailedet</strong> kérjük, nincs kötelezettség:
             </p>
-            <form onSubmit={(e) => { handleSubmit(e); setShowExitPopup(false); }} className="mb-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="pelda@email.com"
-                required
-                className="w-full px-4 py-3 bg-[#2A2A2A] border border-[#3A3A3A] rounded-lg focus:border-[#00D4FF] focus:outline-none text-white mb-3"
-              />
+            <form onSubmit={(e) => { e.preventDefault(); handleWaitlistClick(); setShowExitPopup(false); }} className="mb-4">
               <button
                 type="submit"
                 className="w-full px-6 py-3 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all"
               >
-                Igen, foglalom a helyem
+                Igen, lefoglalom a helyem
               </button>
             </form>
             <button
