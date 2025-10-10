@@ -1,11 +1,97 @@
 team1,team2,score,event,match_url
-The MongolZ,Natus Vincere,0-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385960/the-mongolz-vs-natus-vincere-esl-pro-league-season-22
-Vitality,G2,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385958/vitality-vs-g2-esl-pro-league-season-22
-FaZe,Inner Circle,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385959/faze-vs-inner-circle-esl-pro-league-season-22
-3DMAX,MOUZ,0-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385956/3dmax-vs-mouz-esl-pro-league-season-22
-The MongolZ,Gentle Mates,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385957/the-mongolz-vs-gentle-mates-esl-pro-league-season-22
-FURIA,Aurora,2-1,ESL Pro League Season 22,https://www.hltv.org/matches/2385954/furia-vs-aurora-esl-pro-league-season-22
-Natus Vincere,HOTU,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385955/natus-vincere-vs-hotu-esl-pro-league-season-22
+LAG,BOSS,1-2,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386625/lag-vs-boss-esl-challenger-league-season-50-north-america-cup-3
+ex-Chicken Coop,Take Flyte,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386626/ex-chicken-coop-vs-take-flyte-esl-challenger-league-season-50-north-america-cup-3
+regain,Mythic,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386623/regain-vs-mythic-esl-challenger-league-season-50-north-america-cup-3
+Lotus fe,FlyQuest RED,0-2,ESL Impact League Season 8 North America,https://www.hltv.org/matches/2386300/lotus-fe-vs-flyquest-red-esl-impact-league-season-8-north-america
+Shimmer,Nocturnal,2-0,ESL Impact League Season 8 North America,https://www.hltv.org/matches/2386301/shimmer-vs-nocturnal-esl-impact-league-season-8-north-america
+FULL SEND,TSG,0-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386624/full-send-vs-tsg-esl-challenger-league-season-50-north-america-cup-3
+2GAME,LP,2-1,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386594/2game-vs-lp-esl-challenger-league-season-50-south-america-cup-3
+KRÜ,FOLHA AMARELA,0-2,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386683/kr-vs-folha-amarela-cct-season-3-south-america-series-5
+Gaimin Gladiators,Tropa do KinGui,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386593/gaimin-gladiators-vs-tropa-do-kingui-esl-challenger-league-season-50-south-america-cup-3
+FURIA fe,Four Magic,2-0,ESL Impact League Season 8 South America,https://www.hltv.org/matches/2386296/furia-fe-vs-four-magic-esl-impact-league-season-8-south-america
+Sharks,Procyon,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386596/sharks-vs-procyon-esl-challenger-league-season-50-south-america-cup-3
+Atrix,CAPIVARAS,2-0,ESL Impact League Season 8 South America,https://www.hltv.org/matches/2386297/atrix-vs-capivaras-esl-impact-league-season-8-south-america
+MANA,Phantom,3-2,T-Esports Championship Season 4,https://www.hltv.org/matches/2386766/mana-vs-phantom-t-esports-championship-season-4
+ShindeN,KRÜ,1-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386595/shinden-vs-kr-esl-challenger-league-season-50-south-america-cup-3
+CYBERSHOKE,Monte,1-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386547/cybershoke-vs-monte-esl-challenger-league-season-50-europe-cup-3
+Yawara,MIBR Academy,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386682/yawara-vs-mibr-academy-cct-season-3-south-america-series-5
+FAVBET,EYEBALLERS,2-1,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386548/favbet-vs-eyeballers-esl-challenger-league-season-50-europe-cup-3
+Nemesis Impact,Peekaboo,0-2,ESL Impact League Season 8 Europe,https://www.hltv.org/matches/2386293/nemesis-impact-vs-peekaboo-esl-impact-league-season-8-europe
+GUN5,PARIVISION,0-2,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386210/gun5-vs-parivision-galaxy-battle-2025-phase-4
+NIP Impact,AKA HERO KAJO,2-0,ESL Impact League Season 8 Europe,https://www.hltv.org/matches/2386292/nip-impact-vs-aka-hero-kajo-esl-impact-league-season-8-europe
+ARCRED,RUBY,2-1,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386551/arcred-vs-ruby-esl-challenger-league-season-50-europe-cup-3
+500,Leo,2-1,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386724/500-vs-leo-nodwin-clutch-series-1
+Sashi,SPARTA,2-1,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386549/sashi-vs-sparta-esl-challenger-league-season-50-europe-cup-3
+BetBoom,Dziuseppe,2-0,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386335/betboom-vs-dziuseppe-cct-season-3-europe-series-8
+BC.Game,Partizan,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386550/bcgame-vs-partizan-esl-challenger-league-season-50-europe-cup-3
+Betera,NOVAQ,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386552/betera-vs-novaq-esl-challenger-league-season-50-europe-cup-3
+Nexus,Oramond,0-2,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386419/nexus-vs-oramond-exort-the-proving-grounds-season-5
+GameHunters,Vasco,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386681/gamehunters-vs-vasco-cct-season-3-south-america-series-5
+Nemiga,JiJieHao,2-1,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386209/nemiga-vs-jijiehao-galaxy-battle-2025-phase-4
+GUN5,JiJieHao,1-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386553/gun5-vs-jijiehao-esl-challenger-league-season-50-europe-cup-3
+ECSTATIC,EYEBALLERS,1-2,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386334/ecstatic-vs-eyeballers-cct-season-3-europe-series-8
+ECLOT,GLORE,2-1,Slovak National Championship 2025 Finals,https://www.hltv.org/matches/2386671/eclot-vs-glore-slovak-national-championship-2025-finals
+Insilio,The Glecs,1-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386554/insilio-vs-the-glecs-esl-challenger-league-season-50-europe-cup-3
+Tricked,UNiTY,1-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386723/tricked-vs-unity-nodwin-clutch-series-1
+TPuDCATb TPu,Betclic,2-0,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386418/tpudcatb-tpu-vs-betclic-exort-the-proving-grounds-season-5
+Spirit Academy,1win,1-2,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386333/spirit-academy-vs-1win-cct-season-3-europe-series-8
+Players,UnderDogs,0-2,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386680/players-vs-underdogs-cct-season-3-south-america-series-5
+Just Swing,Kaleido,0-2,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386525/just-swing-vs-kaleido-esl-challenger-league-season-50-asia-pacific-cup-3
+DEPO,FengDa,0-2,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386526/depo-vs-fengda-esl-challenger-league-season-50-asia-pacific-cup-3
+kONO,FORZE Reload,2-1,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386722/kono-vs-forze-reload-nodwin-clutch-series-1
+Sangal,JiJieHao,2-1,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386417/sangal-vs-jijiehao-exort-the-proving-grounds-season-5
+G2 Ares,Aurora Young Blud,1-2,European Pro League Cup 1,https://www.hltv.org/matches/2386783/g2-ares-vs-aurora-young-blud-european-pro-league-cup-1
+SINNERS,BRUTE,2-0,Slovak National Championship 2025 Finals,https://www.hltv.org/matches/2386670/sinners-vs-brute-slovak-national-championship-2025-finals
+RUBY,Betera,0-2,Winline Insight Season 8,https://www.hltv.org/matches/2386228/ruby-vs-betera-winline-insight-season-8
+ESC,ECLOT,2-0,Winline Insight Season 8,https://www.hltv.org/matches/2386229/esc-vs-eclot-winline-insight-season-8
+JiJieHao,Johnny Speeds,2-1,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386332/jijiehao-vs-johnny-speeds-cct-season-3-europe-series-8
+fish123,ENCE Academy,2-0,European Pro League Cup 1,https://www.hltv.org/matches/2386782/fish123-vs-ence-academy-european-pro-league-cup-1
+RUBY,Nuclear TigeRES,2-0,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386721/ruby-vs-nuclear-tigeres-nodwin-clutch-series-1
+TSG,NuTorious,2-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386616/tsg-vs-nutorious-esl-challenger-league-season-50-north-america-cup-3
+Marsborne,LAG,2-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386621/marsborne-vs-lag-esl-challenger-league-season-50-north-america-cup-3
+BOSS,Zomblers,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386617/boss-vs-zomblers-esl-challenger-league-season-50-north-america-cup-3
+SkinRave,regain,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386619/skinrave-vs-regain-esl-challenger-league-season-50-north-america-cup-3
+ex-Chicken Coop,Wildcard,0-2,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386622/ex-chicken-coop-vs-wildcard-esl-challenger-league-season-50-north-america-cup-3
+Shimmer,Mythic,0-2,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386615/shimmer-vs-mythic-esl-challenger-league-season-50-north-america-cup-3
+InControl,Take Flyte,0-2,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386618/incontrol-vs-take-flyte-esl-challenger-league-season-50-north-america-cup-3
+FULL SEND,Getting Info,0-2,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386620/full-send-vs-getting-info-esl-challenger-league-season-50-north-america-cup-3
+Little Bocks,wwaves,0-2,ESL Impact League Season 8 North America,https://www.hltv.org/matches/2386299/little-bocks-vs-wwaves-esl-impact-league-season-8-north-america
+ex-Chicken Coop,Getting Info,1-2,CCT Season 3 North America Series 2,https://www.hltv.org/matches/2386314/ex-chicken-coop-vs-getting-info-cct-season-3-north-america-series-2
+Vasco,LP,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386586/vasco-vs-lp-esl-challenger-league-season-50-south-america-cup-3
+Bounty Hunters,VEXA,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386679/bounty-hunters-vs-vexa-cct-season-3-south-america-series-5
+Gaimin Gladiators,ODDIK,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386589/gaimin-gladiators-vs-oddik-esl-challenger-league-season-50-south-america-cup-3
+Dusty Roots,Sharks,2-1,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386592/dusty-roots-vs-sharks-esl-challenger-league-season-50-south-america-cup-3
+Tropa do KinGui,GameHunters,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386585/tropa-do-kingui-vs-gamehunters-esl-challenger-league-season-50-south-america-cup-3
+Procyon,UnderDogs,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386588/procyon-vs-underdogs-esl-challenger-league-season-50-south-america-cup-3
+Yawara,KRÜ,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386587/yawara-vs-kr-esl-challenger-league-season-50-south-america-cup-3
+2GAME,RED Canids,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386590/2game-vs-red-canids-esl-challenger-league-season-50-south-america-cup-3
+ShindeN,Keyd Stars,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386591/shinden-vs-keyd-stars-esl-challenger-league-season-50-south-america-cup-3
+Ghost,Black Mold,1-0,ESL Impact League Season 8 North America,https://www.hltv.org/matches/2386298/ghost-vs-black-mold-esl-impact-league-season-8-north-america
+Dusty Roses,Curralzinho,0-2,ESL Impact League Season 8 South America,https://www.hltv.org/matches/2386295/dusty-roses-vs-curralzinho-esl-impact-league-season-8-south-america
+thekillaz fe,MIBR fe,0-2,ESL Impact League Season 8 South America,https://www.hltv.org/matches/2386294/thekillaz-fe-vs-mibr-fe-esl-impact-league-season-8-south-america
+MAGICOS,R2,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386678/magicos-vs-r2-cct-season-3-south-america-series-5
+888aura,Let Her Cook,2-0,ESL Impact League Season 8 Europe,https://www.hltv.org/matches/2386290/888aura-vs-let-her-cook-esl-impact-league-season-8-europe
+BIG EQUIPA,Imperial Valkyries,2-0,ESL Impact League Season 8 Europe,https://www.hltv.org/matches/2386291/big-equipa-vs-imperial-valkyries-esl-impact-league-season-8-europe
+500,EYEBALLERS,2-1,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386545/500-vs-eyeballers-esl-challenger-league-season-50-europe-cup-3
+Monte,Sangal,1-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386546/monte-vs-sangal-esl-challenger-league-season-50-europe-cup-3
+SINNERS,Insilio,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386539/sinners-vs-insilio-esl-challenger-league-season-50-europe-cup-3
+JiJieHao,Zero Tenacity,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386540/jijiehao-vs-zero-tenacity-esl-challenger-league-season-50-europe-cup-3
+Aurora,FaZe,1-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385962/aurora-vs-faze-esl-pro-league-season-22
+Partizan,Johnny Speeds,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386543/partizan-vs-johnny-speeds-esl-challenger-league-season-50-europe-cup-3
+TPuDCATb TPu,NOVAQ,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386541/tpudcatb-tpu-vs-novaq-esl-challenger-league-season-50-europe-cup-3
+Oramond,1win,2-0,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386720/oramond-vs-1win-nodwin-clutch-series-1
+Alliance,SPARTA,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386544/alliance-vs-sparta-esl-challenger-league-season-50-europe-cup-3
+ESC,RUBY,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386542/esc-vs-ruby-esl-challenger-league-season-50-europe-cup-3
+Inner Circle,Eternal Fire,2-0,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386208/inner-circle-vs-eternal-fire-galaxy-battle-2025-phase-4
+Superior,WildLotus,0-3,T-Esports Championship Season 4,https://www.hltv.org/matches/2386767/superior-vs-wildlotus-t-esports-championship-season-4
+Betera,ECLOT,1-2,Winline Insight Season 8,https://www.hltv.org/matches/2386227/betera-vs-eclot-winline-insight-season-8
+Crashers,Procyon,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386677/crashers-vs-procyon-cct-season-3-south-america-series-5
+SINNERS,Dziuseppe,0-2,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386329/sinners-vs-dziuseppe-cct-season-3-europe-series-8
+G2,3DMAX,0-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385961/g2-vs-3dmax-esl-pro-league-season-22
+PARIVISION,FAVBET,2-0,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386207/parivision-vs-favbet-galaxy-battle-2025-phase-4
+ARCRED,Nexus,2-0,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386719/arcred-vs-nexus-nodwin-clutch-series-1
+Rare Atom,Kaleido,2-1,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386521/rare-atom-vs-kaleido-esl-challenger-league-season-50-asia-pacific-cup-3
+SPARTA,Oramond,0-2,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386416/sparta-vs-oramond-exort-the-proving-grounds-season-5
 Just Swing,Chinggis Warriors,2-0,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386523/just-swing-vs-chinggis-warriors-esl-challenger-league-season-50-asia-pacific-cup-3
 FengDa,Last Bullet,2-0,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386524/fengda-vs-last-bullet-esl-challenger-league-season-50-asia-pacific-cup-3
 DEPO,The Huns,0-2,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386522/depo-vs-the-huns-esl-challenger-league-season-50-asia-pacific-cup-3
@@ -13,96 +99,3 @@ LP,JERSA,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/23
 RUBY,ESC,0-2,Winline Insight Season 8,https://www.hltv.org/matches/2386226/ruby-vs-esc-winline-insight-season-8
 Tricked,EYEBALLERS,0-2,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386330/tricked-vs-eyeballers-cct-season-3-europe-series-8
 The MongolZ,Natus Vincere,0-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385960/the-mongolz-vs-natus-vincere-esl-pro-league-season-22
-Gentle Mates,Anonymo,2-0,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386206/gentle-mates-vs-anonymo-galaxy-battle-2025-phase-4
-ARCRED,Betclic,0-2,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386415/arcred-vs-betclic-exort-the-proving-grounds-season-5
-SPARTA,FAVBET,0-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386718/sparta-vs-favbet-nodwin-clutch-series-1
-Nemiga,500,2-1,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386204/nemiga-vs-500-galaxy-battle-2025-phase-4
-Betera,m1x,1-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386717/betera-vs-m1x-nodwin-clutch-series-1
-JiJieHao,Tricked,2-0,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386414/jijiehao-vs-tricked-exort-the-proving-grounds-season-5
-Zero Tenacity,RUBY,0-2,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386331/zero-tenacity-vs-ruby-cct-season-3-europe-series-8
-NuTorious,Green Tea Party,2-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386610/nutorious-vs-green-tea-party-esl-challenger-league-season-50-north-america-cup-3
-Zomblers,Nocturnal,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386611/zomblers-vs-nocturnal-esl-challenger-league-season-50-north-america-cup-3
-FlyQuest RED,TSG,0-2,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386609/flyquest-red-vs-tsg-esl-challenger-league-season-50-north-america-cup-3
-Getting Info,regain,2-0,CCT Season 3 North America Series 2,https://www.hltv.org/matches/2386313/getting-info-vs-regain-cct-season-3-north-america-series-2
-Mythic,Wanted Goons,1-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386607/mythic-vs-wanted-goons-esl-challenger-league-season-50-north-america-cup-3
-anything else,Take Flyte,0-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386614/anything-else-vs-take-flyte-esl-challenger-league-season-50-north-america-cup-3
-Procyon,Galorys,2-1,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386583/procyon-vs-galorys-esl-challenger-league-season-50-south-america-cup-3
-Zomblers,ex-Chicken Coop,1-2,CCT Season 3 North America Series 2,https://www.hltv.org/matches/2386312/zomblers-vs-ex-chicken-coop-cct-season-3-north-america-series-2
-Tropa do KinGui,Crashers,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386577/tropa-do-kingui-vs-crashers-esl-challenger-league-season-50-south-america-cup-3
-MAGICOS,Vasco,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386579/magicos-vs-vasco-esl-challenger-league-season-50-south-america-cup-3
-MIBR Academy,LP,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386580/mibr-academy-vs-lp-esl-challenger-league-season-50-south-america-cup-3
-JERSA,GameHunters,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386578/jersa-vs-gamehunters-esl-challenger-league-season-50-south-america-cup-3
-Four Magic,Yawara,0-2,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386581/four-magic-vs-yawara-esl-challenger-league-season-50-south-america-cup-3
-Bounty Hunters,FOLHA AMARELA,0-1,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386644/bounty-hunters-vs-folha-amarela-cct-season-3-south-america-series-5
-UnderDogs,MAGICOS,2-1,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386643/underdogs-vs-magicos-cct-season-3-south-america-series-5
-Players,UnderDogs,0-1,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386584/players-vs-underdogs-esl-challenger-league-season-50-south-america-cup-3
-Bounty Hunters,KRÜ,0-1,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386582/bounty-hunters-vs-kr-esl-challenger-league-season-50-south-america-cup-3
-CYBERSHOKE,Nemiga,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386531/cybershoke-vs-nemiga-esl-challenger-league-season-50-europe-cup-3
-Zero Tenacity,1win,0-2,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386328/zero-tenacity-vs-1win-cct-season-3-europe-series-8
-HubaBuba,ARCRED,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386535/hubabuba-vs-arcred-esl-challenger-league-season-50-europe-cup-3
-Oramond,Sashi,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386533/oramond-vs-sashi-esl-challenger-league-season-50-europe-cup-3
-VP.Prodigy,GUN5,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386537/vpprodigy-vs-gun5-esl-challenger-league-season-50-europe-cup-3
-CPH Wolves,Betera,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386536/cph-wolves-vs-betera-esl-challenger-league-season-50-europe-cup-3
-Vitality,G2,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385958/vitality-vs-g2-esl-pro-league-season-22
-Eternal Fire,FAVBET,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386532/eternal-fire-vs-favbet-esl-challenger-league-season-50-europe-cup-3
-FaZe,Inner Circle,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385959/faze-vs-inner-circle-esl-pro-league-season-22
-Nexus,BC.Game,0-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386534/nexus-vs-bcgame-esl-challenger-league-season-50-europe-cup-3
-The Glecs,HOTU,1-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386538/the-glecs-vs-hotu-esl-challenger-league-season-50-europe-cup-3
-GameHunters,VEXA,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386642/gamehunters-vs-vexa-cct-season-3-south-america-series-5
-CYBERSHOKE,RUBY,2-1,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386327/cybershoke-vs-ruby-cct-season-3-europe-series-8
-Sashi,Monte,0-2,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386203/sashi-vs-monte-galaxy-battle-2025-phase-4
-3DMAX,MOUZ,0-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385956/3dmax-vs-mouz-esl-pro-league-season-22
-The MongolZ,Gentle Mates,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385957/the-mongolz-vs-gentle-mates-esl-pro-league-season-22
-Nexus,Nuclear TigeRES,1-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386651/nexus-vs-nuclear-tigeres-nodwin-clutch-series-1
-Sangal,SINNERS,0-2,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386413/sangal-vs-sinners-exort-the-proving-grounds-season-5
-Last Bullet,NomadS,2-1,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386519/last-bullet-vs-nomads-esl-challenger-league-season-50-asia-pacific-cup-3
-JiJieHao,Partizan,2-1,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386202/jijiehao-vs-partizan-galaxy-battle-2025-phase-4
-JiJieHao,ESC,0-1,Winline Insight Season 8,https://www.hltv.org/matches/2386225/jijiehao-vs-esc-winline-insight-season-8
-NSN,Chinggis Warriors,0-2,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386517/nsn-vs-chinggis-warriors-esl-challenger-league-season-50-asia-pacific-cup-3
-Just Swing,Legion,2-0,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386518/just-swing-vs-legion-esl-challenger-league-season-50-asia-pacific-cup-3
-Crashers,MIBR Academy,0-2,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386641/crashers-vs-mibr-academy-cct-season-3-south-america-series-5
-FURIA,Aurora,2-1,ESL Pro League Season 22,https://www.hltv.org/matches/2385954/furia-vs-aurora-esl-pro-league-season-22
-Eruption,FengDa,0-2,ESL Challenger League Season 50 Asia-Pacific Cup 3,https://www.hltv.org/matches/2386520/eruption-vs-fengda-esl-challenger-league-season-50-asia-pacific-cup-3
-Johnny Speeds,SINNERS,2-1,CCT Season 3 Europe Series 8,https://www.hltv.org/matches/2386326/johnny-speeds-vs-sinners-cct-season-3-europe-series-8
-TPuDCATb TPu,EYEBALLERS,1-2,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386412/tpudcatb-tpu-vs-eyeballers-exort-the-proving-grounds-season-5
-Animus Victoria,FURY,1-2,ESL Challenger League Season 50 Oceania Cup 3,https://www.hltv.org/matches/2386503/animus-victoria-vs-fury-esl-challenger-league-season-50-oceania-cup-3
-Natus Vincere,HOTU,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385955/natus-vincere-vs-hotu-esl-pro-league-season-22
-Betera,ARCRED,2-0,Winline Insight Season 8,https://www.hltv.org/matches/2386222/betera-vs-arcred-winline-insight-season-8
-SPARTA,RUBY,0-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386650/sparta-vs-ruby-nodwin-clutch-series-1
-Betclic,Alliance,2-1,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386201/betclic-vs-alliance-galaxy-battle-2025-phase-4
-Rooster,Ground Zero,2-0,ESL Challenger League Season 50 Oceania Cup 3,https://www.hltv.org/matches/2386504/rooster-vs-ground-zero-esl-challenger-league-season-50-oceania-cup-3
-FAVBET,1win,0-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386649/favbet-vs-1win-nodwin-clutch-series-1
-Nexus,Betera,0-2,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386411/nexus-vs-betera-exort-the-proving-grounds-season-5
-ARCRED,m1x,0-1,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386652/arcred-vs-m1x-nodwin-clutch-series-1
-OG,GUN5,0-1,Galaxy Battle 2025 Phase 4,https://www.hltv.org/matches/2386205/og-vs-gun5-galaxy-battle-2025-phase-4
-SkinRave,Take Flyte,2-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386484/skinrave-vs-take-flyte-esl-challenger-league-season-50-north-america-cup-3
-ex-Chicken Coop,Shimmer,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386490/ex-chicken-coop-vs-shimmer-esl-challenger-league-season-50-north-america-cup-3
-Getting Info,Zomblers,2-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386487/getting-info-vs-zomblers-esl-challenger-league-season-50-north-america-cup-3
-LAG,FlyQuest RED,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386489/lag-vs-flyquest-red-esl-challenger-league-season-50-north-america-cup-3
-regain,InControl,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386485/regain-vs-incontrol-esl-challenger-league-season-50-north-america-cup-3
-Wildcard,Mythic,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386491/wildcard-vs-mythic-esl-challenger-league-season-50-north-america-cup-3
-Marsborne,NuTorious,2-0,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386488/marsborne-vs-nutorious-esl-challenger-league-season-50-north-america-cup-3
-ex-Chicken Coop,InControl,2-0,CCT Season 3 North America Series 2,https://www.hltv.org/matches/2386311/ex-chicken-coop-vs-incontrol-cct-season-3-north-america-series-2
-BOSS,FULL SEND,0-1,ESL Challenger League Season 50 North America Cup 3,https://www.hltv.org/matches/2386486/boss-vs-full-send-esl-challenger-league-season-50-north-america-cup-3
-KRÜ,JERSA,2-0,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386640/kr-vs-jersa-cct-season-3-south-america-series-5
-Sharks,Crashers,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386478/sharks-vs-crashers-esl-challenger-league-season-50-south-america-cup-3
-RED Canids,Yawara,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386474/red-canids-vs-yawara-esl-challenger-league-season-50-south-america-cup-3
-Keyd Stars,LP,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386475/keyd-stars-vs-lp-esl-challenger-league-season-50-south-america-cup-3
-ODDIK,UnderDogs,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386471/oddik-vs-underdogs-esl-challenger-league-season-50-south-america-cup-3
-Wildcard,Zomblers,0-2,CCT Season 3 North America Series 2,https://www.hltv.org/matches/2386310/wildcard-vs-zomblers-cct-season-3-north-america-series-2
-ShindeN,Vasco,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386476/shinden-vs-vasco-esl-challenger-league-season-50-south-america-cup-3
-Dusty Roots,GameHunters,2-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386477/dusty-roots-vs-gamehunters-esl-challenger-league-season-50-south-america-cup-3
-Players,R2,2-1,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386639/players-vs-r2-cct-season-3-south-america-series-5
-2GAME,KRÜ,1-0,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386473/2game-vs-kr-esl-challenger-league-season-50-south-america-cup-3
-Betera,SPARTA,1-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386457/betera-vs-sparta-esl-challenger-league-season-50-europe-cup-3
-MOUZ,Falcons,1-2,ESL Pro League Season 22,https://www.hltv.org/matches/2385952/mouz-vs-falcons-esl-pro-league-season-22
-Galorys,Gaimin Gladiators,0-1,ESL Challenger League Season 50 South America Cup 3,https://www.hltv.org/matches/2386472/galorys-vs-gaimin-gladiators-esl-challenger-league-season-50-south-america-cup-3
-ARCRED,Johnny Speeds,1-2,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386456/arcred-vs-johnny-speeds-esl-challenger-league-season-50-europe-cup-3
-WildLotus,Oramond,2-0,T-Esports Championship Season 4,https://www.hltv.org/matches/2386498/wildlotus-vs-oramond-t-esports-championship-season-4
-Tricked,Leo,1-2,NODWIN Clutch Series 1,https://www.hltv.org/matches/2386648/tricked-vs-leo-nodwin-clutch-series-1
-Yawara,Procyon,2-1,CCT Season 3 South America Series 5,https://www.hltv.org/matches/2386638/yawara-vs-procyon-cct-season-3-south-america-series-5
-Partizan,HubaBuba,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386455/partizan-vs-hubabuba-esl-challenger-league-season-50-europe-cup-3
-EYEBALLERS,GUN5,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386459/eyeballers-vs-gun5-esl-challenger-league-season-50-europe-cup-3
-SINNERS,JiJieHao,2-0,Exort The Proving Grounds Season 5,https://www.hltv.org/matches/2386410/sinners-vs-jijiehao-exort-the-proving-grounds-season-5
-500,VP.Prodigy,2-0,ESL Challenger League Season 50 Europe Cup 3,https://www.hltv.org/matches/2386460/500-vs-vpprodigy-esl-challenger-league-season-50-europe-cup-3
-Spirit,G2,2-0,ESL Pro League Season 22,https://www.hltv.org/matches/2385953/spirit-vs-g2-esl-pro-league-season-22
