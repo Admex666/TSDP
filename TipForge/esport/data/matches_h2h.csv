@@ -1,0 +1,316 @@
+match_id,home_team,home_team_id,away_team,away_team_id,wins_home,wins_away,overtimes,total_non_overtime,home_win_rate,home_team_avg_rating,home_team_std_rating,home_team_avg_ADR,home_team_std_ADR,home_team_avg_Swing,home_team_std_Swing,away_team_avg_rating,away_team_std_rating,away_team_avg_ADR,away_team_std_ADR,away_team_avg_Swing,away_team_std_Swing,source_url
+2385329,The MongolZ,6248,FURIA,8297,9,3,2,12,0.75,0.992,0.1701,69.02,10.2,-0.87,2.27,1.11,0.1246,73.78,9.42,0.87,1.45,https://www.hltv.org/matches/2385329/the-mongolz-vs-furia-fissure-playground-2
+2385328,FURIA,8297,Falcons,11283,3,3,2,6,0.5,1.092,0.1627,75.46,13.95,1.1,1.45,1.044,0.1559,76.9,4.4,-1.1,1.41,https://www.hltv.org/matches/2385328/furia-vs-falcons-fissure-playground-2
+2385327,The MongolZ,6248,Liquid,5973,9,2,0,11,0.8182,1.188,0.2237,79.46,15.65,1.57,2.17,0.948,0.1584,73.7,9.95,-1.64,1.93,https://www.hltv.org/matches/2385327/the-mongolz-vs-liquid-fissure-playground-2
+2385326,Falcons,11283,paiN,4773,3,3,1,6,0.5,1.292,0.2274,85.36,18.26,2.67,2.42,0.794,0.1822,60.12,12.88,-2.95,2.4,https://www.hltv.org/matches/2385326/falcons-vs-pain-fissure-playground-2
+2385325,FURIA,8297,Astralis,6665,7,2,1,9,0.7778,1.148,0.1379,79.38,7.51,1.26,2.21,0.928,0.3177,69.82,14.78,-1.31,3.35,https://www.hltv.org/matches/2385325/furia-vs-astralis-fissure-playground-2
+2385324,Aurora,11861,Liquid,5973,4,2,1,6,0.6667,0.968,0.2111,67.82,14.78,-1.42,3.07,1.188,0.2782,76.32,21.48,1.42,3.25,https://www.hltv.org/matches/2385324/aurora-vs-liquid-fissure-playground-2
+2385323,G2,5995,The MongolZ,6248,3,6,2,9,0.3333,1.052,0.0708,74.96,9.76,-0.15,1.26,1.028,0.2062,72.92,13.12,0.03,2.14,https://www.hltv.org/matches/2385323/g2-vs-the-mongolz-fissure-playground-2
+2385322,paiN,4773,Virtus.pro,5378,6,3,1,9,0.6667,1.11,0.1448,76.8,2.41,1.49,2.22,0.962,0.1222,72.78,6.22,-1.49,1.42,https://www.hltv.org/matches/2385322/pain-vs-virtuspro-fissure-playground-2
+2385321,Astralis,6665,GamerLegion,9928,0,2,0,2,0.0,1.184,0.1632,80.38,11.09,1.44,1.9,0.942,0.13,68.98,10.4,-1.44,3.03,https://www.hltv.org/matches/2385321/astralis-vs-gamerlegion-fissure-playground-2
+2385320,FaZe,6667,Liquid,5973,12,2,2,14,0.8571,0.794,0.1392,60.96,7.9,-2.56,1.49,1.266,0.3188,80.52,13.34,2.53,3.66,https://www.hltv.org/matches/2385320/faze-vs-liquid-fissure-playground-2
+2385319,Astralis,6665,Legacy,12468,2,1,1,3,0.6667,1.154,0.2319,75.84,20.95,1.81,2.85,0.9,0.109,66.8,4.74,-1.81,1.45,https://www.hltv.org/matches/2385319/astralis-vs-legacy-fissure-playground-2
+2385318,FURIA,8297,paiN,4773,3,4,1,7,0.4286,1.174,0.1603,81.12,7.24,1.64,1.78,0.91,0.1407,59.02,12.29,-1.64,1.06,https://www.hltv.org/matches/2385318/furia-vs-pain-fissure-playground-2
+2385317,TYLOO,4863,Liquid,5973,0,0,0,0,,1.03,0.1336,71.9,9.35,-0.47,1.28,1.126,0.174,73.66,8.47,0.47,2.06,https://www.hltv.org/matches/2385317/tyloo-vs-liquid-fissure-playground-2
+2385316,FaZe,6667,The MongolZ,6248,2,4,1,6,0.3333,0.994,0.1935,70.38,9.81,-0.31,2.12,1.086,0.2197,75.9,9.16,0.31,2.52,https://www.hltv.org/matches/2385316/faze-vs-the-mongolz-fissure-playground-2
+2385315,3DMAX,4914,Virtus.pro,5378,2,1,0,3,0.6667,1.028,0.096,70.28,2.53,0.42,1.76,1.004,0.1664,68.64,10.34,-0.45,2.05,https://www.hltv.org/matches/2385315/3dmax-vs-virtuspro-fissure-playground-2
+2385314,G2,5995,GamerLegion,9928,5,2,1,7,0.7143,1.138,0.1165,77.7,12.97,0.75,1.05,0.95,0.1225,71.4,5.65,-0.75,2.35,https://www.hltv.org/matches/2385314/g2-vs-gamerlegion-fissure-playground-2
+2385307,Astralis,6665,paiN,4773,7,3,0,10,0.7,0.906,0.1805,67.02,11.6,-1.85,1.72,1.162,0.2536,75.78,7.27,1.85,2.89,https://www.hltv.org/matches/2385307/astralis-vs-pain-fissure-playground-2
+2385313,Aurora,11861,FURIA,8297,7,7,2,14,0.5,1.164,0.3468,76.04,23.58,1.7,4.65,0.89,0.0986,64.56,6.06,-1.7,1.84,https://www.hltv.org/matches/2385313/aurora-vs-furia-fissure-playground-2
+2385312,Falcons,11283,FaZe,6667,6,1,1,7,0.8571,1.178,0.1592,76.12,9.86,1.71,1.33,0.862,0.1053,63.26,7.74,-1.71,1.5,https://www.hltv.org/matches/2385312/falcons-vs-faze-fissure-playground-2
+2385309,Legacy,12468,G2,5995,0,0,0,0,,0.714,0.2043,56.42,13.54,-3.5,3.08,1.37,0.3227,85.34,20.44,3.5,4.34,https://www.hltv.org/matches/2385309/legacy-vs-g2-fissure-playground-2
+2385308,3DMAX,4914,GamerLegion,9928,3,5,1,8,0.375,0.996,0.0965,71.56,4.82,-0.6,1.28,0.996,0.0662,71.04,8.01,0.46,0.74,https://www.hltv.org/matches/2385308/3dmax-vs-gamerlegion-fissure-playground-2
+2385310,Liquid,5973,HEROIC,7175,2,4,0,6,0.3333,1.096,0.1965,80.58,11.52,0.05,2.84,1.002,0.2147,71.54,12.61,-0.05,2.81,https://www.hltv.org/matches/2385310/liquid-vs-heroic-fissure-playground-2
+2385306,TYLOO,4863,The MongolZ,6248,8,9,1,17,0.4706,0.94,0.091,69.9,8.68,-1.3,1.0,1.134,0.2623,75.28,12.38,1.3,2.37,https://www.hltv.org/matches/2385306/tyloo-vs-the-mongolz-fissure-playground-2
+2385311,Virtus.pro,5378,Lynn Vision,8840,0,0,0,0,,1.108,0.1301,73.14,14.03,0.59,1.51,0.944,0.1606,66.46,9.79,-0.59,2.04,https://www.hltv.org/matches/2385311/virtuspro-vs-lynn-vision-fissure-playground-2
+2385305,HEROIC,7175,paiN,4773,0,0,0,0,,1.002,0.1949,70.56,10.69,-0.29,2.77,1.092,0.0618,75.04,2.92,0.28,1.43,https://www.hltv.org/matches/2385305/heroic-vs-pain-fissure-playground-2
+2385304,FURIA,8297,G2,5995,2,4,1,6,0.3333,1.162,0.2303,73.54,9.3,1.59,3.37,0.984,0.1113,71.9,3.21,-1.59,1.51,https://www.hltv.org/matches/2385304/furia-vs-g2-fissure-playground-2
+2385302,Aurora,11861,TYLOO,4863,2,2,1,4,0.5,1.158,0.232,75.82,14.37,1.0,2.85,0.916,0.1603,63.74,8.11,-1.15,1.92,https://www.hltv.org/matches/2385302/aurora-vs-tyloo-fissure-playground-2
+2385303,GamerLegion,9928,Liquid,5973,0,0,0,0,,1.416,0.1337,80.36,15.85,5.12,0.74,0.75,0.106,62.02,4.97,-5.15,3.04,https://www.hltv.org/matches/2385303/gamerlegion-vs-liquid-fissure-playground-2
+2385300,Falcons,11283,Legacy,12468,0,0,0,0,,1.274,0.1691,82.3,14.2,2.16,1.43,0.856,0.1256,68.82,6.48,-2.16,0.93,https://www.hltv.org/matches/2385300/falcons-vs-legacy-fissure-playground-2
+2385301,Virtus.pro,5378,Astralis,6665,3,2,1,5,0.6,0.936,0.2453,70.16,17.11,-1.99,3.34,1.13,0.2735,72.58,16.42,1.99,1.9,https://www.hltv.org/matches/2385301/virtuspro-vs-astralis-fissure-playground-2
+2385298,3DMAX,4914,FaZe,6667,2,5,0,7,0.2857,0.91,0.1413,69.64,12.36,-1.92,1.82,1.17,0.2948,78.46,19.63,1.82,3.92,https://www.hltv.org/matches/2385298/3dmax-vs-faze-fissure-playground-2
+2385299,The MongolZ,6248,Lynn Vision,8840,12,5,2,17,0.7059,1.152,0.0842,75.38,14.01,1.9,1.48,0.886,0.2087,68.72,14.5,-1.9,2.45,https://www.hltv.org/matches/2385299/the-mongolz-vs-lynn-vision-fissure-playground-2
+2385297,FURIA,8297,Liquid,5973,3,11,1,14,0.2143,1.11,0.186,75.18,14.37,0.31,2.57,1.028,0.2348,71.08,11.34,-0.31,2.68,https://www.hltv.org/matches/2385297/furia-vs-liquid-fissure-playground-2
+2385296,FaZe,6667,paiN,4773,8,4,2,12,0.6667,1.178,0.3064,76.36,17.61,1.29,4.01,0.912,0.1628,68.36,9.13,-1.38,2.32,https://www.hltv.org/matches/2385296/faze-vs-pain-fissure-playground-2
+2385295,G2,5995,Lynn Vision,8840,2,0,0,2,1.0,1.15,0.2399,71.52,14.67,1.64,3.05,0.896,0.197,64.5,15.84,-1.8,1.85,https://www.hltv.org/matches/2385295/g2-vs-lynn-vision-fissure-playground-2
+2385294,HEROIC,7175,Legacy,12468,0,0,0,0,,0.968,0.178,72.02,11.85,-1.07,2.02,1.12,0.0701,75.42,3.72,1.02,1.0,https://www.hltv.org/matches/2385294/heroic-vs-legacy-fissure-playground-2
+2385293,Aurora,11861,Astralis,6665,1,5,0,6,0.1667,1.006,0.1059,73.64,14.89,-0.29,1.2,1.056,0.2174,70.5,11.12,0.24,2.33,https://www.hltv.org/matches/2385293/aurora-vs-astralis-fissure-playground-2
+2385292,Falcons,11283,Virtus.pro,5378,1,2,2,3,0.3333,1.556,0.4521,92.5,22.56,6.14,6.48,0.72,0.2108,62.44,7.35,-6.14,1.91,https://www.hltv.org/matches/2385292/falcons-vs-virtuspro-fissure-playground-2
+2385291,The MongolZ,6248,3DMAX,4914,11,7,0,18,0.6111,1.016,0.1586,72.54,7.42,-0.07,2.5,1.064,0.1609,75.12,8.06,-0.01,2.05,https://www.hltv.org/matches/2385291/the-mongolz-vs-3dmax-fissure-playground-2
+2385290,GamerLegion,9928,TYLOO,4863,4,1,2,5,0.8,0.79,0.1212,63.22,10.61,-4.27,2.08,1.392,0.4344,83.4,22.73,4.27,4.84,https://www.hltv.org/matches/2385290/gamerlegion-vs-tyloo-fissure-playground-2
+2384856,Vitality,9565,G2,5995,2,0,0,2,1.0,1.044,0.1739,72.88,8.08,-0.68,2.14,1.06,0.1302,73.98,5.08,0.68,1.12,https://www.hltv.org/matches/2384856/vitality-vs-g2-blast-open-london-2025-finals
+2384855,FURIA,8297,G2,5995,2,2,1,4,0.5,0.786,0.0753,60.76,9.43,-3.37,1.45,1.37,0.2831,83.72,11.69,3.37,3.18,https://www.hltv.org/matches/2384855/furia-vs-g2-blast-open-london-2025-finals
+2384854,Vitality,9565,MOUZ,4494,24,11,1,35,0.6857,1.228,0.1434,71.84,13.88,2.42,1.69,0.834,0.2882,60.56,16.86,-2.43,3.93,https://www.hltv.org/matches/2384854/vitality-vs-mouz-blast-open-london-2025-finals
+2384853,FaZe,6667,G2,5995,2,1,1,3,0.6667,0.91,0.0716,67.26,9.81,-1.78,0.62,1.234,0.1854,79.9,4.0,1.61,1.81,https://www.hltv.org/matches/2384853/faze-vs-g2-blast-open-london-2025-finals
+2384852,MOUZ,4494,M80,12376,0,0,0,0,,1.128,0.1469,78.24,8.38,1.02,1.63,0.942,0.1116,71.8,7.76,-1.08,1.72,https://www.hltv.org/matches/2384852/mouz-vs-m80-blast-open-london-2025-finals
+2384851,Spirit,7020,G2,5995,2,1,0,3,0.6667,0.936,0.2021,70.7,15.46,-1.24,2.37,1.128,0.1466,76.82,8.76,1.24,1.57,https://www.hltv.org/matches/2384851/spirit-vs-g2-blast-open-london-2025
+2384850,MOUZ,4494,FURIA,8297,13,8,3,21,0.619,1.004,0.1646,71.38,16.36,-0.87,2.58,1.12,0.1527,75.68,5.18,0.87,2.04,https://www.hltv.org/matches/2384850/mouz-vs-furia-blast-open-london-2025
+2384842,Vitality,9565,FaZe,6667,17,9,3,26,0.6538,1.108,0.1395,77.54,5.0,0.86,2.02,1.044,0.3013,74.18,19.88,-0.87,4.19,https://www.hltv.org/matches/2384842/vitality-vs-faze-blast-open-london-2025
+2384849,FlyQuest,12774,G2,5995,0,0,0,0,,0.69,0.1871,54.16,9.38,-3.4,3.3,1.342,0.295,81.98,7.78,3.21,3.65,https://www.hltv.org/matches/2384849/flyquest-vs-g2-blast-open-london-2025
+2384848,Liquid,5973,Spirit,7020,2,5,0,7,0.2857,0.946,0.2186,67.48,10.28,-1.23,2.17,1.174,0.2875,81.06,27.33,1.23,3.51,https://www.hltv.org/matches/2384848/liquid-vs-spirit-blast-open-london-2025
+2384840,M80,12376,Natus Vincere,4608,0,2,0,2,0.0,1.05,0.1396,73.74,11.06,-0.3,1.56,1.044,0.1685,73.26,7.7,0.18,2.01,https://www.hltv.org/matches/2384840/m80-vs-natus-vincere-blast-open-london-2025
+2384841,fnatic,4991,GamerLegion,9928,1,0,0,1,1.0,1.07,0.1137,76.7,2.71,0.34,1.7,0.974,0.1512,70.06,14.96,-0.35,1.67,https://www.hltv.org/matches/2384841/fnatic-vs-gamerlegion-blast-open-london-2025
+2384847,Spirit,7020,FURIA,8297,10,2,1,12,0.8333,1.076,0.393,73.92,23.89,-1.11,5.76,1.152,0.2628,78.58,16.16,1.06,3.78,https://www.hltv.org/matches/2384847/spirit-vs-furia-blast-open-london-2025
+2384846,MOUZ,4494,G2,5995,4,1,0,5,0.8,1.098,0.0445,73.8,2.8,1.29,0.98,0.924,0.2156,70.88,13.92,-1.34,3.17,https://www.hltv.org/matches/2384846/mouz-vs-g2-blast-open-london-2025
+2384845,FlyQuest,12774,Legacy,12468,0,0,0,0,,1.046,0.1429,75.24,7.54,-0.35,2.23,1.046,0.126,77.1,10.06,-0.03,1.68,https://www.hltv.org/matches/2384845/flyquest-vs-legacy-blast-open-london-2025
+2384844,Imperial,9455,Liquid,5973,1,2,0,3,0.3333,0.986,0.0671,72.58,8.15,-0.71,0.81,1.064,0.2562,77.6,15.68,0.35,2.96,https://www.hltv.org/matches/2384844/imperial-vs-liquid-blast-open-london-2025
+2384839,FaZe,6667,Natus Vincere,4608,10,18,3,28,0.3571,1.172,0.3573,75.08,17.45,1.35,5.55,0.98,0.1099,72.96,8.42,-1.52,1.86,https://www.hltv.org/matches/2384839/faze-vs-natus-vincere-blast-open-london-2025
+2384838,Vitality,9565,GamerLegion,9928,2,0,0,2,1.0,1.138,0.1899,76.26,8.76,1.27,2.71,0.934,0.1545,73.32,8.39,-1.41,2.39,https://www.hltv.org/matches/2384838/vitality-vs-gamerlegion-blast-open-london-2025
+2384837,M80,12376,Virtus.pro,5378,1,2,0,3,0.3333,1.032,0.13,69.0,17.38,0.46,1.71,1.024,0.1093,72.34,8.96,-0.49,1.55,https://www.hltv.org/matches/2384837/m80-vs-virtuspro-blast-open-london-2025
+2384814,FURIA,8297,Legacy,12468,0,1,1,1,0.0,1.116,0.1893,75.88,11.48,0.63,2.68,0.936,0.1471,64.5,9.97,-0.64,2.29,https://www.hltv.org/matches/2384814/furia-vs-legacy-blast-open-london-2025
+2384813,Spirit,7020,FlyQuest,12774,4,0,0,4,1.0,1.352,0.3751,86.58,21.79,3.39,3.8,0.778,0.1224,62.28,8.4,-3.55,1.07,https://www.hltv.org/matches/2384813/spirit-vs-flyquest-blast-open-london-2025
+2384812,G2,5995,Liquid,5973,0,0,0,0,,1.342,0.2413,81.66,14.28,3.09,2.7,0.86,0.1188,70.36,6.1,-3.24,1.65,https://www.hltv.org/matches/2384812/g2-vs-liquid-blast-open-london-2025
+2384811,MOUZ,4494,Imperial,9455,0,2,2,2,0.0,1.132,0.202,76.74,8.82,0.63,2.67,0.98,0.1849,71.52,9.89,-0.63,2.84,https://www.hltv.org/matches/2384811/mouz-vs-imperial-blast-open-london-2025
+2384810,Natus Vincere,4608,fnatic,4991,0,0,0,0,,1.272,0.0531,79.18,10.58,1.59,0.83,0.866,0.2046,67.22,10.25,-1.64,2.63,https://www.hltv.org/matches/2384810/natus-vincere-vs-fnatic-blast-open-london-2025
+2384809,FaZe,6667,ECSTATIC,11419,0,0,0,0,,1.142,0.2408,77.0,15.72,1.44,3.03,0.96,0.2414,69.16,18.57,-1.5,2.75,https://www.hltv.org/matches/2384809/faze-vs-ecstatic-blast-open-london-2025
+2384808,GamerLegion,9928,Virtus.pro,5378,4,0,0,4,1.0,1.186,0.2134,83.1,10.28,1.22,2.69,0.932,0.2289,65.68,11.43,-1.24,3.1,https://www.hltv.org/matches/2384808/gamerlegion-vs-virtuspro-blast-open-london-2025
+2384807,Vitality,9565,M80,12376,2,0,0,2,1.0,1.07,0.2053,73.3,11.88,-0.11,2.73,1.048,0.191,70.5,13.38,0.11,2.58,https://www.hltv.org/matches/2384807/vitality-vs-m80-blast-open-london-2025
+2384388,The MongolZ,6248,Aurora,11861,13,7,5,20,0.65,1.178,0.1692,78.58,11.13,1.87,2.29,0.93,0.2249,69.7,15.69,-1.86,3.38,https://www.hltv.org/matches/2384388/the-mongolz-vs-aurora-esports-world-cup-2025
+2384387,Vitality,9565,Falcons,11283,10,5,4,15,0.6667,0.882,0.1455,68.54,4.54,-2.15,2.55,1.238,0.3033,78.56,21.16,2.09,3.45,https://www.hltv.org/matches/2384387/vitality-vs-falcons-esports-world-cup-2025
+2384386,Aurora,11861,Falcons,11283,7,3,2,10,0.7,1.168,0.2041,74.82,10.68,1.91,1.91,0.932,0.1186,69.34,10.85,-1.91,2.05,https://www.hltv.org/matches/2384386/aurora-vs-falcons-esports-world-cup-2025
+2384385,The MongolZ,6248,Vitality,9565,5,17,2,22,0.2273,1.116,0.205,78.6,10.95,0.35,2.94,1.026,0.1411,73.3,10.13,-0.35,1.84,https://www.hltv.org/matches/2384385/the-mongolz-vs-vitality-esports-world-cup-2025
+2384383,Falcons,11283,MOUZ,4494,7,10,2,17,0.4118,1.046,0.1807,68.9,9.89,0.37,2.33,1.05,0.2288,74.1,2.44,-0.38,2.97,https://www.hltv.org/matches/2384383/falcons-vs-mouz-esports-world-cup-2025
+2384384,HEROIC,7175,Aurora,11861,3,7,1,10,0.3,0.94,0.2128,69.14,9.77,-1.45,2.28,1.156,0.1897,76.54,10.55,1.45,1.86,https://www.hltv.org/matches/2384384/heroic-vs-aurora-esports-world-cup-2025
+2384381,TYLOO,4863,Vitality,9565,0,0,0,0,,0.812,0.1584,61.76,12.05,-2.97,2.31,1.308,0.3521,80.22,18.5,2.97,4.16,https://www.hltv.org/matches/2384381/tyloo-vs-vitality-esports-world-cup-2025
+2384382,The MongolZ,6248,3DMAX,4914,9,6,0,15,0.6,1.184,0.2155,78.38,8.18,0.92,2.75,0.89,0.1637,69.58,6.07,-0.99,1.99,https://www.hltv.org/matches/2384382/the-mongolz-vs-3dmax-esports-world-cup-2025
+2384303,MOUZ,4494,Virtus.pro,5378,4,3,2,7,0.5714,0.99,0.1638,70.24,9.39,0.12,1.9,1.016,0.1578,68.84,10.24,-0.12,1.74,https://www.hltv.org/matches/2384303/mouz-vs-virtuspro-esports-world-cup-2025
+2384304,G2,5995,Falcons,11283,2,4,0,6,0.3333,0.896,0.136,71.82,10.2,-2.26,1.54,1.192,0.1696,80.76,10.79,2.26,2.35,https://www.hltv.org/matches/2384304/g2-vs-falcons-esports-world-cup-2025
+2384305,FaZe,6667,Aurora,11861,10,7,4,17,0.5882,1.082,0.2327,73.58,12.22,-0.77,2.02,1.056,0.1723,74.14,7.55,0.77,2.74,https://www.hltv.org/matches/2384305/faze-vs-aurora-esports-world-cup-2025
+2384306,Spirit,7020,HEROIC,7175,2,0,1,2,1.0,1.054,0.2228,74.54,19.69,-0.55,2.51,1.008,0.191,70.5,8.89,0.54,2.27,https://www.hltv.org/matches/2384306/spirit-vs-heroic-esports-world-cup-2025
+2384299,Vitality,9565,Liquid,5973,12,2,3,14,0.8571,1.104,0.2693,73.34,11.2,0.44,3.33,1.048,0.2603,72.36,15.65,-0.48,2.99,https://www.hltv.org/matches/2384299/vitality-vs-liquid-esports-world-cup-2025
+2384300,TYLOO,4863,Astralis,6665,5,2,1,7,0.7143,1.036,0.1593,75.6,9.03,-0.04,2.47,1.1,0.1073,78.4,7.01,0.02,1.53,https://www.hltv.org/matches/2384300/tyloo-vs-astralis-esports-world-cup-2025
+2384301,Natus Vincere,4608,3DMAX,4914,1,0,1,1,1.0,1.026,0.1387,70.84,12.48,-0.62,1.56,1.036,0.0965,71.02,9.39,0.61,1.28,https://www.hltv.org/matches/2384301/natus-vincere-vs-3dmax-esports-world-cup-2025
+2384302,GamerLegion,9928,The MongolZ,6248,0,4,1,4,0.0,0.936,0.1852,70.34,11.79,-3.05,2.34,1.298,0.2419,88.12,13.6,3.03,2.79,https://www.hltv.org/matches/2384302/gamerlegion-vs-the-mongolz-esports-world-cup-2025
+2384149,Legacy,12468,Vitality,9565,1,2,0,3,0.3333,0.916,0.2075,67.08,11.36,-1.31,2.71,1.168,0.1107,76.02,8.36,1.31,1.37,https://www.hltv.org/matches/2384149/legacy-vs-vitality-blast-bounty-2025-season-2
+2384143,HEROIC,7175,Aurora,11861,3,5,1,8,0.375,0.806,0.1681,62.04,5.74,-3.35,2.11,1.294,0.0891,85.02,11.01,3.35,0.96,https://www.hltv.org/matches/2384143/heroic-vs-aurora-blast-bounty-2025-season-2
+2384148,B8,11241,MOUZ,4494,0,0,0,0,,0.796,0.1658,62.86,16.18,-1.91,2.14,1.212,0.1847,80.96,9.9,1.86,2.51,https://www.hltv.org/matches/2384148/b8-vs-mouz-blast-bounty-2025-season-2
+2384146,paiN,4773,The MongolZ,6248,3,5,3,8,0.375,0.972,0.2447,75.76,10.18,-1.25,3.58,1.174,0.1842,77.24,16.26,1.24,2.61,https://www.hltv.org/matches/2384146/pain-vs-the-mongolz-blast-bounty-2025-season-2
+2384147,Liquid,5973,FURIA,8297,9,2,1,11,0.8182,1.096,0.1266,73.76,11.85,0.76,1.18,1.004,0.1662,72.28,12.96,-0.76,1.61,https://www.hltv.org/matches/2384147/liquid-vs-furia-blast-bounty-2025-season-2
+2384142,G2,5995,Spirit,7020,0,0,0,0,,0.98,0.0822,70.64,8.44,-0.72,2.39,1.102,0.1323,74.88,5.61,0.72,1.81,https://www.hltv.org/matches/2384142/g2-vs-spirit-blast-bounty-2025-season-2
+2384144,Virtus.pro,5378,FaZe,6667,3,5,3,8,0.375,1.052,0.21,72.56,16.71,-0.06,2.94,1.046,0.1689,69.64,16.54,0.06,1.46,https://www.hltv.org/matches/2384144/virtuspro-vs-faze-blast-bounty-2025-season-2
+2384145,Astralis,6665,Natus Vincere,4608,4,7,1,11,0.3636,1.164,0.2195,76.0,12.12,1.79,2.41,0.908,0.207,65.66,11.27,-1.82,1.38,https://www.hltv.org/matches/2384145/astralis-vs-natus-vincere-blast-bounty-2025-season-2
+2384128,Complexity,5005,HEROIC,7175,0,0,0,0,,1.012,0.3501,77.3,15.83,-1.02,4.18,1.17,0.1724,80.62,9.99,1.02,1.94,https://www.hltv.org/matches/2384128/complexity-vs-heroic-blast-bounty-2025-season-2
+2384140,NRG,6673,Vitality,9565,0,0,0,0,,0.694,0.0898,55.88,9.29,-4.05,2.33,1.38,0.2416,82.96,8.35,3.89,3.67,https://www.hltv.org/matches/2384140/nrg-vs-vitality-blast-bounty-2025-season-2
+2384134,FlyQuest,12774,Aurora,11861,0,2,0,2,0.0,0.838,0.1685,65.4,12.52,-2.18,2.27,1.214,0.1181,76.5,9.89,2.19,1.27,https://www.hltv.org/matches/2384134/flyquest-vs-aurora-blast-bounty-2025-season-2
+2384136,ENCE,4869,The MongolZ,6248,2,1,0,3,0.6667,0.91,0.1185,70.64,11.66,-1.36,1.45,1.154,0.1725,74.78,10.79,1.36,1.66,https://www.hltv.org/matches/2384136/ence-vs-the-mongolz-blast-bounty-2025-season-2
+2384129,fnatic,4991,Legacy,12468,0,0,0,0,,0.932,0.1134,66.34,9.07,-1.22,1.76,1.098,0.1289,75.3,10.25,1.22,1.72,https://www.hltv.org/matches/2384129/fnatic-vs-legacy-blast-bounty-2025-season-2
+2384127,Ninjas in Pyjamas,4411,paiN,4773,0,0,0,0,,0.954,0.1097,71.62,10.56,-1.19,1.04,1.114,0.3208,72.7,15.9,1.06,4.3,https://www.hltv.org/matches/2384127/ninjas-in-pyjamas-vs-pain-blast-bounty-2025-season-2
+2384141,OG,10503,MOUZ,4494,0,0,0,0,,0.886,0.2169,66.78,4.86,-2.18,3.73,1.234,0.222,82.02,16.4,2.18,2.72,https://www.hltv.org/matches/2384141/og-vs-mouz-blast-bounty-2025-season-2
+2384137,BIG,7532,FURIA,8297,2,2,0,4,0.5,0.828,0.1332,65.72,5.36,-3.01,2.11,1.236,0.2457,85.94,4.3,3.01,3.94,https://www.hltv.org/matches/2384137/big-vs-furia-blast-bounty-2025-season-2
+2384135,Rare Atom,11514,Astralis,6665,0,0,0,0,,0.702,0.0818,60.98,5.15,-4.11,1.5,1.412,0.2999,89.12,15.57,4.11,3.62,https://www.hltv.org/matches/2384135/rare-atom-vs-astralis-blast-bounty-2025-season-2
+2384138,Passion UA,12426,Spirit,7020,0,0,0,0,,0.878,0.1125,67.1,11.04,-2.42,1.71,1.198,0.2559,81.44,14.13,2.31,2.65,https://www.hltv.org/matches/2384138/passion-ua-vs-spirit-blast-bounty-2025-season-2
+2384133,TNL,12833,Natus Vincere,4608,0,0,0,0,,0.96,0.1646,70.7,14.83,-0.98,1.58,1.13,0.2211,77.76,11.59,0.91,2.93,https://www.hltv.org/matches/2384133/tnl-vs-natus-vincere-blast-bounty-2025-season-2
+2384126,MIBR,9215,Virtus.pro,5378,5,3,0,8,0.625,0.964,0.1691,70.7,10.58,-0.85,3.05,1.132,0.1871,78.72,7.71,0.85,2.28,https://www.hltv.org/matches/2384126/mibr-vs-virtuspro-blast-bounty-2025-season-2
+2384139,BetBoom,12394,FaZe,6667,0,0,0,0,,0.944,0.1953,67.44,15.88,-1.25,2.22,1.11,0.1493,77.16,12.05,1.13,2.56,https://www.hltv.org/matches/2384139/betboom-vs-faze-blast-bounty-2025-season-2
+2384132,Nemiga,7969,G2,5995,0,0,0,0,,0.99,0.091,70.64,5.52,-0.28,0.92,1.112,0.1434,79.34,9.23,0.27,2.23,https://www.hltv.org/matches/2384132/nemiga-vs-g2-blast-bounty-2025-season-2
+2384130,ECSTATIC,11419,Liquid,5973,0,0,0,0,,0.988,0.1192,77.14,13.16,-1.13,1.67,1.136,0.1007,76.96,7.19,0.95,1.52,https://www.hltv.org/matches/2384130/ecstatic-vs-liquid-blast-bounty-2025-season-2
+2383844,Spirit,7020,MOUZ,4494,13,14,8,27,0.4815,1.154,0.2088,74.62,15.7,2.19,2.4,0.91,0.0976,68.44,5.33,-2.35,1.78,https://www.hltv.org/matches/2383844/spirit-vs-mouz-iem-cologne-2025
+2383842,Vitality,9565,MOUZ,4494,24,9,1,33,0.7273,0.878,0.2978,65.34,11.22,-1.51,3.62,1.194,0.2064,82.7,15.65,1.42,2.67,https://www.hltv.org/matches/2383842/vitality-vs-mouz-iem-cologne-2025
+2383843,Spirit,7020,Natus Vincere,4608,19,7,4,26,0.7308,1.06,0.2184,76.38,12.32,0.3,2.88,1.016,0.0873,72.78,12.86,-0.37,1.45,https://www.hltv.org/matches/2383843/spirit-vs-natus-vincere-iem-cologne-2025
+2383840,MOUZ,4494,FURIA,8297,11,7,2,18,0.6111,1.1,0.1929,72.16,11.42,0.58,2.81,0.982,0.0898,71.94,5.03,-0.58,1.51,https://www.hltv.org/matches/2383840/mouz-vs-furia-iem-cologne-2025
+2383841,The MongolZ,6248,Natus Vincere,4608,5,5,1,10,0.5,0.94,0.1927,68.9,12.68,-1.61,2.87,1.18,0.2335,77.88,19.64,1.58,2.74,https://www.hltv.org/matches/2383841/the-mongolz-vs-natus-vincere-iem-cologne-2025
+2383831,G2,5995,FURIA,8297,2,0,0,2,1.0,0.916,0.2449,63.18,16.24,-1.69,2.9,1.22,0.2394,75.64,13.0,1.55,2.9,https://www.hltv.org/matches/2383831/g2-vs-furia-iem-cologne-2025
+2383839,FaZe,6667,Natus Vincere,4608,10,16,3,26,0.3846,0.836,0.0689,63.46,10.28,-2.18,1.24,1.27,0.2593,78.82,16.99,2.18,2.65,https://www.hltv.org/matches/2383839/faze-vs-natus-vincere-iem-cologne-2025
+2383838,MOUZ,4494,Spirit,7020,13,11,6,24,0.5417,1.024,0.088,72.88,5.93,-0.35,1.5,1.08,0.1378,76.12,14.24,0.33,1.43,https://www.hltv.org/matches/2383838/mouz-vs-spirit-iem-cologne-2025
+2383830,The MongolZ,6248,Vitality,9565,3,15,2,18,0.1667,0.842,0.2403,62.7,14.44,-2.64,3.09,1.282,0.2402,83.74,14.73,2.56,3.25,https://www.hltv.org/matches/2383830/the-mongolz-vs-vitality-iem-cologne-2025
+2383837,Ninjas in Pyjamas,4411,Natus Vincere,4608,0,0,0,0,,0.972,0.1023,74.4,7.46,-1.13,1.55,1.142,0.1887,76.34,7.47,1.13,3.04,https://www.hltv.org/matches/2383837/ninjas-in-pyjamas-vs-natus-vincere-iem-cologne-2025
+2383836,FaZe,6667,Aurora,11861,8,7,4,15,0.5333,1.346,0.3718,86.72,15.51,3.25,5.3,0.872,0.2977,67.7,18.72,-3.33,3.95,https://www.hltv.org/matches/2383836/faze-vs-aurora-iem-cologne-2025
+2383828,Falcons,11283,FURIA,8297,2,1,2,3,0.6667,1.004,0.2297,67.5,16.84,-0.33,2.6,1.02,0.1173,70.0,9.21,0.33,1.54,https://www.hltv.org/matches/2383828/falcons-vs-furia-iem-cologne-2025
+2383829,3DMAX,4914,G2,5995,2,2,0,4,0.5,0.83,0.0623,63.02,5.51,-2.73,1.25,1.222,0.1162,74.64,9.28,2.74,1.98,https://www.hltv.org/matches/2383829/3dmax-vs-g2-iem-cologne-2025
+2383833,Aurora,11861,Spirit,7020,3,8,2,11,0.2727,0.886,0.1688,67.6,6.96,-1.38,2.41,1.202,0.4784,75.66,33.35,1.39,4.47,https://www.hltv.org/matches/2383833/aurora-vs-spirit-iem-cologne-2025
+2383834,FaZe,6667,Liquid,5973,10,4,2,14,0.7143,1.414,0.3045,86.56,18.15,3.88,3.3,0.854,0.3701,61.96,10.89,-3.99,5.11,https://www.hltv.org/matches/2383834/faze-vs-liquid-iem-cologne-2025
+2383832,Natus Vincere,4608,MOUZ,4494,8,9,2,17,0.4706,0.944,0.2964,67.68,20.29,-0.94,3.4,1.142,0.1634,77.92,4.67,0.79,2.63,https://www.hltv.org/matches/2383832/natus-vincere-vs-mouz-iem-cologne-2025
+2383835,Ninjas in Pyjamas,4411,HEROIC,7175,2,1,0,3,0.6667,1.276,0.2409,87.66,11.87,2.54,2.97,0.84,0.1817,64.52,14.9,-2.56,3.16,https://www.hltv.org/matches/2383835/ninjas-in-pyjamas-vs-heroic-iem-cologne-2025
+2383826,FURIA,8297,Astralis,6665,5,2,1,7,0.7143,1.444,0.2029,77.76,18.66,4.42,2.55,0.618,0.0673,51.02,9.65,-4.43,0.97,https://www.hltv.org/matches/2383826/furia-vs-astralis-iem-cologne-2025
+2383824,G2,5995,Vitality,9565,0,0,0,0,,0.938,0.2454,65.9,13.48,-2.14,3.39,1.186,0.0314,76.56,6.38,2.06,0.95,https://www.hltv.org/matches/2383824/g2-vs-vitality-iem-cologne-2025
+2383827,GamerLegion,9928,3DMAX,4914,4,1,0,5,0.8,1.06,0.1218,75.68,6.28,-0.05,1.58,1.064,0.1218,73.98,7.13,-0.01,1.26,https://www.hltv.org/matches/2383827/gamerlegion-vs-3dmax-iem-cologne-2025
+2383825,Falcons,11283,The MongolZ,6248,2,1,1,3,0.6667,0.956,0.2155,70.12,15.28,-1.34,2.5,1.126,0.3349,72.78,15.91,1.26,3.85,https://www.hltv.org/matches/2383825/falcons-vs-the-mongolz-iem-cologne-2025
+2383764,Spirit,7020,HEROIC,7175,0,0,0,0,,1.14,0.2702,81.4,18.68,1.04,3.14,0.972,0.1292,72.9,11.06,-1.12,1.9,https://www.hltv.org/matches/2383764/spirit-vs-heroic-iem-cologne-2025
+2383761,MOUZ,4494,Liquid,5973,6,3,1,9,0.6667,1.176,0.1643,80.16,10.17,1.91,2.14,0.904,0.1969,67.4,11.66,-2.02,2.89,https://www.hltv.org/matches/2383761/mouz-vs-liquid-iem-cologne-2025
+2383762,Natus Vincere,4608,FaZe,6667,14,9,3,23,0.6087,1.082,0.1904,73.1,15.57,1.3,2.12,0.94,0.1575,68.42,10.92,-1.3,1.86,https://www.hltv.org/matches/2383762/natus-vincere-vs-faze-iem-cologne-2025
+2383763,Aurora,11861,Ninjas in Pyjamas,4411,2,1,0,3,0.6667,1.158,0.2545,75.2,16.23,0.98,3.1,0.926,0.1115,69.44,7.42,-1.04,1.74,https://www.hltv.org/matches/2383763/aurora-vs-ninjas-in-pyjamas-iem-cologne-2025
+2383757,Vitality,9565,Astralis,6665,13,5,2,18,0.7222,1.15,0.2326,77.76,6.32,1.2,3.27,0.958,0.268,75.48,14.5,-1.31,3.61,https://www.hltv.org/matches/2383757/vitality-vs-astralis-iem-cologne-2025
+2383760,The MongolZ,6248,3DMAX,4914,7,6,0,13,0.5385,1.238,0.0995,87.74,8.83,2.38,1.52,0.91,0.2173,72.46,11.67,-2.54,3.01,https://www.hltv.org/matches/2383760/the-mongolz-vs-3dmax-iem-cologne-2025
+2383758,G2,5995,FURIA,8297,0,0,0,0,,1.144,0.204,69.28,12.33,1.28,2.47,0.934,0.1776,69.18,9.97,-1.28,3.17,https://www.hltv.org/matches/2383758/g2-vs-furia-iem-cologne-2025
+2383759,Falcons,11283,GamerLegion,9928,6,4,0,10,0.6,1.254,0.2097,80.2,15.2,2.13,3.12,0.914,0.2275,68.04,15.45,-2.16,2.44,https://www.hltv.org/matches/2383759/falcons-vs-gamerlegion-iem-cologne-2025
+2383783,Astralis,6665,paiN,4773,5,2,0,7,0.7143,1.102,0.1675,78.04,11.79,0.53,2.3,1.014,0.2676,71.68,17.42,-0.53,3.93,https://www.hltv.org/matches/2383783/astralis-vs-pain-iem-cologne-2025-stage-1
+2383785,3DMAX,4914,TYLOO,4863,0,4,0,4,0.0,1.14,0.2252,75.26,13.57,0.81,2.7,1.036,0.1603,76.24,7.07,-0.81,2.7,https://www.hltv.org/matches/2383785/3dmax-vs-tyloo-iem-cologne-2025-stage-1
+2383784,Virtus.pro,5378,HEROIC,7175,0,0,0,0,,0.922,0.2389,71.98,10.47,-1.9,3.16,1.192,0.3653,77.1,16.59,1.9,4.84,https://www.hltv.org/matches/2383784/virtuspro-vs-heroic-iem-cologne-2025-stage-1
+2383786,FlyQuest,12774,Liquid,5973,0,0,0,0,,0.99,0.0817,72.42,6.98,-0.18,0.98,1.082,0.0631,75.5,12.11,0.18,0.79,https://www.hltv.org/matches/2383786/flyquest-vs-liquid-iem-cologne-2025-stage-1
+2383779,BIG,7532,paiN,4773,1,2,0,3,0.3333,0.938,0.1209,68.76,11.54,-0.84,1.25,1.102,0.1559,70.92,6.01,0.85,2.01,https://www.hltv.org/matches/2383779/big-vs-pain-iem-cologne-2025-stage-1
+2383778,Astralis,6665,FURIA,8297,2,3,1,5,0.4,0.956,0.1211,67.36,9.47,-1.02,1.48,1.142,0.2916,77.66,13.67,0.95,3.38,https://www.hltv.org/matches/2383778/astralis-vs-furia-iem-cologne-2025-stage-1
+2383775,FaZe,6667,Liquid,5973,8,3,2,11,0.7273,1.174,0.2434,76.96,10.29,1.88,3.35,0.886,0.1719,66.42,7.06,-1.95,2.88,https://www.hltv.org/matches/2383775/faze-vs-liquid-iem-cologne-2025-stage-1
+2383780,MIBR,9215,HEROIC,7175,0,0,0,0,,0.79,0.3508,61.62,28.3,-3.48,3.68,1.34,0.1161,81.12,9.26,3.48,2.86,https://www.hltv.org/matches/2383780/mibr-vs-heroic-iem-cologne-2025-stage-1
+2383776,3DMAX,4914,Ninjas in Pyjamas,4411,0,0,0,0,,0.89,0.2685,69.66,20.45,-2.5,3.0,1.208,0.2599,78.54,17.12,2.49,2.65,https://www.hltv.org/matches/2383776/3dmax-vs-ninjas-in-pyjamas-iem-cologne-2025-stage-1
+2383781,Complexity,5005,TYLOO,4863,0,2,0,2,0.0,0.938,0.1535,66.98,3.62,-0.83,2.48,1.106,0.1894,72.84,6.17,0.79,2.56,https://www.hltv.org/matches/2383781/complexity-vs-tyloo-iem-cologne-2025-stage-1
+2383777,GamerLegion,9928,Virtus.pro,5378,2,0,0,2,1.0,1.096,0.2973,76.54,20.45,1.14,3.38,0.942,0.2002,66.44,13.65,-1.14,2.46,https://www.hltv.org/matches/2383777/gamerlegion-vs-virtuspro-iem-cologne-2025-stage-1
+2383750,Liquid,5973,paiN,4773,2,0,1,2,1.0,1.188,0.0823,79.4,5.86,1.58,1.07,0.858,0.1298,63.94,10.18,-1.58,2.14,https://www.hltv.org/matches/2383750/liquid-vs-pain-iem-cologne-2025-stage-1
+2383752,Ninjas in Pyjamas,4411,HEROIC,7175,0,0,0,0,,1.132,0.0668,78.12,4.06,0.61,1.48,0.948,0.1251,71.38,7.67,-0.63,1.95,https://www.hltv.org/matches/2383752/ninjas-in-pyjamas-vs-heroic-iem-cologne-2025-stage-1
+2383749,FaZe,6667,BIG,7532,2,1,0,3,0.6667,1.228,0.291,77.08,10.02,2.43,4.17,0.898,0.2479,69.84,14.38,-2.43,2.86,https://www.hltv.org/matches/2383749/faze-vs-big-iem-cologne-2025-stage-1
+2383751,3DMAX,4914,MIBR,9215,4,1,1,5,0.8,1.186,0.2262,72.26,8.35,2.66,2.52,0.854,0.1588,65.0,17.2,-2.67,1.47,https://www.hltv.org/matches/2383751/3dmax-vs-mibr-iem-cologne-2025-stage-1
+2383756,FlyQuest,12774,FURIA,8297,0,0,0,0,,0.926,0.096,66.0,6.29,-0.61,1.57,1.104,0.0625,72.78,8.58,0.57,0.73,https://www.hltv.org/matches/2383756/flyquest-vs-furia-iem-cologne-2025-stage-1
+2383755,Astralis,6665,B8,11241,3,3,1,6,0.5,1.298,0.2886,78.88,12.82,3.19,2.97,0.76,0.0787,62.68,9.25,-3.18,0.81,https://www.hltv.org/matches/2383755/astralis-vs-b8-iem-cologne-2025-stage-1
+2383753,GamerLegion,9928,Complexity,5005,2,1,0,3,0.6667,1.21,0.1108,83.72,8.99,1.88,0.87,0.896,0.1157,63.42,5.97,-1.99,2.09,https://www.hltv.org/matches/2383753/gamerlegion-vs-complexity-iem-cologne-2025-stage-1
+2383754,TYLOO,4863,Virtus.pro,5378,2,0,1,2,1.0,0.908,0.2794,65.66,18.81,-2.44,3.58,1.222,0.1812,80.82,7.82,2.45,2.54,https://www.hltv.org/matches/2383754/tyloo-vs-virtuspro-iem-cologne-2025-stage-1
+2382619,Vitality,9565,The MongolZ,6248,13,2,2,15,0.8667,1.184,0.1095,83.44,6.82,1.11,1.66,0.96,0.1744,71.24,13.71,-1.18,3.31,https://www.hltv.org/matches/2382619/vitality-vs-the-mongolz-blasttv-austin-major-2025
+2382617,paiN,4773,The MongolZ,6248,3,3,3,6,0.5,0.772,0.2086,63.04,13.37,-3.41,3.35,1.328,0.2301,77.44,7.97,3.41,2.33,https://www.hltv.org/matches/2382617/pain-vs-the-mongolz-blasttv-austin-major-2025
+2382618,MOUZ,4494,Vitality,9565,8,22,1,30,0.2667,0.962,0.1455,69.86,15.02,-0.39,1.9,1.116,0.1648,76.12,14.82,0.38,1.95,https://www.hltv.org/matches/2382618/mouz-vs-vitality-blasttv-austin-major-2025
+2382615,FaZe,6667,The MongolZ,6248,2,2,1,4,0.5,0.992,0.0826,73.62,9.11,-0.89,1.47,1.086,0.2001,76.44,8.45,0.89,2.99,https://www.hltv.org/matches/2382615/faze-vs-the-mongolz-blasttv-austin-major-2025
+2382616,Natus Vincere,4608,Vitality,9565,1,9,2,10,0.1,0.976,0.1388,69.72,8.6,-1.09,2.88,1.132,0.2501,70.66,15.98,0.98,3.3,https://www.hltv.org/matches/2382616/natus-vincere-vs-vitality-blasttv-austin-major-2025
+2382613,FURIA,8297,paiN,4773,2,2,0,4,0.5,1.004,0.1078,73.84,11.96,-0.46,0.97,1.058,0.1235,71.52,7.54,0.46,1.97,https://www.hltv.org/matches/2382613/furia-vs-pain-blasttv-austin-major-2025
+2382614,Spirit,7020,MOUZ,4494,10,11,5,21,0.4762,1.024,0.1968,70.96,14.31,-0.39,2.51,1.092,0.1485,74.18,7.58,0.39,2.12,https://www.hltv.org/matches/2382614/spirit-vs-mouz-blasttv-austin-major-2025
+2382612,Virtus.pro,5378,paiN,4773,3,6,1,9,0.3333,1.094,0.1227,75.1,10.72,0.12,2.14,1.084,0.2201,76.38,14.1,-0.15,2.74,https://www.hltv.org/matches/2382612/virtuspro-vs-pain-blasttv-austin-major-2025
+2382611,The MongolZ,6248,G2,5995,5,5,2,10,0.5,1.146,0.2092,77.34,14.8,1.35,2.51,1.0,0.1806,75.6,14.74,-1.51,1.44,https://www.hltv.org/matches/2382611/the-mongolz-vs-g2-blasttv-austin-major-2025
+2382610,Legacy,12468,MOUZ,4494,0,0,0,0,,1.092,0.1395,78.22,9.06,-0.05,1.59,0.968,0.1347,65.74,7.93,0.01,1.62,https://www.hltv.org/matches/2382610/legacy-vs-mouz-blasttv-austin-major-2025
+2382609,Natus Vincere,4608,G2,5995,9,5,1,14,0.6429,1.04,0.1498,70.76,9.21,0.13,1.66,1.006,0.1453,69.74,7.2,-0.23,1.98,https://www.hltv.org/matches/2382609/natus-vincere-vs-g2-blasttv-austin-major-2025
+2382608,Virtus.pro,5378,Vitality,9565,4,8,1,12,0.3333,0.818,0.0605,63.48,11.57,-2.53,1.14,1.248,0.2238,78.84,12.21,2.47,2.64,https://www.hltv.org/matches/2382608/virtuspro-vs-vitality-blasttv-austin-major-2025
+2382607,Aurora,11861,MOUZ,4494,5,8,2,13,0.3846,0.914,0.1394,69.86,6.83,-0.96,2.56,1.116,0.048,77.2,7.6,0.96,0.83,https://www.hltv.org/matches/2382607/aurora-vs-mouz-blasttv-austin-major-2025
+2382606,The MongolZ,6248,FaZe,6667,2,0,1,2,1.0,0.882,0.1878,65.38,11.8,-2.91,1.71,1.198,0.3361,76.82,14.85,2.91,4.11,https://www.hltv.org/matches/2382606/the-mongolz-vs-faze-blasttv-austin-major-2025
+2382605,3DMAX,4914,paiN,4773,1,0,0,1,1.0,0.912,0.1182,62.46,8.24,-1.4,2.13,1.136,0.1059,76.3,12.52,1.4,1.73,https://www.hltv.org/matches/2382605/3dmax-vs-pain-blasttv-austin-major-2025
+2382604,Legacy,12468,Lynn Vision,8840,0,1,0,1,0.0,1.212,0.2719,80.92,16.55,1.52,2.54,0.85,0.1701,61.24,4.63,-1.53,2.5,https://www.hltv.org/matches/2382604/legacy-vs-lynn-vision-blasttv-austin-major-2025
+2382602,MOUZ,4494,Liquid,5973,4,2,0,6,0.6667,1.024,0.1755,70.6,5.87,0.21,2.18,1.046,0.2029,74.12,15.37,-0.21,2.47,https://www.hltv.org/matches/2382602/mouz-vs-liquid-blasttv-austin-major-2025
+2382603,paiN,4773,Nemiga,7969,3,1,0,4,0.75,1.092,0.1593,77.04,6.33,0.76,2.13,0.984,0.1401,70.56,12.12,-0.78,2.03,https://www.hltv.org/matches/2382603/pain-vs-nemiga-blasttv-austin-major-2025
+2382600,Spirit,7020,Natus Vincere,4608,17,7,4,24,0.7083,1.2,0.2564,79.66,12.51,2.25,2.93,0.886,0.2687,62.4,15.72,-2.41,3.55,https://www.hltv.org/matches/2382600/spirit-vs-natus-vincere-blasttv-austin-major-2025
+2382601,FURIA,8297,Virtus.pro,5378,3,4,1,7,0.4286,1.304,0.1891,80.94,19.6,3.31,1.67,0.704,0.1389,52.38,10.53,-3.35,2.06,https://www.hltv.org/matches/2382601/furia-vs-virtuspro-blasttv-austin-major-2025
+2382599,The MongolZ,6248,Lynn Vision,8840,11,5,2,16,0.6875,1.218,0.1964,73.9,18.09,2.19,2.33,0.894,0.3239,67.36,15.06,-2.43,4.47,https://www.hltv.org/matches/2382599/the-mongolz-vs-lynn-vision-blasttv-austin-major-2025
+2382598,Aurora,11861,G2,5995,6,1,0,7,0.8571,0.824,0.4844,65.18,19.51,-4.6,6.05,1.364,0.3276,74.36,21.1,4.6,2.88,https://www.hltv.org/matches/2382598/aurora-vs-g2-blasttv-austin-major-2025
+2382597,Legacy,12468,FaZe,6667,2,0,0,2,1.0,0.834,0.1201,65.94,4.92,-2.06,1.79,1.224,0.2976,81.7,11.72,2.06,5.41,https://www.hltv.org/matches/2382597/legacy-vs-faze-blasttv-austin-major-2025
+2382596,3DMAX,4914,Vitality,9565,0,4,1,4,0.0,0.688,0.1729,49.7,10.98,-5.35,2.71,1.464,0.381,86.72,19.82,5.35,4.38,https://www.hltv.org/matches/2382596/3dmax-vs-vitality-blasttv-austin-major-2025
+2382595,G2,5995,paiN,4773,4,0,0,4,1.0,1.378,0.2376,86.48,12.02,2.68,3.22,0.904,0.0677,77.78,7.08,-2.68,2.82,https://www.hltv.org/matches/2382595/g2-vs-pain-blasttv-austin-major-2025
+2382594,The MongolZ,6248,Liquid,5973,8,2,0,10,0.8,1.256,0.3173,78.28,19.44,2.49,3.51,0.768,0.264,63.18,17.71,-2.49,3.46,https://www.hltv.org/matches/2382594/the-mongolz-vs-liquid-blasttv-austin-major-2025
+2382593,Vitality,9565,Nemiga,7969,0,0,0,0,,1.246,0.222,80.62,22.96,2.75,2.78,0.87,0.2762,60.04,15.25,-2.75,4.52,https://www.hltv.org/matches/2382593/vitality-vs-nemiga-blasttv-austin-major-2025
+2382592,MOUZ,4494,FaZe,6667,6,10,2,16,0.375,0.922,0.2235,71.36,18.13,-1.37,2.11,1.182,0.2078,77.8,10.11,1.28,2.61,https://www.hltv.org/matches/2382592/mouz-vs-faze-blasttv-austin-major-2025
+2382591,3DMAX,4914,Natus Vincere,4608,0,0,0,0,,0.936,0.1139,68.62,11.66,-0.75,1.77,1.102,0.1081,69.32,13.73,0.75,1.77,https://www.hltv.org/matches/2382591/3dmax-vs-natus-vincere-blasttv-austin-major-2025
+2382590,Spirit,7020,Lynn Vision,8840,0,0,0,0,,1.156,0.2337,67.8,19.9,2.05,2.45,0.852,0.1433,58.36,0.87,-2.05,1.12,https://www.hltv.org/matches/2382590/spirit-vs-lynn-vision-blasttv-austin-major-2025
+2382588,Virtus.pro,5378,Legacy,12468,0,0,0,0,,1.14,0.3749,70.84,19.16,0.93,4.74,0.956,0.2994,69.12,17.01,-0.93,3.69,https://www.hltv.org/matches/2382588/virtuspro-vs-legacy-blasttv-austin-major-2025
+2382589,Aurora,11861,FURIA,8297,7,6,2,13,0.5385,0.876,0.3282,62.28,18.29,-2.04,3.42,1.306,0.301,82.6,22.12,2.04,5.2,https://www.hltv.org/matches/2382589/aurora-vs-furia-blasttv-austin-major-2025
+2382439,Liquid,5973,Lynn Vision,8840,0,0,0,0,,0.868,0.1406,68.54,14.89,-4.16,2.83,1.278,0.303,75.16,8.51,3.84,3.8,https://www.hltv.org/matches/2382439/liquid-vs-lynn-vision-blasttv-austin-major-2025
+2382438,Natus Vincere,4608,Nemiga,7969,0,0,0,0,,1.292,0.456,83.7,29.46,2.21,6.28,0.848,0.3079,65.26,20.38,-2.21,4.66,https://www.hltv.org/matches/2382438/natus-vincere-vs-nemiga-blasttv-austin-major-2025
+2382436,The MongolZ,6248,FURIA,8297,9,2,2,11,0.8182,0.978,0.1491,72.56,6.53,-0.62,1.7,1.062,0.228,72.54,17.6,0.63,2.16,https://www.hltv.org/matches/2382436/the-mongolz-vs-furia-blasttv-austin-major-2025
+2382437,Aurora,11861,FaZe,6667,6,8,4,14,0.4286,1.308,0.5043,82.06,22.12,3.19,4.88,0.856,0.1689,65.18,20.02,-3.71,3.65,https://www.hltv.org/matches/2382437/aurora-vs-faze-blasttv-austin-major-2025
+2382435,G2,5995,3DMAX,4914,6,4,0,10,0.6,0.892,0.5153,65.3,15.76,-3.47,6.86,1.366,0.2893,83.92,11.22,3.29,5.84,https://www.hltv.org/matches/2382435/g2-vs-3dmax-blasttv-austin-major-2025
+2382434,Spirit,7020,paiN,4773,0,0,0,0,,1.358,0.4129,78.48,23.37,4.69,4.8,0.718,0.3411,55.12,21.79,-4.69,3.62,https://www.hltv.org/matches/2382434/spirit-vs-pain-blasttv-austin-major-2025
+2382433,MOUZ,4494,Virtus.pro,5378,4,2,2,6,0.6667,0.966,0.1177,70.12,12.52,-0.9,1.76,1.068,0.2244,71.36,4.25,0.9,2.77,https://www.hltv.org/matches/2382433/mouz-vs-virtuspro-blasttv-austin-major-2025
+2382432,Vitality,9565,Legacy,12468,2,0,0,2,1.0,0.766,0.1038,64.32,9.86,-5.34,2.13,1.376,0.1859,75.1,20.75,5.34,2.1,https://www.hltv.org/matches/2382432/vitality-vs-legacy-blasttv-austin-major-2025
+2382587,FaZe,6667,MIBR,9215,0,0,0,0,,1.194,0.2881,78.12,14.94,2.14,3.52,0.884,0.2319,66.94,15.71,-2.16,3.37,https://www.hltv.org/matches/2382587/faze-vs-mibr-blasttv-austin-major-2025-stage-2
+2382586,B8,11241,Lynn Vision,8840,0,0,0,0,,0.964,0.2092,70.5,14.97,-1.62,2.7,1.15,0.1774,78.14,9.54,1.51,2.27,https://www.hltv.org/matches/2382586/b8-vs-lynn-vision-blasttv-austin-major-2025-stage-2
+2382585,Nemiga,7969,HEROIC,7175,9,13,3,22,0.4091,1.122,0.2948,70.66,16.0,1.47,4.06,0.982,0.2424,74.0,14.79,-1.58,2.99,https://www.hltv.org/matches/2382585/nemiga-vs-heroic-blasttv-austin-major-2025-stage-2
+2382583,FaZe,6667,3DMAX,4914,4,0,0,4,1.0,0.92,0.1712,69.12,12.99,-1.8,2.17,1.162,0.1715,78.1,5.77,1.41,1.86,https://www.hltv.org/matches/2382583/faze-vs-3dmax-blasttv-austin-major-2025-stage-2
+2382582,Falcons,11283,MIBR,9215,0,0,0,0,,1.048,0.0534,72.64,5.59,-0.37,0.74,1.02,0.0914,66.96,11.37,0.37,1.38,https://www.hltv.org/matches/2382582/falcons-vs-mibr-blasttv-austin-major-2025-stage-2
+2382584,FURIA,8297,B8,11241,0,0,0,0,,1.12,0.1717,73.24,13.15,0.71,2.62,0.982,0.16,70.14,7.14,-0.71,1.9,https://www.hltv.org/matches/2382584/furia-vs-b8-blasttv-austin-major-2025-stage-2
+2382581,paiN,4773,Lynn Vision,8840,2,1,1,3,0.6667,1.268,0.2717,79.34,23.17,2.82,2.24,0.736,0.1354,54.88,10.18,-2.82,1.54,https://www.hltv.org/matches/2382581/pain-vs-lynn-vision-blasttv-austin-major-2025-stage-2
+2382579,TYLOO,4863,HEROIC,7175,0,0,0,0,,1.082,0.0705,74.32,4.29,0.07,1.64,1.088,0.2401,77.86,7.2,-0.07,4.38,https://www.hltv.org/matches/2382579/tyloo-vs-heroic-blasttv-austin-major-2025-stage-2
+2382577,OG,10503,Falcons,11283,0,0,0,0,,0.882,0.124,64.1,5.66,-1.05,1.35,1.148,0.1577,76.16,8.22,0.96,2.05,https://www.hltv.org/matches/2382577/og-vs-falcons-blasttv-austin-major-2025-stage-2
+2382578,MIBR,9215,BetBoom,12394,2,4,1,6,0.3333,1.06,0.1142,68.86,7.22,0.48,1.29,0.914,0.1193,65.8,10.23,-0.48,1.63,https://www.hltv.org/matches/2382578/mibr-vs-betboom-blasttv-austin-major-2025-stage-2
+2382576,paiN,4773,Virtus.pro,5378,6,1,0,7,0.8571,0.982,0.2159,70.24,9.6,-0.61,2.91,1.074,0.1194,72.24,12.14,0.61,1.57,https://www.hltv.org/matches/2382576/pain-vs-virtuspro-blasttv-austin-major-2025-stage-2
+2382575,FaZe,6667,Legacy,12468,0,0,0,0,,0.864,0.1673,62.68,8.91,-1.33,2.2,1.164,0.0907,78.86,10.02,1.33,1.3,https://www.hltv.org/matches/2382575/faze-vs-legacy-blasttv-austin-major-2025-stage-2
+2382574,B8,11241,HEROIC,7175,4,9,1,13,0.3077,1.162,0.0911,80.16,10.34,0.76,1.26,0.952,0.1932,67.52,13.21,-0.77,2.89,https://www.hltv.org/matches/2382574/b8-vs-heroic-blasttv-austin-major-2025-stage-2
+2382573,FURIA,8297,M80,12376,5,3,1,8,0.625,1.2,0.2979,75.86,12.77,2.13,3.47,0.864,0.1905,66.24,8.5,-2.13,2.86,https://www.hltv.org/matches/2382573/furia-vs-m80-blasttv-austin-major-2025-stage-2
+2382572,3DMAX,4914,Nemiga,7969,4,6,2,10,0.4,1.118,0.2638,77.48,14.61,0.81,3.32,0.964,0.4261,68.88,22.68,-0.8,4.85,https://www.hltv.org/matches/2382572/3dmax-vs-nemiga-blasttv-austin-major-2025-stage-2
+2382571,TYLOO,4863,Lynn Vision,8840,32,35,7,67,0.4776,0.77,0.1712,65.42,8.54,-3.28,2.01,1.348,0.1311,87.68,12.14,3.07,1.36,https://www.hltv.org/matches/2382571/tyloo-vs-lynn-vision-blasttv-austin-major-2025-stage-2
+2382446,MIBR,9215,Nemiga,7969,2,1,0,3,0.6667,1.02,0.4792,74.18,22.38,-1.27,5.96,1.08,0.2648,73.42,14.84,1.13,2.27,https://www.hltv.org/matches/2382446/mibr-vs-nemiga-blasttv-austin-major-2025-stage-2
+2382444,Falcons,11283,Lynn Vision,8840,0,0,0,0,,0.86,0.1088,69.92,10.94,-1.36,1.73,1.156,0.2809,75.4,19.34,1.36,3.0,https://www.hltv.org/matches/2382444/falcons-vs-lynn-vision-blasttv-austin-major-2025-stage-2
+2382445,HEROIC,7175,BetBoom,12394,2,3,2,5,0.4,1.136,0.2775,76.52,15.84,1.52,4.12,0.962,0.2066,69.9,9.25,-1.52,2.74,https://www.hltv.org/matches/2382445/heroic-vs-betboom-blasttv-austin-major-2025-stage-2
+2382442,FaZe,6667,TYLOO,4863,0,0,0,0,,1.31,0.2406,77.28,13.92,2.93,3.07,0.702,0.1667,59.04,9.94,-2.93,2.35,https://www.hltv.org/matches/2382442/faze-vs-tyloo-blasttv-austin-major-2025-stage-2
+2382443,3DMAX,4914,Legacy,12468,2,1,1,3,0.6667,0.824,0.1444,59.2,6.62,-2.42,1.74,1.176,0.2292,70.7,18.74,2.14,1.94,https://www.hltv.org/matches/2382443/3dmax-vs-legacy-blasttv-austin-major-2025-stage-2
+2382440,paiN,4773,FURIA,8297,1,2,0,3,0.3333,1.07,0.43,65.9,18.67,1.4,5.63,0.988,0.2496,68.8,14.05,-1.39,4.11,https://www.hltv.org/matches/2382440/pain-vs-furia-blasttv-austin-major-2025-stage-2
+2382441,Virtus.pro,5378,B8,11241,0,0,0,0,,1.41,0.694,79.2,29.49,4.92,8.63,0.71,0.2402,52.66,11.69,-4.92,4.35,https://www.hltv.org/matches/2382441/virtuspro-vs-b8-blasttv-austin-major-2025-stage-2
+2382431,M80,12376,TYLOO,4863,0,0,0,0,,1.024,0.2879,69.52,19.1,-1.2,4.41,1.116,0.1681,73.82,10.01,1.19,2.39,https://www.hltv.org/matches/2382431/m80-vs-tyloo-blasttv-austin-major-2025-stage-2
+2382427,MIBR,9215,Legacy,12468,2,1,0,3,0.6667,0.978,0.1737,66.08,2.97,-0.54,2.25,1.138,0.3591,74.86,14.37,0.54,5.38,https://www.hltv.org/matches/2382427/mibr-vs-legacy-blasttv-austin-major-2025-stage-2
+2382426,paiN,4773,Nemiga,7969,2,1,0,3,0.6667,1.234,0.3044,80.38,9.59,2.13,4.56,0.886,0.1405,61.14,5.85,-2.14,2.55,https://www.hltv.org/matches/2382426/pain-vs-nemiga-blasttv-austin-major-2025-stage-2
+2382430,FURIA,8297,Lynn Vision,8840,5,1,0,6,0.8333,1.316,0.294,88.38,20.9,3.31,4.5,0.766,0.116,55.72,4.37,-3.31,2.11,https://www.hltv.org/matches/2382430/furia-vs-lynn-vision-blasttv-austin-major-2025-stage-2
+2382425,3DMAX,4914,BetBoom,12394,4,4,1,8,0.5,1.244,0.1829,81.04,18.83,3.06,2.53,0.862,0.2293,64.58,15.25,-3.06,3.93,https://www.hltv.org/matches/2382425/3dmax-vs-betboom-blasttv-austin-major-2025-stage-2
+2382429,Virtus.pro,5378,OG,10503,1,4,1,5,0.2,1.542,0.5342,90.12,17.7,5.89,7.21,0.774,0.3995,56.68,23.13,-5.89,4.81,https://www.hltv.org/matches/2382429/virtuspro-vs-og-blasttv-austin-major-2025-stage-2
+2382424,Falcons,11283,B8,11241,0,0,0,0,,0.882,0.3414,59.16,12.5,-1.87,4.05,1.128,0.2817,70.56,21.24,1.86,2.8,https://www.hltv.org/matches/2382424/falcons-vs-b8-blasttv-austin-major-2025-stage-2
+2382428,FaZe,6667,HEROIC,7175,4,4,1,8,0.5,1.612,0.335,97.88,18.68,5.17,3.61,0.688,0.4407,53.88,24.46,-5.17,6.93,https://www.hltv.org/matches/2382428/faze-vs-heroic-blasttv-austin-major-2025-stage-2
+2382695,MOUZ,4494,Vitality,9565,8,19,1,27,0.2963,0.906,0.1063,67.08,9.34,-1.34,2.31,1.158,0.1939,76.48,11.96,1.34,2.46,https://www.hltv.org/matches/2382695/mouz-vs-vitality-iem-dallas-2025
+2382694,Vitality,9565,Falcons,11283,8,4,4,12,0.6667,1.016,0.1146,71.96,4.45,-0.01,1.42,1.074,0.1285,74.08,7.52,0.01,1.7,https://www.hltv.org/matches/2382694/vitality-vs-falcons-iem-dallas-2025
+2382693,MOUZ,4494,The MongolZ,6248,5,1,3,6,0.8333,1.076,0.0674,75.34,10.61,0.44,1.29,0.974,0.1054,69.38,6.94,-0.44,1.46,https://www.hltv.org/matches/2382693/mouz-vs-the-mongolz-iem-dallas-2025
+2382692,Falcons,11283,GamerLegion,9928,4,3,0,7,0.5714,1.12,0.0972,74.34,9.53,0.98,0.95,0.918,0.1339,66.46,14.77,-0.98,2.13,https://www.hltv.org/matches/2382692/falcons-vs-gamerlegion-iem-dallas-2025
+2382691,The MongolZ,6248,Aurora,11861,9,7,4,16,0.5625,1.17,0.2195,76.18,8.77,1.78,2.85,0.94,0.1602,69.42,13.33,-1.8,2.4,https://www.hltv.org/matches/2382691/the-mongolz-vs-aurora-iem-dallas-2025
+2382682,GamerLegion,9928,G2,5995,0,4,1,4,0.0,1.052,0.0685,73.54,8.35,0.36,1.49,1.042,0.1727,75.38,16.57,-0.42,2.19,https://www.hltv.org/matches/2382682/gamerlegion-vs-g2-iem-dallas-2025
+2382681,Vitality,9565,The MongolZ,6248,11,1,2,12,0.9167,1.032,0.1893,76.02,9.11,-0.37,2.54,1.05,0.1182,75.3,11.3,0.37,1.69,https://www.hltv.org/matches/2382681/vitality-vs-the-mongolz-iem-dallas-2025
+2382690,Aurora,11861,HEROIC,7175,5,2,1,7,0.7143,1.06,0.27,75.78,13.49,-0.17,3.78,1.098,0.2215,77.24,12.04,0.17,3.35,https://www.hltv.org/matches/2382690/aurora-vs-heroic-iem-dallas-2025
+2382689,MOUZ,4494,Falcons,11283,8,7,1,15,0.5333,1.238,0.1924,81.02,9.69,2.29,1.51,0.804,0.1481,58.08,9.39,-2.29,2.05,https://www.hltv.org/matches/2382689/mouz-vs-falcons-iem-dallas-2025
+2382679,3DMAX,4914,G2,5995,3,4,0,7,0.4286,0.942,0.0549,67.4,8.9,-1.22,1.38,1.148,0.092,76.58,11.89,1.23,0.99,https://www.hltv.org/matches/2382679/3dmax-vs-g2-iem-dallas-2025
+2382680,GamerLegion,9928,FURIA,8297,1,2,0,3,0.3333,1.024,0.1483,67.78,8.14,0.45,1.87,0.99,0.1575,69.38,11.51,-0.57,1.93,https://www.hltv.org/matches/2382680/gamerlegion-vs-furia-iem-dallas-2025
+2382687,FaZe,6667,HEROIC,7175,0,0,0,0,,0.998,0.1533,72.02,7.86,-0.56,2.19,1.106,0.1426,74.62,14.82,0.54,2.46,https://www.hltv.org/matches/2382687/faze-vs-heroic-iem-dallas-2025
+2382688,Liquid,5973,Aurora,11861,2,2,1,4,0.5,0.92,0.1698,72.34,14.09,-2.28,2.13,1.204,0.2654,79.84,20.59,2.13,3.25,https://www.hltv.org/matches/2382688/liquid-vs-aurora-iem-dallas-2025
+2382676,G2,5995,The MongolZ,6248,5,3,2,8,0.625,0.876,0.1497,67.88,10.38,-2.67,2.88,1.268,0.2683,80.78,13.74,2.67,3.22,https://www.hltv.org/matches/2382676/g2-vs-the-mongolz-iem-dallas-2025
+2382678,Lynn Vision,8840,FURIA,8297,1,3,0,4,0.25,0.896,0.0647,67.06,7.32,-1.68,1.18,1.202,0.4065,81.18,15.33,1.68,5.36,https://www.hltv.org/matches/2382678/lynn-vision-vs-furia-iem-dallas-2025
+2382684,Falcons,11283,HEROIC,7175,0,0,0,0,,1.108,0.2635,73.22,15.42,1.05,3.44,0.936,0.0931,67.1,8.06,-1.1,1.57,https://www.hltv.org/matches/2382684/falcons-vs-heroic-iem-dallas-2025
+2382686,NRG,6673,Aurora,11861,0,2,0,2,0.0,0.786,0.166,61.32,10.25,-3.73,1.77,1.34,0.2137,87.62,18.12,3.73,1.75,https://www.hltv.org/matches/2382686/nrg-vs-aurora-iem-dallas-2025
+2382675,GamerLegion,9928,Vitality,9565,0,0,0,0,,0.862,0.1472,64.48,11.54,-1.15,1.66,1.16,0.1352,79.1,9.17,1.15,1.56,https://www.hltv.org/matches/2382675/gamerlegion-vs-vitality-iem-dallas-2025
+2382683,Liquid,5973,MOUZ,4494,2,2,0,4,0.5,0.81,0.1071,63.8,13.53,-3.13,2.09,1.282,0.2859,84.7,10.95,3.13,4.18,https://www.hltv.org/matches/2382683/liquid-vs-mouz-iem-dallas-2025
+2382677,3DMAX,4914,Legacy,12468,0,0,0,0,,1.012,0.1739,70.78,12.16,-0.5,2.22,1.046,0.1025,74.12,6.55,0.4,1.65,https://www.hltv.org/matches/2382677/3dmax-vs-legacy-iem-dallas-2025
+2382685,FaZe,6667,BC.Game,12878,0,0,0,0,,1.226,0.1747,80.6,12.94,2.53,2.21,0.816,0.0745,65.2,5.3,-2.53,1.43,https://www.hltv.org/matches/2382685/faze-vs-bcgame-iem-dallas-2025
+2382381,Aurora,11861,HEROIC,7175,4,0,1,4,1.0,0.968,0.212,66.34,15.4,-0.5,2.53,1.13,0.2383,76.76,16.13,0.5,2.85,https://www.hltv.org/matches/2382381/aurora-vs-heroic-iem-dallas-2025
+2382377,The MongolZ,6248,FURIA,8297,7,2,2,9,0.7778,1.172,0.0823,80.06,8.77,1.67,0.78,0.916,0.1637,66.72,6.78,-1.67,2.62,https://www.hltv.org/matches/2382377/the-mongolz-vs-furia-iem-dallas-2025
+2382378,G2,5995,Lynn Vision,8840,0,0,0,0,,1.208,0.4033,78.74,28.38,2.48,3.4,0.89,0.2269,67.74,16.93,-2.48,3.33,https://www.hltv.org/matches/2382378/g2-vs-lynn-vision-iem-dallas-2025
+2382382,Falcons,11283,NRG,6673,0,0,0,0,,1.282,0.3474,82.1,16.36,2.74,4.39,0.84,0.1161,61.26,14.9,-2.74,2.08,https://www.hltv.org/matches/2382382/falcons-vs-nrg-iem-dallas-2025
+2382379,MOUZ,4494,BC.Game,12878,0,0,0,0,,1.176,0.0677,77.78,6.63,1.36,0.57,0.884,0.0809,64.02,10.38,-1.36,1.05,https://www.hltv.org/matches/2382379/mouz-vs-bcgame-iem-dallas-2025
+2382375,Vitality,9565,Legacy,12468,0,0,0,0,,1.2,0.1279,79.06,16.12,1.15,1.8,0.852,0.1947,58.44,9.19,-1.24,3.26,https://www.hltv.org/matches/2382375/vitality-vs-legacy-iem-dallas-2025
+2382376,3DMAX,4914,GamerLegion,9928,0,2,0,2,0.0,1.0,0.111,72.64,6.65,0.8,1.33,1.092,0.1196,81.64,5.83,-0.79,1.74,https://www.hltv.org/matches/2382376/3dmax-vs-gamerlegion-iem-dallas-2025
+2382380,Liquid,5973,FaZe,6667,0,0,0,0,,1.21,0.1006,79.58,7.83,1.52,1.02,0.92,0.1198,71.72,7.88,-1.71,1.67,https://www.hltv.org/matches/2382380/liquid-vs-faze-iem-dallas-2025
+2381918,Falcons,11283,Vitality,9565,2,5,3,7,0.2857,0.982,0.1011,71.58,5.66,-1.1,1.53,1.142,0.1914,75.84,9.72,1.08,2.38,https://www.hltv.org/matches/2381918/falcons-vs-vitality-blast-rivals-2025-season-1
+2381917,Vitality,9565,Spirit,7020,8,5,0,13,0.6154,1.204,0.1288,76.92,10.1,1.66,1.25,0.924,0.1453,69.92,12.24,-1.66,2.66,https://www.hltv.org/matches/2381917/vitality-vs-spirit-blast-rivals-2025-season-1
+2381916,Falcons,11283,MOUZ,4494,5,8,0,13,0.3846,1.204,0.2546,74.4,11.81,2.02,3.59,0.87,0.1058,68.42,4.49,-2.16,1.16,https://www.hltv.org/matches/2381916/falcons-vs-mouz-blast-rivals-2025-season-1
+2381915,Wildcard,12257,Spirit,7020,0,3,1,3,0.0,0.772,0.2224,59.74,16.29,-3.69,3.4,1.322,0.3937,84.4,20.93,3.69,4.66,https://www.hltv.org/matches/2381915/wildcard-vs-spirit-blast-rivals-2025-season-1
+2381914,MOUZ,4494,FaZe,6667,8,16,3,24,0.3333,1.296,0.3958,84.28,22.95,2.54,4.77,0.83,0.0921,66.56,4.36,-2.54,2.08,https://www.hltv.org/matches/2381914/mouz-vs-faze-blast-rivals-2025-season-1
+2381913,Spirit,7020,Falcons,11283,0,0,0,0,,0.956,0.1547,73.18,10.49,-0.88,2.42,1.118,0.2062,72.2,10.0,0.83,2.77,https://www.hltv.org/matches/2381913/spirit-vs-falcons-blast-rivals-2025-season-1
+2381912,FlyQuest,12774,FaZe,6667,0,6,1,6,0.0,0.956,0.1188,68.58,6.64,-0.88,1.68,1.132,0.1466,75.98,5.51,0.88,1.49,https://www.hltv.org/matches/2381912/flyquest-vs-faze-blast-rivals-2025-season-1
+2381911,MOUZ,4494,Vitality,9565,7,17,1,24,0.2917,0.974,0.1381,72.76,15.6,-1.13,1.83,1.088,0.181,68.92,15.92,1.02,2.24,https://www.hltv.org/matches/2381911/mouz-vs-vitality-blast-rivals-2025-season-1
+2381910,paiN,4773,Wildcard,12257,0,1,0,1,0.0,0.952,0.1116,72.76,15.72,-2.36,1.42,1.234,0.3619,78.9,16.47,2.35,4.5,https://www.hltv.org/matches/2381910/pain-vs-wildcard-blast-rivals-2025-season-1
+2381909,FaZe,6667,Falcons,11283,1,4,1,5,0.2,0.954,0.2017,70.74,16.17,-1.28,2.41,1.156,0.2608,79.68,10.94,1.28,2.86,https://www.hltv.org/matches/2381909/faze-vs-falcons-blast-rivals-2025-season-1
+2381906,Vitality,9565,Wildcard,12257,0,0,0,0,,1.236,0.3313,82.22,10.86,2.22,3.86,0.842,0.1281,63.56,9.65,-2.43,1.9,https://www.hltv.org/matches/2381906/vitality-vs-wildcard-blast-rivals-2025-season-1
+2381907,MOUZ,4494,paiN,4773,6,1,1,7,0.8571,1.206,0.1765,76.72,15.24,2.01,2.0,0.88,0.2051,68.22,13.31,-2.01,2.53,https://www.hltv.org/matches/2381907/mouz-vs-pain-blast-rivals-2025-season-1
+2381908,Spirit,7020,FlyQuest,12774,3,0,0,3,1.0,1.314,0.383,86.44,18.64,3.16,4.87,0.884,0.1436,67.42,6.33,-3.22,2.18,https://www.hltv.org/matches/2381908/spirit-vs-flyquest-blast-rivals-2025-season-1
+2381773,Falcons,11283,Vitality,9565,0,2,1,2,0.0,1.01,0.1271,74.8,9.47,-0.57,1.5,1.086,0.1612,75.04,8.71,0.54,2.06,https://www.hltv.org/matches/2381773/falcons-vs-vitality-iem-melbourne-2025
+2381772,Vitality,9565,The MongolZ,6248,9,1,2,10,0.9,1.522,0.3108,87.86,16.17,4.96,3.04,0.584,0.1159,56.52,13.43,-4.96,2.11,https://www.hltv.org/matches/2381772/vitality-vs-the-mongolz-iem-melbourne-2025
+2381771,MOUZ,4494,Falcons,11283,8,3,0,11,0.7273,0.822,0.1808,60.16,15.32,-3.38,2.38,1.308,0.2093,81.36,11.51,3.38,3.43,https://www.hltv.org/matches/2381771/mouz-vs-falcons-iem-melbourne-2025
+2381770,The MongolZ,6248,Liquid,5973,6,1,0,7,0.8571,1.024,0.1924,75.3,14.51,0.22,2.87,1.068,0.1898,75.88,12.18,-0.22,2.28,https://www.hltv.org/matches/2381770/the-mongolz-vs-liquid-iem-melbourne-2025
+2381769,GamerLegion,9928,Falcons,11283,3,2,0,5,0.6,0.7,0.1396,61.1,8.65,-4.68,2.73,1.394,0.1415,79.6,7.51,4.57,1.55,https://www.hltv.org/matches/2381769/gamerlegion-vs-falcons-iem-melbourne-2025
+2381767,Liquid,5973,Natus Vincere,4608,5,5,1,10,0.5,1.054,0.189,75.16,5.13,0.64,2.75,1.028,0.1353,72.44,10.75,-0.65,1.76,https://www.hltv.org/matches/2381767/liquid-vs-natus-vincere-iem-melbourne-2025
+2381768,Vitality,9565,Falcons,11283,0,0,0,0,,1.126,0.0492,77.64,3.08,1.19,0.99,0.968,0.183,70.94,12.41,-1.19,1.94,https://www.hltv.org/matches/2381768/vitality-vs-falcons-iem-melbourne-2025
+2381765,FaZe,6667,GamerLegion,9928,0,0,0,0,,1.016,0.1621,73.24,12.06,-1.15,2.18,1.086,0.1419,70.88,9.16,1.15,1.53,https://www.hltv.org/matches/2381765/faze-vs-gamerlegion-iem-melbourne-2025
+2381766,MOUZ,4494,The MongolZ,6248,3,1,3,4,0.75,1.18,0.2012,80.2,13.17,1.9,2.14,0.898,0.217,69.36,12.62,-1.9,2.84,https://www.hltv.org/matches/2381766/mouz-vs-the-mongolz-iem-melbourne-2025
+2381763,FlyQuest,12774,Natus Vincere,4608,0,2,0,2,0.0,0.97,0.1313,71.14,9.95,-1.19,2.65,1.122,0.1729,74.02,13.92,1.19,2.07,https://www.hltv.org/matches/2381763/flyquest-vs-natus-vincere-iem-melbourne-2025
+2381764,Liquid,5973,MIBR,9215,2,1,0,3,0.6667,1.192,0.1843,73.84,9.05,2.16,2.13,0.85,0.1205,66.12,8.31,-2.17,1.65,https://www.hltv.org/matches/2381764/liquid-vs-mibr-iem-melbourne-2025
+2381762,Complexity,5005,GamerLegion,9928,0,0,0,0,,0.942,0.0821,71.2,11.32,-0.63,0.73,1.166,0.3055,79.5,14.46,0.58,3.3,https://www.hltv.org/matches/2381762/complexity-vs-gamerlegion-iem-melbourne-2025
+2381761,FaZe,6667,3DMAX,4914,3,0,0,3,1.0,1.332,0.1485,82.46,4.5,3.64,1.92,0.736,0.1542,54.16,14.02,-3.82,2.14,https://www.hltv.org/matches/2381761/faze-vs-3dmax-iem-melbourne-2025
+2381758,SAW,10567,MIBR,9215,0,0,0,0,,1.02,0.2046,70.9,17.71,-0.19,2.38,1.058,0.1936,70.28,16.01,0.17,2.69,https://www.hltv.org/matches/2381758/saw-vs-mibr-iem-melbourne-2025
+2381760,Falcons,11283,Natus Vincere,4608,0,0,0,0,,1.106,0.2324,74.64,9.99,0.84,3.28,1.014,0.0763,72.46,4.41,-0.84,1.03,https://www.hltv.org/matches/2381760/falcons-vs-natus-vincere-iem-melbourne-2025
+2381757,Virtus.pro,5378,FlyQuest,12774,0,0,0,0,,0.9,0.1785,65.5,9.7,-2.09,3.14,1.232,0.3423,72.22,18.18,2.02,4.0,https://www.hltv.org/matches/2381757/virtuspro-vs-flyquest-iem-melbourne-2025
+2381759,Liquid,5973,Vitality,9565,2,8,1,10,0.2,0.85,0.2281,68.26,12.29,-2.99,3.22,1.266,0.2916,81.82,10.5,2.9,4.17,https://www.hltv.org/matches/2381759/liquid-vs-vitality-iem-melbourne-2025
+2381753,3DMAX,4914,BIG,7532,3,2,0,5,0.6,1.218,0.328,81.48,19.18,1.55,3.63,0.916,0.1454,68.44,7.9,-1.61,2.17,https://www.hltv.org/matches/2381753/3dmax-vs-big-iem-melbourne-2025
+2381756,FaZe,6667,The MongolZ,6248,0,0,0,0,,0.934,0.1584,69.64,7.68,-1.31,1.79,1.122,0.2106,74.32,10.94,1.31,2.38,https://www.hltv.org/matches/2381756/faze-vs-the-mongolz-iem-melbourne-2025
+2381755,GamerLegion,9928,MOUZ,4494,2,0,0,2,1.0,0.932,0.116,69.94,10.62,-1.75,2.01,1.194,0.1519,81.88,10.79,1.75,2.49,https://www.hltv.org/matches/2381755/gamerlegion-vs-mouz-iem-melbourne-2025
+2381754,paiN,4773,Complexity,5005,0,0,0,0,,0.738,0.3018,60.72,19.54,-3.46,4.36,1.364,0.1294,86.66,14.23,3.46,1.88,https://www.hltv.org/matches/2381754/pain-vs-complexity-iem-melbourne-2025
+2381644,Natus Vincere,4608,MIBR,9215,0,1,0,1,0.0,1.078,0.1375,71.42,10.24,0.78,2.14,0.946,0.1705,66.76,5.39,-0.78,2.31,https://www.hltv.org/matches/2381644/natus-vincere-vs-mibr-iem-melbourne-2025
+2381643,Falcons,11283,SAW,10567,0,0,0,0,,1.156,0.1473,70.04,8.43,2.18,1.46,0.854,0.1086,65.26,3.65,-2.18,1.98,https://www.hltv.org/matches/2381643/falcons-vs-saw-iem-melbourne-2025
+2381641,Vitality,9565,FlyQuest,12774,0,0,0,0,,1.312,0.3048,83.66,7.33,3.0,4.31,0.908,0.2015,69.14,5.53,-3.0,3.69,https://www.hltv.org/matches/2381641/vitality-vs-flyquest-iem-melbourne-2025
+2381642,Liquid,5973,Virtus.pro,5378,4,2,2,6,0.6667,1.018,0.0431,75.5,8.17,-0.09,0.85,1.026,0.0582,70.92,10.22,0.04,1.3,https://www.hltv.org/matches/2381642/liquid-vs-virtuspro-iem-melbourne-2025
+2381637,MOUZ,4494,BIG,7532,2,0,1,2,1.0,1.076,0.0799,74.8,6.02,-0.05,1.06,0.97,0.0616,66.56,7.29,0.03,1.13,https://www.hltv.org/matches/2381637/mouz-vs-big-iem-melbourne-2025
+2381638,3DMAX,4914,GamerLegion,9928,0,0,0,0,,0.844,0.1553,65.62,6.52,-2.95,2.39,1.31,0.2333,79.98,11.56,2.76,2.67,https://www.hltv.org/matches/2381638/3dmax-vs-gamerlegion-iem-melbourne-2025
+2381640,The MongolZ,6248,Complexity,5005,5,0,1,5,1.0,1.048,0.1433,74.14,4.13,0.39,2.16,1.006,0.1315,74.64,13.8,-0.5,1.37,https://www.hltv.org/matches/2381640/the-mongolz-vs-complexity-iem-melbourne-2025
+2381639,FaZe,6667,paiN,4773,2,2,0,4,0.5,1.072,0.0813,70.92,4.22,0.61,1.24,0.966,0.1876,63.86,16.22,-0.9,3.16,https://www.hltv.org/matches/2381639/faze-vs-pain-iem-melbourne-2025
+2381332,Falcons,11283,G2,5995,3,4,1,7,0.4286,1.166,0.0859,76.78,6.53,2.59,1.41,0.868,0.2541,63.24,14.15,-2.65,3.78,https://www.hltv.org/matches/2381332/falcons-vs-g2-pgl-bucharest-2025
+2381331,FaZe,6667,Complexity,5005,8,7,1,15,0.5333,1.11,0.1471,79.14,7.72,0.64,2.07,1.008,0.1909,71.64,9.67,-0.73,2.03,https://www.hltv.org/matches/2381331/faze-vs-complexity-pgl-bucharest-2025
+2381330,Complexity,5005,G2,5995,1,2,1,3,0.3333,0.876,0.2024,63.24,7.09,-2.04,2.47,1.202,0.2711,74.34,16.14,2.04,3.93,https://www.hltv.org/matches/2381330/complexity-vs-g2-pgl-bucharest-2025
+2381329,Falcons,11283,FaZe,6667,3,0,0,3,1.0,1.054,0.1662,77.46,4.94,0.74,2.51,0.968,0.1609,69.56,13.96,-0.77,1.92,https://www.hltv.org/matches/2381329/falcons-vs-faze-pgl-bucharest-2025
+2381328,G2,5995,Virtus.pro,5378,2,2,1,4,0.5,1.136,0.1916,68.0,8.85,1.17,1.94,0.908,0.2195,58.44,12.3,-1.28,3.97,https://www.hltv.org/matches/2381328/g2-vs-virtuspro-pgl-bucharest-2025
+2381327,Complexity,5005,Aurora,11861,3,2,3,5,0.6,1.068,0.1851,75.0,14.55,0.13,1.83,0.998,0.1186,71.36,6.04,-0.13,1.26,https://www.hltv.org/matches/2381327/complexity-vs-aurora-pgl-bucharest-2025
+2381326,3DMAX,4914,FaZe,6667,0,1,0,1,0.0,0.774,0.2633,63.94,18.23,-5.53,4.29,1.438,0.4332,85.2,20.1,5.53,5.22,https://www.hltv.org/matches/2381326/3dmax-vs-faze-pgl-bucharest-2025
+2381325,GamerLegion,9928,Falcons,11283,2,0,0,2,1.0,1.004,0.2258,68.64,9.73,-0.58,4.0,1.062,0.1026,72.44,6.82,0.57,1.38,https://www.hltv.org/matches/2381325/gamerlegion-vs-falcons-pgl-bucharest-2025
+2381324,Falcons,11283,The MongolZ,6248,2,6,1,8,0.25,1.14,0.1936,76.38,8.59,0.34,2.58,0.992,0.2128,69.56,13.3,-0.38,2.99,https://www.hltv.org/matches/2381324/falcons-vs-the-mongolz-pgl-bucharest-2025
+2381323,Betclic,12916,FaZe,6667,0,0,0,0,,0.884,0.1873,64.6,11.42,-2.2,2.82,1.206,0.1449,78.3,8.22,2.2,2.18,https://www.hltv.org/matches/2381323/betclic-vs-faze-pgl-bucharest-2025
+2381322,Astralis,6665,Virtus.pro,5378,0,4,1,4,0.0,0.924,0.2705,67.18,9.73,-1.59,4.15,1.13,0.2593,74.42,11.71,1.56,2.84,https://www.hltv.org/matches/2381322/astralis-vs-virtuspro-pgl-bucharest-2025
+2381321,FURIA,8297,The MongolZ,6248,1,3,2,4,0.25,1.018,0.3009,70.18,18.06,-0.73,3.33,1.11,0.3625,77.02,9.34,0.73,4.21,https://www.hltv.org/matches/2381321/furia-vs-the-mongolz-pgl-bucharest-2025
+2381320,Aurora,11861,Betclic,12916,0,0,0,0,,1.18,0.2043,76.4,15.59,1.66,2.31,0.916,0.1263,66.7,8.01,-1.71,1.59,https://www.hltv.org/matches/2381320/aurora-vs-betclic-pgl-bucharest-2025
+2381319,Rare Atom,11514,Falcons,11283,0,0,0,0,,0.73,0.2555,58.52,13.12,-4.22,3.57,1.404,0.2702,85.9,9.34,4.09,3.38,https://www.hltv.org/matches/2381319/rare-atom-vs-falcons-pgl-bucharest-2025
+2381318,Complexity,5005,FaZe,6667,5,8,1,13,0.3846,1.136,0.3481,76.72,8.52,1.11,5.0,0.932,0.1879,65.32,13.14,-1.18,2.92,https://www.hltv.org/matches/2381318/complexity-vs-faze-pgl-bucharest-2025
+2381317,Astralis,6665,Legacy,12468,0,0,0,0,,1.056,0.2403,72.66,13.96,0.22,2.75,1.002,0.1854,70.12,10.19,-0.3,2.15,https://www.hltv.org/matches/2381317/astralis-vs-legacy-pgl-bucharest-2025
+2381316,GamerLegion,9928,Virtus.pro,5378,0,0,0,0,,1.206,0.2201,76.5,15.21,2.09,3.05,0.868,0.1677,67.38,12.73,-2.24,2.61,https://www.hltv.org/matches/2381316/gamerlegion-vs-virtuspro-pgl-bucharest-2025
+2381314,Aurora,11861,3DMAX,4914,7,5,3,12,0.5833,1.052,0.2172,76.16,10.18,0.26,2.69,1.062,0.1026,74.48,6.58,-0.36,0.77,https://www.hltv.org/matches/2381314/aurora-vs-3dmax-pgl-bucharest-2025
+2381315,The MongolZ,6248,Liquid,5973,4,1,0,5,0.8,1.112,0.0611,71.7,6.21,1.42,1.32,0.914,0.19,67.34,9.37,-1.42,2.45,https://www.hltv.org/matches/2381315/the-mongolz-vs-liquid-pgl-bucharest-2025

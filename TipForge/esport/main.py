@@ -1,5 +1,5 @@
 """
-Entry point: event URL-ek beolvasása és pipeline futtatása.
+Entry point: event archive scraping és pipeline futtatása.
 """
 
 import logging
@@ -23,27 +23,6 @@ def setup_logging():
         ]
     )
 
-def read_event_urls(file_path: str = "event_links.txt"):
-    """
-    Event URL-ek beolvasása fájlból.
-    
-    Args:
-        file_path: Fájl elérési útja
-    
-    Returns:
-        List of URLs
-    """
-    if not os.path.exists(file_path):
-        logging.error(f"❌ Nincs ilyen fájl: {file_path}")
-        return []
-    
-    with open(file_path, 'r', encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
-    
-    logging.info(f"📄 {len(urls)} event URL beolvasva: {file_path}")
-    return urls
-
-
 def main():
     """Main entry point."""
     setup_logging()
@@ -53,17 +32,12 @@ def main():
     logger.info("🚀 CS:GO SCRAPER PROJEKT INDÍTÁSA")
     logger.info("="*60)
     
-    # Event URL-ek beolvasása
-    event_urls = read_event_urls("event_links.txt")
-    
-    if not event_urls:
-        logger.error("❌ Nincsenek event URL-ek!")
-        return
-    
-    # Pipeline futtatása
+    # Pipeline futtatása az archive-ból
     try:
         pipeline = ScrapePipeline()
-        pipeline.run(event_urls)
+        
+        pipeline.run_from_archive("https://www.hltv.org/events/archive?team=6667")
+        
         logger.info("\n✅ SIKERES FUTTATÁS!")
     except Exception as e:
         logger.error(f"\n❌ HIBA A PIPELINE FUTTATÁSAKOR: {e}", exc_info=True)
