@@ -21379,3 +21379,987 @@ Stacktrace:
 2025-10-12 15:46:19 | INFO     | pipeline.scrape_pipeline |   ✅ H2H mentve
 2025-10-12 15:46:19 | INFO     | pipeline.scrape_pipeline | [316/1342] Processing match: 2381313
 2025-10-12 15:46:25 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2381313
+2025-10-12 19:07:23 | INFO     | __main__ | ================================================================================
+2025-10-12 19:07:23 | INFO     | __main__ | 🚀 ML PIPELINE INDÍTÁSA
+2025-10-12 19:07:23 | INFO     | __main__ | ================================================================================
+2025-10-12 19:07:23 | INFO     | __main__ | 
+🎯 Target events: ['7441']
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 📁 ML data könyvtár létrehozva: ml_data
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | ================================================================================
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 🎯 ML SCRAPING PIPELINE INDÍTÁSA
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | ================================================================================
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+============================================================
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 🎯 1. TARGET MATCHES SCRAPING
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | ============================================================
+2025-10-12 19:07:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+📊 Event scraping: 7441
+2025-10-12 19:07:25 | INFO     | scrapers.match_scraper | 📊 Meccsek scrape-elése: event_id=7441
+2025-10-12 19:08:48 | INFO     | __main__ | ================================================================================
+2025-10-12 19:08:48 | INFO     | __main__ | 🚀 ML PIPELINE INDÍTÁSA
+2025-10-12 19:08:48 | INFO     | __main__ | ================================================================================
+2025-10-12 19:08:48 | INFO     | __main__ | 
+🎯 Target events: ['7441']
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | ================================================================================
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | 🎯 ML SCRAPING PIPELINE INDÍTÁSA
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | ================================================================================
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+============================================================
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | 🎯 1. TARGET MATCHES SCRAPING
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | ============================================================
+2025-10-12 19:08:48 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+📊 Event scraping: 7441
+2025-10-12 19:08:51 | INFO     | scrapers.match_scraper | 📊 Meccsek scrape-elése: event_id=7441
+2025-10-12 19:08:57 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:08:57 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:08:57 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:08:58 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:08:58 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:08:59 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:08:59 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:09:00 | INFO     | scrapers.match_scraper | ✅ 72 meccs scrape-elve
+2025-10-12 19:09:02 | INFO     | utils.csv_manager | Új CSV létrehozva: ml_data/target_matches.csv
+2025-10-12 19:09:02 | INFO     | utils.csv_manager | ✅ CSV mentve: ml_data/target_matches.csv (72 sor)
+2025-10-12 19:09:02 | INFO     | ml_pipeline.ml_scrape_pipeline | ✅ 72 target match mentve
+2025-10-12 19:09:02 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+============================================================
+2025-10-12 19:09:02 | INFO     | ml_pipeline.ml_scrape_pipeline | 🔍 2. MATCH DETAILS SCRAPING (H2H)
+2025-10-12 19:09:02 | INFO     | ml_pipeline.ml_scrape_pipeline | ============================================================
+2025-10-12 19:09:02 | INFO     | ml_pipeline.ml_scrape_pipeline | [1/72] 🔍 Scraping match: 2375428
+2025-10-12 19:09:02 | ERROR    | __main__ | 
+❌ HIBA A SCRAPING-BAN: H2HScraper.scrape_match_h2h() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_main.py", line 51, in main
+    pipeline.run(TARGET_EVENT_IDS)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_pipeline\ml_scrape_pipeline.py", line 77, in run
+    h2h_df = self._scrape_match_h2h(match_url, row['event_id'])
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_pipeline\ml_scrape_pipeline.py", line 134, in _scrape_match_h2h
+    return h2h_scraper.scrape_match_h2h(match_url, event_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: H2HScraper.scrape_match_h2h() takes 2 positional arguments but 3 were given
+2025-10-12 19:11:09 | INFO     | __main__ | ================================================================================
+2025-10-12 19:11:09 | INFO     | __main__ | 🚀 ML PIPELINE INDÍTÁSA
+2025-10-12 19:11:09 | INFO     | __main__ | ================================================================================
+2025-10-12 19:11:09 | INFO     | __main__ | 
+🎯 Target events: ['7441']
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | ================================================================================
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | 🎯 ML SCRAPING PIPELINE INDÍTÁSA
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | ================================================================================
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+============================================================
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | 🎯 1. TARGET MATCHES SCRAPING
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | ============================================================
+2025-10-12 19:11:09 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+📊 Event scraping: 7441
+2025-10-12 19:11:13 | INFO     | scrapers.match_scraper | 📊 Meccsek scrape-elése: event_id=7441
+2025-10-12 19:11:18 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:19 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:19 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:19 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:20 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:20 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:20 | WARNING  | scrapers.match_scraper |   ⚠️ Mérkőzés hiba: Message: no such element: Unable to locate element: {"method":"css selector","selector":".map-and-stars .map-text"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
+2025-10-12 19:11:21 | INFO     | scrapers.match_scraper | ✅ 72 meccs scrape-elve
+2025-10-12 19:11:23 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 72 sor (ml_data/target_matches.csv)
+2025-10-12 19:11:23 | INFO     | utils.csv_manager | Deduplikáció után: 144 sor
+2025-10-12 19:11:23 | INFO     | utils.csv_manager | ✅ CSV mentve: ml_data/target_matches.csv (144 sor)
+2025-10-12 19:11:23 | INFO     | ml_pipeline.ml_scrape_pipeline | ✅ 72 target match mentve
+2025-10-12 19:11:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+============================================================
+2025-10-12 19:11:23 | INFO     | ml_pipeline.ml_scrape_pipeline | 🔍 2. MATCH DETAILS SCRAPING (H2H)
+2025-10-12 19:11:23 | INFO     | ml_pipeline.ml_scrape_pipeline | ============================================================
+2025-10-12 19:11:23 | INFO     | ml_pipeline.ml_scrape_pipeline | [1/72] 🔍 Scraping match: 2375428
+2025-10-12 19:11:30 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375428
+2025-10-12 19:11:35 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Eternal Fire vs Natus Vincere
+2025-10-12 19:11:35 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 44 sor (data/teams.csv)
+2025-10-12 19:11:35 | INFO     | utils.csv_manager | Deduplikáció után: 44 sor
+2025-10-12 19:11:35 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (44 sor)
+2025-10-12 19:11:37 | INFO     | ml_pipeline.ml_scrape_pipeline | [2/72] 🔍 Scraping match: 2375427
+2025-10-12 19:11:43 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375427
+2025-10-12 19:11:48 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Natus Vincere vs G2
+2025-10-12 19:11:48 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 44 sor (data/teams.csv)
+2025-10-12 19:11:48 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:11:48 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:11:50 | INFO     | ml_pipeline.ml_scrape_pipeline | [3/72] 🔍 Scraping match: 2375426
+2025-10-12 19:11:56 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375426
+2025-10-12 19:12:00 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MIBR vs Eternal Fire
+2025-10-12 19:12:00 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:12:00 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:12:00 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:12:03 | INFO     | ml_pipeline.ml_scrape_pipeline | [4/72] 🔍 Scraping match: 2375425
+2025-10-12 19:12:19 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:12:27 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375425
+2025-10-12 19:12:34 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: G2 vs Liquid
+2025-10-12 19:12:34 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:12:34 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:12:34 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:12:36 | INFO     | ml_pipeline.ml_scrape_pipeline | [5/72] 🔍 Scraping match: 2375424
+2025-10-12 19:12:42 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375424
+2025-10-12 19:12:47 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Natus Vincere vs Spirit
+2025-10-12 19:12:47 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:12:47 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:12:47 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:12:49 | INFO     | ml_pipeline.ml_scrape_pipeline | [6/72] 🔍 Scraping match: 2375423
+2025-10-12 19:12:55 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375423
+2025-10-12 19:13:00 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Vitality vs Eternal Fire
+2025-10-12 19:13:00 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:13:00 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:13:00 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:13:02 | INFO     | ml_pipeline.ml_scrape_pipeline | [7/72] 🔍 Scraping match: 2375422
+2025-10-12 19:13:08 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375422
+2025-10-12 19:13:12 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: M80 vs MIBR
+2025-10-12 19:13:12 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:13:12 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:13:12 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:13:14 | INFO     | ml_pipeline.ml_scrape_pipeline | [8/72] 🔍 Scraping match: 2375421
+2025-10-12 19:13:19 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375421
+2025-10-12 19:13:24 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Liquid vs Complexity
+2025-10-12 19:13:24 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:13:24 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:13:24 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:13:26 | INFO     | ml_pipeline.ml_scrape_pipeline | [9/72] 🔍 Scraping match: 2375420
+2025-10-12 19:13:32 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375420
+2025-10-12 19:13:36 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Imperial vs Spirit
+2025-10-12 19:13:36 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:13:36 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:13:36 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:13:39 | INFO     | ml_pipeline.ml_scrape_pipeline | [10/72] 🔍 Scraping match: 2375418
+2025-10-12 19:13:55 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:14:14 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 2/3)
+2025-10-12 19:14:25 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375418
+2025-10-12 19:14:34 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Eternal Fire vs The MongolZ
+2025-10-12 19:14:34 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:14:34 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:14:34 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:14:36 | INFO     | ml_pipeline.ml_scrape_pipeline | [11/72] 🔍 Scraping match: 2375419
+2025-10-12 19:14:41 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375419
+2025-10-12 19:14:44 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MIBR vs HEROIC
+2025-10-12 19:14:44 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:14:44 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:14:44 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:14:46 | INFO     | ml_pipeline.ml_scrape_pipeline | [12/72] 🔍 Scraping match: 2375417
+2025-10-12 19:14:52 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375417
+2025-10-12 19:14:56 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FaZe vs Complexity
+2025-10-12 19:14:56 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:14:56 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:14:56 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:14:58 | INFO     | ml_pipeline.ml_scrape_pipeline | [13/72] 🔍 Scraping match: 2375416
+2025-10-12 19:15:04 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375416
+2025-10-12 19:15:09 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Spirit vs FURIA
+2025-10-12 19:15:09 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:15:09 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:15:09 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:15:11 | INFO     | ml_pipeline.ml_scrape_pipeline | [14/72] 🔍 Scraping match: 2375415
+2025-10-12 19:15:17 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375415
+2025-10-12 19:15:21 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: BIG vs The MongolZ
+2025-10-12 19:15:21 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:15:21 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:15:21 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:15:24 | INFO     | ml_pipeline.ml_scrape_pipeline | [15/72] 🔍 Scraping match: 2375414
+2025-10-12 19:15:29 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375414
+2025-10-12 19:15:33 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Virtus.pro vs HEROIC
+2025-10-12 19:15:33 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:15:33 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:15:33 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:15:35 | INFO     | ml_pipeline.ml_scrape_pipeline | [16/72] 🔍 Scraping match: 2375413
+2025-10-12 19:15:41 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375413
+2025-10-12 19:15:45 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Liquid vs Vitality
+2025-10-12 19:15:45 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:15:45 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:15:45 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:15:47 | INFO     | ml_pipeline.ml_scrape_pipeline | [17/72] 🔍 Scraping match: 2375412
+2025-10-12 19:15:51 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375412
+2025-10-12 19:15:54 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: RED Canids vs FURIA
+2025-10-12 19:15:54 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:15:54 | INFO     | utils.csv_manager | Deduplikáció után: 45 sor
+2025-10-12 19:15:54 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (45 sor)
+2025-10-12 19:15:57 | INFO     | ml_pipeline.ml_scrape_pipeline | [18/72] 🔍 Scraping match: 2375411
+2025-10-12 19:16:02 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375411
+2025-10-12 19:16:06 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MOUZ vs Complexity
+2025-10-12 19:16:06 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 45 sor (data/teams.csv)
+2025-10-12 19:16:06 | INFO     | utils.csv_manager | Deduplikáció után: 46 sor
+2025-10-12 19:16:06 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (46 sor)
+2025-10-12 19:16:09 | INFO     | ml_pipeline.ml_scrape_pipeline | [19/72] 🔍 Scraping match: 2375408
+2025-10-12 19:16:14 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375408
+2025-10-12 19:16:17 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Complexity vs Astralis
+2025-10-12 19:16:17 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 46 sor (data/teams.csv)
+2025-10-12 19:16:17 | INFO     | utils.csv_manager | Deduplikáció után: 46 sor
+2025-10-12 19:16:17 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (46 sor)
+2025-10-12 19:16:19 | INFO     | ml_pipeline.ml_scrape_pipeline | [20/72] 🔍 Scraping match: 2375409
+2025-10-12 19:16:23 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375409
+2025-10-12 19:16:26 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: ATOX vs FURIA
+2025-10-12 19:16:26 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 46 sor (data/teams.csv)
+2025-10-12 19:16:26 | INFO     | utils.csv_manager | Deduplikáció után: 46 sor
+2025-10-12 19:16:26 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (46 sor)
+2025-10-12 19:16:28 | INFO     | ml_pipeline.ml_scrape_pipeline | [21/72] 🔍 Scraping match: 2375407
+2025-10-12 19:16:32 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375407
+2025-10-12 19:16:35 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Falcons vs RED Canids
+2025-10-12 19:16:35 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 46 sor (data/teams.csv)
+2025-10-12 19:16:35 | INFO     | utils.csv_manager | Deduplikáció után: 47 sor
+2025-10-12 19:16:35 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (47 sor)
+2025-10-12 19:16:37 | INFO     | ml_pipeline.ml_scrape_pipeline | [22/72] 🔍 Scraping match: 2375406
+2025-10-12 19:16:43 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375406
+2025-10-12 19:16:46 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: fnatic vs MOUZ
+2025-10-12 19:16:46 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 47 sor (data/teams.csv)
+2025-10-12 19:16:46 | INFO     | utils.csv_manager | Deduplikáció után: 47 sor
+2025-10-12 19:16:46 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (47 sor)
+2025-10-12 19:16:48 | INFO     | ml_pipeline.ml_scrape_pipeline | [23/72] 🔍 Scraping match: 2375405
+2025-10-12 19:16:53 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375405
+2025-10-12 19:16:56 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FURIA vs Virtus.pro
+2025-10-12 19:16:56 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 47 sor (data/teams.csv)
+2025-10-12 19:16:56 | INFO     | utils.csv_manager | Deduplikáció után: 47 sor
+2025-10-12 19:16:56 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (47 sor)
+2025-10-12 19:16:58 | INFO     | ml_pipeline.ml_scrape_pipeline | [24/72] 🔍 Scraping match: 2375403
+2025-10-12 19:17:02 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375403
+2025-10-12 19:17:05 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: BIG vs Complexity
+2025-10-12 19:17:05 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 47 sor (data/teams.csv)
+2025-10-12 19:17:05 | INFO     | utils.csv_manager | Deduplikáció után: 47 sor
+2025-10-12 19:17:05 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (47 sor)
+2025-10-12 19:17:07 | INFO     | ml_pipeline.ml_scrape_pipeline | [25/72] 🔍 Scraping match: 2375402
+2025-10-12 19:17:11 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375402
+2025-10-12 19:17:14 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Rooster vs Astralis
+2025-10-12 19:17:14 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 47 sor (data/teams.csv)
+2025-10-12 19:17:14 | INFO     | utils.csv_manager | Deduplikáció után: 47 sor
+2025-10-12 19:17:14 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (47 sor)
+2025-10-12 19:17:16 | INFO     | ml_pipeline.ml_scrape_pipeline | [26/72] 🔍 Scraping match: 2375400
+2025-10-12 19:17:22 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375400
+2025-10-12 19:17:25 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Falcons vs Virtus.pro
+2025-10-12 19:17:25 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 47 sor (data/teams.csv)
+2025-10-12 19:17:25 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:17:25 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:17:27 | INFO     | ml_pipeline.ml_scrape_pipeline | [27/72] 🔍 Scraping match: 2375401
+2025-10-12 19:17:32 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375401
+2025-10-12 19:17:35 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FURIA vs RED Canids
+2025-10-12 19:17:35 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:17:35 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:17:35 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:17:37 | INFO     | ml_pipeline.ml_scrape_pipeline | [28/72] 🔍 Scraping match: 2375399
+2025-10-12 19:17:42 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375399
+2025-10-12 19:17:45 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Complexity vs MOUZ
+2025-10-12 19:17:45 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:17:45 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:17:45 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:17:47 | INFO     | ml_pipeline.ml_scrape_pipeline | [29/72] 🔍 Scraping match: 2375398
+2025-10-12 19:17:51 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375398
+2025-10-12 19:17:54 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: BIG vs fnatic
+2025-10-12 19:17:54 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:17:54 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:17:54 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:17:56 | INFO     | ml_pipeline.ml_scrape_pipeline | [30/72] 🔍 Scraping match: 2375394
+2025-10-12 19:18:00 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375394
+2025-10-12 19:18:03 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Vitality vs FURIA
+2025-10-12 19:18:03 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:18:03 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:18:03 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:18:06 | INFO     | ml_pipeline.ml_scrape_pipeline | [31/72] 🔍 Scraping match: 2375397
+2025-10-12 19:18:09 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375397
+2025-10-12 19:18:13 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Liquid vs Virtus.pro
+2025-10-12 19:18:13 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:18:13 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:18:13 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:18:15 | INFO     | ml_pipeline.ml_scrape_pipeline | [32/72] 🔍 Scraping match: 2375396
+2025-10-12 19:18:20 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375396
+2025-10-12 19:18:23 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: ATOX vs Falcons
+2025-10-12 19:18:23 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:18:23 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:18:23 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:18:25 | INFO     | ml_pipeline.ml_scrape_pipeline | [33/72] 🔍 Scraping match: 2375391
+2025-10-12 19:18:31 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375391
+2025-10-12 19:18:35 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: fnatic vs M80
+2025-10-12 19:18:35 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:18:35 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:18:35 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:18:37 | INFO     | ml_pipeline.ml_scrape_pipeline | [34/72] 🔍 Scraping match: 2375392
+2025-10-12 19:18:53 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:19:02 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375392
+2025-10-12 19:19:07 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MOUZ vs Imperial
+2025-10-12 19:19:07 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:19:07 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:19:07 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:19:09 | INFO     | ml_pipeline.ml_scrape_pipeline | [35/72] 🔍 Scraping match: 2375393
+2025-10-12 19:19:13 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375393
+2025-10-12 19:19:16 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Astralis vs Complexity
+2025-10-12 19:19:16 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:19:16 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:19:16 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:19:18 | INFO     | ml_pipeline.ml_scrape_pipeline | [36/72] 🔍 Scraping match: 2375364
+2025-10-12 19:19:24 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375364
+2025-10-12 19:19:27 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FURIA vs Falcons
+2025-10-12 19:19:27 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:19:27 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:19:27 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:19:30 | INFO     | ml_pipeline.ml_scrape_pipeline | [37/72] 🔍 Scraping match: 2375365
+2025-10-12 19:19:39 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375365
+2025-10-12 19:19:42 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Vitality vs ATOX
+2025-10-12 19:19:42 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:19:42 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:19:42 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:19:44 | INFO     | ml_pipeline.ml_scrape_pipeline | [38/72] 🔍 Scraping match: 2375363
+2025-10-12 19:19:48 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375363
+2025-10-12 19:19:51 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: RED Canids vs Virtus.pro
+2025-10-12 19:19:51 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:19:51 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:19:51 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:19:53 | INFO     | ml_pipeline.ml_scrape_pipeline | [39/72] 🔍 Scraping match: 2375361
+2025-10-12 19:19:59 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375361
+2025-10-12 19:20:02 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Complexity vs M80
+2025-10-12 19:20:02 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:20:02 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:20:02 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:20:04 | INFO     | ml_pipeline.ml_scrape_pipeline | [40/72] 🔍 Scraping match: 2375362
+2025-10-12 19:20:10 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375362
+2025-10-12 19:20:13 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Liquid vs ENCE
+2025-10-12 19:20:13 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:20:13 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:20:13 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:20:15 | INFO     | ml_pipeline.ml_scrape_pipeline | [41/72] 🔍 Scraping match: 2375359
+2025-10-12 19:20:21 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375359
+2025-10-12 19:20:24 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MOUZ vs Rooster
+2025-10-12 19:20:24 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:20:24 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:20:24 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:20:26 | INFO     | ml_pipeline.ml_scrape_pipeline | [42/72] 🔍 Scraping match: 2375358
+2025-10-12 19:20:32 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375358
+2025-10-12 19:20:35 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: fnatic vs Astralis
+2025-10-12 19:20:35 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:20:35 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:20:35 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:20:37 | INFO     | ml_pipeline.ml_scrape_pipeline | [43/72] 🔍 Scraping match: 2375389
+2025-10-12 19:20:53 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:21:02 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375389
+2025-10-12 19:21:07 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MIBR vs G2
+2025-10-12 19:21:07 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:21:07 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:21:07 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:21:09 | INFO     | ml_pipeline.ml_scrape_pipeline | [44/72] 🔍 Scraping match: 2375387
+2025-10-12 19:21:13 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375387
+2025-10-12 19:21:16 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Sangal vs HEROIC
+2025-10-12 19:21:16 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:21:16 | INFO     | utils.csv_manager | Deduplikáció után: 48 sor
+2025-10-12 19:21:16 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (48 sor)
+2025-10-12 19:21:18 | INFO     | ml_pipeline.ml_scrape_pipeline | [45/72] 🔍 Scraping match: 2375388
+2025-10-12 19:21:24 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375388
+2025-10-12 19:21:27 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: The MongolZ vs 3DMAX
+2025-10-12 19:21:27 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 48 sor (data/teams.csv)
+2025-10-12 19:21:27 | INFO     | utils.csv_manager | Deduplikáció után: 49 sor
+2025-10-12 19:21:27 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (49 sor)
+2025-10-12 19:21:29 | INFO     | ml_pipeline.ml_scrape_pipeline | [46/72] 🔍 Scraping match: 2375386
+2025-10-12 19:21:46 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:21:54 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375386
+2025-10-12 19:21:59 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Eternal Fire vs Natus Vincere
+2025-10-12 19:21:59 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 49 sor (data/teams.csv)
+2025-10-12 19:21:59 | INFO     | utils.csv_manager | Deduplikáció után: 49 sor
+2025-10-12 19:21:59 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (49 sor)
+2025-10-12 19:22:01 | INFO     | ml_pipeline.ml_scrape_pipeline | [47/72] 🔍 Scraping match: 2375382
+2025-10-12 19:22:07 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375382
+2025-10-12 19:22:10 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: HEROIC vs Ninjas in Pyjamas
+2025-10-12 19:22:10 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 49 sor (data/teams.csv)
+2025-10-12 19:22:10 | INFO     | utils.csv_manager | Deduplikáció után: 49 sor
+2025-10-12 19:22:10 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (49 sor)
+2025-10-12 19:22:13 | INFO     | ml_pipeline.ml_scrape_pipeline | [48/72] 🔍 Scraping match: 2375385
+2025-10-12 19:22:17 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375385
+2025-10-12 19:22:20 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Wildcard vs 3DMAX
+2025-10-12 19:22:20 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 49 sor (data/teams.csv)
+2025-10-12 19:22:20 | INFO     | utils.csv_manager | Deduplikáció után: 49 sor
+2025-10-12 19:22:20 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (49 sor)
+2025-10-12 19:22:22 | INFO     | ml_pipeline.ml_scrape_pipeline | [49/72] 🔍 Scraping match: 2375384
+2025-10-12 19:22:26 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375384
+2025-10-12 19:22:29 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Sangal vs FlyQuest
+2025-10-12 19:22:29 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 49 sor (data/teams.csv)
+2025-10-12 19:22:29 | INFO     | utils.csv_manager | Deduplikáció után: 49 sor
+2025-10-12 19:22:29 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (49 sor)
+2025-10-12 19:22:31 | INFO     | ml_pipeline.ml_scrape_pipeline | [50/72] 🔍 Scraping match: 2375383
+2025-10-12 19:22:36 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375383
+2025-10-12 19:22:39 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: 9z vs The MongolZ
+2025-10-12 19:22:39 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 49 sor (data/teams.csv)
+2025-10-12 19:22:39 | INFO     | utils.csv_manager | Deduplikáció után: 49 sor
+2025-10-12 19:22:39 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (49 sor)
+2025-10-12 19:22:41 | INFO     | ml_pipeline.ml_scrape_pipeline | [51/72] 🔍 Scraping match: 2375381
+2025-10-12 19:22:47 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375381
+2025-10-12 19:22:50 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: 3DMAX vs Spirit
+2025-10-12 19:22:50 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 49 sor (data/teams.csv)
+2025-10-12 19:22:50 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:22:50 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:22:52 | INFO     | ml_pipeline.ml_scrape_pipeline | [52/72] 🔍 Scraping match: 2375379
+2025-10-12 19:23:08 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:23:16 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375379
+2025-10-12 19:23:20 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Sangal vs FaZe
+2025-10-12 19:23:20 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:23:22 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:23:22 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:23:24 | INFO     | ml_pipeline.ml_scrape_pipeline | [53/72] 🔍 Scraping match: 2375377
+2025-10-12 19:23:29 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375377
+2025-10-12 19:23:32 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: The MongolZ vs Spirit
+2025-10-12 19:23:32 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:23:32 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:23:32 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:23:34 | INFO     | ml_pipeline.ml_scrape_pipeline | [54/72] 🔍 Scraping match: 2375376
+2025-10-12 19:23:39 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375376
+2025-10-12 19:23:42 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: 9z vs 3DMAX
+2025-10-12 19:23:42 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:23:42 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:23:42 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:23:44 | INFO     | ml_pipeline.ml_scrape_pipeline | [55/72] 🔍 Scraping match: 2375374
+2025-10-12 19:24:00 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:24:09 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375374
+2025-10-12 19:24:12 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FaZe vs Ninjas in Pyjamas
+2025-10-12 19:24:12 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:24:14 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:24:14 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:24:16 | INFO     | ml_pipeline.ml_scrape_pipeline | [56/72] 🔍 Scraping match: 2375375
+2025-10-12 19:24:22 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375375
+2025-10-12 19:24:25 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Sangal vs HEROIC
+2025-10-12 19:24:25 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:24:25 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:24:25 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:24:27 | INFO     | ml_pipeline.ml_scrape_pipeline | [57/72] 🔍 Scraping match: 2375373
+2025-10-12 19:24:32 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375373
+2025-10-12 19:24:36 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: G2 vs 3DMAX
+2025-10-12 19:24:36 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:24:36 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:24:36 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:24:38 | INFO     | ml_pipeline.ml_scrape_pipeline | [58/72] 🔍 Scraping match: 2375372
+2025-10-12 19:24:43 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375372
+2025-10-12 19:24:46 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: 9z vs Wildcard
+2025-10-12 19:24:46 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:24:46 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:24:46 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:24:48 | INFO     | ml_pipeline.ml_scrape_pipeline | [59/72] 🔍 Scraping match: 2375370
+2025-10-12 19:24:54 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375370
+2025-10-12 19:24:57 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MIBR vs Spirit
+2025-10-12 19:24:57 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:24:57 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:24:57 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:25:00 | INFO     | ml_pipeline.ml_scrape_pipeline | [60/72] 🔍 Scraping match: 2375371
+2025-10-12 19:25:04 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375371
+2025-10-12 19:25:07 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: KOI vs The MongolZ
+2025-10-12 19:25:07 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:25:07 | INFO     | utils.csv_manager | Deduplikáció után: 50 sor
+2025-10-12 19:25:07 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (50 sor)
+2025-10-12 19:25:09 | INFO     | ml_pipeline.ml_scrape_pipeline | [61/72] 🔍 Scraping match: 2375369
+2025-10-12 19:25:25 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:25:32 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375369
+2025-10-12 19:25:35 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Lynn Vision vs HEROIC
+2025-10-12 19:25:35 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 50 sor (data/teams.csv)
+2025-10-12 19:25:35 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:25:35 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:25:37 | INFO     | ml_pipeline.ml_scrape_pipeline | [62/72] 🔍 Scraping match: 2375367
+2025-10-12 19:25:43 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375367
+2025-10-12 19:25:48 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Natus Vincere vs Ninjas in Pyjamas
+2025-10-12 19:25:48 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:25:48 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:25:48 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:25:50 | INFO     | ml_pipeline.ml_scrape_pipeline | [63/72] 🔍 Scraping match: 2375366
+2025-10-12 19:25:55 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375366
+2025-10-12 19:25:58 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FlyQuest vs FaZe
+2025-10-12 19:25:58 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:25:58 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:25:58 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:26:00 | INFO     | ml_pipeline.ml_scrape_pipeline | [64/72] 🔍 Scraping match: 2375368
+2025-10-12 19:26:04 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375368
+2025-10-12 19:26:07 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Eternal Fire vs Sangal
+2025-10-12 19:26:07 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:26:07 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:26:07 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:26:10 | INFO     | ml_pipeline.ml_scrape_pipeline | [65/72] 🔍 Scraping match: 2375356
+2025-10-12 19:26:15 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375356
+2025-10-12 19:26:19 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Spirit vs Wildcard
+2025-10-12 19:26:19 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:26:19 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:26:19 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:26:21 | INFO     | ml_pipeline.ml_scrape_pipeline | [66/72] 🔍 Scraping match: 2375357
+2025-10-12 19:26:25 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375357
+2025-10-12 19:26:28 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: The MongolZ vs 3DMAX
+2025-10-12 19:26:28 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:26:28 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:26:28 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:26:30 | INFO     | ml_pipeline.ml_scrape_pipeline | [67/72] 🔍 Scraping match: 2375355
+2025-10-12 19:26:36 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375355
+2025-10-12 19:26:39 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: KOI vs G2
+2025-10-12 19:26:39 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:26:39 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:26:39 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:26:41 | INFO     | ml_pipeline.ml_scrape_pipeline | [68/72] 🔍 Scraping match: 2375354
+2025-10-12 19:26:47 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375354
+2025-10-12 19:26:50 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: MIBR vs 9z
+2025-10-12 19:26:50 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:26:50 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:26:50 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:26:52 | INFO     | ml_pipeline.ml_scrape_pipeline | [69/72] 🔍 Scraping match: 2375353
+2025-10-12 19:27:08 | WARNING  | scrapers.base_scraper | ⚠️ Timeout (próbálkozás 1/3)
+2025-10-12 19:27:17 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375353
+2025-10-12 19:27:20 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: HEROIC vs Ninjas in Pyjamas
+2025-10-12 19:27:20 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:27:22 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:27:22 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:27:24 | INFO     | ml_pipeline.ml_scrape_pipeline | [70/72] 🔍 Scraping match: 2375352
+2025-10-12 19:27:30 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375352
+2025-10-12 19:27:34 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FaZe vs Sangal
+2025-10-12 19:27:34 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:27:34 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:27:34 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:27:36 | INFO     | ml_pipeline.ml_scrape_pipeline | [71/72] 🔍 Scraping match: 2375351
+2025-10-12 19:27:41 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375351
+2025-10-12 19:27:45 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: Lynn Vision vs Natus Vincere
+2025-10-12 19:27:45 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:27:45 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:27:45 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:27:47 | INFO     | ml_pipeline.ml_scrape_pipeline | [72/72] 🔍 Scraping match: 2375350
+2025-10-12 19:27:53 | INFO     | scrapers.h2h_scraper | 🔍 H2H scrape: match_id=2375350
+2025-10-12 19:27:56 | INFO     | scrapers.h2h_scraper | ✅ H2H scrape-elve: FlyQuest vs Eternal Fire
+2025-10-12 19:27:56 | INFO     | utils.csv_manager | Meglévő adatok betöltve: 51 sor (data/teams.csv)
+2025-10-12 19:27:56 | INFO     | utils.csv_manager | Deduplikáció után: 51 sor
+2025-10-12 19:27:56 | INFO     | utils.csv_manager | ✅ CSV mentve: data/teams.csv (51 sor)
+2025-10-12 19:27:58 | INFO     | utils.csv_manager | Új CSV létrehozva: ml_data/match_details.csv
+2025-10-12 19:27:58 | INFO     | utils.csv_manager | ✅ CSV mentve: ml_data/match_details.csv (72 sor)
+2025-10-12 19:27:58 | INFO     | ml_pipeline.ml_scrape_pipeline | ✅ 72 match detail mentve
+2025-10-12 19:27:58 | INFO     | ml_pipeline.ml_scrape_pipeline | 
+============================================================
+2025-10-12 19:27:58 | INFO     | ml_pipeline.ml_scrape_pipeline | 📈 3. TEAM HISTORY SCRAPING
+2025-10-12 19:27:58 | INFO     | ml_pipeline.ml_scrape_pipeline | ============================================================
+2025-10-12 19:27:58 | INFO     | ml_pipeline.ml_scrape_pipeline | 📋 32 unique csapat található
+2025-10-12 19:27:58 | INFO     | ml_pipeline.ml_scrape_pipeline | [1/32] 📈 Scraping team: 10333
+2025-10-12 19:28:11 | INFO     | ml_pipeline.ml_scrape_pipeline | [2/32] 📈 Scraping team: 11251
+2025-10-12 19:28:25 | INFO     | ml_pipeline.ml_scrape_pipeline | [3/32] 📈 Scraping team: 11283
+2025-10-12 19:28:32 | ERROR    | __main__ | 
+❌ HIBA A SCRAPING-BAN: Message: no such element: Unable to locate element: {"method":"css selector","selector":".standard-headline"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+Traceback (most recent call last):
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_main.py", line 51, in main
+    pipeline.run(TARGET_EVENT_IDS)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_pipeline\ml_scrape_pipeline.py", line 112, in run
+    history_df = self._scrape_team_matches(team_id)
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_pipeline\ml_scrape_pipeline.py", line 240, in _scrape_team_matches
+    return scraper.scrape(team_id, max_matches)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adam\..Data\TSDP\TipForge\esport\ml_pipeline\ml_scrape_pipeline.py", line 178, in scrape
+    headline = sublist.find_element(By.CLASS_NAME, "standard-headline").text.strip()
+               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adam\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 602, in find_element
+    return self._execute(Command.FIND_CHILD_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adam\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 573, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Adam\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Adam\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".standard-headline"}
+  (Session info: chrome=140.0.7339.210); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff620541eb5+80197]
+	GetHandleVerifier [0x0x7ff620541f10+80288]
+	(No symbol) [0x0x7ff6202c02fa]
+	(No symbol) [0x0x7ff620317cd7]
+	(No symbol) [0x0x7ff620317f9c]
+	(No symbol) [0x0x7ff62030a59c]
+	(No symbol) [0x0x7ff6203403bf]
+	(No symbol) [0x0x7ff62030a456]
+	(No symbol) [0x0x7ff620340590]
+	(No symbol) [0x0x7ff6203687fb]
+	(No symbol) [0x0x7ff620340153]
+	(No symbol) [0x0x7ff620308b02]
+	(No symbol) [0x0x7ff6203098d3]
+	GetHandleVerifier [0x0x7ff6207fe83d+2949837]
+	GetHandleVerifier [0x0x7ff6207f8c6a+2926330]
+	GetHandleVerifier [0x0x7ff6208186c7+3055959]
+	GetHandleVerifier [0x0x7ff62055cfee+191102]
+	GetHandleVerifier [0x0x7ff6205650af+224063]
+	GetHandleVerifier [0x0x7ff62054af64+117236]
+	GetHandleVerifier [0x0x7ff62054b119+117673]
+	GetHandleVerifier [0x0x7ff6205310a8+11064]
+	BaseThreadInitThunk [0x0x7ffc7d1f7374+20]
+	RtlUserThreadStart [0x0x7ffc7ed5cc91+33]
+
