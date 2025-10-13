@@ -60,7 +60,7 @@ class BaseScraper:
             except TimeoutException:
                 logger.warning(f"⚠️ Timeout (próbálkozás {attempt}/{RETRY_ATTEMPTS})")
                 if attempt < RETRY_ATTEMPTS:
-                    time.sleep(3 * attempt)  # Exponenciális backoff
+                    time.sleep(4.5 * attempt)  # Exponenciális backoff
                 else:
                     logger.error(f"❌ Végleg timeout: {scrape_func.__name__}")
                     return None
