@@ -179,7 +179,7 @@ class MLInputGenerator:
             
             logger.info(f"\n📈 Scraping history: {team_name} (ID: {team_id})")
             
-            history_df = self._scrape_team_matches(team_id, max_matches=10)
+            history_df = self._scrape_team_matches(team_id, max_matches=100)
             
             if history_df.empty:
                 logger.warning(f"⚠️ Nincs history adat: {team_name}")
@@ -192,60 +192,66 @@ class MLInputGenerator:
             logger.info(f"\n📋 Utolsó 3 meccs:")
             print(history_df[['match_date', 'opponent_name', 'result', 'score_for', 'score_against']].head(3))
     
-    def _scrape_team_matches(self, team_id: str, max_matches: int = 10) -> pd.DataFrame:
+    def _scrape_team_matches(self, team_id: str, max_matches: int = 100) -> pd.DataFrame:
         """Team match history scraping (helper)."""
-        
+
         class TeamHistoryScraper(BaseScraper):
             def scrape(self, team_id: str, max_matches: int):
                 url = f"https://www.hltv.org/results?team={team_id}"
                 self._init_driver()
                 self.driver.get(url)
-                
-                wait = WebDriverWait(self.driver, 15)
+
+                wait = WebDriverWait(self.driver, 20)
                 wait.until(EC.presence_of_element_located((By.CLASS_NAME, "results-holder")))
+
                 self._random_delay()
-                
+
                 matches = []
-                results_holder = self.driver.find_element(By.CLASS_NAME, "results-holder")
-                sublists = results_holder.find_elements(By.CLASS_NAME, "results-sublist")
-                
-                for sublist in sublists:
+                all_sublists = self.driver.find_elements(By.CLASS_NAME, "results-sublist")
+                print(f"🔍 Összesen {len(all_sublists)} results-sublist betöltve a DOM-ban.")
+
+                for sublist in all_sublists:
                     if len(matches) >= max_matches:
                         break
-                    
-                    headline = sublist.find_element(By.CLASS_NAME, "standard-headline").text.strip()
-                    match_date = headline.replace("Results for", "").strip()
-                    
+
+                    # 🧠 VÁRJUK MEG, hogy a headline is betöltődjön
+                    try:
+                        wait.until(EC.presence_of_element_located((By.CLASS_NAME, "standard-headline")))
+                        headline = sublist.find_element(By.CLASS_NAME, "standard-headline").text.strip()
+                        match_date = headline.replace("Results for", "").strip()
+                    except:
+                        match_date = None
+
                     match_blocks = sublist.find_elements(By.CLASS_NAME, "result-con")
                     for match in match_blocks:
                         if len(matches) >= max_matches:
                             break
-                        
+
                         try:
                             a_tag = match.find_element(By.TAG_NAME, "a")
                             match_url = a_tag.get_attribute("href")
                             match_id = match_url.split('/')[4]
-                            
+
                             table = a_tag.find_element(By.TAG_NAME, "table")
                             tds = table.find_elements(By.TAG_NAME, "td")
-                            
+
                             team1_name = tds[0].find_element(By.CLASS_NAME, "team").text.strip()
                             team2_name = tds[2].find_element(By.CLASS_NAME, "team").text.strip()
-                            
+
                             score_spans = tds[1].find_elements(By.TAG_NAME, "span")
                             score1 = int(score_spans[0].text.strip())
                             score2 = int(score_spans[1].text.strip())
-                            
+
                             team1_html = tds[0].get_attribute("innerHTML")
                             won = "team-won" in team1_html
-                            
+
                             try:
                                 map_text = a_tag.find_element(By.CSS_SELECTOR, ".map-text").text.strip()
                             except:
                                 map_text = "bo1"
-                            
+
                             opponent_name = team2_name if team1_name else team1_name
-                            
+
                             matches.append({
                                 "team_id": team_id,
                                 "match_id": match_id,
@@ -257,15 +263,17 @@ class MLInputGenerator:
                                 "map_type": map_text,
                                 "link": match_url
                             })
-                            
+
                         except Exception as e:
+                            print(f"Hiba egy meccs feldolgozásánál: {e}")
                             continue
-                
+
                 self.close()
                 return pd.DataFrame(matches)
-        
+
         scraper = TeamHistoryScraper(headless=False)
         return scraper.scrape(team_id, max_matches)
+
     
     def _step6_scrape_historical_h2h(self):
         """6️⃣ Historical matches H2H scraping (simplified - skip for speed)."""
@@ -421,7 +429,7 @@ def main():
     # KONFIGURÁCIÓ
     # ========================================
     
-    TEST_EVENT_ID = "7441"  # ESL Pro League Season 20
+    TEST_EVENT_ID = "8292"  # ESL Pro League Season 20
     TEST_MATCH_INDEX = 0    # Első meccs
     
     # ========================================
