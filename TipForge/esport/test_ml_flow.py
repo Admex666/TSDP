@@ -276,18 +276,86 @@ class MLInputGenerator:
 
     
     def _step6_scrape_historical_h2h(self):
-        """6️⃣ Historical matches H2H scraping (simplified - skip for speed)."""
+        """6️⃣ Historical matches H2H scraping (last N)."""
         logger.info("\n" + "="*60)
         logger.info("6️⃣ HISTORICAL H2H SCRAPING")
         logger.info("="*60)
-        logger.info("⚠️ SKIP (túl lassú lenne minden historical match H2H-ját scrape-elni)")
-        logger.info("💡 Production-ban: last 3 historical match H2H-ját scrape-eld")
         
-        # Mock data - production-ban itt scrape-elnéd a historical match-ek H2H-ját
-        self.historical_h2h = {
-            'home': {'avg_rating_last3': 1.15, 'avg_adr_last3': 75.2},
-            'away': {'avg_rating_last3': 1.08, 'avg_adr_last3': 72.8}
-        }
+        N_MATCHES = 3  # Last N meccs H2H-ját scrape-eljük
+        
+        for side in ['home', 'away']:
+            team_name = self.teams[side]['team_name']
+            logger.info(f"\n🔍 {team_name} last {N_MATCHES} matches H2H scraping:")
+            
+            history = self.team_histories.get(side, pd.DataFrame())
+            
+            if history.empty:
+                logger.warning(f"  ⚠️ Nincs history, skip")
+                self.historical_h2h[side] = {
+                    'avg_rating': None,
+                    'avg_adr': None,
+                    'avg_swing': None
+                }
+                continue
+            
+            # Last N match URL-ek
+            last_n_matches = history.head(N_MATCHES)
+            
+            ratings = []
+            adrs = []
+            swings = []
+            
+            for idx, match in last_n_matches.iterrows():
+                match_url = match['link']
+                logger.info(f"  [{idx+1}/{N_MATCHES}] Scraping: {match['match_date']} vs {match['opponent_name']}")
+                
+                try:
+                    # H2H scraping
+                    h2h_scraper = H2HScraper(headless=False)
+                    h2h_df = h2h_scraper.scrape_match_h2h(match_url)
+                    
+                    if h2h_df.empty:
+                        logger.warning(f"    ⚠️ Empty H2H")
+                        continue
+                    
+                    h2h_data = h2h_df.iloc[0]
+                    
+                    # Melyik csapat a mi csapatunk?
+                    # A history-ban team1 az érintett csapat (mivel team_id alapján szűrtük)
+                    # Ezért home_team a mi csapatunk
+                    team_rating = h2h_data.get('home_team_avg_rating')
+                    team_adr = h2h_data.get('home_team_avg_ADR')
+                    team_swing = h2h_data.get('home_team_avg_Swing')
+                    
+                    if pd.notna(team_rating):
+                        ratings.append(team_rating)
+                    if pd.notna(team_adr):
+                        adrs.append(team_adr)
+                    if pd.notna(team_swing):
+                        swings.append(team_swing)
+                    
+                    logger.info(f"    ✅ Rating: {team_rating}, ADR: {team_adr}, Swing: {team_swing}")
+                    
+                except Exception as e:
+                    logger.warning(f"    ⚠️ H2H scraping hiba: {e}")
+                    continue
+            
+            # Átlagok számítása
+            avg_rating = np.mean(ratings) if ratings else None
+            avg_adr = np.mean(adrs) if adrs else None
+            avg_swing = np.mean(swings) if swings else None
+            
+            self.historical_h2h[side] = {
+                'avg_rating': avg_rating,
+                'avg_adr': avg_adr,
+                'avg_swing': avg_swing,
+                'n_matches_scraped': len(ratings)
+            }
+        
+        logger.info(f"\n  📊 {team_name} historical H2H stats (last {len(ratings)}/{N_MATCHES} matches):")
+        logger.info(f"    Avg rating:  {avg_rating:.4f}" if avg_rating else "    Avg rating:  N/A")
+        logger.info(f"    Avg ADR:     {avg_adr:.2f}" if avg_adr else "    Avg ADR:     N/A")
+        logger.info(f"    Avg Swing:   {avg_swing:.2f}" if avg_swing else "    Avg Swing:   N/A")
     
     def _step7_compute_rolling_features(self):
         """7️⃣ Feature engineering: rolling features."""
@@ -403,6 +471,32 @@ class MLInputGenerator:
         # Player stats
         self.ml_input_row['avg_rating_top3_team1'] = self.match_h2h['home_team_avg_rating']  # Simplified (not top3)
         
+        # Historical H2H features (last N matches)
+        if 'home' in self.historical_h2h:
+            self.ml_input_row['home_hist_avg_rating'] = self.historical_h2h['home'].get('avg_rating')
+            self.ml_input_row['home_hist_avg_adr'] = self.historical_h2h['home'].get('avg_adr')
+            self.ml_input_row['home_hist_avg_swing'] = self.historical_h2h['home'].get('avg_swing')
+
+        if 'away' in self.historical_h2h:
+            self.ml_input_row['away_hist_avg_rating'] = self.historical_h2h['away'].get('avg_rating')
+            self.ml_input_row['away_hist_avg_adr'] = self.historical_h2h['away'].get('avg_adr')
+            self.ml_input_row['away_hist_avg_swing'] = self.historical_h2h['away'].get('avg_swing')
+
+        # Historical difference features
+        if (self.ml_input_row.get('home_hist_avg_rating') and 
+            self.ml_input_row.get('away_hist_avg_rating')):
+            self.ml_input_row['hist_diff_rating'] = (
+                self.ml_input_row['home_hist_avg_rating'] - 
+                self.ml_input_row['away_hist_avg_rating']
+            )
+
+        if (self.ml_input_row.get('home_hist_avg_adr') and 
+            self.ml_input_row.get('away_hist_avg_adr')):
+            self.ml_input_row['hist_diff_adr'] = (
+                self.ml_input_row['home_hist_avg_adr'] - 
+                self.ml_input_row['away_hist_avg_adr']
+            )
+
         # Label (score)
         self.ml_input_row['score_home'] = self.selected_match['score_home']
         self.ml_input_row['score_away'] = self.selected_match['score_away']
@@ -449,7 +543,9 @@ def main():
         ml_df = pd.DataFrame([ml_input_row])
         
         logger.info("\n📊 DataFrame nézet:")
-        print("\n" + ml_df.to_string(index=False))
+        print("")
+        for col in ml_df.columns:
+            print(f"{col:30s} = {ml_df[col].iloc[0]}")
         
         # Export (opcionális)
         # ml_df.to_csv('test_ml_input_row.csv', index=False)
