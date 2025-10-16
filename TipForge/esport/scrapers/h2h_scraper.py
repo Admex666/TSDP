@@ -78,6 +78,80 @@ class H2HScraper(BaseScraper):
 
                 logger.debug(f"  Team IDs: {team1} = {team1_id}, {team2} = {team2_id}")
 
+                mapholders = self.driver.find_elements(By.CLASS_NAME, "mapholder")
+
+                map_data = []
+                for mapholder in mapholders:
+                    try:
+                        mapname = mapholder.find_element(By.CLASS_NAME, "mapname").text.strip()
+                        
+                        results_div = mapholder.find_element(By.XPATH, ".//*[contains(@class, 'results ')]")
+                        results_class = results_div.get_attribute("class")
+                        played = 'played' in results_class
+
+                        if not played:
+                            map_data.append({
+                                "map_name": mapname,
+                                "played": played,
+                                "home_win": None,
+                                "home_pick": None,
+                                "home_score": -1,
+                                "away_score": -1
+                            })
+                            continue
+
+                        # Bal és jobb oldal div-ek dinamikus classokkal
+                        left_div = mapholder.find_element(By.XPATH, ".//*[contains(@class, 'results-left')]")
+                        right_div = mapholder.find_element(By.XPATH, ".//*[contains(@class, 'results-right')]")
+
+                        # class attribútum alapján állapotok (won / lost / pick)
+                        left_classes = left_div.get_attribute("class")
+
+                        left_win = "win" if "won" in left_classes else "loss" if "lost" in left_classes else "unknown"
+
+                        left_pick = "pick" in left_classes
+
+                        # score kiolvasás
+                        left_score = left_div.find_element(By.CLASS_NAME, "results-team-score").text
+                        right_score = right_div.find_element(By.CLASS_NAME, "results-team-score").text
+
+                        map_data.append({
+                            "map_name": mapname,
+                            "played": played,
+                            "home_win": left_win,
+                            "home_pick": left_pick,
+                            "home_score": left_score,
+                            "away_score": right_score
+                        })
+
+                    except Exception as e:
+                        print(f"⚠️ Hiba egy map feldolgozásánál: {e}")
+                        continue
+
+                import json
+
+                # --- Map-level feature aggregálás ---
+                if map_data:
+                    maps_played = sum(1 for m in map_data if m["played"])
+                    maps_won = sum(1 for m in map_data if m["home_win"] == "win")
+                    maps_lost = sum(1 for m in map_data if m["home_win"] == "loss")
+                    maps_picked_by_home = sum(1 for m in map_data if m["home_pick"])
+                    avg_score_diff = np.mean([
+                        int(m["home_score"]) - int(m["away_score"])
+                        for m in map_data if m["played"]
+                    ]) if maps_played > 0 else None
+
+                    # Map winrate (arány)
+                    map_winrate = maps_won / maps_played if maps_played > 0 else None
+
+                    # JSON formában is tároljuk, ha később map-szinten akarjuk kinyerni
+                    map_json = json.dumps(map_data, ensure_ascii=False)
+
+                else:
+                    maps_played = maps_won = maps_lost = maps_picked_by_home = 0
+                    avg_score_diff = map_winrate = None
+                    map_json = "[]"
+
                 stats = container.find_elements(By.CSS_SELECTOR, ".flexbox-column.grow .bold")
                 wins_team1 = int(stats[0].text.strip())
                 overtimes = int(stats[1].text.strip())
@@ -144,6 +218,13 @@ class H2HScraper(BaseScraper):
                     "away_team_std_ADR": round(np.std(away_adrs), 2) if away_adrs else None,
                     "away_team_avg_Swing": round(np.mean(away_swings), 2) if away_swings else None,
                     "away_team_std_Swing": round(np.std(away_swings), 2) if away_swings else None,
+                    "maps_played": maps_played,
+                    "home_maps_won": maps_won,
+                    "away_maps_won": maps_lost,
+                    "home_maps_picked": maps_picked_by_home,
+                    "map_avg_score_diff": avg_score_diff,
+                    "home_map_winrate": map_winrate,
+                    "maps_json": map_json,
                     "source_url": match_url
                 })
                 
