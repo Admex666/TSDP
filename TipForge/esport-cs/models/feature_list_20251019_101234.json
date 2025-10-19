@@ -1,0 +1,21 @@
+{
+  "features": [
+    "rank_diff",
+    "home_strong_opp_point_diff",
+    "home_std_rank_diff",
+    "H2H_winrate_team1",
+    "away_avg_rating_std",
+    "away_std_point_diff",
+    "away_avg_h2h_winrate",
+    "home_avg_point_diff",
+    "away_strong_opp_rank_diff",
+    "home_std_point_diff",
+    "home_avg_adr",
+    "home_avg_adr_std"
+  ],
+  "n_features": 12,
+  "model_type": "Logistic Regression",
+  "training_date": "20251019_101234",
+  "train_size": 96,
+  "test_size": 24
+}

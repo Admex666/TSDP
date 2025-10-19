@@ -1,0 +1,60 @@
+
+================================================================================
+CS:GO BETTING MODEL - METADATA
+================================================================================
+
+Mentés dátuma: 2025-10-19 10:12:34
+
+MODEL INFORMÁCIÓK:
+- Típus: Logistic Regression (Calibrated)
+- Feature-ök száma: 12
+- Training set méret: 96 meccs
+- Test set méret: 24 meccs
+- Training period: 2025-03-07 - 2025-08-02
+- Test period: 2025-08-02 - 2025-09-02
+
+TELJESÍTMÉNY (Test set):
+- Accuracy: 0.5833
+- ROC-AUC: 0.6471
+- Log Loss: 1.1112
+- Brier Score: 0.2986
+
+VALUE BETTING EREDMÉNYEK:
+- Legjobb stratégia: Fixed $10, 0% edge threshold
+- ROI: 9.06%
+- Profit: $15.40
+- Fogadások: 17
+- Win rate: 64.71%
+
+OPTIMÁLIS BEÁLLÍTÁSOK:
+- Edge threshold: 0.02-0.03 (kompromisszum ROI és bet count között)
+- Stake: Fixed $10
+- Ajánlott odds range: 1.0-3.0 (66-67% win rate)
+
+HASZNÁLT FEATURE-ÖK:
+  - rank_diff
+  - home_strong_opp_point_diff
+  - home_std_rank_diff
+  - H2H_winrate_team1
+  - away_avg_rating_std
+  - away_std_point_diff
+  - away_avg_h2h_winrate
+  - home_avg_point_diff
+  - away_strong_opp_rank_diff
+  - home_std_point_diff
+  - home_avg_adr
+  - home_avg_adr_std
+
+MEGJEGYZÉSEK:
+- A modell overconfident nagy edge-eknél (>0.15)
+- Alacsony odds bet-ek megbízhatóbbak
+- Ensemble NEM ajánlott (rosszabb teljesítmény)
+- XGBoost jobb lehet 0.12+ edge threshold-nél, de kevés bet
+
+FÁJLOK:
+- Model: models/logistic_regression_csgo_20251019_101234.pkl
+- Features: models/feature_list_20251019_101234.json
+- Pipeline: models/full_pipeline_20251019_101234.pkl
+- Metadata: models/model_metadata_20251019_101234.txt
+
+================================================================================
