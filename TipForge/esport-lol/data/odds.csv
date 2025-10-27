@@ -1,0 +1,1000 @@
+Date,home_team,away_team,home_odds,away_odds,tournament_op
+2022-01-14,Team SoloMid,100 Thieves,4.9,1.17,LCS Lock-In
+2022-01-15,Immortals,Counter Logic Gaming,1.45,2.75,LCS Lock-In
+2022-01-15,Team Liquid,Dignitas,1.17,4.79,LCS Lock-In
+2022-01-15,Golden Guardians,Cloud9,4.41,1.2,LCS Lock-In
+2022-01-15,Golden Guardians,100 Thieves,4.89,1.17,LCS Lock-In
+2022-01-15,Team SoloMid,FlyQuest eSports,2.39,1.55,LCS Lock-In
+2022-01-15,FlyQuest eSports,Cloud9,3.24,1.33,LCS Lock-In
+2022-01-16,Team SoloMid,Cloud9,3.63,1.28,LCS Lock-In
+2022-01-16,FlyQuest eSports,100 Thieves,4.35,1.2,LCS Lock-In
+2022-01-16,Team Liquid,Counter Logic Gaming,1.18,4.64,LCS Lock-In
+2022-01-16,Immortals,Dignitas,1.48,2.59,LCS Lock-In
+2022-01-16,Evil Geniuses,Team Liquid,2.35,1.57,LCS Lock-In
+2022-01-16,Evil Geniuses,Counter Logic Gaming,1.33,3.25,LCS Lock-In
+2022-01-17,Evil Geniuses,Immortals,1.42,2.79,LCS Lock-In
+2022-01-17,Golden Guardians,FlyQuest eSports,2.52,1.5,LCS Lock-In
+2022-01-21,Counter Logic Gaming,Dignitas,1.86,1.89,LCS Lock-In
+2022-01-22,Cloud9,100 Thieves,2.4,1.55,LCS Lock-In
+2022-01-22,Team Liquid,Immortals,1.26,3.7,LCS Lock-In
+2022-01-22,Team SoloMid,Golden Guardians,1.68,2.13,LCS Lock-In
+2022-01-22,Evil Geniuses,Dignitas,1.29,3.43,LCS Lock-In
+2022-01-23,Evil Geniuses,Golden Guardians,1.04,9.85,LCS Lock-In
+2022-01-24,Cloud9,Counter Logic Gaming,1.22,3.75,LCS Lock-In
+2022-01-28,Dignitas,Team Liquid,8.85,1.06,LCS Lock-In
+2022-01-29,Evil Geniuses,Cloud9,1.37,2.99,LCS Lock-In
+2022-01-30,Team Liquid,Evil Geniuses,2.61,1.49,LCS Lock-In
+2025-01-12,Weibo Gaming,Oh My God,1.1,6.28,LPL
+2025-01-13,TT Gaming,LNG Esports,2.09,1.7,LPL
+2025-01-14,Royal Never Give Up,FunPlus Phoenix,2.03,1.72,LPL
+2025-01-15,OKSavingsBank Brion,DRX,1.59,2.25,LCK
+2025-01-15,DN Freecs,Nongshim RedForce,1.52,2.43,LCK
+2025-01-15,Weibo Gaming,Ultra Prime,1.03,10.64,LPL
+2025-01-16,FearX,KT Rolster,4.0,1.22,LCK
+2025-01-16,Dplus Kia,T1,3.2,1.33,LCK
+2025-01-16,LGD Gaming,Anyone's Legend,10.68,1.03,LPL
+2025-01-17,EDward Gaming,Bilibili Gaming,9.83,1.03,LPL
+2025-01-17,Nongshim RedForce,OKSavingsBank Brion,1.53,2.47,LCK
+2025-01-17,Gen.G,Hanwha Life,1.58,2.3,LCK
+2025-01-18,GIANTX,SK Gaming,1.67,2.17,LEC
+2025-01-18,Top Esports,Team WE,1.02,11.78,LPL
+2025-01-18,Heretics,Rogue,1.86,1.93,LEC
+2025-01-18,Vitality,Team BDS,2.58,1.49,LEC
+2025-01-18,Dplus Kia,DN Freecs,1.29,3.41,LCK
+2025-01-18,DRX,T1,7.68,1.07,LCK
+2025-01-18,Movistar KOI,Fnatic,2.23,1.59,LEC
+2025-01-18,Karmine Corp,G2 Esports,2.42,1.55,LEC
+2025-01-19,FearX,Gen.G,11.88,1.03,LCK
+2025-01-19,Heretics,SK Gaming,2.22,1.64,LEC
+2025-01-19,KT Rolster,Hanwha Life,4.71,1.16,LCK
+2025-01-19,Ninjas in Pyjamas,Invictus Gaming,3.67,1.26,LPL
+2025-01-19,Movistar KOI,Karmine Corp,1.91,1.87,LEC
+2025-01-19,Fnatic,Vitality,1.4,2.9,LEC
+2025-01-19,Rogue,GIANTX,2.56,1.5,LEC
+2025-01-19,G2 Esports,Team BDS,1.39,2.94,LEC
+2025-01-20,Heretics,Fnatic,3.22,1.34,LEC
+2025-01-20,Movistar KOI,Vitality,1.5,2.58,LEC
+2025-01-20,G2 Esports,SK Gaming,1.27,3.68,LEC
+2025-01-20,Ultra Prime,JD Gaming,11.29,1.02,LPL
+2025-01-20,Team BDS,Rogue,1.54,2.47,LEC
+2025-01-20,GIANTX,Karmine Corp,2.44,1.54,LEC
+2025-01-21,TT Gaming,EDward Gaming,1.48,2.53,LPL
+2025-01-22,DN Freecs,DRX,1.34,3.09,LCK
+2025-01-22,Dplus Kia,FearX,1.1,6.17,LCK
+2025-01-22,Team WE,LGD Gaming,1.61,2.24,LPL
+2025-01-23,Oh My God,JD Gaming,10.42,1.03,LPL
+2025-01-23,OKSavingsBank Brion,Gen.G,10.6,1.03,LCK
+2025-01-23,Hanwha Life,Nongshim RedForce,1.06,7.59,LCK
+2025-01-24,DRX,FearX,2.16,1.65,LCK
+2025-01-24,Top Esports,Anyone's Legend,1.56,2.33,LPL
+2025-01-24,T1,KT Rolster,1.36,2.9,LCK
+2025-01-25,GIANTX,Movistar KOI,2.03,1.77,LEC
+2025-01-25,paiN Gaming,LOUD,1.4,2.82,LTA South
+2025-01-25,Vivo Keyd,Leviatan,1.43,2.6,LTA South
+2025-01-25,Hanwha Life,Dplus Kia,1.45,2.66,LCK
+2025-01-25,Gen.G,DN Freecs,1.07,7.0,LCK
+2025-01-25,Royal Never Give Up,Invictus Gaming,4.58,1.18,LPL
+2025-01-25,FlyQuest eSports,Shopify Rebellion,1.12,5.54,LTA North
+2025-01-25,LNG Esports,Bilibili Gaming,8.14,1.05,LPL
+2025-01-25,Karmine Corp,SK Gaming,1.29,3.41,LEC
+2025-01-25,Vitality,G2 Esports,3.16,1.33,LEC
+2025-01-25,Rogue,Fnatic,3.24,1.32,LEC
+2025-01-25,Team BDS,Heretics,1.45,2.75,LEC
+2025-01-26,Isurus Gaming,FURIA Esports,1.36,3.0,LTA South
+2025-01-26,Team Liquid,Dignitas,1.05,8.44,LTA North
+2025-01-26,100 Thieves,Disguised,1.19,4.35,LTA North
+2025-01-26,KT Rolster,OKSavingsBank Brion,1.39,2.85,LCK
+2025-01-26,Lyon Gaming,Cloud9,2.8,1.38,LTA North
+2025-01-26,T1,Nongshim RedForce,1.13,5.28,LCK
+2025-01-26,RED Canids,Fluxo,1.09,6.51,LTA South
+2025-01-26,Team BDS,Movistar KOI,2.15,1.69,LEC
+2025-01-26,SK Gaming,Vitality,1.99,1.8,LEC
+2025-01-26,Fnatic,G2 Esports,2.05,1.75,LEC
+2025-01-26,Karmine Corp,Rogue,1.3,3.49,LEC
+2025-01-26,GIANTX,Heretics,1.51,2.52,LEC
+2025-01-27,SK Gaming,Movistar KOI,3.45,1.29,LEC
+2025-01-27,Karmine Corp,Heretics,1.28,3.53,LEC
+2025-01-27,G2 Esports,GIANTX,1.59,2.34,LEC
+2025-01-27,Fnatic,Team BDS,1.3,3.45,LEC
+2025-01-27,Vitality,Rogue,1.69,2.13,LEC
+2025-01-31,DRX,Hanwha Life,5.72,1.12,LCK
+2025-01-31,DN Freecs,KT Rolster,2.91,1.39,LCK
+2025-02-01,Vitality,Karmine Corp,3.2,1.32,LEC
+2025-02-01,T1,Gen.G,2.83,1.39,LCK
+2025-02-01,SK Gaming,Team BDS,2.95,1.39,LEC
+2025-02-01,Heretics,Movistar KOI,2.99,1.38,LEC
+2025-02-01,Rogue,G2 Esports,3.74,1.27,LEC
+2025-02-01,Vivo Keyd,LOUD,3.82,1.25,LTA South
+2025-02-01,FURIA Esports,Fluxo,1.13,5.34,LTA South
+2025-02-01,OKSavingsBank Brion,Dplus Kia,5.05,1.15,LCK
+2025-02-01,Shopify Rebellion,Lyon Gaming,1.57,2.3,LTA North
+2025-02-01,GIANTX,Fnatic,2.62,1.48,LEC
+2025-02-02,Fnatic,Karmine Corp,1.78,2.01,LEC
+2025-02-02,Heretics,Vitality,1.94,1.84,LEC
+2025-02-02,G2 Esports,Movistar KOI,1.74,2.06,LEC
+2025-02-02,Team Liquid,100 Thieves,1.25,3.82,LTA North
+2025-02-02,Nongshim RedForce,FearX,1.67,2.13,LCK
+2025-02-02,Team BDS,GIANTX,2.0,1.79,LEC
+2025-02-02,Isurus Gaming,RED Canids,1.84,1.89,LTA South
+2025-02-02,paiN Gaming,Leviatan,1.2,4.24,LTA South
+2025-02-02,Leviatan,Isurus Gaming,3.1,1.57,LTA South
+2025-02-02,Rogue,SK Gaming,1.65,2.21,LEC
+2025-02-02,Dignitas,Disguised,1.64,2.21,LTA North
+2025-02-03,100 Thieves,Cloud9,2.12,1.69,LTA North
+2025-02-03,Movistar KOI,Rogue,1.25,3.8,LEC
+2025-02-03,SK Gaming,Fnatic,4.89,1.17,LEC
+2025-02-03,Vitality,GIANTX,2.17,1.67,LEC
+2025-02-03,FlyQuest eSports,Cloud9,1.16,4.85,LTA North
+2025-02-03,Karmine Corp,Team BDS,1.37,3.05,LEC
+2025-02-03,G2 Esports,Heretics,1.21,4.35,LEC
+2025-02-07,Nongshim RedForce,OKSavingsBank Brion,1.61,2.27,LCK
+2025-02-07,DRX,DN Freecs,1.73,2.08,LCK
+2025-02-08,Hanwha Life,DRX,1.12,5.82,LCK
+2025-02-08,T1,Nongshim RedForce,1.1,6.49,LCK
+2025-02-08,Ninjas in Pyjamas,FunPlus Phoenix,1.1,6.12,LPL
+2025-02-09,FlyQuest eSports,Dignitas,1.05,9.17,LTA North
+2025-02-09,RED Canids,LOUD,1.73,2.04,LTA South
+2025-02-09,Team Liquid,Shopify Rebellion,1.15,5.07,LTA North
+2025-02-09,paiN Gaming,FURIA Esports,1.25,3.78,LTA South
+2025-02-09,LOUD,paiN Gaming,1.92,1.8,LTA South
+2025-02-09,Weibo Gaming,JD Gaming,2.01,1.75,LPL
+2025-02-09,Nongshim RedForce,DRX,2.18,1.65,LCK
+2025-02-10,FlyQuest eSports,Team Liquid,1.7,2.13,LTA North
+2025-02-10,Team WE,Anyone's Legend,12.39,1.02,LPL
+2025-02-11,LNG Esports,EDward Gaming,1.42,2.73,LPL
+2025-02-12,Ultra Prime,Oh My God,2.72,1.44,LPL
+2025-02-12,KT Rolster,Nongshim RedForce,1.53,2.43,LCK
+2025-02-13,Royal Never Give Up,Ninjas in Pyjamas,5.04,1.14,LPL
+2025-02-13,T1,Hanwha Life,1.59,2.32,LCK
+2025-02-14,TT Gaming,Bilibili Gaming,8.24,1.05,LPL
+2025-02-15,Fnatic,Heretics,1.06,8.25,LEC
+2025-02-15,Invictus Gaming,FunPlus Phoenix,1.11,6.03,LPL
+2025-02-15,Dplus Kia,Nongshim RedForce,1.17,4.76,LCK
+2025-02-15,100 Thieves,paiN Gaming,1.09,6.49,LTA Cross Conference
+2025-02-15,Leviatan,FlyQuest eSports,9.24,1.04,LTA Cross Conference
+2025-02-15,G2 Esports,GIANTX,1.22,4.17,LEC
+2025-02-16,Gen.G,Hanwha Life,1.61,2.24,LCK
+2025-02-16,Isurus Gaming,Team Liquid,4.29,1.2,LTA Cross Conference
+2025-02-16,Karmine Corp,Vitality,1.24,3.9,LEC
+2025-02-16,Cloud9,LOUD,1.11,5.88,LTA Cross Conference
+2025-02-16,Movistar KOI,Team BDS,1.45,2.75,LEC
+2025-02-16,Top Esports,LGD Gaming,1.07,7.36,LPL
+2025-02-17,Karmine Corp,Movistar KOI,1.88,1.9,LEC
+2025-02-17,Fnatic,G2 Esports,1.67,2.16,LEC
+2025-02-19,Dplus Kia,Hanwha Life,2.26,1.6,LCK
+2025-02-20,Nongshim RedForce,Gen.G,6.67,1.09,LCK
+2025-02-22,Ninjas in Pyjamas,Anyone's Legend,2.23,1.61,LPL
+2025-02-22,Heretics,GIANTX,2.89,1.4,LEC
+2025-02-22,Dplus Kia,Gen.G,1.91,1.84,LCK
+2025-02-22,TT Gaming,JD Gaming,2.62,1.47,LPL
+2025-02-22,Team BDS,Vitality,1.78,2.01,LEC
+2025-02-22,Team Liquid,Cloud9,1.99,1.75,LTA Cross Conference
+2025-02-22,100 Thieves,FlyQuest eSports,3.64,1.27,LTA Cross Conference
+2025-02-23,Fnatic,Team BDS,1.14,5.45,LEC
+2025-02-23,Movistar KOI,GIANTX,1.46,2.68,LEC
+2025-02-23,Top Esports,Invictus Gaming,1.54,2.36,LPL
+2025-02-23,Bilibili Gaming,Weibo Gaming,1.27,3.58,LPL
+2025-02-23,Hanwha Life,Gen.G,1.9,1.85,LCK
+2025-02-23,100 Thieves,Team Liquid,2.06,1.71,LTA Cross Conference
+2025-02-24,TT Gaming,Bilibili Gaming,5.25,1.14,LPL
+2025-02-24,Ninjas in Pyjamas,Top Esports,2.74,1.43,LPL
+2025-02-24,G2 Esports,Karmine Corp,1.53,2.46,LEC
+2025-02-25,JD Gaming,Anyone's Legend,1.67,2.13,LPL
+2025-02-26,Bilibili Gaming,Top Esports,1.38,2.95,LPL
+2025-02-27,JD Gaming,Top Esports,2.24,1.61,LPL
+2025-02-28,Movistar KOI,Fnatic,2.72,1.45,LEC
+2025-03-01,Karmine Corp,Fnatic,2.29,1.61,LEC
+2025-03-01,Anyone's Legend,Top Esports,2.19,1.63,LPL
+2025-03-02,G2 Esports,Karmine Corp,1.29,3.53,LEC
+2025-03-22,Weibo Gaming,Team WE,1.18,4.52,LPL
+2025-03-22,Weibo Gaming,Bilibili Gaming,2.72,1.41,LPL
+2025-03-22,EDward Gaming,Bilibili Gaming,4.21,1.2,LPL
+2025-03-22,Team WE,Bilibili Gaming,6.17,1.1,LPL
+2025-03-22,Team WE,EDward Gaming,3.01,1.36,LPL
+2025-03-22,Weibo Gaming,EDward Gaming,1.36,2.97,LPL
+2025-03-23,LNG Esports,JD Gaming,3.67,1.25,LPL
+2025-03-23,LNG Esports,LGD Gaming,1.63,2.2,LPL
+2025-03-23,JD Gaming,Invictus Gaming,1.57,2.32,LPL
+2025-03-23,LNG Esports,Invictus Gaming,3.54,1.29,LPL
+2025-03-23,LGD Gaming,JD Gaming,3.93,1.23,LPL
+2025-03-23,LGD Gaming,Invictus Gaming,3.5,1.27,LPL
+2025-03-24,Ultra Prime,TT Gaming,3.49,1.28,LPL
+2025-03-24,TT Gaming,Royal Never Give Up,1.27,3.61,LPL
+2025-03-24,Ultra Prime,Anyone's Legend,5.77,1.12,LPL
+2025-03-24,Ultra Prime,Royal Never Give Up,2.36,1.54,LPL
+2025-03-24,TT Gaming,Anyone's Legend,2.64,1.45,LPL
+2025-03-24,Royal Never Give Up,Anyone's Legend,5.49,1.13,LPL
+2025-03-25,Ninjas in Pyjamas,FunPlus Phoenix,1.23,3.9,LPL
+2025-03-25,Top Esports,Oh My God,1.16,4.86,LPL
+2025-03-25,Top Esports,FunPlus Phoenix,1.15,5.06,LPL
+2025-03-25,Oh My God,FunPlus Phoenix,1.59,2.27,LPL
+2025-03-25,Oh My God,Ninjas in Pyjamas,3.68,1.26,LPL
+2025-03-25,Top Esports,Ninjas in Pyjamas,1.59,2.25,LPL
+2025-03-26,Team WE,Bilibili Gaming,6.15,1.1,LPL
+2025-03-26,EDward Gaming,Bilibili Gaming,4.48,1.18,LPL
+2025-03-26,Weibo Gaming,Team WE,1.16,4.79,LPL
+2025-03-26,Weibo Gaming,EDward Gaming,1.33,3.17,LPL
+2025-03-26,Weibo Gaming,Bilibili Gaming,2.84,1.39,LPL
+2025-03-26,Team WE,EDward Gaming,2.95,1.37,LPL
+2025-03-27,LNG Esports,Invictus Gaming,4.65,1.16,LPL
+2025-03-27,LNG Esports,LGD Gaming,1.83,1.88,LPL
+2025-03-27,LGD Gaming,JD Gaming,3.67,1.25,LPL
+2025-03-27,JD Gaming,Invictus Gaming,1.9,1.81,LPL
+2025-03-27,LNG Esports,JD Gaming,4.31,1.19,LPL
+2025-03-27,LGD Gaming,Invictus Gaming,4.8,1.16,LPL
+2025-03-28,Royal Never Give Up,Anyone's Legend,5.41,1.13,LPL
+2025-03-28,TT Gaming,Anyone's Legend,3.18,1.32,LPL
+2025-03-28,Ultra Prime,Anyone's Legend,4.69,1.16,LPL
+2025-03-28,Ultra Prime,TT Gaming,2.57,1.46,LPL
+2025-03-28,TT Gaming,Royal Never Give Up,1.42,2.68,LPL
+2025-03-28,Ultra Prime,Royal Never Give Up,1.81,1.9,LPL
+2025-03-29,Top Esports,Ninjas in Pyjamas,1.43,2.7,LPL
+2025-03-29,Top Esports,Oh My God,1.1,6.2,LPL
+2025-03-29,Ninjas in Pyjamas,FunPlus Phoenix,1.22,4.0,LPL
+2025-03-29,Fnatic,GIANTX,1.17,4.6,LEC
+2025-03-29,Oh My God,Ninjas in Pyjamas,4.57,1.17,LPL
+2025-03-29,Heretics,Rogue,1.68,2.13,LEC
+2025-03-29,G2 Esports,Movistar KOI,1.34,3.08,LEC
+2025-03-29,Oh My God,FunPlus Phoenix,2.1,1.68,LPL
+2025-03-29,Top Esports,FunPlus Phoenix,1.11,5.95,LPL
+2025-03-30,Movistar KOI,Karmine Corp,2.77,1.41,LEC
+2025-03-30,Vitality,GIANTX,2.19,1.63,LEC
+2025-03-30,FunPlus Phoenix,Ultra Prime,1.86,1.88,LPL
+2025-03-30,Ultra Prime,Team WE,1.83,1.9,LPL
+2025-03-30,FunPlus Phoenix,LGD Gaming,2.2,1.61,LPL
+2025-03-31,LGD Gaming,Team WE,1.53,2.41,LPL
+2025-03-31,Team BDS,Rogue,1.18,4.46,LEC
+2025-03-31,Fnatic,SK Gaming,1.05,8.44,LEC
+2025-04-02,Hanwha Life,Gen.G,1.69,2.11,LCK
+2025-04-02,DRX,DN Freecs,1.67,2.13,LCK
+2025-04-03,FearX,Dplus Kia,5.91,1.11,LCK
+2025-04-03,Nongshim RedForce,OKSavingsBank Brion,1.3,3.39,LCK
+2025-04-04,DRX,T1,6.6,1.08,LCK
+2025-04-04,Hanwha Life,KT Rolster,1.09,6.64,LCK
+2025-04-05,RED Canids,LOUD,2.35,1.54,LTA South
+2025-04-05,DN Freecs,Nongshim RedForce,4.43,1.2,LCK
+2025-04-05,Fluxo,Vivo Keyd,2.78,1.4,LTA South
+2025-04-05,Karmine Corp,Team BDS,1.26,3.65,LEC
+2025-04-05,Team Liquid,FlyQuest eSports,2.16,1.64,LTA North
+2025-04-05,Leviatan,FURIA Esports,1.83,1.9,LTA South
+2025-04-05,TT Gaming,Bilibili Gaming,4.97,1.16,LPL
+2025-04-05,Heretics,G2 Esports,6.24,1.1,LEC
+2025-04-05,paiN Gaming,Isurus Gaming,2.22,1.61,LTA South
+2025-04-05,Top Esports,Anyone's Legend,1.55,2.3,LPL
+2025-04-05,Invictus Gaming,FunPlus Phoenix,1.08,6.85,LPL
+2025-04-05,Rogue,Vitality,3.91,1.24,LEC
+2025-04-05,OKSavingsBank Brion,FearX,1.81,1.95,LCK
+2025-04-05,Shopify Rebellion,Dignitas,1.73,2.02,LTA North
+2025-04-06,Lyon Gaming,Disguised,1.73,2.02,LTA North
+2025-04-06,SK Gaming,Team BDS,2.01,1.77,LEC
+2025-04-06,Fnatic,Karmine Corp,2.42,1.53,LEC
+2025-04-06,JD Gaming,Ninjas in Pyjamas,1.39,2.8,LPL
+2025-04-06,100 Thieves,Cloud9,2.07,1.72,LTA North
+2025-04-06,Fluxo,Leviatan,4.05,1.21,LTA South
+2025-04-06,LOUD,paiN Gaming,2.51,1.49,LTA South
+2025-04-06,Cloud9,Shopify Rebellion,1.28,3.46,LTA North
+2025-04-06,Vivo Keyd,RED Canids,2.06,1.72,LTA South
+2025-04-06,FURIA Esports,Isurus Gaming,2.7,1.44,LTA South
+2025-04-06,T1,Gen.G,2.43,1.53,LCK
+2025-04-06,Team Liquid,100 Thieves,1.66,2.14,LTA North
+2025-04-06,FunPlus Phoenix,TT Gaming,2.57,1.47,LPL
+2025-04-06,Bilibili Gaming,Invictus Gaming,1.39,2.87,LPL
+2025-04-06,KT Rolster,Dplus Kia,3.4,1.3,LCK
+2025-04-07,Rogue,GIANTX,2.4,1.53,LEC
+2025-04-07,FlyQuest eSports,Disguised,1.14,5.14,LTA North
+2025-04-07,Top Esports,Weibo Gaming,1.43,2.72,LPL
+2025-04-07,LNG Esports,EDward Gaming,2.41,1.51,LPL
+2025-04-07,Heretics,Movistar KOI,3.22,1.32,LEC
+2025-04-07,Dignitas,Lyon Gaming,1.82,1.91,LTA North
+2025-04-08,Top Esports,FunPlus Phoenix,1.06,7.97,LPL
+2025-04-08,Invictus Gaming,Anyone's Legend,1.97,1.77,LPL
+2025-04-09,LGD Gaming,Oh My God,1.8,1.95,LPL
+2025-04-09,Team WE,JD Gaming,6.38,1.09,LPL
+2025-04-09,Dplus Kia,OKSavingsBank Brion,1.13,5.58,LCK
+2025-04-09,DN Freecs,Hanwha Life,8.28,1.06,LCK
+2025-04-10,FearX,DRX,2.31,1.59,LCK
+2025-04-10,Weibo Gaming,TT Gaming,1.24,3.81,LPL
+2025-04-10,Bilibili Gaming,Anyone's Legend,1.39,2.82,LPL
+2025-04-10,T1,KT Rolster,1.15,5.16,LCK
+2025-04-11,Anyone's Legend,FunPlus Phoenix,1.06,7.81,LPL
+2025-04-11,Invictus Gaming,Top Esports,2.95,1.37,LPL
+2025-04-11,Gen.G,Nongshim RedForce,1.13,5.55,LCK
+2025-04-11,OKSavingsBank Brion,DN Freecs,1.94,1.82,LCK
+2025-04-12,Team BDS,Heretics,1.26,3.66,LEC
+2025-04-12,G2 Esports,Rogue,1.05,8.57,LEC
+2025-04-12,FunPlus Phoenix,Weibo Gaming,5.74,1.11,LPL
+2025-04-12,SK Gaming,Karmine Corp,5.42,1.14,LEC
+2025-04-12,Bilibili Gaming,JD Gaming,1.37,2.97,LPL
+2025-04-12,Hanwha Life,T1,1.85,1.92,LCK
+2025-04-12,TT Gaming,Invictus Gaming,4.79,1.16,LPL
+2025-04-12,paiN Gaming,FURIA Esports,1.49,2.52,LTA South
+2025-04-12,Disguised,Cloud9,4.06,1.22,LTA North
+2025-04-12,LOUD,Vivo Keyd,1.83,1.9,LTA South
+2025-04-12,Isurus Gaming,Fluxo,1.16,4.71,LTA South
+2025-04-12,100 Thieves,FlyQuest eSports,2.53,1.49,LTA North
+2025-04-12,KT Rolster,FearX,1.5,2.48,LCK
+2025-04-12,RED Canids,Leviatan,2.02,1.73,LTA South
+2025-04-13,Vivo Keyd,Isurus Gaming,1.88,1.85,LTA South
+2025-04-13,RED Canids,paiN Gaming,2.6,1.46,LTA South
+2025-04-13,FlyQuest eSports,Shopify Rebellion,1.13,5.22,LTA North
+2025-04-13,Movistar KOI,Team BDS,1.53,2.41,LEC
+2025-04-13,Leviatan,LOUD,1.8,1.93,LTA South
+2025-04-13,Ninjas in Pyjamas,Team WE,1.18,4.41,LPL
+2025-04-13,Vitality,Fnatic,5.17,1.15,LEC
+2025-04-13,Anyone's Legend,Weibo Gaming,1.49,2.5,LPL
+2025-04-13,Dignitas,Team Liquid,4.32,1.19,LTA North
+2025-04-13,TT Gaming,Top Esports,5.07,1.15,LPL
+2025-04-13,Dplus Kia,Gen.G,3.96,1.24,LCK
+2025-04-13,Nongshim RedForce,DRX,1.35,3.07,LCK
+2025-04-13,Fluxo,FURIA Esports,3.4,1.28,LTA South
+2025-04-13,Shopify Rebellion,Lyon Gaming,1.86,1.88,LTA North
+2025-04-13,100 Thieves,Disguised,1.24,3.95,LTA North
+2025-04-14,JD Gaming,FunPlus Phoenix,1.1,5.91,LPL
+2025-04-14,Royal Never Give Up,Ultra Prime,1.99,1.74,LPL
+2025-04-14,Team Liquid,Lyon Gaming,1.31,3.29,LTA North
+2025-04-14,GIANTX,SK Gaming,1.55,2.36,LEC
+2025-04-14,Cloud9,Dignitas,1.24,3.78,LTA North
+2025-04-14,Heretics,Karmine Corp,5.99,1.1,LEC
+2025-04-15,Anyone's Legend,TT Gaming,1.1,6.04,LPL
+2025-04-15,Ninjas in Pyjamas,Invictus Gaming,2.8,1.4,LPL
+2025-04-16,T1,Nongshim RedForce,1.22,4.26,LCK
+2025-04-16,FearX,Gen.G,9.75,1.05,LCK
+2025-04-16,LGD Gaming,LNG Esports,1.63,2.17,LPL
+2025-04-16,Team WE,Top Esports,7.94,1.06,LPL
+2025-04-17,DRX,Hanwha Life,8.63,1.06,LCK
+2025-04-17,OKSavingsBank Brion,KT Rolster,2.43,1.53,LCK
+2025-04-17,Weibo Gaming,Ninjas in Pyjamas,1.73,1.98,LPL
+2025-04-17,Bilibili Gaming,Team WE,1.04,8.52,LPL
+2025-04-18,TT Gaming,Ninjas in Pyjamas,2.79,1.4,LPL
+2025-04-18,Invictus Gaming,JD Gaming,2.32,1.56,LPL
+2025-04-18,DN Freecs,Dplus Kia,5.62,1.11,LCK
+2025-04-18,FearX,T1,5.33,1.15,LCK
+2025-04-19,CTBC Flying Oyster,Talon,1.67,2.1,LCP
+2025-04-19,Fnatic,Rogue,1.08,6.73,LEC
+2025-04-19,Team WE,Anyone's Legend,6.72,1.08,LPL
+2025-04-19,Cloud9,Team Liquid,2.16,1.64,LTA North
+2025-04-19,FlyQuest eSports,Lyon Gaming,1.22,3.97,LTA North
+2025-04-19,Vivo Keyd,Leviatan,1.49,2.51,LTA South
+2025-04-19,Fluxo,paiN Gaming,4.07,1.21,LTA South
+2025-04-19,Gen.G,OKSavingsBank Brion,1.04,9.37,LCK
+2025-04-19,GIANTX,Karmine Corp,6.38,1.09,LEC
+2025-04-19,Vikings Esports,Fukuoka SoftBank Hawks,1.1,5.69,LCP
+2025-04-19,Nongshim RedForce,Hanwha Life,5.49,1.13,LCK
+2025-04-19,Oh My God,EDward Gaming,2.5,1.49,LPL
+2025-04-19,FURIA Esports,RED Canids,1.55,2.32,LTA South
+2025-04-19,Isurus Gaming,LOUD,1.74,2.01,LTA South
+2025-04-20,FURIA Esports,Vivo Keyd,1.71,2.06,LTA South
+2025-04-20,Isurus Gaming,RED Canids,1.7,2.06,LTA South
+2025-04-20,Secret Whales,GAM Esports,2.44,1.5,LCP
+2025-04-20,LOUD,Fluxo,1.35,3.03,LTA South
+2025-04-20,Bilibili Gaming,Top Esports,1.72,2.01,LPL
+2025-04-20,Dplus Kia,DRX,1.07,7.96,LCK
+2025-04-20,LNG Esports,Ultra Prime,2.27,1.57,LPL
+2025-04-20,Dignitas,100 Thieves,3.44,1.28,LTA North
+2025-04-20,KT Rolster,DN Freecs,1.58,2.31,LCK
+2025-04-20,G2 Esports,Team BDS,1.13,5.47,LEC
+2025-04-20,paiN Gaming,Leviatan,1.4,2.8,LTA South
+2025-04-20,DetonatioN FocusMe,Chiefs Esports Club,1.48,2.5,LCP
+2025-04-20,Cloud9,FlyQuest eSports,2.3,1.57,LTA North
+2025-04-20,FunPlus Phoenix,Ninjas in Pyjamas,2.34,1.55,LPL
+2025-04-20,Heretics,Vitality,1.89,1.86,LEC
+2025-04-20,Shopify Rebellion,Disguised,1.61,2.23,LTA North
+2025-04-20,Lyon Gaming,100 Thieves,2.56,1.48,LTA North
+2025-04-21,Leviatan,Isurus Gaming,2.07,1.69,LTA South
+2025-04-21,Team Liquid,Shopify Rebellion,1.21,4.09,LTA North
+2025-04-21,Disguised,Dignitas,2.05,1.7,LTA North
+2025-04-21,Disguised,Team Liquid,5.82,1.11,LTA North
+2025-04-21,FlyQuest eSports,Dignitas,1.11,5.72,LTA North
+2025-04-21,Team WE,Invictus Gaming,5.35,1.13,LPL
+2025-04-21,JD Gaming,Weibo Gaming,1.4,2.79,LPL
+2025-04-21,SK Gaming,Rogue,1.47,2.57,LEC
+2025-04-21,Lyon Gaming,Cloud9,3.03,1.35,LTA North
+2025-04-21,RED Canids,Fluxo,1.35,3.03,LTA South
+2025-04-21,Vivo Keyd,paiN Gaming,2.4,1.52,LTA South
+2025-04-21,LOUD,FURIA Esports,2.4,1.53,LTA South
+2025-04-21,Movistar KOI,Vitality,1.2,4.29,LEC
+2025-04-22,Team WE,TT Gaming,2.4,1.53,LPL
+2025-04-22,100 Thieves,Shopify Rebellion,1.35,3.02,LTA North
+2025-04-22,Royal Never Give Up,LGD Gaming,2.29,1.56,LPL
+2025-04-23,Nongshim RedForce,FearX,1.77,2.0,LCK
+2025-04-23,Oh My God,LNG Esports,2.6,1.46,LPL
+2025-04-23,DRX,KT Rolster,2.34,1.57,LCK
+2025-04-23,Ninjas in Pyjamas,Top Esports,4.08,1.21,LPL
+2025-04-24,Anyone's Legend,JD Gaming,1.54,2.39,LPL
+2025-04-24,Hanwha Life,OKSavingsBank Brion,1.06,8.31,LCK
+2025-04-24,Weibo Gaming,Team WE,1.22,3.98,LPL
+2025-04-24,Gen.G,DN Freecs,1.02,11.42,LCK
+2025-04-25,Team WE,FunPlus Phoenix,2.21,1.6,LPL
+2025-04-25,T1,Dplus Kia,1.99,1.77,LCK
+2025-04-25,Ninjas in Pyjamas,Bilibili Gaming,4.12,1.2,LPL
+2025-04-25,KT Rolster,Nongshim RedForce,2.23,1.62,LCK
+2025-04-26,Chiefs Esports Club,Talon,12.25,1.01,LCP
+2025-04-26,FlyQuest eSports,100 Thieves,1.3,3.4,LTA North
+2025-04-26,DN Freecs,FearX,3.03,1.36,LCK
+2025-04-26,DRX,Gen.G,8.78,1.05,LCK
+2025-04-26,JD Gaming,TT Gaming,1.15,4.91,LPL
+2025-04-26,G2 Esports,GIANTX,1.13,5.59,LEC
+2025-04-26,Movistar KOI,Fnatic,3.33,1.3,LEC
+2025-04-26,paiN Gaming,Leviatan,1.28,3.43,LTA South
+2025-04-26,Vivo Keyd,Isurus Gaming,1.62,2.15,LTA South
+2025-04-26,Fukuoka SoftBank Hawks,GAM Esports,6.99,1.07,LCP
+2025-04-26,EDward Gaming,Ultra Prime,1.38,2.84,LPL
+2025-04-27,Team Liquid,Lyon Gaming,1.16,4.82,LTA North
+2025-04-27,Movistar KOI,GIANTX,1.31,3.32,LEC
+2025-04-27,Top Esports,JD Gaming,1.59,2.25,LPL
+2025-04-27,Weibo Gaming,Invictus Gaming,2.32,1.55,LPL
+2025-04-27,Ninjas in Pyjamas,Anyone's Legend,3.83,1.23,LPL
+2025-04-27,Secret Whales,DetonatioN FocusMe,1.09,6.12,LCP
+2025-04-27,Cloud9,Disguised,1.04,8.59,LTA North
+2025-04-27,OKSavingsBank Brion,T1,5.87,1.12,LCK
+2025-04-27,G2 Esports,Fnatic,1.92,1.82,LEC
+2025-04-27,RED Canids,Fluxo,1.1,6.0,LTA South
+2025-04-27,FURIA Esports,LOUD,1.7,2.03,LTA South
+2025-04-27,Dplus Kia,Hanwha Life,2.83,1.4,LCK
+2025-04-27,CTBC Flying Oyster,Vikings Esports,1.33,3.05,LCP
+2025-04-28,FunPlus Phoenix,Bilibili Gaming,4.31,1.18,LPL
+2025-04-28,Heretics,SK Gaming,1.51,2.48,LEC
+2025-04-28,LNG Esports,Royal Never Give Up,1.35,2.99,LPL
+2025-04-28,Shopify Rebellion,Dignitas,1.59,2.24,LTA North
+2025-04-28,Vitality,Team BDS,2.33,1.57,LEC
+2025-04-29,Weibo Gaming,Bilibili Gaming,2.54,1.47,LPL
+2025-04-29,EDward Gaming,LGD Gaming,1.76,1.96,LPL
+2025-04-30,Weibo Gaming,Invictus Gaming,1.98,1.75,LPL
+2025-04-30,FearX,Hanwha Life,7.05,1.09,LCK
+2025-04-30,Nongshim RedForce,Dplus Kia,3.2,1.32,LCK
+2025-04-30,JD Gaming,TT Gaming,1.18,4.38,LPL
+2025-05-01,FunPlus Phoenix,Top Esports,3.71,1.25,LPL
+2025-05-01,Gen.G,KT Rolster,1.05,9.18,LCK
+2025-05-01,Anyone's Legend,Invictus Gaming,1.48,2.53,LPL
+2025-05-01,OKSavingsBank Brion,DRX,1.6,2.33,LCK
+2025-05-02,Bilibili Gaming,Weibo Gaming,1.62,2.18,LPL
+2025-05-02,Oh My God,Royal Never Give Up,2.03,1.71,LPL
+2025-05-02,Hanwha Life,Nongshim RedForce,1.13,5.36,LCK
+2025-05-02,T1,DN Freecs,1.09,6.96,LCK
+2025-05-03,FURIA Esports,RED Canids,1.39,2.86,LTA South
+2025-05-03,FlyQuest eSports,Shopify Rebellion,1.05,8.11,LTA North
+2025-05-03,DetonatioN FocusMe,Fukuoka SoftBank Hawks,2.49,1.48,LCP
+2025-05-03,Karmine Corp,Rogue,1.08,6.95,LEC
+2025-05-03,Fnatic,Team BDS,1.19,4.35,LEC
+2025-05-03,LOUD,Fluxo,1.11,5.95,LTA South
+2025-05-03,Team WE,Ninjas in Pyjamas,1.75,1.98,LPL
+2025-05-03,Bilibili Gaming,FunPlus Phoenix,1.23,3.87,LPL
+2025-05-03,Invictus Gaming,Top Esports,2.74,1.41,LPL
+2025-05-03,Gen.G,Dplus Kia,1.17,4.73,LCK
+2025-05-03,GAM Esports,CTBC Flying Oyster,4.4,1.16,LCP
+2025-05-03,DRX,FearX,2.45,1.52,LCK
+2025-05-04,KT Rolster,T1,4.54,1.18,LCK
+2025-05-04,Chiefs Esports Club,Vikings Esports,12.25,1.01,LCP
+2025-05-04,Anyone's Legend,Top Esports,2.08,1.68,LPL
+2025-05-04,Ultra Prime,Oh My God,1.46,2.59,LPL
+2025-05-04,Talon,Secret Whales,1.24,3.63,LCP
+2025-05-04,DN Freecs,OKSavingsBank Brion,2.77,1.42,LCK
+2025-05-04,Leviatan,Isurus Gaming,1.65,2.15,LTA South
+2025-05-04,paiN Gaming,Vivo Keyd,1.38,2.9,LTA South
+2025-05-04,Team Liquid,Disguised,1.05,8.29,LTA North
+2025-05-04,100 Thieves,Dignitas,1.14,5.07,LTA North
+2025-05-04,G2 Esports,Vitality,1.22,4.06,LEC
+2025-05-04,GIANTX,Team BDS,2.21,1.63,LEC
+2025-05-05,Heretics,Fnatic,4.45,1.18,LEC
+2025-05-05,Movistar KOI,SK Gaming,1.17,4.59,LEC
+2025-05-05,Cloud9,Lyon Gaming,1.07,7.3,LTA North
+2025-05-05,FunPlus Phoenix,Team WE,1.86,1.86,LPL
+2025-05-05,Bilibili Gaming,TT Gaming,1.09,6.47,LPL
+2025-05-06,JD Gaming,Team WE,1.23,3.81,LPL
+2025-05-06,Invictus Gaming,TT Gaming,1.18,4.3,LPL
+2025-05-07,Ninjas in Pyjamas,Weibo Gaming,3.42,1.28,LPL
+2025-05-07,Dplus Kia,KT Rolster,1.26,3.63,LCK
+2025-05-07,Anyone's Legend,Bilibili Gaming,1.65,2.13,LPL
+2025-05-07,FearX,OKSavingsBank Brion,1.73,2.05,LCK
+2025-05-08,T1,DRX,1.09,6.51,LCK
+2025-05-08,Top Esports,Ninjas in Pyjamas,1.21,3.98,LPL
+2025-05-08,TT Gaming,FunPlus Phoenix,2.46,1.5,LPL
+2025-05-08,Nongshim RedForce,Gen.G,6.52,1.09,LCK
+2025-05-09,DN Freecs,KT Rolster,3.83,1.24,LCK
+2025-05-09,OKSavingsBank Brion,Hanwha Life,9.4,1.04,LCK
+2025-05-09,Invictus Gaming,Team WE,1.49,2.49,LPL
+2025-05-09,FunPlus Phoenix,Anyone's Legend,4.67,1.16,LPL
+2025-05-10,Weibo Gaming,Anyone's Legend,2.71,1.42,LPL
+2025-05-10,Team WE,Bilibili Gaming,4.37,1.18,LPL
+2025-05-10,paiN Gaming,Isurus Gaming,1.25,3.67,LTA South
+2025-05-10,Gen.G,FearX,1.04,9.64,LCK
+2025-05-10,Leviatan,Vivo Keyd,2.55,1.47,LTA South
+2025-05-10,Cloud9,Team Liquid,1.74,2.0,LTA North
+2025-05-10,GAM Esports,Chiefs Esports Club,1.03,9.01,LCP
+2025-05-10,Talon,Fukuoka SoftBank Hawks,1.04,9.25,LCP
+2025-05-10,G2 Esports,SK Gaming,1.1,6.03,LEC
+2025-05-10,Karmine Corp,Vitality,1.11,5.9,LEC
+2025-05-10,Dplus Kia,T1,2.7,1.45,LCK
+2025-05-10,Royal Never Give Up,EDward Gaming,3.06,1.34,LPL
+2025-05-11,DetonatioN FocusMe,CTBC Flying Oyster,11.0,1.01,LCP
+2025-05-11,JD Gaming,Top Esports,2.29,1.57,LPL
+2025-05-11,TT Gaming,Weibo Gaming,4.55,1.17,LPL
+2025-05-11,Ultra Prime,LGD Gaming,2.44,1.5,LPL
+2025-05-11,Hanwha Life,DRX,1.04,9.89,LCK
+2025-05-11,Lyon Gaming,Disguised,1.19,4.39,LTA North
+2025-05-11,Nongshim RedForce,DN Freecs,1.16,4.94,LCK
+2025-05-11,Vitality,SK Gaming,1.51,2.47,LEC
+2025-05-11,100 Thieves,Shopify Rebellion,,,LTA North
+2025-05-11,Vikings Esports,Secret Whales,1.48,2.46,LCP
+2025-05-11,FURIA Esports,Fluxo,1.05,8.11,LTA South
+2025-05-11,LOUD,RED Canids,1.63,2.18,LTA South
+2025-05-11,FlyQuest eSports,Dignitas,1.05,8.78,LTA North
+2025-05-11,Karmine Corp,G2 Esports,1.65,2.16,LEC
+2025-05-12,Ninjas in Pyjamas,FunPlus Phoenix,1.98,1.76,LPL
+2025-05-12,Heretics,GIANTX,2.11,1.66,LEC
+2025-05-12,Movistar KOI,Rogue,1.08,6.8,LEC
+2025-05-12,TT Gaming,Anyone's Legend,6.93,1.08,LPL
+2025-05-13,JD Gaming,Invictus Gaming,1.5,2.46,LPL
+2025-05-13,Vitality,Heretics,1.63,2.19,LEC
+2025-05-13,Bilibili Gaming,Ninjas in Pyjamas,1.14,5.04,LPL
+2025-05-14,DRX,Dplus Kia,3.93,1.22,LCK
+2025-05-14,FearX,Nongshim RedForce,2.15,1.66,LCK
+2025-05-14,Top Esports,Team WE,1.15,4.75,LPL
+2025-05-14,Weibo Gaming,JD Gaming,2.39,1.52,LPL
+2025-05-15,Team WE,TT Gaming,1.49,2.49,LPL
+2025-05-15,Anyone's Legend,Ninjas in Pyjamas,1.2,4.07,LPL
+2025-05-15,KT Rolster,Hanwha Life,6.22,1.1,LCK
+2025-05-15,T1,OKSavingsBank Brion,1.16,5.19,LCK
+2025-05-16,DetonatioN FocusMe,Talon,7.05,1.07,LCP
+2025-05-16,Dplus Kia,FearX,1.4,2.87,LCK
+2025-05-16,DN Freecs,Gen.G,11.91,1.02,LCK
+2025-05-16,Invictus Gaming,Ninjas in Pyjamas,1.43,2.68,LPL
+2025-05-16,GAM Esports,Vikings Esports,1.84,1.88,LCP
+2025-05-16,FunPlus Phoenix,JD Gaming,3.5,1.27,LPL
+2025-05-17,Cloud9,FlyQuest eSports,2.19,1.62,LTA North
+2025-05-17,JD Gaming,Bilibili Gaming,2.58,1.46,LPL
+2025-05-17,KT Rolster,OKSavingsBank Brion,1.36,2.92,LCK
+2025-05-17,Weibo Gaming,Top Esports,3.96,1.22,LPL
+2025-05-17,paiN Gaming,FURIA Esports,1.5,2.47,LTA South
+2025-05-17,Isurus Gaming,Fluxo,1.21,4.08,LTA South
+2025-05-17,Fukuoka SoftBank Hawks,Secret Whales,5.61,1.11,LCP
+2025-05-17,Chiefs Esports Club,CTBC Flying Oyster,14.25,1.01,LCP
+2025-05-17,DRX,Nongshim RedForce,2.86,1.4,LCK
+2025-05-18,Hanwha Life,DN Freecs,1.03,10.79,LCK
+2025-05-18,RED Canids,Leviatan,1.53,2.38,LTA South
+2025-05-18,Gen.G,T1,1.34,3.09,LCK
+2025-05-18,Anyone's Legend,Team WE,1.21,4.05,LPL
+2025-05-18,Talon,GAM Esports,1.38,2.82,LCP
+2025-05-18,Vivo Keyd,LOUD,1.58,2.27,LTA South
+2025-05-18,Top Esports,TT Gaming,1.06,7.7,LPL
+2025-05-18,Team Liquid,Shopify Rebellion,1.1,5.97,LTA North
+2025-05-18,Vikings Esports,DetonatioN FocusMe,1.15,4.63,LCP
+2025-05-18,Lyon Gaming,Dignitas,1.4,2.78,LTA North
+2025-05-19,Ninjas in Pyjamas,JD Gaming,3.72,1.25,LPL
+2025-05-19,Weibo Gaming,FunPlus Phoenix,1.55,2.33,LPL
+2025-05-19,100 Thieves,Disguised,,,LTA North
+2025-05-20,Top Esports,Bilibili Gaming,1.77,1.96,LPL
+2025-05-20,FunPlus Phoenix,Invictus Gaming,4.16,1.2,LPL
+2025-05-21,JD Gaming,Anyone's Legend,1.93,1.79,LPL
+2025-05-21,DN Freecs,DRX,2.21,1.63,LCK
+2025-05-21,Invictus Gaming,Bilibili Gaming,2.83,1.38,LPL
+2025-05-21,Gen.G,Hanwha Life,1.41,2.77,LCK
+2025-05-22,Ninjas in Pyjamas,TT Gaming,1.38,2.9,LPL
+2025-05-22,Team WE,Weibo Gaming,2.43,1.51,LPL
+2025-05-22,OKSavingsBank Brion,Dplus Kia,3.89,1.24,LCK
+2025-05-22,T1,FearX,1.15,5.3,LCK
+2025-05-23,Gen.G,DRX,1.01,13.0,LCK
+2025-05-23,Nongshim RedForce,KT Rolster,2.03,1.74,LCK
+2025-05-23,Secret Whales,Chiefs Esports Club,1.04,9.0,LCP
+2025-05-23,Fukuoka SoftBank Hawks,CTBC Flying Oyster,9.73,1.03,LCP
+2025-05-24,Hanwha Life,Dplus Kia,1.16,4.84,LCK
+2025-05-24,DN Freecs,T1,8.87,1.04,LCK
+2025-05-24,Fnatic,G2 Esports,1.71,2.07,LEC
+2025-05-24,paiN Gaming,LOUD,1.2,4.21,LTA South
+2025-05-24,Talon,Vikings Esports,1.42,2.67,LCP
+2025-05-24,Invictus Gaming,EDward Gaming,1.12,5.48,LPL
+2025-05-24,FlyQuest eSports,Shopify Rebellion,1.02,10.73,LTA North
+2025-05-24,GAM Esports,DetonatioN FocusMe,1.07,6.7,LCP
+2025-05-25,Fukuoka SoftBank Hawks,Chiefs Esports Club,1.37,2.83,LCP
+2025-05-25,Cloud9,Team Liquid,1.7,2.06,LTA North
+2025-05-25,OKSavingsBank Brion,Nongshim RedForce,2.49,1.51,LCK
+2025-05-25,CTBC Flying Oyster,Secret Whales,1.27,3.4,LCP
+2025-05-25,FunPlus Phoenix,Ninjas in Pyjamas,2.04,1.72,LPL
+2025-05-25,FearX,KT Rolster,3.35,1.3,LCK
+2025-05-25,FURIA Esports,Vivo Keyd,1.77,1.96,LTA South
+2025-05-25,Karmine Corp,Movistar KOI,1.33,3.13,LEC
+2025-05-26,Movistar KOI,G2 Esports,2.66,1.45,LEC
+2025-05-26,Team WE,LGD Gaming,1.27,3.5,LPL
+2025-05-27,Weibo Gaming,TT Gaming,1.23,3.88,LPL
+2025-05-28,T1,Hanwha Life,2.25,1.6,LCK
+2025-05-28,FearX,DN Freecs,1.39,2.85,LCK
+2025-05-29,KT Rolster,Gen.G,7.1,1.08,LCK
+2025-05-29,DRX,OKSavingsBank Brion,2.23,1.62,LCK
+2025-05-30,Talon,Fukuoka SoftBank Hawks,1.06,7.53,LCP
+2025-05-30,GAM Esports,Vikings Esports,1.91,1.8,LCP
+2025-05-30,Dplus Kia,DN Freecs,1.09,6.65,LCK
+2025-05-30,Nongshim RedForce,T1,3.72,1.26,LCK
+2025-05-31,Top Esports,FunPlus Phoenix,1.05,8.16,LPL
+2025-05-31,OKSavingsBank Brion,Gen.G,9.8,1.04,LCK
+2025-05-31,KT Rolster,DRX,1.24,3.91,LCK
+2025-05-31,Fnatic,GIANTX,1.13,5.43,LEC
+2025-05-31,Bilibili Gaming,Invictus Gaming,1.31,3.25,LPL
+2025-05-31,CTBC Flying Oyster,GAM Esports,1.17,4.45,LCP
+2025-05-31,Team Liquid,Dignitas,1.05,8.32,LTA North
+2025-05-31,Secret Whales,Talon,2.4,1.52,LCP
+2025-05-31,LOUD,Isurus Gaming,1.93,1.79,LTA South
+2025-06-01,RED Canids,Vivo Keyd,2.19,1.62,LTA South
+2025-06-01,Hanwha Life,FearX,1.07,7.57,LCK
+2025-06-01,Karmine Corp,Heretics,1.06,8.35,LEC
+2025-06-01,CTBC Flying Oyster,Talon,1.36,2.91,LCP
+2025-06-01,JD Gaming,Weibo Gaming,1.29,3.38,LPL
+2025-06-01,Shopify Rebellion,100 Thieves,4.22,1.2,LTA North
+2025-06-01,Dplus Kia,Nongshim RedForce,1.59,2.26,LCK
+2025-06-01,Anyone's Legend,Team WE,1.13,5.26,LPL
+2025-06-02,Fnatic,Karmine Corp,2.03,1.74,LEC
+2025-06-02,Top Esports,Bilibili Gaming,2.36,1.54,LPL
+2025-06-03,Anyone's Legend,Weibo Gaming,1.27,3.55,LPL
+2025-06-04,Dplus Kia,KT Rolster,1.67,2.14,LCK
+2025-06-04,FunPlus Phoenix,Invictus Gaming,3.42,1.29,LPL
+2025-06-05,Team WE,JD Gaming,5.37,1.13,LPL
+2025-06-06,GAM Esports,Secret Whales,1.49,2.48,LCP
+2025-06-07,Isurus Gaming,Vivo Keyd,1.83,1.88,LTA South
+2025-06-07,Movistar KOI,Karmine Corp,3.4,1.29,LEC
+2025-06-07,Cloud9,FlyQuest eSports,2.7,1.41,LTA North
+2025-06-07,KT Rolster,Dplus Kia,1.78,1.95,LCK
+2025-06-07,Talon,GAM Esports,1.29,3.29,LCP
+2025-06-07,Weibo Gaming,Invictus Gaming,1.84,1.88,LPL
+2025-06-08,KT Rolster,Nongshim RedForce,1.46,2.57,LCK
+2025-06-08,Top Esports,Team WE,1.2,4.24,LPL
+2025-06-08,CTBC Flying Oyster,GAM Esports,1.14,4.76,LCP
+2025-06-08,paiN Gaming,FURIA Esports,1.47,2.53,LTA South
+2025-06-08,Team Liquid,Shopify Rebellion,1.15,4.83,LTA North
+2025-06-08,G2 Esports,Movistar KOI,1.41,2.8,LEC
+2025-06-09,Bilibili Gaming,Anyone's Legend,1.39,2.81,LPL
+2025-06-11,Invictus Gaming,Team WE,1.53,2.37,LPL
+2025-06-13,Gen.G,Hanwha Life,1.33,3.09,LCK
+2025-06-13,Bilibili Gaming,Invictus Gaming,1.32,3.22,LPL
+2025-06-14,Cloud9,Shopify Rebellion,1.19,4.3,LTA North
+2025-06-14,T1,KT Rolster,1.62,2.19,LCK
+2025-06-14,Anyone's Legend,Bilibili Gaming,2.2,1.63,LPL
+2025-06-14,FURIA Esports,Isurus Gaming,2.1,1.67,LTA South
+2025-06-15,Hanwha Life,T1,1.41,2.8,LCK
+2025-06-15,FURIA Esports,paiN Gaming,3.39,1.29,LTA South
+2025-06-15,FlyQuest eSports,Cloud9,1.46,2.59,LTA North
+2025-07-16,Cloud9,FURIA Esports,1.39,2.84,Esports World Cup
+2025-07-16,CTBC Flying Oyster,GAM Esports,1.3,3.32,Esports World Cup
+2025-07-16,FlyQuest eSports,G2 Esports,1.62,2.21,Esports World Cup
+2025-07-16,Hanwha Life,Movistar KOI,1.16,4.84,Esports World Cup
+2025-07-16,FlyQuest eSports,Cloud9,1.54,2.36,Esports World Cup
+2025-07-16,G2 Esports,FURIA Esports,1.38,2.86,Esports World Cup
+2025-07-16,CTBC Flying Oyster,Hanwha Life,4.12,1.2,Esports World Cup
+2025-07-16,Movistar KOI,GAM Esports,1.41,2.76,Esports World Cup
+2025-07-17,Movistar KOI,CTBC Flying Oyster,2.41,1.52,Esports World Cup
+2025-07-17,FlyQuest eSports,FURIA Esports,1.32,3.19,Esports World Cup
+2025-07-17,Anyone's Legend,Hanwha Life,1.99,1.74,Esports World Cup
+2025-07-17,Bilibili Gaming,G2 Esports,1.19,4.33,Esports World Cup
+2025-07-18,Gen.G,FlyQuest eSports,1.08,7.0,Esports World Cup
+2025-07-18,T1,Movistar KOI,1.08,6.46,Esports World Cup
+2025-07-19,Invictus Gaming,Top Esports,2.21,1.61,LPL
+2025-07-19,Weibo Gaming,FunPlus Phoenix,1.27,3.49,LPL
+2025-07-19,Ultra Prime,EDward Gaming,2.93,1.36,LPL
+2025-07-19,Anyone's Legend,T1,1.84,1.89,Esports World Cup
+2025-07-19,Gen.G,G2 Esports,1.09,6.35,Esports World Cup
+2025-07-20,Weibo Gaming,Top Esports,2.54,1.48,LPL
+2025-07-20,G2 Esports,T1,4.01,1.21,Esports World Cup
+2025-07-20,TT Gaming,EDward Gaming,2.33,1.55,LPL
+2025-07-20,Gen.G,Anyone's Legend,1.61,2.23,Esports World Cup
+2025-07-21,Ultra Prime,TT Gaming,2.6,1.44,LPL
+2025-07-21,LNG Esports,Ninjas in Pyjamas,2.36,1.53,LPL
+2025-07-22,Team WE,Invictus Gaming,3.16,1.32,LPL
+2025-07-22,LGD Gaming,Ninjas in Pyjamas,3.88,1.22,LPL
+2025-07-23,Weibo Gaming,Team WE,1.54,2.35,LPL
+2025-07-23,FunPlus Phoenix,Top Esports,6.16,1.1,LPL
+2025-07-23,Dplus Kia,OKSavingsBank Brion,1.28,3.45,LCK
+2025-07-23,Gen.G,Hanwha Life,1.35,3.04,LCK
+2025-07-24,JD Gaming,Invictus Gaming,2.24,1.59,LPL
+2025-07-24,LNG Esports,TT Gaming,2.07,1.68,LPL
+2025-07-24,DN Freecs,FearX,2.59,1.47,LCK
+2025-07-24,KT Rolster,Nongshim RedForce,1.45,2.66,LCK
+2025-07-25,Ninjas in Pyjamas,EDward Gaming,1.69,2.05,LPL
+2025-07-25,LNG Esports,LGD Gaming,1.74,2.01,LPL
+2025-07-25,OKSavingsBank Brion,DRX,1.73,2.05,LCK
+2025-07-25,T1,Gen.G,3.07,1.34,LCK
+2025-07-26,FlyQuest eSports,Disguised,1.02,10.92,LTA North
+2025-07-26,Ultra Prime,Ninjas in Pyjamas,4.64,1.15,LPL
+2025-07-26,Anyone's Legend,Bilibili Gaming,1.31,3.2,LPL
+2025-07-26,Secret Whales,Talon,3.19,1.32,LCP
+2025-07-26,Vikings Esports,DetonatioN FocusMe,1.1,6.13,LCP
+2025-07-26,Dplus Kia,FearX,1.37,2.96,LCK
+2025-07-26,paiN Gaming,Leviatan,1.1,5.8,LTA South
+2025-07-26,FURIA Esports,Fluxo,1.06,7.57,LTA South
+2025-07-26,JD Gaming,Team WE,1.59,2.25,LPL
+2025-07-26,Hanwha Life,KT Rolster,1.38,2.9,LCK
+2025-07-27,DN Freecs,DRX,2.85,1.41,LCK
+2025-07-27,T1,Nongshim RedForce,1.13,5.39,LCK
+2025-07-27,Vivo Keyd,LOUD,1.67,2.1,LTA South
+2025-07-27,GAM Esports,CTBC Flying Oyster,5.69,1.11,LCP
+2025-07-27,Bilibili Gaming,FunPlus Phoenix,1.08,6.44,LPL
+2025-07-27,Weibo Gaming,Anyone's Legend,3.89,1.21,LPL
+2025-07-27,Chiefs Esports Club,Fukuoka SoftBank Hawks,2.74,1.39,LCP
+2025-07-27,Team Liquid,100 Thieves,1.38,2.87,LTA North
+2025-07-27,Cloud9,Lyon Gaming,1.11,5.48,LTA North
+2025-07-27,Isurus Gaming,RED Canids,2.34,1.53,LTA South
+2025-07-28,LGD Gaming,EDward Gaming,3.74,1.24,LPL
+2025-07-28,JD Gaming,Top Esports,2.99,1.35,LPL
+2025-07-28,Shopify Rebellion,Dignitas,1.45,2.6,LTA North
+2025-07-29,Invictus Gaming,FunPlus Phoenix,1.09,6.18,LPL
+2025-07-29,Ultra Prime,LGD Gaming,2.11,1.65,LPL
+2025-07-30,Team WE,Anyone's Legend,5.83,1.1,LPL
+2025-07-30,KT Rolster,T1,2.68,1.85,LCK
+2025-07-30,DRX,Dplus Kia,3.38,1.29,LCK
+2025-07-31,Weibo Gaming,Bilibili Gaming,2.82,1.37,LPL
+2025-07-31,Nongshim RedForce,Hanwha Life,4.28,1.35,LCK
+2025-07-31,FearX,OKSavingsBank Brion,2.14,1.66,LCK
+2025-07-31,Team WE,Top Esports,4.42,1.18,LPL
+2025-08-01,JD Gaming,FunPlus Phoenix,1.43,2.64,LPL
+2025-08-01,Weibo Gaming,Invictus Gaming,2.09,1.66,LPL
+2025-08-01,Dplus Kia,DN Freecs,1.12,5.51,LCK
+2025-08-01,Gen.G,KT Rolster,1.09,6.67,LCK
+2025-08-02,JD Gaming,Anyone's Legend,3.36,1.28,LPL
+2025-08-02,DetonatioN FocusMe,Chiefs Esports Club,1.66,2.09,LCP
+2025-08-02,Ultra Prime,LNG Esports,2.74,1.4,LPL
+2025-08-02,Fluxo,Isurus Gaming,3.11,1.32,LTA South
+2025-08-02,T1,Hanwha Life,1.56,2.35,LCK
+2025-08-02,Lyon Gaming,Team Liquid,5.9,1.1,LTA North
+2025-08-02,100 Thieves,FlyQuest eSports,6.05,1.09,LTA North
+2025-08-02,Heretics,Fnatic,5.17,1.14,LEC
+2025-08-02,FearX,DRX,1.67,2.14,LCK
+2025-08-02,FURIA Esports,paiN Gaming,1.85,1.85,LTA South
+2025-08-02,CTBC Flying Oyster,Talon,1.3,3.25,LCP
+2025-08-02,Natus Vincere,Karmine Corp,8.5,1.04,LEC
+2025-08-02,TT Gaming,LGD Gaming,1.57,2.24,LPL
+2025-08-03,Bilibili Gaming,Top Esports,1.65,2.15,LPL
+2025-08-03,Team BDS,SK Gaming,1.42,2.75,LEC
+2025-08-03,LOUD,RED Canids,1.7,2.03,LTA South
+2025-08-03,Dignitas,Cloud9,5.75,1.1,LTA North
+2025-08-03,Leviatan,Vivo Keyd,4.95,1.13,LTA South
+2025-08-03,LNG Esports,EDward Gaming,4.17,1.19,LPL
+2025-08-03,Fukuoka SoftBank Hawks,Vikings Esports,3.99,1.21,LCP
+2025-08-03,GAM Esports,Secret Whales,1.59,2.25,LCP
+2025-08-03,Nongshim RedForce,Gen.G,10.32,1.04,LCK
+2025-08-03,DN Freecs,OKSavingsBank Brion,3.47,1.29,LCK
+2025-08-03,GIANTX,Karmine Corp,4.43,1.18,LEC
+2025-08-03,Disguised,Shopify Rebellion,4.69,1.16,LTA North
+2025-08-04,SK Gaming,Fnatic,6.75,1.09,LEC
+2025-08-04,Team WE,FunPlus Phoenix,1.44,2.63,LPL
+2025-08-04,GIANTX,Vitality,1.54,2.36,LEC
+2025-08-05,TT Gaming,Ninjas in Pyjamas,2.5,1.47,LPL
+2025-08-05,Anyone's Legend,Top Esports,1.51,2.44,LPL
+2025-08-06,Anyone's Legend,Invictus Gaming,1.51,2.41,LPL
+2025-08-06,JD Gaming,Bilibili Gaming,4.1,1.2,LPL
+2025-08-06,Hanwha Life,Nongshim RedForce,1.07,7.34,LCK
+2025-08-06,OKSavingsBank Brion,FearX,1.81,1.92,LCK
+2025-08-07,Gen.G,T1,1.53,2.38,LCK
+2025-08-07,TT Gaming,Ninjas in Pyjamas,2.55,1.45,LPL
+2025-08-07,LNG Esports,LGD Gaming,2.38,1.52,LPL
+2025-08-07,DRX,DN Freecs,1.33,3.18,LCK
+2025-08-08,FearX,Dplus Kia,3.33,1.3,LCK
+2025-08-08,KT Rolster,Hanwha Life,3.51,1.28,LCK
+2025-08-08,Anyone's Legend,FunPlus Phoenix,1.12,5.43,LPL
+2025-08-08,Ultra Prime,LNG Esports,2.15,1.64,LPL
+2025-08-09,Nongshim RedForce,T1,6.11,1.1,LCK
+2025-08-09,LOUD,Isurus Gaming,1.51,2.4,LTA South
+2025-08-09,JD Gaming,Invictus Gaming,3.16,1.32,LPL
+2025-08-09,FURIA Esports,Vivo Keyd,1.41,2.76,LTA South
+2025-08-09,Talon,GAM Esports,1.57,2.26,LCP
+2025-08-09,Vikings Esports,Chiefs Esports Club,1.04,8.57,LCP
+2025-08-09,Team WE,Bilibili Gaming,5.13,1.13,LPL
+2025-08-09,G2 Esports,Heretics,1.11,6.02,LEC
+2025-08-09,Weibo Gaming,Top Esports,3.0,1.34,LPL
+2025-08-09,DRX,OKSavingsBank Brion,2.23,1.61,LCK
+2025-08-09,100 Thieves,Shopify Rebellion,2.09,1.66,LTA North
+2025-08-09,Movistar KOI,GIANTX,1.41,2.74,LEC
+2025-08-10,Team WE,Bilibili Gaming,5.11,1.13,LPL
+2025-08-10,Fnatic,Team BDS,1.17,4.85,LEC
+2025-08-10,Leviatan,Fluxo,1.72,2.0,LTA South
+2025-08-10,FlyQuest eSports,Lyon Gaming,1.06,7.16,LTA North
+2025-08-10,RED Canids,paiN Gaming,4.14,1.21,LTA South
+2025-08-10,Cloud9,Team Liquid,1.3,3.33,LTA North
+2025-08-10,CTBC Flying Oyster,Secret Whales,1.34,3.09,LCP
+2025-08-10,Karmine Corp,Movistar KOI,1.54,2.39,LEC
+2025-08-10,TT Gaming,EDward Gaming,3.61,1.24,LPL
+2025-08-10,KT Rolster,Gen.G,7.31,1.08,LCK
+2025-08-10,Fukuoka SoftBank Hawks,DetonatioN FocusMe,1.49,2.44,LCP
+2025-08-10,DN Freecs,Dplus Kia,5.39,1.15,LCK
+2025-08-11,JD Gaming,FunPlus Phoenix,1.36,2.84,LPL
+2025-08-11,Disguised,Dignitas,2.24,1.59,LTA North
+2025-08-11,Ultra Prime,Ninjas in Pyjamas,3.98,1.21,LPL
+2025-08-12,Weibo Gaming,Team WE,1.55,2.32,LPL
+2025-08-12,LGD Gaming,Ninjas in Pyjamas,3.17,1.31,LPL
+2025-08-13,JD Gaming,Top Esports,3.27,1.29,LPL
+2025-08-13,T1,KT Rolster,1.1,5.86,LCK
+2025-08-13,FearX,DN Freecs,1.22,3.95,LCK
+2025-08-13,Anyone's Legend,Bilibili Gaming,2.19,1.61,LPL
+2025-08-14,Ninjas in Pyjamas,EDward Gaming,2.03,1.69,LPL
+2025-08-14,Dplus Kia,DRX,1.28,3.37,LCK
+2025-08-14,Gen.G,Nongshim RedForce,1.02,10.35,LCK
+2025-08-14,Team WE,FunPlus Phoenix,1.37,2.85,LPL
+2025-08-15,Talon,Vikings Esports,1.61,2.17,LCP
+2025-08-15,GAM Esports,Fukuoka SoftBank Hawks,1.05,7.63,LCP
+2025-08-15,Hanwha Life,T1,2.78,1.39,LCK
+2025-08-15,Weibo Gaming,Bilibili Gaming,4.02,1.21,LPL
+2025-08-15,Anyone's Legend,Invictus Gaming,1.7,2.04,LPL
+2025-08-15,OKSavingsBank Brion,DN Freecs,1.29,3.34,LCK
+2025-08-16,Invictus Gaming,Top Esports,2.25,1.58,LPL
+2025-08-16,Movistar KOI,Natus Vincere,1.07,7.13,LEC
+2025-08-16,Heretics,SK Gaming,1.28,3.39,LEC
+2025-08-16,Cloud9,Shopify Rebellion,1.09,5.94,LTA North
+2025-08-16,CTBC Flying Oyster,Vikings Esports,1.1,5.78,LCP
+2025-08-16,Secret Whales,GAM Esports,2.21,1.59,LCP
+2025-08-16,DRX,FearX,2.57,1.47,LCK
+2025-08-16,Ultra Prime,TT Gaming,2.48,1.48,LPL
+2025-08-16,Nongshim RedForce,KT Rolster,2.7,1.42,LCK
+2025-08-16,JD Gaming,Team WE,1.57,2.27,LPL
+2025-08-16,FURIA Esports,Vivo Keyd,1.28,3.3,LTA South
+2025-08-17,Talon,Chiefs Esports Club,1.04,8.53,LCP
+2025-08-17,Weibo Gaming,Anyone's Legend,3.26,1.3,LPL
+2025-08-17,FlyQuest eSports,Team Liquid,1.11,5.53,LTA North
+2025-08-17,Fukuoka SoftBank Hawks,DetonatioN FocusMe,1.52,2.35,LCP
+2025-08-17,RED Canids,paiN Gaming,2.57,1.45,LTA South
+2025-08-17,Bilibili Gaming,Top Esports,1.49,2.48,LPL
+2025-08-17,Fnatic,G2 Esports,2.23,1.61,LEC
+2025-08-17,Hanwha Life,Gen.G,4.55,1.17,LCK
+2025-08-17,OKSavingsBank Brion,Dplus Kia,3.11,1.32,LCK
+2025-08-17,Vitality,Natus Vincere,1.33,3.13,LEC
+2025-08-18,Karmine Corp,Vitality,1.11,5.64,LEC
+2025-08-18,Invictus Gaming,Bilibili Gaming,2.4,1.51,LPL
+2025-08-18,G2 Esports,Team BDS,1.08,6.75,LEC
+2025-08-18,Weibo Gaming,FunPlus Phoenix,1.21,4.01,LPL
+2025-08-19,LNG Esports,Ninjas in Pyjamas,4.44,1.17,LPL
+2025-08-19,Anyone's Legend,Top Esports,1.64,2.14,LPL
+2025-08-20,TT Gaming,LGD Gaming,1.9,1.8,LPL
+2025-08-20,Anyone's Legend,FunPlus Phoenix,1.08,6.95,LPL
+2025-08-20,DRX,DN Freecs,1.49,2.55,LCK
+2025-08-20,Gen.G,Nongshim RedForce,1.02,12.91,LCK
+2025-08-21,JD Gaming,Bilibili Gaming,3.4,1.28,LPL
+2025-08-21,KT Rolster,Hanwha Life,5.06,1.15,LCK
+2025-08-21,OKSavingsBank Brion,FearX,1.99,1.73,LCK
+2025-08-21,Ultra Prime,EDward Gaming,5.11,1.14,LPL
+2025-08-22,Invictus Gaming,FunPlus Phoenix,1.08,6.71,LPL
+2025-08-22,Nongshim RedForce,T1,11.75,1.03,LCK
+2025-08-22,Dplus Kia,DRX,1.29,3.34,LCK
+2025-08-22,CTBC Flying Oyster,GAM Esports,1.21,4.04,LCP
+2025-08-22,Talon,DetonatioN FocusMe,1.09,6.34,LCP
+2025-08-22,LGD Gaming,EDward Gaming,4.17,1.19,LPL
+2025-08-23,Disguised,Dignitas,1.88,1.8,LTA North
+2025-08-23,OKSavingsBank Brion,DN Freecs,1.4,2.88,LCK
+2025-08-23,Chiefs Esports Club,Fukuoka SoftBank Hawks,2.62,1.43,LCP
+2025-08-23,Vikings Esports,Secret Whales,1.99,1.75,LCP
+2025-08-23,Weibo Gaming,Invictus Gaming,3.23,1.31,LPL
+2025-08-23,LNG Esports,TT Gaming,2.33,1.52,LPL
+2025-08-23,LOUD,Fluxo,1.05,7.96,LTA South
+2025-08-23,Hanwha Life,Gen.G,4.0,1.23,LCK
+2025-08-23,Team WE,Top Esports,4.57,1.17,LPL
+2025-08-24,LNG Esports,EDward Gaming,3.83,1.23,LPL
+2025-08-24,Isurus Gaming,Leviatan,1.48,2.51,LTA South
+2025-08-24,Fukuoka SoftBank Hawks,DetonatioN FocusMe,1.69,2.05,LCP
+2025-08-24,Secret Whales,GAM Esports,2.42,1.51,LCP
+2025-08-24,JD Gaming,Anyone's Legend,3.54,1.26,LPL
+2025-08-24,KT Rolster,T1,6.78,1.09,LCK
+2025-08-24,FearX,Dplus Kia,2.39,1.55,LCK
+2025-08-24,Lyon Gaming,100 Thieves,1.94,1.77,LTA North
+2025-08-25,SK Gaming,G2 Esports,7.6,1.06,LEC
+2025-08-25,Bilibili Gaming,FunPlus Phoenix,1.06,7.52,LPL
+2025-08-25,Team BDS,Heretics,1.58,2.27,LEC
+2025-08-25,Ultra Prime,LGD Gaming,3.1,1.32,LPL
+2025-08-26,Natus Vincere,GIANTX,4.82,1.15,LEC
+2025-08-26,Vitality,Movistar KOI,3.06,1.35,LEC
+2025-08-26,FunPlus Phoenix,Top Esports,7.78,1.06,LPL
+2025-08-26,Team WE,Invictus Gaming,3.92,1.22,LPL
+2025-08-27,Team WE,Anyone's Legend,4.97,1.14,LPL
+2025-08-27,DN Freecs,FearX,3.01,1.37,LCK
+2025-08-27,T1,Hanwha Life,1.5,2.52,LCK
+2025-08-27,Weibo Gaming,JD Gaming,1.68,2.08,LPL
+2025-08-28,Weibo Gaming,JD Gaming,1.49,2.51,LPL
+2025-08-28,Gen.G,KT Rolster,1.1,6.66,LCK
+2025-08-28,Dplus Kia,OKSavingsBank Brion,1.38,2.95,LCK
+2025-08-28,Invictus Gaming,Bilibili Gaming,2.09,1.67,LPL
+2025-08-29,FearX,DRX,1.55,2.4,LCK
+2025-08-29,Hanwha Life,Nongshim RedForce,1.09,6.75,LCK
+2025-08-29,Cloud9,Disguised,1.03,9.53,LTA North
+2025-08-29,RED Canids,Leviatan,1.25,3.66,LTA South
+2025-08-30,T1,Gen.G,2.52,1.5,LCK
+2025-08-30,DN Freecs,Dplus Kia,6.19,1.12,LCK
+2025-08-30,FunPlus Phoenix,Ninjas in Pyjamas,2.85,1.38,LPL
+2025-08-30,FURIA Esports,LOUD,1.42,2.69,LTA South
+2025-08-30,Team Liquid,100 Thieves,1.44,2.62,LTA North
+2025-08-31,Nongshim RedForce,KT Rolster,3.25,1.32,LCK
+2025-08-31,paiN Gaming,Vivo Keyd,1.44,2.61,LTA South
+2025-08-31,DRX,OKSavingsBank Brion,1.99,1.75,LCK
+2025-08-31,Shopify Rebellion,FlyQuest eSports,7.23,1.07,LTA North
+2025-08-31,Team WE,EDward Gaming,1.42,2.68,LPL
+2025-09-01,Weibo Gaming,Ultra Prime,1.02,12.36,LPL
+2025-09-02,JD Gaming,LGD Gaming,1.08,6.86,LPL
+2025-09-03,Nongshim RedForce,OKSavingsBank Brion,1.41,2.77,LCK
+2025-09-04,Dplus Kia,FearX,1.23,3.87,LCK
+2025-09-05,Heretics,Vitality,2.61,1.46,LEC
+2025-09-05,100 Thieves,Cloud9,3.22,1.32,LTA North
+2025-09-05,Nongshim RedForce,FearX,1.91,1.84,LCK
+2025-09-05,RED Canids,LOUD,2.11,1.67,LTA South
+2025-09-05,Secret Whales,DetonatioN FocusMe,1.06,7.71,LCP
+2025-09-05,Vikings Esports,Talon,1.79,1.93,LCP
+2025-09-06,RED Canids,paiN Gaming,2.58,1.46,LTA South
+2025-09-06,Dplus Kia,OKSavingsBank Brion,1.32,3.28,LCK
+2025-09-06,GIANTX,Team BDS,1.26,3.67,LEC
+2025-09-06,Shopify Rebellion,100 Thieves,2.01,1.71,LTA North
+2025-09-06,CTBC Flying Oyster,Secret Whales,1.2,4.0,LCP
+2025-09-06,GAM Esports,Talon,1.97,1.74,LCP
+2025-09-07,Nongshim RedForce,Dplus Kia,3.07,1.36,LCK
+2025-09-07,Invictus Gaming,EDward Gaming,1.1,6.2,LPL
+2025-09-07,RED Canids,Vivo Keyd,2.24,1.57,LTA South
+2025-09-07,Bilibili Gaming,JD Gaming,1.17,4.67,LPL
+2025-09-07,G2 Esports,Karmine Corp,1.42,2.76,LEC
+2025-09-07,DetonatioN FocusMe,Vikings Esports,7.58,1.07,LCP
+2025-09-07,100 Thieves,FlyQuest eSports,4.4,1.19,LTA North
+2025-09-08,Movistar KOI,Fnatic,1.83,1.91,LEC
+2025-09-08,Anyone's Legend,Weibo Gaming,1.3,3.34,LPL
+2025-09-08,Top Esports,Ninjas in Pyjamas,1.1,6.15,LPL
+2025-09-09,Bilibili Gaming,Invictus Gaming,2.24,1.6,LPL
+2025-09-10,Weibo Gaming,Top Esports,3.14,1.34,LPL
+2025-09-10,Dplus Kia,T1,6.58,1.09,LCK
+2025-09-11,JD Gaming,EDward Gaming,1.4,2.81,LPL
+2025-09-11,FearX,KT Rolster,2.7,1.44,LCK
+2025-09-12,Anyone's Legend,Ninjas in Pyjamas,1.14,5.19,LPL
+2025-09-13,Vitality,Karmine Corp,4.59,1.18,LEC
+2025-09-13,100 Thieves,paiN Gaming,1.12,5.15,LTA Cross Conference
+2025-09-13,Weibo Gaming,JD Gaming,1.53,2.41,LPL
+2025-09-13,Gen.G,KT Rolster,1.05,9.37,LCK
+2025-09-13,CTBC Flying Oyster,Talon,1.22,3.97,LCP
+2025-09-14,RED Canids,Shopify Rebellion,2.91,1.34,LTA Cross Conference
+2025-09-14,Secret Whales,GAM Esports,2.68,1.45,LCP
+2025-09-14,Movistar KOI,G2 Esports,2.76,1.42,LEC
+2025-09-14,Invictus Gaming,Anyone's Legend,1.75,1.97,LPL
+2025-09-14,Hanwha Life,T1,2.76,1.42,LCK
+2025-09-15,Bilibili Gaming,Top Esports,1.84,1.9,LPL
+2025-09-15,GIANTX,Fnatic,2.49,1.51,LEC
+2025-09-16,JD Gaming,Anyone's Legend,3.6,1.26,LPL
+2025-09-17,Dplus Kia,FearX,1.39,2.91,LCK
+2025-09-18,Dplus Kia,T1,3.54,1.28,LCK
+2025-09-20,Secret Whales,Talon,2.11,1.68,LCP
+2025-09-20,Anyone's Legend,Top Esports,1.89,1.84,LPL
+2025-09-20,KT Rolster,Hanwha Life,3.36,1.3,LCK
+2025-09-20,FlyQuest eSports,Vivo Keyd,1.14,5.11,LTA Cross Conference
+2025-09-21,Secret Whales,CTBC Flying Oyster,4.1,1.21,LCP
+2025-09-21,T1,Gen.G,3.12,1.35,LCK
+2025-09-21,100 Thieves,RED Canids,1.19,4.31,LTA Cross Conference
+2025-09-21,Top Esports,Bilibili Gaming,1.98,1.77,LPL
+2025-09-25,Top Esports,Invictus Gaming,1.37,2.94,LPL
+2025-09-26,JD Gaming,Weibo Gaming,1.75,2.0,LPL
+2025-09-26,Fnatic,Karmine Corp,2.3,1.59,LEC
+2025-09-27,100 Thieves,Vivo Keyd,1.21,4.0,LTA Cross Conference
+2025-09-27,Movistar KOI,Fnatic,1.86,1.88,LEC
+2025-09-27,JD Gaming,Invictus Gaming,1.97,1.76,LPL
+2025-09-27,Gen.G,KT Rolster,1.11,6.07,LCK
+2025-09-28,G2 Esports,Movistar KOI,1.45,2.68,LEC
+2025-09-28,Gen.G,Hanwha Life,1.41,2.79,LCK
+2025-09-28,Vivo Keyd,FlyQuest eSports,6.33,1.09,LTA Cross Conference
+2025-10-14,T1,Invictus Gaming,1.2,4.28,World Championship
+2025-10-15,G2 Esports,Top Esports,2.33,1.57,World Championship
+2025-10-15,Hanwha Life,Anyone's Legend,1.53,2.44,World Championship
+2025-10-15,FlyQuest eSports,T1,3.89,1.24,World Championship
+2025-10-15,Bilibili Gaming,100 Thieves,1.07,8.01,World Championship
+2025-10-15,KT Rolster,Movistar KOI,1.34,3.17,World Championship
+2025-10-15,CTBC Flying Oyster,Fnatic,1.5,2.49,World Championship
+2025-10-15,Vivo Keyd,Secret Whales,2.31,1.57,World Championship
+2025-10-15,Gen.G,Talon,1.05,9.33,World Championship
+2025-10-16,FlyQuest eSports,Vivo Keyd,1.21,4.18,World Championship
+2025-10-16,Secret Whales,KT Rolster,5.9,1.11,World Championship
+2025-10-16,Bilibili Gaming,Fnatic,1.19,4.48,World Championship
+2025-10-16,Hanwha Life,Talon,1.1,6.41,World Championship
+2025-10-16,Top Esports,100 Thieves,1.17,4.76,World Championship
+2025-10-16,CTBC Flying Oyster,T1,3.66,1.26,World Championship
+2025-10-16,Gen.G,Anyone's Legend,1.37,2.93,World Championship
+2025-10-16,G2 Esports,Movistar KOI,1.49,2.53,World Championship
+2025-10-17,KT Rolster,Top Esports,2.94,1.37,World Championship
+2025-10-17,CTBC Flying Oyster,Anyone's Legend,3.14,1.34,World Championship
+2025-10-18,G2 Esports,Bilibili Gaming,2.66,1.45,World Championship
+2025-10-18,100 Thieves,Hanwha Life,5.61,1.13,World Championship
+2025-10-18,Secret Whales,FlyQuest eSports,3.11,1.35,World Championship
+2025-10-18,Gen.G,T1,1.53,2.44,World Championship
+2025-10-19,Movistar KOI,Fnatic,1.54,2.42,World Championship
+2025-10-19,Vivo Keyd,Talon,3.85,1.24,World Championship
+2025-10-22,Hanwha Life,CTBC Flying Oyster,1.29,3.47,World Championship
+2025-10-22,G2 Esports,FlyQuest eSports,1.7,2.1,World Championship
+2025-10-23,Movistar KOI,Secret Whales,1.23,3.93,World Championship
+2025-10-23,Gen.G,Top Esports,1.2,4.33,World Championship
+2025-10-24,Bilibili Gaming,Vivo Keyd,1.04,10.53,World Championship
+2025-10-24,T1,100 Thieves,1.04,9.33,World Championship
+2025-10-25,Top Esports,Bilibili Gaming,2.27,1.61,World Championship
+2025-10-25,CTBC Flying Oyster,FlyQuest eSports,1.52,2.48,World Championship
+2025-10-25,Movistar KOI,T1,6.69,1.1,World Championship
