@@ -6,7 +6,7 @@ import { CheckCircle, TrendingUp, Users, Shield, BarChart3, MessageCircle, Arrow
 const TipForgeLanding = () => {
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [hasSeenExitPopup, setHasSeenExitPopup] = useState(false);
-  const [waitlistCount, setWaitlistCount] = useState(36);
+  const [waitlistCount, setWaitlistCount] = useState(23);
   const [activeTab, setActiveTab] = useState('algorithm');
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -26,19 +26,11 @@ const TipForgeLanding = () => {
 
   // Exit intent detection
   useEffect(() => {
-    // Ellenőrizd localStorage-ban, látta-e már
-    const hasSeenPopup = localStorage.getItem('tipforge_exit_popup_seen');
-    if (hasSeenPopup) {
-      setHasSeenExitPopup(true);
-    }
-
     const handleMouseLeave = (e) => {
       if (e.clientY <= 0 && !showExitPopup && !hasSeenExitPopup) {
         setShowExitPopup(true);
         setHasSeenExitPopup(true);
-        localStorage.setItem('tipforge_exit_popup_seen', 'true');
         
-        // Google Analytics tracking
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'exit_popup_shown', {
             'event_category': 'engagement',
@@ -55,7 +47,6 @@ const TipForgeLanding = () => {
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       
-      // 25%, 50%, 75%, 100% mérföldkövek
       if (scrollPercent > 25 && !window.scrollTracked25) {
         window.scrollTracked25 = true;
         window.gtag?.('event', 'scroll_depth', {
@@ -92,9 +83,7 @@ const TipForgeLanding = () => {
 
   const handleCloseExitPopup = () => {
     setShowExitPopup(false);
-    localStorage.setItem('tipforge_exit_popup_seen', 'true');
     
-    // Analytics - popup bezárva
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'exit_popup_dismissed', {
         'event_category': 'engagement',
@@ -106,11 +95,10 @@ const TipForgeLanding = () => {
     const newOpenFaq = openFaq === index ? null : index;
     setOpenFaq(newOpenFaq);
     
-    // Track FAQ nyitás
     if (newOpenFaq !== null && typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'faq_open', {
         'event_category': 'engagement',
-        'event_label': question.substring(0, 50), // Első 50 karakter
+        'event_label': question.substring(0, 50),
         'faq_index': index
       });
     }
@@ -119,36 +107,32 @@ const TipForgeLanding = () => {
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
     
-    // Track tab váltás
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'tab_switch', {
         'event_category': 'engagement',
-        'event_label': tabId // 'algorithm' / 'results' / 'team'
+        'event_label': tabId
       });
     }
   };
 
   const handleWaitlistClick = (source) => {
-    // Google Analytics Event - forrás alapján
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'cta_click', {
         'event_category': 'engagement',
-        'event_label': source, // 'hero' / 'final_cta' / 'exit_popup' / 'mobile_sticky'
+        'event_label': source,
         'source_section': source
       });
     }
     
-    // Tally popup megnyitása
     if (typeof window !== 'undefined' && window.Tally) {
       window.Tally.openPopup('wA1JkN', {
         layout: 'modal',
         width: 500,
         emoji: {
-          text: '📧',
+          text: '🔧',
           animation: 'wave'
         },
         onOpen: () => {
-          // Popup megnyílt
           if (window.gtag) {
             window.gtag('event', 'popup_open', {
               'event_category': 'conversion_funnel',
@@ -157,7 +141,6 @@ const TipForgeLanding = () => {
           }
         },
         onSubmit: () => {
-          // Sikeres form submit
           if (window.gtag) {
             window.gtag('event', 'waitlist_signup', {
               'event_category': 'conversion',
@@ -167,7 +150,6 @@ const TipForgeLanding = () => {
           }
         },
         onClose: () => {
-          // Popup bezárva (submit nélkül = abandonment)
           if (window.gtag) {
             window.gtag('event', 'popup_close', {
               'event_category': 'conversion_funnel',
@@ -180,42 +162,42 @@ const TipForgeLanding = () => {
   };
 
   const testimonials = [
-    { name: 'Kovács Dániel', age: 32, city: 'Budapest', text: '4 hónapig buktam havonta 20-30 ezret. Az első hónapban +47.000 Ft profitot csináltam.', avatar: '👨' },
-    { name: 'Nagy Balázs', age: 28, city: 'Debrecen', text: 'Végre van akivel megbeszélni a tippeket, nem csak vakon rátenni.', avatar: '👨‍💼' },
-    { name: 'Szabó Péter', age: 35, city: 'Szeged', text: 'Az algoritmus transzparens. Látod miért ajánlja. Ez benne a legjobb.', avatar: '🧑' }
+    { name: 'Kovács Dániel', age: 32, city: 'Budapest', text: '4 hónapig buktam havonta 20-30 ezret. Végre van kivel megbeszélnem a tippeket.', avatar: '👨' },
+    { name: 'Nagy Balázs', age: 28, city: 'Debrecen', text: 'Nem varázslat, de végre értem, hogy miért vesztettem annyit.', avatar: '👨‍💼' },
+    { name: 'Szabó Péter', age: 35, city: 'Szeged', text: 'Látom az összes eredményt, semmi nincs rejtve. Ez benne a legjobb.', avatar: '🧑' }
   ];
 
   const stats = [
     { number: '127', label: 'Tipp kiadva', suffix: '' },
     { number: '73', label: 'Nyerő (57.5%)', suffix: '' },
     { number: '+12.4', label: 'ROI', suffix: '%' },
-    { number: '+124', label: 'Profit (10k tétel)', suffix: 'k Ft' }
+    { number: '+124', label: 'Profit (10k tét)', suffix: 'k Ft' }
   ];
 
   const features = [
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      title: 'Algoritmus, ami működik',
-      description: '15+ statisztikai tényező: xG, form, H2H, sérültek. Élő teljesítmény: 57.5% találati arány, +12.4% ROI',
+      title: 'Ne találgass. Tudd, hogy miért teszel.',
+      description: '15+ statisztikai tényező: xG, forma, H2H, sérültek. Nem varázslat - józan ész és számok.',
       highlight: '127 tipp | 73 nyerő'
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'Közösség, ami támogat',
-      description: '600+ aktív fogadó Telegram + Discord-on. Élő meccs chat, közös elemzés, tapasztalt memberek mentorálása',
+      title: 'Közösség, ahol tanulsz',
+      description: 'Discord közösség tapasztalt fogadókkal. Élő meccs chat, közös elemzés, tanulás egymástól.',
       highlight: 'Heti live Q&A'
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: '30 napos profitgarancia',
-      description: 'Ha nem vagy profitban az első 30 nap végén, ingyen folytathatod amíg nem nyersz. Egyszerű, átlátható',
-      highlight: 'Nulla kockázat'
+      title: '30 napos elégedettségi garancia',
+      description: 'Ha nem vagy elégedett a szolgáltatással (minőség, közösség, transzparencia), pénzt visszakapod.',
+      highlight: 'Kockázatmentes kipróbálás'
     }
   ];
 
   const painPoints = [
-    { icon: '📉', title: 'Havonta többet vesztesz, mint nyersz', text: 'Megint "biztos" volt a kupond. Az első 4 meccs is bejött. Az utolsó pedig... megint elvitte az egészet. Már megint -15.000 Ft a hónapban.' },
-    { icon: '⚠️', title: 'Nem bízol a fizetős tippekben', text: 'Láttad már. Facebook-on hirdetik, "biztos nyerőket" ígérnek, aztán vagy nem jönnek be, vagy eltűnnek a pénzeddel. "Ez is csak egy újabb átverés lesz" - gondolod.' },
+    { icon: '📉', title: 'Találgatsz és többet vesztesz, mint nyersz', text: 'Megint "biztos" volt a szelód. Az első 4 meccs is bejött. Az utolsó pedig... megint elvitte az egészet. Már megint -15.000 Ft a hónapban.' },
+    { icon: '⚠️', title: 'Nem tudod, kinek higgy', text: 'Facebookon és Instán mindenki "biztos nyerőket" ígér. De ha bukik, már nyoma sincs a posztnak.. Nem tudod, kinek hihetsz, ki ver át.' },
     { icon: '😤', title: 'Egyedül próbálod kitalálni', text: 'Órákig nézel statisztikákat, formát, sérültlistát. Úgy érzed, érted... de mégsem jön össze. Senki nem mondja meg, hol hibázol.' }
   ];
 
@@ -229,36 +211,36 @@ const TipForgeLanding = () => {
 
   const faqs = [
     { 
-      q: '🤔 "Profitgarancia? Ez túl szép, hogy igaz legyen."',
-      a: 'Értjük a kétséget. Ezért feltételekhez kötött: min. 20 tipp havonta, bankroll management betartása (1-2% tétek), min. 1.50 odds. Célja: biztosítsuk, hogy a rendszert követed, nem random fogadásokat teszel.'
+      q: '🤔 "Elégedettségi garancia? Mi van, ha mégis veszítek?"',
+      a: 'A garancia azt jelenti: ha nem vagy elégedett a szolgáltatás minőségével (tippek, közösség, transzparencia), 30 napon belül pénzt visszakapod. Fontos: nem azt garantáljuk, hogy minden hónapban nyerni fogsz - variance mindig van. De ha úgy érzed, nem kaptad meg az értéket, amit vártál, teljes visszatérítés.'
     },
     { 
       q: '🔮 "Honnan tudom, hogy nem átverés?"',
-      a: 'Teljes átláthatóság: élő eredménykövetés publikus spreadsheet-en, minden tipp látható előre és utólag. Discord közösség 600+ valódi emberrel. 30 napos garancia: ha nem nyersz, pénzt visszakapod.'
+      a: 'Teljes átláthatóság: élő eredménykövetés publikus táblázaton, minden tipp látható előre és utólag. Discord közösség valódi emberekkel. Nem rejtünk semmit - ha buktunk, azt is látod. Ha nyertünk, azt is.'
     },
     { 
       q: '🤖 "Miért algoritmus és nem emberi tipster?"',
-      a: 'Emberek emocionálisak. Algoritmus objektív: 15+ statisztikai tényező, 5 év adat (50.000+ meccs). Nem tipp, hanem value bet azonosítás. De! Közösség elemzi, értelmezi - hibrid modell.'
+      a: 'Emberek emocionálisak. Algoritmus objektív: 15+ statisztikai tényező, több év adat. De! Nem 100%-os - variance mindig lesz. A közösség segít értelmezni, mit miért ajánlunk. Hibrid modell: számok + emberi tapasztalat.'
     },
     { 
       q: '⏱️ "Mennyi időt kell rászánnom naponta?"',
-      a: '5-10 perc. Reggel megkapod a napi 1-2 tippet Discord-on/email-ben. Elolvasod a rövid elemzést, ráteszed, kész. Opcionális: közösségi chat, de nem kötelező.'
+      a: '5-10 perc. Reggel megkapod a napi 1-2 tippet Discord-on/email-ben. Elolvasod a rövid elemzést, ráteszed, kész. Opcionális: közösségi chat, élő Q&A - de nem kötelező.'
     },
     { 
       q: '💰 "Mennyi tőke kell az induláshoz?"',
-      a: 'Minimum 50.000 Ft ajánlott bankroll. 1-2% tétek = 500-1000 Ft/tipp. Kisebb is megy, de volatilitás miatt kockázatosabb. Nem tartozol elszámolással, saját számlád.'
+      a: 'Minimum 50.000 Ft ajánlott bankroll. 1-2% tétek = 500-1000 Ft/tipp. Kisebb is megy, de volatilitás miatt kockázatosabb. Nem tartozol elszámolással, saját számládon kezeled.'
     },
     { 
       q: '⚽ "Milyen sportokra adtok tippeket?"',
-      a: 'Fő fókusz: futball (Premier League, La Liga, Bundesliga, Serie A, NB1). Bővülés terv: NBA, NHL, tenisz - de csak ha van elég adat a megbízható modellhez.'
+      a: 'Fő fókusz: futball (Premier League, La Liga, Bundesliga, Serie A, NB1). Bővülés terv: NBA, tenisz - de csak ha van elég adat a megbízható modellhez.'
     },
     { 
-      q: '❌ "Mi van, ha nem működik?"',
-      a: '30 napos profitgarancia. Ha veszteséges vagy, ingyen folytathatod következő hónapban. Ha továbbra sem nyersz, teljes visszatérítés. Nulla kockázat.'
+      q: '❌ "Mi van, ha mégsem működik?"',
+      a: '30 napos elégedettségi garancia. Ha nem vagy elégedett, pénzt visszakapod. Nem azt ígérjük, hogy minden hónapban profitban leszel - de azt igen, hogy értékes közösséget, átlátható tippeket és tanulási lehetőséget kapsz.'
     },
     { 
       q: '📅 "Mikor indul a szolgáltatás?"',
-      a: 'Október 15. Launch. Várolista tagok 3 nappal korábban (okt 12) kapnak hozzáférést + launch árazás (2.990 Ft/hó vs. 4.990 Ft normál ár).'
+      a: 'Október 15. Launch. Várolista tagok 3 nappal korábban (okt 12) kapnak hozzáférést + kedvezményes árazás (most 4 990 Ft/hó vs. 7 990 Ft normál ár).'
     }
   ];
 
@@ -271,17 +253,17 @@ const TipForgeLanding = () => {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-8">
             <div className="inline-block px-4 py-2 bg-[#FF6B35] rounded-full text-sm font-semibold mb-6 animate-pulse">
-              🔥 50-ból már csak 14 hely maradt
+              🔥 30-ből már csak 7 hely maradt
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Nyersz, vagy <span className="text-[#00D4FF]">eltippelgeted a pénzed?</span>
+              Ne találgass. <span className="text-[#00D4FF]">Tudd, hogy mit miért teszel.</span>
             </h1>
             <p className="text-xl text-[#C0C0C0] mb-4">
-              30 napos profitgarancia magyar fogadóknak
+              Magyar sportfogadók közössége transzparens tippekkel
             </p>
             <p className="text-lg text-[#A9A9A9] max-w-2xl mx-auto mb-12">
-              Az első algoritmus-alapú tippszolgáltatás, ami <strong className="text-white">GARANTÁLJA</strong>, 
-              hogy profitba forgatod a fogadásaidat - vagy addig ingyen megy, amíg nem nyersz.
+              Az első algoritmus-alapú tippszolgáltatás, ahol <strong className="text-white">MINDEN eredmény nyilvános</strong>, 
+              a közösség aktív, és megtanulod, hogyan gondolkodj a fogadásról.
             </p>
           </div>
 
@@ -314,15 +296,15 @@ const TipForgeLanding = () => {
           <div className="flex flex-wrap justify-center gap-4 mt-12">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
-              <span className="text-sm">Algoritmus + közösség</span>
+              <span className="text-sm">Teljes transzparencia</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
-              <span className="text-sm">Élő eredménykövetés</span>
+              <span className="text-sm">Aktív közösség</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
-              <span className="text-sm">30 napos profitgarancia</span>
+              <span className="text-sm">30 napos garancia</span>
             </div>
           </div>
         </div>
@@ -350,13 +332,13 @@ const TipForgeLanding = () => {
               Azt hiszed, hogy <em>te vagy a hülye.</em>
             </p>
             <p className="text-lg text-[#C0C0C0] mb-4">
-              Közben mindenki nyerésről posztol Facebookon. A haverjaid mesélnek arról, 
+              Közben mindenki nagy nyereségekről posztol. A haverjaid mesélnek arról, 
               hogy "megint nyertek 50 ezret". Te meg... te csak veszítesz.
             </p>
             <p className="text-xl mb-2">De a valóság?</p>
             <p className="text-2xl font-bold text-white mb-4">95% veszít hosszú távon.</p>
             <p className="text-lg text-[#A9A9A9]">
-              Te nem vagy egyedül. A különbség a nyertesek és vesztesek között nem a szerencse.<br/>
+              Nem vagy egyedül. A különbség a nyertesek és vesztesek között nem a szerencse.<br/>
               <strong className="text-[#00D4FF]">Hanem, hogy van-e rendszerük.</strong>
             </p>
           </div>
@@ -368,7 +350,7 @@ const TipForgeLanding = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">A <span className="text-[#00D4FF]">TipForge</span> Módszer</h2>
-            <p className="text-xl text-[#C0C0C0]">Nem varázslat. Adat + Emberek + Védelem.</p>
+            <p className="text-xl text-[#C0C0C0]">Számok. Emberek. Transzparencia.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -411,17 +393,18 @@ const TipForgeLanding = () => {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4">
-            Nem várjuk el a vak bizalmad. Elmondjuk, hogyan működik.
+            Teljes átláthatóság. Semmi rejtés.
           </h2>
           
           {/* Tabs */}
           <div className="flex justify-center gap-4 mb-8 flex-wrap">
             {[
-              { id: 'algorithm', label: '🧮 Algoritmus' },
-              { id: 'results', label: '📊 Eredmények' },
-              { id: 'team', label: '👨‍💻 Csapat' }
+              { id: 'algorithm', label: '🧮 Hogyan működik' },
+              { id: 'results', label: '📊 Élő eredmények' },
+              { id: 'team', label: '👨‍💻 Ki csinálja' }
             ].map(tab => (
               <button
+                key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                   activeTab === tab.id 
@@ -438,12 +421,12 @@ const TipForgeLanding = () => {
           <div className="bg-[#121212] rounded-xl p-8 border border-[#2A2A2A]">
             {activeTab === 'algorithm' && (
               <div>
-                <h3 className="text-2xl font-bold mb-6">Az Algoritmus Működése (érthetően)</h3>
+                <h3 className="text-2xl font-bold mb-6">Hogyan működik az algoritmus? (egyszerűen)</h3>
                 <div className="space-y-6">
                   {[
-                    { num: '1', title: 'Adat Begyűjtés', text: '15+ forrásból szedi össze az élő adatokat: expected goals (xG), shot accuracy, possession stats, form (utolsó 5 meccs), head-to-head mérleg, sérültek, motiváció index.' },
-                    { num: '2', title: 'Mintázat Felismerés', text: '5 év adatai (~50.000 meccs) alapján tanult: "milyen csapat profilok nyernek adott szituációban". Pl.: high xG csapat rossz formában lévő ellen = value bet.' },
-                    { num: '3', title: 'Érték Azonosítás', text: 'Összeveti a fogadóirodák oddsait az algoritmus által kalkulált "valós esélyekkel". Ha eltérés van = value bet. Példa: Valós esély 65%, de az odds 2.10-es, tehát csak 47.6%.' },
+                    { num: '1', title: 'Adat begyűjtés', text: '15+ forrásból szedi össze az élő adatokat: expected goals (xG), shot accuracy, possession stats, forma (utolsó 5 meccs), head-to-head mérleg, sérültek, motiváció index.' },
+                    { num: '2', title: 'Mintázat felismerés', text: 'Több év adatai alapján tanult: "milyen csapat profilok nyernek adott szituációban". Pl.: magas xG csapat rossz formában lévő ellen = value bet.' },
+                    { num: '3', title: 'Érték azonosítás', text: 'Összeveti a fogadóirodák oddsait az algoritmus által kalkulált "valós esélyekkel". Ha eltérés van = value bet. Példa: Valós esély 65%, de az odds 2.10-es.' },
                   ].map(step => (
                     <div key={step.num} className="flex gap-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-[#00D4FF] text-[#1E1E1E] rounded-full flex items-center justify-center font-bold text-xl">
@@ -459,7 +442,7 @@ const TipForgeLanding = () => {
                 <div className="mt-8 p-4 bg-[#FF6B35]/10 border-l-4 border-[#FF6B35] rounded">
                   <p className="text-[#C0C0C0]">
                     ⚠️ <strong>Nem 100%-os.</strong> Hosszú távú előny a cél (55-60% win rate), 
-                    nem minden tipp fog nyerni. A bankroll management kritikus.
+                    nem minden tipp fog nyerni. Variance mindig lesz. A bankroll management kritikus.
                   </p>
                 </div>
               </div>
@@ -467,7 +450,7 @@ const TipForgeLanding = () => {
 
             {activeTab === 'results' && (
               <div>
-                <h3 className="text-2xl font-bold mb-6">Utolsó 30 Nap Eredményei (élő adatok)</h3>
+                <h3 className="text-2xl font-bold mb-6">Utolsó 30 nap eredményei (élő adatok)</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                   {stats.map((stat, i) => (
                     <div key={i} className="p-6 bg-[#1E1E1E] rounded-xl text-center border border-[#2A2A2A]">
@@ -604,7 +587,7 @@ const TipForgeLanding = () => {
             <div className="p-6 bg-[#121212] rounded-xl border border-[#2A2A2A]">
               <div className="text-3xl mb-3">💰</div>
               <h3 className="font-semibold mb-2">Launch árazás</h3>
-              <p className="text-sm text-[#A9A9A9]">3.990 Ft/hó (normál: 7.990 Ft)</p>
+              <p className="text-sm text-[#A9A9A9]">4 990 Ft/hó (7 990 Ft helyett)</p>
             </div>
             <div className="p-6 bg-[#121212] rounded-xl border border-[#2A2A2A]">
               <div className="text-3xl mb-3">🎁</div>
