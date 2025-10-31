@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import os
 
 # Page config
 st.set_page_config(page_title="🎮 LoL Live Predictor", layout="wide")
@@ -9,9 +10,10 @@ st.set_page_config(page_title="🎮 LoL Live Predictor", layout="wide")
 # Load models
 @st.cache_resource
 def load_models():
-    gb_model = joblib.load('models/live_gb_model_20251031.joblib')
-    rf_model = joblib.load('models/live_rf_model_20251031.joblib')
-    scaler = joblib.load('models/live_scaler_20251031.joblib')
+    BASE_DIR = os.path.dirname(__file__)
+    gb_model = joblib.load(os.path.join(BASE_DIR, "models", "live_gb_model_20251031.joblib"))
+    rf_model = joblib.load(os.path.join(BASE_DIR, "models", "live_rf_model_20251031.joblib"))
+    scaler = joblib.load(os.path.join(BASE_DIR, "models", "live_scaler_20251031.joblib"))
     return gb_model, rf_model, scaler
 
 gb_model, rf_model, scaler = load_models()
