@@ -18,7 +18,7 @@ def load_models():
 
 gb_model, rf_model, scaler = load_models()
 
-# Feature columns (paste your actual feature list here)
+# Feature columns
 feature_cols = [
     'kills_diff', 'towers_diff', 'drakes_diff', 'barons_BLUE', 'barons_RED',
     'gold_diff', 'gold_diff_pct', 'cs_diff', 'gold_per_min_blue', 'gold_per_min_red',
@@ -107,37 +107,85 @@ def calculate_features(minute, k_blue, k_red, t_blue, t_red, d_blue, d_red,
 st.title("🎮 LIVE MATCH WIN PREDICTOR")
 st.markdown("---")
 
-# Layout
-col1, col2 = st.columns(2)
+# Game minute
+st.subheader("⏰ Game State")
+minute = st.slider("Minute", 5, 40, 15)
+st.markdown("---")
 
+# Stats in rows, teams in columns
+st.subheader("📊 Match Statistics")
+
+# Column headers
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("### ")
+with col_blue:
+    st.markdown("### 🔵 BLUE")
+with col_red:
+    st.markdown("### 🔴 RED")
+
+# Kills
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("**⚔️ Kills**")
+with col_blue:
+    kills_blue = st.number_input("Kills Blue", 0, 100, 5, label_visibility="collapsed", key="kills_blue")
+with col_red:
+    kills_red = st.number_input("Kills Red", 0, 100, 3, label_visibility="collapsed", key="kills_red")
+
+# Towers
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("**🏰 Towers**")
+with col_blue:
+    towers_blue = st.number_input("Towers Blue", 0, 11, 2, label_visibility="collapsed", key="towers_blue")
+with col_red:
+    towers_red = st.number_input("Towers Red", 0, 11, 1, label_visibility="collapsed", key="towers_red")
+
+# Drakes
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("**🐉 Drakes**")
+with col_blue:
+    drakes_blue = st.number_input("Drakes Blue", 0, 4, 2, label_visibility="collapsed", key="drakes_blue")
+with col_red:
+    drakes_red = st.number_input("Drakes Red", 0, 4, 0, label_visibility="collapsed", key="drakes_red")
+
+# Barons
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("**👑 Barons**")
+with col_blue:
+    barons_blue = st.number_input("Barons Blue", 0, 5, 0, label_visibility="collapsed", key="barons_blue")
+with col_red:
+    barons_red = st.number_input("Barons Red", 0, 5, 0, label_visibility="collapsed", key="barons_red")
+
+# Gold
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("**💰 Gold**")
+with col_blue:
+    gold_blue = st.number_input("Gold Blue", 0, 100000, 25000, step=1000, label_visibility="collapsed", key="gold_blue")
+with col_red:
+    gold_red = st.number_input("Gold Red", 0, 100000, 22000, step=1000, label_visibility="collapsed", key="gold_red")
+
+# CS
+col_label, col_blue, col_red = st.columns([2, 1, 1])
+with col_label:
+    st.markdown("**🗡️ CS (Creep Score)**")
+with col_blue:
+    cs_blue = st.number_input("CS Blue", 0, 1500, 500, step=5, label_visibility="collapsed", key="cs_blue")
+with col_red:
+    cs_red = st.number_input("CS Red", 0, 1500, 520, step=5, label_visibility="collapsed", key="cs_red")
+
+st.markdown("---")
+
+# Model selection and predict button
+col1, col2 = st.columns([2, 1])
 with col1:
-    st.subheader("⏰ Game State")
-    minute = st.slider("Minute", 5, 40, 15)
-    
-    st.subheader("⚔️ Combat Stats")
-    kills_blue = st.number_input("🔵 Kills BLUE", 0, 100, 5)
-    kills_red = st.number_input("🔴 Kills RED", 0, 100, 3)
-    
-    st.subheader("🏰 Objectives")
-    towers_blue = st.number_input("🔵 Towers BLUE", 0, 11, 2)
-    towers_red = st.number_input("🔴 Towers RED", 0, 11, 1)
-    drakes_blue = st.number_input("🔵 Drakes BLUE", 0, 4, 2)
-    drakes_red = st.number_input("🔴 Drakes RED", 0, 4, 0)
-    barons_blue = st.number_input("🔵 Barons BLUE", 0, 5, 0)
-    barons_red = st.number_input("🔴 Barons RED", 0, 5, 0)
-
+    model_choice = st.selectbox("🤖 Select Model", ["Gradient Boosting", "Random Forest"])
 with col2:
-    st.subheader("💰 Economy")
-    gold_blue = st.number_input("🔵 Gold BLUE", 0, 100000, 25000, step=1000)
-    gold_red = st.number_input("🔴 Gold RED", 0, 100000, 22000, step=1000)
-
-    cs_blue = st.number_input("🔵 CS BLUE", 0, 1500, 500, step=5)
-    cs_red = st.number_input("🔴 CS RED", 0, 1500, 520, step=5)
-    
-    st.subheader("🤖 Model Settings")
-    model_choice = st.selectbox("Select Model", ["Gradient Boosting", "Random Forest"])
-    
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("###")
     predict_btn = st.button("🎯 PREDICT", type="primary", use_container_width=True)
 
 # Prediction
