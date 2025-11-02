@@ -1,75 +1,22 @@
 """
-League of Legends Live Match & Odds Scrapers - PlayWright Edition
-Streamlit Cloud optimized
+League of Legends Live Match & Odds Scrapers
+Combines AndyDanger match stats and Tippmix odds scraping
 """
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import time
 from typing import Dict, List, Optional
 from datetime import datetime
 import logging
-import os
-import subprocess
-import sys
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ✅ Global flag to track installation - INICIALIZÁLVA!
-_PLAYWRIGHT_INSTALLED = False
-
-def ensure_playwright_installed():
-    """Ensure Playwright browsers are installed (lazy loading)"""
-    global _PLAYWRIGHT_INSTALLED
-    
-    if _PLAYWRIGHT_INSTALLED:
-        return True
-    
-    try:
-        # Check if chromium exists
-        cache_dir = os.path.expanduser("~/.cache/ms-playwright")
-        if os.path.exists(cache_dir):
-            chromium_dirs = [d for d in os.listdir(cache_dir) if 'chromium' in d.lower()]
-            if chromium_dirs and any(
-                os.path.exists(os.path.join(cache_dir, d, 'chrome-linux')) 
-                or os.path.exists(os.path.join(cache_dir, d, 'chrome-win'))
-                for d in chromium_dirs
-            ):
-                logger.info("✅ PlayWright browsers already installed")
-                _PLAYWRIGHT_INSTALLED = True
-                return True
-        
-        # Install browsers (WITHOUT --with-deps for Streamlit Cloud)
-        logger.info("🔄 Installing PlayWright Chromium (first time, ~90 sec)...")
-        logger.info("This only happens once on Streamlit Cloud deployment")
-        
-        result = subprocess.run(
-            [sys.executable, "-m", "playwright", "install", "chromium"],  # ✅ Removed --with-deps
-            capture_output=True,
-            text=True,
-            timeout=300
-        )
-        
-        if result.returncode == 0:
-            logger.info("✅ PlayWright browsers installed successfully")
-            logger.info(f"Output: {result.stdout}")
-            _PLAYWRIGHT_INSTALLED = True
-            return True
-        else:
-            logger.error(f"❌ Installation failed with code {result.returncode}")
-            logger.error(f"STDERR: {result.stderr}")
-            logger.error(f"STDOUT: {result.stdout}")
-            return False
-        
-    except subprocess.TimeoutExpired:
-        logger.error("❌ Installation timeout (>5 minutes)")
-        return False
-    except Exception as e:
-        logger.error(f"❌ Failed to install PlayWright browsers: {e}")
-        import traceback
-        logger.error(traceback.format_exc())
-        return False
 
 class MatchStatsScraper:
     """Scrapes live match statistics from AndyDanger"""
@@ -77,47 +24,47 @@ class MatchStatsScraper:
     def __init__(self, headless: bool = True):
         self.headless = headless
         
+    def _setup_driver(self):
+        """Setup Selenium WebDriver"""
+        chrome_options = Options()
+        if self.headless:
+            chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--window-size=1920,1080")
+        return webdriver.Chrome(options=chrome_options)
+    
     def scrape(self, url: str) -> Optional[Dict]:
-        """Scrape match statistics"""
-        # ÚJ: Ensure browsers are installed before scraping
-        if not ensure_playwright_installed():
-            logger.error("❌ Cannot scrape: PlayWright browsers not installed")
-            return None
+        """
+        Scrape match statistics from AndyDanger
         
+        Returns:
+            Dict with structure:
+            {
+                'timestamp': str,
+                'game_time': str (e.g., '29:00'),
+                'game_index': int,  # ÚJ!
+                'blue_team': {...},
+                'red_team': {...},
+                'players': [...]
+            }
+        """
+        driver = None
         try:
-            logger.info("Starting match stats scraper with PlayWright...")
+            logger.info("Starting match stats scraper...")
+            driver = self._setup_driver()
+            driver.get(url)
             
-            with sync_playwright() as p:
-                # Launch with minimal options for Streamlit Cloud
-                browser = p.chromium.launch(
-                    headless=self.headless,
-                    args=[
-                        '--no-sandbox',
-                        '--disable-setuid-sandbox',
-                        '--disable-dev-shm-usage',
-                        '--disable-gpu'
-                    ]
-                )
-                
-                context = browser.new_context(
-                    viewport={'width': 1920, 'height': 1080},
-                    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                )
-                page = context.new_page()
-                
-                # Navigate
-                logger.info(f"Navigating to: {url}")
-                page.goto(url, wait_until="domcontentloaded", timeout=30000)
-                
-                # Wait for content
-                page.wait_for_selector(".status-live-game-card-content", timeout=20000)
-                time.sleep(3)
-                
-                # Get HTML
-                html = page.content()
-                browser.close()
+            # Wait for content
+            wait = WebDriverWait(driver, 20)
+            wait.until(EC.presence_of_element_located(
+                (By.CLASS_NAME, "status-live-game-card-content")
+            ))
+            time.sleep(3)
             
-            soup = BeautifulSoup(html, 'html.parser')
+            page_source = driver.page_source
+            soup = BeautifulSoup(page_source, 'html.parser')
             
             # Extract game index from URL
             game_index = self._extract_game_index(url)
@@ -126,7 +73,7 @@ class MatchStatsScraper:
             result = {
                 'timestamp': datetime.now().isoformat(),
                 'game_time': self._extract_game_time(soup),
-                'game_index': game_index,
+                'game_index': game_index,  # ÚJ!
                 'blue_team': {},
                 'red_team': {},
                 'players': []
@@ -142,10 +89,11 @@ class MatchStatsScraper:
             
         except Exception as e:
             logger.error(f"❌ Scraping error: {str(e)}")
-            import traceback
-            logger.error(traceback.format_exc())
             return None
-    
+        finally:
+            if driver:
+                driver.quit()
+
     def _extract_game_index(self, url: str) -> int:
         """Extract game index from URL"""
         try:
@@ -155,7 +103,7 @@ class MatchStatsScraper:
                 return int(match.group(1))
         except:
             pass
-        return 1
+        return 1  # Default to game 1
     
     def _extract_game_time(self, soup) -> str:
         """Extract current game time"""
@@ -201,7 +149,7 @@ class MatchStatsScraper:
         return 0
     
     def _extract_gold_value(self, team_div) -> int:
-        """Extract gold value"""
+        """Extract gold value (has special formatting)"""
         try:
             gold_div = team_div.find('div', class_='team-stats gold')
             if gold_div:
@@ -231,7 +179,7 @@ class MatchStatsScraper:
             path = svg.find('path', class_='shape')
             if path:
                 fill_color = path.get('fill', '')
-                dragon_type = dragon_map.get(fill_color, 'Unknown')
+                dragon_type = dragon_map.get(fill_color, f'Unknown')
                 dragons.append(dragon_type)
         
         return dragons
@@ -272,7 +220,7 @@ class MatchStatsScraper:
             level_elem = champion_info.find('span', class_='player-champion-info-level')
             level = int(level_elem.get_text(strip=True)) if level_elem else 0
             
-            # CS and other stats
+            # CS (creep score)
             columns = row.find_all('td')
             cs = 0
             gold = 0
@@ -283,6 +231,7 @@ class MatchStatsScraper:
             for column in columns:
                 text = column.get_text(strip=True)
                 
+                # Detect column type by content
                 if 'player-stats-kda' in str(column):
                     if kills == 0:
                         kills = int(text) if text.isdigit() else 0
@@ -318,121 +267,133 @@ class OddsScraper:
     def __init__(self, headless: bool = True):
         self.headless = headless
     
+    def _setup_driver(self):
+        """Setup Selenium WebDriver"""
+        chrome_options = Options()
+        if self.headless:
+            chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        return webdriver.Chrome(options=chrome_options)
+    
     def scrape(self, url: str, game_index: Optional[int] = None) -> Optional[Dict]:
-        """Scrape betting odds from Tippmix"""
-        # ÚJ: Ensure browsers are installed before scraping
-        if not ensure_playwright_installed():
-            logger.error("❌ Cannot scrape: PlayWright browsers not installed")
-            return None
+        """
+        Scrape betting odds from Tippmix
         
+        Args:
+            url: Tippmix URL
+            game_index: Optional game number to filter (1, 2, 3, etc.)
+        
+        Returns:
+            Dict with structure:
+            {
+                'timestamp': str,
+                'markets': [
+                    {
+                        'name': str,
+                        'game_index': int,  # ÚJ!
+                        'options': [...]
+                    },
+                    ...
+                ]
+            }
+        """
+        driver = None
         try:
-            logger.info("Starting odds scraper with PlayWright...")
+            logger.info("Starting odds scraper...")
+            driver = self._setup_driver()
+            driver.get(url)
             
-            with sync_playwright() as p:
-                browser = p.chromium.launch(
-                    headless=self.headless,
-                    args=[
-                        '--no-sandbox',
-                        '--disable-setuid-sandbox',
-                        '--disable-dev-shm-usage',
-                        '--disable-gpu'
-                    ]
+            # Handle cookie consent
+            try:
+                cookie_btn = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.ID, "onetrust-accept-btn-handler"))
                 )
-                
-                context = browser.new_context(
-                    viewport={'width': 1920, 'height': 1080},
-                    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-                )
-                page = context.new_page()
-                
-                # Navigate
-                logger.info(f"Navigating to: {url}")
-                page.goto(url, wait_until="domcontentloaded", timeout=30000)
-                
-                # Handle cookie consent
+                cookie_btn.click()
+                time.sleep(1)
+            except:
+                pass
+            
+            # Switch to iframe
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.TAG_NAME, "iframe"))
+            )
+            iframe = driver.find_elements(By.TAG_NAME, "iframe")[0]
+            driver.switch_to.frame(iframe)
+            time.sleep(2)
+            
+            # Extract markets
+            articles = driver.find_elements(By.TAG_NAME, "article")
+            markets = []
+            
+            for article in articles:
                 try:
-                    page.click("#onetrust-accept-btn-handler", timeout=5000)
-                    time.sleep(1)
-                except:
-                    logger.info("No cookie consent button found")
-                
-                # Wait for iframe
-                page.wait_for_selector("iframe", timeout=10000)
-                
-                # Get iframe locator
-                iframe = page.frame_locator("iframe").first
-                time.sleep(2)
-                
-                # Extract markets
-                articles = iframe.locator("article").all()
-                markets = []
-                
-                logger.info(f"Found {len(articles)} articles")
-                
-                for idx, article in enumerate(articles):
-                    try:
-                        # Market name
-                        legend_el = article.locator(".Market__CollapseText").first
-                        market_name = legend_el.get_attribute("title") or legend_el.inner_text()
-                        
-                        # Extract game index
-                        market_game_index = self._extract_game_index_from_market(market_name)
-                        
-                        # Filter by game_index
-                        if game_index is not None and market_game_index != game_index:
-                            continue
-                        
-                        # Odds buttons
-                        odds_buttons = article.locator(".OddsButton").all()
-                        options = []
-                        
-                        for btn in odds_buttons:
-                            try:
-                                name_el = btn.locator(".OddsButton__Text").first
-                                odds_el = btn.locator(".OddsButton__Odds").first
-                                
-                                option_name = name_el.inner_text().strip()
-                                odds_str = odds_el.inner_text().strip().replace(',', '.')
-                                odds_value = float(odds_str)
-                                
-                                options.append({
-                                    'name': option_name,
-                                    'odds': odds_value
-                                })
-                            except Exception as e:
-                                logger.warning(f"Error extracting odds button: {e}")
-                                continue
-                        
-                        if options:
-                            markets.append({
-                                'name': market_name,
-                                'game_index': market_game_index,
-                                'options': options
-                            })
-                            
-                    except Exception as e:
-                        logger.warning(f"Error extracting market {idx}: {e}")
+                    # Market name
+                    legend_el = article.find_element(By.CLASS_NAME, "Market__CollapseText")
+                    market_name = legend_el.get_attribute("title") or legend_el.text.strip()
+                    
+                    # Extract game index from market name
+                    market_game_index = self._extract_game_index_from_market(market_name)
+                    
+                    # Filter by game_index if specified
+                    if game_index is not None and market_game_index != game_index:
                         continue
-                
-                browser.close()
-                
-                result = {
-                    'timestamp': datetime.now().isoformat(),
-                    'markets': markets
-                }
-                
-                filter_msg = f" (filtered to game {game_index})" if game_index else ""
-                logger.info(f"✅ Successfully scraped {len(markets)} markets{filter_msg}")
-                return result
-                
+                    
+                    # Odds buttons
+                    odds_buttons = article.find_elements(By.CLASS_NAME, "OddsButton")
+                    options = []
+                    
+                    for btn in odds_buttons:
+                        try:
+                            name_el = btn.find_element(By.CLASS_NAME, "OddsButton__Text")
+                            odds_el = btn.find_element(By.CLASS_NAME, "OddsButton__Odds")
+                            
+                            option_name = name_el.text.strip()
+                            odds_str = odds_el.text.strip().replace(',', '.')
+                            odds_value = float(odds_str)
+                            
+                            options.append({
+                                'name': option_name,
+                                'odds': odds_value
+                            })
+                        except:
+                            continue
+                    
+                    if options:
+                        markets.append({
+                            'name': market_name,
+                            'game_index': market_game_index,  # ÚJ!
+                            'options': options
+                        })
+                        
+                except:
+                    continue
+            
+            result = {
+                'timestamp': datetime.now().isoformat(),
+                'markets': markets
+            }
+            
+            filter_msg = f" (filtered to game {game_index})" if game_index else ""
+            logger.info(f"✅ Successfully scraped {len(markets)} markets{filter_msg}")
+            return result
+            
         except Exception as e:
             logger.error(f"❌ Odds scraping error: {str(e)}")
-            import traceback
-            logger.error(traceback.format_exc())
             return None
-    
+        finally:
+            if driver:
+                driver.quit()
+
     def _extract_game_index_from_market(self, market_name: str) -> int:
-        """Extract game index from market name"""
+        """
+        Extract game index from market name
+        Examples:
+            "Ki nyeri? - 1. pálya" -> 1
+            "Ki nyeri? - 2. pálya" -> 2
+            "Első Vér - 3. pálya" -> 3
+            "Ki nyeri?" -> 0 (match-level market)
+        """
         try:
             import re
             match = re.search(r'(\d+)\.\s*pálya', market_name)
@@ -440,31 +401,37 @@ class OddsScraper:
                 return int(match.group(1))
         except:
             pass
-        return 0
+        return 0  # 0 = teljes mérkőzés (best-of series)
 
 
 # Convenience functions
 def scrape_match_stats(url: str) -> Optional[Dict]:
+    """Quick function to scrape match stats"""
     scraper = MatchStatsScraper(headless=True)
     return scraper.scrape(url)
 
 
 def scrape_odds(url: str, game_index: Optional[int] = None) -> Optional[Dict]:
+    """Quick function to scrape odds with optional game filtering"""
     scraper = OddsScraper(headless=True)
     return scraper.scrape(url, game_index=game_index)
 
 
 if __name__ == "__main__":
-    # Test
+    # Test scrapers
     match_url = "https://andydanger.github.io/live-lol-esports/#/live/113475871523985235/game-index/3"
     odds_url = "https://www.tippmixpro.hu/hu/fogadas/i/esemenyek/100/league-of-legends-lol/vilag/emea-masters-summer/karmine-corp-blue-los-heretics/284726865528393728/palyak"
     
-    print("Testing Match Stats...")
+    print("Testing Match Stats Scraper...")
     stats = scrape_match_stats(match_url)
     if stats:
-        print(f"✅ Game time: {stats['game_time']}")
+        print(f"Game time: {stats['game_time']}")
+        print(f"Blue kills: {stats['blue_team']['kills']}")
+        print(f"Red kills: {stats['red_team']['kills']}")
     
-    print("\nTesting Odds...")
-    odds = scrape_odds(odds_url, game_index=3)
+    print("\nTesting Odds Scraper...")
+    odds = scrape_odds(odds_url)
     if odds:
-        print(f"✅ Markets: {len(odds['markets'])}")
+        print(f"Markets found: {len(odds['markets'])}")
+        if odds['markets']:
+            print(f"First market: {odds['markets'][0]['name']}")
