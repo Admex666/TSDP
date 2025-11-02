@@ -191,7 +191,8 @@ class ValueBettingEngine:
         return ev
     
     def find_value_bets(self, match_stats: Dict, odds_data: Dict, 
-                        use_ensemble: bool = True) -> List[Dict]:
+                    use_ensemble: bool = True, 
+                    home_is_blue: bool = True) -> List[Dict]:  # ÚJ paraméter!
         """
         Identify value betting opportunities
         
@@ -199,17 +200,10 @@ class ValueBettingEngine:
             match_stats: Output from MatchStatsScraper
             odds_data: Output from OddsScraper
             use_ensemble: Use ensemble prediction
+            home_is_blue: If True, Tippmix "Hazai" = BLUE side; if False, "Hazai" = RED side
             
         Returns:
-            List of value bet dictionaries with keys:
-            - team: 'BLUE' or 'RED'
-            - market_name: Name of the betting market
-            - odds: Decimal odds
-            - predicted_prob: Model's probability
-            - implied_prob: Bookmaker's implied probability
-            - edge: Expected value percentage
-            - kelly_fraction: Recommended Kelly stake
-            - confidence: 'HIGH', 'MEDIUM', or 'LOW'
+            List of value bet dictionaries
         """
         value_bets = []
         
@@ -217,11 +211,20 @@ class ValueBettingEngine:
         features = self.calculate_features(match_stats)
         prob_blue, prob_red = self.predict_win_probability(features, use_ensemble)
         
-        logger.info(f"Model predictions - Blue: {prob_blue:.1%}, Red: {prob_red:.1%}")
+        # Get game index from match stats
+        game_index = match_stats.get('game_index', 1)
+        
+        logger.info(f"Model predictions (Game {game_index}) - Blue: {prob_blue:.1%}, Red: {prob_red:.1%}")
+        logger.info(f"Team mapping: {'Hazai=BLUE, Vendég=RED' if home_is_blue else 'Hazai=RED, Vendég=BLUE'}")
         
         # Find relevant markets in odds data
         for market in odds_data['markets']:
             market_name = market['name']
+            market_game_index = market.get('game_index', 0)
+            
+            # Only process markets for the current game
+            if market_game_index != game_index:
+                continue
             
             # Only process match winner markets
             if 'Ki nyeri' not in market_name and 'Winner' not in market_name:
@@ -231,13 +234,28 @@ class ValueBettingEngine:
                 team = None
                 predicted_prob = None
                 
-                # Identify team
-                if 'Blue' in option['name'] or any(blue_team in option['name'] for blue_team in ['T1', 'Gen.G', 'Karmine']):
-                    team = 'BLUE'
-                    predicted_prob = prob_blue
-                elif 'Red' in option['name'] or any(red_team in option['name'] for red_team in ['TES', 'KT', 'Heretics']):
-                    team = 'RED'
-                    predicted_prob = prob_red
+                # ÚJ LOGIKA: Determine team based on home_is_blue setting
+                option_name = option['name']
+                
+                # Tippmix uses indices: typically options[0] = Hazai, options[1] = Vendég
+                is_home_option = market['options'].index(option) == 0
+                
+                if home_is_blue:
+                    # Standard mapping: Hazai = BLUE, Vendég = RED
+                    if is_home_option:
+                        team = 'BLUE'
+                        predicted_prob = prob_blue
+                    else:
+                        team = 'RED'
+                        predicted_prob = prob_red
+                else:
+                    # Inverted mapping: Hazai = RED, Vendég = BLUE
+                    if is_home_option:
+                        team = 'RED'
+                        predicted_prob = prob_red
+                    else:
+                        team = 'BLUE'
+                        predicted_prob = prob_blue
                 
                 if team is None or predicted_prob is None:
                     continue
@@ -248,9 +266,8 @@ class ValueBettingEngine:
                 
                 # Check if this is a value bet
                 if edge >= self.min_edge * 100 and predicted_prob >= self.min_confidence:
-                    # Kelly Criterion for stake sizing
                     kelly_fraction = (predicted_prob * odds - 1) / (odds - 1)
-                    kelly_fraction = max(0, min(kelly_fraction, 0.25))  # Cap at 25%
+                    kelly_fraction = max(0, min(kelly_fraction, 0.25))
                     
                     # Confidence level
                     if edge >= 15:
@@ -262,8 +279,9 @@ class ValueBettingEngine:
                     
                     value_bet = {
                         'team': team,
-                        'team_name': option['name'],
+                        'team_name': option_name,  # Ez most a Tippmix neve (Hazai/Vendég)
                         'market_name': market_name,
+                        'game_index': game_index,
                         'odds': odds,
                         'predicted_prob': predicted_prob,
                         'implied_prob': implied_prob,
@@ -275,8 +293,8 @@ class ValueBettingEngine:
                     }
                     
                     value_bets.append(value_bet)
-                    logger.info(f"🎯 VALUE BET: {team} at {odds:.2f} (Edge: {edge:.1f}%)")
-        
+                    logger.info(f"🎯 VALUE BET (Game {game_index}): {option_name} ({team} side) at {odds:.2f} (Edge: {edge:.1f}%)")
+            
         return value_bets
     
     def should_cashout(self, current_prob: float, entry_prob: float, 

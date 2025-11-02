@@ -44,6 +44,7 @@ class MatchStatsScraper:
             {
                 'timestamp': str,
                 'game_time': str (e.g., '29:00'),
+                'game_index': int,  # ÚJ!
                 'blue_team': {...},
                 'red_team': {...},
                 'players': [...]
@@ -65,10 +66,14 @@ class MatchStatsScraper:
             page_source = driver.page_source
             soup = BeautifulSoup(page_source, 'html.parser')
             
+            # Extract game index from URL
+            game_index = self._extract_game_index(url)
+            
             # Extract data
             result = {
                 'timestamp': datetime.now().isoformat(),
                 'game_time': self._extract_game_time(soup),
+                'game_index': game_index,  # ÚJ!
                 'blue_team': {},
                 'red_team': {},
                 'players': []
@@ -79,7 +84,7 @@ class MatchStatsScraper:
             result['red_team'] = team_stats['red']
             result['players'] = self._extract_player_stats(soup)
             
-            logger.info(f"✅ Successfully scraped match at {result['game_time']}")
+            logger.info(f"✅ Successfully scraped match at {result['game_time']} (Game {game_index})")
             return result
             
         except Exception as e:
@@ -88,6 +93,17 @@ class MatchStatsScraper:
         finally:
             if driver:
                 driver.quit()
+
+    def _extract_game_index(self, url: str) -> int:
+        """Extract game index from URL"""
+        try:
+            import re
+            match = re.search(r'/game-index/(\d+)', url)
+            if match:
+                return int(match.group(1))
+        except:
+            pass
+        return 1  # Default to game 1
     
     def _extract_game_time(self, soup) -> str:
         """Extract current game time"""
@@ -260,9 +276,13 @@ class OddsScraper:
         chrome_options.add_argument("--disable-dev-shm-usage")
         return webdriver.Chrome(options=chrome_options)
     
-    def scrape(self, url: str) -> Optional[Dict]:
+    def scrape(self, url: str, game_index: Optional[int] = None) -> Optional[Dict]:
         """
         Scrape betting odds from Tippmix
+        
+        Args:
+            url: Tippmix URL
+            game_index: Optional game number to filter (1, 2, 3, etc.)
         
         Returns:
             Dict with structure:
@@ -271,10 +291,8 @@ class OddsScraper:
                 'markets': [
                     {
                         'name': str,
-                        'options': [
-                            {'name': str, 'odds': float},
-                            ...
-                        ]
+                        'game_index': int,  # ÚJ!
+                        'options': [...]
                     },
                     ...
                 ]
@@ -314,6 +332,13 @@ class OddsScraper:
                     legend_el = article.find_element(By.CLASS_NAME, "Market__CollapseText")
                     market_name = legend_el.get_attribute("title") or legend_el.text.strip()
                     
+                    # Extract game index from market name
+                    market_game_index = self._extract_game_index_from_market(market_name)
+                    
+                    # Filter by game_index if specified
+                    if game_index is not None and market_game_index != game_index:
+                        continue
+                    
                     # Odds buttons
                     odds_buttons = article.find_elements(By.CLASS_NAME, "OddsButton")
                     options = []
@@ -337,6 +362,7 @@ class OddsScraper:
                     if options:
                         markets.append({
                             'name': market_name,
+                            'game_index': market_game_index,  # ÚJ!
                             'options': options
                         })
                         
@@ -348,7 +374,8 @@ class OddsScraper:
                 'markets': markets
             }
             
-            logger.info(f"✅ Successfully scraped {len(markets)} markets")
+            filter_msg = f" (filtered to game {game_index})" if game_index else ""
+            logger.info(f"✅ Successfully scraped {len(markets)} markets{filter_msg}")
             return result
             
         except Exception as e:
@@ -358,6 +385,24 @@ class OddsScraper:
             if driver:
                 driver.quit()
 
+    def _extract_game_index_from_market(self, market_name: str) -> int:
+        """
+        Extract game index from market name
+        Examples:
+            "Ki nyeri? - 1. pálya" -> 1
+            "Ki nyeri? - 2. pálya" -> 2
+            "Első Vér - 3. pálya" -> 3
+            "Ki nyeri?" -> 0 (match-level market)
+        """
+        try:
+            import re
+            match = re.search(r'(\d+)\.\s*pálya', market_name)
+            if match:
+                return int(match.group(1))
+        except:
+            pass
+        return 0  # 0 = teljes mérkőzés (best-of series)
+
 
 # Convenience functions
 def scrape_match_stats(url: str) -> Optional[Dict]:
@@ -366,10 +411,10 @@ def scrape_match_stats(url: str) -> Optional[Dict]:
     return scraper.scrape(url)
 
 
-def scrape_odds(url: str) -> Optional[Dict]:
-    """Quick function to scrape odds"""
+def scrape_odds(url: str, game_index: Optional[int] = None) -> Optional[Dict]:
+    """Quick function to scrape odds with optional game filtering"""
     scraper = OddsScraper(headless=True)
-    return scraper.scrape(url)
+    return scraper.scrape(url, game_index=game_index)
 
 
 if __name__ == "__main__":

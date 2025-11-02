@@ -12,11 +12,15 @@ import time
 import joblib
 import os
 from typing import Dict, List
+from data_logger import SnapshotLogger
 
-# Import our custom modules (adjust imports based on your file structure)
-# from scrapers import MatchStatsScraper, OddsScraper
-# from value_betting import ValueBettingEngine
-# from live_tracker import LiveMatchTracker
+# Initialize logger
+if 'snapshot_logger' not in st.session_state:
+    st.session_state.snapshot_logger = SnapshotLogger(data_dir="data/snapshots")
+
+# Match ID tracking
+if 'current_match_id' not in st.session_state:
+    st.session_state.current_match_id = None
 
 # Page config
 st.set_page_config(
@@ -86,18 +90,54 @@ gb_model, rf_model, scaler = load_models()
 st.sidebar.title("⚙️ Configuration")
 
 # Match URL inputs
+# ÚJ: Game Index Selector
+game_index = st.sidebar.number_input(
+    "🎮 Game Number",
+    min_value=1,
+    max_value=5,
+    value=3,
+    step=1,
+    help="Which game in the series (Best of 5)"
+)
+
 st.sidebar.subheader("📊 Data Sources")
+
+match_id = st.sidebar.text_input(
+    "Match ID (for logging)",
+    value=datetime.now().strftime("%Y%m%d_%H%M"),
+    help="Unique identifier for this match session"
+)
+st.session_state.current_match_id = match_id
+
 match_url = st.sidebar.text_input(
     "AndyDanger Match URL",
-    value="https://andydanger.github.io/live-lol-esports/#/live/113475871523985235/game-index/3",
+    value="https://andydanger.github.io/live-lol-esports/#/live/113475871523985235",
     help="URL to live match stats"
 )
 
 odds_url = st.sidebar.text_input(
     "Tippmix Odds URL",
-    value="https://www.tippmixpro.hu/hu/elo/i/elo-esemenyek/100/league-of-legends-lol/...",
+    value="https://www.tippmixpro.hu/hu/fogadas/i/esemenyek/100/league-of-legends-lol/vilag/emea-masters-summer/karmine-corp-blue-los-heretics/284726865528393728/palyak",
     help="URL to live betting odds"
 )
+
+# Csapat mapping
+st.sidebar.subheader("🔄 Team Mapping")
+st.sidebar.markdown("Adjust if Home/Away doesn't match Blue/Red sides")
+
+home_is_blue = st.sidebar.radio(
+    "Tippmix 'Hazai' csapat játszik:",
+    options=[True, False],
+    format_func=lambda x: "🔵 BLUE oldalon" if x else "🔴 RED oldalon",
+    index=0,  # Default: Hazai = Blue
+    help="Válaszd ki, hogy a Tippmix 'hazai' csapata melyik oldalon játszik az adott játékban"
+)
+
+# Visual confirmation
+if home_is_blue:
+    st.sidebar.success("✅ Hazai → 🔵 BLUE | Vendég → 🔴 RED")
+else:
+    st.sidebar.warning("⚠️ Hazai → 🔴 RED | Vendég → 🔵 BLUE")
 
 # Tracking settings
 st.sidebar.subheader("🔄 Tracking Settings")
@@ -169,22 +209,96 @@ with col4:
 st.markdown("---")
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "📊 Live Match", 
     "🎯 Value Bets", 
     "📈 Performance", 
-    "🔍 History"
+    "📜 History",
+    "💾 Snapshots"
 ])
 
 # Tab 1: Live Match
 with tab1:
-    st.subheader("🎮 Current Match State")
+    st.subheader(f"🎮 Current Match State - Game {game_index}")
     
     # Manual refresh button
     col1, col2 = st.columns([1, 5])
     with col1:
         manual_refresh = st.button("🔄 Refresh Now", key="manual_refresh")
     
+    if manual_refresh:
+        with st.spinner("🔄 Fetching data..."):
+            try:
+                from scrapers import scrape_match_stats, scrape_odds
+                from value_betting import ValueBettingEngine
+                
+                match_data = scrape_match_stats(match_url+f'/game-index/{game_index}')
+                odds_data = scrape_odds(odds_url, game_index=game_index)
+
+                if match_data and odds_data and gb_model and rf_model and scaler:
+                    engine = ValueBettingEngine(
+                        gb_model, rf_model, scaler, 
+                        min_edge=min_edge/100, 
+                        min_confidence=min_confidence
+                    )
+                    features = engine.calculate_features(match_data)
+                    prob_blue, prob_red = engine.predict_win_probability(features, use_ensemble)
+                    
+                    # Value bet detection team mappinggel
+                    value_bets = engine.find_value_bets(
+                        match_data, 
+                        odds_data, 
+                        use_ensemble,
+                        home_is_blue=home_is_blue  # ÚJ paraméter!
+                    )
+                    
+                    # Update state
+                    current_time = datetime.now()
+                    st.session_state.current_match_data = match_data
+                    st.session_state.predicted_probs = (prob_blue, prob_red)
+                    st.session_state.last_update = current_time.isoformat()
+                    
+                    # Add to history
+                    st.session_state.probability_history.append({
+                        'timestamp': current_time,
+                        'game_time': match_data['game_time'],
+                        'blue_prob': prob_blue,
+                        'red_prob': prob_red,
+                        'blue_kills': match_data['blue_team']['kills'],
+                        'red_kills': match_data['red_team']['kills'],
+                        'gold_diff': match_data['blue_team']['gold'] - match_data['red_team']['gold']
+                    })
+                    
+                    # Add value bets
+                    for vb in value_bets:
+                        if not any(existing_vb['game_time'] == vb['game_time'] and 
+                                  existing_vb['team'] == vb['team'] 
+                                  for existing_vb in st.session_state.value_bets):
+                            st.session_state.value_bets.append(vb)
+                    
+                    # ÚJ: Snapshot mentés
+                    snapshot_saved = st.session_state.snapshot_logger.save_snapshot(
+                        match_stats=match_data,
+                        odds_data=odds_data,
+                        predicted_probs=(prob_blue, prob_red),
+                        home_is_blue=home_is_blue,
+                        match_id=st.session_state.current_match_id
+                    )
+                    
+                    if snapshot_saved:
+                        st.success(f"✅ Data refreshed & snapshot saved! Found {len(value_bets)} value bet(s)")
+                    else:
+                        st.warning(f"✅ Data refreshed (snapshot save failed)")
+                    
+                    st.rerun()
+                else:
+                    st.error("❌ Failed to fetch data")
+                    
+            except Exception as e:
+                st.error(f"Error: {e}")
+                import traceback
+                st.code(traceback.format_exc())
+
     # Placeholder for match data
     if 'current_match_data' in st.session_state and st.session_state.current_match_data:
         match_data = st.session_state.current_match_data
@@ -422,7 +536,6 @@ with tab3:
     st.plotly_chart(fig, use_container_width=True)
 
 # Tab 4: History
-# Tab 4: History
 with tab4:
     st.subheader("🔍 Match History & Analytics")
     
@@ -575,61 +688,143 @@ with tab4:
                      title='Sample: Win Probability Evolution',
                      labels={'value': 'Win Probability', 'game_time': 'Game Time'})
         st.plotly_chart(fig, use_container_width=True)
+
+# Tab 5: Snapshots
+with tab5:
+    st.subheader("💾 Saved Snapshots")
+    
+    if st.session_state.current_match_id:
+        df_snapshots = st.session_state.snapshot_logger.load_snapshots(
+            st.session_state.current_match_id
+        )
+        
+        if df_snapshots is not None and len(df_snapshots) > 0:
+            st.success(f"📊 Loaded {len(df_snapshots)} snapshots for match: {st.session_state.current_match_id}")
+            
+            # Summary metrics
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Total Snapshots", len(df_snapshots))
+            with col2:
+                st.metric("Time Span", f"{df_snapshots['game_time'].iloc[0]} → {df_snapshots['game_time'].iloc[-1]}")
+            with col3:
+                latest_gold_diff = df_snapshots['gold_diff'].iloc[-1]
+                st.metric("Latest Gold Diff", f"{latest_gold_diff:+,}")
+            with col4:
+                avg_pred_blue = df_snapshots['pred_blue'].mean()
+                st.metric("Avg Blue Win%", f"{avg_pred_blue:.1%}")
+            
+            st.markdown("---")
+            
+            # Show dataframe
+            st.markdown("#### 📋 All Snapshots")
+            
+            # Select columns to display
+            display_cols = [
+                'scrape_time', 'game_time', 'game_index', 
+                'blue_kills', 'red_kills', 'gold_diff',
+                'blue_towers', 'red_towers',
+                'pred_blue', 'pred_red', 'home_is_blue'
+            ]
+            
+            display_df = df_snapshots[display_cols].copy()
+            display_df['pred_blue'] = display_df['pred_blue'].apply(lambda x: f"{x:.1%}")
+            display_df['pred_red'] = display_df['pred_red'].apply(lambda x: f"{x:.1%}")
+            display_df['scrape_time'] = pd.to_datetime(display_df['scrape_time']).dt.strftime('%H:%M:%S')
+            
+            st.dataframe(display_df.iloc[::-1], use_container_width=True, hide_index=True)
+            
+            # Download button
+            csv = df_snapshots.to_csv(index=False)
+            st.download_button(
+                label="📥 Download Full CSV",
+                data=csv,
+                file_name=f"match_{st.session_state.current_match_id}_snapshots.csv",
+                mime="text/csv"
+            )
+            
+            # Visualization
+            st.markdown("---")
+            st.markdown("#### 📊 Snapshot Visualizations")
+            
+            viz_tab1, viz_tab2 = st.tabs(["Gold Differential", "Win Probability"])
+            
+            with viz_tab1:
+                import plotly.express as px
+                fig = px.line(df_snapshots, x='game_time', y='gold_diff',
+                             title='Gold Difference Over Time',
+                             labels={'gold_diff': 'Gold Difference', 'game_time': 'Game Time'})
+                fig.add_hline(y=0, line_dash="dash", line_color="gray")
+                st.plotly_chart(fig, use_container_width=True)
+            
+            with viz_tab2:
+                fig2 = px.line(df_snapshots, x='game_time', y=['pred_blue', 'pred_red'],
+                              title='Win Probability Evolution',
+                              labels={'value': 'Win Probability', 'game_time': 'Game Time'})
+                st.plotly_chart(fig2, use_container_width=True)
+        
+        else:
+            st.info(f"📭 No snapshots found for match ID: {st.session_state.current_match_id}")
+            st.markdown("Enable tracking or click 'Refresh Now' to start collecting snapshots.")
+    
+    else:
+        st.warning("⚠️ No match ID set. Enter a Match ID in the sidebar to start logging.")
+
+
 # Auto-refresh logic
 if st.session_state.tracking_active:
     with st.spinner("🔄 Fetching latest data..."):
         try:
-            # ÉLES HASZNÁLATHOZ: Uncommenteld ezeket
-            # from scrapers import scrape_match_stats, scrape_odds
-            # from value_betting import ValueBettingEngine
+            from scrapers import scrape_match_stats, scrape_odds
+            from value_betting import ValueBettingEngine
             
-            # match_data = scrape_match_stats(match_url)
-            # odds_data = scrape_odds(odds_url)
+            match_data = scrape_match_stats(match_url+f'/game-index/{game_index}')
+            odds_data = scrape_odds(odds_url)
             
-            # if match_data and gb_model and rf_model and scaler:
-            #     engine = ValueBettingEngine(gb_model, rf_model, scaler, 
-            #                                 min_edge=min_edge/100, 
-            #                                 min_confidence=min_confidence)
-            #     features = engine.calculate_features(match_data)
-            #     prob_blue, prob_red = engine.predict_win_probability(features, use_ensemble)
+            if match_data and odds_data and gb_model and rf_model and scaler:
+                engine = ValueBettingEngine(gb_model, rf_model, scaler, 
+                                            min_edge=min_edge/100, 
+                                            min_confidence=min_confidence)
+                features = engine.calculate_features(match_data)
+                prob_blue, prob_red = engine.predict_win_probability(features, use_ensemble)
+                
+                # Value bet detection
+                value_bets = engine.find_value_bets(
+                    match_data, 
+                    odds_data, 
+                    use_ensemble,
+                    home_is_blue=home_is_blue)
+                
+                # Mentsd el az új value beteket
+                for vb in value_bets:
+                    # Check if not duplicate (same game_time)
+                    if not any(existing_vb['game_time'] == vb['game_time'] and 
+                              existing_vb['team'] == vb['team'] 
+                              for existing_vb in st.session_state.value_bets):
+                        st.session_state.value_bets.append(vb)
+                        st.toast(f"🎯 New Value Bet Found! {vb['team_name']} @ {vb['odds']:.2f}", icon="🎲")
+                
+                # Update state
+                st.session_state.current_match_data = match_data
+                st.session_state.predicted_probs = (prob_blue, prob_red)
+
+                # ÚJ: Snapshot mentés
+                st.session_state.snapshot_logger.save_snapshot(
+                    match_stats=match_data,
+                    odds_data=odds_data,
+                    predicted_probs=(prob_blue, prob_red),
+                    home_is_blue=home_is_blue,
+                    match_id=st.session_state.current_match_id
+                )
+                
+                # Limit to last 20 value bets
+                if len(st.session_state.value_bets) > 20:
+                    st.session_state.value_bets = st.session_state.value_bets[-20:]
+            else:
+                st.error("❌ Failed to scrape data")
             
-            # DEMO MODE: Szimulált adatok
             import random
             current_time = datetime.now()
-            game_minute = len(st.session_state.probability_history) + 10
-            
-            # Szimuláld a valószínűségek változását
-            if not st.session_state.probability_history:
-                prob_blue = 0.50 + random.uniform(-0.05, 0.05)
-            else:
-                last_prob = st.session_state.probability_history[-1]['blue_prob']
-                prob_blue = last_prob + random.uniform(-0.08, 0.08)
-                prob_blue = max(0.1, min(0.9, prob_blue))  # Keep in 10-90% range
-            
-            prob_red = 1 - prob_blue
-            
-            # Szimulált match data
-            match_data = {
-                'timestamp': current_time.isoformat(),
-                'game_time': f"{game_minute}:00",
-                'blue_team': {
-                    'kills': int(10 + game_minute * 0.5),
-                    'towers': min(11, int(game_minute / 5)),
-                    'gold': int(35000 + game_minute * 1000),
-                    'dragons': ['Ocean'] * min(4, int(game_minute / 8)),
-                    'barons': 1 if game_minute > 25 else 0,
-                    'inhibitors': 1 if game_minute > 28 else 0
-                },
-                'red_team': {
-                    'kills': int(8 + game_minute * 0.4),
-                    'towers': min(11, int(game_minute / 6)),
-                    'gold': int(32000 + game_minute * 950),
-                    'dragons': [] if game_minute < 15 else ['Infernal'],
-                    'barons': 0,
-                    'inhibitors': 0
-                },
-                'players': [{'cs': 150 + game_minute * 5} for _ in range(10)]
-            }
             
             st.session_state.current_match_data = match_data
             st.session_state.predicted_probs = (prob_blue, prob_red)
@@ -649,31 +844,11 @@ if st.session_state.tracking_active:
             # Limit history to last 50 points
             if len(st.session_state.probability_history) > 50:
                 st.session_state.probability_history = st.session_state.probability_history[-50:]
-            
-            # Value bet detection (opcionális demo)
-            if prob_blue > 0.60 and random.random() > 0.7:
-                new_value_bet = {
-                    'timestamp': current_time.isoformat(),
-                    'game_time': match_data['game_time'],
-                    'team': 'BLUE',
-                    'team_name': 'Blue Team',
-                    'market_name': 'Match Winner',
-                    'odds': 1.45,
-                    'predicted_prob': prob_blue,
-                    'implied_prob': 1/1.45,
-                    'edge': (prob_blue * 1.45 - 1) * 100,
-                    'kelly_fraction': 0.12,
-                    'confidence': 'MEDIUM'
-                }
-                
-                # Check if not duplicate
-                if not any(vb['game_time'] == new_value_bet['game_time'] for vb in st.session_state.value_bets):
-                    st.session_state.value_bets.append(new_value_bet)
-                    if len(st.session_state.value_bets) > 10:
-                        st.session_state.value_bets = st.session_state.value_bets[-10:]
         
         except Exception as e:
             st.error(f"Error during update: {e}")
+            import traceback
+            st.code(traceback.format_exc())
     
     # Schedule next update
     time.sleep(update_interval)
