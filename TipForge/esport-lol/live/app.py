@@ -10,7 +10,7 @@ st.set_page_config(page_title="🎮 LoL Live Predictor", layout="wide")
 # Load models
 @st.cache_resource
 def load_models():
-    BASE_DIR = os.path.dirname(__file__)
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     gb_model = joblib.load(os.path.join(BASE_DIR, "models", "live_gb_model_20251031.joblib"))
     rf_model = joblib.load(os.path.join(BASE_DIR, "models", "live_rf_model_20251031.joblib"))
     scaler = joblib.load(os.path.join(BASE_DIR, "models", "live_scaler_20251031.joblib"))
