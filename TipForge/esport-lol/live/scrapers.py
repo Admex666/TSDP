@@ -13,6 +13,7 @@ import time
 from typing import Dict, List, Optional
 from datetime import datetime
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -25,15 +26,35 @@ class MatchStatsScraper:
         self.headless = headless
         
     def _setup_driver(self):
-        """Setup Selenium WebDriver"""
+        """Setup Selenium WebDriver - Streamlit Cloud compatible"""
+        from selenium.webdriver.chrome.service import Service
+        import platform
+        
         chrome_options = Options()
-        if self.headless:
-            chrome_options.add_argument("--headless")
+        
+        # Streamlit Cloud / Linux környezet detektálása
+        is_cloud = platform.system() == "Linux" and not os.path.exists("/usr/bin/google-chrome")
+        
+        if self.headless or is_cloud:
+            chrome_options.add_argument("--headless=new")
+        
+        # KRITIKUS opciók Streamlit Cloudhoz
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")
+        chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--window-size=1920,1080")
-        return webdriver.Chrome(options=chrome_options)
+        chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+        
+        # Streamlit Cloud specifikus
+        if is_cloud:
+            chrome_options.binary_location = "/usr/bin/chromium"
+            service = Service(executable_path="/usr/bin/chromedriver")
+            return webdriver.Chrome(service=service, options=chrome_options)
+        else:
+            # Local környezet
+            return webdriver.Chrome(options=chrome_options)
     
     def scrape(self, url: str) -> Optional[Dict]:
         """
