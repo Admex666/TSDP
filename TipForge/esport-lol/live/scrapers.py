@@ -16,6 +16,9 @@ import sys
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# ✅ Global flag to track installation - INICIALIZÁLVA!
+_PLAYWRIGHT_INSTALLED = False
+
 def ensure_playwright_installed():
     """Ensure Playwright browsers are installed (lazy loading)"""
     global _PLAYWRIGHT_INSTALLED
