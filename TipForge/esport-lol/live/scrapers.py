@@ -10,10 +10,36 @@ from typing import Dict, List, Optional
 from datetime import datetime
 import logging
 import os
+import subprocess
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# ÚJ: Lazy browser installation
+def ensure_playwright_installed():
+    """Ensure Playwright browsers are installed"""
+    try:
+        # Check if chromium is already installed
+        cache_dir = os.path.expanduser("~/.cache/ms-playwright")
+        if os.path.exists(cache_dir):
+            chromium_dirs = [d for d in os.listdir(cache_dir) if 'chromium' in d.lower()]
+            if chromium_dirs:
+                logger.info("✅ PlayWright browsers already installed")
+                return True
+        
+        # Install browsers
+        logger.info("🔄 Installing PlayWright browsers (first run)...")
+        subprocess.run(
+            ["python", "-m", "playwright", "install", "chromium", "--with-deps"],
+            check=True,
+            capture_output=True
+        )
+        logger.info("✅ PlayWright browsers installed successfully")
+        return True
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to install PlayWright browsers: {e}")
+        return False
 
 class MatchStatsScraper:
     """Scrapes live match statistics from AndyDanger"""
@@ -23,6 +49,11 @@ class MatchStatsScraper:
         
     def scrape(self, url: str) -> Optional[Dict]:
         """Scrape match statistics"""
+        # ÚJ: Ensure browsers are installed before scraping
+        if not ensure_playwright_installed():
+            logger.error("❌ Cannot scrape: PlayWright browsers not installed")
+            return None
+        
         try:
             logger.info("Starting match stats scraper with PlayWright...")
             
@@ -259,6 +290,11 @@ class OddsScraper:
     
     def scrape(self, url: str, game_index: Optional[int] = None) -> Optional[Dict]:
         """Scrape betting odds from Tippmix"""
+        # ÚJ: Ensure browsers are installed before scraping
+        if not ensure_playwright_installed():
+            logger.error("❌ Cannot scrape: PlayWright browsers not installed")
+            return None
+        
         try:
             logger.info("Starting odds scraper with PlayWright...")
             

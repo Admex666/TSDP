@@ -524,7 +524,7 @@ with tab3:
     
     # Placeholder chart
     sample_data = pd.DataFrame({
-        'Time': pd.date_range(start='2024-01-01', periods=20, freq='H'),
+        'Time': pd.date_range(start='2024-01-01', periods=20, freq='h'),
         'Bankroll': [1000 + i * 50 + (i % 3 - 1) * 30 for i in range(20)]
     })
     
