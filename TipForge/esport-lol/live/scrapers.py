@@ -11,34 +11,61 @@ from datetime import datetime
 import logging
 import os
 import subprocess
+import sys
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ÚJ: Lazy browser installation
 def ensure_playwright_installed():
-    """Ensure Playwright browsers are installed"""
+    """Ensure Playwright browsers are installed (lazy loading)"""
+    global _PLAYWRIGHT_INSTALLED
+    
+    if _PLAYWRIGHT_INSTALLED:
+        return True
+    
     try:
-        # Check if chromium is already installed
+        # Check if chromium exists
         cache_dir = os.path.expanduser("~/.cache/ms-playwright")
         if os.path.exists(cache_dir):
             chromium_dirs = [d for d in os.listdir(cache_dir) if 'chromium' in d.lower()]
-            if chromium_dirs:
+            if chromium_dirs and any(
+                os.path.exists(os.path.join(cache_dir, d, 'chrome-linux')) 
+                or os.path.exists(os.path.join(cache_dir, d, 'chrome-win'))
+                for d in chromium_dirs
+            ):
                 logger.info("✅ PlayWright browsers already installed")
+                _PLAYWRIGHT_INSTALLED = True
                 return True
         
-        # Install browsers
-        logger.info("🔄 Installing PlayWright browsers (first run)...")
-        subprocess.run(
-            ["python", "-m", "playwright", "install", "chromium", "--with-deps"],
-            check=True,
-            capture_output=True
-        )
-        logger.info("✅ PlayWright browsers installed successfully")
-        return True
+        # Install browsers (WITHOUT --with-deps for Streamlit Cloud)
+        logger.info("🔄 Installing PlayWright Chromium (first time, ~90 sec)...")
+        logger.info("This only happens once on Streamlit Cloud deployment")
         
+        result = subprocess.run(
+            [sys.executable, "-m", "playwright", "install", "chromium"],  # ✅ Removed --with-deps
+            capture_output=True,
+            text=True,
+            timeout=300
+        )
+        
+        if result.returncode == 0:
+            logger.info("✅ PlayWright browsers installed successfully")
+            logger.info(f"Output: {result.stdout}")
+            _PLAYWRIGHT_INSTALLED = True
+            return True
+        else:
+            logger.error(f"❌ Installation failed with code {result.returncode}")
+            logger.error(f"STDERR: {result.stderr}")
+            logger.error(f"STDOUT: {result.stdout}")
+            return False
+        
+    except subprocess.TimeoutExpired:
+        logger.error("❌ Installation timeout (>5 minutes)")
+        return False
     except Exception as e:
         logger.error(f"❌ Failed to install PlayWright browsers: {e}")
+        import traceback
+        logger.error(traceback.format_exc())
         return False
 
 class MatchStatsScraper:
