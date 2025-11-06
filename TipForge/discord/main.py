@@ -249,6 +249,9 @@ async def daily_tips():
 async def check_tier_upgrades():
     """Automatikus tier upgrade pont alapján"""
     all_users = db.users.get_all_records()
+    if not all_users:
+        print("⚠️  Nincsenek felhasználók a sheetben!")
+        return
     
     for user in all_users:
         total_points = int(user['total_points']) if user['total_points'] else 0
