@@ -5,6 +5,23 @@ from database import Database
 from datetime import datetime
 import asyncio
 
+# Web endpoint
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "✅ Bot is running!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+# indítsd el külön szálon
+Thread(target=run).start()
+
+
 # Bot setup
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
@@ -248,10 +265,15 @@ async def daily_tips():
 @tasks.loop(minutes=30)
 async def check_tier_upgrades():
     """Automatikus tier upgrade pont alapján"""
-    all_users = db.users.get_all_records()
-    if not all_users:
-        print("⚠️  Nincsenek felhasználók a sheetben!")
+    try:
+        all_users = db.users.get_all_records()
+        if not all_users:
+            print("⚠️  Üres a sheet!")
+            return
+    except IndexError:
+        print("⚠️  A sheet nem tartalmaz értelmezhető adatot!")
         return
+
     
     for user in all_users:
         total_points = int(user['total_points']) if user['total_points'] else 0
