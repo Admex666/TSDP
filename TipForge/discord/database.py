@@ -3,13 +3,17 @@ from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 import config
 import uuid
+import os
+import json
 
 class Database:
     def __init__(self):
-        scope = ['https://spreadsheets.google.com/feeds',
+        scopes = ['https://spreadsheets.google.com/feeds',
                  'https://www.googleapis.com/auth/drive']
-        creds = ServiceAccountCredentials.from_json_keyfile_name(
-            config.CREDENTIALS_FILE, scope)
+        creds_json = os.getenv("GOOGLE_CREDENTIALS")
+        creds_dict = json.loads(creds_json)
+
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scopes)
         self.client = gspread.authorize(creds)
         self.sheet = self.client.open_by_key(config.SHEET_ID)
         
