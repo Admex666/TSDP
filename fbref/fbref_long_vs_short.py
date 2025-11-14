@@ -6,7 +6,7 @@ Created on Mon Jan 13 09:24:05 2025
 """
 # Set and scrape league dataframes
 import pandas as pd
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import requests

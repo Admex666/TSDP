@@ -5,7 +5,7 @@ import matplotlib.image as mpimg
 import matplotlib.font_manager as font_manager
 import urllib.request
 from PIL import Image
-from Athletic.understat_scraper import get_player_shotmap
+from modules.understat_scraper import get_player_shotmap
 
 # Set season, player and league
 season = '2024'
@@ -15,7 +15,7 @@ league = 'Serie_A'
 df = get_player_shotmap(season, player_id, league)
 url_logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Bologna_F.C._1909_logo.svg/800px-Bologna_F.C._1909_logo.svg.png'
 league_pretty = league.replace('_', ' ')
-save = True
+save = False
 
 if len(df.player.unique()) > 1:
     print('Too many players.')

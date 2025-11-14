@@ -34,7 +34,7 @@ Sources (fbref dfs):
 #%% Scrape the data from fbref
 import pandas as pd
 import numpy as np
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 import matplotlib.pyplot as plt
 
 # Set parameters

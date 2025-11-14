@@ -96,6 +96,12 @@ for row in range(len(df)):
             odds_drop_messages += "\n"  # Add an extra line break for readability
 
 #%% Import email alert
+import sys
+import os
+
+# hozzáadjuk a modules mappát a path-hoz
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../other_projects')))
+
 import email_alert as ea
 mail = 'adam.jakus99@gmail.com'
 ea.email_alert('Odds drops alert', odds_drop_messages, mail)

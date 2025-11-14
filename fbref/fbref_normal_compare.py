@@ -1,5 +1,5 @@
 import pandas as pd
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 import numpy as np
 
 df = fbref.get_all_player_data('ESP', year=False)

@@ -1,7 +1,7 @@
 #%% import
 import pandas as pd
 import numpy as np
-from fbref.fbref_module import get_all_player_data
+from modules.fbref_module import get_all_player_data
 
 df = get_all_player_data("ENG", year='2024-2025')
 

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import ttest_ind, linregress
-from fbref import fbref_module as fbr
+from modules import fbref_module as fbr
 
 #%% get data
 url = 'https://fbref.com/en/comps/11/schedule/Serie-A-Scores-and-Fixtures'

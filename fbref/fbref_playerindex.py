@@ -1,6 +1,6 @@
 #%% Fetch data
 import pandas as pd
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 import numpy as np
 
 df_lewa = fbref.get_all_player_data('GER', year='2020-2021')

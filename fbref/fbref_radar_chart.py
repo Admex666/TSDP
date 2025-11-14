@@ -1,4 +1,4 @@
-import fbref_module as fbref
+import modules.fbref_module as fbref
 import numpy as np
 
 URL = 'https://fbref.com/en/players/bcb2ccd8/Peter-Gulacsi'

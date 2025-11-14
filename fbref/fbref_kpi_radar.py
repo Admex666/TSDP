@@ -6,7 +6,7 @@ Created on Wed Nov  6 12:04:02 2024
 """
 
 # Importing libraries
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 import pandas as pd
 import numpy as np
 from scipy.stats import percentileofscore

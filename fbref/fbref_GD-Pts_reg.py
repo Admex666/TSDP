@@ -5,7 +5,7 @@ Created on Tue Nov  5 11:22:30 2024
 @author: Adam
 """
 
-from fbref import fbref_module as fbr
+from modules import fbref_module as fbr
 import matplotlib.pyplot as plt
 import pandas as pd
 URL = 'https://fbref.com/en/comps/46/NB-I-Stats'

@@ -18,7 +18,7 @@ if wd_old != 'C:\\Users\\Adam\\..Data\\TSDP':
     wd_base = wd_old.split('\\')[:4]
     wd_new = '\\'.join(wd_base)+'\\TSDP'
     os.chdir(wd_new)
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 from ML_PL_new.ML_PL_transform_data import df_to_model_input 
 
 #%% Loading data from website

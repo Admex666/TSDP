@@ -1,5 +1,5 @@
 import pandas as pd
-from fbref import fbref_module as fbref
+from modules import fbref_module as fbref
 from datetime import datetime
 import matplotlib.pyplot as plt
 

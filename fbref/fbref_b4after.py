@@ -1,5 +1,5 @@
 import pandas as pd
-import fbref.fbref_module as fbref
+import modules.fbref_module as fbref
 
 # get fbref match logs -> shooting
 URL = "https://fbref.com/en/squads/44c4d76e/Nyiregyhaza-Stats"

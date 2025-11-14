@@ -2,7 +2,7 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
-from fbref import fbref_module as fbr
+from modules import fbref_module as fbr
 
 TEAM_SLUG = "6611f992"  # Ez a rész a Ferencváros egyedi azonosítója
 TEAM_NAME = "Ferencvaros"

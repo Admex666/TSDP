@@ -5,7 +5,7 @@ from scipy.stats import rankdata
 #%% fetch data
 fetch = False
 if fetch:
-    from fbref.fbref_module import get_all_team_data_huv
+    from modules.fbref_module import get_all_team_data_huv
     
     countrycode = 'ENG'
     season = '2023-2024'
