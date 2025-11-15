@@ -31,5 +31,287 @@ def get_game_snapshots(game_id):
     #for act in actions:
     #    print(act['actionType'], act['clock'])
     #print(len(actions))
+    df = pd.DataFrame(actions)
 
-    return pd.DataFrame(actions)
+    df['time_remaining_period'] = df['clock'].apply(parse_clock)
+
+    return df
+
+def parse_clock(clock_str):
+    """PT12M34S -> 754 másodperc"""
+    if not clock_str or clock_str == '':
+        return 0
+    
+    clock_str = clock_str.replace('PT', '').replace('S', '')
+    parts = clock_str.split('M')
+    
+    if len(parts) == 2:
+        minutes = int(parts[0]) if parts[0] else 0
+        seconds = int(float(parts[1])) if parts[1] else 0
+        return minutes * 60 + seconds
+    return 0
+
+# pbp data
+import pandas as pd
+def extract_snapshots(df, snapshot_times=[(1, 180), 
+                                          (2, 360), (2, 0), 
+                                          (3, 540), (3, 360), (3, 180), (3, 0),
+                                          (4, 540), (4, 450), (4, 360), (4, 270), (4, 180), (4, 90), (4, 0)]):
+    """
+    Kivonatolja a kívánt pillanatokat a play-by-play dataframe-ből.
+    
+    Parameters:
+    - df: pd.DataFrame, a playbyplayv3 hívás eredménye
+    - snapshot_times: list of tuples, pl. [(4, 180), (3, 360), (3, 0)]
+      ahol a tuple = (period, time_remaining_sec)
+    
+    Returns:
+    - snapshots: list of dict, minden snapshot egy dictionary a kért feature-ökkel
+    """
+    snapshots = []
+    
+    # Előfeldolgozás
+    df = df.copy()
+    df['time_remaining_period'] = df['time_remaining_period'].astype(float)
+    df['time_remaining_total'] = 720*4 - ((df['period']-1)*720 + (720-df['time_remaining_period']))
+    
+    # Csak scoring action-öket tartsunk meg a score trackinghez
+    df_with_score = df[(df['scoreHome'].notna()) & (df['scoreAway'].notna()) &
+                       (df['scoreHome'] != '') & (df['scoreAway'] != '') &
+                       (df['actionType'] != 'period')].copy()
+    
+    df_with_score['scoreHome'] = df_with_score['scoreHome'].astype(int)
+    df_with_score['scoreAway'] = df_with_score['scoreAway'].astype(int)
+    
+    for period, t_rem in snapshot_times:
+        print(period, t_rem/60)
+        t_rem_total = 720*4 - ((period-1)*720 + (720 - t_rem))
+        # Legközelebbi action a kért időpontban (scoring action)
+        mask = df_with_score['time_remaining_total'] >= t_rem_total
+        
+        if not mask.any():
+            continue
+            
+        snapshot_row = df_with_score[mask].iloc[-1]
+        
+        current_home = snapshot_row['scoreHome']
+        current_away = snapshot_row['scoreAway']
+        
+        # 6 perccel ezelőtti score megkeresése
+        lookback_time = t_rem_total + 360
+        lookback_mask = df_with_score['time_remaining_total'] >= lookback_time
+
+        if lookback_mask.any():
+            lookback_row = df_with_score[lookback_mask].iloc[-1]
+            lookback_home = lookback_row['scoreHome']
+            lookback_away = lookback_row['scoreAway']
+        else:
+            # Ha nincs 5 perccel ezelőtti adat (negyed eleje), 0-ról indulunk
+            lookback_home = 0
+            lookback_away = 0
+
+        # 4 perccel ezelőtti score
+        lookback_4min = t_rem_total + 240
+        lookback_4min_mask = df_with_score['time_remaining_total'] >= lookback_4min
+        
+        if lookback_4min_mask.any():
+            lookback_4min_row = df_with_score[lookback_4min_mask].iloc[-1]
+            lookback_4min_home = lookback_4min_row['scoreHome']
+            lookback_4min_away = lookback_4min_row['scoreAway']
+        else:
+            lookback_4min_home = 0
+            lookback_4min_away = 0
+        
+        # 2 perccel ezelőtti score
+        lookback_2min = t_rem_total + 120
+        lookback_2min_mask = df_with_score['time_remaining_total'] >= lookback_2min
+        
+        if lookback_2min_mask.any():
+            lookback_2min_row = df_with_score[lookback_2min_mask].iloc[-1]
+            lookback_2min_home = lookback_2min_row['scoreHome']
+            lookback_2min_away = lookback_2min_row['scoreAway']
+        else:
+            lookback_2min_home = 0
+            lookback_2min_away = 0
+
+        # ===== CSAPATOK AZONOSÍTÁSA =====
+        # Első nem 0-0 score-nál nézd meg melyik csapat szerzett pontot
+        home_team_tricode = None
+        away_team_tricode = None
+
+        for _, row in df_with_score.iterrows():
+            if row['scoreHome'] > 0 and home_team_tricode is None:
+                # Ez a csapat szerzett először home pontot
+                home_team_tricode = row['teamTricode']
+            if row['scoreAway'] > 0 and away_team_tricode is None:
+                away_team_tricode = row['teamTricode']
+            if home_team_tricode and away_team_tricode:
+                break
+
+        # ===== RUN SZÁMÍTÁS (pontsorozat) =====
+        # Visszafelé haladva a snapshot-tól, hány pont lett szerzve egymás után
+        run_home = 0
+        run_away = 0
+        last_scorer = None
+
+        for _, row in df_with_score[df_with_score['time_remaining_total'] >= t_rem_total].iloc[::-1].iterrows():
+            if pd.notna(row['pointsTotal']) and row['pointsTotal'] > 0:
+                scorer = row['teamTricode']
+                
+                if last_scorer is None:
+                    last_scorer = scorer
+                
+                if (row['shotResult'] == 'Made') & (scorer == last_scorer):
+                    if scorer == home_team_tricode:
+                        run_home = int(current_home) - row['scoreHome']
+                    else:
+                        run_away = int(current_away) - row['scoreAway']
+                else:
+                    break  # Másik csapat megszakította a sorozatot
+        run = run_home - run_away
+                
+        # ===== PACE (possessions / elapsed time) =====
+        # Possession számolás: FGA + TO + 0.44*FTA
+        elapsed_time = (720 * 4) - t_rem_total  # másodperc
+        
+        possession_events = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            ((df['actionType'] == 'Made Shot') | 
+            (df['actionType'] == 'Free Throw') |
+            (df['actionType'] == 'Missed Shot')|
+            (df['actionType'] == 'Turnover'))
+        ].copy()
+
+        # FGA: missed + made shots
+        fga_count = len(possession_events[(possession_events['actionType'] == 'Made Shot') | 
+                                        (possession_events['actionType'] == 'Missed Shot')])
+
+        # TO: turnovers
+        to_count = len(possession_events[possession_events['actionType'] == 'Turnover'])
+
+        # FTA: free throws (0.44 szorzó)
+        fta_count = len(possession_events[possession_events['actionType'] == 'Free Throw']) * 0.44
+
+        total_possessions = fga_count + to_count + fta_count
+
+        pace_live = (total_possessions / (elapsed_time / 60)) if elapsed_time > 0 else 0  # possessions/perc
+
+
+        # ===== JÁTÉKOS STATISZTIKÁK =====
+        # Top scorer eddig a meccsen (snapshot időpontig)
+        player_points_home = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == home_team_tricode) & 
+            (df['shotValue'].notna()) &
+            (df['shotResult'] == 'Made')
+        ].groupby('playerName')['shotValue'].sum()
+
+        player_ftm_home = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == home_team_tricode) & 
+            (df['actionType'] == 'Free Throw') &
+            (~df['description'].str.contains('MISS'))
+        ].groupby('playerName').size()
+
+        player_points_away = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == away_team_tricode) & 
+            (df['shotValue'].notna()) &
+            (df['shotResult'] == 'Made')
+        ].groupby('playerName')['shotValue'].sum()
+
+        player_ftm_away = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == away_team_tricode) & 
+            (df['actionType'] == 'Free Throw') &
+            (~df['description'].str.contains('MISS'))
+        ].groupby('playerName').size()
+
+        player_total_home = pd.merge(player_points_home.to_frame(), player_ftm_home.to_frame(), 
+                                     how='outer', left_index=True, right_index=True)
+        player_total_home.fillna(0, inplace=True)
+        player_total_home['total'] = player_total_home.iloc[:,0] + player_total_home.iloc[:,1]
+        
+        player_total_away = pd.merge(player_points_away.to_frame(), player_ftm_away.to_frame(), 
+                                     how='outer', left_index=True, right_index=True)
+        player_total_away.fillna(0, inplace=True)
+        player_total_away['total'] = player_total_away.iloc[:,0] + player_total_away.iloc[:,1]
+
+        print(player_total_away)
+        home_top_player_points_live = int(player_total_home['total'].max()) if len(player_total_home) > 0 else 0
+        away_top_player_points_live = int(player_total_away['total'].max()) if len(player_total_away) > 0 else 0
+
+
+        # ===== FOUL STATISZTIKÁK =====
+        # Összes fault a csapatoknak
+        home_foul_count = len(df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == home_team_tricode) & 
+            (df['actionType'] == 'Foul')
+        ])
+
+        away_foul_count = len(df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == away_team_tricode) & 
+            (df['actionType'] == 'Foul')
+        ])
+
+        # Foul trouble: játékosok akiknek ≥4 faultja van
+        home_player_fouls = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == home_team_tricode) & 
+            (df['actionType'] == 'Foul')
+        ].groupby('playerName').size()
+
+        away_player_fouls = df[
+            (df['time_remaining_total'] >= t_rem_total) & 
+            (df['teamTricode'] == away_team_tricode) & 
+            (df['actionType'] == 'Foul')
+        ].groupby('playerName').size()
+
+        home_foul_trouble_players = len(home_player_fouls[home_player_fouls >= 4])
+        away_foul_trouble_players = len(away_player_fouls[away_player_fouls >= 4])
+
+        # Snapshot dictionary összeállítása
+        snap_dict = {
+            'period': int(period),
+            'time_remaining_period': int(t_rem),
+            
+            # Aktuális score
+            'home_score': int(current_home),
+            'away_score': int(current_away),
+            'score_diff': int(current_home - current_away),
+            
+            # Momentum: utolsó 6, 4 és 2 perc pontjai
+            'home_points_last_6min': max(0, int(current_home - lookback_home)),
+            'away_points_last_6min': max(0, int(current_away - lookback_away)),
+            'momentum_diff6': int((current_home - lookback_home) - (current_away - lookback_away)),
+
+            'home_points_last_4min': max(0, int(current_home - lookback_4min_home)),
+            'away_points_last_4min': max(0, int(current_away - lookback_4min_away)),
+            'momentum_diff4': int((current_home - lookback_4min_home) - (current_away - lookback_4min_away)),
+            
+            'home_points_last_2min': max(0, int(current_home - lookback_2min_home)),
+            'away_points_last_2min': max(0, int(current_away - lookback_2min_away)),
+            'momentum_diff2': int((current_home - lookback_2min_home) - (current_away - lookback_2min_away)),
+
+            'run': run, # + if run for home
+            'pace_live': round(pace_live, 2),
+            'home_top_player_points_live': home_top_player_points_live,
+            'away_top_player_points_live': away_top_player_points_live,
+            'home_foul_count': home_foul_count,
+            'away_foul_count': away_foul_count,
+            'home_foul_trouble_players': home_foul_trouble_players,
+            'away_foul_trouble_players': away_foul_trouble_players,
+
+        }
+        
+        snapshots.append(snap_dict)
+    
+    return snapshots
+
+
+
+pbp_df = get_game_snapshots('0022500045')
+snapshots = extract_snapshots(pbp_df)
+print(snapshots[-1])
