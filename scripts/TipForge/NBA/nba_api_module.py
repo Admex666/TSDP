@@ -1,3 +1,38 @@
+# Team abbreviations dict
+TEAM_ABBREVIATIONS = {
+    "Houston Rockets": "HOU",
+    "Golden State Warriors": "GSW",
+    "Los Angeles Lakers": "LAL",
+    "Oklahoma City Thunder": "OKC",
+    "Atlanta Hawks": "ATL",
+    "Miami Heat": "MIA",
+    "Brooklyn Nets": "BKN",
+    "New York Knicks": "NYK",
+    "Charlotte Hornets": "CHA",
+    "Washington Wizards": "WAS",
+    "Toronto Raptors": "TOR",
+    "Chicago Bulls": "CHI",
+    "Milwaukee Bucks": "MIL",
+    "Detroit Pistons": "DET",
+    "New Orleans Pelicans": "NOP",
+    "Memphis Grizzlies": "MEM",
+    "Cleveland Cavaliers": "CLE",
+    "Orlando Magic": "ORL",
+    "Minnesota Timberwolves": "MIN",
+    "Utah Jazz": "UTA",
+    "LA Clippers": "LAC",
+    "Portland Trail Blazers": "POR",
+    "Sacramento Kings": "SAC",
+    "Dallas Mavericks": "DAL",
+    "Phoenix Suns": "PHX",
+    "San Antonio Spurs": "SAS",
+    "Boston Celtics": "BOS",
+    "Philadelphia 76ers": "PHI",
+    "Indiana Pacers": "IND",
+    "Denver Nuggets": "DEN"
+}
+
+
 # Season game log
 from nba_api.stats.endpoints import leaguegamelog
 def get_season_game_log(season='2025-26'):
@@ -37,6 +72,46 @@ def get_game_snapshots(game_id):
 
     return df
 
+# League Dash Stats (pre-game)
+from nba_api.stats.endpoints import leaguedashteamstats
+def get_team_dash_stats(season='2024-25', date_from=None, date_to='2025-02-05'):
+    ldts_raw = leaguedashteamstats.LeagueDashTeamStats(
+        season=season,
+        date_from_nullable=date_from,
+        date_to_nullable=date_to
+    )
+
+    ldts = ldts_raw.get_dict()
+
+    headers = ldts['resultSets'][0]['headers']
+    rows = ldts['resultSets'][0]['rowSet']
+
+    # DataFrame készítése
+    df = pd.DataFrame(rows, columns=headers)
+
+    return df
+
+# Inactive players
+from nba_api.stats.endpoints import boxscoresummaryv2
+def get_inactive_players(game_id):
+    bs_raw = boxscoresummaryv2.BoxScoreSummaryV2(game_id=game_id)
+    bs = bs_raw.get_dict()
+
+    for x in bs['resultSets']:
+        if x['name'] == 'InactivePlayers':
+            print(x)
+
+            headers = x['headers']
+            rows = x['rowSet']
+            
+            # DataFrame készítése
+            df = pd.DataFrame(rows, columns=headers)
+            
+            return df
+        
+    return pd.DataFrame()
+
+# Clock helper
 def parse_clock(clock_str):
     """PT12M34S -> 754 másodperc"""
     if not clock_str or clock_str == '':
@@ -143,8 +218,10 @@ def extract_snapshots(df, snapshot_times=[(1, 180),
             if row['scoreHome'] > 0 and home_team_tricode is None:
                 # Ez a csapat szerzett először home pontot
                 home_team_tricode = row['teamTricode']
+                home_team_id = row['teamId']
             if row['scoreAway'] > 0 and away_team_tricode is None:
                 away_team_tricode = row['teamTricode']
+                away_team_id = row['teamId']
             if home_team_tricode and away_team_tricode:
                 break
 
@@ -237,7 +314,6 @@ def extract_snapshots(df, snapshot_times=[(1, 180),
         player_total_away.fillna(0, inplace=True)
         player_total_away['total'] = player_total_away.iloc[:,0] + player_total_away.iloc[:,1]
 
-        print(player_total_away)
         home_top_player_points_live = int(player_total_home['total'].max()) if len(player_total_home) > 0 else 0
         away_top_player_points_live = int(player_total_away['total'].max()) if len(player_total_away) > 0 else 0
 
@@ -310,8 +386,41 @@ def extract_snapshots(df, snapshot_times=[(1, 180),
     
     return snapshots
 
+def extract_pregame(season, game_date, team_ids):
+    pregame = {}
 
+    all_season_pg = get_team_dash_stats(season=season, date_from=None, date_to=game_date)
+    team_ids = [int(team_id) for team_id in team_ids]
+    row_home = all_season_pg[all_season_pg['TEAM_ID'] == team_ids[0]].iloc[0]
+    row_away = all_season_pg[all_season_pg['TEAM_ID'] == team_ids[1]].iloc[0]
 
-pbp_df = get_game_snapshots('0022500045')
-snapshots = extract_snapshots(pbp_df)
-print(snapshots[-1])
+    poss_home = row_home['FGA'] + 0.4*row_home['FTA'] + 1.07*row_home['OREB']+ row_home['TOV']
+    poss_away = row_away['FGA'] + 0.4*row_away['FTA'] + 1.07*row_away['OREB']+ row_away['TOV']
+
+    pregame['home_ORtg'] = row_home['PTS'] / poss_home * 100
+    pregame['away_ORtg'] = row_away['PTS'] / poss_away * 100
+    pregame['home_DRtg'] = (row_home['PTS'] - row_home['PLUS_MINUS']) / poss_home * 100
+    pregame['away_DRtg'] = (row_away['PTS'] - row_away['PLUS_MINUS']) / poss_away * 100
+    pregame['home_NET_rtg'] = row_home['PLUS_MINUS'] / poss_home * 100
+    pregame['away_NET_rtg'] = row_away['PLUS_MINUS'] / poss_away * 100
+    pregame['home_PACE'] = poss_home / row_home['GP']
+    pregame['away_PACE'] = poss_away / row_away['GP']
+    pregame['home_TS%'] = row_home['PTS'] / (2 * (row_home['FGA'] + 0.44 * row_home['FTA']))
+    pregame['away_TS%'] = row_away['PTS'] / (2 * (row_away['FGA'] + 0.44 * row_away['FTA']))
+    pregame['home_AST_ratio'] = row_home['AST'] / row_home['FGM']
+    pregame['away_AST_ratio'] = row_away['AST'] / row_away['FGM']
+    pregame['home_EFG%'] = (row_home['FGM'] + 0.5*row_home['FG3M']) / row_home['FGA']
+    pregame['away_EFG%'] = (row_away['FGM'] + 0.5*row_away['FG3M']) / row_away['FGA']
+    pregame['home_OREB%'] = row_home['OREB'] / row_home['REB']
+    pregame['away_OREB%'] = row_away['OREB'] / row_away['REB']
+    pregame['home_turnover_ratio'] = row_home['TOV'] / poss_home * 100
+    pregame['away_turnover_ratio'] = row_away['TOV'] / poss_away * 100
+
+    return pregame
+
+#pbp_df = get_game_snapshots('0022400724')
+#snapshots = extract_snapshots(pbp_df)
+#print(snapshots[-1])
+
+print(extract_pregame('2024-25', game_date='2025-02-05', team_ids=['1610612760', '1610612756']))
+print(get_inactive_players('0022400724'))
