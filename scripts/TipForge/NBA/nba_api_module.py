@@ -736,9 +736,45 @@ TEST_GAME_ID = '0022400724'
 
 #print(get_inactive_players(TEST_GAME_ID))
 
-d_pregame = extract_pregame(TEST_GAME_ID)
-d_injury = extract_injury(TEST_GAME_ID)
-d_advanced = extract_advanced_stats(TEST_GAME_ID)
-d_form = extract_form(TEST_GAME_ID)
+import time
+import pandas as pd
 
-print(pd.Series({**d_pregame, **d_injury, **d_advanced, **d_form}))
+def create_ml_row(game_id):
+
+    timings = {}
+
+    # --- Pre-game ---
+    t0 = time.time()
+    d_pregame = extract_pregame(game_id)
+    timings["pregame"] = time.time() - t0
+    time.sleep(1.0)
+
+    # --- Injury ---
+    t0 = time.time()
+    d_injury = extract_injury(game_id)
+    timings["injury"] = time.time() - t0
+    time.sleep(1.0)
+
+    # --- Advanced Stats ---
+    t0 = time.time()
+    d_advanced = extract_advanced_stats(game_id)
+    timings["advanced"] = time.time() - t0
+    time.sleep(1.0)
+
+    # --- Form ---
+    t0 = time.time()
+    d_form = extract_form(game_id)
+    timings["form"] = time.time() - t0
+    time.sleep(1.0)
+
+    # --- Print total time ---
+    total = sum(timings.values())
+
+    print("\n--- create_ml_row TIMINGS ---")
+    for k, v in timings.items():
+        print(f"{k:10s}: {v:6.3f} sec")
+    print(f"TOTAL      : {total:6.3f} sec")
+    print("--------------------------------\n")
+
+    # --- Return final row ---
+    return pd.Series({'game_id': game_id, **d_pregame, **d_injury, **d_advanced, **d_form})
