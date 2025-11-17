@@ -64,7 +64,7 @@ def get_season_game_log(season='2025-26'):
     log = leaguegamelog.LeagueGameLog(season=season, season_type_all_star='Regular Season')
     games = log.get_dict()
 
-    print(f"Total games found: {len(games['resultSets'][0]['rowSet'])}")
+    #print(f"Total games found: {len(games['resultSets'][0]['rowSet'])}")
     
     headers = games['resultSets'][0]['headers']
     rows = games['resultSets'][0]['rowSet']
@@ -117,22 +117,25 @@ def get_team_dash_stats(season='2024-25', date_from=None, date_to='2025-02-05'):
     return df
 
 # Inactive players
-from nba_api.stats.endpoints import boxscoresummaryv2
 def get_inactive_players(game_id):
-    bs_raw = boxscoresummaryv2.BoxScoreSummaryV2(game_id=game_id)
+    from nba_api.stats.endpoints import boxscoresummaryv3
+
+    bs_raw = boxscoresummaryv3.BoxScoreSummaryV3(game_id=TEST_GAME_ID)
     bs = bs_raw.get_dict()
 
-    for x in bs['resultSets']:
-        if x['name'] == 'InactivePlayers':
-            headers = x['headers']
-            rows = x['rowSet']
-            
-            # DataFrame készítése
-            df = pd.DataFrame(rows, columns=headers)
-            
-            return df
-        
-    return pd.DataFrame()
+    home_id = bs['boxScoreSummary']['homeTeam']['teamId']
+    away_id = bs['boxScoreSummary']['awayTeam']['teamId']
+
+    home_inactives = bs['boxScoreSummary']['homeTeam']['inactives']
+    away_inactives = bs['boxScoreSummary']['awayTeam']['inactives']
+
+    home_inactives = [{**player, 'TEAM_ID': home_id} for player in home_inactives]
+    away_inactives = [{**player, 'TEAM_ID': away_id} for player in away_inactives]
+
+
+    df = pd.DataFrame(home_inactives + away_inactives)
+
+    return df
 
 # Dash starters
 from nba_api.stats.endpoints import leaguedashlineups
@@ -476,7 +479,7 @@ def extract_injury(game_id):
     team_ids = [int(team_id) for team_id in team_ids]
 
     def calc_inap_starters(team_id):
-        inap_team = inap[inap.TEAM_ID == team_id].PLAYER_ID.tolist()
+        inap_team = inap[inap.TEAM_ID == team_id].personId.tolist()
         starters = get_dash_lineup(team_id, season=season, date_to=game_date)
 
         inap_strt = 0
@@ -641,18 +644,101 @@ def extract_advanced_stats(game_id):
         "away_top3_points_avg": away_top3_points_avg
     }
 
+def extract_form(game_id):
+    form = {}
+
+    meta = extract_game_meta(game_id)
+    season = meta['season']
+
+    def compute_team_form_metrics(gamelog, team_id, date):
+        """
+        gamelog: LeagueGameLog DF
+        team_id: int
+        date: 'YYYY-MM-DD' or datetime
+        """
+        import pandas as pd
+
+        date = pd.to_datetime(date)
+
+        # Csak a csapat meccsei, és csak az adott dátum előttiek
+        df = gamelog[gamelog["TEAM_ID"] == team_id].copy()
+        df["GAME_DATE"] = pd.to_datetime(df["GAME_DATE"])
+        df = df[df["GAME_DATE"] < date].sort_values("GAME_DATE")
+
+        # Ha nincs korábbi meccs → minden metrika 0 / None
+        if df.empty:
+            return {
+                "is_back_to_back": False,
+                "rest_days": None,
+                "recent_form10": None,
+                "recent_form5": None,
+                "recent_form3": None,
+            }
+
+        # --- GAME_DAY ---
+        last_game_date = df["GAME_DATE"].iloc[-1]
+
+        # --- REST DAYS ---
+        rest_days = (date - last_game_date).days
+
+        # --- BACK TO BACK ---
+        # az előző meccs és az azt megelőző közti távolság
+        if len(df) >= 2:
+            prev_prev_date = df["GAME_DATE"].iloc[-2]
+            diff = (last_game_date - prev_prev_date).days
+            is_back_to_back = diff == 1
+        else:
+            is_back_to_back = False
+
+        # --- RECENT FORM WINRATE ---
+        def winrate(n):
+            sub = df.tail(n)
+            if sub.empty:
+                return None
+            return (sub["WL"] == "W").mean()
+
+        recent_form10 = winrate(10)
+        recent_form5 = winrate(5)
+        recent_form3 = winrate(3)
+
+        return {
+            "is_back_to_back": is_back_to_back,
+            "rest_days": rest_days,
+            "recent_form10": recent_form10,
+            "recent_form5": recent_form5,
+            "recent_form3": recent_form3,
+        }
+    
+    gamelog = get_season_game_log(season=season)
+
+    form_home = compute_team_form_metrics(gamelog, meta['home_id'], meta['date'])
+    form_away = compute_team_form_metrics(gamelog, meta['away_id'], meta['date'])
+    form = {
+        "home_is_back_to_back": form_home['is_back_to_back'],
+        "home_rest_days": form_home['rest_days'],
+        "home_recent_form10": form_home['recent_form10'],
+        "home_recent_form5": form_home['recent_form5'],
+        "home_recent_form3": form_home['recent_form3'],
+        "away_is_back_to_back": form_away['is_back_to_back'],
+        "away_rest_days": form_away['rest_days'],
+        "away_recent_form10": form_away['recent_form10'],
+        "away_recent_form5": form_away['recent_form5'],
+        "away_recent_form3": form_away['recent_form3'],
+    }
+
+    return form
 
 TEST_GAME_ID = '0022400724'
-TEST_TEAM_ID = 1610612760
     
 #pbp_df = get_game_snapshots(TEST_GAME_ID)
 #snapshots = extract_snapshots(pbp_df)
 #print(snapshots[-1])
 
-#print(extract_pregame(TEST_GAME_ID))
+#print(get_inactive_players(TEST_GAME_ID))
 
-#print(extract_injury(TEST_GAME_ID))
+d_pregame = extract_pregame(TEST_GAME_ID)
+d_injury = extract_injury(TEST_GAME_ID)
+d_advanced = extract_advanced_stats(TEST_GAME_ID)
+d_form = extract_form(TEST_GAME_ID)
 
-#print(get_dash_lineup(TEST_TEAM_ID, season='2024-25', date_to='2025-02-05'))
-
-print(extract_advanced_stats(TEST_GAME_ID))
+print(pd.Series({**d_pregame, **d_injury, **d_advanced, **d_form}))
