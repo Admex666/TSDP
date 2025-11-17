@@ -32,6 +32,31 @@ TEAM_ABBREVIATIONS = {
     "Denver Nuggets": "DEN"
 }
 
+# Game meta data
+from nba_api.stats.endpoints import boxscoretraditionalv3
+from datetime import datetime
+def extract_game_meta(game_id):
+    bs = boxscoretraditionalv3.BoxScoreTraditionalV3(game_id=game_id)
+    bs_d = bs.get_dict()
+
+    bst = bs_d['boxScoreTraditional']
+
+    if game_id.startswith('002'):
+        season_start = int(game_id[3:5])
+        season = f"20{season_start}-{(season_start+1)}"
+    else:
+        season = "0000"
+
+    meta = {
+        "date": bs_d['meta']['time'].split('T')[0],
+        "season": season,
+        "home_name": bst['homeTeam']['teamName'],
+        "home_id": bst['homeTeam']['teamId'],
+        "away_name": bst['awayTeam']['teamName'],
+        "away_id": bst['awayTeam']['teamId'],
+    }
+
+    return meta
 
 # Season game log
 from nba_api.stats.endpoints import leaguegamelog
@@ -99,8 +124,6 @@ def get_inactive_players(game_id):
 
     for x in bs['resultSets']:
         if x['name'] == 'InactivePlayers':
-            print(x)
-
             headers = x['headers']
             rows = x['rowSet']
             
@@ -110,6 +133,25 @@ def get_inactive_players(game_id):
             return df
         
     return pd.DataFrame()
+
+# Dash starters
+from nba_api.stats.endpoints import leaguedashlineups
+def get_dash_lineup(team_id, season, date_to=None):
+    ldl = leaguedashlineups.LeagueDashLineups(season=season,
+                                            date_to_nullable=date_to
+                                            )
+    df_ldl = ldl.get_data_frames()[0]
+    team_row = df_ldl[df_ldl['TEAM_ID'] == team_id].iloc[0]
+    
+    group_id_str = team_row['GROUP_ID']
+    if group_id_str.startswith('-'):
+        group_id_str = group_id_str[1:]
+    if group_id_str.endswith('-'):
+        group_id_str = group_id_str[:-1]
+
+    team_starters = group_id_str.split('-')
+
+    return team_starters
 
 # Clock helper
 def parse_clock(clock_str):
@@ -386,7 +428,10 @@ def extract_snapshots(df, snapshot_times=[(1, 180),
     
     return snapshots
 
-def extract_pregame(season, game_date, team_ids):
+def extract_pregame(game_id):
+    meta = extract_game_meta(game_id)
+    season, game_date, team_ids = meta['season'], meta['date'], [meta['home_id'], meta['away_id']]
+    
     pregame = {}
 
     all_season_pg = get_team_dash_stats(season=season, date_from=None, date_to=game_date)
@@ -418,9 +463,196 @@ def extract_pregame(season, game_date, team_ids):
 
     return pregame
 
-#pbp_df = get_game_snapshots('0022400724')
+def extract_injury(game_id):
+    meta = extract_game_meta(game_id)
+    season, game_date, team_ids = meta['season'], meta['date'], [meta['home_id'], meta['away_id']]
+    injuries = {}
+
+    inap = get_inactive_players(game_id)
+
+    injuries['home_injury_count'] = len(inap[inap.TEAM_ID == team_ids[0]])
+    injuries['away_injury_count'] = len(inap[inap.TEAM_ID == team_ids[1]])
+
+    team_ids = [int(team_id) for team_id in team_ids]
+
+    def calc_inap_starters(team_id):
+        inap_team = inap[inap.TEAM_ID == team_id].PLAYER_ID.tolist()
+        starters = get_dash_lineup(team_id, season=season, date_to=game_date)
+
+        inap_strt = 0
+        for id_ina in inap_team:
+            if id_ina in starters:
+                inap_strt += 1
+
+        return inap_strt
+    
+    injuries['home_missing_starters'] = calc_inap_starters(team_ids[0])
+    injuries['away_missing_starters'] = calc_inap_starters(team_ids[1])
+
+    return injuries
+
+def extract_advanced_stats(game_id):
+    from nba_api.stats.endpoints import leaguedashplayerstats, playergamelog
+    import pandas as pd
+    import numpy as np
+
+    meta = extract_game_meta(game_id)
+    game_date = meta['date']
+
+    home_id, away_id = [meta['home_id'], meta['away_id']]
+    home_starters = get_dash_lineup(team_id=meta['home_id'], season=meta['season'], date_to=game_date)
+    away_starters = get_dash_lineup(team_id=meta['away_id'], season=meta['season'], date_to=game_date)
+
+    # 1) Lekérjük a liga összes játékosát adott napig
+    stats_raw = leaguedashplayerstats.LeagueDashPlayerStats(
+        season="2024-25",
+        season_type_all_star="Regular Season",
+        date_to_nullable=game_date
+    ).get_dict()
+
+    headers = stats_raw["resultSets"][0]["headers"]
+    rows = stats_raw["resultSets"][0]["rowSet"]
+    stats_df = pd.DataFrame(rows, columns=headers)
+
+    # csak számokká alakítjuk, ahol kell
+    numeric_cols = [
+        "MIN","PTS","REB","AST","STL","BLK","TOV","FGA","FGM",
+        "FTA","FTM","TS_PCT","USG_PCT"
+    ]
+    for c in numeric_cols:
+        if c in stats_df.columns:
+            stats_df[c] = pd.to_numeric(stats_df[c], errors="coerce")
+
+    # 2) PER kiszámolása a dummy képlettel
+    def compute_per(row):
+        MIN = max(1, row.get("MIN", 1))  # elkerüljük a nullával való osztást
+        FGM = row.get("FGM", 0)
+        FGA = row.get("FGA", 0)
+        FG3M = row.get("FG3M", 0)
+        FTM = row.get("FTM", 0)
+        FTA = row.get("FTA", 0)
+        OREB = row.get("OREB", 0)
+        DREB = row.get("DREB", 0)
+        AST = row.get("AST", 0)
+        STL = row.get("STL", 0)
+        BLK = row.get("BLK", 0)
+        TOV = row.get("TOV", 0)
+        PF = row.get("PF", 0)
+        
+        # uPER egyszerűsített formula
+        uPER = (
+            FGM + 0.5*FG3M - FGA + 0.5*FTM - FTA
+            + OREB + 0.7*DREB + 0.7*AST + 0.7*STL + 0.7*BLK
+            - 0.7*TOV - 0.5*PF
+        )
+        
+        per = uPER / MIN * 15  # 15-ös szorzóval normáljuk
+        return per
+    
+    stats_df["PER"] = stats_df.apply(compute_per, axis=1)
+
+    # 3) starter / bench kategória
+    stats_df["IS_STARTER"] = stats_df["PLAYER_ID"].astype(str).apply(
+        lambda pid:
+            1 if pid in home_starters + away_starters else 0
+    )
+
+    def compute_ts(row):
+        fga = row.get("FGA", 0)
+        fta = row.get("FTA", 0)
+        pts = row.get("PTS", 0)
+        denom = 2 * (fga + 0.44 * fta)
+        if denom > 0:
+            return float(pts / denom)
+        else:
+            return 0.0
+
+    stats_df["TS_PCT"] = stats_df.apply(compute_ts, axis=1)
+
+    # 4) Szétbontjuk csapatonként
+    def team_split(team_id, starter_list):
+        team = stats_df[stats_df["TEAM_ID"] == team_id].copy()
+
+        team["STARTER"] = team["PLAYER_ID"].astype(str).apply(
+            lambda pid: pid in starter_list
+        )
+
+        starters_df = team[team["STARTER"] == True]
+        bench_df = team[team["STARTER"] == False]
+
+        return starters_df, bench_df
+
+
+    home_st_df, home_bench_df = team_split(home_id, home_starters)
+    away_st_df, away_bench_df = team_split(away_id, away_starters)
+
+
+    # ---- számítások ----
+
+    def avg_or_zero(series):
+        return float(series.mean()) if len(series) > 0 else 0.0
+
+    # PER
+    home_starter_avg_PER = avg_or_zero(home_st_df["PER"])
+    away_starter_avg_PER = avg_or_zero(away_st_df["PER"])
+    home_bench_avg_PER   = avg_or_zero(home_bench_df["PER"])
+    away_bench_avg_PER   = avg_or_zero(away_bench_df["PER"])
+
+    # USG_PCT helyett approximált star_usage: starter PTS / összes csapat PTS
+    def star_usage_approx(team_df, starter_df):
+        team_pts = team_df["PTS"].sum()
+        starter_pts = starter_df["PTS"].sum()
+        if team_pts > 0:
+            return float(starter_pts / team_pts)
+        else:
+            return 0.0
+
+    home_star_usage = star_usage_approx(stats_df[stats_df["TEAM_ID"] == home_id], home_st_df)
+    away_star_usage = star_usage_approx(stats_df[stats_df["TEAM_ID"] == away_id], away_st_df)
+
+
+    # TS_PCT
+    home_avg_TS = avg_or_zero(home_st_df["TS_PCT"])
+    away_avg_TS = avg_or_zero(away_st_df["TS_PCT"])
+
+    # Top3 scorer az adott dátumig (PTS átlag alapján)
+    def top3_avg_pts(team_df):
+        top3 = team_df.sort_values("PTS", ascending=False).head(3)
+        return avg_or_zero(top3["PTS"]/top3["GP"])
+
+    home_top3_points_avg = top3_avg_pts(stats_df[stats_df["TEAM_ID"] == home_id])
+    away_top3_points_avg = top3_avg_pts(stats_df[stats_df["TEAM_ID"] == away_id])
+
+
+    # ---- eredmény ----
+    return {
+        "home_starter_avg_PER": home_starter_avg_PER,
+        "away_starter_avg_PER": away_starter_avg_PER,
+        "home_bench_avg_PER":   home_bench_avg_PER,
+        "away_bench_avg_PER":   away_bench_avg_PER,
+
+        "home_star_usage": home_star_usage,
+        "away_star_usage": away_star_usage,
+
+        "home_avg_TS": home_avg_TS,
+        "away_avg_TS": away_avg_TS,
+
+        "home_top3_points_avg": home_top3_points_avg,
+        "away_top3_points_avg": away_top3_points_avg
+    }
+
+
+TEST_GAME_ID = '0022400724'
+TEST_TEAM_ID = 1610612760
+    
+#pbp_df = get_game_snapshots(TEST_GAME_ID)
 #snapshots = extract_snapshots(pbp_df)
 #print(snapshots[-1])
 
-print(extract_pregame('2024-25', game_date='2025-02-05', team_ids=['1610612760', '1610612756']))
-print(get_inactive_players('0022400724'))
+#print(extract_pregame(TEST_GAME_ID))
+
+#print(extract_injury(TEST_GAME_ID))
+
+#print(get_dash_lineup(TEST_TEAM_ID, season='2024-25', date_to='2025-02-05'))
+
+print(extract_advanced_stats(TEST_GAME_ID))
