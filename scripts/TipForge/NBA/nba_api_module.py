@@ -120,7 +120,7 @@ def get_team_dash_stats(season='2024-25', date_from=None, date_to='2025-02-05'):
 def get_inactive_players(game_id):
     from nba_api.stats.endpoints import boxscoresummaryv3
 
-    bs_raw = boxscoresummaryv3.BoxScoreSummaryV3(game_id=TEST_GAME_ID)
+    bs_raw = boxscoresummaryv3.BoxScoreSummaryV3(game_id=game_id)
     bs = bs_raw.get_dict()
 
     home_id = bs['boxScoreSummary']['homeTeam']['teamId']
@@ -728,7 +728,7 @@ def extract_form(game_id):
 
     return form
 
-TEST_GAME_ID = '0022400724'
+#TEST_GAME_ID = '0022400724'
     
 #pbp_df = get_game_snapshots(TEST_GAME_ID)
 #snapshots = extract_snapshots(pbp_df)

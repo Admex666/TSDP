@@ -24,7 +24,7 @@ def update_training_csv(game_ids):
         existing_ids = df_existing["game_id"].unique().tolist()
         file_exists = True
     else:
-        existing_ids = set()
+        existing_ids = []
         file_exists = False
 
     total = len(game_ids)
