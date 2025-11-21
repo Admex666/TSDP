@@ -463,9 +463,10 @@ def extract_snapshots(df, snapshot_times=[(1, 180),
     
     return snapshots
 
-def extract_pregame(game_id):
-    meta = extract_game_meta(game_id)
-    season, game_date, team_ids = meta['season'], meta['date'], [meta['home_id'], meta['away_id']]
+def extract_pregame(game_id, season=None, game_date=None, team_ids=None):
+    if (season is None) or (game_date is None) or (team_ids is None):
+        meta = extract_game_meta(game_id)
+        season, game_date, team_ids = meta['season'], meta['date'], [meta['home_id'], meta['away_id']]
     
     pregame = {}
 
@@ -499,6 +500,9 @@ def extract_pregame(game_id):
     return pregame
 
 def extract_injury(game_id):
+    if game_id is None:
+        return {'home_injury_count': 5, 'away_injury_count': 5, 'home_missing_starters': 0, 'away_missing_starters': 0}
+    
     meta = extract_game_meta(game_id)
     season, game_date, team_ids = meta['season'], meta['date'], [meta['home_id'], meta['away_id']]
     injuries = {}
@@ -526,17 +530,19 @@ def extract_injury(game_id):
 
     return injuries
 
-def extract_advanced_stats(game_id):
+def extract_advanced_stats(game_id, game_date=None, season=None, home_id=None, away_id=None):
     from nba_api.stats.endpoints import leaguedashplayerstats, playergamelog
     import pandas as pd
     import numpy as np
 
-    meta = extract_game_meta(game_id)
-    game_date = meta['date']
+    if (game_date is None) or (season is None) or (home_id is None) or (away_id is None):
+        meta = extract_game_meta(game_id)
+        game_date = meta['date']
+        season = meta['season']
+        home_id, away_id = [meta['home_id'], meta['away_id']]
 
-    home_id, away_id = [meta['home_id'], meta['away_id']]
-    home_starters = get_dash_lineup(team_id=meta['home_id'], season=meta['season'], date_to=game_date)
-    away_starters = get_dash_lineup(team_id=meta['away_id'], season=meta['season'], date_to=game_date)
+    home_starters = get_dash_lineup(team_id=home_id, season=season, date_to=game_date)
+    away_starters = get_dash_lineup(team_id=away_id, season=season, date_to=game_date)
 
     # 1) Lekérjük a liga összes játékosát adott napig
     stats_raw = leaguedashplayerstats.LeagueDashPlayerStats(
@@ -676,11 +682,15 @@ def extract_advanced_stats(game_id):
         "away_top3_points_avg": away_top3_points_avg
     }
 
-def extract_form(game_id):
+def extract_form(game_id, season=None, game_date=None, home_id=None, away_id=None):
+    if (season is None) or (game_date is None) or (home_id is None) or (away_id is None):
+        meta = extract_game_meta(game_id)
+        season = meta['season']
+        home_id = meta['home_id']
+        away_id = meta['away_id']
+        game_date = meta['date']
+    
     form = {}
-
-    meta = extract_game_meta(game_id)
-    season = meta['season']
 
     def compute_team_form_metrics(gamelog, team_id, date):
         """
@@ -743,8 +753,8 @@ def extract_form(game_id):
     
     gamelog = get_season_game_log(season=season)
 
-    form_home = compute_team_form_metrics(gamelog, meta['home_id'], meta['date'])
-    form_away = compute_team_form_metrics(gamelog, meta['away_id'], meta['date'])
+    form_home = compute_team_form_metrics(gamelog, home_id, game_date)
+    form_away = compute_team_form_metrics(gamelog, away_id, game_date)
     form = {
         "home_is_back_to_back": form_home['is_back_to_back'],
         "home_rest_days": form_home['rest_days'],
