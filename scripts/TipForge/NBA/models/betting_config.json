@@ -1,0 +1,25 @@
+{
+  "threshold": 0.53,
+  "min_edge": 0.03,
+  "odds_range": {
+    "min": 1.5,
+    "max": 2.0
+  },
+  "models": {
+    "rf_pca": {
+      "model_file": "rf_pca_model.joblib",
+      "pca_file": "rf_pca_transformer.joblib",
+      "description": "Random Forest + PCA (90% variance)"
+    },
+    "xgb_shallow": {
+      "model_file": "xgb_shallow_model.joblib",
+      "pca_file": "xgb_shallow_pca_transformer.joblib",
+      "description": "XGBoost Very Shallow + PCA (10 components)"
+    },
+    "xgb_tuned": {
+      "model_file": "xgb_tuned_model.joblib",
+      "pca_file": "xgb_tuned_pca_transformer.joblib",
+      "description": "XGBoost Tuned + PCA (90% variance)"
+    }
+  }
+}
