@@ -1,3 +1,10 @@
+import nba_api.stats.endpoints as endpoints
+endpoints.HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Language': 'en-US,en;q=0.9',
+}
+
 # Team IDs dict
 TEAM_IDS = {1610612737: 'Atlanta Hawks',
             1610612738: 'Boston Celtics',
