@@ -39,7 +39,7 @@ team_id_dict = nbam.TEAM_IDS
 team_abr_dict = nbam.TEAM_ABBREVIATIONS
 
 def get_upcoming_games(days_ahead=3):
-    """LekÃ©ri a következő N napra tervezett meccseket."""
+    """Lekéri a következő N napra tervezett meccseket - RETRY logikával."""
     upcoming = []
     teams_seen = set()
     today = datetime.now()
@@ -48,34 +48,52 @@ def get_upcoming_games(days_ahead=3):
         check_date = today + pd.Timedelta(days=day_offset)
         date_str = check_date.strftime('%Y-%m-%d')
         
-        try:
-            scoreboard = scoreboardv2.ScoreboardV2(game_date=date_str)
-            games = scoreboard.get_data_frames()[0]
-            
-            if len(games) == 0:
-                continue
-            
-            for _, game in games.iterrows():
-                game_id = str(game['GAME_ID'])
-                home_team_id = game['HOME_TEAM_ID']
-                away_team_id = game['VISITOR_TEAM_ID']
+        # RETRY LOGIKA - 3 próbálkozás
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                print(f"\nEllenőrzés: {date_str} (próbálkozás {attempt + 1}/{max_retries})")
                 
-                if home_team_id not in teams_seen and away_team_id not in teams_seen:
-                    upcoming.append({
-                        'game_id': game_id,
-                        'game_date': date_str,
-                        'home_team_id': home_team_id,
-                        'away_team_id': away_team_id,
-                        'home_team': team_id_dict[home_team_id],
-                        'away_team': team_id_dict[away_team_id]
-                    })
-                    teams_seen.add(home_team_id)
-                    teams_seen.add(away_team_id)
-            
-            time.sleep(1)
-        except Exception as e:
-            print(f"Hiba {date_str} lekérésekor: {e}")
-            continue
+                scoreboard = scoreboardv2.ScoreboardV2(
+                    game_date=date_str,
+                    timeout=90  # Növelt timeout
+                )
+                games = scoreboard.get_data_frames()[0]
+                
+                if len(games) == 0:
+                    print(f"  Nincs meccs ezen a napon")
+                    break  # Kilépünk a retry loop-ból
+                
+                for _, game in games.iterrows():
+                    game_id = str(game['GAME_ID'])
+                    home_team_id = game['HOME_TEAM_ID']
+                    away_team_id = game['VISITOR_TEAM_ID']
+                    
+                    if home_team_id not in teams_seen and away_team_id not in teams_seen:
+                        upcoming.append({
+                            'game_id': game_id,
+                            'game_date': date_str,
+                            'home_team_id': home_team_id,
+                            'away_team_id': away_team_id,
+                            'home_team': team_id_dict[home_team_id],
+                            'away_team': team_id_dict[away_team_id]
+                        })
+                        teams_seen.add(home_team_id)
+                        teams_seen.add(away_team_id)
+                        print(f"  ✓ {team_id_dict[away_team_id]} @ {team_id_dict[home_team_id]}")
+                
+                time.sleep(3)  # Hosszabb várakozás
+                break  # Sikeres, kilépünk a retry loop-ból
+                
+            except Exception as e:
+                print(f"  Hiba {date_str} lekérésekor (próbálkozás {attempt + 1}): {e}")
+                if attempt < max_retries - 1:
+                    wait_time = (attempt + 1) * 10  # 10, 20, 30 mp
+                    print(f"  Várakozás {wait_time} másodperc...")
+                    time.sleep(wait_time)
+                else:
+                    print(f"  ❌ Sikertelen {max_retries} próbálkozás után")
+                continue
     
     return pd.DataFrame(upcoming)
 
