@@ -1,7 +1,5 @@
 pandas
 nba_api
-os
-sys
 pathlib
 selenium
 dotenv
