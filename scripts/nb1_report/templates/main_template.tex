@@ -1,0 +1,350 @@
+\documentclass[11pt,a4paper]{article}
+
+% Csomagok
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+
+\pgfplotsset{compat=1.17}
+
+% Színek definiálása
+\definecolor{clgreen}{HTML}{66CC66}
+\definecolor{clblue}{HTML}{6699FF}
+\definecolor{clred}{HTML}{FF6666}
+\definecolor{clyellow}{HTML}{FFCC66}
+\definecolor{clgray}{HTML}{CCCCCC}
+
+% Fejléc/lábléc
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\VAR{league_name} - \VAR{round_number}. forduló}
+\rhead{\VAR{season}}
+\cfoot{\thepage}
+
+% Címoldal adatok
+\title{
+    \Huge \textbf{\VAR{league_name}} \\
+    \Large \VAR{season} Szezon \\
+    \large \VAR{round_number}. Forduló Összefoglaló
+}
+\author{}
+\date{\VAR{generated_date}}
+
+\begin{document}
+
+% ==================== CÍMOLDAL ====================
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\Large Időszak: \VAR{date_range.start} -- \VAR{date_range.end}
+\end{center}
+
+\vfill
+
+\begin{center}
+\textit{Automatikusan generált riport}
+\end{center}
+
+\newpage
+
+% ==================== EXECUTIVE SUMMARY ====================
+\section*{Executive Summary}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!40,title=Főbb Insights]
+\begin{itemize}
+%% for insight in insights
+    \item \VAR{insight}
+%% endfor
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{1em}
+
+% ==================== TABELLA & MOMENTUM ====================
+\section*{Aktuális Tabella}
+
+\begin{longtable}{clccccccl}
+\toprule
+\textbf{Hely} & \textbf{Csapat} & \textbf{M} & \textbf{Gy} & \textbf{D} & \textbf{V} & \textbf{Pont} & \textbf{GK} & \textbf{Forma} \\
+\midrule
+\endhead
+
+%% for team in teams_metrics|sort(attribute='position')
+    %% if team.position <= zone_limits.champions_league
+        \rowcolor{\VAR{colors.champions_league}}
+    %% elif team.position == zone_limits.europa_league
+        \rowcolor{\VAR{colors.europa_league}}
+    %% elif team.position == zone_limits.conference_league
+        \rowcolor{\VAR{colors.conference_league}}
+    %% elif team.position >= zone_limits.relegation_start
+        \rowcolor{\VAR{colors.relegation}}
+    %% endif
+    
+    \VAR{team.position} & 
+    \VAR{team.team_name} & 
+    \VAR{team.matches_played} & 
+    \VAR{team.wins} & 
+    \VAR{team.draws} & 
+    \VAR{team.losses} & 
+    \textbf{\VAR{team.points}} & 
+    \VAR{team.goal_difference} & 
+    \VAR{team.last_5_results} \\
+%% endfor
+
+\bottomrule
+\end{longtable}
+
+\begin{small}
+\textcolor{clgreen}{\faSquare} Bajnokok Ligája \quad
+\textcolor{clblue}{\faSquare} Európa Liga \quad
+\textcolor{cyan}{\faSquare} Konferencia Liga \quad
+\textcolor{clred}{\faSquare} Kiesőzóna
+\end{small}
+
+\vspace{1em}
+
+\subsection*{Momentum - Pozícióváltozások}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm,
+    height=6cm,
+    xlabel={Fordulók},
+    ylabel={Helyezés},
+    ymin=0, ymax=21,
+    ytick={1,5,10,15,20},
+    legend pos=outer north east,
+    grid=major
+]
+
+%% for team in teams_metrics[:5]
+    \addplot coordinates {
+    %% for pos in team.position_history
+        (\VAR{loop.index}, \VAR{pos})
+    %% endfor
+    };
+    \addlegendentry{\VAR{team.team_name}}
+%% endfor
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+% ==================== FORDULÓ EREDMÉNYEK ====================
+\section*{\VAR{round_number}. Forduló Eredményei}
+
+\begin{center}
+\begin{tabular}{lclccc}
+\toprule
+\textbf{Hazai} & & \textbf{Vendég} & \textbf{Eredmény} & \textbf{xG} & \textbf{Típus} \\
+\midrule
+
+%% for match in matches_enhanced
+    \VAR{match.home_team} & vs & \VAR{match.away_team} & 
+    \VAR{match.home_goals}:\VAR{match.away_goals} & 
+    \VAR{match.home_xg|round(1)} - \VAR{match.away_xg|round(1)} &
+    %% if match.match_type == 'surprise'
+        \textcolor{clyellow}{\faStar}
+    %% else
+        --
+    %% endif
+    \\
+%% endfor
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=yellow!50,title=\faStar~ Meglepetés Eredmények]
+%% for match in matches_enhanced
+    %% if match.match_type == 'surprise'
+        \textbf{\VAR{match.home_team} \VAR{match.home_goals}:\VAR{match.away_goals} \VAR{match.away_team}} -- 
+        Az xG alapján (\VAR{match.home_xg|round(1)} vs \VAR{match.away_xg|round(1)}) 
+        eltérő eredmény volt várható. \\[0.5em]
+    %% endif
+%% endfor
+\end{tcolorbox}
+
+\newpage
+
+% ==================== STATISZTIKAI TOPLISTÁK ====================
+\section*{Statisztikai Toplista}
+
+\begin{multicols}{2}
+
+\subsection*{\faChartLine~ Top 5 Támadás}
+\begin{tabular}{lc}
+\toprule
+\textbf{Csapat} & \textbf{xG} \\
+\midrule
+%% for team in top_stats.top_attack
+    \VAR{team.team_name} & \VAR{team.xg_total|round(1)} \\
+%% endfor
+\bottomrule
+\end{tabular}
+
+\vspace{1.5em}
+
+\subsection*{\faShieldAlt~ Top 5 Védelem}
+\begin{tabular}{lc}
+\toprule
+\textbf{Csapat} & \textbf{xGA} \\
+\midrule
+%% for team in top_stats.top_defense
+    \VAR{team.team_name} & \VAR{team.xga_total|round(1)} \\
+%% endfor
+\bottomrule
+\end{tabular}
+
+\columnbreak
+
+\subsection*{\faFire~ Legjobb Forma}
+\begin{tabular}{lc}
+\toprule
+\textbf{Csapat} & \textbf{Index} \\
+\midrule
+%% for team in top_stats.best_form
+    \VAR{team.team_name} & \VAR{team.form_index|round(2)} \\
+%% endfor
+\bottomrule
+\end{tabular}
+
+\vspace{1.5em}
+
+\subsection*{\faArrowDown~ Legrosszabb Forma}
+\begin{tabular}{lc}
+\toprule
+\textbf{Csapat} & \textbf{Index} \\
+\midrule
+%% for team in top_stats.worst_form
+    \VAR{team.team_name} & \VAR{team.form_index|round(2)} \\
+%% endfor
+\bottomrule
+\end{tabular}
+
+\end{multicols}
+
+\vspace{1em}
+
+\subsection*{Teljesítmény-rés (Pont vs xPoints)}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm,
+    height=8cm,
+    xlabel={Várható Pontok (xPoints)},
+    ylabel={Tényleges Pontok},
+    grid=major,
+    legend pos=north west
+]
+
+% Referencia vonal (ideális teljesítmény)
+\addplot[dashed, thick, gray] coordinates {(0,0) (30,30)};
+\addlegendentry{Ideális}
+
+% Csapatok
+%% for team in teams_metrics
+    \addplot[only marks, mark=*, mark size=2pt] 
+    coordinates {(\VAR{team.xPoints}, \VAR{team.points})};
+%% endfor
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+% ==================== TRENDANALÍZIS ====================
+\section*{Trendanalízis \& Figyelmeztetések}
+
+\subsection*{\faArrowUp~ Felfelé Ívelő Csapatok}
+
+\begin{tcolorbox}[colback=green!5,colframe=green!40]
+%% for team in teams_metrics
+    %% if team.category == 'upward'
+        \textbf{\VAR{team.team_name}} (\VAR{team.position}. hely) -- 
+        Forma: \VAR{team.form_index|round(2)}, 
+        Momentum: \VAR{team.momentum} pozíció változás \\[0.3em]
+    %% endif
+%% endfor
+\end{tcolorbox}
+
+\subsection*{\faExclamationTriangle~ Veszélyzóna}
+
+\begin{tcolorbox}[colback=red!5,colframe=red!40]
+%% for team in teams_metrics
+    %% if team.category == 'danger'
+        \textbf{\VAR{team.team_name}} (\VAR{team.position}. hely) -- 
+        Forma: \VAR{team.form_index|round(2)}, 
+        Utolsó 5 meccs: \VAR{team.last_5_results} \\
+        \textit{Sürgős beavatkozást igényelhet!} \\[0.5em]
+    %% endif
+%% endfor
+\end{tcolorbox}
+
+\subsection*{Alul/Felülteljesítők}
+
+\begin{multicols}{2}
+
+\textbf{Felülteljesítők} (szerencsések):
+\begin{itemize}
+%% for team in top_stats.overperformers[:3]
+    \item \VAR{team.team_name}: +\VAR{team.performance_gap|round(1)} pont
+%% endfor
+\end{itemize}
+
+\columnbreak
+
+\textbf{Alulteljesítők} (szerencsétlenek):
+\begin{itemize}
+%% for team in top_stats.underperformers[:3]
+    \item \VAR{team.team_name}: \VAR{team.performance_gap|round(1)} pont
+%% endfor
+\end{itemize}
+
+\end{multicols}
+
+\newpage
+
+% ==================== KÖVETKEZŐ FORDULÓ ====================
+\section*{Következő Forduló Előzetes}
+
+\subsection*{\faCalendar~ Top Mérkőzések}
+
+%% for fixture in next_round_fixtures[:3]
+    \begin{tcolorbox}[colback=blue!5,colframe=blue!30]
+    \textbf{\VAR{fixture.home_team} vs \VAR{fixture.away_team}} \\
+    \textit{Dátum:} \VAR{fixture.date} \\
+    \textit{Nehézség:} \VAR{fixture.difficulty_rating}/10 \\
+    \textit{Kontextus:} \VAR{fixture.description}
+    \end{tcolorbox}
+    \vspace{0.5em}
+%% endfor
+
+\vfill
+
+\begin{center}
+\rule{0.5\textwidth}{0.4pt} \\
+\textit{Generálva: \VAR{generated_date}} \\
+\textit{Automatizált Liga-Összefoglaló Rendszer}
+\end{center}
+
+\end{document}

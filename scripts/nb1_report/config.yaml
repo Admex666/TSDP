@@ -1,0 +1,93 @@
+# Liga-Összefoglaló Generátor Konfiguráció
+
+# Liga alapadatok
+league:
+  name: "Premier League"
+  season: "2024/25"
+  country: "Anglia"
+  
+# Zóna határok (helyezések)
+zone_limits:
+  champions_league: 4        # Top 4 = BL
+  europa_league: 5           # 5. hely = EL
+  conference_league: 6       # 6. hely = Conference
+  relegation_start: 18       # 18-20. hely kiesik
+
+# Küszöbértékek a kategorizáláshoz
+thresholds:
+  good_form: 2.5             # pont/meccs >= 2.5 = jó forma
+  bad_form: 1.0              # pont/meccs < 1.0 = rossz forma
+  overperforming: 5          # pont - xPoint > 5 = felülteljesít
+  underperforming: 5         # pont - xPoint < -5 = alulteljesít
+  surprise_factor: 2.0       # |xG_diff - goal_diff| > 2 = meglepetés
+  relegation_zone: 18        # Kiesőzóna kezdete
+
+# Színkódok (LaTeX színek)
+colors:
+  champions_league: "green!30"      # Zöld - BL hely
+  europa_league: "blue!20"          # Kék - EL hely
+  conference_league: "cyan!15"      # Világoskék - Konf.
+  relegation: "red!25"              # Piros - Kiesés
+  neutral: "gray!10"                # Szürke - semleges
+  positive: "green!50"              # Pozitív trend
+  negative: "red!50"                # Negatív trend
+  warning: "yellow!40"              # Figyelmeztetés
+
+# Forma értékelés súlyai
+form_weights:
+  - 0.10   # 5 meccsel ezelőtt
+  - 0.15   # 4 meccsel ezelőtt
+  - 0.20   # 3 meccsel ezelőtt
+  - 0.25   # 2 meccsel ezelőtt
+  - 0.30   # legutóbbi meccs
+
+# Output beállítások
+output:
+  directory: "output"
+  filename_pattern: "liga_report_round_{round}"
+  
+# LaTeX beállítások
+latex:
+  document_class: "article"
+  font_size: "11pt"
+  paper_size: "a4paper"
+  geometry: "margin=2cm"
+  
+# Vizualizációk
+visualizations:
+  sparklines: true           # Mini grafikonok a tabellában
+  heatmap: true             # Momentum hőtérkép
+  scatter_plot: true        # xG vs Goals scatter
+  bar_charts: true          # Top listák oszlopdiagramjai
+
+# Szekciók engedélyezése/kikapcsolása
+sections:
+  executive_summary: true
+  table_momentum: true
+  round_results: true
+  top_stats: true
+  trend_analysis: true
+  next_round_preview: true
+
+# Narratíva template-ek
+narratives:
+  best_form: "{team} kiváló formában van: {form_index} forma-index, jelenleg {position}. helyen áll."
+  danger_zone: "{team} veszélyes zónában: {position}. helyezés, rossz forma ({form_index}), sürgős beavatkozást igényelhet."
+  surprise_result: "Meglepetés: {home_team} vs {away_team} ({score}) - az xG alapján {expected} eredmény várható lett volna."
+  overperforming: "{team} felülteljesít: {gap} ponttal több, mint az xG alapú várakozás."
+  underperforming: "{team} alulteljesít: {gap} ponttal kevesebb a vártnál, szerencsétlen helyzetekben."
+
+# Statisztikai kategóriák
+stats_categories:
+  - name: "Támadás"
+    metrics: ["goals", "xg_total", "shots"]
+    ascending: false
+  - name: "Védelem"
+    metrics: ["goals_conceded", "xga_total"]
+    ascending: true
+  - name: "Forma"
+    metrics: ["form_index", "last_5_points"]
+    ascending: false
+  - name: "Hatékonyság"
+    metrics: ["performance_gap", "xpoints"]
+    ascending: false

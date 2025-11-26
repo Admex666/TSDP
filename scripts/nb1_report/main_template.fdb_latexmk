@@ -1,0 +1,9 @@
+# Fdb version 4
+["pdflatex"] 0 "main_template.tex" "main_template.pdf" "main_template" 0 -1
+  "main_template.aux" 0 -1 0 "pdflatex"
+  "main_template.tex" 0 -1 0 ""
+  (generated)
+  "main_template.aux"
+  "main_template.log"
+  "main_template.pdf"
+  (rewritten before read)

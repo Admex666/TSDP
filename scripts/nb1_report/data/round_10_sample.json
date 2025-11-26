@@ -1,0 +1,203 @@
+{
+  "league_name": "Premier League",
+  "season": "2024/25",
+  "round_number": 10,
+  "date_range": {
+    "start": "2024-11-02",
+    "end": "2024-11-04"
+  },
+  "logo_path": "assets/premier_league_logo.png",
+  "teams": [
+    {
+      "team_id": "mci",
+      "team_name": "Manchester City",
+      "position": 1,
+      "position_history": [
+        2,
+        1,
+        1,
+        1
+      ],
+      "matches_played": 10,
+      "wins": 7,
+      "draws": 2,
+      "losses": 1,
+      "points": 23,
+      "goals_for": 25,
+      "goals_against": 8,
+      "goal_difference": 17,
+      "xg_total": 23.5,
+      "xga_total": 7.2,
+      "last_5_results": "WWDWW",
+      "last_5_points": 13
+    },
+    {
+      "team_id": "ars",
+      "team_name": "Arsenal",
+      "position": 2,
+      "position_history": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "matches_played": 10,
+      "wins": 6,
+      "draws": 3,
+      "losses": 1,
+      "points": 21,
+      "goals_for": 22,
+      "goals_against": 10,
+      "goal_difference": 12,
+      "xg_total": 20.8,
+      "xga_total": 9.5,
+      "last_5_results": "WDWDW",
+      "last_5_points": 11
+    },
+    {
+      "team_id": "liv",
+      "team_name": "Liverpool",
+      "position": 3,
+      "position_history": [
+        3,
+        3,
+        4,
+        3
+      ],
+      "matches_played": 10,
+      "wins": 6,
+      "draws": 2,
+      "losses": 2,
+      "points": 20,
+      "goals_for": 21,
+      "goals_against": 12,
+      "goal_difference": 9,
+      "xg_total": 19.2,
+      "xga_total": 11.8,
+      "last_5_results": "WLWWD",
+      "last_5_points": 10
+    },
+    {
+      "team_id": "che",
+      "team_name": "Chelsea",
+      "position": 4,
+      "position_history": [
+        5,
+        4,
+        3,
+        4
+      ],
+      "matches_played": 10,
+      "wins": 5,
+      "draws": 3,
+      "losses": 2,
+      "points": 18,
+      "goals_for": 19,
+      "goals_against": 13,
+      "goal_difference": 6,
+      "xg_total": 17.5,
+      "xga_total": 13.2,
+      "last_5_results": "DWWDW",
+      "last_5_points": 10
+    },
+    {
+      "team_id": "mun",
+      "team_name": "Manchester United",
+      "position": 14,
+      "position_history": [
+        12,
+        13,
+        14,
+        14
+      ],
+      "matches_played": 10,
+      "wins": 3,
+      "draws": 2,
+      "losses": 5,
+      "points": 11,
+      "goals_for": 12,
+      "goals_against": 17,
+      "goal_difference": -5,
+      "xg_total": 14.8,
+      "xga_total": 15.2,
+      "last_5_results": "LLWDL",
+      "last_5_points": 4
+    }
+  ],
+  "matches": [
+    {
+      "match_id": "m101",
+      "date": "2024-11-02",
+      "home_team": "Manchester City",
+      "away_team": "Arsenal",
+      "home_goals": 2,
+      "away_goals": 1,
+      "home_xg": 1.8,
+      "away_xg": 1.2,
+      "home_shots": 15,
+      "away_shots": 10,
+      "home_possession": 58,
+      "away_possession": 42
+    },
+    {
+      "match_id": "m102",
+      "date": "2024-11-02",
+      "home_team": "Liverpool",
+      "away_team": "Chelsea",
+      "home_goals": 1,
+      "away_goals": 1,
+      "home_xg": 2.1,
+      "away_xg": 0.9,
+      "home_shots": 18,
+      "away_shots": 8,
+      "home_possession": 62,
+      "away_possession": 38
+    },
+    {
+      "match_id": "m103",
+      "date": "2024-11-03",
+      "home_team": "Manchester United",
+      "away_team": "West Ham",
+      "home_goals": 0,
+      "away_goals": 2,
+      "home_xg": 0.8,
+      "away_xg": 2.3,
+      "home_shots": 9,
+      "away_shots": 14,
+      "home_possession": 48,
+      "away_possession": 52
+    }
+  ],
+  "next_round_fixtures": [
+    {
+      "fixture_id": "f111",
+      "date": "2024-11-09",
+      "home_team": "Arsenal",
+      "away_team": "Liverpool",
+      "home_position": 2,
+      "away_position": 3,
+      "difficulty_rating": 8.5,
+      "description": "Tabellaszomszédok csatája - Bajnoki Liga helyért"
+    },
+    {
+      "fixture_id": "f112",
+      "date": "2024-11-09",
+      "home_team": "Chelsea",
+      "away_team": "Manchester City",
+      "home_position": 4,
+      "away_position": 1,
+      "difficulty_rating": 9.0,
+      "description": "Címvédő elleni rangadó"
+    },
+    {
+      "fixture_id": "f113",
+      "date": "2024-11-10",
+      "home_team": "Manchester United",
+      "away_team": "Leicester",
+      "home_position": 14,
+      "away_position": 16,
+      "difficulty_rating": 6.0,
+      "description": "Bennmaradási harc"
+    }
+  ]
+}

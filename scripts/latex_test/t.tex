@@ -1,0 +1,28 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+% Klubszínek
+\definecolor{clubblue}{RGB}{0,50,160}
+\definecolor{clubgray}{RGB}{230,230,230}
+
+% Header beállítások
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[height=1.2cm]{club_logo.png}}
+\fancyhead[C]{\textcolor{clubblue}{\Large \textbf{Match Report}}}
+\fancyhead[R]{\textcolor{gray}{\today}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{clubblue}\leaders\hrule height \headrulewidth\hfill}}
+
+\begin{document}
+
+\section*{Liverpool vs Manchester City}
+\textbf{Expected Goals (xG):} 2.13 vs 1.67 \\
+\textbf{Possession:} 63\% vs 37\% \\
+\textbf{Shots on Target:} 5 vs 3 \\
+
+\end{document}
