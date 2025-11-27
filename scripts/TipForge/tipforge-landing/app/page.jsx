@@ -162,9 +162,9 @@ const TipForgeLanding = () => {
   };
 
   const testimonials = [
-    { name: 'Kovács Dániel', age: 32, city: 'Budapest', text: '4 hónapig buktam havonta 20-30 ezret. Végre van kivel megbeszélnem a tippeket.', avatar: '👨' },
-    { name: 'Nagy Balázs', age: 28, city: 'Debrecen', text: 'Nem varázslat, de végre értem, hogy miért vesztettem annyit.', avatar: '👨‍💼' },
-    { name: 'Szabó Péter', age: 35, city: 'Szeged', text: 'Látom az összes eredményt, semmi nincs rejtve. Ez benne a legjobb.', avatar: '🧑' }
+    { name: 'Kovács Dániel', age: 32, city: '', text: '4 hónapig buktam havonta 20-30 ezret. Végre van kivel megbeszélnem a tippeket.', avatar: '👨' },
+    { name: 'Nagy Balázs', age: 28, city: '', text: 'Nem varázslat, de végre értem, hogy miért vesztettem annyit.', avatar: '👨‍💼' },
+    { name: 'Szabó Péter', age: 35, city: '', text: 'A tippek jók, de az igazi érték a tudástár. Most már értem MIÉRT veszítettem korábban. Csak a tudás hiányzott – ilyen egyszerű.', avatar: '🧑' }
   ];
 
   const stats = [
@@ -177,27 +177,27 @@ const TipForgeLanding = () => {
   const features = [
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      title: 'Ne találgass. Tudd, hogy miért teszel.',
+      title: 'Ne találgass. Legyél hosszútávon is nyertes.',
       description: '15+ statisztikai tényező: xG, forma, H2H, sérültek. Nem varázslat - józan ész és számok.',
       highlight: '127 tipp | 73 nyerő'
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: 'Közösség, ahol tanulsz',
-      description: 'Discord közösség tapasztalt fogadókkal. Élő meccs chat, közös elemzés, tanulás egymástól.',
-      highlight: 'Heti live Q&A'
+      description: 'Discord közösség tapasztalt fogadókkal. Élő meccs chat, közös elemzések, tanulás egymástól.',
+      highlight: 'Stratégia megosztás'
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: '30 napos elégedettségi garancia',
-      description: 'Ha nem vagy elégedett a szolgáltatással (minőség, közösség, transzparencia), pénzt visszakapod.',
-      highlight: 'Kockázatmentes kipróbálás'
+      title: 'Tanulj, ne csak kövess',
+      description: '8 modulnyi strukturált tudástár. Minden modulban kvízek, gyakorlatok. Nem csak tippeket kapsz – megtanulod MIÉRT nyersz vagy vesztesz.',
+      highlight: 'Kezdőből Profi 90 nap alatt'
     }
   ];
 
   const painPoints = [
     { icon: '📉', title: 'Találgatsz és többet vesztesz, mint nyersz', text: 'Megint "biztos" volt a szelód. Az első 4 meccs is bejött. Az utolsó pedig... megint elvitte az egészet. Már megint -15.000 Ft a hónapban.' },
-    { icon: '⚠️', title: 'Nem tudod, kinek higgy', text: 'Facebookon és Instán mindenki "biztos nyerőket" ígér. De ha bukik, már nyoma sincs a posztnak.. Nem tudod, kinek hihetsz, ki ver át.' },
+    { icon: '⚠️', title: 'Nem tanulsz belőle', text: 'Követed a tippeket, de ha nyersz → nem tudod miért. Ha vesztesz → ugyanúgy nem tudod. Ez meggátol abban, hogy önálló legyél.' },
     { icon: '😤', title: 'Egyedül próbálod kitalálni', text: 'Órákig nézel statisztikákat, formát, sérültlistát. Úgy érzed, érted... de mégsem jön össze. Senki nem mondja meg, hol hibázol.' }
   ];
 
@@ -256,14 +256,14 @@ const TipForgeLanding = () => {
               🔥 30-ből már csak 7 hely maradt
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Ne találgass. <span className="text-[#00D4FF]">Tudd, hogy mit miért teszel.</span>
+              Ne tippelgess. <span className="text-[#00D4FF]">Tanulj, építs rendszert, legyél nyertes.</span>
             </h1>
             <p className="text-xl text-[#C0C0C0] mb-4">
               Magyar sportfogadók közössége transzparens tippekkel
             </p>
             <p className="text-lg text-[#A9A9A9] max-w-2xl mx-auto mb-12">
-              Az első algoritmus-alapú tippszolgáltatás, ahol <strong className="text-white">MINDEN eredmény nyilvános</strong>, 
-              a közösség aktív, és megtanulod, hogyan gondolkodj a fogadásról.
+              Az első algoritmus-alapú tippszolgáltatás Magyarországon, ahol, a közösség aktív, és mindig tudsz tanulni, 
+              hogyan legyél <strong className="text-white">még sikeresebb</strong>.
             </p>
           </div>
 
@@ -273,7 +273,7 @@ const TipForgeLanding = () => {
             onClick={() => handleWaitlistClick('hero')}
             className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
           >
-            Csatlakozom a TipForge várólistára
+            Szeretnék hosszútávon nyertes lenni
           </button>
             <p className="text-sm text-[#A9A9A9] mt-3 text-center">
               ✓ Nincs fizetési kötelezettség • ✓ Bármikor leiratkozhatsz
@@ -304,7 +304,7 @@ const TipForgeLanding = () => {
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
-              <span className="text-sm">30 napos garancia</span>
+              <span className="text-sm">32 leckényi egyedi tananyag</span>
             </div>
           </div>
         </div>
@@ -587,7 +587,7 @@ const TipForgeLanding = () => {
             <div className="p-6 bg-[#121212] rounded-xl border border-[#2A2A2A]">
               <div className="text-3xl mb-3">💰</div>
               <h3 className="font-semibold mb-2">Launch árazás</h3>
-              <p className="text-sm text-[#A9A9A9]">4 990 Ft/hó (7 990 Ft helyett)</p>
+              <p className="text-sm text-[#A9A9A9]">4 990 Ft/hó (napi mindössze 166 Ft)</p>
             </div>
             <div className="p-6 bg-[#121212] rounded-xl border border-[#2A2A2A]">
               <div className="text-3xl mb-3">🎁</div>
@@ -602,7 +602,7 @@ const TipForgeLanding = () => {
             onClick={() => handleWaitlistClick('final_cta')}
             className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
           >
-            Feliratkozom a TipForge várólistára
+            Szeretnék hosszútávon nyertes lenni
             <ArrowRight className="w-5 h-5" />
           </button>
           </div>
