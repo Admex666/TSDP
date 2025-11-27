@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.26)  26 NOV 2025 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.26)  27 NOV 2025 17:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -608,12 +608,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 {C:/Users/Adam/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 132.
-
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree3 on input line 135.
-(C:\Users\Adam\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome5\ufontawesomefree3.fd)
+ (C:\Users\Adam\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome5\ufontawesomefree3.fd)
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 193.
 
@@ -635,19 +631,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [3]
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree0 on input line 239.
  (C:\Users\Adam\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome5\ufontawesomefree0.fd)
-c:/Users/Adam/..Data/TSDP/scripts/nb1_report/output/liga_report_round_10.tex:254: Undefined control sequence.
-<argument> \faShieldAlt 
-                        ~ Top 5 Védelem
-l.254 \subsection*{\faShieldAlt~ Top 5 Védelem}
-                                                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on input line 269.
-(C:\Users\Adam\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome5\ufontawesomefree1.fd)
+ (C:\Users\Adam\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome5\ufontawesomefree1.fd)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -671,26 +656,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[6]
-
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
-(liga_report_round_10.aux)
+[6] (liga_report_round_10.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 31250 strings out of 467870
- 795071 string characters out of 5418838
- 1290509 words of memory out of 5000000
- 59703 multiletter control sequences out of 15000+600000
+ 31249 strings out of 467870
+ 795060 string characters out of 5418838
+ 1290662 words of memory out of 5000000
+ 59702 multiletter control sequences out of 15000+600000
  635368 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,94p,789b,2242s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Adam\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Adam/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on liga_report_round_10.pdf (6 pages, 150829 bytes).
+Output written on liga_report_round_10.pdf (6 pages, 150771 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

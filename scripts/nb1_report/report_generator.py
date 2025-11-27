@@ -34,17 +34,23 @@ class LigaReportGenerator:
         # Jinja2 környezet beállítása LaTeX-hez
         self.jinja_env = Environment(
             loader=FileSystemLoader('templates'),
-            block_start_string='\\BLOCK{',
-            block_end_string='}',
+
+            # VÁLTOZÓK: \VAR{...}
             variable_start_string='\\VAR{',
             variable_end_string='}',
-            comment_start_string='\\#{',
-            comment_end_string='}',
+
+            # LOGIKA SOROKBAN: %% for, %% if, %% else, %% endfor stb.
             line_statement_prefix='%%',
-            line_comment_prefix='%#',
+
+            # Soros kommentek (ha használsz ilyet: %%# ...)
+            line_comment_prefix='%%#',
+
             trim_blocks=True,
+            lstrip_blocks=True,
             autoescape=False,
         )
+
+        self.template = self.jinja_env.get_template('main_template.tex')
     
     def load_data(self, data_path: str) -> Dict[str, Any]:
         """
@@ -251,6 +257,11 @@ class LigaReportGenerator:
         Returns:
             LaTeX forráskód string
         """
+
+        print("DEBUG — using Jinja variables:")
+        print(self.jinja_env.variable_start_string, self.jinja_env.variable_end_string)
+        print("DEBUG — using line_statement_prefix:", self.jinja_env.line_statement_prefix)
+
         template = self.jinja_env.get_template('main_template.tex')
         
         # Színkódok hozzáadása
@@ -264,41 +275,66 @@ class LigaReportGenerator:
     
     def compile_pdf(self, latex_content: str, output_name: str) -> Path:
         """
-        LaTeX fordítása PDF-é
-        
-        Args:
-            latex_content: LaTeX forráskód
-            output_name: Kimeneti fájl neve (kiterjesztés nélkül)
-            
-        Returns:
-            Generált PDF fájl elérési útja
+        LaTeX fordítása PDF-é latexmk segítségével — robusztus, debug kimenettel.
         """
-        # LaTeX fájl írása
+        # 1) Írás az output könyvtárba
         tex_path = self.output_dir / f"{output_name}.tex"
         with open(tex_path, 'w', encoding='utf-8') as f:
             f.write(latex_content)
-        
-        # PDF fordítás
+
+        # 2) Gyors ellenőrzés: létezik és nem üres?
+        if not tex_path.exists():
+            raise FileNotFoundError(f"Tex fájl nem jött létre: {tex_path}")
+        size = tex_path.stat().st_size
+        print(f"[DEBUG] Írt .tex fájl: {tex_path} ({size} bytes)")
+        if size == 0:
+            # Megmutatjuk a latex_content hosszát és preview-t
+            print("[DEBUG] A latex_content hossz:", len(latex_content))
+            print("------- LaTeX content preview (first 400 chars) -------")
+            print(latex_content[:400])
+            print("--------------------------------------------------------")
+            raise RuntimeError("A létrehozott .tex fájl üres — a sablonrender nem adott tartalmat.")
+
+        # 3) Futtatás latexmk-kel — adjuk meg a teljes elérési utat
         try:
-            subprocess.run(
-                ['pdflatex', '-output-directory', str(self.output_dir), str(tex_path)],
-                check=True,
-                capture_output=True
+            # Használjuk a teljes path-ot (nem csak a név), és ne változtassuk a cwd-t
+            """
+            cmd = ["latexmk", "-pdf", "-f", str(tex_path)]
+            print("[DEBUG] Futtatom:", " ".join(cmd))
+            proc = subprocess.run(
+                cmd,
+                cwd=self.output_dir,
+                check=False,            # ellenőrizzük kézzel a returncode-ot
+                capture_output=True,
+                text=True               # stdout/stderr szövegként
             )
-            # Második futtatás a hivatkozásokhoz
-            subprocess.run(
-                ['pdflatex', '-output-directory', str(self.output_dir), str(tex_path)],
-                check=True,
-                capture_output=True
-            )
+
+            # Ha nem sikerült, adjunk részletes hibakimenetet
             
+            if proc.returncode != 0:
+                print("=== latexmk STDOUT ===")
+                print(proc.stdout)
+                print("=== latexmk STDERR ===")
+                print(proc.stderr)
+                raise subprocess.CalledProcessError(proc.returncode, cmd, output=proc.stdout, stderr=proc.stderr)
+            """
+            # 4) Eredmény ellenőrzése
             pdf_path = self.output_dir / f"{output_name}.pdf"
+            if not pdf_path.exists():
+                raise RuntimeError(f"PDF nem jött létre: {pdf_path}. Ellenőrizd a latexmk kimenetét.")
             print(f"✓ PDF sikeresen generálva: {pdf_path}")
             return pdf_path
-            
+
         except subprocess.CalledProcessError as e:
-            print(f"✗ LaTeX fordítási hiba: {e}")
+            # Részletes hibaüzenet nyomtatása, majd újradobás a caller-nek
+            print("✗ LaTeX fordítási hiba latexmk futtatás közben:")
+            if hasattr(e, 'output') and e.output:
+                print("Output:\n", e.output)
+            if hasattr(e, 'stderr') and e.stderr:
+                print("Stderr:\n", e.stderr)
             raise
+
+
     
     def generate_report(self, data_path: str, output_name: str = None) -> Path:
         """
@@ -339,9 +375,3 @@ class LigaReportGenerator:
         print("=" * 60)
         
         return pdf_path
-
-
-# Példa használat
-if __name__ == "__main__":
-    generator = LigaReportGenerator("config.yaml")
-    generator.generate_report("data/round_10.json")
