@@ -671,7 +671,7 @@ const TipForgeLanding = () => {
         <div className="flex items-center justify-between gap-3">
           <div className="flex-1">
             <div className="font-semibold text-sm">Csatlakozz {waitlistCount} emberhez</div>
-            <div className="text-xs text-[#A9A9A9]">Várolista zárul okt 10-én</div>
+            <div className="text-xs text-[#A9A9A9]">Várólista zárul december 8-án</div>
           </div>
           <button
             onClick={() => handleWaitlistClick('mobile_sticky')}
