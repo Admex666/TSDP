@@ -32,9 +32,12 @@ def scrape_sofascore(url):
 
 
 # 1. Lineups DataFrame
-def create_lineups_df(lineups_data):
+def create_lineups_df(event_id):
     home_players = []
     away_players = []
+    
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/lineups"
+    lineups_data = scrape_sofascore(url)
     
     # Process home players
     for player in lineups_data['home']['players']:
@@ -63,9 +66,12 @@ def create_lineups_df(lineups_data):
     return lineups_df
 
 # 2. Average Positions DataFrame
-def create_average_positions_df(average_positions_data):
+def create_average_positions_df(event_id):
     home_positions = []
     away_positions = []
+
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/average-positions"
+    average_positions_data = scrape_sofascore(url)
     
     # Process home players
     for player in average_positions_data['home']:
@@ -96,8 +102,11 @@ def create_average_positions_df(average_positions_data):
     return positions_df
 
 # 3. Statistics DataFrame
-def create_statistics_df(statistics_data):
+def create_statistics_df(event_id):
     all_stats = []
+
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/statistics"
+    statistics_data = scrape_sofascore(url)
     
     for period_data in statistics_data['statistics']:
         period = period_data['period']
@@ -124,8 +133,11 @@ def create_statistics_df(statistics_data):
     return pd.DataFrame(all_stats)
 
 # 4. Shotmap DataFrame
-def create_shotmap_df(shotmap_data):
+def create_shotmap_df(event_id):
     shots = []
+
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/shotmap"
+    shotmap_data = scrape_sofascore(url)
     
     for shot in shotmap_data['shotmap']:
         shot_info = shot['player'].copy()
@@ -149,8 +161,11 @@ def create_shotmap_df(shotmap_data):
     return pd.DataFrame(shots)
 
 # 5. Graph DataFrame
-def create_graph_df(graph_data):
+def create_graph_df(event_id):
     graph_points = []
+
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/graph"
+    graph_data = scrape_sofascore(url)
     
     for point in graph_data['graphPoints']:
         graph_points.append({
@@ -196,8 +211,12 @@ def create_player_stats_df(player_stats_data):
     return player_stats_df
 
 # 7. Game odds
-def create_odds_df(odds_data):
+def create_odds_df(event_id):
     odds_list = []
+
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/odds/1/all"
+    odds_data = scrape_sofascore(url)
+
     if odds_data["markets"]:
         for market in odds_data['markets']:
             if (market['marketGroup'] == '1X2') and (market['marketName'] == 'Full time'):
@@ -216,3 +235,28 @@ def create_odds_df(odds_data):
         return df_odds
     else:
         return pd.DataFrame()
+    
+
+def fetch_passmap(event_id, player_id):
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/player/{player_id}/rating-breakdown"
+
+    resp = scrape_sofascore(url)
+    rows = []
+
+    for event_type, events in resp.items():
+        for e in events:
+            row = {
+                "event_group": event_type,
+                "eventActionType": e.get("eventActionType"),
+                "isHome": e.get("isHome"),
+                "outcome": e.get("outcome"),
+                "player_x": e.get("playerCoordinates", {}).get("x"),
+                "player_y": e.get("playerCoordinates", {}).get("y"),
+                "end_x": e.get("passEndCoordinates", {}).get("x") if "passEndCoordinates" in e else None,
+                "end_y": e.get("passEndCoordinates", {}).get("y") if "passEndCoordinates" in e else None,
+            }
+            rows.append(row)
+
+    df = pd.DataFrame(rows)
+
+    return df
