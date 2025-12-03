@@ -414,3 +414,13 @@ def get_all_team_data_huv(countrycode, year=False):
     #df_analyse.iloc[:, 7:] = df_analyse.iloc[:, 7:].astype(float)
     
     return df_analyse
+
+def get_gamelog(countrycode, season="2024-2025"):
+    comp_id, league_name = team_dict_get(countrycode)
+
+    url = f"https://fbref.com/en/comps/{comp_id}/{season}/schedule/{season}-{league_name}-Scores-and-Fixtures"
+    table_id = f"sched_{season}_{comp_id}_1"
+
+    gamelog = scrape(url, table_id)
+
+    return gamelog
