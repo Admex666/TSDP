@@ -3,5 +3,6 @@ nba_api
 pathlib
 selenium
 dotenv
+python-dotenv
 joblib
-sklearn
+scikit-learn
