@@ -299,7 +299,7 @@ def fetch_odds_and_calculate_value(predictions):
     }
     
     url = "https://www.tippmixpro.hu/hu/fogadas/i/bajnoksag-lokacio/kosarlabda/8/usa/229/nba/274663790763708416"
-    odds = get_league_odds(url)
+    odds = get_league_odds(url, headless=True)
     odds['home_team_api'] = odds['home_team'].map(teams_tx_map_rev)
     odds['away_team_api'] = odds['away_team'].map(teams_tx_map_rev)
     
