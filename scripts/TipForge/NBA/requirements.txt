@@ -4,3 +4,4 @@ pathlib
 selenium
 dotenv
 joblib
+sklearn
