@@ -48,15 +48,15 @@ def get_upcoming_games(days_ahead=3):
         check_date = today + pd.Timedelta(days=day_offset)
         date_str = check_date.strftime('%Y-%m-%d')
         
-        # RETRY LOGIKA - 3 próbálkozás
-        max_retries = 3
+        # RETRY LOGIKA
+        max_retries = 1
         for attempt in range(max_retries):
             try:
                 print(f"\nEllenőrzés: {date_str} (próbálkozás {attempt + 1}/{max_retries})")
                 
                 scoreboard = scoreboardv2.ScoreboardV2(
                     game_date=date_str,
-                    timeout=90  # Növelt timeout
+                    timeout=30 
                 )
                 games = scoreboard.get_data_frames()[0]
                 
