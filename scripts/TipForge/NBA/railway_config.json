@@ -3,7 +3,7 @@
       {
         "name": "nba-daily-predictions",
         "schedule": "45 17 * * *",
-        "command": "python scripts/tipforge/.../NBA/run_predictions.py",
+        "command": "python scripts/TipForge/NBA/run_predictions.py",
         "timezone": "Europe/Budapest"
       }
     ]
