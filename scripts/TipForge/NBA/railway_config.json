@@ -1,0 +1,11 @@
+{
+    "jobs": [
+      {
+        "name": "nba-daily-predictions",
+        "schedule": "45 17 * * *",
+        "command": "python scripts/tipforge/.../NBA/run_predictions.py",
+        "timezone": "Europe/Budapest"
+      }
+    ]
+  }
+  
