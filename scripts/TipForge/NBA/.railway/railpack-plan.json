@@ -1,0 +1,13 @@
+{
+  "deploy": {
+    "startCommand": "sleep infinity"
+  },
+  "jobs": [
+    {
+      "name": "nba-daily-predictions",
+      "schedule": "00 16 * * *",
+      "command": "python scripts/TipForge/NBA/run_predictions.py",
+      "timezone": "Europe/Budapest"
+    }
+  ]
+}
