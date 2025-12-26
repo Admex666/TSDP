@@ -84,39 +84,79 @@ def generate_match_lineup_html(filename, home_team="Home", away_team="Away"):
         f.write(html)
     print(f"Generated match: {filename}")
 
-def generate_player_log_html(filename, player_name):
+def generate_player_log_html(filename, player_name, is_keeper=False):
     # Matches real ID matchlogs_all
-    html = f"""
-    <html>
-    <body>
-    <h1>{player_name} Match Logs</h1>
-    <table id="matchlogs_all">
-        <thead>
-            <tr>
-                <th>Date</th><th>Comp</th><th>Round</th><th>Venue</th><th>Result</th>
-                <th>Gls</th><th>Ast</th><th>Sh</th><th>SoT</th><th>xG</th>
-                <th>Tkl</th><th>Int</th><th>Blocks</th><th>Err</th> <!-- Added Err for GK/DEF -->
-                <th>SCA</th><th>GCA</th><th>Min</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-stat="date">2023-05-01</td><td>Premier League</td><td>Matchweek 30</td><td>Home</td><td>W 2-0</td>
-                <td data-stat="goals">1</td><td data-stat="assists">0</td><td data-stat="shots">3</td><td data-stat="shots_on_target">2</td><td data-stat="xg">0.8</td>
-                <td data-stat="tackles">1</td><td data-stat="interceptions">0</td><td data-stat="blocks">0</td><td data-stat="errors">0</td>
-                <td data-stat="sca">2</td><td data-stat="gca">1</td><td data-stat="minutes">90</td>
-            </tr>
-            <tr>
-                <td data-stat="date">2023-05-10</td><td>Premier League</td><td>Matchweek 32</td><td>Away</td><td>D 1-1</td>
-                <td data-stat="goals">0</td><td data-stat="assists">1</td><td data-stat="shots">1</td><td data-stat="shots_on_target">0</td><td data-stat="xg">0.1</td>
-                <td data-stat="tackles">2</td><td data-stat="interceptions">1</td><td data-stat="blocks">1</td><td data-stat="errors">0</td>
-                <td data-stat="sca">3</td><td data-stat="gca">0</td><td data-stat="minutes">90</td>
-            </tr>
-        </tbody>
-    </table>
-    </body>
-    </html>
-    """
+    # Columns tailored to what Builder needs
+    if is_keeper:
+        # GK Log Structure
+        # Builder needs: CS, GA, PSxG, PSxG+/-, Save%, SoTA, Stp%, #OPA, AvgLen, Cmp%, Launch%, Err
+        html = f"""
+        <html>
+        <body>
+        <h1>{player_name} Match Logs</h1>
+        <table id="matchlogs_all">
+            <thead>
+                <tr>
+                    <th>Date</th><th>Comp</th><th>Round</th><th>Venue</th><th>Result</th>
+                    <th>CS</th><th>GA</th><th>Saves</th><th>Save%</th><th>SoTA</th>
+                    <th>PSxG</th><th>PSxG+/-</th>
+                    <th>Stp%</th><th>#OPA</th><th>AvgLen</th><th>Cmp%</th><th>Launch%</th>
+                    <th>Err</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-stat="date">2023-05-01</td><td>Premier League</td><td>Matchweek 30</td><td>Home</td><td>W 2-0</td>
+                    <td data-stat="gk_clean_sheets">1</td><td data-stat="gk_goals_against">0</td><td data-stat="gk_saves">3</td><td data-stat="gk_save_pct">100.0</td><td data-stat="gk_shots_on_target_against">3</td>
+                    <td data-stat="gk_psxg">0.5</td><td data-stat="gk_psxg_net">+0.5</td>
+                    <td data-stat="gk_crosses_stopped_pct">10.0</td><td data-stat="gk_sweeper_actions">1</td><td data-stat="gk_avg_distance_def_actions">30.0</td><td data-stat="gk_passes_pct_launched">50.0</td><td data-stat="gk_pct_passes_launched">40.0</td>
+                    <td data-stat="errors">0</td>
+                </tr>
+                <tr>
+                    <td data-stat="date">2023-05-10</td><td>Premier League</td><td>Matchweek 32</td><td>Away</td><td>D 1-1</td>
+                    <td data-stat="gk_clean_sheets">0</td><td data-stat="gk_goals_against">1</td><td data-stat="gk_saves">2</td><td data-stat="gk_save_pct">66.6</td><td data-stat="gk_shots_on_target_against">3</td>
+                    <td data-stat="gk_psxg">1.2</td><td data-stat="gk_psxg_net">-0.2</td>
+                    <td data-stat="gk_crosses_stopped_pct">5.0</td><td data-stat="gk_sweeper_actions">0</td><td data-stat="gk_avg_distance_def_actions">25.0</td><td data-stat="gk_passes_pct_launched">40.0</td><td data-stat="gk_pct_passes_launched">30.0</td>
+                    <td data-stat="errors">0</td>
+                </tr>
+            </tbody>
+        </table>
+        </body>
+        </html>
+        """
+    else:
+        # Summary Log Structure
+        html = f"""
+        <html>
+        <body>
+        <h1>{player_name} Match Logs</h1>
+        <table id="matchlogs_all">
+            <thead>
+                <tr>
+                    <th>Date</th><th>Comp</th><th>Round</th><th>Venue</th><th>Result</th>
+                    <th>Gls</th><th>Ast</th><th>Sh</th><th>SoT</th><th>xG</th>
+                    <th>Tkl</th><th>Int</th><th>Blocks</th><th>Err</th> <!-- Added Err for GK/DEF -->
+                    <th>SCA</th><th>GCA</th><th>Min</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-stat="date">2023-05-01</td><td>Premier League</td><td>Matchweek 30</td><td>Home</td><td>W 2-0</td>
+                    <td data-stat="goals">1</td><td data-stat="assists">0</td><td data-stat="shots">3</td><td data-stat="shots_on_target">2</td><td data-stat="xg">0.8</td>
+                    <td data-stat="tackles">1</td><td data-stat="interceptions">0</td><td data-stat="blocks">0</td><td data-stat="errors">0</td>
+                    <td data-stat="sca">2</td><td data-stat="gca">1</td><td data-stat="minutes">90</td>
+                </tr>
+                <tr>
+                    <td data-stat="date">2023-05-10</td><td>Premier League</td><td>Matchweek 32</td><td>Away</td><td>D 1-1</td>
+                    <td data-stat="goals">0</td><td data-stat="assists">1</td><td data-stat="shots">1</td><td data-stat="shots_on_target">0</td><td data-stat="xg">0.1</td>
+                    <td data-stat="tackles">2</td><td data-stat="interceptions">1</td><td data-stat="blocks">1</td><td data-stat="errors">0</td>
+                    <td data-stat="sca">3</td><td data-stat="gca">0</td><td data-stat="minutes">90</td>
+                </tr>
+            </tbody>
+        </table>
+        </body>
+        </html>
+        """
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html)
     print(f"Generated log: {filename}")
@@ -158,9 +198,10 @@ def main():
         
         # Keepers log (for p1 and p3 who are GKs in our lineup)
         if pid in ["p1", "p3"]:
-             url_keepers = f"https://fbref.com/en/players/{pid}/matchlogs/2023-2024/keepers"
+             # Update to singular keeper
+             url_keepers = f"https://fbref.com/en/players/{pid}/matchlogs/2023-2024/keeper"
              path_keepers = loader._get_cache_path(url_keepers)
-             generate_player_log_html(path_keepers, f"Player {pid} Keepers")
+             generate_player_log_html(path_keepers, f"Player {pid} Keepers", is_keeper=True) # Pass flag
 
 if __name__ == "__main__":
     main()

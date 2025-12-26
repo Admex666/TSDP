@@ -1,0 +1,46 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-12,Sat,Premier League,Matchweek 1,Home,L 0–1,Everton,Fulham,Y*,CB,90,0,0,0,0,1,0,0,0,46,0,4,1,0.0,0.0,0.0,0,0,27,36,75.0,5,32,0,0,0,Match Report,15ea812b
+2023-08-20,Sun,Premier League,Matchweek 2,Away,L 0–4,Everton,Aston Villa,Y*,CB,90,0,0,0,0,1,0,0,0,46,0,3,2,0.2,0.2,0.0,0,0,34,40,85.0,1,35,0,1,1,Match Report,15ea812b
+2023-08-26,Sat,Premier League,Matchweek 3,Home,L 0–1,Everton,Wolves,Y*,CB,90,0,0,0,0,1,0,0,0,65,2,3,2,0.2,0.2,0.0,0,0,43,51,84.3,5,40,1,0,0,Match Report,15ea812b
+2023-08-30,Wed,EFL Cup,Second round,Away,W 2–1,Everton,Doncaster,N,,16,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,15ea812b
+2023-09-02,Sat,Premier League,Matchweek 4,Away,D 2–2,Everton,Sheffield Utd,Y*,CB,89,0,0,0,0,0,0,0,0,64,3,1,2,0.0,0.0,0.0,0,0,44,54,81.5,3,45,0,0,0,Match Report,15ea812b
+2023-09-17,Sun,Premier League,Matchweek 5,Home,L 0–1,Everton,Arsenal,Y*,CB,90,0,0,0,0,0,0,0,0,35,1,1,3,0.0,0.0,0.0,0,0,17,26,65.4,1,14,0,0,0,Match Report,15ea812b
+2023-09-23,Sat,Premier League,Matchweek 6,Away,W 3–1,Everton,Brentford,Y*,CB,90,1,1,0,0,2,1,0,0,52,0,0,1,0.3,0.3,0.3,4,1,33,43,76.7,6,23,0,0,0,Match Report,15ea812b
+2023-09-27,Wed,EFL Cup,Third round,Away,W 2–1,Everton,Aston Villa,Y*,CB,90,0,0,0,0,1,0,1,0,,,2,,,,,,,,,,,,,,,Match Report,15ea812b
+2023-09-30,Sat,Premier League,Matchweek 7,Home,L 1–2,Everton,Luton Town,Y*,CB,90,0,0,0,0,0,0,0,0,78,1,0,2,0.0,0.0,0.1,2,0,56,68,82.4,9,34,0,1,1,Match Report,15ea812b
+2023-10-07,Sat,Premier League,Matchweek 8,Home,W 3–0,Everton,Bournemouth,Y*,CB,90,0,0,0,0,0,0,0,0,66,3,1,3,0.0,0.0,0.0,2,0,37,50,74.0,1,33,0,0,0,Match Report,15ea812b
+2023-10-21,Sat,Premier League,Matchweek 9,Away,L 0–2,Everton,Liverpool,Y*,CB,90,0,0,0,0,0,0,1,0,32,1,1,5,0.0,0.0,0.0,2,0,16,23,69.6,0,5,0,0,0,Match Report,15ea812b
+2023-10-29,Sun,Premier League,Matchweek 10,Away,W 1–0,Everton,West Ham,Y*,CB,90,0,0,0,0,1,0,0,0,48,0,1,1,0.0,0.0,0.0,0,0,33,42,78.6,2,19,0,1,1,Match Report,15ea812b
+2023-11-01,Wed,EFL Cup,Fourth round,Home,W 3–0,Everton,Burnley,Y*,CB,90,1,0,0,0,1,1,0,0,,,3,,,,,,,,,,,,,,,Match Report,15ea812b
+2023-11-04,Sat,Premier League,Matchweek 11,Home,D 1–1,Everton,Brighton,Y*,CB,90,0,0,0,0,3,1,1,0,24,0,1,1,0.2,0.2,0.0,0,0,11,15,73.3,1,5,1,1,1,Match Report,15ea812b
+2023-11-11,Sat,Premier League,Matchweek 12,Away,W 3–2,Everton,Crystal Palace,Y*,CB,90,0,0,0,0,0,0,0,0,52,5,2,3,0.0,0.0,0.0,0,0,22,31,71.0,3,20,0,1,1,Match Report,15ea812b
+2023-11-26,Sun,Premier League,Matchweek 13,Home,L 0–3,Everton,Manchester Utd,Y*,CB,90,0,0,0,0,1,0,0,0,62,2,3,0,0.1,0.1,0.1,3,0,44,56,78.6,8,38,1,0,0,Match Report,15ea812b
+2023-12-02,Sat,Premier League,Matchweek 14,Away,W 1–0,Everton,Nott'ham Forest,Y*,CB,90,0,0,0,0,1,0,0,0,54,1,1,0,0.1,0.1,0.0,2,0,24,40,60.0,6,17,1,0,0,Match Report,15ea812b
+2023-12-07,Thu,Premier League,Matchweek 15,Home,W 3–0,Everton,Newcastle Utd,Y,CB,90,0,0,0,0,1,0,0,0,39,2,4,4,0.0,0.0,0.0,2,1,14,21,66.7,2,13,1,0,0,Match Report,15ea812b
+2023-12-10,Sun,Premier League,Matchweek 16,Home,W 2–0,Everton,Chelsea,Y*,CB,90,0,0,0,0,0,0,0,0,34,0,2,2,0.0,0.0,0.0,1,0,15,23,65.2,2,12,0,2,1,Match Report,15ea812b
+2023-12-16,Sat,Premier League,Matchweek 17,Away,W 2–0,Everton,Burnley,Y*,CB,90,0,0,0,0,0,0,0,0,57,0,1,2,0.0,0.0,0.1,1,0,33,48,68.8,5,30,0,0,0,Match Report,15ea812b
+2023-12-19,Tue,EFL Cup,Quarter-finals,Home,D 1 (6)–1 (7),Everton,Fulham,Y*,CB,120,0,0,0,0,1,0,0,0,,,2,,,,,,,,,,,,,,,Match Report,15ea812b
+2023-12-23,Sat,Premier League,Matchweek 18,Away,L 1–2,Everton,Tottenham,Y*,CB,90,0,0,0,0,0,0,0,0,54,3,2,2,0.0,0.0,0.0,0,0,26,44,59.1,1,22,0,0,0,Match Report,15ea812b
+2023-12-27,Wed,Premier League,Matchweek 19,Home,L 1–3,Everton,Manchester City,Y*,CB,90,0,0,0,0,1,0,0,0,47,2,1,1,0.0,0.0,0.0,0,0,21,32,65.6,0,24,0,1,0,Match Report,15ea812b
+2023-12-30,Sat,Premier League,Matchweek 20,Away,L 0–3,Everton,Wolves,Y*,CB,90,0,0,0,0,1,0,1,0,69,1,3,3,0.1,0.1,0.1,1,0,43,55,78.2,4,25,1,2,2,Match Report,15ea812b
+2024-01-04,Thu,FA Cup,Third round proper,Away,D 0–0,Everton,Crystal Palace,Y,CB,90,0,0,0,0,0,0,0,0,,,2,,,,,,,,,,,,,,,Match Report,15ea812b
+2024-01-14,Sun,Premier League,Matchweek 21,Home,D 0–0,Everton,Aston Villa,Y,CB,90,0,0,0,0,1,0,1,0,45,3,1,1,0.1,0.1,0.0,0,0,22,31,71.0,4,9,0,0,0,Match Report,15ea812b
+2024-01-17,Wed,FA Cup,Third round proper,Home,W 1–0,Everton,Crystal Palace,Y*,CB,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,15ea812b
+2024-01-27,Sat,FA Cup,Fourth round proper,Home,L 1–2,Everton,Luton Town,Y*,CB,90,0,0,0,0,0,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,15ea812b
+2024-01-30,Tue,Premier League,Matchweek 22,Away,D 0–0,Everton,Fulham,Y*,CB,90,0,0,0,0,1,0,0,0,43,1,1,3,0.2,0.2,0.3,3,0,19,26,73.1,3,13,0,0,0,Match Report,15ea812b
+2024-02-03,Sat,Premier League,Matchweek 23,Home,D 2–2,Everton,Tottenham,Y*,CB,90,0,0,0,0,0,0,0,0,62,1,3,2,0.0,0.0,0.7,2,0,35,50,70.0,3,27,0,0,0,Match Report,15ea812b
+2024-02-10,Sat,Premier League,Matchweek 24,Away,L 0–2,Everton,Manchester City,Y*,CB,90,0,0,0,0,0,0,0,0,55,1,1,3,0.0,0.0,0.0,0,0,33,38,86.8,1,24,0,2,1,Match Report,15ea812b
+2024-02-19,Mon,Premier League,Matchweek 25,Home,D 1–1,Everton,Crystal Palace,Y*,CB,90,0,0,0,0,2,1,0,0,94,2,5,4,0.4,0.4,0.0,2,0,63,76,82.9,9,46,0,1,1,Match Report,15ea812b
+2024-02-24,Sat,Premier League,Matchweek 26,Away,D 1–1,Everton,Brighton,Y*,CB,90,0,0,0,0,0,0,1,0,59,2,1,5,0.0,0.0,0.1,2,0,37,43,86.0,3,30,0,3,2,Match Report,15ea812b
+2024-03-02,Sat,Premier League,Matchweek 27,Home,L 1–3,Everton,West Ham,Y*,CB,90,0,0,0,0,0,0,0,0,76,3,1,2,0.0,0.0,0.0,1,0,53,63,84.1,9,41,7,0,0,Match Report,15ea812b
+2024-03-09,Sat,Premier League,Matchweek 28,Away,L 0–2,Everton,Manchester Utd,Y*,CB,90,0,0,0,0,3,0,0,0,64,0,2,4,0.3,0.3,0.0,2,0,50,53,94.3,9,33,1,1,1,Match Report,15ea812b
+2024-03-30,Sat,Premier League,Matchweek 30,Away,L 1–2,Everton,Bournemouth,Y,CB,90,0,0,0,0,0,0,1,0,53,3,0,1,0.0,0.0,0.4,2,0,34,41,82.9,4,15,0,2,2,Match Report,15ea812b
+2024-04-02,Tue,Premier League,Matchweek 31,Away,D 1–1,Everton,Newcastle Utd,Y*,CB,90,0,0,0,0,1,0,1,0,44,6,0,1,0.3,0.3,0.0,0,0,26,33,78.8,3,24,0,0,0,Match Report,15ea812b
+2024-04-06,Sat,Premier League,Matchweek 32,Home,W 1–0,Everton,Burnley,Y,CB,90,0,0,0,0,0,0,1,0,48,0,0,0,0.0,0.0,0.0,0,0,27,43,62.8,0,15,0,0,0,Match Report,15ea812b
+2024-04-15,Mon,Premier League,Matchweek 33,Away,L 0–6,Everton,Chelsea,Y,CB,90,0,0,0,0,0,0,1,0,57,1,0,2,0.0,0.0,0.0,1,0,40,50,80.0,6,27,1,0,0,Match Report,15ea812b
+2024-04-21,Sun,Premier League,Matchweek 34,Home,W 2–0,Everton,Nott'ham Forest,Y*,CB,90,0,0,0,0,0,0,0,0,43,1,0,2,0.0,0.0,0.0,0,0,27,36,75.0,2,21,0,0,0,Match Report,15ea812b
+2024-04-24,Wed,Premier League,Matchweek 29,Home,W 2–0,Everton,Liverpool,Y*,CB,90,0,0,0,0,1,1,0,0,39,3,5,1,0.0,0.0,0.2,3,0,14,18,77.8,1,10,0,0,0,Match Report,15ea812b
+2024-04-27,Sat,Premier League,Matchweek 35,Home,W 1–0,Everton,Brentford,Y*,CB,90,0,0,0,0,1,0,1,0,59,1,0,1,0.1,0.1,0.0,2,0,36,44,81.8,2,30,0,0,0,Match Report,15ea812b
+2024-05-03,Fri,Premier League,Matchweek 36,Away,D 1–1,Everton,Luton Town,Y*,CB,90,0,0,0,0,1,0,0,0,54,1,1,1,0.1,0.1,0.0,2,1,34,39,87.2,1,21,0,0,0,Match Report,15ea812b
+2024-05-11,Sat,Premier League,Matchweek 37,Home,W 1–0,Everton,Sheffield Utd,Y,CB,90,0,0,0,0,0,0,0,0,60,2,0,6,0.0,0.0,0.0,2,0,38,46,82.6,3,32,0,0,0,Match Report,15ea812b
+2024-05-19,Sun,Premier League,Matchweek 38,Away,L 1–2,Everton,Arsenal,Y,CB,90,0,0,0,0,0,0,1,0,35,3,0,3,0.0,0.0,0.0,0,0,14,22,63.6,2,14,0,1,1,Match Report,15ea812b

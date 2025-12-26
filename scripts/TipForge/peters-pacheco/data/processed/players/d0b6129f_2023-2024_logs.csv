@@ -1,0 +1,51 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-11,Fri,Premier League,Matchweek 1,Home,L 0–3,Burnley,Manchester City,Y,CM,89,0,0,0,0,0,0,0,0,33,0,0,1,0.0,0.0,0.0,0,0,23,28,82.1,1,12,0,0,0,Match Report,d0b6129f
+2023-08-27,Sun,Premier League,Matchweek 3,Home,L 1–3,Burnley,Aston Villa,Y,CM,67,0,0,0,0,0,0,1,0,34,1,0,0,0.0,0.0,0.0,1,0,25,27,92.6,0,22,0,1,0,Match Report,d0b6129f
+2023-08-30,Wed,EFL Cup,Second round,Away,W 1–0,Burnley,Nott'ham Forest,N,,40,0,0,0,0,0,0,1,0,,,0,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-09-02,Sat,Premier League,Matchweek 4,Home,L 2–5,Burnley,Tottenham,Y,CM,45,0,0,0,0,0,0,0,0,28,2,0,3,0.0,0.0,0.0,2,0,20,22,90.9,0,21,0,2,1,Match Report,d0b6129f
+2023-09-07,Thu,Friendlies (M),Friendlies (M),Home,W 6–0,no Norway,jo Jordan,Y,CM,72,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-09-12,Tue,UEFA Euro Qualifying,Group stage,Home,W 2–1,no Norway,ge Georgia,N,,20,0,0,0,0,0,0,0,0,,,3,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-09-18,Mon,Premier League,Matchweek 5,Away,D 1–1,Burnley,Nott'ham Forest,N,AM,28,0,0,0,0,0,0,0,0,23,1,0,2,0.0,0.0,0.0,0,0,11,17,64.7,3,12,2,1,1,Match Report,d0b6129f
+2023-09-23,Sat,Premier League,Matchweek 6,Home,L 0–1,Burnley,Manchester Utd,N,RM,18,0,0,0,0,1,0,0,0,17,0,0,0,0.2,0.2,0.0,1,0,14,16,87.5,3,8,1,1,1,Match Report,d0b6129f
+2023-09-26,Tue,EFL Cup,Third round,Away,W 4–0,Burnley,Salford City,Y,DM,90,1,0,0,0,1,1,0,0,,,1,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-09-30,Sat,Premier League,Matchweek 7,Away,L 0–2,Burnley,Newcastle Utd,Y,DM,87,0,0,0,0,1,0,0,0,50,2,1,1,0.1,0.1,0.1,3,0,33,38,86.8,1,27,1,0,0,Match Report,d0b6129f
+2023-10-03,Tue,Premier League,Matchweek 2,Away,W 2–1,Burnley,Luton Town,Y,RM,90,0,1,0,0,0,0,0,0,52,2,1,1,0.0,0.0,0.4,1,1,31,42,73.8,5,21,3,1,1,Match Report,d0b6129f
+2023-10-07,Sat,Premier League,Matchweek 8,Home,L 1–4,Burnley,Chelsea,Y,RM,90,0,0,0,0,1,0,0,0,44,1,0,0,0.0,0.0,0.0,1,0,36,39,92.3,2,31,1,0,0,Match Report,d0b6129f
+2023-10-12,Thu,UEFA Euro Qualifying,Group stage,Away,W 4–0,no Norway,cy Cyprus,Y,CM,90,0,0,0,0,2,1,0,0,,,2,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-10-15,Sun,UEFA Euro Qualifying,Group stage,Home,L 0–1,no Norway,es Spain,Y,DM,90,0,0,0,0,0,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-10-21,Sat,Premier League,Matchweek 9,Away,L 0–3,Burnley,Brentford,Y,DM,65,0,0,0,0,0,0,1,0,27,1,0,2,0.0,0.0,0.0,0,0,13,16,81.3,1,11,1,2,1,Match Report,d0b6129f
+2023-10-28,Sat,Premier League,Matchweek 10,Away,L 1–2,Burnley,Bournemouth,N,"CM,DM",31,0,0,0,0,2,1,0,0,34,0,2,2,0.5,0.5,0.0,0,0,26,27,96.3,3,23,0,1,1,Match Report,d0b6129f
+2023-11-01,Wed,EFL Cup,Fourth round,Away,L 0–3,Burnley,Everton,Y,CM,82,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-11-04,Sat,Premier League,Matchweek 11,Home,L 0–2,Burnley,Crystal Palace,Y,"CM,CB",90,0,0,0,0,0,0,0,0,76,0,1,1,0.0,0.0,0.1,1,0,65,70,92.9,10,54,0,2,0,Match Report,d0b6129f
+2023-11-11,Sat,Premier League,Matchweek 12,Away,L 1–3,Burnley,Arsenal,Y,CM,90,0,0,0,0,0,0,0,0,49,5,1,3,0.0,0.0,0.0,0,0,26,31,83.9,2,22,2,0,0,Match Report,d0b6129f
+2023-11-16,Thu,Friendlies (M),Friendlies (M),Home,W 2–0,no Norway,fo Faroe Islands,Y*,DM,45,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-11-19,Sun,UEFA Euro Qualifying,Group stage,Away,D 3–3,no Norway,sct Scotland,Y*,CM,90,0,0,0,0,0,0,1,0,,,0,,,,,,,,,,,,,,,Match Report,d0b6129f
+2023-11-25,Sat,Premier League,Matchweek 13,Home,L 1–2,Burnley,West Ham,Y,CM,90,0,0,0,0,0,0,0,0,74,1,0,4,0.0,0.0,0.1,1,0,54,60,90.0,8,29,1,2,1,Match Report,d0b6129f
+2023-12-02,Sat,Premier League,Matchweek 14,Home,W 5–0,Burnley,Sheffield Utd,Y,CM,90,0,0,0,0,0,0,0,0,56,0,0,1,0.0,0.0,0.0,2,0,46,53,86.8,8,30,2,2,2,Match Report,d0b6129f
+2023-12-05,Tue,Premier League,Matchweek 15,Away,L 0–1,Burnley,Wolves,Y,"CM,CB",90,0,0,0,0,0,0,1,0,55,2,1,1,0.0,0.0,0.0,4,0,37,44,84.1,2,29,4,1,0,Match Report,d0b6129f
+2023-12-09,Sat,Premier League,Matchweek 16,Away,D 1–1,Burnley,Brighton,Y,CM,90,0,0,0,0,0,0,0,0,35,6,1,0,0.0,0.0,0.0,3,1,21,23,91.3,3,17,2,0,0,Match Report,d0b6129f
+2023-12-16,Sat,Premier League,Matchweek 17,Home,L 0–2,Burnley,Everton,Y,CM,90,0,0,0,0,3,0,0,0,63,2,0,0,0.1,0.1,0.0,1,0,45,53,84.9,8,40,1,0,0,Match Report,d0b6129f
+2023-12-23,Sat,Premier League,Matchweek 18,Away,W 2–0,Burnley,Fulham,Y,CM,90,1,0,0,0,3,1,0,0,42,4,2,1,0.1,0.1,0.0,0,0,24,29,82.8,2,26,1,1,0,Match Report,d0b6129f
+2023-12-26,Tue,Premier League,Matchweek 19,Home,L 0–2,Burnley,Liverpool,Y,CM,90,0,0,0,0,2,0,1,0,31,3,1,0,0.2,0.2,0.0,2,0,17,23,73.9,1,19,1,0,0,Match Report,d0b6129f
+2023-12-30,Sat,Premier League,Matchweek 20,Away,L 2–3,Burnley,Aston Villa,Y,CM,55,0,0,0,0,0,0,2,1,22,1,0,1,0.0,0.0,0.0,2,0,17,19,89.5,1,14,0,0,0,Match Report,d0b6129f
+2024-01-31,Wed,Premier League,Matchweek 22,Away,L 1–3,Burnley,Manchester City,Y,"CM,CB",90,0,0,0,0,1,0,0,0,30,3,2,2,0.1,0.1,0.0,2,0,20,22,90.9,4,15,1,1,1,Match Report,d0b6129f
+2024-02-03,Sat,Premier League,Matchweek 23,Home,D 2–2,Burnley,Fulham,Y,CM,90,0,0,0,0,2,1,1,0,68,2,1,3,0.1,0.1,0.0,2,1,39,55,70.9,2,39,0,1,1,Match Report,d0b6129f
+2024-02-10,Sat,Premier League,Matchweek 24,Away,L 1–3,Burnley,Liverpool,Y,"CM,CB",90,0,0,0,0,0,0,0,0,49,2,2,1,0.0,0.0,0.0,1,0,29,33,87.9,2,17,2,1,1,Match Report,d0b6129f
+2024-02-17,Sat,Premier League,Matchweek 25,Home,L 0–5,Burnley,Arsenal,Y,CM,90,0,0,0,0,0,0,0,0,38,3,2,2,0.0,0.0,0.0,0,0,25,29,86.2,2,12,0,1,1,Match Report,d0b6129f
+2024-02-24,Sat,Premier League,Matchweek 26,Away,L 0–3,Burnley,Crystal Palace,Y,CM,90,0,0,0,0,0,0,0,0,66,4,0,3,0.0,0.0,0.0,0,0,41,50,82.0,2,37,3,1,1,Match Report,d0b6129f
+2024-03-03,Sun,Premier League,Matchweek 27,Home,L 0–2,Burnley,Bournemouth,Y,"CM,CB",90,0,0,0,0,1,0,0,0,76,5,0,0,0.1,0.1,0.0,2,0,64,70,91.4,8,51,3,2,2,Match Report,d0b6129f
+2024-03-10,Sun,Premier League,Matchweek 28,Away,D 2–2,Burnley,West Ham,Y,CM,90,0,0,0,0,2,0,1,0,61,1,0,1,0.1,0.1,0.3,4,1,46,52,88.5,6,43,7,2,0,Match Report,d0b6129f
+2024-03-16,Sat,Premier League,Matchweek 29,Home,W 2–1,Burnley,Brentford,Y,CM,90,0,0,0,0,1,0,0,0,75,2,1,0,0.0,0.0,0.0,7,1,58,66,87.9,14,52,4,3,0,Match Report,d0b6129f
+2024-03-22,Fri,Friendlies (M),Friendlies (M),Home,L 1–2,no Norway,cz Czechia,Y,CM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0b6129f
+2024-03-26,Tue,Friendlies (M),Friendlies (M),Home,D 1–1,no Norway,sk Slovakia,Y,DM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0b6129f
+2024-03-30,Sat,Premier League,Matchweek 30,Away,D 2–2,Burnley,Chelsea,Y,CM,90,0,0,0,0,1,0,0,0,28,0,0,1,0.1,0.1,0.1,3,0,20,24,83.3,6,12,1,1,1,Match Report,d0b6129f
+2024-04-02,Tue,Premier League,Matchweek 31,Home,D 1–1,Burnley,Wolves,Y,CM,90,0,0,0,0,0,0,0,0,67,6,1,5,0.0,0.0,0.0,0,0,48,55,87.3,7,40,3,1,0,Match Report,d0b6129f
+2024-04-06,Sat,Premier League,Matchweek 32,Away,L 0–1,Burnley,Everton,Y,"CM,CB",90,0,0,0,0,1,0,1,0,66,2,0,0,0.0,0.0,0.0,1,0,52,59,88.1,5,41,2,1,0,Match Report,d0b6129f
+2024-04-13,Sat,Premier League,Matchweek 33,Home,D 1–1,Burnley,Brighton,Y,"CM,CB",90,0,0,0,0,1,0,0,0,53,1,0,1,0.0,0.0,0.0,4,0,45,45,100.0,4,32,3,1,0,Match Report,d0b6129f
+2024-04-20,Sat,Premier League,Matchweek 34,Away,W 4–1,Burnley,Sheffield Utd,Y,CM,90,0,0,0,0,0,0,0,0,79,4,1,2,0.0,0.0,0.2,3,1,63,70,90.0,8,42,2,2,0,Match Report,d0b6129f
+2024-04-27,Sat,Premier League,Matchweek 35,Away,D 1–1,Burnley,Manchester Utd,Y,CM,90,0,0,0,0,0,0,0,0,56,3,2,1,0.0,0.0,0.4,5,0,43,48,89.6,7,28,3,1,1,Match Report,d0b6129f
+2024-05-04,Sat,Premier League,Matchweek 36,Home,L 1–4,Burnley,Newcastle Utd,Y,DM,90,0,0,0,0,2,0,0,0,62,1,0,0,0.1,0.1,0.0,1,0,45,49,91.8,8,41,4,2,0,Match Report,d0b6129f
+2024-05-11,Sat,Premier League,Matchweek 37,Away,L 1–2,Burnley,Tottenham,Y,CM,90,0,1,0,0,0,0,1,0,38,3,0,2,0.0,0.0,0.2,2,2,29,29,100.0,6,22,0,3,2,Match Report,d0b6129f
+2024-05-19,Sun,Premier League,Matchweek 38,Home,L 1–2,Burnley,Nott'ham Forest,Y,"CM,CB",90,0,0,0,0,0,0,0,0,130,0,0,1,0.0,0.0,0.1,5,0,125,129,96.9,9,84,3,0,0,Match Report,d0b6129f
+2024-06-05,Wed,Friendlies (M),Friendlies (M),Home,W 3–0,no Norway,xk Kosovo,Y,DM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0b6129f
+2024-06-08,Sat,Friendlies (M),Friendlies (M),Away,L 1–3,no Norway,dk Denmark,Y,DM,87,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0b6129f

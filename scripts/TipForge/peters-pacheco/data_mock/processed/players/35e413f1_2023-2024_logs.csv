@@ -1,0 +1,52 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-06,Sun,Community Shield,FA Community Shield,Neutral,D 1 (4)–1 (1),Arsenal,Manchester City,Y,RB,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,35e413f1
+2023-08-12,Sat,Premier League,Matchweek 1,Home,W 2–1,Arsenal,Nott'ham Forest,Y,"CB,RB",90,0,0,0,0,0,0,1,0,110,0,2,0,0.0,0.0,0.0,2,0,94,106,88.7,7,91,2,1,0,Match Report,35e413f1
+2023-08-21,Mon,Premier League,Matchweek 2,Away,W 1–0,Arsenal,Crystal Palace,Y,"CB,RB",90,0,0,0,0,0,0,0,0,76,0,0,2,0.0,0.0,0.0,1,0,61,69,88.4,6,54,0,0,0,Match Report,35e413f1
+2023-08-26,Sat,Premier League,Matchweek 3,Home,D 2–2,Arsenal,Fulham,Y,"CB,RB",90,0,0,0,0,0,0,0,0,108,0,0,1,0.0,0.0,0.1,5,0,87,99,87.9,9,61,3,1,0,Match Report,35e413f1
+2023-09-03,Sun,Premier League,Matchweek 4,Home,W 3–1,Arsenal,Manchester Utd,Y,RB,90,0,0,0,0,0,0,0,0,76,1,0,3,0.0,0.0,0.4,2,0,57,70,81.4,1,41,2,0,0,Match Report,35e413f1
+2023-09-17,Sun,Premier League,Matchweek 5,Away,W 1–0,Arsenal,Everton,Y,RB,90,0,0,0,0,1,1,0,0,109,1,0,0,0.0,0.0,0.1,3,0,90,105,85.7,7,74,3,2,1,Match Report,35e413f1
+2023-09-20,Wed,Champions Lg,Group stage,Home,W 4–0,eng Arsenal,nl PSV Eindhoven,Y,RB,90,0,0,0,0,0,0,1,0,73,1,0,1,0.0,0.0,0.6,4,0,62,64,96.9,7,52,1,2,2,Match Report,35e413f1
+2023-09-24,Sun,Premier League,Matchweek 6,Home,D 2–2,Arsenal,Tottenham,Y,RB,90,0,0,0,0,1,0,0,0,52,0,2,1,0.3,0.3,0.0,3,1,37,44,84.1,3,19,2,0,0,Match Report,35e413f1
+2023-09-27,Wed,EFL Cup,Third round,Away,W 1–0,Arsenal,Brentford,Y,RB,68,0,0,0,0,0,0,1,0,,,1,,,,,,,,,,,,,,,Match Report,35e413f1
+2023-09-30,Sat,Premier League,Matchweek 7,Away,W 4–0,Arsenal,Bournemouth,Y,RB,90,1,0,0,0,1,1,0,0,73,4,2,3,0.1,0.1,0.0,0,0,41,55,74.5,3,34,1,1,0,Match Report,35e413f1
+2023-10-03,Tue,Champions Lg,Group stage,Away,L 1–2,eng Arsenal,fr Lens,N,RB,20,0,0,0,0,0,0,0,0,21,0,1,0,0.0,0.0,0.0,0,0,16,19,84.2,2,15,0,0,0,Match Report,35e413f1
+2023-10-08,Sun,Premier League,Matchweek 8,Home,W 1–0,Arsenal,Manchester City,Y,RB,90,0,0,0,0,0,0,0,0,69,3,0,3,0.0,0.0,0.1,3,0,50,58,86.2,6,35,2,1,1,Match Report,35e413f1
+2023-10-21,Sat,Premier League,Matchweek 9,Away,D 2–2,Arsenal,Chelsea,Y,RB,90,0,0,0,0,0,0,1,0,66,0,1,2,0.0,0.0,0.1,3,0,52,63,82.5,5,30,0,0,0,Match Report,35e413f1
+2023-10-24,Tue,Champions Lg,Group stage,Away,W 2–1,eng Arsenal,es Sevilla,Y,RB,90,0,0,0,0,1,0,0,0,51,1,0,3,0.0,0.0,0.0,2,1,30,44,68.2,4,26,1,0,0,Match Report,35e413f1
+2023-10-28,Sat,Premier League,Matchweek 10,Home,W 5–0,Arsenal,Sheffield Utd,Y,RB,65,0,0,0,0,1,1,0,0,71,2,0,0,0.0,0.0,0.0,0,0,56,67,83.6,5,44,0,2,2,Match Report,35e413f1
+2023-11-01,Wed,EFL Cup,Fourth round,Away,L 1–3,Arsenal,West Ham,Y,RB,90,0,0,0,0,1,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,35e413f1
+2023-11-04,Sat,Premier League,Matchweek 11,Away,L 0–1,Arsenal,Newcastle Utd,Y,RB,72,0,0,0,0,0,0,0,0,55,1,2,1,0.0,0.0,0.0,2,0,41,50,82.0,2,22,0,0,0,Match Report,35e413f1
+2023-11-08,Wed,Champions Lg,Group stage,Home,W 2–0,eng Arsenal,es Sevilla,Y,RB,90,0,0,0,0,1,0,0,0,98,1,2,0,0.1,0.1,0.0,1,0,79,93,84.9,9,56,0,0,0,Match Report,35e413f1
+2023-11-25,Sat,Premier League,Matchweek 13,Away,W 1–0,Arsenal,Brentford,N,"RB,RW",1,0,0,0,0,0,0,0,0,1,0,0,0,0.0,0.0,0.0,0,0,0,1,0.0,0,1,0,0,0,Match Report,35e413f1
+2023-11-29,Wed,Champions Lg,Group stage,Home,W 6–0,eng Arsenal,fr Lens,N,RB,45,0,0,0,0,2,0,0,0,29,2,0,0,0.1,0.1,0.0,2,0,22,25,88.0,2,20,1,0,0,Match Report,35e413f1
+2023-12-02,Sat,Premier League,Matchweek 14,Home,W 2–1,Arsenal,Wolves,N,RB,12,0,0,0,0,0,0,0,0,4,0,0,0,0.0,0.0,0.0,0,0,2,3,66.7,0,0,0,0,0,Match Report,35e413f1
+2023-12-05,Tue,Premier League,Matchweek 15,Away,W 4–3,Arsenal,Luton Town,Y,RB,90,0,1,0,0,0,0,0,0,86,1,1,0,0.0,0.0,0.6,2,1,61,74,82.4,6,47,0,1,0,Match Report,35e413f1
+2023-12-09,Sat,Premier League,Matchweek 16,Away,L 0–1,Arsenal,Aston Villa,Y,RB,90,0,0,0,0,0,0,0,0,61,3,1,1,0.0,0.0,0.0,1,0,42,52,80.8,3,25,0,0,0,Match Report,35e413f1
+2023-12-12,Tue,Champions Lg,Group stage,Away,D 1–1,eng Arsenal,nl PSV Eindhoven,N,RB,29,0,0,0,0,0,0,0,0,22,1,0,1,0.0,0.0,0.0,1,0,18,20,90.0,1,8,1,0,0,Match Report,35e413f1
+2023-12-17,Sun,Premier League,Matchweek 17,Home,W 2–0,Arsenal,Brighton,Y,RB,90,0,0,0,0,1,0,1,0,58,1,0,1,0.0,0.0,0.1,2,0,51,54,94.4,4,39,0,0,0,Match Report,35e413f1
+2023-12-23,Sat,Premier League,Matchweek 18,Away,D 1–1,Arsenal,Liverpool,Y,RB,90,0,0,0,0,0,0,1,0,58,2,5,0,0.0,0.0,0.1,2,0,33,47,70.2,3,25,1,1,0,Match Report,35e413f1
+2023-12-28,Thu,Premier League,Matchweek 19,Home,L 0–2,Arsenal,West Ham,Y,"RB,CB",90,0,0,0,0,1,0,0,0,92,2,1,2,0.1,0.1,0.3,7,0,79,86,91.9,12,72,2,0,0,Match Report,35e413f1
+2023-12-31,Sun,Premier League,Matchweek 20,Away,L 1–2,Arsenal,Fulham,Y,RB,66,0,0,0,0,0,0,0,0,54,1,0,0,0.0,0.0,0.0,0,0,47,52,90.4,3,36,1,0,0,Match Report,35e413f1
+2024-01-07,Sun,FA Cup,Third round proper,Home,L 0–2,Arsenal,Liverpool,Y,RB,90,0,0,0,0,1,1,0,0,,,1,,,,,,,,,,,,,,,Match Report,35e413f1
+2024-01-20,Sat,Premier League,Matchweek 21,Home,W 5–0,Arsenal,Crystal Palace,Y,RB,90,0,0,0,0,1,0,0,0,72,2,2,2,0.0,0.0,0.0,2,0,46,63,73.0,5,33,0,0,0,Match Report,35e413f1
+2024-01-30,Tue,Premier League,Matchweek 22,Away,W 2–1,Arsenal,Nott'ham Forest,Y,RB,90,0,0,0,0,0,0,0,0,91,1,0,1,0.0,0.0,0.1,3,0,70,83,84.3,11,50,2,0,0,Match Report,35e413f1
+2024-02-04,Sun,Premier League,Matchweek 23,Home,W 3–1,Arsenal,Liverpool,Y,RB,90,0,0,0,0,0,0,1,0,58,1,2,3,0.0,0.0,0.0,1,0,34,44,77.3,4,18,0,2,2,Match Report,35e413f1
+2024-02-11,Sun,Premier League,Matchweek 24,Away,W 6–0,Arsenal,West Ham,Y,RB,76,0,1,0,0,0,0,0,0,79,2,0,1,0.0,0.0,0.0,1,1,67,72,93.1,8,38,0,2,0,Match Report,35e413f1
+2024-02-17,Sat,Premier League,Matchweek 25,Away,W 5–0,Arsenal,Burnley,Y,RB,68,0,0,0,0,0,0,0,0,49,2,2,1,0.0,0.0,0.0,1,0,39,42,92.9,3,30,1,0,0,Match Report,35e413f1
+2024-02-21,Wed,Champions Lg,Round of 16,Away,L 0–1,eng Arsenal,pt Porto,Y,RB,90,0,0,0,0,0,0,0,0,56,1,1,1,0.0,0.0,0.0,0,0,44,52,84.6,3,31,0,0,0,Match Report,35e413f1
+2024-02-24,Sat,Premier League,Matchweek 26,Home,W 4–1,Arsenal,Newcastle Utd,Y,RB,90,0,0,0,0,0,0,0,0,60,0,0,1,0.0,0.0,0.0,2,0,42,55,76.4,4,25,1,0,0,Match Report,35e413f1
+2024-03-04,Mon,Premier League,Matchweek 27,Away,W 6–0,Arsenal,Sheffield Utd,Y,RB,64,1,0,0,0,1,1,0,0,59,0,1,1,0.0,0.0,0.0,1,0,46,54,85.2,3,30,3,0,0,Match Report,35e413f1
+2024-03-09,Sat,Premier League,Matchweek 28,Home,W 2–1,Arsenal,Brentford,Y,RB,90,0,2,0,0,0,0,0,0,84,1,0,0,0.0,0.0,0.3,5,2,68,80,85.0,13,59,2,1,0,Match Report,35e413f1
+2024-03-12,Tue,Champions Lg,Round of 16,Home,W 1 (4)–0 (2),eng Arsenal,pt Porto,Y,RB,120,0,0,0,0,1,0,0,0,104,1,4,3,0.0,0.0,0.0,1,0,81,93,87.1,9,48,1,0,0,Match Report,35e413f1
+2024-03-31,Sun,Premier League,Matchweek 30,Away,D 0–0,Arsenal,Manchester City,Y,RB,90,0,0,0,0,0,0,0,0,31,1,0,2,0.0,0.0,0.1,1,0,14,19,73.7,0,12,1,0,0,Match Report,35e413f1
+2024-04-03,Wed,Premier League,Matchweek 31,Home,W 2–0,Arsenal,Luton Town,Y,RB,90,0,0,0,0,0,0,0,0,67,0,1,1,0.0,0.0,0.0,1,0,54,58,93.1,3,43,2,3,1,Match Report,35e413f1
+2024-04-06,Sat,Premier League,Matchweek 32,Away,W 3–0,Arsenal,Brighton,Y,RB,90,0,0,0,0,0,0,1,0,57,1,1,1,0.0,0.0,0.4,2,0,33,49,67.3,7,18,3,0,0,Match Report,35e413f1
+2024-04-09,Tue,Champions Lg,Quarter-finals,Home,D 2–2,eng Arsenal,de Bayern Munich,Y,RB,90,0,1,0,0,2,1,0,0,66,0,0,0,0.3,0.3,0.0,4,1,47,60,78.3,7,33,1,0,0,Match Report,35e413f1
+2024-04-14,Sun,Premier League,Matchweek 33,Home,L 0–2,Arsenal,Aston Villa,Y,RB,66,0,0,0,0,0,0,1,0,46,6,1,3,0.0,0.0,0.1,2,0,28,34,82.4,3,18,1,0,0,Match Report,35e413f1
+2024-04-17,Wed,Champions Lg,Quarter-finals,Away,L 0–1,eng Arsenal,de Bayern Munich,Y,RB,90,0,0,0,0,1,0,1,0,67,1,1,1,0.0,0.0,0.0,2,0,54,60,90.0,7,47,0,2,1,Match Report,35e413f1
+2024-04-20,Sat,Premier League,Matchweek 34,Away,W 2–0,Arsenal,Wolves,Y,RB,90,0,0,0,0,1,0,0,0,86,0,0,0,0.0,0.0,0.1,5,0,77,80,96.3,14,49,3,0,0,Match Report,35e413f1
+2024-04-23,Tue,Premier League,Matchweek 29,Home,W 5–0,Arsenal,Chelsea,Y,RB,90,2,0,0,0,2,2,1,0,77,2,1,2,0.3,0.3,0.2,6,0,53,68,77.9,6,27,2,1,1,Match Report,35e413f1
+2024-04-28,Sun,Premier League,Matchweek 35,Away,W 3–2,Arsenal,Tottenham,Y,RB,90,0,0,0,0,0,0,0,0,50,3,1,3,0.0,0.0,0.0,1,0,25,34,73.5,3,11,0,1,0,Match Report,35e413f1
+2024-05-04,Sat,Premier League,Matchweek 36,Home,W 3–0,Arsenal,Bournemouth,Y,RB,90,0,0,0,0,1,0,0,0,59,2,0,0,0.1,0.1,0.3,5,0,37,50,74.0,3,10,1,0,0,Match Report,35e413f1
+2024-05-12,Sun,Premier League,Matchweek 37,Away,W 1–0,Arsenal,Manchester Utd,Y,RB,90,0,0,0,0,1,0,0,0,70,2,2,4,0.0,0.0,0.1,3,1,48,60,80.0,6,35,1,1,1,Match Report,35e413f1
+2024-05-19,Sun,Premier League,Matchweek 38,Home,W 2–1,Arsenal,Everton,Y,RB,68,0,0,0,0,0,0,0,0,82,0,1,2,0.0,0.0,0.2,6,1,66,77,85.7,11,65,2,1,0,Match Report,35e413f1

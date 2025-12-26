@@ -1,0 +1,50 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-12,Sat,Premier League,Matchweek 1,Home,L 0–1,Everton,Fulham,Y,"LM,RM",90,0,0,0,0,4,2,0,0,44,1,1,2,0.3,0.3,0.1,11,0,22,30,73.3,4,25,3,4,3,Match Report,6ca5ec4b
+2023-08-20,Sun,Premier League,Matchweek 2,Away,L 0–4,Everton,Aston Villa,Y,"LM,RM",50,0,0,0,0,0,0,0,0,14,1,0,0,0.0,0.0,0.1,1,0,5,12,41.7,0,8,3,0,0,Match Report,6ca5ec4b
+2023-09-16,Sat,Premier League,Matchweek 5,Home,W 1–0,Fulham,Luton Town,N,RM,29,0,0,0,0,2,0,0,0,33,1,0,0,0.1,0.1,0.0,3,1,26,31,83.9,3,19,1,1,0,Match Report,6ca5ec4b
+2023-09-23,Sat,Premier League,Matchweek 6,Away,D 0–0,Fulham,Crystal Palace,N,LM,16,0,0,0,0,0,0,0,0,11,0,0,0,0.0,0.0,0.0,1,0,9,11,81.8,3,8,1,0,0,Match Report,6ca5ec4b
+2023-09-27,Wed,EFL Cup,Third round,Home,W 2–1,Fulham,Norwich City,Y,FW,90,1,0,0,0,3,1,0,0,,,1,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2023-10-02,Mon,Premier League,Matchweek 7,Home,L 0–2,Fulham,Chelsea,N,RW,37,0,0,0,0,2,0,0,0,29,2,0,0,0.2,0.2,0.1,1,0,15,24,62.5,2,16,3,0,0,Match Report,6ca5ec4b
+2023-10-07,Sat,Premier League,Matchweek 8,Home,W 3–1,Fulham,Sheffield Utd,Y,RM,78,0,0,0,0,1,0,0,0,47,1,0,0,0.1,0.1,0.1,4,0,35,42,83.3,6,31,1,0,0,Match Report,6ca5ec4b
+2023-10-13,Fri,Friendlies (M),Friendlies (M),Neutral,D 2–2,ng Nigeria,sa Saudi Arabia,Y,CM,77,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2023-10-23,Mon,Premier League,Matchweek 9,Away,L 0–2,Fulham,Tottenham,N,AM,45,0,0,0,0,1,0,0,0,28,0,1,1,0.0,0.0,0.2,1,0,22,24,91.7,1,21,0,0,0,Match Report,6ca5ec4b
+2023-10-29,Sun,Premier League,Matchweek 10,Away,D 1–1,Fulham,Brighton,Y,"AM,DM,LW",89,0,0,0,0,1,1,0,0,33,1,2,0,0.0,0.0,0.0,3,1,22,23,95.7,5,21,1,6,5,Match Report,6ca5ec4b
+2023-11-01,Wed,EFL Cup,Fourth round,Away,W 3–1,Fulham,Ipswich Town,N,,22,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2023-11-04,Sat,Premier League,Matchweek 11,Home,L 0–1,Fulham,Manchester Utd,Y,"DM,AM,LW",88,0,0,0,0,3,0,1,0,44,1,2,0,0.2,0.2,0.1,6,0,30,34,88.2,3,30,5,5,4,Match Report,6ca5ec4b
+2023-11-12,Sun,Premier League,Matchweek 12,Away,L 1–3,Fulham,Aston Villa,Y,DM,81,0,0,0,0,2,1,1,0,53,2,0,1,0.1,0.1,0.0,1,0,32,38,84.2,2,31,0,4,2,Match Report,6ca5ec4b
+2023-11-16,Thu,WCQ,First round,Home,D 1–1,ng Nigeria,ls Lesotho,Y,CM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2023-11-19,Sun,WCQ,First round,Neutral,D 1–1,ng Nigeria,zw Zimbabwe,Y,CM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2023-11-27,Mon,Premier League,Matchweek 13,Home,W 3–2,Fulham,Wolves,Y,"RW,AM",90,1,0,0,0,4,3,0,0,64,1,1,1,1.0,1.0,0.0,1,0,39,50,78.0,7,44,4,1,1,Match Report,6ca5ec4b
+2023-12-03,Sun,Premier League,Matchweek 14,Away,L 3–4,Fulham,Liverpool,Y,"LW,RW",74,0,0,0,0,0,0,0,0,42,1,0,0,0.0,0.0,0.1,4,1,22,31,71.0,5,35,5,4,1,Match Report,6ca5ec4b
+2023-12-06,Wed,Premier League,Matchweek 15,Home,W 5–0,Fulham,Nott'ham Forest,Y,RW,75,2,0,0,0,3,2,0,0,60,1,3,1,0.6,0.6,0.0,4,1,37,48,77.1,7,38,3,1,0,Match Report,6ca5ec4b
+2023-12-10,Sun,Premier League,Matchweek 16,Home,W 5–0,Fulham,West Ham,Y,"RW,LW",78,0,1,0,0,5,1,0,0,57,0,0,0,0.5,0.5,0.2,6,3,39,49,79.6,3,49,5,1,1,Match Report,6ca5ec4b
+2023-12-16,Sat,Premier League,Matchweek 17,Away,L 0–3,Fulham,Newcastle Utd,Y,"FW,LW",76,0,0,0,0,1,1,0,0,33,1,0,0,0.1,0.1,0.0,2,0,21,24,87.5,2,21,4,2,0,Match Report,6ca5ec4b
+2023-12-19,Tue,EFL Cup,Quarter-finals,Away,D 1 (7)–1 (6),Fulham,Everton,Y,AM,86,0,0,0,0,1,1,0,0,,,0,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2023-12-23,Sat,Premier League,Matchweek 18,Home,L 0–2,Fulham,Burnley,Y,LW,90,0,0,0,0,5,1,0,0,70,1,0,0,0.4,0.4,0.2,5,0,48,56,85.7,12,44,6,5,2,Match Report,6ca5ec4b
+2023-12-26,Tue,Premier League,Matchweek 19,Away,L 0–3,Fulham,Bournemouth,Y,"LW,LM",90,0,0,0,0,0,0,0,0,65,1,1,1,0.0,0.0,0.0,1,0,42,58,72.4,11,48,5,3,3,Match Report,6ca5ec4b
+2023-12-31,Sun,Premier League,Matchweek 20,Home,W 2–1,Fulham,Arsenal,Y,AM,71,0,0,0,0,2,0,0,0,41,0,1,1,0.1,0.1,0.1,2,0,29,36,80.6,6,31,2,1,0,Match Report,6ca5ec4b
+2024-01-14,Sun,Africa Cup of Nations,Group stage,Neutral,D 1–1,ng Nigeria,gq Equ. Guinea,Y,CM,89,0,0,0,0,1,1,0,0,,,1,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-01-18,Thu,Africa Cup of Nations,Group stage,Neutral,W 1–0,ng Nigeria,ci Côte d'Ivoire,Y,CM,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-01-22,Mon,Africa Cup of Nations,Group stage,Neutral,W 1–0,ng Nigeria,gw Guinea-Bissau,N,,28,0,0,0,0,1,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-01-27,Sat,Africa Cup of Nations,Round of 16,Neutral,W 2–0,ng Nigeria,cm Cameroon,Y,CM,90,0,0,0,0,1,0,0,0,,,2,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-02-02,Fri,Africa Cup of Nations,Quarter-finals,Neutral,W 1–0,ng Nigeria,ao Angola,Y,CM,79,0,0,0,0,3,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-02-07,Wed,Africa Cup of Nations,Semi-finals,Neutral,D 1 (4)–1 (2),ng Nigeria,za South Africa,Y,CM,62,0,0,0,0,1,1,0,0,,,1,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-02-11,Sun,Africa Cup of Nations,Final,Neutral,L 1–2,ng Nigeria,ci Côte d'Ivoire,Y,CM,78,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-02-17,Sat,Premier League,Matchweek 25,Home,L 1–2,Fulham,Aston Villa,N,LW,45,0,0,0,0,1,1,0,0,22,0,0,1,0.3,0.3,0.0,2,0,12,17,70.6,3,19,1,2,0,Match Report,6ca5ec4b
+2024-02-24,Sat,Premier League,Matchweek 26,Away,W 2–1,Fulham,Manchester Utd,Y,LW,90,1,0,0,0,3,1,0,0,44,1,1,1,0.3,0.3,0.4,5,0,21,30,70.0,6,28,6,4,1,Match Report,6ca5ec4b
+2024-03-02,Sat,Premier League,Matchweek 27,Home,W 3–0,Fulham,Brighton,Y,LW,68,0,0,0,0,0,0,0,0,22,1,1,1,0.0,0.0,0.3,3,0,14,18,77.8,3,20,5,5,2,Match Report,6ca5ec4b
+2024-03-09,Sat,Premier League,Matchweek 28,Away,L 1–2,Fulham,Wolves,Y,"LW,AM",90,1,0,0,0,4,2,0,0,58,1,0,2,0.6,0.6,0.8,9,0,35,46,76.1,9,40,5,1,0,Match Report,6ca5ec4b
+2024-03-16,Sat,Premier League,Matchweek 29,Home,W 3–0,Fulham,Tottenham,Y,RW,81,0,0,0,0,0,0,0,0,40,2,0,0,0.0,0.0,0.4,6,1,28,34,82.4,7,29,5,1,1,Match Report,6ca5ec4b
+2024-03-22,Fri,Friendlies (M),Friendlies (M),Neutral,W 2–1,ng Nigeria,gh Ghana,Y,AM,90,0,1,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-03-26,Tue,Friendlies (M),Friendlies (M),Neutral,L 0–2,ng Nigeria,ml Mali,Y,AM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-03-30,Sat,Premier League,Matchweek 30,Away,D 3–3,Fulham,Sheffield Utd,Y,RW,73,0,0,0,0,5,1,0,0,46,0,0,1,0.2,0.2,0.0,5,0,28,36,77.8,4,23,1,2,1,Match Report,6ca5ec4b
+2024-04-02,Tue,Premier League,Matchweek 31,Away,L 1–3,Fulham,Nott'ham Forest,Y,LW,32,0,0,0,0,0,0,0,0,20,1,0,0,0.0,0.0,0.0,1,0,13,16,81.3,2,14,2,1,0,Match Report,6ca5ec4b
+2024-04-06,Sat,Premier League,Matchweek 32,Home,L 0–1,Fulham,Newcastle Utd,Y,"RW,DM",90,0,0,0,0,0,0,0,0,65,2,0,2,0.0,0.0,0.0,3,0,42,58,72.4,13,47,11,7,6,Match Report,6ca5ec4b
+2024-04-14,Sun,Premier League,Matchweek 33,Away,W 2–0,Fulham,West Ham,Y,RW,73,0,1,0,0,2,1,0,0,36,0,0,0,0.3,0.3,1.2,3,1,22,30,73.3,5,26,3,3,0,Match Report,6ca5ec4b
+2024-04-21,Sun,Premier League,Matchweek 34,Home,L 1–3,Fulham,Liverpool,Y,RW,84,0,0,0,0,0,0,0,0,41,1,0,0,0.0,0.0,0.1,3,0,20,36,55.6,2,27,8,5,4,Match Report,6ca5ec4b
+2024-04-27,Sat,Premier League,Matchweek 35,Home,D 1–1,Fulham,Crystal Palace,Y,LW,90,0,0,0,0,0,0,0,0,43,2,0,0,0.0,0.0,0.1,1,0,25,34,73.5,2,24,2,3,0,Match Report,6ca5ec4b
+2024-05-04,Sat,Premier League,Matchweek 36,Away,D 0–0,Fulham,Brentford,Y,RW,89,0,0,0,0,3,1,0,0,48,1,1,2,0.2,0.2,0.3,11,0,26,40,65.0,5,30,10,2,1,Match Report,6ca5ec4b
+2024-05-11,Sat,Premier League,Matchweek 37,Home,L 0–4,Fulham,Manchester City,Y,"DM,LW,RM",90,0,0,0,0,0,0,0,0,38,2,0,0,0.0,0.0,0.0,0,0,30,35,85.7,4,17,2,2,2,Match Report,6ca5ec4b
+2024-05-19,Sun,Premier League,Matchweek 38,Away,W 4–2,Fulham,Luton Town,Y,AM,90,0,0,0,0,1,1,0,0,49,1,0,0,0.0,0.0,0.1,6,1,37,42,88.1,4,35,2,0,0,Match Report,6ca5ec4b
+2024-06-07,Fri,WCQ,First round,Home,D 1–1,ng Nigeria,za South Africa,Y,DM,90,0,1,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b
+2024-06-10,Mon,WCQ,First round,Neutral,L 1–2,ng Nigeria,bj Benin,Y,AM,50,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,6ca5ec4b

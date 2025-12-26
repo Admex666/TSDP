@@ -2,7 +2,7 @@ import os
 from bs4 import BeautifulSoup
 import pandas as pd
 
-raw_dir = "data/raw"
+raw_dir = "data/reference"
 
 def inspect_schedule():
     files = [f for f in os.listdir(raw_dir) if "schedule" in f]
@@ -17,7 +17,7 @@ def inspect_schedule():
             print(f"Schedule Columns: {headers[:10]}...")
 
 def inspect_match():
-    files = [f for f in os.listdir(raw_dir) if "matches" in f and "Burnley" in f]
+    files = [f for f in os.listdir(raw_dir) if "match.html" in f]
     if not files: return
     with open(os.path.join(raw_dir, files[0]), 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f.read(), 'html.parser')
@@ -33,16 +33,24 @@ def inspect_match():
                         break
 
 def inspect_log():
-    files = [f for f in os.listdir(raw_dir) if "players" in f]
-    if not files: return
-    with open(os.path.join(raw_dir, files[0]), 'r', encoding='utf-8') as f:
-        soup = BeautifulSoup(f.read(), 'html.parser')
-        table = soup.find('table', attrs={'id': lambda x: x and 'matchlogs' in x})
-        if table:
-            print(f"Log Table ID: {table.get('id')}")
-            # check columns
-            headers = [th.text.strip() for th in table.select('thead tr th')]
-            print(f"Log Columns: {headers[:15]}...")
+    for fname in ["player_summary.html", "player_keepers.html"]:
+        if fname not in os.listdir(raw_dir): continue
+        print(f"Inspecting {fname}...")
+        with open(os.path.join(raw_dir, fname), 'r', encoding='utf-8') as f:
+            soup = BeautifulSoup(f.read(), 'html.parser')
+            # Try to find table with id containing 'matchlogs'
+            tables = soup.find_all('table', attrs={'id': lambda x: x and 'matchlogs' in x})
+            if not tables:
+                 print(f"No matchlogs table found in {fname}. All table IDs:")
+                 all_tables = soup.find_all('table')
+                 for t in all_tables:
+                     print(f" - {t.get('id')}")
+            
+            for table in tables:
+                print(f"Found Table ID: {table.get('id')}")
+                headers = [th.text.strip() for th in table.select('thead tr th')]
+                print(f"Columns: {headers[:15]}...")
+
 
 if __name__ == "__main__":
     try:

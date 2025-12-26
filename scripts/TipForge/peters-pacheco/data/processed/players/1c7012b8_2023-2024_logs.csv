@@ -1,0 +1,66 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-06,Sun,Community Shield,FA Community Shield,Neutral,D 1 (4)–1 (1),Arsenal,Manchester City,Y,CM,80,0,0,0,0,1,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-08-12,Sat,Premier League,Matchweek 1,Home,W 2–1,Arsenal,Nott'ham Forest,Y,CM,90,0,0,0,0,3,3,0,0,103,4,1,0,0.2,0.2,0.0,0,0,84,91,92.3,3,86,1,2,0,Match Report,1c7012b8
+2023-08-21,Mon,Premier League,Matchweek 2,Away,W 1–0,Arsenal,Crystal Palace,Y,CM,90,0,0,0,0,0,0,0,0,67,0,1,3,0.0,0.0,0.4,1,0,55,61,90.2,8,41,2,2,0,Match Report,1c7012b8
+2023-08-26,Sat,Premier League,Matchweek 3,Home,D 2–2,Arsenal,Fulham,Y,CM,89,0,0,0,0,0,0,0,0,79,5,2,0,0.0,0.0,0.0,2,0,68,71,95.8,9,45,0,0,0,Match Report,1c7012b8
+2023-09-03,Sun,Premier League,Matchweek 4,Home,W 3–1,Arsenal,Manchester Utd,Y,CM,90,1,0,0,0,2,1,0,0,83,1,2,3,0.2,0.2,0.0,0,0,64,73,87.7,5,58,3,1,0,Match Report,1c7012b8
+2023-09-09,Sat,UEFA Euro Qualifying,Group stage,Away,D 1–1,eng England,ua Ukraine,Y,CM,90,0,0,0,0,0,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-09-12,Tue,Friendlies (M),Friendlies (M),Away,W 3–1,eng England,sct Scotland,Y,DM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-09-17,Sun,Premier League,Matchweek 5,Away,W 1–0,Arsenal,Everton,Y,CM,90,0,0,0,0,1,0,0,0,97,0,3,0,0.1,0.1,0.2,3,0,85,91,93.4,14,69,2,3,3,Match Report,1c7012b8
+2023-09-20,Wed,Champions Lg,Group stage,Home,W 4–0,eng Arsenal,nl PSV Eindhoven,Y,CM,75,0,0,0,0,0,0,0,0,62,0,2,2,0.0,0.0,0.0,0,0,46,54,85.2,4,38,1,0,0,Match Report,1c7012b8
+2023-09-24,Sun,Premier League,Matchweek 6,Home,D 2–2,Arsenal,Tottenham,Y,CM,45,0,0,0,0,2,0,0,0,21,1,0,1,0.1,0.1,0.0,0,0,14,15,93.3,0,9,0,0,0,Match Report,1c7012b8
+2023-09-30,Sat,Premier League,Matchweek 7,Away,W 4–0,Arsenal,Bournemouth,Y,CM,80,0,0,0,0,0,0,0,0,73,4,1,4,0.0,0.0,0.1,1,0,58,61,95.1,3,42,2,0,0,Match Report,1c7012b8
+2023-10-03,Tue,Champions Lg,Group stage,Away,L 1–2,eng Arsenal,fr Lens,Y,CM,90,0,0,0,0,0,0,0,0,123,2,3,1,0.0,0.0,0.0,1,0,104,114,91.2,9,105,4,4,4,Match Report,1c7012b8
+2023-10-08,Sun,Premier League,Matchweek 8,Home,W 1–0,Arsenal,Manchester City,Y,LM,90,0,0,0,0,0,0,0,0,54,3,3,2,0.0,0.0,0.1,4,0,36,40,90.0,3,31,1,1,0,Match Report,1c7012b8
+2023-10-13,Fri,Friendlies (M),Friendlies (M),Home,W 1–0,eng England,au Australia,N,"On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play",Match Report,1c7012b8
+2023-10-17,Tue,UEFA Euro Qualifying,Group stage,Home,W 3–1,eng England,it Italy,Y,DM,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-10-21,Sat,Premier League,Matchweek 9,Away,D 2–2,Arsenal,Chelsea,Y,"LM,CM",90,1,0,0,0,1,1,0,0,60,3,0,1,0.1,0.1,0.0,2,0,46,53,86.8,7,32,2,2,1,Match Report,1c7012b8
+2023-10-24,Tue,Champions Lg,Group stage,Away,W 2–1,eng Arsenal,es Sevilla,Y,"LM,CM",90,0,1,0,0,0,0,0,0,59,2,1,1,0.0,0.0,0.1,4,1,37,49,75.5,10,34,4,4,3,Match Report,1c7012b8
+2023-10-28,Sat,Premier League,Matchweek 10,Home,W 5–0,Arsenal,Sheffield Utd,Y,CM,88,0,1,0,0,1,0,0,0,79,2,1,1,0.1,0.1,0.8,0,0,67,72,93.1,8,61,0,0,0,Match Report,1c7012b8
+2023-11-01,Wed,EFL Cup,Fourth round,Away,L 1–3,Arsenal,West Ham,N,,34,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-11-04,Sat,Premier League,Matchweek 11,Away,L 0–1,Arsenal,Newcastle Utd,Y,"LM,CM",90,0,0,0,0,2,0,0,0,69,0,1,2,0.1,0.1,0.1,6,0,51,58,87.9,13,49,3,2,2,Match Report,1c7012b8
+2023-11-08,Wed,Champions Lg,Group stage,Home,W 2–0,eng Arsenal,es Sevilla,Y,LM,90,0,0,0,0,0,0,1,0,61,1,2,0,0.0,0.0,0.1,1,0,50,53,94.3,11,39,4,4,2,Match Report,1c7012b8
+2023-11-11,Sat,Premier League,Matchweek 12,Home,W 3–1,Arsenal,Burnley,Y,"LM,CM",90,0,0,0,0,1,0,0,0,45,1,1,0,0.0,0.0,0.1,2,0,33,39,84.6,6,26,0,1,0,Match Report,1c7012b8
+2023-11-17,Fri,UEFA Euro Qualifying,Group stage,Home,W 2–0,eng England,mt Malta,N,,30,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-11-20,Mon,UEFA Euro Qualifying,Group stage,Away,D 1–1,eng England,mk N. Macedonia,Y,DM,90,0,0,0,0,2,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,1c7012b8
+2023-11-25,Sat,Premier League,Matchweek 13,Away,W 1–0,Arsenal,Brentford,Y,CM,90,0,0,0,0,1,0,0,0,81,0,1,2,0.0,0.0,0.0,2,0,65,73,89.0,5,52,1,0,0,Match Report,1c7012b8
+2023-11-29,Wed,Champions Lg,Group stage,Home,W 6–0,eng Arsenal,fr Lens,Y,CM,74,0,0,0,0,0,0,0,0,73,3,0,1,0.0,0.0,0.0,0,0,62,65,95.4,4,60,1,1,0,Match Report,1c7012b8
+2023-12-02,Sat,Premier League,Matchweek 14,Home,W 2–1,Arsenal,Wolves,Y,"CM,RM",90,0,0,0,0,3,0,0,0,97,2,5,0,0.2,0.2,0.0,0,0,76,84,90.5,12,61,1,0,0,Match Report,1c7012b8
+2023-12-05,Tue,Premier League,Matchweek 15,Away,W 4–3,Arsenal,Luton Town,Y,CM,90,1,0,0,0,3,1,0,0,90,2,1,0,0.2,0.2,0.1,1,0,72,79,91.1,8,53,3,2,0,Match Report,1c7012b8
+2023-12-09,Sat,Premier League,Matchweek 16,Away,L 0–1,Arsenal,Aston Villa,Y,CM,90,0,0,0,0,1,0,1,0,89,5,1,0,0.1,0.1,0.0,3,0,69,77,89.6,12,52,3,1,1,Match Report,1c7012b8
+2023-12-12,Tue,Champions Lg,Group stage,Away,D 1–1,eng Arsenal,nl PSV Eindhoven,N,CB,29,0,0,0,0,0,0,0,0,37,0,0,0,0.0,0.0,0.0,0,0,35,36,97.2,2,16,0,0,0,Match Report,1c7012b8
+2023-12-17,Sun,Premier League,Matchweek 17,Home,W 2–0,Arsenal,Brighton,Y,CM,90,0,0,0,0,2,1,0,0,67,2,3,0,0.1,0.1,0.0,5,0,54,59,91.5,9,50,4,2,1,Match Report,1c7012b8
+2023-12-23,Sat,Premier League,Matchweek 18,Away,D 1–1,Arsenal,Liverpool,Y,CM,90,0,0,0,0,1,0,1,0,88,2,2,0,0.0,0.0,0.0,2,0,64,74,86.5,7,43,0,1,1,Match Report,1c7012b8
+2023-12-28,Thu,Premier League,Matchweek 19,Home,L 0–2,Arsenal,West Ham,Y,"CM,DM",90,0,0,0,0,2,0,0,0,118,4,1,1,0.1,0.1,0.1,4,0,100,108,92.6,29,101,6,1,1,Match Report,1c7012b8
+2023-12-31,Sun,Premier League,Matchweek 20,Away,L 1–2,Arsenal,Fulham,Y,CM,90,0,0,0,0,1,0,0,0,114,1,0,3,0.0,0.0,0.0,2,0,97,105,92.4,23,91,4,3,3,Match Report,1c7012b8
+2024-01-07,Sun,FA Cup,Third round proper,Home,L 0–2,Arsenal,Liverpool,Y,CM,90,0,0,0,0,1,1,0,0,,,1,,,,,,,,,,,,,,,Match Report,1c7012b8
+2024-01-20,Sat,Premier League,Matchweek 21,Home,W 5–0,Arsenal,Crystal Palace,Y,CM,72,0,1,0,0,1,1,0,0,66,1,1,0,0.0,0.0,0.2,1,1,55,61,90.2,2,50,1,0,0,Match Report,1c7012b8
+2024-01-30,Tue,Premier League,Matchweek 22,Away,W 2–1,Arsenal,Nott'ham Forest,Y,CM,90,0,0,0,0,0,0,0,0,92,4,0,1,0.0,0.0,0.0,2,0,72,84,85.7,9,52,2,0,0,Match Report,1c7012b8
+2024-02-04,Sun,Premier League,Matchweek 23,Home,W 3–1,Arsenal,Liverpool,Y,CM,90,0,0,0,0,1,0,1,0,67,4,2,1,0.0,0.0,0.3,3,0,46,56,82.1,1,35,2,0,0,Match Report,1c7012b8
+2024-02-11,Sun,Premier League,Matchweek 24,Away,W 6–0,Arsenal,West Ham,Y,CM,66,1,2,0,0,1,1,0,0,82,0,1,1,0.0,0.0,0.7,8,3,70,76,92.1,8,55,2,0,0,Match Report,1c7012b8
+2024-02-17,Sat,Premier League,Matchweek 25,Away,W 5–0,Arsenal,Burnley,Y,CM,78,0,0,0,0,1,0,0,0,62,1,0,2,0.0,0.0,0.0,2,1,50,56,89.3,8,49,1,0,0,Match Report,1c7012b8
+2024-02-21,Wed,Champions Lg,Round of 16,Away,L 0–1,eng Arsenal,pt Porto,Y,"CM,DM",90,0,0,0,0,0,0,1,0,88,4,3,1,0.0,0.0,0.1,1,0,66,80,82.5,12,61,1,1,1,Match Report,1c7012b8
+2024-02-24,Sat,Premier League,Matchweek 26,Home,W 4–1,Arsenal,Newcastle Utd,Y,LM,90,0,1,0,0,1,1,0,0,63,0,1,1,0.1,0.1,0.2,5,2,49,56,87.5,6,25,4,2,0,Match Report,1c7012b8
+2024-03-04,Mon,Premier League,Matchweek 27,Away,W 6–0,Arsenal,Sheffield Utd,Y,LM,73,1,0,0,0,5,3,0,0,62,2,0,1,0.4,0.4,0.1,4,0,42,50,84.0,4,31,3,1,0,Match Report,1c7012b8
+2024-03-09,Sat,Premier League,Matchweek 28,Home,W 2–1,Arsenal,Brentford,Y,"LM,CM",90,1,0,0,0,3,1,0,0,60,1,0,1,0.1,0.1,0.0,3,0,34,47,72.3,5,31,2,2,1,Match Report,1c7012b8
+2024-03-12,Tue,Champions Lg,Round of 16,Home,W 1 (4)–0 (2),eng Arsenal,pt Porto,Y,"LM,CM",120,0,0,0,0,2,0,0,0,74,1,2,1,0.1,0.1,0.0,1,0,46,63,73.0,6,41,2,1,1,Match Report,1c7012b8
+2024-03-23,Sat,Friendlies (M),Friendlies (M),Home,L 0–1,eng England,br Brazil,Y,DM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,1c7012b8
+2024-03-26,Tue,Friendlies (M),Friendlies (M),Home,D 2–2,eng England,be Belgium,Y*,DM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,1c7012b8
+2024-03-31,Sun,Premier League,Matchweek 30,Away,D 0–0,Arsenal,Manchester City,Y,LM,90,0,0,0,0,0,0,0,0,43,3,0,0,0.0,0.0,0.1,1,0,25,34,73.5,3,27,0,1,1,Match Report,1c7012b8
+2024-04-03,Wed,Premier League,Matchweek 31,Home,W 2–0,Arsenal,Luton Town,N,CM,24,0,0,0,0,0,0,0,0,17,1,1,0,0.0,0.0,0.0,0,0,14,16,87.5,1,12,0,0,0,Match Report,1c7012b8
+2024-04-06,Sat,Premier League,Matchweek 32,Away,W 3–0,Arsenal,Brighton,Y,LM,90,0,0,0,0,1,0,0,0,49,2,1,1,0.0,0.0,0.2,5,0,32,34,94.1,5,18,1,4,2,Match Report,1c7012b8
+2024-04-09,Tue,Champions Lg,Quarter-finals,Home,D 2–2,eng Arsenal,de Bayern Munich,Y,"LM,CM",90,0,0,0,0,1,0,0,0,48,1,0,1,0.1,0.1,0.0,2,0,35,41,85.4,4,34,4,3,3,Match Report,1c7012b8
+2024-04-14,Sun,Premier League,Matchweek 33,Home,L 0–2,Arsenal,Aston Villa,Y,"CM,LM",90,0,0,0,0,2,0,0,0,70,3,0,1,0.0,0.0,0.0,1,0,54,61,88.5,7,42,0,0,0,Match Report,1c7012b8
+2024-04-17,Wed,Champions Lg,Quarter-finals,Away,L 0–1,eng Arsenal,de Bayern Munich,Y,"LM,CM,CB",90,0,0,0,0,1,0,0,0,72,0,0,3,0.0,0.0,0.1,1,0,51,60,85.0,7,47,4,3,2,Match Report,1c7012b8
+2024-04-20,Sat,Premier League,Matchweek 34,Away,W 2–0,Arsenal,Wolves,Y,"CM,LM",90,0,0,0,0,4,2,1,0,68,4,0,0,0.2,0.2,0.2,10,1,55,61,90.2,12,48,5,3,1,Match Report,1c7012b8
+2024-04-23,Tue,Premier League,Matchweek 29,Home,W 5–0,Arsenal,Chelsea,Y,LM,90,0,1,0,0,3,1,0,0,53,5,2,0,0.2,0.2,0.1,5,2,33,38,86.8,2,23,5,3,1,Match Report,1c7012b8
+2024-04-28,Sun,Premier League,Matchweek 35,Away,W 3–2,Arsenal,Tottenham,Y,"LM,CM",90,0,1,0,0,1,0,0,0,54,5,2,1,0.0,0.0,0.4,2,1,32,42,76.2,2,22,0,1,0,Match Report,1c7012b8
+2024-05-04,Sat,Premier League,Matchweek 36,Home,W 3–0,Arsenal,Bournemouth,Y,LM,90,1,1,0,0,3,1,0,0,61,1,2,1,0.3,0.3,0.2,4,1,45,52,86.5,6,40,5,3,2,Match Report,1c7012b8
+2024-05-12,Sun,Premier League,Matchweek 37,Away,W 1–0,Arsenal,Manchester Utd,Y,"LM,CM",90,0,0,0,0,2,1,0,0,42,2,0,2,0.1,0.1,0.0,1,0,29,32,90.6,5,25,0,1,0,Match Report,1c7012b8
+2024-05-19,Sun,Premier League,Matchweek 38,Home,W 2–1,Arsenal,Everton,Y,"LM,CM",90,0,0,0,0,2,1,1,0,65,2,1,0,0.2,0.2,0.3,3,0,46,55,83.6,8,38,4,1,0,Match Report,1c7012b8
+2024-06-03,Mon,Friendlies (M),Friendlies (M),Home,W 3–0,eng England,ba Bosnia & Herz'na,N,"On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play",Match Report,1c7012b8
+2024-06-07,Fri,Friendlies (M),Friendlies (M),Home,L 0–1,eng England,is Iceland,Y,DM,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,1c7012b8
+2024-06-16,Sun,UEFA Euro,Group stage,Neutral,W 1–0,eng England,rs Serbia,Y,DM,90,0,0,0,0,0,0,0,0,90,2,2,0,0.0,0.0,0.0,1,0,77,81,95.1,6,51,0,1,1,Match Report,1c7012b8
+2024-06-20,Thu,UEFA Euro,Group stage,Neutral,D 1–1,eng England,dk Denmark,Y,DM,90,0,0,0,0,1,1,0,0,76,3,0,0,0.0,0.0,0.0,1,0,58,64,90.6,0,44,0,1,1,Match Report,1c7012b8
+2024-06-25,Tue,UEFA Euro,Group stage,Neutral,D 0–0,eng England,si Slovenia,Y,"CM,DM",90,0,0,0,0,1,0,0,0,72,3,1,0,0.0,0.0,0.1,4,0,54,60,90.0,5,46,2,1,1,Match Report,1c7012b8
+2024-06-30,Sun,UEFA Euro,Round of 16,Neutral,W 2–1,eng England,sk Slovakia,Y,"DM,CM",120,0,0,0,0,2,0,0,0,107,4,2,1,0.0,0.0,0.0,2,0,82,93,88.2,12,61,1,1,1,Match Report,1c7012b8

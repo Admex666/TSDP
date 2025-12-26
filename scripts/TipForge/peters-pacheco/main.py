@@ -74,13 +74,13 @@ def main():
     # For now, we pass empty, so features will default to 0s, 
     # BUT we need to run the loop to generate the matrix structure.
     
-    print("  - Building rolling features (This may take time)...")
+    print("  - Building rolling features (Parallelizing player fetches)...")
     
-    # Limit for testing if needed
-    # process_matches = schedule.head(5) if args.backtest else schedule
+    feature_rows = []
     
-    # We iterate properly
-    for idx, match in tqdm(schedule.iterrows(), total=len(schedule)):
+    # Process matches
+    # Use tqdm but careful with nested bars from builder
+    for idx, match in tqdm(schedule.iterrows(), total=len(schedule), desc="Processing Matches"):
         # We need lineups. 
         # In a real run, we fetch from match['match_report_url']
         # If missing, skip?
@@ -146,7 +146,7 @@ def main():
             schedule['OddsAway'] = 2.4
             
         backtester = Backtester(feature_matrix, schedule)
-        backtester.run(start_date="2023-08-05") # Start mid-season
+        backtester.run(start_date="2023-08-13") # Start mid-season
         results = backtester.get_results_df()
         if not results.empty:
             print(results.tail())
