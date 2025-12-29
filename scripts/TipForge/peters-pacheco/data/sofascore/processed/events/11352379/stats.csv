@@ -1,0 +1,117 @@
+period,group,statistic,home_value,away_value,home_total,away_total,home_display,away_display,compare_code,key
+ALL,Match overview,Ball possession,47.0,53.0,,,47%,53%,2,ballPossession
+ALL,Match overview,Expected goals,1.93,1.48,,,1.93,1.48,1,expectedGoals
+ALL,Match overview,Big chances,4.0,1.0,,,4,1,1,bigChanceCreated
+ALL,Match overview,Total shots,18.0,10.0,,,18,10,1,totalShotsOnGoal
+ALL,Match overview,Goalkeeper saves,2.0,3.0,,,2,3,2,goalkeeperSaves
+ALL,Match overview,Corner kicks,6.0,4.0,,,6,4,1,cornerKicks
+ALL,Match overview,Fouls,12.0,7.0,,,12,7,1,fouls
+ALL,Match overview,Passes,465.0,551.0,,,465,551,2,passes
+ALL,Match overview,Tackles,13.0,13.0,,,13,13,3,totalTackle
+ALL,Match overview,Free kicks,7.0,12.0,,,7,12,2,freeKicks
+ALL,Match overview,Yellow cards,2.0,6.0,,,2,6,2,yellowCards
+ALL,Match overview,Red cards,0.0,1.0,,,0,1,2,redCards
+ALL,Shots,Total shots,18.0,10.0,,,18,10,1,totalShotsOnGoal
+ALL,Shots,Shots on target,5.0,5.0,,,5,5,3,shotsOnGoal
+ALL,Shots,Hit woodwork,0.0,0.0,,,0,0,3,hitWoodwork
+ALL,Shots,Shots off target,5.0,3.0,,,5,3,1,shotsOffGoal
+ALL,Shots,Blocked shots,8.0,2.0,,,8,2,1,blockedScoringAttempt
+ALL,Shots,Shots inside box,14.0,6.0,,,14,6,1,totalShotsInsideBox
+ALL,Shots,Shots outside box,4.0,4.0,,,4,4,3,totalShotsOutsideBox
+ALL,Attack,Big chances scored,2.0,1.0,,,2,1,1,bigChanceScored
+ALL,Attack,Big chances missed,2.0,0.0,,,2,0,1,bigChanceMissed
+ALL,Attack,Fouled in final third,3.0,4.0,,,3,4,2,fouledFinalThird
+ALL,Passes,Accurate passes,379.0,479.0,,,379,479,2,accuratePasses
+ALL,Passes,Throw-ins,15.0,7.0,,,15,7,1,throwIns
+ALL,Passes,Final third entries,42.0,47.0,,,42,47,2,finalThirdEntries
+ALL,Passes,Long balls,24.0,32.0,47.0,53.0,24/47 (51%),32/53 (60%),2,accurateLongBalls
+ALL,Passes,Crosses,13.0,4.0,35.0,16.0,13/35 (37%),4/16 (25%),1,accurateCross
+ALL,Duels,Duels,49.0,51.0,,,49%,51%,2,duelWonPercent
+ALL,Duels,Dispossessed,5.0,8.0,,,5,8,2,dispossessed
+ALL,Duels,Ground duels,25.0,29.0,54.0,54.0,25/54 (46%),29/54 (54%),2,groundDuelsPercentage
+ALL,Duels,Aerial duels,18.0,15.0,33.0,33.0,18/33 (55%),15/33 (45%),1,aerialDuelsPercentage
+ALL,Duels,Dribbles,5.0,4.0,13.0,9.0,5/13 (38%),4/9 (44%),2,dribblesPercentage
+ALL,Defending,Tackles won,6.0,8.0,13.0,13.0,46%,62%,2,wonTacklePercent
+ALL,Defending,Total tackles,13.0,13.0,,,13,13,3,totalTackle
+ALL,Defending,Interceptions,12.0,9.0,,,12,9,1,interceptionWon
+ALL,Defending,Recoveries,53.0,51.0,,,53,51,1,ballRecovery
+ALL,Defending,Clearances,10.0,31.0,,,10,31,2,totalClearance
+ALL,Goalkeeping,Total saves,2.0,3.0,,,2,3,2,goalkeeperSaves
+ALL,Goalkeeping,Goals prevented,-0.8654,-0.2302,,,-0.87,-0.23,2,goalsPrevented
+ALL,Goalkeeping,Goal kicks,7.0,11.0,,,7,11,2,goalKicks
+1ST,Match overview,Ball possession,37.0,63.0,,,37%,63%,2,ballPossession
+1ST,Match overview,Expected goals,0.44,0.6,,,0.44,0.60,2,expectedGoals
+1ST,Match overview,Big chances,1.0,0.0,,,1,0,1,bigChanceCreated
+1ST,Match overview,Total shots,7.0,7.0,,,7,7,3,totalShotsOnGoal
+1ST,Match overview,Goalkeeper saves,1.0,1.0,,,1,1,3,goalkeeperSaves
+1ST,Match overview,Corner kicks,2.0,3.0,,,2,3,2,cornerKicks
+1ST,Match overview,Passes,223.0,375.0,,,223,375,2,passes
+1ST,Match overview,Tackles,4.0,3.0,,,4,3,1,totalTackle
+1ST,Match overview,Free kicks,2.0,5.0,,,2,5,2,freeKicks
+1ST,Match overview,Yellow cards,0.0,0.0,,,0,0,3,yellowCards
+1ST,Match overview,Red cards,0.0,0.0,,,0,0,3,redCards
+1ST,Shots,Total shots,7.0,7.0,,,7,7,3,totalShotsOnGoal
+1ST,Shots,Shots on target,2.0,3.0,,,2,3,2,shotsOnGoal
+1ST,Shots,Hit woodwork,0.0,0.0,,,0,0,3,hitWoodwork
+1ST,Shots,Shots off target,2.0,2.0,,,2,2,3,shotsOffGoal
+1ST,Shots,Blocked shots,3.0,2.0,,,3,2,1,blockedScoringAttempt
+1ST,Shots,Shots inside box,6.0,4.0,,,6,4,1,totalShotsInsideBox
+1ST,Shots,Shots outside box,1.0,3.0,,,1,3,2,totalShotsOutsideBox
+1ST,Attack,Big chances scored,1.0,0.0,,,1,0,1,bigChanceScored
+1ST,Attack,Big chances missed,0.0,0.0,,,0,0,3,bigChanceMissed
+1ST,Attack,Fouled in final third,0.0,0.0,,,0,0,3,fouledFinalThird
+1ST,Passes,Accurate passes,179.0,334.0,,,179,334,2,accuratePasses
+1ST,Passes,Throw-ins,4.0,4.0,,,4,4,3,throwIns
+1ST,Passes,Final third entries,15.0,33.0,,,15,33,2,finalThirdEntries
+1ST,Passes,Long balls,13.0,16.0,29.0,22.0,13/29 (45%),16/22 (73%),2,accurateLongBalls
+1ST,Passes,Crosses,4.0,3.0,9.0,14.0,4/9 (44%),3/14 (21%),1,accurateCross
+1ST,Duels,Duels,49.0,51.0,,,49%,51%,2,duelWonPercent
+1ST,Duels,Dispossessed,1.0,4.0,,,1,4,2,dispossessed
+1ST,Duels,Ground duels,9.0,11.0,20.0,20.0,9/20 (45%),11/20 (55%),2,groundDuelsPercentage
+1ST,Duels,Aerial duels,8.0,7.0,15.0,15.0,8/15 (53%),7/15 (47%),1,aerialDuelsPercentage
+1ST,Duels,Dribbles,3.0,3.0,5.0,3.0,3/5 (60%),3/3 (100%),2,dribblesPercentage
+1ST,Defending,Tackles won,1.0,1.0,4.0,3.0,25%,33%,2,wonTacklePercent
+1ST,Defending,Total tackles,4.0,3.0,,,4,3,1,totalTackle
+1ST,Defending,Interceptions,10.0,7.0,,,10,7,1,interceptionWon
+1ST,Defending,Recoveries,25.0,28.0,,,25,28,2,ballRecovery
+1ST,Defending,Clearances,9.0,3.0,,,9,3,1,totalClearance
+1ST,Goalkeeping,Total saves,1.0,1.0,,,1,1,3,goalkeeperSaves
+1ST,Goalkeeping,Goal kicks,5.0,2.0,,,5,2,1,goalKicks
+2ND,Match overview,Ball possession,60.0,40.0,,,60%,40%,1,ballPossession
+2ND,Match overview,Expected goals,1.49,0.89,,,1.49,0.89,1,expectedGoals
+2ND,Match overview,Big chances,3.0,1.0,,,3,1,1,bigChanceCreated
+2ND,Match overview,Total shots,11.0,3.0,,,11,3,1,totalShotsOnGoal
+2ND,Match overview,Goalkeeper saves,1.0,2.0,,,1,2,2,goalkeeperSaves
+2ND,Match overview,Corner kicks,4.0,1.0,,,4,1,1,cornerKicks
+2ND,Match overview,Passes,242.0,176.0,,,242,176,1,passes
+2ND,Match overview,Tackles,9.0,10.0,,,9,10,2,totalTackle
+2ND,Match overview,Free kicks,5.0,7.0,,,5,7,2,freeKicks
+2ND,Match overview,Yellow cards,2.0,6.0,,,2,6,2,yellowCards
+2ND,Match overview,Red cards,0.0,1.0,,,0,1,2,redCards
+2ND,Shots,Total shots,11.0,3.0,,,11,3,1,totalShotsOnGoal
+2ND,Shots,Shots on target,3.0,2.0,,,3,2,1,shotsOnGoal
+2ND,Shots,Hit woodwork,0.0,0.0,,,0,0,3,hitWoodwork
+2ND,Shots,Shots off target,3.0,1.0,,,3,1,1,shotsOffGoal
+2ND,Shots,Blocked shots,5.0,0.0,,,5,0,1,blockedScoringAttempt
+2ND,Shots,Shots inside box,8.0,2.0,,,8,2,1,totalShotsInsideBox
+2ND,Shots,Shots outside box,3.0,1.0,,,3,1,1,totalShotsOutsideBox
+2ND,Attack,Big chances scored,1.0,1.0,,,1,1,3,bigChanceScored
+2ND,Attack,Big chances missed,2.0,0.0,,,2,0,1,bigChanceMissed
+2ND,Attack,Fouled in final third,3.0,4.0,,,3,4,2,fouledFinalThird
+2ND,Passes,Accurate passes,200.0,145.0,,,200,145,1,accuratePasses
+2ND,Passes,Throw-ins,11.0,3.0,,,11,3,1,throwIns
+2ND,Passes,Final third entries,27.0,14.0,,,27,14,1,finalThirdEntries
+2ND,Passes,Long balls,11.0,16.0,18.0,31.0,11/18 (61%),16/31 (52%),1,accurateLongBalls
+2ND,Passes,Crosses,9.0,1.0,26.0,2.0,9/26 (35%),1/2 (50%),2,accurateCross
+2ND,Duels,Duels,50.0,50.0,,,50%,50%,3,duelWonPercent
+2ND,Duels,Dispossessed,4.0,4.0,,,4,4,3,dispossessed
+2ND,Duels,Ground duels,16.0,18.0,34.0,34.0,16/34 (47%),18/34 (53%),2,groundDuelsPercentage
+2ND,Duels,Aerial duels,10.0,8.0,18.0,18.0,10/18 (56%),8/18 (44%),1,aerialDuelsPercentage
+2ND,Duels,Dribbles,2.0,1.0,8.0,6.0,2/8 (25%),1/6 (17%),1,dribblesPercentage
+2ND,Defending,Tackles won,5.0,7.0,9.0,10.0,56%,70%,2,wonTacklePercent
+2ND,Defending,Total tackles,9.0,10.0,,,9,10,2,totalTackle
+2ND,Defending,Interceptions,2.0,2.0,,,2,2,3,interceptionWon
+2ND,Defending,Recoveries,28.0,23.0,,,28,23,1,ballRecovery
+2ND,Defending,Clearances,1.0,28.0,,,1,28,2,totalClearance
+2ND,Goalkeeping,Total saves,1.0,2.0,,,1,2,2,goalkeeperSaves
+2ND,Goalkeeping,Goal kicks,2.0,9.0,,,2,9,2,goalKicks

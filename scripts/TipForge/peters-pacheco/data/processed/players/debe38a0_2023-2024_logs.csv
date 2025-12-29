@@ -1,0 +1,10 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-12,Sat,Premier League,Matchweek 1,Home,L 0–1,Sheffield Utd,Crystal Palace,Y*,CB,90,0,0,0,0,1,0,0,0,38.0,1.0,2,1.0,0.0,0.0,0.0,0.0,0.0,8.0,23.0,34.8,1.0,10.0,0.0,0.0,0.0,Match Report,debe38a0
+2023-08-18,Fri,Premier League,Matchweek 2,Away,L 1–2,Sheffield Utd,Nott'ham Forest,Y*,CB,90,0,0,0,0,0,0,0,0,57.0,1.0,4,1.0,0.0,0.0,0.0,0.0,0.0,35.0,45.0,77.8,1.0,30.0,0.0,0.0,0.0,Match Report,debe38a0
+2023-08-27,Sun,Premier League,Matchweek 3,Home,L 1–2,Sheffield Utd,Manchester City,Y*,CB,90,0,0,0,0,0,0,1,0,25.0,0.0,2,1.0,0.0,0.0,0.0,0.0,0.0,13.0,16.0,81.3,0.0,6.0,0.0,0.0,0.0,Match Report,debe38a0
+2023-08-30,Wed,EFL Cup,Second round,Home,D 0 (2)–0 (3),Sheffield Utd,Lincoln City,Y*,CB,90,0,0,0,0,1,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,debe38a0
+2023-09-02,Sat,Premier League,Matchweek 4,Home,D 2–2,Sheffield Utd,Everton,Y*,CB,67,0,0,0,0,1,1,0,0,56.0,3.0,0,3.0,0.1,0.1,0.0,0.0,0.0,31.0,40.0,77.5,0.0,29.0,0.0,0.0,0.0,Match Report,debe38a0
+2023-09-07,Thu,UEFA Euro Qualifying,Group stage,Away,L 0–2,ie Rep. of Ireland,fr France,Y*,CB,90,0,0,0,0,2,1,0,0,,,3,,,,,,,,,,,,,,,Match Report,debe38a0
+2023-09-10,Sun,UEFA Euro Qualifying,Group stage,Home,L 1–2,ie Rep. of Ireland,nl Netherlands,Y,CB,72,0,0,0,0,0,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,debe38a0
+2023-09-24,Sun,Premier League,Matchweek 6,Home,L 0–8,Sheffield Utd,Newcastle Utd,Y*,CB,90,0,0,0,0,0,0,1,0,59.0,1.0,5,3.0,0.0,0.0,0.0,0.0,0.0,27.0,44.0,61.4,1.0,21.0,0.0,0.0,0.0,Match Report,debe38a0
+2023-09-30,Sat,Premier League,Matchweek 7,Away,L 0–2,Sheffield Utd,West Ham,Y*,CB,55,0,0,0,0,1,0,0,0,22.0,0.0,0,1.0,0.1,0.1,0.0,1.0,0.0,14.0,17.0,82.4,2.0,10.0,0.0,0.0,0.0,Match Report,debe38a0

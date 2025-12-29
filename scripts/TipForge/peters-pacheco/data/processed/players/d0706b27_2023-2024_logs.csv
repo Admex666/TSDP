@@ -1,0 +1,42 @@
+Date,Day,Comp,Round,Venue,Result,Squad,Opponent,Start,Pos,Min,Performance_Gls,Performance_Ast,Performance_PK,Performance_PKatt,Performance_Sh,Performance_SoT,Performance_CrdY,Performance_CrdR,Performance_Touches,Performance_Tkl,Performance_Int,Performance_Blocks,Expected_xG,Expected_npxG,Expected_xAG,SCA_SCA,SCA_GCA,Passes_Cmp,Passes_Att,Passes_Cmp%,Passes_PrgP,Carries_Carries,Carries_PrgC,Take-Ons_Att,Take-Ons_Succ,Match Report,player_id
+2023-08-12,Sat,Premier League,Matchweek 1,Away,W 1–0,Crystal Palace,Sheffield Utd,Y,CB,89,0,0,0,0,1,0,0,0,91,1,2,2,0.0,0.0,0.0,3,0,74,83,89.2,3,62,0,1,1,Match Report,d0706b27
+2023-08-21,Mon,Premier League,Matchweek 2,Home,L 0–1,Crystal Palace,Arsenal,Y,CB,90,0,0,0,0,0,0,0,0,80,1,1,2,0.0,0.0,0.0,1,0,66,71,93.0,5,57,1,0,0,Match Report,d0706b27
+2023-08-26,Sat,Premier League,Matchweek 3,Away,D 1–1,Crystal Palace,Brentford,Y,CB,90,0,0,0,0,0,0,0,0,49,1,0,1,0.0,0.0,0.0,0,0,37,42,88.1,1,36,3,0,0,Match Report,d0706b27
+2023-08-29,Tue,EFL Cup,Second round,Away,W 4–2,Crystal Palace,Plymouth Argyle,N,,7,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-09-03,Sun,Premier League,Matchweek 4,Home,W 3–2,Crystal Palace,Wolves,Y,CB,90,0,0,0,0,0,0,0,0,59,2,0,1,0.0,0.0,0.0,0,0,48,54,88.9,3,38,0,0,0,Match Report,d0706b27
+2023-09-09,Sat,UEFA Euro Qualifying,Group stage,Away,D 1–1,eng England,ua Ukraine,Y,CB,90,0,0,0,0,0,0,0,0,,,2,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-09-12,Tue,Friendlies (M),Friendlies (M),Away,W 3–1,eng England,sct Scotland,Y,CB,45,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-09-23,Sat,Premier League,Matchweek 6,Home,D 0–0,Crystal Palace,Fulham,Y,CB,90,0,0,0,0,0,0,0,0,71,1,0,0,0.0,0.0,0.0,1,0,58,64,90.6,2,45,1,1,1,Match Report,d0706b27
+2023-09-26,Tue,EFL Cup,Third round,Away,L 0–3,Crystal Palace,Manchester Utd,N,,45,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-09-30,Sat,Premier League,Matchweek 7,Away,W 1–0,Crystal Palace,Manchester Utd,Y,CB,90,0,0,0,0,1,0,0,0,35,2,2,2,0.2,0.2,0.0,0,0,16,20,80.0,1,13,0,0,0,Match Report,d0706b27
+2023-10-07,Sat,Premier League,Matchweek 8,Home,D 0–0,Crystal Palace,Nott'ham Forest,Y*,CB,90,0,0,0,0,0,0,0,0,115,2,0,1,0.0,0.0,0.1,3,0,101,104,97.1,4,86,1,2,1,Match Report,d0706b27
+2023-10-13,Fri,Friendlies (M),Friendlies (M),Home,W 1–0,eng England,au Australia,N,"On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play","On matchday squad, but did not play",Match Report,d0706b27
+2023-10-17,Tue,UEFA Euro Qualifying,Group stage,Home,W 3–1,eng England,it Italy,N,,28,0,0,0,0,0,0,0,0,,,1,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-10-21,Sat,Premier League,Matchweek 9,Away,L 0–4,Crystal Palace,Newcastle Utd,Y,CB,90,0,0,0,0,2,0,0,0,57,1,1,0,0.2,0.2,0.0,1,0,40,44,90.9,2,29,0,1,1,Match Report,d0706b27
+2023-10-27,Fri,Premier League,Matchweek 10,Home,L 1–2,Crystal Palace,Tottenham,Y,CB,90,0,0,0,0,1,0,0,0,38,1,1,5,0.2,0.2,0.0,1,0,19,27,70.4,0,12,1,0,0,Match Report,d0706b27
+2023-11-04,Sat,Premier League,Matchweek 11,Away,W 2–0,Crystal Palace,Burnley,Y,CB,90,0,0,0,0,0,0,1,0,46,0,1,0,0.0,0.0,0.0,0,0,32,38,84.2,0,27,0,0,0,Match Report,d0706b27
+2023-11-11,Sat,Premier League,Matchweek 12,Home,L 2–3,Crystal Palace,Everton,Y,CB,90,0,0,0,0,0,0,0,0,137,2,1,0,0.0,0.0,0.0,1,0,113,126,89.7,7,100,1,1,1,Match Report,d0706b27
+2023-11-17,Fri,UEFA Euro Qualifying,Group stage,Home,W 2–0,eng England,mt Malta,Y,CB,90,0,0,0,0,0,0,0,0,,,2,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-11-20,Mon,UEFA Euro Qualifying,Group stage,Away,D 1–1,eng England,mk N. Macedonia,Y,CB,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,d0706b27
+2023-11-25,Sat,Premier League,Matchweek 13,Away,L 1–2,Crystal Palace,Luton Town,Y,CB,90,0,0,0,0,0,0,0,0,80,0,3,0,0.0,0.0,0.0,1,0,60,71,84.5,3,53,0,0,0,Match Report,d0706b27
+2023-12-03,Sun,Premier League,Matchweek 14,Away,D 1–1,Crystal Palace,West Ham,Y,CB,90,0,0,0,0,0,0,0,0,69,1,1,0,0.0,0.0,0.3,1,0,49,62,79.0,4,37,1,0,0,Match Report,d0706b27
+2023-12-06,Wed,Premier League,Matchweek 15,Home,L 0–2,Crystal Palace,Bournemouth,Y,CB,90,0,0,0,0,0,0,0,0,105,2,0,0,0.0,0.0,0.0,0,0,80,97,82.5,2,54,1,1,0,Match Report,d0706b27
+2023-12-09,Sat,Premier League,Matchweek 16,Home,L 1–2,Crystal Palace,Liverpool,Y,CB,90,0,0,0,0,0,0,0,0,28,2,1,0,0.0,0.0,0.0,0,0,13,19,68.4,1,9,1,1,0,Match Report,d0706b27
+2023-12-16,Sat,Premier League,Matchweek 17,Away,D 2–2,Crystal Palace,Manchester City,Y,CB,90,0,0,0,0,0,0,0,0,55,1,0,2,0.0,0.0,0.0,1,1,37,44,84.1,2,32,0,2,1,Match Report,d0706b27
+2023-12-21,Thu,Premier League,Matchweek 18,Home,D 1–1,Crystal Palace,Brighton,Y*,CB,90,0,0,0,0,0,0,0,0,57,2,0,2,0.0,0.0,0.0,0,0,45,48,93.8,1,31,0,0,0,Match Report,d0706b27
+2023-12-27,Wed,Premier League,Matchweek 19,Away,L 1–2,Crystal Palace,Chelsea,Y*,CB,90,0,0,0,0,0,0,0,0,46,1,0,1,0.0,0.0,0.0,0,0,38,43,88.4,2,19,0,0,0,Match Report,d0706b27
+2023-12-30,Sat,Premier League,Matchweek 20,Home,W 3–1,Crystal Palace,Brentford,Y*,CB,90,0,1,0,0,0,0,0,0,60,1,1,0,0.0,0.0,0.1,1,1,38,51,74.5,4,30,0,0,0,Match Report,d0706b27
+2024-01-04,Thu,FA Cup,Third round proper,Home,D 0–0,Crystal Palace,Everton,Y*,CB,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,d0706b27
+2024-01-17,Wed,FA Cup,Third round proper,Away,L 0–1,Crystal Palace,Everton,Y*,CB,90,0,0,0,0,0,0,0,0,,,0,,,,,,,,,,,,,,,Match Report,d0706b27
+2024-01-20,Sat,Premier League,Matchweek 21,Away,L 0–5,Crystal Palace,Arsenal,Y*,CB,86,0,0,0,0,0,0,0,0,51,0,0,3,0.0,0.0,0.0,1,0,33,44,75.0,3,31,1,1,0,Match Report,d0706b27
+2024-01-30,Tue,Premier League,Matchweek 22,Home,W 3–2,Crystal Palace,Sheffield Utd,Y*,CB,90,0,0,0,0,0,0,0,0,73,1,2,0,0.0,0.0,0.1,2,0,60,68,88.2,7,47,1,1,0,Match Report,d0706b27
+2024-02-03,Sat,Premier League,Matchweek 23,Away,L 1–4,Crystal Palace,Brighton,Y*,CB,27,0,0,0,0,0,0,1,0,21,1,1,0,0.0,0.0,0.0,0,0,16,19,84.2,1,15,0,1,1,Match Report,d0706b27
+2024-05-06,Mon,Premier League,Matchweek 36,Home,W 4–0,Crystal Palace,Manchester Utd,N,CB,13,0,0,0,0,0,0,0,0,19,0,0,0,0.0,0.0,0.0,1,0,18,18,100.0,3,8,1,0,0,Match Report,d0706b27
+2024-05-11,Sat,Premier League,Matchweek 37,Away,W 3–1,Crystal Palace,Wolves,N,CB,21,0,0,0,0,0,0,0,0,12,1,0,0,0.0,0.0,0.0,0,0,5,8,62.5,2,5,0,0,0,Match Report,d0706b27
+2024-05-19,Sun,Premier League,Matchweek 38,Home,W 5–0,Crystal Palace,Aston Villa,Y*,CM,75,0,0,0,0,0,0,0,0,47,1,0,0,0.0,0.0,0.0,3,0,42,44,95.5,4,22,1,0,0,Match Report,d0706b27
+2024-06-03,Mon,Friendlies (M),Friendlies (M),Home,W 3–0,eng England,ba Bosnia & Herz'na,Y,CB,61,0,0,0,0,,,1,0,,,,,,,,,,,,,,,,,,Match Report,d0706b27
+2024-06-07,Fri,Friendlies (M),Friendlies (M),Home,L 0–1,eng England,is Iceland,Y,CB,90,0,0,0,0,,,0,0,,,,,,,,,,,,,,,,,,Match Report,d0706b27
+2024-06-16,Sun,UEFA Euro,Group stage,Neutral,W 1–0,eng England,rs Serbia,Y,CB,90,0,0,0,0,0,0,0,0,60,1,0,2,0.0,0.0,0.0,0,0,51,53,96.2,2,39,0,0,0,Match Report,d0706b27
+2024-06-20,Thu,UEFA Euro,Group stage,Neutral,D 1–1,eng England,dk Denmark,Y,CB,90,0,0,0,0,1,0,0,0,63,1,2,2,0.0,0.0,0.0,0,0,47,52,90.4,3,36,0,1,0,Match Report,d0706b27
+2024-06-25,Tue,UEFA Euro,Group stage,Neutral,D 0–0,eng England,si Slovenia,Y,CB,90,0,0,0,0,0,0,1,0,114,0,0,1,0.0,0.0,0.0,0,0,102,110,92.7,6,88,1,0,0,Match Report,d0706b27
+2024-06-30,Sun,UEFA Euro,Round of 16,Neutral,W 2–1,eng England,sk Slovakia,Y,CB,120,0,1,0,0,0,0,1,0,125,0,0,1,0.0,0.0,0.1,1,1,112,121,92.6,5,83,0,0,0,Match Report,d0706b27
