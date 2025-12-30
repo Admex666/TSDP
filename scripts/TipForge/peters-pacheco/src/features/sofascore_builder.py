@@ -113,16 +113,20 @@ class SofaScoreFeatureBuilder:
             'wonContest', 'possessionLostCtrl', 'minutesPlayed'
         ]
         
-        # Filter only existing columns
-        existing_cols = [c for c in stats_cols if c in df_lineups.columns]
-        if not existing_cols:
-            return
-            
         # Iterate and store
         for _, player_row in df_lineups.iterrows():
             pid = player_row['id']
-            stats = player_row[existing_cols].to_dict()
+            stats = {}
             stats['match_timestamp'] = match_timestamp
+            
+            # extract safe values
+            for col in stats_cols:
+                # If column exists, take value. If NaN or missing, 0.
+                if col in player_row:
+                    val = player_row[col]
+                    stats[col] = val if pd.notna(val) else 0.0
+                else:
+                    stats[col] = 0.0
             
             if pid not in self.player_history_cache:
                 self.player_history_cache[pid] = []

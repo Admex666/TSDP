@@ -1,43 +1,49 @@
-from curl_cffi import requests
-import pandas as pd
-import json
-import time
-import random
-
 def scrape_sofascore(url):
-    # Curl Impersonate (Chrome 119) is often more robust against Cloudflare/Akamai
+    from curl_cffi import requests
+    import time
+    import random
+
+    # Mobile App Strategy
+    # Emulating an Android device requesting the API directly
+    
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-        "Accept": "*/*",
-        "Referer": "https://www.sofascore.com/",
-        "Origin": "https://www.sofascore.com",
+        "User-Agent": "SofaScore/6.1.5 (Linux; Android 13; SM-G991B Build/K25; wv)",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        # "X-Requested-With": "com.sofascore.results" # Sometimes needed essentially mimics the app
     }
     
+    # We use a standard 'chrome' impersonation for TLS handshake, but headers claim to be Android App.
+    # This mismatch sometimes bypasses WAFs looking for specific browser inconsistencies.
+    
     retries = 3
+    
     for i in range(retries):
         try:
-            # Impersonate Chrome 119
-            resp = requests.get(url, headers=headers, impersonate="chrome119", timeout=10)
+            # Random delay
+            time.sleep(random.uniform(2, 5))
             
+            resp = requests.get(
+                url, 
+                impersonate="chrome110", # Keep consistent TLS
+                headers=headers,
+                timeout=15
+            )
+
             if resp.status_code == 200:
-                try:
-                    return resp.json()
-                except ValueError:
-                    print(f"Error parsing JSON from {url}")
-                    return {}
+                return resp.json()
             elif resp.status_code == 404:
-                 return {}
+                return {}
             elif resp.status_code == 403:
-                print(f"403 Forbidden (curl_cffi) for {url}. Retrying ({i+1}/{retries})...")
-                time.sleep(3 + i*2)
+                print(f"403 Forbidden (Mobile Strategy). Retrying ({i+1})...")
             else:
-                print(f"Error: {resp.status_code} for {url}")
-                time.sleep(1)
+                print(f"Error: {resp.status_code}")
+                
         except Exception as e:
-            print(f"Exception fetching {url}: {e}")
-            time.sleep(1)
+            print(f"Exception: {e}")
             
-    print(f"Failed to fetch {url} after {retries} retries.")
+    print(f"Failed to scrape {url} after {retries} mobile attempts.")
     return {}
 
 def get_events_for_round(tournament_id, season_id, round_num):
@@ -55,7 +61,7 @@ def create_lineups_df(event_id):
     
     if not lineups_data or 'home' not in lineups_data:
         return pd.DataFrame()
-
+    
     # Process home players
     for player in lineups_data['home']['players']:
         player_info = player['player'].copy()
@@ -90,8 +96,9 @@ def create_average_positions_df(event_id):
     url = f"https://www.sofascore.com/api/v1/event/{event_id}/average-positions"
     average_positions_data = scrape_sofascore(url)
     
-    if not average_positions_data: return pd.DataFrame()
-
+    if not average_positions_data:
+        return pd.DataFrame()
+    
     # Process home players
     if 'home' in average_positions_data:
         for player in average_positions_data['home']:
@@ -129,8 +136,9 @@ def create_statistics_df(event_id):
     url = f"https://www.sofascore.com/api/v1/event/{event_id}/statistics"
     statistics_data = scrape_sofascore(url)
     
-    if not statistics_data or 'statistics' not in statistics_data: return pd.DataFrame()
-
+    if not statistics_data or 'statistics' not in statistics_data:
+        return pd.DataFrame()
+    
     for period_data in statistics_data['statistics']:
         period = period_data['period']
         
@@ -162,8 +170,9 @@ def create_shotmap_df(event_id):
     url = f"https://www.sofascore.com/api/v1/event/{event_id}/shotmap"
     shotmap_data = scrape_sofascore(url)
     
-    if not shotmap_data or 'shotmap' not in shotmap_data: return pd.DataFrame()
-
+    if not shotmap_data or 'shotmap' not in shotmap_data:
+        return pd.DataFrame()
+    
     for shot in shotmap_data['shotmap']:
         shot_info = shot['player'].copy()
         shot_info.update({
@@ -192,8 +201,9 @@ def create_graph_df(event_id):
     url = f"https://www.sofascore.com/api/v1/event/{event_id}/graph"
     graph_data = scrape_sofascore(url)
     
-    if not graph_data or 'graphPoints' not in graph_data: return pd.DataFrame()
-
+    if not graph_data or 'graphPoints' not in graph_data:
+        return pd.DataFrame()
+    
     for point in graph_data['graphPoints']:
         graph_points.append({
             'minute': point['minute'],
@@ -202,21 +212,34 @@ def create_graph_df(event_id):
     
     return pd.DataFrame(graph_points)
 
-# 6. Player stats helper (not API endpoint, but utility)
+# 6. Player stats DataFrame
 def create_player_stats_df(player_stats_data):
+    """
+    Convert player statistics data to a pandas DataFrame
+    """
     all_player_stats = []
     
     for player_data in player_stats_data:
+        # Alap játékos információk
         player_info = player_data['player'].copy()
+        
+        # Csapat információk hozzáadása
         player_info['team_name'] = player_data['team']['name']
         player_info['team_id'] = player_data['team']['id']
+        
+        # Pozíció hozzáadása
         player_info['position'] = player_data.get('position', '')
+        
+        # Statisztikák hozzáadása, ha vannak
         if 'statistics' in player_data:
             player_info.update(player_data['statistics'])
         
         all_player_stats.append(player_info)
     
-    return pd.DataFrame(all_player_stats)
+    # DataFrame létrehozása
+    player_stats_df = pd.DataFrame(all_player_stats)
+    
+    return player_stats_df
 
 # 7. Game odds
 def create_odds_df(event_id):
@@ -244,6 +267,7 @@ def create_odds_df(event_id):
         return df_odds
     else:
         return pd.DataFrame()
+    
 
 def fetch_passmap(event_id, player_id):
     url = f"https://www.sofascore.com/api/v1/event/{event_id}/player/{player_id}/rating-breakdown"
@@ -251,15 +275,12 @@ def fetch_passmap(event_id, player_id):
     resp = scrape_sofascore(url)
     rows = []
     
-    if not resp: return pd.DataFrame()
+    if not resp:
+        return pd.DataFrame()
 
-    # Inspect structure? This is specific.
-    # The user code: "for event_type, events in resp.items():"
-    # This assumes resp is a dict of lists?
-    # Let's trust user code but be safe.
     try:
         if isinstance(resp, dict):
-             for event_type, events in resp.items():
+            for event_type, events in resp.items():
                 if isinstance(events, list):
                     for e in events:
                         row = {
