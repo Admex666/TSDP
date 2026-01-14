@@ -1,0 +1,2 @@
+scrape_time,match_timestamp,game_time,game_index,home_is_blue,blue_kills,blue_towers,blue_inhibitors,blue_barons,blue_gold,blue_dragons,blue_dragon_types,red_kills,red_towers,red_inhibitors,red_barons,red_gold,red_dragons,red_dragon_types,pred_blue,pred_red,odds_data,gold_diff,kill_diff,tower_diff,blue_cs_total,red_cs_total,cs_diff
+2026-01-14T17:54:20.417397,2026-01-14T17:54:01.783960,00:00,1,True,0,5,0,0,60948,2,"[""infernal"", ""cloud""]",0,5,0,2,67334,3,"[""chemtech"", ""cloud"", ""cloud""]",0.263997513962569,0.736002486037431,[],-6386,0,0,1164,1222,-58

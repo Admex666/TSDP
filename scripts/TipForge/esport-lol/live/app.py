@@ -1,248 +1,333 @@
+
 import streamlit as st
 import pandas as pd
-import numpy as np
-import joblib
+import time
+import json
 import os
+import sys
+import logging
+import joblib
+from datetime import datetime
+
+# Add current directory to path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from riot_api import RiotEsportsAPI
+from discovery import TippmixDiscovery
+from scrapers import OddsScraper
+from value_betting import ValueBettingEngine
 
 # Page config
-st.set_page_config(page_title="🎮 LoL Live Predictor", layout="wide")
+st.set_page_config(
+    page_title="TipForge Live Scanner",
+    page_icon="⚡",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-# Load models
-@st.cache_resource
-def load_models():
-    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-    gb_model = joblib.load(os.path.join(BASE_DIR, "models", "live_gb_model_20251031.joblib"))
-    rf_model = joblib.load(os.path.join(BASE_DIR, "models", "live_rf_model_20251031.joblib"))
-    scaler = joblib.load(os.path.join(BASE_DIR, "models", "live_scaler_20251031.joblib"))
-    return gb_model, rf_model, scaler
+# Initialize Session State
+if 'riot_api' not in st.session_state:
+    st.session_state.riot_api = RiotEsportsAPI()
 
-gb_model, rf_model, scaler = load_models()
+if 'discovery' not in st.session_state:
+    st.session_state.discovery = TippmixDiscovery(headless=True)
 
-# Feature columns
-feature_cols = [
-    'kills_diff', 'towers_diff', 'drakes_diff', 'barons_BLUE', 'barons_RED',
-    'gold_diff', 'gold_diff_pct', 'cs_diff', 'gold_per_min_blue', 'gold_per_min_red',
-    'cs_per_min_blue', 'cs_per_min_red', 'kill_momentum_3min', 'gold_momentum_5min', 
-    'drake_control_score', 'tower_sequence_score', 'baron_timing_advantage', 
-    'early_advantage', 'mid_advantage', 'late_advantage', 'has_soul_point', 
-    'gold_lead_critical', 'tower_lead_critical', 'phase_early', 'phase_mid',
-    'phase_late', 'gold_diff_x_minute', 'kills_diff_x_minute', 'momentum_composite'
-]
+if 'odds_scraper' not in st.session_state:
+    st.session_state.odds_scraper = OddsScraper(headless=True)
 
-def calculate_features(minute, k_blue, k_red, t_blue, t_red, d_blue, d_red, 
-                       b_blue, b_red, g_blue, g_red, cs_blue, cs_red):
-    """Feature engineering from user inputs"""
-    
-    kills_diff = k_blue - k_red
-    towers_diff = t_blue - t_red
-    drakes_diff = d_blue - d_red
-    gold_diff = g_blue - g_red
-    
-    gold_diff_pct = (gold_diff / g_red * 100) if g_red > 0 else 0
-    gold_per_min_blue = g_blue / minute if minute > 0 else 0
-    gold_per_min_red = g_red / minute if minute > 0 else 0
-    
-    cs_diff = cs_blue - cs_red
-    cs_per_min_blue = cs_blue / (minute + 1)
-    cs_per_min_red = cs_red / (minute + 1)
-    
-    kill_momentum_3min = int(kills_diff * 0.3)
-    gold_momentum_5min = gold_diff * 0.2 / 5 if minute >= 5 else 0
-    
-    drake_control_score = drakes_diff * 1.5
-    tower_sequence_score = towers_diff * 1.2
-    baron_timing_advantage = -1 if (b_blue + b_red) == 0 else 2
-    
-    phase_early = 1 if minute < 15 else 0
-    phase_mid = 1 if 15 <= minute < 25 else 0
-    phase_late = 1 if minute >= 25 else 0
-    
-    early_advantage = (cs_diff + gold_diff/10 + kills_diff*300) / minute if minute > 0 and phase_early else 0
-    mid_advantage = (drakes_diff * 2 + towers_diff * 1.5) if phase_mid else 0
-    late_advantage = gold_diff_pct + (b_blue - b_red) * 3 if phase_late else 0
-    
-    has_soul_point = 1 if (d_blue >= 3 or d_red >= 3) else 0
-    gold_lead_critical = 1 if abs(gold_diff) > 3000 else 0
-    tower_lead_critical = 1 if abs(towers_diff) >= 3 else 0
-    
-    gold_diff_x_minute = gold_diff * minute
-    kills_diff_x_minute = kills_diff * minute
-    momentum_composite = kill_momentum_3min + gold_momentum_5min / 100
-    
-    features = {
-        'kills_diff': kills_diff,
-        'towers_diff': towers_diff,
-        'drakes_diff': drakes_diff,
-        'barons_BLUE': b_blue,
-        'barons_RED': b_red,
-        'gold_diff': gold_diff,
-        'gold_diff_pct': gold_diff_pct,
-        'cs_diff': cs_diff,
-        'gold_per_min_blue': gold_per_min_blue,
-        'gold_per_min_red': gold_per_min_red,
-        'cs_per_min_blue': cs_per_min_blue,
-        'cs_per_min_red': cs_per_min_red,
-        'kill_momentum_3min': kill_momentum_3min,
-        'gold_momentum_5min': gold_momentum_5min,
-        'drake_control_score': drake_control_score,
-        'tower_sequence_score': tower_sequence_score,
-        'baron_timing_advantage': baron_timing_advantage,
-        'early_advantage': early_advantage,
-        'mid_advantage': mid_advantage,
-        'late_advantage': late_advantage,
-        'has_soul_point': has_soul_point,
-        'gold_lead_critical': gold_lead_critical,
-        'tower_lead_critical': tower_lead_critical,
-        'phase_early': phase_early,
-        'phase_mid': phase_mid,
-        'phase_late': phase_late,
-        'gold_diff_x_minute': gold_diff_x_minute,
-        'kills_diff_x_minute': kills_diff_x_minute,
-        'momentum_composite': momentum_composite
-    }
-    
-    return features
+if 'tracked_matches' not in st.session_state:
+    st.session_state.tracked_matches = {} # {riot_game_id: {info...}}
 
-# Title
-st.title("🎮 LIVE MATCH WIN PREDICTOR")
-st.markdown("---")
+if 'tippmix_matches' not in st.session_state:
+    st.session_state.tippmix_matches = {}
 
-# Game minute
-st.subheader("⏰ Game State")
-minute = st.slider("Minute", 5, 40, 15)
-st.markdown("---")
+if 'riot_live_games' not in st.session_state:
+    st.session_state.riot_live_games = []
 
-# Stats in rows, teams in columns
-st.subheader("📊 Match Statistics")
+if 'models_loaded' not in st.session_state:
+    try:
+        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        models_dir = os.path.join(root_dir, "models")
+        
+        gb_model = joblib.load(os.path.join(models_dir, "live_gb_model_20251031.joblib"))
+        rf_model = joblib.load(os.path.join(models_dir, "live_rf_model_20251031.joblib"))
+        scaler = joblib.load(os.path.join(models_dir, "live_scaler_20251031.joblib"))
+        
+        st.session_state.engine = ValueBettingEngine(
+            gb_model, rf_model, scaler,
+            min_edge=0.03,
+            min_confidence=0.4
+        )
+        st.session_state.models_loaded = True
+    except Exception as e:
+        st.error(f"Failed to load models: {e}")
+        st.session_state.models_loaded = False
 
-# Column headers
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("### ")
-with col_blue:
-    st.markdown("### 🔵 BLUE")
-with col_red:
-    st.markdown("### 🔴 RED")
-
-# Kills
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("**⚔️ Kills**")
-with col_blue:
-    kills_blue = st.number_input("Kills Blue", 0, 100, 5, label_visibility="collapsed", key="kills_blue")
-with col_red:
-    kills_red = st.number_input("Kills Red", 0, 100, 3, label_visibility="collapsed", key="kills_red")
-
-# Towers
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("**🏰 Towers**")
-with col_blue:
-    towers_blue = st.number_input("Towers Blue", 0, 11, 2, label_visibility="collapsed", key="towers_blue")
-with col_red:
-    towers_red = st.number_input("Towers Red", 0, 11, 1, label_visibility="collapsed", key="towers_red")
-
-# Drakes
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("**🐉 Drakes**")
-with col_blue:
-    drakes_blue = st.number_input("Drakes Blue", 0, 4, 2, label_visibility="collapsed", key="drakes_blue")
-with col_red:
-    drakes_red = st.number_input("Drakes Red", 0, 4, 0, label_visibility="collapsed", key="drakes_red")
-
-# Barons
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("**👑 Barons**")
-with col_blue:
-    barons_blue = st.number_input("Barons Blue", 0, 5, 0, label_visibility="collapsed", key="barons_blue")
-with col_red:
-    barons_red = st.number_input("Barons Red", 0, 5, 0, label_visibility="collapsed", key="barons_red")
-
-# Gold
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("**💰 Gold**")
-with col_blue:
-    gold_blue = st.number_input("Gold Blue", 0, 100000, 25000, step=1000, label_visibility="collapsed", key="gold_blue")
-with col_red:
-    gold_red = st.number_input("Gold Red", 0, 100000, 22000, step=1000, label_visibility="collapsed", key="gold_red")
-
-# CS
-col_label, col_blue, col_red = st.columns([2, 1, 1])
-with col_label:
-    st.markdown("**🗡️ CS (Creep Score)**")
-with col_blue:
-    cs_blue = st.number_input("CS Blue", 0, 1500, 500, step=5, label_visibility="collapsed", key="cs_blue")
-with col_red:
-    cs_red = st.number_input("CS Red", 0, 1500, 520, step=5, label_visibility="collapsed", key="cs_red")
-
-st.markdown("---")
-
-# Model selection and predict button
-col1, col2 = st.columns([2, 1])
-with col1:
-    model_choice = st.selectbox("🤖 Select Model", ["Gradient Boosting", "Random Forest"])
-with col2:
-    st.markdown("###")
-    predict_btn = st.button("🎯 PREDICT", type="primary", use_container_width=True)
-
-# Prediction
-if predict_btn:
-    features = calculate_features(minute, kills_blue, kills_red, towers_blue, 
-                                  towers_red, drakes_blue, drakes_red,
-                                  barons_blue, barons_red, gold_blue, gold_red, cs_blue, cs_red)
+# Sidebar
+with st.sidebar:
+    st.header("⚡ Live Scanner Control")
     
-    X_input = pd.DataFrame([features])[feature_cols]
-    
-    model = gb_model if model_choice == "Gradient Boosting" else rf_model
-    prob_blue = model.predict_proba(X_input)[0, 1]
-    prob_red = 1 - prob_blue
-    
-    odds_blue = 1 / prob_blue
-    odds_red = 1 / prob_red
-    
-    st.markdown("---")
-    st.subheader(f"🎯 MATCH PREDICTION @ {minute} MINUTES")
-    
-    # Current state
-    st.markdown(f"""
-    **📊 Current Game State:**  
-    Kills: {kills_blue}-{kills_red} | Towers: {towers_blue}-{towers_red} | Drakes: {drakes_blue}-{drakes_red}  
-    Gold: {gold_blue:,} vs {gold_red:,} ({gold_blue-gold_red:+,} diff) | Barons: {barons_blue}-{barons_red}
-    """)
-    
-    # Win probability bars
-    st.markdown("**🎯 WIN PROBABILITY:**")
-    col_blue, col_red = st.columns(2)
-    with col_blue:
-        st.metric("🔵 BLUE", f"{prob_blue*100:.1f}%")
-        st.progress(prob_blue)
-    with col_red:
-        st.metric("🔴 RED", f"{prob_red*100:.1f}%")
-        st.progress(prob_red)
-    
-    # Odds
-    st.markdown(f"**💰 IMPLIED ODDS:** 🔵 BLUE: {odds_blue:.2f} | 🔴 RED: {odds_red:.2f}")
-    
-    # Betting insight
-    st.markdown("**📈 BETTING INSIGHT:**")
-    if prob_blue > 0.65:
-        st.success("✅ STRONG BLUE FAVORITE - Consider backing BLUE")
-    elif prob_red > 0.65:
-        st.success("✅ STRONG RED FAVORITE - Consider backing RED")
-    elif 0.45 < prob_blue < 0.55:
-        st.warning("⚠️ CLOSE MATCH - High uncertainty, avoid betting")
+    if st.session_state.models_loaded:
+        st.success("✅ Models Loaded")
     else:
-        st.info("ℹ️ Moderate favorite - proceed with caution")
+        st.error("❌ Models Failed")
+        
+    st.divider()
     
-    # Key advantages
-    st.markdown("**🔑 Key Advantages:**")
-    if features['has_soul_point']:
-        team = 'BLUE' if drakes_blue >= 3 else 'RED'
-        st.write(f"• {team} is at SOUL POINT! (critical)")
+    if st.button("🔄 Refresh Riot Live Games"):
+        with st.spinner("Fetching live games from Riot..."):
+            api = st.session_state.riot_api
+            live_events = api.get_live()
+            
+            # Fallback to schedule if no live events returned directly
+            if not live_events:
+                schedule = api.get_schedule()
+                live_events = [e for e in schedule if e.get('state') == 'inProgress']
+            
+            games_found = []
+            for event in live_events:
+                event_id = event.get('id')
+                league_name = event.get('league', {}).get('name', 'Unknown')
+                
+                # Fetch details
+                details = api.get_event_details(event_id)
+                if not details: continue
+                
+                match_data = details.get('match', {})
+                teams = match_data.get('teams', [])
+                if len(teams) < 2: continue
+                
+                blue_name = teams[0].get('name', teams[0].get('code', 'Unknown'))
+                red_name = teams[1].get('name', teams[1].get('code', 'Unknown'))
+                
+                games = match_data.get('games', [])
+                for g in games:
+                    if g.get('state') == 'inProgress':
+                        games_found.append({
+                            'id': g['id'],
+                            'event_id': event_id,
+                            'league': league_name,
+                            'blue': blue_name,
+                            'red': red_name,
+                            'label': f"[{league_name}] {blue_name} vs {red_name}"
+                        })
+            
+            st.session_state.riot_live_games = games_found
+            st.success(f"Found {len(games_found)} live games.")
+
+    if st.button("🌐 Discover Tippmix Matches"):
+        with st.spinner("Scraping Tippmix..."):
+            discovery = st.session_state.discovery
+            matches = discovery.discover_lol_matches()
+            st.session_state.tippmix_matches = matches
+            st.success(f"Found {len(matches)} Tippmix matches.")
+            
+    st.divider()
+    st.subheader("Active Tracking")
+    if st.button("🗑️ Clear All Tracked"):
+        st.session_state.tracked_matches = {}
+        st.rerun()
+
+# Main Content
+tab_mapping, tab_dashboard, tab_debug = st.tabs(["🗺️ Match Mapping", "📊 Live Dashboard", "🐞 Debug"])
+
+with tab_mapping:
+    st.subheader("Map Live Games")
     
-    if features['gold_lead_critical']:
-        team = 'BLUE' if gold_blue > gold_red else 'RED'
-        st.write(f"• {team} has critical gold lead (3k+)")
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.write("### 1. Select Riot Game")
+        riot_options = {g['id']: g['label'] for g in st.session_state.riot_live_games}
+        selected_riot_id = st.selectbox(
+            "Live Games", 
+            options=list(riot_options.keys()),
+            format_func=lambda x: riot_options[x],
+            key="map_riot_select"
+        )
+    
+    with col2:
+        st.write("### 2. Select Tippmix Match")
+        tippmix_options = st.session_state.tippmix_matches
+        # Add a custom option for manual URL
+        match_keys = list(tippmix_options.keys())
+        selected_tippmix_key = st.selectbox(
+            "Discovered Matches",
+            options=["Manual URL"] + match_keys,
+            key="map_tippmix_select"
+        )
+        
+        tippmix_url = ""
+        if selected_tippmix_key == "Manual URL":
+            tippmix_url = st.text_input("Enter Tippmix URL")
+        else:
+            tippmix_url = tippmix_options[selected_tippmix_key]
+            st.info(f"URL: {tippmix_url}")
+            
+    st.write("### 3. Team Mapping")
+    col_map1, col_map2 = st.columns(2)
+    with col_map1:
+        st.info("How does Tippmix 'Hazai' (Home) map to Riot Side?")
+        mapping_choice = st.radio(
+            "Mapping",
+            ["Hazai = BLUE Side", "Hazai = RED Side"],
+            horizontal=True
+        )
+        home_is_blue = (mapping_choice == "Hazai = BLUE Side")
+
+    with col_map2:
+        if st.button("➕ Start Tracking Match", use_container_width=True):
+            if selected_riot_id and tippmix_url:
+                riot_game_info = next((g for g in st.session_state.riot_live_games if g['id'] == selected_riot_id), None)
+                if riot_game_info:
+                    st.session_state.tracked_matches[selected_riot_id] = {
+                        'info': riot_game_info,
+                        'tippmix_url': tippmix_url,
+                        'home_is_blue': home_is_blue,
+                        'last_update': None,
+                        'history': []
+                    }
+                    st.success(f"Tracking started for {riot_game_info['label']}")
+                    time.sleep(1)
+                    st.rerun()
+            else:
+                st.error("Please select both a Riot game and a Tippmix match/URL.")
+
+with tab_dashboard:
+    st.subheader("Live Value Betting Dashboard")
+    
+    # Auto-refresh mechanism
+    auto_refresh = st.toggle("Auto-Refresh (10s)", value=False)
+    
+    if st.button("🔄 Refresh Stats Now"):
+        st.rerun()
+        
+    if not st.session_state.tracked_matches:
+        st.warning("No matches currently being tracked. Go to 'Match Mapping' to add one.")
+    
+    for game_id, match_data in st.session_state.tracked_matches.items():
+        info = match_data['info']
+        url = match_data['tippmix_url']
+        home_is_blue = match_data['home_is_blue']
+        
+        with st.container(border=True):
+            # Header
+            st.markdown(f"### {info['label']}")
+            st.caption(f"ID: {game_id} | Tippmix: {url} | Mapping: {'Hazai=BLUE' if home_is_blue else 'Hazai=RED'}")
+            
+            # Fetch Live Data
+            api = st.session_state.riot_api
+            match_state = api.get_latest_match_state(game_id)
+            
+            if not match_state:
+                st.error("Could not fetch live stats from Riot API.")
+                continue
+                
+            # Display Game Stats
+            col_stats1, col_stats2, col_stats3, col_stats4 = st.columns(4)
+            
+            blue = match_state['blue_team']
+            red = match_state['red_team']
+            
+            with col_stats1:
+                st.metric("Game Time", match_state['game_time'])
+            
+            with col_stats2:
+                st.metric("Kills (Blue vs Red)", f"{blue['kills']} - {red['kills']}")
+            
+            with col_stats3:
+                gold_diff = blue['gold'] - red['gold']
+                st.metric("Gold Diff", f"{gold_diff:+,}", delta_color="normal")
+            
+            with col_stats4:
+                drakes = f"{len(blue['dragons'])} - {len(red['dragons'])}"
+                st.metric("Dragons", drakes)
+                
+            # Predictions
+            engine = st.session_state.engine
+            features = engine.calculate_features(match_state)
+            prob_blue, prob_red = engine.predict_win_probability(features)
+            
+            st.progress(prob_blue, text=f"**BLUE Win Probability: {prob_blue:.1%}** (Red: {prob_red:.1%})")
+            
+            # Scrape Odds & Calculate Value
+            odds_scraper = st.session_state.odds_scraper
+            odds_data = odds_scraper.scrape(url)
+            
+            if odds_data and odds_data.get('markets'):
+                st.write("#### 💰 Live Odds & Value")
+                
+                value_bets = engine.find_value_bets(
+                    match_state, odds_data, 
+                    home_is_blue=home_is_blue
+                )
+                
+                if value_bets:
+                    for vb in value_bets:
+                        color = "green" if vb['confidence'] == 'HIGH' else "orange" if vb['confidence'] == 'MEDIUM' else "gray"
+                        st.markdown(f"""
+                        <div style="padding: 10px; border-radius: 5px; border: 1px solid {color}; background-color: rgba(0,255,0,0.1);">
+                            <strong>🎯 {vb['team_name']} ({vb['team']})</strong> @ {vb['odds']:.2f}<br>
+                            Edge: <strong>{vb['edge']:.1f}%</strong> | Confidence: {vb['confidence']} | Kelly: {vb['kelly_fraction']:.1%}
+                        </div>
+                        """, unsafe_allow_html=True)
+                else:
+                    st.info("No value bets found currently.")
+                    
+                # Store history
+                timestamp = datetime.now().isoformat()
+                history_entry = {
+                    'time': timestamp,
+                    'game_time': match_state['game_time'],
+                    'prob_blue': prob_blue,
+                    'gold_diff': gold_diff
+                }
+                match_data['history'].append(history_entry)
+                
+                # Show raw market data (simplified)
+                with st.expander("Live Markets"):
+                    for m in odds_data['markets']:
+                        st.write(f"**{m['name']}**")
+                        cols = st.columns(len(m['options']))
+                        for i, opt in enumerate(m['options']):
+                             cols[i].metric(opt['name'], f"{opt['odds']:.2f}")
+
+            else:
+                st.warning("Could not scrape odds. Check if market is suspended.")
+
+            # Store match state for debug
+            st.session_state.last_match_state = match_state
+            if odds_data:
+                st.session_state.last_odds_data = odds_data
+
+    if auto_refresh:
+        time.sleep(10)
+        st.rerun()
+
+with tab_debug:
+    st.subheader("Debug Information")
+    
+    col_dbg1, col_dbg2 = st.columns(2)
+    
+    with col_dbg1:
+        st.write("#### Last Riot Match State")
+        if 'last_match_state' in st.session_state:
+            st.json(st.session_state.last_match_state)
+        else:
+            st.info("No match state available yet.")
+            
+    with col_dbg2:
+        st.write("#### Last Odds Data")
+        if 'last_odds_data' in st.session_state:
+            st.json(st.session_state.last_odds_data)
+        else:
+            st.info("No odds data available yet.")
+            
+    st.divider()
+    st.write("#### Log Tail")
+    try:
+        with open("live_scanner.log", "r") as f:
+            lines = f.readlines()
+            st.text_area("Log Output", "".join(lines[-20:]), height=300)
+    except:
+        st.info("No log file found.")

@@ -104,6 +104,14 @@ game_index = st.sidebar.number_input(
 
 st.sidebar.subheader("📊 Data Sources")
 
+# Initialize session state for inputs if not present
+if "game_id_input" not in st.session_state:
+    st.session_state.game_id_input = "115735024753016477"
+if "match_url_input" not in st.session_state:
+    st.session_state.match_url_input = "https://andydanger.github.io/live-lol-esports/#/live/113475871523985235"
+if "odds_url_input" not in st.session_state:
+    st.session_state.odds_url_input = "https://www.tippmixpro.hu/hu/fogadas/i/esemenyek/100/league-of-legends-lol/vilag/emea-masters-summer/karmine-corp-blue-los-heretics/284726865528393728/palyak"
+
 data_mode = st.sidebar.radio(
     "Data Input Mode",
     options=["🚀 Riot API (Live)", "🌐 Selenium Scraper"],
@@ -114,15 +122,19 @@ data_mode = st.sidebar.radio(
 if data_mode == "🚀 Riot API (Live)":
     game_id = st.sidebar.text_input(
         "Game ID (Feed)",
-        value="115735024753016477",
+        value=st.session_state.game_id_input,
+        key="game_id_sidebar",
         help="The specific Game ID from lolesports.com feed"
     )
+    st.session_state.game_id_input = game_id
 else:
     match_url = st.sidebar.text_input(
         "AndyDanger Match URL",
-        value="https://andydanger.github.io/live-lol-esports/#/live/113475871523985235",
+        value=st.session_state.match_url_input,
+        key="match_url_sidebar",
         help="URL to live match stats"
     )
+    st.session_state.match_url_input = match_url
 
 match_id = st.sidebar.text_input(
     "Match ID (for logging)",
@@ -133,9 +145,11 @@ st.session_state.current_match_id = match_id
 
 odds_url = st.sidebar.text_input(
     "Tippmix Odds URL",
-    value="https://www.tippmixpro.hu/hu/fogadas/i/esemenyek/100/league-of-legends-lol/vilag/emea-masters-summer/karmine-corp-blue-los-heretics/284726865528393728/palyak",
+    value=st.session_state.odds_url_input,
+    key="odds_url_sidebar",
     help="URL to live betting odds"
 )
+st.session_state.odds_url_input = odds_url
 
 # Csapat mapping
 st.sidebar.subheader("🔄 Team Mapping")
@@ -271,8 +285,22 @@ with tab0:
                 # Use match ID if available, otherwise fallback to index/hash
                 btn_key = event.get('match', {}).get('id') or f"idx_{active_upcoming.index(event)}"
                 if st.button("Select", key=f"sel_{btn_key}"):
-                    # Logic to set this match would go here
-                    st.info(f"Match {t1} vs {t2} selected!")
+                    # Update session state with selected match
+                    # We need the GAME ID, not the match ID for the feed
+                    match_details = api.get_event_details(event.get('id') or btn_key)
+                    if match_details:
+                        games = match_details.get('match', {}).get('games', [])
+                        if games:
+                            # Select first active or first unstarted game
+                            selected_game = next((g for g in games if g['state'] in ['inProgress', 'unstarted']), games[0])
+                            st.session_state.game_id_input = selected_game['id']
+                            st.success(f"Selected {t1} vs {t2}! (Game ID: {selected_game['id']})")
+                            st.warning("⚠️ Ne felejtsd el beállítani a hozzá tartozó Tippmix linket az oldalsávban!")
+                            st.rerun()
+                        else:
+                            st.error("No games found for this match.")
+                    else:
+                        st.error("Could not fetch match details.")
         
         st.markdown("---")
         st.caption("Check 'Schedule' app for full details and logos.")

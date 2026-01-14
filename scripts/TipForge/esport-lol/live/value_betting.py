@@ -190,6 +190,36 @@ class ValueBettingEngine:
         ev = (predicted_prob * odds - 1) * 100
         return ev
     
+    def auto_map_teams(self, riot_blue: str, riot_red: str, tippmix_options: List[str]) -> bool:
+        """
+        Automatically determine if Tippmix 'Hazai' corresponds to Blue or Red side.
+        
+        Args:
+            riot_blue: Name or code of team on Blue side from Riot
+            riot_red: Name or code of team on Red side from Riot
+            tippmix_options: List of team names from Tippmix (usually [Hazai, Vendég])
+            
+        Returns:
+            home_is_blue: True if Tippmix Home matches Riot Blue, False if it matches Riot Red
+        """
+        if len(tippmix_options) < 2:
+            return True # Default
+            
+        tippmix_home = tippmix_options[0].lower()
+        
+        # Check against Blue
+        blue_match = riot_blue.lower() in tippmix_home or tippmix_home in riot_blue.lower()
+        # Check against Red
+        red_match = riot_red.lower() in tippmix_home or tippmix_home in riot_red.lower()
+        
+        if blue_match and not red_match:
+            return True
+        if red_match and not blue_match:
+            return False
+            
+        # Fallback: fuzzy matching or just return True
+        return True
+
     def find_value_bets(self, match_stats: Dict, odds_data: Dict, 
                     use_ensemble: bool = True, 
                     home_is_blue: bool = True) -> List[Dict]:  # ÚJ paraméter!

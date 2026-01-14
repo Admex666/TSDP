@@ -315,12 +315,25 @@ class OddsScraper:
                 pass
             
             # Switch to iframe
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.TAG_NAME, "iframe"))
-            )
-            iframe = driver.find_elements(By.TAG_NAME, "iframe")[0]
-            driver.switch_to.frame(iframe)
-            time.sleep(2)
+            # Switch to iframe
+            try:
+                WebDriverWait(driver, 15).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "iframe[src*='sports2']"))
+                )
+                iframe = driver.find_element(By.CSS_SELECTOR, "iframe[src*='sports2']")
+                driver.switch_to.frame(iframe)
+                time.sleep(3)
+            except:
+                # Fallback to generic if sports2 not found (though unlikely)
+                try:
+                    WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.TAG_NAME, "iframe"))
+                    )
+                    iframe = driver.find_elements(By.TAG_NAME, "iframe")[0]
+                    driver.switch_to.frame(iframe)
+                    time.sleep(2)
+                except Exception as ie:
+                    logger.warning(f"Could not switch to iframe: {ie}")
             
             # Extract markets
             articles = driver.find_elements(By.TAG_NAME, "article")
