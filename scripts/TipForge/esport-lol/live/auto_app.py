@@ -13,6 +13,8 @@ import joblib
 import os
 from typing import Dict, List
 from data_logger import SnapshotLogger
+from riot_api import RiotEsportsAPI
+import pytz
 
 # Initialize logger
 if 'snapshot_logger' not in st.session_state:
@@ -102,18 +104,32 @@ game_index = st.sidebar.number_input(
 
 st.sidebar.subheader("📊 Data Sources")
 
+data_mode = st.sidebar.radio(
+    "Data Input Mode",
+    options=["🚀 Riot API (Live)", "🌐 Selenium Scraper"],
+    index=0,
+    help="Fastest and most stable using the official feed, or fallback to web scraping."
+)
+
+if data_mode == "🚀 Riot API (Live)":
+    game_id = st.sidebar.text_input(
+        "Game ID (Feed)",
+        value="115735024753016477",
+        help="The specific Game ID from lolesports.com feed"
+    )
+else:
+    match_url = st.sidebar.text_input(
+        "AndyDanger Match URL",
+        value="https://andydanger.github.io/live-lol-esports/#/live/113475871523985235",
+        help="URL to live match stats"
+    )
+
 match_id = st.sidebar.text_input(
     "Match ID (for logging)",
     value=datetime.now().strftime("%Y%m%d_%H%M"),
     help="Unique identifier for this match session"
 )
 st.session_state.current_match_id = match_id
-
-match_url = st.sidebar.text_input(
-    "AndyDanger Match URL",
-    value="https://andydanger.github.io/live-lol-esports/#/live/113475871523985235",
-    help="URL to live match stats"
-)
 
 odds_url = st.sidebar.text_input(
     "Tippmix Odds URL",
@@ -209,13 +225,59 @@ with col4:
 st.markdown("---")
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab0, tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "📅 Schedule",
     "📊 Live Match", 
     "🎯 Value Bets", 
     "📈 Performance", 
     "📜 History",
     "💾 Snapshots"
 ])
+
+# Tab 0: Schedule
+with tab0:
+    st.subheader("📅 Upcoming LoL Matches")
+    api = RiotEsportsAPI()
+    
+    with st.spinner("Fetching schedule..."):
+        all_events = api.get_schedule()
+    
+    if all_events:
+        # Simple sorting and filtering for the dashboard
+        active_upcoming = [e for e in all_events if e['state'] != 'completed']
+        active_upcoming.sort(key=lambda x: x['startTime'])
+        
+        for event in active_upcoming[:10]: # Show top 10
+            start_time = datetime.fromisoformat(event['startTime'].replace('Z', '+00:00'))
+            local_time = start_time.astimezone(pytz.timezone('Europe/Budapest'))
+            time_str = local_time.strftime("%H:%M")
+            
+            league = event['league']['name']
+            teams = event.get('match', {}).get('teams', [])
+            t1 = teams[0]['code'] if len(teams) > 0 else "TBD"
+            t2 = teams[1]['code'] if len(teams) > 1 else "TBD"
+            
+            state = event['state']
+            state_emoji = "🔴" if state == 'inProgress' else "⏳"
+            
+            col1, col2, col3, col4 = st.columns([1, 2, 3, 2])
+            with col1:
+                st.write(f"**{time_str}**")
+            with col2:
+                st.write(f"*{league}*")
+            with col3:
+                st.write(f"{state_emoji} **{t1} vs {t2}**")
+            with col4:
+                # Use match ID if available, otherwise fallback to index/hash
+                btn_key = event.get('match', {}).get('id') or f"idx_{active_upcoming.index(event)}"
+                if st.button("Select", key=f"sel_{btn_key}"):
+                    # Logic to set this match would go here
+                    st.info(f"Match {t1} vs {t2} selected!")
+        
+        st.markdown("---")
+        st.caption("Check 'Schedule' app for full details and logos.")
+    else:
+        st.error("Could not load schedule.")
 
 # Tab 1: Live Match
 with tab1:
@@ -232,7 +294,13 @@ with tab1:
                 from scrapers import scrape_match_stats, scrape_odds
                 from value_betting import ValueBettingEngine
                 
-                match_data = scrape_match_stats(match_url+f'/game-index/{game_index}')
+                api = RiotEsportsAPI()
+                
+                if data_mode == "🚀 Riot API (Live)":
+                    match_data = api.get_latest_match_state(game_id)
+                else:
+                    match_data = scrape_match_stats(match_url+f'/game-index/{game_index}')
+                
                 odds_data = scrape_odds(odds_url, game_index=game_index)
 
                 if match_data and odds_data and gb_model and rf_model and scaler:
@@ -778,7 +846,13 @@ if st.session_state.tracking_active:
             from scrapers import scrape_match_stats, scrape_odds
             from value_betting import ValueBettingEngine
             
-            match_data = scrape_match_stats(match_url+f'/game-index/{game_index}')
+            api = RiotEsportsAPI()
+            
+            if data_mode == "🚀 Riot API (Live)":
+                match_data = api.get_latest_match_state(game_id)
+            else:
+                match_data = scrape_match_stats(match_url+f'/game-index/{game_index}')
+            
             odds_data = scrape_odds(odds_url)
             
             if match_data and odds_data and gb_model and rf_model and scaler:
