@@ -71,15 +71,22 @@ class RisingBallerDataset(Dataset):
         # Performance features (normalized/scaled - for now just raw)
         feat_tensor = torch.tensor(selected_players[self.features].fillna(0).values, dtype=torch.float32)
         
-        # Target: Team A xG (just as an example)
-        # In a real scenario, this would be from the schedule data
-        target = torch.tensor([selected_players['Performance_xG'].mean() if 'Performance_xG' in selected_players else 0.0], dtype=torch.float32)
+        # Target: Home Goals and Away Goals
+        # Home Goals = Home Player Gls + Away Player OG
+        # Away Goals = Away Player Gls + Home Player OG
+        home_players = group[group['team'] == teams[0]]
+        away_players = group[group['team'] == teams[1]]
+        
+        home_score = home_players['Performance_Gls'].sum() + away_players['Performance_OG'].sum()
+        away_score = away_players['Performance_Gls'].sum() + home_players['Performance_OG'].sum()
+        
+        target = torch.tensor([home_score, away_score], dtype=torch.float32)
         
         return {
             'player_ids': player_ids, # (22)
             'pos_ids': pos_ids,       # (22)
             'features': feat_tensor,  # (22, F)
-            'target': target          # (1)
+            'target': target          # (2) - [Home, Away]
         }
 
 if __name__ == "__main__":

@@ -72,6 +72,10 @@ class RisingBallerDataCollector:
 
     def run(self, limit=None):
         """Main loop to collect data for all matches."""
+        logger.info(f"Fetching schedule to get scores...")
+        schedule = self.fbref.read_schedule()
+        schedule_scores = schedule[['game_id', 'score', 'home_team', 'away_team']].copy()
+        
         match_ids = self.get_match_ids()
         if limit:
             match_ids = match_ids[:limit]
@@ -81,25 +85,24 @@ class RisingBallerDataCollector:
         for i, m_id in enumerate(match_ids):
             out_file = self.base_path / f"{m_id}.parquet"
             
-            if out_file.exists():
-                logger.info(f"[{i+1}/{len(match_ids)}] Match {m_id} already exists. Skipping.")
-                continue
-                
             logger.info(f"[{i+1}/{len(match_ids)}] Processing match {m_id}...")
             
             try:
                 df = self.collect_match_data(m_id)
                 if df is not None:
+                    # Merge score and team info from schedule
+                    match_info = schedule_scores[schedule_scores['game_id'] == m_id]
+                    if not match_info.empty:
+                        df['match_score'] = match_info['score'].iloc[0]
+                        df['home_team_name'] = match_info['home_team'].iloc[0]
+                        df['away_team_name'] = match_info['away_team'].iloc[0]
+                    
                     df.to_parquet(out_file)
-                    # logger.info(f"Saved {m_id}")
                 else:
                     logger.warning(f"No data returned for match {m_id}")
             except Exception as e:
                 logger.error(f"Failed to process {m_id}: {e}")
             
-            # Optional sleep to be kind to FBref
-            # time.sleep(1)
-
         logger.info("Data collection complete.")
 
 if __name__ == "__main__":

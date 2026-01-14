@@ -39,13 +39,13 @@ class RisingBallerTransformer(nn.Module):
         # MPP Head (Masked Player Prediction) - Predict Player ID
         self.mpp_head = nn.Linear(d_model, num_players)
         
-        # NMSP Head (Next Match Statistics Prediction) - e.g. Predict Team xG
-        # 22 players * d_model -> pooled -> regression
+        # NMSP Head (Next Match Statistics Prediction) - Predict [Home Goals, Away Goals]
         self.nmsp_head = nn.Sequential(
             nn.Linear(d_model, 256),
             nn.ReLU(),
             nn.Dropout(dropout),
-            nn.Linear(256, 1) # Predicting one metric (e.g. xG)
+            nn.Linear(256, 2), # Predicting 2 metrics: [Home Score, Away Score]
+            nn.ReLU()         # Ensure non-negative goals
         )
 
     def forward(self, player_ids, position_ids, features, mask=None, task='nmsp'):

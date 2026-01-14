@@ -41,7 +41,7 @@ def train_rising_baller():
     
     # 3. Trainer
     trainer = pl.Trainer(
-        max_epochs=5,
+        max_epochs=50,
         accelerator="auto",
         devices=1,
         enable_progress_bar=True
