@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Tracker - Player Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>⚽ Player Tracker</h1>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="players.html">Játékosok</a>
+                <a href="import.html">Adatimport</a>
+                <a href="scraper_import.html">Scraper Import</a>
+                <a href="player_tracker.html" class="active">Player Tracker</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>🎯 Játékos Követés</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Add meg a követni kívánt játékosok nevét, és a rendszer automatikusan leszedi az adataikat FBref-ről és
+                SofaScore-ról.
+            </p>
+
+            <form id="addPlayersForm" onsubmit="handleAddPlayers(event)">
+                <div id="playersContainer">
+                    <div class="player-input-group"
+                        style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div class="form-group">
+                            <label>Játékos Név (opcionális, csak megjelenítéshez)</label>
+                            <input type="text" class="player-name" placeholder="pl. Szabó Dominik">
+                        </div>
+                        <div class="form-group">
+                            <label>FBref ID</label>
+                            <input type="text" class="fbref-id" placeholder="pl. abc123de">
+                            <small style="color: var(--text-secondary); display: block; margin-top: 0.5rem;">
+                                FBref URL: fbref.com/en/players/<strong>abc123de</strong>/...
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>SofaScore ID</label>
+                            <input type="number" class="sofascore-id" placeholder="pl. 123456">
+                            <small style="color: var(--text-secondary); display: block; margin-top: 0.5rem;">
+                                SofaScore URL: sofascore.com/player/player-name/<strong>123456</strong>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="addPlayerInput()" style="margin-bottom: 1rem;">
+                    ➕ Újabb Játékos Hozzáadása
+                </button>
+
+                <button type="submit" class="btn btn-primary" id="addBtn">
+                    💾 Játékosok Mentése
+                </button>
+            </form>
+
+            <div id="addResult" style="margin-top: 2rem; display: none;"></div>
+        </div>
+
+        <div class="card">
+            <h2>📥 Adatok Frissítése</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Frissítsd a követett játékosok adatait FBref-ről és/vagy SofaScore-ról.
+            </p>
+
+            <form id="fetchDataForm" onsubmit="handleFetchData(event)">
+                <div class="form-group">
+                    <label for="source">Adatforrás</label>
+                    <select id="source">
+                        <option value="both">Mindkettő (FBref + SofaScore)</option>
+                        <option value="fbref">Csak FBref</option>
+                        <option value="sofascore">Csak SofaScore</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="seasonFetch">Szezon (FBref)</label>
+                    <input type="text" id="seasonFetch" placeholder="pl. 2024-2025 (üresen hagyva: aktuális)">
+                </div>
+
+                <button type="submit" class="btn btn-secondary" id="fetchBtn">
+                    🔄 Adatok Frissítése
+                </button>
+            </form>
+
+            <div id="fetchResult" style="margin-top: 2rem; display: none;"></div>
+        </div>
+
+        <div class="card">
+            <h2>📋 Követett Játékosok</h2>
+            <button class="btn btn-primary" onclick="loadTrackedPlayers()" style="margin-bottom: 1rem;">
+                🔄 Lista Frissítése
+            </button>
+
+            <div id="trackedPlayersList">
+                <p style="color: var(--text-secondary);">Kattints a "Lista Frissítése" gombra...</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>ℹ️ Útmutató</h3>
+
+            <h4>Játékosok Hozzáadása:</h4>
+            <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li>Add meg a játékosok <strong>FBref ID-ját</strong> és/vagy <strong>SofaScore ID-ját</strong></li>
+                <li><strong>FBref ID:</strong> fbref.com/en/players/<code>abc123de</code>/... (az URL-ből)</li>
+                <li><strong>SofaScore ID:</strong> sofascore.com/player/player-name/<code>123456</code> (az URL-ből)
+                </li>
+                <li>A név opcionális, csak megjelenítéshez használjuk</li>
+                <li>Legalább egy ID-t (FBref vagy SofaScore) meg kell adni</li>
+                <li>Kattints "Újabb Játékos" gombra több játékos hozzáadásához</li>
+            </ul>
+
+            <h4>Adatok Frissítése:</h4>
+            <ul style="color: var(--text-secondary); margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li>Válaszd ki, honnan szeretnéd az adatokat (FBref, SofaScore, vagy mindkettő)</li>
+                <li>FBref esetén megadhatsz szezont is</li>
+                <li>A rendszer automatikusan leszedi az összes követett játékos adatait</li>
+                <li><strong>Figyelem:</strong> Ez időigényes lehet, ha sok játékost követsz</li>
+            </ul>
+
+            <h4>Követett Játékosok:</h4>
+            <ul style="color: var(--text-secondary); margin-left: 2rem;">
+                <li>Itt láthatod az összes követett játékost</li>
+                <li>Kattints a "Részletek" gombra a részletes statisztikákért</li>
+                <li>A Dashboard-on is megjelennek a követett játékosok</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // API_BASE_URL is already defined in js/api.js
+
+        function addPlayerInput() {
+            const container = document.getElementById('playersContainer');
+            const newInput = document.createElement('div');
+            newInput.className = 'player-input-group';
+            newInput.style.cssText = 'padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; margin-bottom: 1rem; position: relative;';
+            newInput.innerHTML = `
+                <button type="button" onclick="this.parentElement.remove()" style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--danger-color); color: white; border: none; border-radius: 0.25rem; padding: 0.25rem 0.5rem; cursor: pointer;">✕</button>
+                <div class="form-group">
+                    <label>Játékos Név (opcionális)</label>
+                    <input type="text" class="player-name" placeholder="pl. Nagy Ádám">
+                </div>
+                <div class="form-group">
+                    <label>FBref ID</label>
+                    <input type="text" class="fbref-id" placeholder="pl. abc123de">
+                </div>
+                <div class="form-group">
+                    <label>SofaScore ID</label>
+                    <input type="number" class="sofascore-id" placeholder="pl. 123456">
+                </div>
+            `;
+            container.appendChild(newInput);
+        }
+
+        async function handleAddPlayers(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('addBtn');
+            const resultDiv = document.getElementById('addResult');
+
+            // Collect all player inputs
+            const playerGroups = document.querySelectorAll('.player-input-group');
+            const players = [];
+
+            playerGroups.forEach(group => {
+                const name = group.querySelector('.player-name').value.trim();
+                const fbrefId = group.querySelector('.fbref-id').value.trim();
+                const sofascoreId = group.querySelector('.sofascore-id').value.trim();
+
+                if (fbrefId || sofascoreId) {
+                    players.push({
+                        name: name || 'Unknown',
+                        fbref_id: fbrefId || null,
+                        sofascore_id: sofascoreId ? parseInt(sofascoreId) : null
+                    });
+                }
+            });
+
+            if (players.length === 0) {
+                alert('Add meg legalább egy játékos FBref vagy SofaScore ID-ját!');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Mentés folyamatban...';
+            resultDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/tracker/add-players-by-id`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        players: players
+                    })
+                });
+
+                const result = await response.json();
+                displayAddResult(result, resultDiv);
+
+                // Clear form if successful
+                if (result.status === 'success' || result.status === 'partial') {
+                    // Reset to one empty input
+                    document.getElementById('playersContainer').innerHTML = `
+                        <div class="player-input-group" style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; margin-bottom: 1rem;">
+                            <div class="form-group">
+                                <label>Játékos Név (opcionális)</label>
+                                <input type="text" class="player-name" placeholder="pl. Szabó Dominik">
+                            </div>
+                            <div class="form-group">
+                                <label>FBref ID</label>
+                                <input type="text" class="fbref-id" placeholder="pl. abc123de">
+                                <small style="color: var(--text-secondary); display: block; margin-top: 0.5rem;">
+                                    FBref URL: fbref.com/en/players/<strong>abc123de</strong>/...
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>SofaScore ID</label>
+                                <input type="number" class="sofascore-id" placeholder="pl. 123456">
+                                <small style="color: var(--text-secondary); display: block; margin-top: 0.5rem;">
+                                    SofaScore URL: sofascore.com/player/player-name/<strong>123456</strong>
+                                </small>
+                            </div>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--danger-color);">✗ Hiba történt</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+                resultDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '💾 Játékosok Mentése';
+            }
+        }
+
+        async function handleFetchData(event) {
+            event.preventDefault();
+
+            const source = document.getElementById('source').value;
+            const season = document.getElementById('seasonFetch').value || null;
+            const submitBtn = document.getElementById('fetchBtn');
+            const resultDiv = document.getElementById('fetchResult');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Frissítés folyamatban... (ez eltarthat)';
+            resultDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/tracker/fetch-data`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        source: source,
+                        season: season
+                    })
+                });
+
+                const result = await response.json();
+                displayFetchResult(result, resultDiv);
+
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--danger-color);">✗ Hiba történt</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+                resultDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🔄 Adatok Frissítése';
+            }
+        }
+
+        async function loadTrackedPlayers() {
+            const container = document.getElementById('trackedPlayersList');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Betöltés...</p></div>';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/tracker/tracked-players`);
+                const data = await response.json();
+
+                if (data.tracked_players.length === 0) {
+                    container.innerHTML = '<p style="color: var(--text-secondary);">Nincs követett játékos. Adj hozzá játékosokat fent!</p>';
+                    return;
+                }
+
+                const table = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Név</th>
+                                <th>Pozíció</th>
+                                <th>Csapat</th>
+                                <th>Liga</th>
+                                <th>Műveletek</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.tracked_players.map(player => `
+                                <tr>
+                                    <td><strong>${player.name}</strong></td>
+                                    <td><span class="badge badge-success">${player.position}</span></td>
+                                    <td>${player.team || '-'}</td>
+                                    <td>${player.league || '-'}</td>
+                                    <td>
+                                        <a href="player_detail.html?id=${player.id}" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Részletek</a>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">
+                        <strong>Összesen:</strong> ${data.total} követett játékos
+                    </p>
+                `;
+
+                container.innerHTML = table;
+
+            } catch (error) {
+                container.innerHTML = `<p style="color: var(--danger-color);">Hiba: ${error.message}</p>`;
+            }
+        }
+
+        function displayAddResult(result, container) {
+            let resultHTML = '';
+
+            // Ensure arrays exist
+            const added = result.added || [];
+            const already_tracked = result.already_tracked || [];
+            const not_found = result.not_found || [];
+            const errors = result.errors || [];
+
+            if (result.status === 'success' || result.status === 'partial') {
+                resultHTML = `
+                    <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--secondary-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">✓ Sikeres!</h3>
+                        ${added.length > 0 ? `<p><strong>Hozzáadva/Követésre állítva:</strong> ${added.join(', ')}</p>` : ''}
+                        ${already_tracked.length > 0 ? `<p><strong>Már követve:</strong> ${already_tracked.join(', ')}</p>` : ''}
+                        ${not_found.length > 0 ? `<p style="color: var(--warning-color);"><strong>Nem található:</strong> ${not_found.join(', ')}</p>` : ''}
+                        ${errors.length > 0 ? `<p style="color: var(--danger-color);"><strong>Hibák:</strong> ${errors.join(', ')}</p>` : ''}
+                    </div>
+                `;
+            } else {
+                resultHTML = `
+                    <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--danger-color);">✗ Hiba</h3>
+                        <p>${result.message || 'Ismeretlen hiba'}</p>
+                        ${errors.length > 0 ? `<p><strong>Részletek:</strong> ${errors.join(', ')}</p>` : ''}
+                    </div>
+                `;
+            }
+
+            container.innerHTML = resultHTML;
+            container.style.display = 'block';
+        }
+
+        function displayFetchResult(result, container) {
+            let resultHTML = '';
+
+            if (result.status === 'success') {
+                resultHTML = `
+                    <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--secondary-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">✓ Frissítés sikeres!</h3>
+                        <p><strong>Követett játékosok:</strong> ${result.tracked_players}</p>
+                        <p><strong>Frissített adatok:</strong> ${result.fetched_count}</p>
+                    </div>
+                `;
+            } else {
+                resultHTML = `
+                    <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--danger-color);">✗ Hiba</h3>
+                        <p>${result.message || 'Ismeretlen hiba'}</p>
+                    </div>
+                `;
+            }
+
+            if (result.errors && result.errors.length > 0) {
+                resultHTML += `
+                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.1); border: 1px solid var(--warning-color); border-radius: 0.5rem;">
+                        <h4 style="color: var(--warning-color);">Hibák:</h4>
+                        <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            ${result.errors.slice(0, 5).map(err => `<li>${err}</li>`).join('')}
+                            ${result.errors.length > 5 ? `<li>... és még ${result.errors.length - 5} hiba</li>` : ''}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = resultHTML;
+            container.style.display = 'block';
+        }
+
+        // Load tracked players on page load
+        loadTrackedPlayers();
+    </script>
+</body>
+
+</html>

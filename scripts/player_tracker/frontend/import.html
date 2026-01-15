@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatimport - Player Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>⚽ Player Tracker</h1>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="players.html">Játékosok</a>
+                <a href="import.html" class="active">Adatimport</a>
+                <a href="scraper_import.html">Scraper Import</a>
+                <a href="player_tracker.html">Player Tracker</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>CSV Adatimport</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Importálj játékos statisztikákat FBref vagy SofaScore CSV fájlból.
+            </p>
+
+            <form id="importForm" onsubmit="handleImport(event)">
+                <div class="form-group">
+                    <label for="source">Adatforrás</label>
+                    <select id="source" required>
+                        <option value="">Válassz...</option>
+                        <option value="fbref">FBref</option>
+                        <option value="sofascore">SofaScore</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="file">CSV Fájl</label>
+                    <input type="file" id="file" accept=".csv" required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="autoMatch" checked>
+                        Automatikus játékos párosítás
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    📤 Import Indítása
+                </button>
+            </form>
+
+            <div id="result" style="margin-top: 2rem; display: none;"></div>
+        </div>
+
+        <div class="card">
+            <h3>ℹ️ Útmutató</h3>
+            <h4>FBref CSV formátum:</h4>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                Exportálj statisztikákat az FBref oldalról CSV formátumban. A következő oszlopokat várja a rendszer:
+            </p>
+            <ul style="color: var(--text-secondary); margin-left: 2rem;">
+                <li><code>Player</code> - Játékos neve</li>
+                <li><code>Pos</code> - Pozíció</li>
+                <li><code>Squad</code> vagy <code>Team</code> - Csapat neve</li>
+                <li><code>Min</code> - Játékpercek</li>
+                <li><code>Gls</code> - Gólok</li>
+                <li><code>Ast</code> - Gólpasszok</li>
+                <li>További opcionális statisztikák (Sh, SoT, Tkl, Int, stb.)</li>
+            </ul>
+
+            <h4 style="margin-top: 1.5rem;">Automatikus párosítás:</h4>
+            <p style="color: var(--text-secondary);">
+                Ha be van kapcsolva, a rendszer fuzzy matching algoritmussal megpróbálja párosítani az importált
+                játékosokat
+                az adatbázisban lévő játékosokkal. Ha nincs találat, új játékost hoz létre (ha engedélyezve van a
+                konfigurációban).
+            </p>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        async function handleImport(event) {
+            event.preventDefault();
+
+            const source = document.getElementById('source').value;
+            const fileInput = document.getElementById('file');
+            const autoMatch = document.getElementById('autoMatch').checked;
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('result');
+
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Válassz ki egy fájlt!');
+                return;
+            }
+
+            const file = fileInput.files[0];
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Import folyamatban...';
+            resultDiv.style.display = 'none';
+
+            try {
+                const result = await api.importStats(file, source, autoMatch);
+
+                // Display result
+                let resultHTML = '';
+                if (result.status === 'success') {
+                    resultHTML = `
+                        <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--secondary-color); border-radius: 0.5rem;">
+                            <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">✓ Import sikeres!</h3>
+                            <p><strong>Importált rekordok:</strong> ${result.imported_records}</p>
+                            <p><strong>Párosított játékosok:</strong> ${result.matched_players}</p>
+                            <p><strong>Párosítatlan játékosok:</strong> ${result.unmatched_players}</p>
+                        </div>
+                    `;
+                } else {
+                    resultHTML = `
+                        <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-color); border-radius: 0.5rem;">
+                            <h3 style="color: var(--danger-color); margin-bottom: 1rem;">✗ Import sikertelen</h3>
+                            <p><strong>Importált rekordok:</strong> ${result.imported_records}</p>
+                            <p><strong>Párosított játékosok:</strong> ${result.matched_players}</p>
+                            <p><strong>Párosítatlan játékosok:</strong> ${result.unmatched_players}</p>
+                        </div>
+                    `;
+                }
+
+                if (result.errors && result.errors.length > 0) {
+                    resultHTML += `
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.1); border: 1px solid var(--warning-color); border-radius: 0.5rem;">
+                            <h4 style="color: var(--warning-color);">Hibák:</h4>
+                            <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                                ${result.errors.map(err => `<li>${err}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+
+                resultDiv.innerHTML = resultHTML;
+                resultDiv.style.display = 'block';
+
+                // Reset form if successful
+                if (result.status === 'success') {
+                    document.getElementById('importForm').reset();
+                }
+
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-color); border-radius: 0.5rem;">
+                        <h3 style="color: var(--danger-color);">✗ Hiba történt</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+                resultDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '📤 Import Indítása';
+            }
+        }
+    </script>
+</body>
+
+</html>

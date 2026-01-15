@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Játékos Részletek - Player Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>⚽ Player Tracker</h1>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="players.html">Játékosok</a>
+                <a href="import.html">Adatimport</a>
+                <a href="scraper_import.html">Scraper Import</a>
+                <a href="player_tracker.html">Player Tracker</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Adatok betöltése...</p>
+        </div>
+
+        <div id="playerContent" style="display: none;">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div>
+                        <h2 id="playerName"></h2>
+                        <p id="playerInfo" style="color: var(--text-secondary); margin-top: 0.5rem;"></p>
+                    </div>
+                    <button id="trackButton" class="btn btn-primary" onclick="toggleTracking()"></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Szezon Statisztikák (utolsó 365 nap)</h3>
+                <div class="stats-grid" id="seasonStats"></div>
+            </div>
+
+            <div class="card">
+                <h3>Értékelés</h3>
+                <div id="evaluation"></div>
+            </div>
+
+            <div class="card">
+                <h3>Meccs Statisztikák</h3>
+                <div id="matchStats"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        let currentPlayer = null;
+        const urlParams = new URLSearchParams(window.location.search);
+        const playerId = urlParams.get('id');
+
+        async function loadPlayer() {
+            if (!playerId) {
+                alert('Nincs megadva játékos ID!');
+                window.location.href = 'players.html';
+                return;
+            }
+
+            try {
+                currentPlayer = await api.getPlayer(playerId);
+                displayPlayer(currentPlayer);
+
+                // Load match stats
+                const stats = await api.getPlayerStats(playerId);
+                displayMatchStats(stats);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('playerContent').style.display = 'block';
+            } catch (error) {
+                console.error('Error loading player:', error);
+                document.getElementById('loading').innerHTML = `
+                    <p style="color: var(--danger-color);">Hiba a játékos betöltésekor: ${error.message}</p>
+                    <a href="players.html" class="btn btn-primary">Vissza a játékosokhoz</a>
+                `;
+            }
+        }
+
+        function displayPlayer(player) {
+            document.getElementById('playerName').textContent = player.name;
+
+            const info = [];
+            info.push(`<span class="badge badge-success">${player.position}</span>`);
+            if (player.detailed_position) info.push(player.detailed_position);
+            if (player.team) info.push(`${player.team.name} (${player.team.league})`);
+            if (player.nationality) info.push(player.nationality);
+
+            document.getElementById('playerInfo').innerHTML = info.join(' • ');
+
+            // Track button
+            const trackButton = document.getElementById('trackButton');
+            trackButton.textContent = player.tracked ? '✓ Követve' : '+ Követés';
+            trackButton.className = player.tracked ? 'btn btn-secondary' : 'btn btn-primary';
+
+            // Season stats
+            if (player.current_season_stats) {
+                const stats = player.current_season_stats;
+                document.getElementById('seasonStats').innerHTML = `
+                    <div class="stat-card">
+                        <div class="stat-label">Játékperc</div>
+                        <div class="stat-value">${stats.minutes}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Gólok</div>
+                        <div class="stat-value">${stats.goals}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Gólpasszok</div>
+                        <div class="stat-value">${stats.assists}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Gól/90</div>
+                        <div class="stat-value">${stats.goals_per90.toFixed(2)}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Assziszt/90</div>
+                        <div class="stat-value">${stats.assists_per90.toFixed(2)}</div>
+                    </div>
+                `;
+            } else {
+                document.getElementById('seasonStats').innerHTML = '<p style="color: var(--text-secondary);">Nincs elérhető statisztika.</p>';
+            }
+
+            // Evaluation
+            if (player.latest_evaluation) {
+                const eval = player.latest_evaluation;
+                const trendIcon = eval.form_trend === 'improving' ? '📈' :
+                    eval.form_trend === 'declining' ? '📉' : '➡️';
+
+                document.getElementById('evaluation').innerHTML = `
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Összesített Érték</div>
+                            <div class="stat-value">${eval.overall_score ? eval.overall_score.toFixed(1) : '-'}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Percentilis (Pozíció)</div>
+                            <div class="stat-value">${eval.position_percentile ? eval.position_percentile.toFixed(0) + '%' : '-'}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Liga-súlyozott</div>
+                            <div class="stat-value">${eval.league_adjusted_score ? eval.league_adjusted_score.toFixed(1) : '-'}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Forma Trend</div>
+                            <div class="stat-value">${trendIcon}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                document.getElementById('evaluation').innerHTML = '<p style="color: var(--text-secondary);">Nincs értékelés. Az értékelés automatikusan generálódik, ha elegendő adat áll rendelkezésre.</p>';
+            }
+        }
+
+        function displayMatchStats(data) {
+            const container = document.getElementById('matchStats');
+
+            if (!data.stats || data.stats.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">Nincs meccs statisztika.</p>';
+                return;
+            }
+
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dátum</th>
+                            <th>Ellenfél</th>
+                            <th>Perc</th>
+                            <th>Gól</th>
+                            <th>Assziszt</th>
+                            <th>Lövés</th>
+                            <th>Passz %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.stats.map(stat => `
+                            <tr>
+                                <td>${stat.date}</td>
+                                <td>${stat.opponent || '-'}</td>
+                                <td>${stat.minutes_played}'</td>
+                                <td>${stat.goals}</td>
+                                <td>${stat.assists}</td>
+                                <td>${stat.shots}</td>
+                                <td>${stat.pass_completion ? stat.pass_completion.toFixed(1) + '%' : '-'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = table;
+        }
+
+        async function toggleTracking() {
+            try {
+                const newTracked = !currentPlayer.tracked;
+                await api.updatePlayer(playerId, { tracked: newTracked });
+                currentPlayer.tracked = newTracked;
+
+                const trackButton = document.getElementById('trackButton');
+                trackButton.textContent = newTracked ? '✓ Követve' : '+ Követés';
+                trackButton.className = newTracked ? 'btn btn-secondary' : 'btn btn-primary';
+            } catch (error) {
+                alert('Hiba a státusz frissítésekor: ' + error.message);
+            }
+        }
+
+        // Load player on page load
+        loadPlayer();
+    </script>
+</body>
+
+</html>

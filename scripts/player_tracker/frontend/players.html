@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Játékosok - Player Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>⚽ Player Tracker</h1>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="players.html" class="active">Játékosok</a>
+                <a href="import.html">Adatimport</a>
+                <a href="scraper_import.html">Scraper Import</a>
+                <a href="player_tracker.html">Player Tracker</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Összes Játékos</h2>
+
+            <div class="filters">
+                <div class="filter-item">
+                    <label for="positionFilter">Pozíció</label>
+                    <select id="positionFilter">
+                        <option value="">Összes</option>
+                        <option value="GK">Kapus</option>
+                        <option value="DEF">Védő</option>
+                        <option value="MID">Középpályás</option>
+                        <option value="ATT">Támadó</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="trackedFilter">Státusz</label>
+                    <select id="trackedFilter">
+                        <option value="">Összes</option>
+                        <option value="true">Követett</option>
+                        <option value="false">Nem követett</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-secondary" onclick="applyFilters()">Szűrés</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Adatok betöltése...</p>
+            </div>
+
+            <div id="playersList"></div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        let allPlayers = [];
+
+        async function loadPlayers(filters = {}) {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            try {
+                const data = await api.getPlayers(filters);
+                allPlayers = data.players;
+                displayPlayers(allPlayers);
+            } catch (error) {
+                console.error('Error loading players:', error);
+                document.getElementById('playersList').innerHTML = `
+                    <p style="color: var(--danger-color);">Hiba az adatok betöltésekor: ${error.message}</p>
+                `;
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function displayPlayers(players) {
+            const container = document.getElementById('playersList');
+
+            if (players.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">Nincs játékos az adatbázisban. Importálj adatokat!</p>';
+                return;
+            }
+
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Név</th>
+                            <th>Pozíció</th>
+                            <th>Csapat</th>
+                            <th>Liga</th>
+                            <th>Státusz</th>
+                            <th>Műveletek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${players.map(player => `
+                            <tr>
+                                <td><strong>${player.name}</strong></td>
+                                <td><span class="badge badge-success">${player.position}</span></td>
+                                <td>${player.team || '-'}</td>
+                                <td>${player.league || '-'}</td>
+                                <td>
+                                    ${player.tracked
+                    ? '<span class="badge badge-success">Követve</span>'
+                    : '<span class="badge badge-warning">Nem követve</span>'}
+                                </td>
+                                <td>
+                                    <a href="player_detail.html?id=${player.id}" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Részletek</a>
+                                    <button onclick="toggleTracking(${player.id}, ${!player.tracked})" class="btn ${player.tracked ? 'btn-secondary' : 'btn-primary'}" style="padding: 0.5rem 1rem; font-size: 0.875rem; margin-left: 0.5rem;">
+                                        ${player.tracked ? '✓ Követve' : '+ Követés'}
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = table;
+        }
+
+        async function toggleTracking(playerId, tracked) {
+            try {
+                await api.updatePlayer(playerId, { tracked });
+                applyFilters(); // Reload with current filters
+            } catch (error) {
+                alert('Hiba a státusz frissítésekor: ' + error.message);
+            }
+        }
+
+        function applyFilters() {
+            const position = document.getElementById('positionFilter').value;
+            const tracked = document.getElementById('trackedFilter').value;
+
+            const filters = {};
+            if (position) filters.position = position;
+            if (tracked) filters.tracked = tracked === 'true';
+
+            loadPlayers(filters);
+        }
+
+        // Load all players on page load
+        loadPlayers();
+    </script>
+</body>
+
+</html>

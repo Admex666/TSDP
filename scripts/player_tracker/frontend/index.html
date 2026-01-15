@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Tracker - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>⚽ Player Tracker</h1>
+            <nav>
+                <a href="index.html" class="active">Dashboard</a>
+                <a href="players.html">Játékosok</a>
+                <a href="import.html">Adatimport</a>
+                <a href="scraper_import.html">Scraper Import</a>
+                <a href="player_tracker.html">Player Tracker</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Követett Játékosok</h2>
+            <div class="filters">
+                <div class="filter-item">
+                    <label for="positionFilter">Pozíció</label>
+                    <select id="positionFilter">
+                        <option value="">Összes</option>
+                        <option value="GK">Kapus</option>
+                        <option value="DEF">Védő</option>
+                        <option value="MID">Középpályás</option>
+                        <option value="ATT">Támadó</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <button class="btn btn-secondary" onclick="refreshData()">🔄 Frissítés</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Adatok betöltése...</p>
+            </div>
+
+            <div id="playersList"></div>
+        </div>
+
+        <div class="card">
+            <h2>Statisztikák</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Követett játékosok</div>
+                    <div class="stat-value" id="trackedCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Összes játékos</div>
+                    <div class="stat-value" id="totalCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Ligák</div>
+                    <div class="stat-value" id="leagueCount">0</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        let allPlayers = [];
+        let leagues = [];
+
+        async function loadData() {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            try {
+                // Load tracked players
+                const trackedData = await api.getPlayers({ tracked: true });
+                allPlayers = trackedData.players;
+
+                // Load all players for stats
+                const allData = await api.getPlayers({});
+
+                // Load leagues
+                const leaguesData = await api.getLeagues();
+                leagues = leaguesData.leagues;
+
+                // Update stats
+                document.getElementById('trackedCount').textContent = trackedData.total;
+                document.getElementById('totalCount').textContent = allData.total;
+                document.getElementById('leagueCount').textContent = leagues.length;
+
+                // Display players
+                displayPlayers(allPlayers);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('playersList').innerHTML = `
+                    <p style="color: var(--danger-color);">Hiba az adatok betöltésekor: ${error.message}</p>
+                    <p style="color: var(--text-secondary);">Ellenőrizd, hogy a backend fut-e a 8003-as porton.</p>
+                `;
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function displayPlayers(players) {
+            const container = document.getElementById('playersList');
+
+            if (players.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">Nincs követett játékos. Adj hozzá játékosokat a Játékosok oldalon!</p>';
+                return;
+            }
+
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Név</th>
+                            <th>Pozíció</th>
+                            <th>Csapat</th>
+                            <th>Liga</th>
+                            <th>Műveletek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${players.map(player => `
+                            <tr>
+                                <td><strong>${player.name}</strong></td>
+                                <td><span class="badge badge-success">${player.position}</span></td>
+                                <td>${player.team || '-'}</td>
+                                <td>${player.league || '-'}</td>
+                                <td>
+                                    <a href="player_detail.html?id=${player.id}" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Részletek</a>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = table;
+        }
+
+        function filterPlayers() {
+            const position = document.getElementById('positionFilter').value;
+
+            let filtered = allPlayers;
+            if (position) {
+                filtered = allPlayers.filter(p => p.position === position);
+            }
+
+            displayPlayers(filtered);
+        }
+
+        function refreshData() {
+            loadData();
+        }
+
+        // Event listeners
+        document.getElementById('positionFilter').addEventListener('change', filterPlayers);
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+
+</html>
