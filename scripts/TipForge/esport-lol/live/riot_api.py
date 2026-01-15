@@ -21,6 +21,8 @@ class RiotEsportsAPI:
             "x-api-key": self.API_KEY,
             "Accept": "application/json"
         }
+        # Cache for game start timestamps (game_id -> start_rfc460Timestamp)
+        self.game_start_times = {}
 
     def get_schedule(self, hl="en-US"):
         """Fetch the current and upcoming schedule"""
@@ -118,62 +120,92 @@ class RiotEsportsAPI:
         dt_final = dt_rounded - os.sys.modules['datetime'].timedelta(seconds=60)
         return dt_final.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
+    def _ensure_game_start_time(self, game_id):
+        """
+        Ensures we have the game start timestamp cached.
+        Fetches the first frame if not already cached.
+        Returns the start timestamp or None if unavailable.
+        """
+        if game_id in self.game_start_times:
+            return self.game_start_times[game_id]
+        
+        # Fetch window without startingTime to get early frames
+        try:
+            window = self.get_live_stats_window(game_id, starting_time=None)
+            if window and window.get("frames") and len(window["frames"]) > 0:
+                # Use the first frame's timestamp as the game start
+                first_frame = window["frames"][0]
+                start_timestamp = first_frame.get("rfc460Timestamp")
+                if start_timestamp:
+                    self.game_start_times[game_id] = start_timestamp
+                    logger.info(f"Cached game start time for {game_id}: {start_timestamp}")
+                    return start_timestamp
+        except Exception as e:
+            logger.error(f"Error fetching game start time: {e}")
+        
+        return None
+
     def get_latest_match_state(self, game_id):
         """
         Fetches the latest state and formats it for the ValueBettingEngine.
+        Uses AndyDanger's method: calculates game time from rfc460Timestamp difference.
         """
         starting_time = self._get_js_starting_time()
+        
+        # Ensure we have the game start time
+        start_timestamp = self._ensure_game_start_time(game_id)
         
         # Fetch both window and details with the calculated starting time
         window = self.get_live_stats_window(game_id, starting_time=starting_time)
         details = self.get_live_stats_details(game_id, starting_time=starting_time)
         
         if not window or not window.get("frames"):
-            # Fallback: try without starting time if it fails (e.g. game just started)
-            # Or handle the case where the window is empty
             return None
             
         latest_window = window["frames"][-1]
         
-        # For details, we might not get frames if the startingTime is too recent or different?
-        # But we should try to match them.
         latest_details = None
         if details and details.get("frames"):
             latest_details = details["frames"][-1]
             
-        # Calculate game time
-        # The window frames contain `gameState` ('in_game') and timestamps.
-        # We can try to use the timestamp from the frame.
-        # But we need the START time of the game to calculate duration.
-        # The first frame of the *window* is not the first frame of the game.
-        # Use the logic from the user's JS: 
-        # let k = function(e, t) { ... return formatted time ... }(FirstFrame.rfc460Timestamp, CurrentFrame.rfc460Timestamp)
-        # But we don't have the "FirstFrame" of the game easily unless we fetch from the beginning once.
-        # Ideally, we should cache the game start time.
-        # For now, let's keep the estimation or try to find a better way.
-        
-        # Actually, `window['frames']` has `rfc460Timestamp`.
-        # If we want "game_time", we need the difference between this timestamp and the game start.
-        # We can fetch the *first* frame of the game (without startingTime) once to get the start time?
-        # That sounds expensive to do every time.
-        # Maybe just return the timestamp and let the scanner handle duration if it knows the start time.
-        # OR: Accept that for now we might not have perfect game time, but we have perfect GOLD.
-        
-        now_ts = latest_window["rfc460Timestamp"]
-        
         blue = latest_window.get("blueTeam", {})
         red = latest_window.get("redTeam", {})
         
-        # Placeholder for game time if we can't calculate it perfectly yet
-        game_time_str = "00:00" 
-        # Attempt to parse timestamp to see if we can derive something?
-        # Without game start time, we can't know the duration.
+        # Calculate game time using AndyDanger's method
+        game_time_str = "00:00"
+        
+        if start_timestamp:
+            try:
+                current_timestamp = latest_window.get("rfc460Timestamp")
+                if current_timestamp:
+                    # Parse timestamps
+                    start_dt = datetime.fromisoformat(start_timestamp.replace("Z", "+00:00"))
+                    current_dt = datetime.fromisoformat(current_timestamp.replace("Z", "+00:00"))
+                    
+                    # Calculate difference in seconds
+                    duration_seconds = int((current_dt - start_dt).total_seconds())
+                    
+                    # Format as MM:SS or HH:MM:SS
+                    hours = duration_seconds // 3600
+                    minutes = (duration_seconds % 3600) // 60
+                    seconds = duration_seconds % 60
+                    
+                    if hours > 0:
+                        game_time_str = f"{hours}:{minutes:02d}:{seconds:02d}"
+                    else:
+                        game_time_str = f"{minutes:02d}:{seconds:02d}"
+            except Exception as e:
+                logger.error(f"Error calculating game time: {e}")
+                game_time_str = "LIVE"
+        else:
+            # Fallback if we don't have start time yet
+            game_time_str = "LIVE"
         
         formatted = {
             'timestamp': datetime.now().isoformat(),
             'game_time': game_time_str,
             'blue_team': {
-                'kills': blue.get('totalKills', 0), # Note: API uses totalKills, not kills
+                'kills': blue.get('totalKills', 0),
                 'towers': blue.get('towers', 0),
                 'inhibitors': blue.get('inhibitors', 0),
                 'barons': blue.get('barons', 0),
@@ -188,29 +220,7 @@ class RiotEsportsAPI:
                 'gold': red.get('totalGold', 0),
                 'dragons': red.get('dragons', [])
             },
-            'players': [] # Map from details if available
-        }
-
-        formatted = {
-            'timestamp': datetime.now().isoformat(),
-            'game_time': game_time_str,
-            'blue_team': {
-                'kills': blue.get('kills', 0),
-                'towers': blue.get('towers', 0),
-                'inhibitors': blue.get('inhibitors', 0),
-                'barons': blue.get('barons', 0),
-                'gold': blue.get('totalGold', 0),
-                'dragons': blue.get('dragons', [])
-            },
-            'red_team': {
-                'kills': red.get('kills', 0),
-                'towers': red.get('towers', 0),
-                'inhibitors': red.get('inhibitors', 0),
-                'barons': red.get('barons', 0),
-                'gold': red.get('totalGold', 0),
-                'dragons': red.get('dragons', [])
-            },
-            'players': [] # Map from details if available
+            'players': []
         }
         
         if latest_details and "participants" in latest_details:

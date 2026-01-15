@@ -197,7 +197,7 @@ with tab_dashboard:
     st.subheader("Live Value Betting Dashboard")
     
     # Auto-refresh mechanism
-    auto_refresh = st.toggle("Auto-Refresh (10s)", value=False)
+    auto_refresh = st.toggle("Auto-Refresh (30s)", value=False)
     
     if st.button("🔄 Refresh Stats Now"):
         st.rerun()
@@ -240,8 +240,18 @@ with tab_dashboard:
                 st.metric("Gold Diff", f"{gold_diff:+,}", delta_color="normal")
             
             with col_stats4:
-                drakes = f"{len(blue['dragons'])} - {len(red['dragons'])}"
-                st.metric("Dragons", drakes)
+                # Show dragon types, not just count
+                blue_drakes = blue['dragons']
+                red_drakes = red['dragons']
+                drake_text = f"{len(blue_drakes)} - {len(red_drakes)}"
+                
+                # Show types in tooltip/caption
+                if blue_drakes or red_drakes:
+                    blue_types = ", ".join([d.capitalize() for d in blue_drakes]) if blue_drakes else "None"
+                    red_types = ", ".join([d.capitalize() for d in red_drakes]) if red_drakes else "None"
+                    st.metric("Dragons", drake_text, help=f"Blue: {blue_types} | Red: {red_types}")
+                else:
+                    st.metric("Dragons", drake_text)
                 
             # Predictions
             engine = st.session_state.engine
@@ -301,7 +311,7 @@ with tab_dashboard:
                 st.session_state.last_odds_data = odds_data
 
     if auto_refresh:
-        time.sleep(10)
+        time.sleep(30)
         st.rerun()
 
 with tab_debug:

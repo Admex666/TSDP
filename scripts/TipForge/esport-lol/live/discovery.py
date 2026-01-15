@@ -28,15 +28,15 @@ class TippmixDiscovery:
 
     def discover_lol_matches(self) -> Dict[str, str]:
         """
-        Discover live and upcoming LoL match URLs on Tippmix.
+        Discover live LoL match URLs on Tippmix.
         Returns mapping of "team1_vs_team2" -> url
         """
         driver = None
         mappings = {}
         try:
-            # Use specific LoL listing URL provided by user investigation
-            target_url = "https://www.tippmixpro.hu/hu/fogadas/i/fogadas/league-of-legends-lol/100/osszes/0/helyszin"
-            logger.info(f"🌐 Navigating to Tippmix LoL: {target_url}")
+            # Use the e-sport page, then click "Élőben" to show live matches
+            target_url = "https://www.tippmixpro.hu/hu/fogadas/i/e-sport/esports/96/league-of-legends-lol/100/esport"
+            logger.info(f"🌐 Navigating to Tippmix E-sport LoL: {target_url}")
             driver = self._setup_driver()
             driver.get(target_url)
             
@@ -62,47 +62,68 @@ class TippmixDiscovery:
                 logger.error(f"Could not find or switch to sports iframe: {e}")
                 return {}
             
-            # --- Try enabling LIVE matches ---
+            # Click "Élőben" button to show LIVE matches
+            logger.info("🖱️ Searching for 'Élőben' button to show live matches...")
             try:
-                logger.info("🖱️ Searching for 'ÉLŐ' toggle to enable live matches...")
-                # Search by text content
-                live_elements = driver.find_elements(By.XPATH, "//*[contains(text(), 'ÉLŐ') or contains(text(), 'Élő') or contains(text(), 'LIVE')]")
+                # Search by text content for "Élőben" or "Élő"
+                live_elements = driver.find_elements(By.XPATH, "//*[contains(text(), 'Élőben') or contains(text(), 'Élő')]")
+                clicked = False
                 for el in live_elements:
                     # Filter out script/style/irrelevant
-                    if el.tag_name in ['script', 'style', 'noscript']: continue
+                    if el.tag_name in ['script', 'style', 'noscript']: 
+                        continue
                     
                     # Check text length to avoid clicking paragraphs
                     text = el.text.strip()
-                    if text and len(text) < 15 and ("ÉLŐ" in text.upper() or "LIVE" in text.upper()):
-                        logger.info(f"👉 Clicking potential Live button: '{text}' ({el.get_attribute('class')})")
-                        el.click()
-                        time.sleep(3) # Wait for live content load
-                        break
+                    if text and len(text) < 15 and ("ÉLŐBEN" in text.upper() or "ÉLŐ" == text.upper()):
+                        logger.info(f"👉 Found Live button: '{text}' (class: {el.get_attribute('class')})")
+                        
+                        # Try clicking the parent element (the actual clickable span)
+                        try:
+                            parent = el.find_element(By.XPATH, "..")
+                            logger.info(f"   Parent class: {parent.get_attribute('class')}")
+                            # Use JavaScript to click to avoid interception
+                            driver.execute_script("arguments[0].click();", parent)
+                            logger.info("   ✓ Clicked via JavaScript")
+                            time.sleep(5) # Wait for live content to load
+                            clicked = True
+                            break
+                        except:
+                            # Fallback: try clicking the element itself with JS
+                            try:
+                                driver.execute_script("arguments[0].click();", el)
+                                logger.info("   ✓ Clicked element via JavaScript")
+                                time.sleep(5)
+                                clicked = True
+                                break
+                            except:
+                                pass
+                
+                if not clicked:
+                    logger.warning("Could not find or click 'Élőben' button")
             except Exception as live_e:
-                logger.warning(f"Could not click LIVE button: {live_e}")
-            # ----------------------------------
+                logger.warning(f"Error clicking LIVE button: {live_e}")
 
-            # Extract matches
-            # We look for all links inside the iframe that point to an event
+            # Extract matches - ONLY look for elo-esemenyek URLs (live matches)
             links = driver.find_elements(By.TAG_NAME, "a")
-            logger.info(f"🔍 Found {len(links)} total links in iframe. Filtering for matches...")
+            logger.info(f"🔍 Found {len(links)} total links in iframe. Filtering for LIVE matches...")
             
             for link in links:
                 try:
                     url = link.get_attribute("href")
-                    # Filter for match detail pages
-                    if not url or ("fogadas/i/esemenyek" not in url and "fogadas/esemenyek" not in url):
+                    if not url:
+                        continue
+                    
+                    # CRITICAL: Only accept elo-esemenyek URLs (live matches)
+                    if "elo-esemenyek" not in url:
                         continue
                      
                     if "league-of-legends-lol" not in url:
                         continue
 
-                    # Text usually contains "Team1\nTeam2\nDate\nTime"
+                    # Text usually contains "Team1\nTeam2\nScore" for live matches
                     text = link.text.strip()
                     parts = [p.strip() for p in text.split("\n") if p.strip()]
-                    
-                    # Heuristic: Teams are usually the first two non-numeric, non-date parts
-                    # Or we can just use the URL slug which is safer: /team1-team2/
                     
                     key = None
                     
@@ -110,17 +131,15 @@ class TippmixDiscovery:
                     if len(parts) >= 2:
                         t1 = parts[0]
                         t2 = parts[1]
-                        # Verify they look like names and not "01.14" etc
+                        # Verify they look like names and not "01.14" or scores
                         if not t1[0].isdigit() and not t2[0].isdigit():
                             key = f"{t1}_vs_{t2}".replace(" ", "_")
                     
                     # Strategy B: URL Slug Fallback
                     if not key:
                         # expected format: .../vilag/tournament/team1-team2/id
-                        # split by / and take the 2nd to last part usually
                         segments = url.split('/')
-                        # Filter out empty strings and find the segment with team names
-                        # Usually it is before the numeric ID at the end
+                        # Usually team names are before the numeric ID at the end
                         if segments[-1].isdigit():
                             slug = segments[-2]
                             key = slug.replace("-", "_vs_")
@@ -133,13 +152,12 @@ class TippmixDiscovery:
                     
                     if key and key not in mappings:
                         mappings[key] = url
-                        logger.info(f"  -> Found Match: {key} ({url})")
+                        logger.info(f"  -> Found LIVE Match: {key}")
                             
                 except Exception as loop_e:
-                    # logger.debug(f"Error parsing link: {loop_e}")
                     continue
                     
-            logger.info(f"✅ Discovered {len(mappings)} LoL matches on Tippmix.")
+            logger.info(f"✅ Discovered {len(mappings)} LIVE LoL matches on Tippmix.")
             return mappings
             
         except Exception as e:
