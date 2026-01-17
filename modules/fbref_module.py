@@ -52,7 +52,8 @@ def read_html_upd_firefox(URL, table_id):
     driver.get(URL)
     
     try:
-        table = WebDriverWait(driver, 25).until(
+        print("Waiting for table loading... (If Cloudflare appears, please solve it manually!)")
+        table = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.ID, table_id))
         )
         
@@ -61,6 +62,24 @@ def read_html_upd_firefox(URL, table_id):
         df = pd.read_html(StringIO(table_html))[0]
         
         return [df]
+    except Exception as e:
+        print(f"\n!!! CLOUDFLARE VAGY TIMEOUT DETEKTÁLVA ({e}) !!!")
+        print("A script 60 másodpercre felfüggeszti a futást.")
+        print(">>> KÉRLEK OLDD MEG A CAPTCHA-T A FELUGRÓ BÖNGÉSZŐ ABLAKBAN MOST! <<<")
+        import time
+        time.sleep(60) 
+        
+        print("Újrapróbálkozás a táblázat keresésével...")
+        try:
+            table = WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located((By.ID, table_id))
+            )
+            table_html = table.get_attribute('outerHTML')
+            df = pd.read_html(StringIO(table_html))[0]
+            return [df]
+        except Exception as e2:
+            print("Sajnos második próbálkozásra sem sikerült betölteni az adatokat.")
+            raise e2
     finally:
         driver.quit()
 
@@ -424,3 +443,135 @@ def get_gamelog(countrycode, season="2024-2025"):
     gamelog = scrape(url, table_id)
 
     return gamelog
+
+def attempt_auto_fix(driver):
+    """Megpróbálja detektálni és megoldani a Cloudflare akadályt, vagy frissíteni."""
+    import time
+    import random
+    from selenium.webdriver.common.by import By
+    
+    print("🔍 Próbálkozás automatikus javítással...")
+    
+    # 1. Cloudflare Checkbox keresése (Sima és Iframe-es)
+    try:
+        # Megnézzük az összes iframe-et
+        iframes = driver.find_elements(By.TAG_NAME, "iframe")
+        cf_found = False
+        
+        for iframe in iframes:
+            try:
+                # Ha az iframe gyanús (Cloudflare)
+                src = iframe.get_attribute("src")
+                if src and ("cloudflare" in src or "challenge" in src):
+                    print("   Találtam egy Cloudflare gyanús iframe-et. Váltás...")
+                    driver.switch_to.frame(iframe)
+                    
+                    # Keresünk kattintható elemeket (checkbox, body)
+                    checkbox = driver.find_elements(By.CSS_SELECTOR, "input[type='checkbox'], .mark, #challenge-stage")
+                    
+                    if checkbox:
+                        print("   ✅ Checkbox megtalálva! Kattintás...")
+                        # Emberi szünet
+                        time.sleep(random.uniform(0.5, 1.5))
+                        checkbox[0].click()
+                        cf_found = True
+                        driver.switch_to.default_content()
+                        return True # Sikerült kattintani
+                    
+                    driver.switch_to.default_content()
+            except:
+                driver.switch_to.default_content()
+        
+        if not cf_found:
+            print("   Nem találtam egyértelmű checkboxot.")
+            
+    except Exception as e:
+        print(f"   Hiba a checkbox keresés közben: {e}")
+
+    # 2. Ha nem találtunk semmit vagy nem segített: FRISSÍTÉS
+    print("🔄 Az oldal frissítése (Refresh)...")
+    driver.refresh()
+    print("   Várakozás az újratöltésre...")
+    time.sleep(5)
+    return False
+
+def read_html_undetected(URL, table_id):
+    import undetected_chromedriver as uc
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    from io import StringIO
+    import pandas as pd
+    
+    print(f"\n=== KEZDÉS: Undetected Chrome ===")
+    print(f"URL: {URL}")
+    
+    # Chrome inicializálása
+    print("Chrome indítása options objektummal (patch)...")
+    options = uc.ChromeOptions()
+    options.headless = False  # Belső hiba megkerülése
+    options.add_argument("--disable-search-engine-choice-screen")
+    driver = uc.Chrome(options=options, use_subprocess=True)
+    
+    try:
+        print("Oldal betöltése...")
+        driver.get(URL)
+        
+        # Fő logika (Try loop)
+        MAX_RETRIES = 3
+        
+        for i in range(MAX_RETRIES):
+            try:
+                print(f"--- {i+1}. Próbálkozás ---")
+                
+                # Táblázat keresése
+                try:
+                    table = WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.ID, table_id))
+                    )
+                    print("✅ SIKER: Megtaláltam a táblázatot!")
+                    
+                    table_html = table.get_attribute('outerHTML')
+                    
+                    # Pandas beolvasás
+                    print("Feldolgozás Pandasszal...")
+                    dfs = pd.read_html(StringIO(table_html))
+                    
+                    if not dfs:
+                        print("Hiba: Üres táblázat.")
+                        return None
+                    
+                    # Visszatérés listaként
+                    return dfs
+                    
+                except Exception as e:
+                    print(f"❌ Még nincs meg a táblázat... (Timeout)")
+                    # Ha ez nem az utolsó próbálkozás, akkor próbáljunk javítani
+                    if i < MAX_RETRIES - 1:
+                        attempt_auto_fix(driver)
+                    else:
+                        print("Sajnos minden próbálkozás sikertelen volt.")
+                        
+            except Exception as critical:
+                 print(f"Kritikus hiba a ciklusban: {critical}")
+                 
+        return None
+        
+    except Exception as e:
+        print(f"\nKRITIKUS HIBA: {e}")
+        return None
+    finally:
+        print("Böngésző bezárása...")
+        try:
+            driver.quit()
+        except:
+            pass
+
+def scrape_undetected(URL, table_id):
+    """Wrapper függvény, amely illeszkedik a modul scrape_* konvenciójához."""
+    result = read_html_undetected(URL, table_id)
+    if result:
+        # A read_html_undetected listát ad vissza (dfs), a to_dataframe ezt kezeli
+        df = column_joiner(to_dataframe(result))
+        return df
+    return None

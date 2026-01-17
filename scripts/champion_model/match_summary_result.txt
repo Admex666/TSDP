@@ -1,0 +1,6 @@
+=== fb_match_summary() Teszt ===
+Időpont: 2026-01-17 13:15:21.003462 
+URL: https://fbref.com/en/matches/fc8ab8b2/Brighton-and-Hove-Albion-Manchester-United-August-24-2024-Premier-League 
+HIBA TÖRTÉNT:
+In index: 1. 
+Részletek: Forbidden (HTTP 403). 

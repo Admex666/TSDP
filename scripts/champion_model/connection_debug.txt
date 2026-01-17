@@ -1,0 +1,12 @@
+=== KAPCSOLAT DIAGNOSZTIKA ===
+Időpont: 2026-01-17 13:16:25.179931 
+Cél URL: https://fbref.com/en/matches/c7512760/Wolves-Arsenal-April-20-2024-Premier-League 
+
+1. KÍSÉRLET: httr::GET kérés User-Agent beállítással
+HTTP Státusz Kód: 403 
+HIBA: 403 Forbidden - A szerver blokkolja a kérést.
+Ez a leggyakoribb ok: Az FBref érzékelte, hogy scriptből jön a kérés.
+
+------------------------------------------------
+2. KÍSÉRLET: rvest::read_html (alapértelmezett, amit a csomag használ)
+HIBA (rvest): cannot open the connection 

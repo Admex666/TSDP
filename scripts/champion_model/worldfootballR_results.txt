@@ -1,0 +1,261 @@
+=================================================================
+worldfootballR - ÖSSZES ELÉRHETŐ ADAT
+=================================================================
+Csomag verzió: 0.6.2 
+Időpont: 2026-01-17 13:08:55.42629 
+
+ELÉRHETŐ LOAD_ FÜGGVÉNYEK A CSOMAGBAN:
+======================================
+[1] "load_fb_big5_advanced_season_stats" "load_fotmob_match_details"         
+[3] "load_fotmob_matches_by_date"        "load_match_comp_results"           
+[5] "load_match_results"                 "load_understat_league_shots"       
+
+
+=================================================================
+MINDEN STAT TÍPUS - PREMIER LEAGUE 2024
+=================================================================
+
+---  SHOOTING  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"      "Squad"                "Comp"                
+ [4] "Team_or_Opponent"     "Num_Players"          "Mins_Per_90"         
+ [7] "Gls_Standard"         "Sh_Standard"          "SoT_Standard"        
+[10] "SoT_percent_Standard" "Sh_per_90_Standard"   "SoT_per_90_Standard" 
+[13] "G_per_Sh_Standard"    "G_per_SoT_Standard"   "Dist_Standard"       
+
+---  PASSING  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"   "Squad"             "Comp"             
+ [4] "Team_or_Opponent"  "Num_Players"       "Mins_Per_90"      
+ [7] "Cmp_Total"         "Att_Total"         "Cmp_percent_Total"
+[10] "TotDist_Total"     "PrgDist_Total"     "Cmp_Short"        
+[13] "Att_Short"         "Cmp_percent_Short" "Cmp_Medium"       
+
+---  PASSING_TYPES  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"  "Squad"            "Comp"             "Team_or_Opponent"
+ [5] "Num_Players"      "Mins_Per_90"      "Att"              "Live_Pass"       
+ [9] "Dead_Pass"        "FK_Pass"          "TB_Pass"          "Sw_Pass"         
+[13] "Crs_Pass"         "TI_Pass"          "CK_Pass"         
+
+---  GCA  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"  "Squad"            "Comp"             "Team_or_Opponent"
+ [5] "Num_Players"      "Mins_Per_90"      "SCA_SCA"          "SCA90_SCA"       
+ [9] "PassLive_SCA"     "PassDead_SCA"     "TO_SCA"           "Sh_SCA"          
+[13] "Fld_SCA"          "Def_SCA"          "GCA_GCA"         
+
+---  DEFENSE  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"        "Squad"                  "Comp"                  
+ [4] "Team_or_Opponent"       "Num_Players"            "Mins_Per_90"           
+ [7] "Tkl_Tackles"            "TklW_Tackles"           "Def 3rd_Tackles"       
+[10] "Mid 3rd_Tackles"        "Att 3rd_Tackles"        "Tkl_Challenges"        
+[13] "Att_Challenges"         "Tkl_percent_Challenges" "Lost_Challenges"       
+
+---  POSSESSION  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"  "Squad"            "Comp"             "Team_or_Opponent"
+ [5] "Num_Players"      "Poss"             "Mins_Per_90"      "Touches_Touches" 
+ [9] "Def Pen_Touches"  "Def 3rd_Touches"  "Mid 3rd_Touches"  "Att 3rd_Touches" 
+[13] "Att Pen_Touches"  "Live_Touches"     "Att_Take"        
+
+---  PLAYING_TIME  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"          "Squad"                   
+ [3] "Comp"                     "Team_or_Opponent"        
+ [5] "Num_Players"              "Age"                     
+ [7] "MP_Playing.Time"          "Min_Playing.Time"        
+ [9] "Mn_per_MP_Playing.Time"   "Min_percent_Playing.Time"
+[11] "Mins_Per_90_Playing.Time" "Starts_Starts"           
+[13] "Mn_per_Start_Starts"      "Compl_Starts"            
+[15] "Subs_Subs"               
+
+---  MISC  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"  "Squad"            "Comp"             "Team_or_Opponent"
+ [5] "Num_Players"      "Mins_Per_90"      "CrdY"             "CrdR"            
+ [9] "2CrdY"            "Fls"              "Fld"              "Off"             
+[13] "Crs"              "Int"              "TklW"            
+
+---  KEEPERS  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"  "Squad"            "Comp"             "Team_or_Opponent"
+ [5] "Num_Players"      "MP_Playing"       "Starts_Playing"   "Min_Playing"     
+ [9] "Mins_Per_90"      "GA"               "GA90"             "SoTA"            
+[13] "Saves"            "Save_percent"     "W"               
+
+---  KEEPERS_ADV  ---
+Sorok: 20 
+Oszlopok (első 15):
+ [1] "Season_End_Year"            "Squad"                     
+ [3] "Comp"                       "Team_or_Opponent"          
+ [5] "Num_Players"                "Mins_Per_90"               
+ [7] "GA_Goals"                   "PKA_Goals"                 
+ [9] "FK_Goals"                   "CK_Goals"                  
+[11] "OG_Goals"                   "PSxG_Expected"             
+[13] "PSxG_per_SoT_Expected"      "PSxG+_per__minus__Expected"
+[15] "_per_90_Expected"          
+
+
+=================================================================
+ARSENAL - RÉSZLETES SZEZON STATISZTIKÁK 2024
+=================================================================
+
+--- SHOOTING ---
+                       [,1]                                                
+Season_End_Year        "2024"                                              
+Squad                  "Arsenal"                                           
+Comp                   "Premier League"                                    
+Team_or_Opponent       "team"                                              
+Num_Players            "25"                                                
+Mins_Per_90            "38"                                                
+Gls_Standard           "86"                                                
+Sh_Standard            "647"                                               
+SoT_Standard           "209"                                               
+SoT_percent_Standard   "32.3"                                              
+Sh_per_90_Standard     "17.03"                                             
+SoT_per_90_Standard    "5.5"                                               
+G_per_Sh_Standard      "0.12"                                              
+G_per_SoT_Standard     "0.36"                                              
+Dist_Standard          "15.8"                                              
+PK_Standard            "10"                                                
+PKatt_Standard         "10"                                                
+FK_Standard            "6"                                                 
+xG_Expected            "76.1"                                              
+npxG_Expected          "68.5"                                              
+npxG_per_Sh_Expected   "0.11"                                              
+G_minus_xG_Expected    "9.9"                                               
+np:G_minus_xG_Expected "7.5"                                               
+Url                    "https://fbref.com/en/squads/18bb7c10/Arsenal-Stats"
+
+--- PASSING ---
+                     [,1]                                                
+Season_End_Year      "2024"                                              
+Squad                "Arsenal"                                           
+Comp                 "Premier League"                                    
+Team_or_Opponent     "team"                                              
+Num_Players          "25"                                                
+Mins_Per_90          "38"                                                
+Cmp_Total            "19094"                                             
+Att_Total            "22558"                                             
+Cmp_percent_Total    "84.6"                                              
+TotDist_Total        "309533"                                            
+PrgDist_Total        "102210"                                            
+Cmp_Short            "9719"                                              
+Att_Short            "10643"                                             
+Cmp_percent_Short    "91.3"                                              
+Cmp_Medium           "7809"                                              
+Att_Medium           "8765"                                              
+Cmp_percent_Medium   "89.1"                                              
+Cmp_Long             "1178"                                              
+Att_Long             "2162"                                              
+Cmp_percent_Long     "54.5"                                              
+Ast                  "62"                                                
+xAG                  "55.3"                                              
+xA                   NA                                                  
+A_minus_xAG          NA                                                  
+KP                   "513"                                               
+Final_Third          "1546"                                              
+PPA                  "548"                                               
+CrsPA                "68"                                                
+PrgP                 "2106"                                              
+Url                  "https://fbref.com/en/squads/18bb7c10/Arsenal-Stats"
+xA_Expected          "57.8"                                              
+A_minus_xAG_Expected "6.7"                                               
+
+--- DEFENSE ---
+                       [,1]                                                
+Season_End_Year        "2024"                                              
+Squad                  "Arsenal"                                           
+Comp                   "Premier League"                                    
+Team_or_Opponent       "team"                                              
+Num_Players            "25"                                                
+Mins_Per_90            "38"                                                
+Tkl_Tackles            "610"                                               
+TklW_Tackles           "348"                                               
+Def 3rd_Tackles        "257"                                               
+Mid 3rd_Tackles        "246"                                               
+Att 3rd_Tackles        "107"                                               
+Tkl_Challenges         "271"                                               
+Att_Challenges         "543"                                               
+Tkl_percent_Challenges "49.9"                                              
+Lost_Challenges        "272"                                               
+Blocks_Blocks          "412"                                               
+Sh_Blocks              "106"                                               
+Pass_Blocks            "306"                                               
+Int                    "292"                                               
+Tkl+Int                "902"                                               
+Clr                    "515"                                               
+Err                    "18"                                                
+Url                    "https://fbref.com/en/squads/18bb7c10/Arsenal-Stats"
+
+--- POSSESSION ---
+                    [,1]                                                
+Season_End_Year     "2024"                                              
+Squad               "Arsenal"                                           
+Comp                "Premier League"                                    
+Team_or_Opponent    "team"                                              
+Num_Players         "25"                                                
+Poss                "58.2"                                              
+Mins_Per_90         "38"                                                
+Touches_Touches     "26493"                                             
+Def Pen_Touches     "1974"                                              
+Def 3rd_Touches     "6714"                                              
+Mid 3rd_Touches     "11407"                                             
+Att 3rd_Touches     "8560"                                              
+Att Pen_Touches     "1480"                                              
+Live_Touches        "26483"                                             
+Att_Take            "671"                                               
+Succ_Take           "283"                                               
+Succ_percent_Take   "42.2"                                              
+Tkld_Take           "304"                                               
+Tkld_percent_Take   "45.3"                                              
+Carries_Carries     "16297"                                             
+TotDist_Carries     "81171"                                             
+PrgDist_Carries     "41510"                                             
+PrgC_Carries        "821"                                               
+Final_Third_Carries "575"                                               
+CPA_Carries         "327"                                               
+Mis_Carries         "525"                                               
+Dis_Carries         "375"                                               
+Rec_Receiving       "18917"                                             
+PrgR_Receiving      "2088"                                              
+Url                 "https://fbref.com/en/squads/18bb7c10/Arsenal-Stats"
+
+--- KEEPERS (xGA, védések) ---
+                     [,1]                                                
+Season_End_Year      "2024"                                              
+Squad                "Arsenal"                                           
+Comp                 "Premier League"                                    
+Team_or_Opponent     "team"                                              
+Num_Players          "2"                                                 
+MP_Playing           "38"                                                
+Starts_Playing       "38"                                                
+Min_Playing          "3420"                                              
+Mins_Per_90          "38"                                                
+GA                   "29"                                                
+GA90                 "0.76"                                              
+SoTA                 "83"                                                
+Saves                "54"                                                
+Save_percent         "67.5"                                              
+W                    "28"                                                
+D                    "5"                                                 
+L                    "5"                                                 
+CS                   "18"                                                
+CS_percent           "47.4"                                              
+PKatt_Penalty        "3"                                                 
+PKA_Penalty          "2"                                                 
+PKsv_Penalty         "1"                                                 
+PKm_Penalty          "0"                                                 
+Save_percent_Penalty "33.3"                                              
+Url                  "https://fbref.com/en/squads/18bb7c10/Arsenal-Stats"
