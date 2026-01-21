@@ -1,0 +1,22 @@
+# Core dependencies
+streamlit>=1.30.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# API & HTTP
+tls-client>=0.2.0
+
+# Visualization
+plotly>=5.18.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+mplsoccer>=1.3.0
+
+# Network analysis (for pass networks)
+networkx>=3.2.0
+
+# Data processing
+scipy>=1.11.0
+
+# Optional: For better performance
+pyarrow>=14.0.0

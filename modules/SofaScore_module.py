@@ -1,34 +1,192 @@
 import pandas as pd
 import json
+import time
+import random
+from typing import Dict, Any, Optional
+import tls_client
+from functools import lru_cache
 
-def scrape_sofascore(url):
-    import tls_client
-    import time
-    import random
+# Global session pool for reuse
+_session_pool = []
+_last_request_time = 0
+_request_count = 0
 
-    # Válassz "client_profile"-t ami Chrome/Safari-szerű fingerprintet ad.
-    sess = tls_client.Session(client_identifier="chrome_118")
+# User-Agent rotation pool
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+]
 
+# Client identifier rotation
+CLIENT_IDENTIFIERS = [
+    "chrome_120",
+    "chrome_119", 
+    "chrome_118",
+    "safari_ios_16_0",
+    "firefox_120",
+]
+
+def _get_session():
+    """Get or create a TLS session from the pool"""
+    global _session_pool
+    
+    if not _session_pool or random.random() < 0.3:  # 30% chance to create new session
+        client_id = random.choice(CLIENT_IDENTIFIERS)
+        sess = tls_client.Session(client_identifier=client_id)
+        _session_pool.append(sess)
+        
+        # Keep pool size manageable
+        if len(_session_pool) > 5:
+            _session_pool.pop(0)
+    
+    return random.choice(_session_pool)
+
+def _rate_limit():
+    """Implement rate limiting to avoid triggering anti-bot measures"""
+    global _last_request_time, _request_count
+    
+    current_time = time.time()
+    time_since_last = current_time - _last_request_time
+    
+    # Adaptive delay based on request count
+    if _request_count > 10:
+        min_delay = 2.0  # Slow down after many requests
+    elif _request_count > 5:
+        min_delay = 1.5
+    else:
+        min_delay = 1.0
+    
+    # Add random jitter to appear more human
+    delay = min_delay + random.uniform(0.5, 1.5)
+    
+    if time_since_last < delay:
+        sleep_time = delay - time_since_last
+        time.sleep(sleep_time)
+    
+    _last_request_time = time.time()
+    _request_count += 1
+    
+    # Reset counter periodically
+    if _request_count > 20:
+        _request_count = 0
+        time.sleep(random.uniform(3, 5))  # Longer break
+
+def _get_headers(url: str) -> Dict[str, str]:
+    """Generate realistic headers with rotation"""
+    user_agent = random.choice(USER_AGENTS)
+    
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                    "(KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
+        "User-Agent": user_agent,
         "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
         "Referer": "https://www.sofascore.com/",
         "Origin": "https://www.sofascore.com",
+        "DNT": "1",
+        "Connection": "keep-alive",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
     }
+    
+    # Add realistic sec-ch-ua headers for Chrome
+    if "Chrome" in user_agent:
+        headers["sec-ch-ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"'
+        headers["sec-ch-ua-mobile"] = "?0"
+        headers["sec-ch-ua-platform"] = '"Windows"'
+    
+    return headers
 
-    #time.sleep(random.randint(1,3))
-
-    resp = sess.get(url, headers=headers)
-
-    if resp.status_code == 200:
-        data = resp.json()
-
-        return data
-
-    else:
-        print(f"Error: {resp.status_code}")
-        return {}
+def scrape_sofascore(url: str, max_retries: int = 5) -> Dict[str, Any]:
+    """
+    Scrape SofaScore API with advanced anti-403 protection
+    
+    Args:
+        url: API endpoint URL
+        max_retries: Maximum number of retry attempts
+        
+    Returns:
+        JSON response as dictionary, empty dict on failure
+    """
+    _rate_limit()
+    
+    for attempt in range(max_retries):
+        try:
+            # Get session and headers
+            sess = _get_session()
+            headers = _get_headers(url)
+            
+            # Add small random delay before request
+            time.sleep(random.uniform(0.1, 0.3))
+            
+            # Make request
+            resp = sess.get(url, headers=headers)
+            
+            if resp.status_code == 200:
+                try:
+                    data = resp.json()
+                    return data
+                except json.JSONDecodeError as e:
+                    print(f"JSON decode error: {e}")
+                    if attempt < max_retries - 1:
+                        continue
+                    return {}
+            
+            elif resp.status_code == 403:
+                print(f"403 Forbidden (attempt {attempt + 1}/{max_retries})")
+                
+                # Exponential backoff with jitter
+                wait_time = (2 ** attempt) + random.uniform(0, 1)
+                print(f"Waiting {wait_time:.2f}s before retry...")
+                time.sleep(wait_time)
+                
+                # Clear session pool to force new sessions
+                global _session_pool
+                _session_pool = []
+                
+                if attempt < max_retries - 1:
+                    continue
+                else:
+                    print(f"Failed after {max_retries} attempts")
+                    return {}
+            
+            elif resp.status_code == 429:  # Too Many Requests
+                print(f"Rate limited (429), waiting longer...")
+                wait_time = 10 + random.uniform(5, 10)
+                time.sleep(wait_time)
+                
+                if attempt < max_retries - 1:
+                    continue
+                else:
+                    return {}
+            
+            elif resp.status_code == 404:
+                print(f"Resource not found (404): {url}")
+                return {}
+            
+            else:
+                print(f"Error {resp.status_code} (attempt {attempt + 1}/{max_retries})")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+                else:
+                    return {}
+                    
+        except Exception as e:
+            print(f"Request exception (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2 ** attempt)
+                continue
+            else:
+                return {}
+    
+    return {}
 
 
 # 1. Lineups DataFrame
