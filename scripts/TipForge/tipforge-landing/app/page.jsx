@@ -36,6 +36,10 @@ const TipForgeLanding = () => {
             'event_category': 'engagement',
           });
         }
+
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'ViewContent', { content_name: 'exit_popup' });
+        }
       }
     };
 
@@ -124,6 +128,10 @@ const TipForgeLanding = () => {
       });
     }
 
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Contact', { content_name: source });
+    }
+
     if (typeof window !== 'undefined' && window.Tally) {
       window.Tally.openPopup('wA1JkN', {
         layout: 'modal',
@@ -139,6 +147,9 @@ const TipForgeLanding = () => {
               'event_label': source
             });
           }
+          if (window.fbq) {
+            window.fbq('track', 'InitiateCheckout', { content_name: source });
+          }
         },
         onSubmit: () => {
           if (window.gtag) {
@@ -147,6 +158,9 @@ const TipForgeLanding = () => {
               'event_label': source,
               'value': 1
             });
+          }
+          if (window.fbq) {
+            window.fbq('track', 'Lead', { content_name: source });
           }
         },
         onClose: () => {
