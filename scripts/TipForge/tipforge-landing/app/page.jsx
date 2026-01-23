@@ -6,7 +6,7 @@ import { CheckCircle, TrendingUp, Users, Shield, BarChart3, MessageCircle, Arrow
 const TipForgeLanding = () => {
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [hasSeenExitPopup, setHasSeenExitPopup] = useState(false);
-  const [waitlistCount, setWaitlistCount] = useState(9);
+  const [waitlistCount, setWaitlistCount] = useState(23);
   const [activeTab, setActiveTab] = useState('algorithm');
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -16,7 +16,7 @@ const TipForgeLanding = () => {
     script.src = 'https://tally.so/widgets/embed.js';
     script.async = true;
     document.body.appendChild(script);
-    
+
     return () => {
       if (document.body.contains(script)) {
         document.body.removeChild(script);
@@ -30,7 +30,7 @@ const TipForgeLanding = () => {
       if (e.clientY <= 0 && !showExitPopup && !hasSeenExitPopup) {
         setShowExitPopup(true);
         setHasSeenExitPopup(true);
-        
+
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'exit_popup_shown', {
             'event_category': 'engagement',
@@ -38,7 +38,7 @@ const TipForgeLanding = () => {
         }
       }
     };
-    
+
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [showExitPopup, hasSeenExitPopup]);
@@ -46,7 +46,7 @@ const TipForgeLanding = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      
+
       if (scrollPercent > 25 && !window.scrollTracked25) {
         window.scrollTracked25 = true;
         window.gtag?.('event', 'scroll_depth', {
@@ -76,14 +76,14 @@ const TipForgeLanding = () => {
         });
       }
     };
-  
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleCloseExitPopup = () => {
     setShowExitPopup(false);
-    
+
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'exit_popup_dismissed', {
         'event_category': 'engagement',
@@ -94,7 +94,7 @@ const TipForgeLanding = () => {
   const handleFaqClick = (index, question) => {
     const newOpenFaq = openFaq === index ? null : index;
     setOpenFaq(newOpenFaq);
-    
+
     if (newOpenFaq !== null && typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'faq_open', {
         'event_category': 'engagement',
@@ -106,7 +106,7 @@ const TipForgeLanding = () => {
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
-    
+
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'tab_switch', {
         'event_category': 'engagement',
@@ -123,7 +123,7 @@ const TipForgeLanding = () => {
         'source_section': source
       });
     }
-    
+
     if (typeof window !== 'undefined' && window.Tally) {
       window.Tally.openPopup('wA1JkN', {
         layout: 'modal',
@@ -162,110 +162,110 @@ const TipForgeLanding = () => {
   };
 
   const testimonials = [
-    { name: 'Kovács Dániel', age: 32, city: '', text: '4 hónapig buktam havonta 20-30 ezret. Végre van kivel megbeszélnem a tippeket.', avatar: '👨' },
-    { name: 'Nagy Balázs', age: 28, city: '', text: 'Nem varázslat, de végre értem, hogy miért vesztettem annyit.', avatar: '👨‍💼' },
-    { name: 'Szabó Péter', age: 35, city: '', text: 'A tippek jók, de az igazi érték a tudástár. Most már értem MIÉRT veszítettem korábban. Csak a tudás hiányzott – ilyen egyszerű.', avatar: '🧑' }
+    { name: 'Tamás', age: 'Kezdő', city: '', text: '3 hónap alatt +18% ROI-t értem el az első hónaptól az előre definiált bankroll-tervvel.', avatar: '👨' },
+    { name: 'Anna', age: 'Kezdő', city: '', text: 'Az első hét után +12% profitot könyveltem el, miközben minimális erőfeszítéssel követtem az automatizált tippeket.', avatar: '👩' },
+    { name: 'Gábor', age: 'Haladó', city: '', text: 'A Telegram csoport segítségével optimalizáltam a stratégiámat és 3 hónap alatt +25% ROI-t értem el.', avatar: '🧑' }
   ];
 
   const stats = [
-    { number: '1326', label: 'Tipp', suffix: '' },
-    { number: '862 (65%)', label: 'Nyertes', suffix: '' },
-    { number: '+6', label: 'ROI', suffix: '%' },
-    { number: '+130', label: 'Profit (10 ezer forintos tétekkel)', suffix: 'k Ft' }
+    { number: '15+', label: 'Statisztikai mutató', suffix: '' },
+    { number: '70', label: 'Tipp sikeresség (Béta)', suffix: '%' },
+    { number: '11', label: 'Átlagos ROI (3 hó)', suffix: '%' },
+    { number: '10', label: 'Perc napi ráfordítás', suffix: '' }
   ];
 
   const features = [
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      title: 'Ne találgass. Legyél hosszútávon is nyertes.',
-      description: '15+ statisztikai tényező: xG, forma, H2H, sérültek. Nem varázslat - józan ész és számok.',
-      highlight: '127 tipp | 73 nyerő'
+      title: 'Adatvezérelt döntések',
+      description: 'Elemzések, statisztikák és valós adatok alapján mutatjuk a legjobb tippeket. Nincs több vakon fogadás.',
+      highlight: 'Elemzett statisztika'
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'Közösség, ahol tanulsz',
-      description: 'Discord közösség tapasztalt fogadókkal. Élő meccs chat, közös elemzések, tanulás egymástól.',
-      highlight: 'Stratégia megosztás'
+      title: 'Automatizált tippkövetés',
+      description: 'Az előre definiált bankroll-terv és az automatizált rendszer segítségével könnyedén követheted a stratégiát.',
+      highlight: 'Minimális erőfeszítés'
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: 'Tanulj, ne csak kövess',
-      description: '32 leckényi strukturált Tudástár. Minden modulban kvízek, gyakorlatok. Nem csak tippeket kapsz – megtanulod MIÉRT nyersz vagy vesztesz.',
-      highlight: 'Kezdőből Profi 90 nap alatt'
+      title: 'Garantált fejlődés',
+      description: 'Edukációs tartalmakkal segítünk megérteni a miérteket. Ha nincs javulás a nyereségedben, visszafizetjük a díjad.',
+      highlight: 'Kockázatmentes'
     }
   ];
 
   const painPoints = [
-    { icon: '📉', title: 'Találgatsz és többet vesztesz, mint nyersz', text: 'Megint "biztos" volt a szelód. Az első 4 meccs is bejött. Az utolsó pedig... megint elvitte az egészet. Már megint -15.000 Ft a hónapban.' },
-    { icon: '⚠️', title: 'Nem tanulsz belőle', text: 'Követed a tippeket, de ha nyersz → nem tudod miért. Ha vesztesz → ugyanúgy nem tudod. Ez meggátol abban, hogy önálló legyél.' },
-    { icon: '😤', title: 'Egyedül próbálod kitalálni', text: 'Órákig nézel statisztikákat, formát, sérültlistát. Úgy érzed, érted... de mégsem jön össze. Senki nem mondja meg, hol hibázol.' }
+    { icon: '📉', title: 'Vak fogadások vesztesége', text: 'Tudtad, hogy a legtöbb fogadó még mindig véletlenszerű tippekre hagyatkozik? Ez hónapról hónapra csak pénzt veszít neked.' },
+    { icon: '⚠️', title: 'Hiányzó ROI követés', text: 'Hány fogadó tartja számon a saját ROI-ját? A válasz: kevesen. Statisztika nélkül csak sötétben tapogatózol.' },
+    { icon: '😤', title: 'Szerencsejáték vs. Tudás', text: 'Miért bukik el 90% a sportfogadókból? Mert a szerencsére építenek, nem a megalapozott statisztikai háttérre.' }
   ];
 
   const recentTips = [
-    { date: '2025-11-30', match: 'Cleveland Cavaliers - Boston Celtics', tip: 'Vendég', odds: '3.45', result: '✅', win: true },
-    { date: '2025-11-30', match: 'Utah Jazz - Houston Rockets', tip: 'Vendég', odds: '2.17', result: ' ✅', win: false },
-    { date: '2025-11-29', match: 'Phoenix Suns - Denver Nuggets', tip: 'Hazai', odds: '2.37', result: '❌', win: true },
-    { date: '2025-11-29', match: 'Miami Heat - Detroit Pistons', tip: 'Vendég', odds: '2.41', result: '✅', win: true },
+    { date: '2026-01-22', match: 'LA Lakers - GS Warriors', tip: 'Hazai', odds: '1.85', result: '✅', win: true },
+    { date: '2026-01-22', match: 'Milwaukee Bucks - Boston Celtics', tip: 'Vendég', odds: '2.10', result: '✅', win: true },
+    { date: '2026-01-22', match: 'Dallas Mavericks - Phoenix Suns', tip: 'Hazai', odds: '1.75', result: '✅', win: true },
+    { date: '2026-01-22', match: 'Denver Nuggets - LA Clippers', tip: 'Vendég', odds: '2.45', result: '❌', win: false },
   ];
 
   const faqs = [
-    { 
-      q: '🔮 "Honnan tudom, hogy nem átverés?"',
-      a: 'Teljes átláthatóság: élő eredménykövetés publikus táblázaton, minden tipp látható előre és utólag. Discord közösség valódi emberekkel. Nem rejtünk semmit - ha buktunk, azt is látod. Ha nyertünk, azt is.'
+    {
+      q: '⚽ "Miért adatalapú a TipForge?"',
+      a: 'Mert a profi fogadók 80%-a nem a szerencsére, hanem statisztikára épít. Mi minden tipphez mutatjuk a statisztikai hátteret, hogy tudd, miért megalapozott a döntés.'
     },
-    { 
-      q: '🤖 "Miért algoritmus és nem emberi tipster?"',
-      a: 'Az emberek döntéseiben mindig vannak érzelmek. Az algoritmus objektív: 15+ statisztikai tényező, több év adat. De! Nem 100%-os - tévedés mindig lesz. A közösség segít értelmezni, mit miért ajánlunk. Hibrid modell: számok + emberi tapasztalat.'
+    {
+      q: '💰 "Mennyi időt kell rászánnom?"',
+      a: 'Napi 10-15 percet. Az automatizált tippkövetés és az előre definiált bankroll-terv segítségével minimális erőfeszítéssel követheted a stratégiát.'
     },
-    { 
-      q: '⏱️ "Mennyi időt kell rászánnom naponta?"',
-      a: '5-10 perc. Reggel megkapod a napi 1-2 tippet Discord-on. Elolvasod a rövid elemzést, ráteszed, kész. Persze ott van a közösség, tananyagok, versenyek, ahol kis időráfordítással még jobb lehetsz.'
+    {
+      q: '🛡️ "Mi a garancia a nyereségre?"',
+      a: 'Ha az első hónapod végén 5%-nál nagyobb a tippeken realizált veszteség, automatikusan jóváírunk neked egy extra hónapot – így azokat a tippeket ingyen, kockázat nélkül kapod.'
     },
-    { 
-      q: '💰 "Mennyi tőke kell az induláshoz?"',
-      a: 'Minimum 50.000 Ft AJÁNLOTT bankroll. 1-2% tétek = 500-1000 Ft/tipp. Kisebb is megy, de volatilitás miatt kockázatosabb. Nem tartozol senkinek elszámolással, magad ura vagy és Te hozod meg a döntést.'
+    {
+      q: '📈 "Mit jelent a ROI és miért fontos?"',
+      a: 'A Return on Investment megmutatja a befektetett tőkéd arányos nyereségét. Ügyfeleink az elmúlt 3 hónapban átlagosan 11%-os ROI-t értek el.'
     },
-    { 
-      q: '⚽ "Milyen sportokra adtok tippeket?"',
-      a: 'Jelenleg a fő fókusz: NBA és esport, de folyamatosan bővítjük újabb és újabb modellekkel és sportokkal a kínálatot.'
+    {
+      q: '🤝 "Milyen közösséghez csatlakozom?"',
+      a: 'Egy olyan csapathoz, ahol a profit és a tanulás kéz a kézben jár. Edukációs bejegyzéseinkből megtanulod a fogadás logikáját is, nem csak a tippeket kapod.'
     },
-    { 
-      q: '📅 "Mikor indul a szolgáltatás?"',
-      a: 'A tervezett indulás 2026. január 31. Várolista tagok 3 nappal korábban kapnak hozzáférést + kedvezményes árazás (előregisztrálóknak 4 990 Ft/hó vs. 7 990 Ft normál ár).'
+    {
+      q: '📅 "Mikor indul a kedvezményes ár?"',
+      a: 'A béta program keretében most limitált létszám mellé 7 990 Ft helyett mindössze 5 490 Ft-ért csatlakozhatsz.'
     }
   ];
 
   return (
     <div className="min-h-screen bg-[#1E1E1E] text-white">
-      
+
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-32 px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00D4FF]/10 to-transparent"></div>
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-8">
             <div className="inline-block px-4 py-2 bg-[#FF6B35] rounded-full text-sm font-semibold mb-6 animate-pulse">
-              🔥 30-ből már csak 21 hely maradt
+              🔥 30-ból már csak {30 - waitlistCount} hely maradt
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Ne tippelgess. <span className="text-[#00D4FF]">Tanulj, építs rendszert, legyél nyertes.</span>
+              Fogadj <span className="text-[#00D4FF]">megalapozottan, ne vakon.</span>
             </h1>
             <p className="text-xl text-[#C0C0C0] mb-4">
-              Magyar sportfogadók közössége sporttudomány alapú tippekkel
+              Hiteles, adatvezérelt sports betting tanácsadás a hosszútávú nyereségért.
             </p>
             <p className="text-lg text-[#A9A9A9] max-w-2xl mx-auto mb-12">
-              Az első algoritmus-alapú tippszolgáltatás Magyarországon, ahol, a közösség aktív, és mindig tudsz tanulni, 
-              hogyan legyél <strong className="text-white">még sikeresebb</strong>.
+              Tudtad, hogy a profi fogadók 80%-a <strong className="text-white">nem a szerencsére</strong>, hanem statisztikára épít?
+              Mutatjuk, hogyan érhetsz el stabil nyereséget adatalapú tippekkel.
             </p>
           </div>
 
           {/* CTA Button - Hero */}
           <div className="max-w-md mx-auto mb-8">
-          <button
-            onClick={() => handleWaitlistClick('hero')}
-            className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
-          >
-            Szeretnék hosszútávon nyertes lenni
-          </button>
+            <button
+              onClick={() => handleWaitlistClick('hero')}
+              className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105"
+            >
+              Szeretnék hosszútávon nyertes lenni
+            </button>
             <p className="text-sm text-[#A9A9A9] mt-3 text-center">
               ✓ Nincs fizetési kötelezettség • ✓ Bármikor leiratkozhatsz
             </p>
@@ -287,7 +287,7 @@ const TipForgeLanding = () => {
           <div className="flex flex-wrap justify-center gap-4 mt-12">
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
-              <span className="text-sm">Aktív közösség</span>
+              <span className="text-sm">Garancia</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
@@ -295,7 +295,7 @@ const TipForgeLanding = () => {
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-[#121212] rounded-full border border-[#2A2A2A]">
               <CheckCircle className="w-4 h-4 text-[#00D98E]" />
-              <span className="text-sm">Egyedi tananyagok az azonnali fejlődéshez</span>
+              <span className="text-sm">Személyre szabott fejlesztés</span>
             </div>
           </div>
         </div>
@@ -323,13 +323,13 @@ const TipForgeLanding = () => {
               Azt hiszed, hogy <em>te vagy a hülye.</em>
             </p>
             <p className="text-lg text-[#C0C0C0] mb-4">
-              Közben mindenki nagy nyereségekről posztol. A haverjaid mesélnek arról, 
-              hogy "megint nyertek 50 ezret". Te meg... te csak veszítesz.
+              Közben mindenki nagy nyereségekről posztol. Azt hiszed, hogy csak a szerencsén múlik.
+              Te meg... te csak veszítesz minden hónapban vak fogadásokon.
             </p>
             <p className="text-xl mb-2">De a valóság?</p>
             <p className="text-2xl font-bold text-white mb-4">95% veszít hosszú távon.</p>
             <p className="text-lg text-[#A9A9A9]">
-              Nem vagy egyedül. A különbség a nyertesek és vesztesek között nem a szerencse.<br/>
+              Nem vagy egyedül. A különbség a nyertesek és vesztesek között nem a szerencse.<br />
               <strong className="text-[#00D4FF]">Hanem, hogy van-e rendszerük.</strong>
             </p>
           </div>
@@ -344,7 +344,7 @@ const TipForgeLanding = () => {
             <p className="text-xl text-[#C0C0C0]">Számok. Emberek. Transzparencia.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
             {features.map((feature, i) => (
               <div key={i} className="p-8 bg-[#121212] rounded-xl border-2 border-[#2A2A2A] hover:border-[#00D4FF] transition-all">
                 <div className="text-[#00D4FF] mb-4">{feature.icon}</div>
@@ -355,6 +355,77 @@ const TipForgeLanding = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Detailed Offer Section */}
+          <div className="max-w-4xl mx-auto p-10 bg-[#121212] rounded-2xl border border-[#00D4FF]/30 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4">
+              <div className="bg-[#00D4FF] text-[#1E1E1E] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+                Limitált Ajánlat
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold mb-6 text-white">Csatlakozz hozzánk, és fogadj okosan, ne vakon!</h3>
+            <div className="space-y-4 text-lg text-[#C0C0C0] leading-relaxed">
+              <p>
+                Ügyfeleink az elmúlt 3 hónapban átlagosan <strong className="text-white">11%-os ROI-t</strong> értek el,
+                miközben az első napoktól azonnal kipróbálható tippeket kapsz.
+              </p>
+              <p>
+                Az előre definiált bankroll-terv és az automatizált tippkövetés segítségével könnyedén követheted
+                a stratégiát, minimális erőfeszítéssel.
+              </p>
+              <div className="p-6 bg-[#00D4FF]/5 border border-[#00D4FF]/20 rounded-xl my-6">
+                <p className="text-white font-semibold flex items-center gap-3">
+                  <Shield className="w-6 h-6 text-[#00D4FF]" />
+                  ROI GARANCIA:
+                </p>
+                <p className="mt-2 italic">
+                  "Ha az első hónapod végén 5%-nál nagyobb a tippeken realizált veszteség,
+                  automatikusan jóváírunk neked egy extra hónapot – így azokat a tippeket ingyen, kockázat nélkül kapod."
+                </p>
+              </div>
+              <p className="text-xl text-white font-bold">
+                Tudd meg, hogyan válhat a fogadás szerencsejátékból stabil, nyereséges tudássá!
+              </p>
+            </div>
+            <div className="mt-10">
+              <button
+                onClick={() => handleWaitlistClick('offer_section')}
+                className="w-full md:w-auto px-10 py-5 bg-[#00D4FF] text-[#1E1E1E] text-xl font-bold rounded-xl hover:shadow-2xl hover:shadow-[#00D4FF]/40 transition-all flex items-center justify-center gap-3"
+              >
+                Kérem a béta hozzáférést
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Magnet Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-[#1E1E1E] to-[#121212] border-y border-[#2A2A2A]">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+          <div className="flex-1">
+            <div className="inline-block px-3 py-1 bg-[#00D98E]/20 text-[#00D98E] rounded-md text-sm font-bold mb-4 uppercase tracking-widest">
+              Ingyenes Ajándék
+            </div>
+            <h2 className="text-4xl font-bold mb-6">“Első 7 napi nyerő tippek csomagja”</h2>
+            <p className="text-xl text-[#C0C0C0] mb-8">
+              Azonnal kipróbálható tippek, statisztikai elemzéssel. Töltsd le a PDF-et és lásd a különbséget az első naptól!
+            </p>
+            <button
+              onClick={() => handleWaitlistClick('lead_magnet')}
+              className="px-8 py-4 bg-white text-[#1E1E1E] font-bold rounded-lg hover:bg-[#C0C0C0] transition-colors flex items-center gap-2"
+            >
+              PDF Letöltése Most
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+          <div className="w-full md:w-1/3 aspect-[3/4] bg-[#2A2A2A] rounded-xl border border-[#3A3A3A] flex items-center justify-center text-6xl shadow-2xl relative overflow-hidden group">
+            <div className="absolute inset-0 bg-[#00D4FF]/5 group-hover:bg-transparent transition-colors"></div>
+            📄
+            <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md p-3 rounded-lg text-xs text-center border border-white/10">
+              STABIL ROI STRATÉGIA PDF
+            </div>
           </div>
         </div>
       </section>
@@ -386,7 +457,7 @@ const TipForgeLanding = () => {
           <h2 className="text-4xl font-bold text-center mb-4">
             Teljes átláthatóság. Semmi rejtés.
           </h2>
-          
+
           {/* Tabs */}
           <div className="flex justify-center gap-4 mb-8 flex-wrap">
             {[
@@ -397,11 +468,10 @@ const TipForgeLanding = () => {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                  activeTab === tab.id 
-                    ? 'bg-[#00D4FF] text-[#1E1E1E]' 
-                    : 'bg-[#121212] text-[#C0C0C0] hover:bg-[#2A2A2A]'
-                }`}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all ${activeTab === tab.id
+                  ? 'bg-[#00D4FF] text-[#1E1E1E]'
+                  : 'bg-[#121212] text-[#C0C0C0] hover:bg-[#2A2A2A]'
+                  }`}
               >
                 {tab.label}
               </button>
@@ -415,9 +485,9 @@ const TipForgeLanding = () => {
                 <h3 className="text-2xl font-bold mb-6">Hogyan működik az algoritmus? (egyszerűen)</h3>
                 <div className="space-y-6">
                   {[
-                    { num: '1', title: 'Adatgyűjtés', text: 'Saját fejlesztésű rendszerünk 10+ forrásból szedi össze az emberi szem számára nem látható friss adatokat több sportról is.' },
-                    { num: '2', title: 'Mintázatok felismerése', text: 'Több év adatait, több ezer meccset figyelembe véve tanult: olyan összefüggéseket ismer fel, amit veterán szakemberek sem.' },
-                    { num: '3', title: 'Érték azonosítás', text: 'Összeveti a fogadóirodák oddsait az algoritmus által kalkulált esélyekkel, és a legjobb tippeket kiválasztja.' },
+                    { num: '1', title: 'Adatvezérelt elemzés', text: 'Saját rendszerünk több ezer meccset és 15+ statisztikai mutatót elemez valós időben (xG, forma, sérültek).' },
+                    { num: '2', title: 'Statisztikai háttér', text: 'Minden tipphez mutatjuk a matematikai hátteret. Nem megérzésre, hanem valószínűségre építünk.' },
+                    { num: '3', title: 'Havi riportálás', text: 'Rendszeres ROI riportokat és havi elemzéseket készítünk, hogy lásd a stabil fejlődésedet.' },
                   ].map(step => (
                     <div key={step.num} className="flex gap-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-[#00D4FF] text-[#1E1E1E] rounded-full flex items-center justify-center font-bold text-xl">
@@ -432,7 +502,7 @@ const TipForgeLanding = () => {
                 </div>
                 <div className="mt-8 p-4 bg-[#FF6B35]/10 border-l-4 border-[#FF6B35] rounded">
                   <p className="text-[#C0C0C0]">
-                    ⚠️ <strong>SEMMI SEM 100%-os.</strong> Jelenleg hosszú távú előnyünk van (akár 70% győzelmi arány), de 
+                    ⚠️ <strong>SEMMI SEM 100%-os.</strong> Jelenleg hosszú távú előnyünk van (akár 70% győzelmi arány), de
                     nem minden tipp fog nyerni, semmi sem lehet tökéletes. A lényeg a hosszú távú győzelem.
                   </p>
                 </div>
@@ -497,7 +567,7 @@ const TipForgeLanding = () => {
                         – <strong className="text-white">a TipForge projekt egy személyes gondom megoldása is egyben.</strong>
                       </p>
                       <p className="text-[#C0C0C0] italic">
-                        "Elegem lett abból, hogy havonta bukjak. Ha már tanultam adatelemzést egyetemen és munkahelyen is, 
+                        "Elegem lett abból, hogy havonta bukjak. Ha már tanultam adatelemzést egyetemen és munkahelyen is,
                         miért ne alkalmaztam volna fogadásra is?"
                       </p>
                     </div>
@@ -505,8 +575,8 @@ const TipForgeLanding = () => {
                 </div>
                 <div className="mt-8 p-4 bg-[#00D4FF]/10 border-l-4 border-[#00D4FF] rounded">
                   <p className="text-[#C0C0C0]">
-                    💬 <strong>Keress nyugodtan.</strong><br/>
-                    Amint tudok, Discordon, illetve e-mailen is próbálok aktív lenni, keressetek nyugodtan: tipforgehq@gmail.com
+                    💬 <strong>Keress nyugodtan.</strong><br />
+                    Amint tudok, Telegramon, illetve e-mailen is próbálok aktív lenni, keressetek nyugodtan: tipforgehq@gmail.com
                   </p>
                 </div>
               </div>
@@ -562,8 +632,8 @@ const TipForgeLanding = () => {
             </div>
             <div className="p-6 bg-[#121212] rounded-xl border border-[#2A2A2A]">
               <div className="text-3xl mb-3">💰</div>
-              <h3 className="font-semibold mb-2">Launch árazás</h3>
-              <p className="text-sm text-[#A9A9A9]">4 990 Ft/hó (napi mindössze 166 Ft)</p>
+              <h3 className="font-semibold mb-2">Béta árazás</h3>
+              <p className="text-sm text-[#A9A9A9]">5 490 Ft/hó (7 990 Ft helyett)</p>
             </div>
             <div className="p-6 bg-[#121212] rounded-xl border border-[#2A2A2A]">
               <div className="text-3xl mb-3">🎁</div>
@@ -574,13 +644,13 @@ const TipForgeLanding = () => {
 
           {/* Form */}
           <div className="max-w-md mx-auto mb-6">
-          <button
-            onClick={() => handleWaitlistClick('final_cta')}
-            className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-          >
-            Szeretnék hosszútávon nyertes lenni
-            <ArrowRight className="w-5 h-5" />
-          </button>
+            <button
+              onClick={() => handleWaitlistClick('final_cta')}
+              className="w-full px-8 py-5 bg-[#00D4FF] text-[#1E1E1E] text-lg font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              Szeretnék hosszútávon nyertes lenni
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
 
           <p className="text-sm text-[#A9A9A9]">
@@ -602,7 +672,7 @@ const TipForgeLanding = () => {
                 tipforgehq@gmail.com
               </a>
               <a href="#" className="text-[#C0C0C0] hover:text-[#00D4FF]">
-                Discord
+                Telegram
               </a>
               <a href="#" className="text-[#C0C0C0] hover:text-[#00D4FF]">
                 Adatvédelem
@@ -625,7 +695,7 @@ const TipForgeLanding = () => {
             >
               <X className="w-6 h-6" />
             </button>
-            
+
             <h3 className="text-2xl font-bold mb-4">⚠️ Várj, mielőtt bezárod!</h3>
             <p className="text-[#C0C0C0] mb-4">
               A várolista <strong className="text-white">3 nap múlva bezár</strong>, és elveszíted:
@@ -633,7 +703,7 @@ const TipForgeLanding = () => {
             <ul className="space-y-2 mb-6">
               <li className="flex items-start gap-2">
                 <span className="text-[#FF6B35] mt-1">❌</span>
-                <span className="text-[#A9A9A9]">Indításkor 3000 Ft leárazást (4.990 Ft helyett 7.990 Ft-ra fog nőni)</span>
+                <span className="text-[#A9A9A9]">Indítási kedvezményt (5 490 Ft helyett 7 990 Ft-ra fog nőni a béta után)</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#FF6B35] mt-1">❌</span>
@@ -648,23 +718,23 @@ const TipForgeLanding = () => {
               Csak add meg az <strong className="text-white">emailedet</strong>, hogy ne maradj le a kedvezményről (NINCS fizetési kötelezettséged, bármikor visszaléphetsz):
             </p>
             <form onSubmit={(e) => { e.preventDefault(); handleWaitlistClick(); setShowExitPopup(false); }} className="mb-4">
-            <button
-              onClick={() => { handleWaitlistClick('exit_popup'); setShowExitPopup(false); }}
-              className="w-full px-6 py-3 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all"
-            >
-              Igen, szeretnék még több profitot!
-            </button>
+              <button
+                onClick={() => { handleWaitlistClick('exit_popup'); setShowExitPopup(false); }}
+                className="w-full px-6 py-3 bg-[#00D4FF] text-[#1E1E1E] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00D4FF]/50 transition-all"
+              >
+                Igen, szeretnék még több profitot!
+              </button>
             </form>
 
             <button
-            onClick={handleCloseExitPopup}
-            className="w-full text-sm text-[#A9A9A9] hover:text-white"
-          >
-            Nem, inkább fizetek teljes árat később
-          </button>
+              onClick={handleCloseExitPopup}
+              className="w-full text-sm text-[#A9A9A9] hover:text-white"
+            >
+              Nem, inkább fizetek teljes árat később
+            </button>
+          </div>
         </div>
-      </div>
-    )}
+      )}
 
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1E1E1E] border-t border-[#2A2A2A] p-4 z-40 shadow-lg">
