@@ -60,9 +60,30 @@ class TippmixScraper:
                 driver.switch_to.frame(iframe)
                 logger.info("Switched to SportsIframe")
                 
-                # Wait for event items inside iframe
+                # Wait for basic iframe content
+                time.sleep(2)
+
+                # User Request: For Tennis, click "Következő 7 nap" FIRST
+                # Use a try-except block so if it fails we still try to scrape whatever is there
+                if "tenisz" in url:
+                    try:
+                        logger.info("Tennis detected: Looking for 'Következő 7 nap' tab...")
+                        # XPath to find the span containing the text
+                        next_days_btn = wait.until(EC.element_to_be_clickable(
+                            (By.XPATH, "//span[contains(text(), 'Következő 7 nap')]")
+                        ))
+                        # Scroll to it just in case
+                        driver.execute_script("arguments[0].scrollIntoView(true);", next_days_btn)
+                        time.sleep(1)
+                        # Use JS click as it's more robust against overlays
+                        driver.execute_script("arguments[0].click();", next_days_btn)
+                        logger.info("Clicked 'Következő 7 nap' (JS). Waiting for refresh...")
+                        time.sleep(5) # Wait longer for matches to load
+                    except Exception as e:
+                        logger.warning(f"Could not click 'Következő 7 nap': {str(e)[:200]}")
+                
+                # NOW Wait for event items
                 wait.until(EC.presence_of_element_located((By.CLASS_NAME, "EventItem")))
-                time.sleep(2) # Give it extra time to render odds
             except Exception as e:
                 logger.warning(f"Iframe/Content issue: {e}")
                 # Sometimes navigating directly to the iframe source works better if it's cross-origin

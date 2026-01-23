@@ -11,22 +11,39 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# --- CONFIGURATION ---
+# Example URLs for eSports
+PINNACLE_URLS = [
+    "https://www.pinnacle.com/en/esports/matchups/highlights/",
+    "https://www.pinnacle.com/en/esports/games/league-of-legends/matchups/",
+    "https://www.pinnacle.com/en/esports/games/cs2/matchups/",
+    "https://www.pinnacle.com/en/esports/games/call-of-duty/matchups/",
+    "https://www.pinnacle.com/en/esports/games/valorant/matchups/",
+    "https://www.pinnacle.com/en/tennis/matchups/"
+]
+TIPPMIX_URLS = [
+    "https://www.tippmixpro.hu/hu/fogadas/i/e-sport/esports/96/counter-strike/186/esport",
+    "https://www.tippmixpro.hu/hu/fogadas/i/e-sport/esports/96/league-of-legends-lol/100/esport",
+    "https://www.tippmixpro.hu/hu/fogadas/i/e-sport/esports/96/valorant/134/esport",
+    "https://www.tippmixpro.hu/hu/fogadas/i/fogadas/tenisz/3/osszes/0/kategoria"
+]
+
+MIN_EV = 0.01  # Minimum 1% EV to display
+MATCH_THRESHOLD = 80 # Fuzzy matching threshold
+
 def main():
-    # --- CONFIGURATION ---
-    # Example URLs for Premier League (Soccer)
-    PINNACLE_URL = "https://www.pinnacle.com/en/soccer/england-premier-league/matchups/"
-    TIPPMIX_URL = "https://www.tippmixpro.hu/hu/fogadas/i/bajnoksag-lokacio/labdarugas/1/anglia/77/premier-liga/272212442942148608"
-    
-    MIN_EV = 0.01  # Minimum 1% EV to display
-    MATCH_THRESHOLD = 80 # Fuzzy matching threshold
-    
     logger.info("Starting Sharp Value Bet Finder...")
     
     # 1. Scrape Pinnacle (Sharp Odds)
     p_scraper = PinnacleScraper(headless=True)
-    logger.info(f"Scraping Pinnacle: {PINNACLE_URL}")
-    p_matches = p_scraper.scrape_matches(PINNACLE_URL)
-    logger.info(f"Retrieved {len(p_matches)} matches from Pinnacle")
+    p_matches = []
+    
+    for url in PINNACLE_URLS:
+        logger.info(f"Scraping Pinnacle: {url}")
+        matches = p_scraper.scrape_matches(url)
+        p_matches.extend(matches)
+        
+    logger.info(f"Retrieved {len(p_matches)} matches from Pinnacle (Total)")
     
     if not p_matches:
         logger.error("No matches found on Pinnacle. Exiting.")
@@ -34,9 +51,14 @@ def main():
 
     # 2. Scrape Tippmix (Recreational Odds)
     t_scraper = TippmixScraper(headless=True)
-    logger.info(f"Scraping Tippmix: {TIPPMIX_URL}")
-    t_matches = t_scraper.scrape_matches(TIPPMIX_URL)
-    logger.info(f"Retrieved {len(t_matches)} matches from Tippmix")
+    t_matches = []
+    
+    for url in TIPPMIX_URLS:
+        logger.info(f"Scraping Tippmix: {url}")
+        matches = t_scraper.scrape_matches(url)
+        t_matches.extend(matches)
+        
+    logger.info(f"Retrieved {len(t_matches)} matches from Tippmix (Total)")
     
     if not t_matches:
         logger.error("No matches found on Tippmix. Exiting.")

@@ -78,6 +78,11 @@ class PinnacleScraper:
                     home_team = team_spans[0].text.strip()
                     away_team = team_spans[1].text.strip()
                     
+                    # User Request: Only process if "(Match)" is present FOR ESPORTS
+                    # Tennis matches typically don't have this suffix.
+                    if "esports" in url and "(Match)" not in home_team and "(Match)" not in away_team:
+                        continue
+                    
                     # Clean team names (remove "(Match)" suffix often found on Pinnacle)
                     home_team = home_team.split(' (')[0]
                     away_team = away_team.split(' (')[0]

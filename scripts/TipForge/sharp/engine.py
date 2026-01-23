@@ -57,16 +57,16 @@ class ValueBetEngine:
                         
                         ev = calculate_ev(fair_prob, tippmix_odd)
                         
-                        if ev > self.min_ev:
-                            outcome_name = ["Home", "Draw", "Away"][i] if len(t_odds) == 3 else ["Home", "Away"][i]
-                            value_bets.append({
-                                'match': f"{p_home} vs {p_away}",
-                                'outcome': outcome_name,
-                                'tippmix_odds': tippmix_odd,
-                                'pinnacle_no_vig': p_no_vig[i],
-                                'ev': ev,
-                                'fair_prob': fair_prob
-                            })
+                        # Return ALL paired matches
+                        outcome_name = ["Home", "Draw", "Away"][i] if len(t_odds) == 3 else ["Home", "Away"][i]
+                        value_bets.append({
+                            'match': f"{p_home} vs {p_away}",
+                            'outcome': outcome_name,
+                            'tippmix_odds': tippmix_odd,
+                            'pinnacle_no_vig': p_no_vig[i],
+                            'ev': ev,
+                            'fair_prob': fair_prob
+                        })
                 else:
                     logger.warning(f"Market size mismatch for {p_full_name}: Pinnacle {len(p_no_vig)}, Tippmix {len(t_odds)}")
 
