@@ -130,8 +130,8 @@ def run_pipeline():
     init_db()
     session = SessionLocal()
     
-    # Process Rounds 1, 2, 3
-    for round_num in range(1, 4): 
+    # Process Rounds (1-38)
+    for round_num in range(1, 39): 
         print(f"\n--- Processing Round {round_num} ---")
         matches = get_matches_for_round(UNIQUE_TOURNAMENT_ID, SEASON_ID, round_num)
         
