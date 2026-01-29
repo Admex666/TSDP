@@ -125,15 +125,25 @@ def process_team_players(session, players_list, match_id, team_id, players_to_ad
             )
             players_to_add_list.append(p_stats)
 
-def run_pipeline():
+def run_pipeline(season_id=None, rounds=None):
     print("Initializing Database...")
     init_db()
     session = SessionLocal()
     
-    # Process Rounds (1-38)
-    for round_num in range(1, 39): 
+    # Defaults
+    if season_id is None:
+        season_id = 76986 # Current Season 24/25 provided by user
+    if rounds is None:
+        rounds = range(1, 24) # Rounds 1-23 (Current status)
+        
+    global SEASON_ID
+    SEASON_ID = season_id # Update global variable used by process_match
+    
+    print(f"--- Starting Pipeline for Season {season_id}, Rounds {list(rounds)} ---")
+    
+    for round_num in rounds: 
         print(f"\n--- Processing Round {round_num} ---")
-        matches = get_matches_for_round(UNIQUE_TOURNAMENT_ID, SEASON_ID, round_num)
+        matches = get_matches_for_round(UNIQUE_TOURNAMENT_ID, season_id, round_num)
         
         for match in matches:
             if match['status']['type'] == 'finished':
@@ -147,4 +157,5 @@ def run_pipeline():
     print("\nPipeline Finished.")
 
 if __name__ == "__main__":
-    run_pipeline()
+    # If called directly, run for PL 24/25 Rounds 1-23
+    run_pipeline(season_id=76986, rounds=range(1, 24))

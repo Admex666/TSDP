@@ -8,7 +8,7 @@ import os
 
 # Config
 DATA_PATH = os.path.join(os.path.dirname(__file__), 'training_data.csv')
-MODEL_PATH = os.path.join(os.path.dirname(__file__), 'fantasy_model.json')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'fantasy_model.json')
 ENCODER_PATH = os.path.join(os.path.dirname(__file__), 'encoder.pkl')
 
 def train_model():
@@ -16,6 +16,13 @@ def train_model():
     df = pd.read_csv(DATA_PATH)
     
     # Preprocessing
+    
+    # FILTER: "Pure Points Model" - Train only on matches where player played.
+    # The Start Model handles the 0s.
+    print(f"Original Data Size: {len(df)}")
+    df = df[df['minutes'] > 0]
+    print(f"Filtered Data Size (Played > 0 mins): {len(df)}")
+
     # 1. Encoding Categoricals (Position) - One Hot
     df = pd.get_dummies(df, columns=['position'], prefix='pos')
     
@@ -24,14 +31,45 @@ def train_model():
         if p not in df.columns:
             df[p] = 0
             
-    # Drop non-feature cols
-    drop_cols = ['player_id', 'player_name', 'match_id', 'date', 'team_id', 'opponent_team_id', 'total_points']
-    features = [c for c in df.columns if c not in drop_cols]
+    # Drop non-feature cols and LEAKY cols (current match stats)
+    # outcomes we are trying to predict (or components of it) must not be features.
+    
+    # Explicit Feature List (Safest)
+    feature_cols = [
+        # Context
+        'round', 'is_home', 
+        # Lagged Per-Match Stats
+        'last_total_points', 'last_minutes', 
+        'last_goals', 'last_assists', 'last_rating',
+        # Rolling Stats
+        'avg_total_points_last_3', 'avg_total_points_last_5', 'avg_total_points_last_38',
+        'avg_minutes_last_3', 'avg_minutes_last_5', 'avg_minutes_last_38',
+        'avg_goals_last_3', 'avg_goals_last_5', 'avg_goals_last_38',
+        'avg_assists_last_3', 'avg_assists_last_5', 'avg_assists_last_38',
+        'avg_rating_last_3', 'avg_rating_last_5', 'avg_rating_last_38',
+        # Advanced
+        'ema_points_span_3', 'ema_points_span_5',
+        'starts_last_5', 'xFP_weighted', 'form_vs_season',
+        'opp_pos_avg_points_allowed'
+    ]
+    
+    # Add One-Hot Position cols
+    pos_cols = [c for c in df.columns if c.startswith('pos_')]
+    feature_cols.extend(pos_cols)
+    
     target = 'total_points'
     
-    print(f"Features: {features}")
+    # Ensure all cols exist (some might be missing in older csv versions if not careful)
+    # But prepare_training_data puts them all there.
+    existing_features = [c for c in feature_cols if c in df.columns]
     
-    X = df[features]
+    if len(existing_features) < len(feature_cols):
+        missing = set(feature_cols) - set(existing_features)
+        print(f"Warning: Missing features in CSV: {missing}")
+    
+    print(f"Features ({len(existing_features)}): {existing_features}")
+    
+    X = df[existing_features]
     y = df[target]
     rounds = df['round']
     
@@ -117,7 +155,7 @@ def train_model():
     indices = np.argsort(importances)[::-1]
     
     for i in range(10):
-        print(f"{i+1}. {features[indices[i]]}: {importances[indices[i]]:.4f}")
+        print(f"{i+1}. {existing_features[indices[i]]}: {importances[indices[i]]:.4f}")
 
 if __name__ == "__main__":
     train_model()

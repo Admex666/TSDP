@@ -8,11 +8,14 @@ from sqlalchemy import create_engine
 DB_PATH = os.path.join(os.path.dirname(__file__), 'sofascore_fantasy.db')
 OUTPUT_CSV = os.path.join(os.path.dirname(__file__), 'training_data.csv')
 
-def load_data():
-    """Load all necessary data from DB into a Pandas DataFrame."""
+# Defaults (can be overridden)
+SEASON_ID_DEFAULT = 76986 
+
+def load_data(season_id=SEASON_ID_DEFAULT):
+    """Load necessary data for a specific season from DB."""
     conn = sqlite3.connect(DB_PATH)
     
-    query = """
+    query = f"""
     SELECT 
         pms.id as stat_id,
         pms.player_id,
@@ -23,6 +26,7 @@ def load_data():
         m.date,
         m.home_team_id,
         m.away_team_id,
+        m.season_id,
         pms.team_id,
         CASE WHEN pms.team_id = m.home_team_id THEN m.away_team_id ELSE m.home_team_id END as opponent_team_id,
         CASE WHEN pms.team_id = m.home_team_id THEN 1 ELSE 0 END as is_home,
@@ -34,6 +38,7 @@ def load_data():
     FROM player_match_stats pms
     JOIN matches m ON pms.match_id = m.id
     JOIN players p ON pms.player_id = p.id
+    WHERE m.season_id = {season_id}
     ORDER BY pms.player_id, m.date
     """
     
@@ -44,25 +49,125 @@ def load_data():
     df['date'] = pd.to_datetime(df['date'])
     return df
 
+def reindex_density(df):
+    """
+    Re-index the dataframe so that every player has a row for every round 
+    between their first and last appearance (or min/max of dataset).
+    This ensures that rolling averages (like starts_last_5) account for MISSED games as 0s.
+    """
+    # Create a grid of all Rounds per Season? Or just simplified min-max round per player.
+    # Simpler: For each player, fill rounds between min(round) and max(round).
+    # actually, global min-max is better to capture players who missed start or end.
+    
+    # Let's do per-player fill from Round 1 to Current Round (or max in data).
+    # But wait, we have multiple seasons maybe?
+    # Assuming single season for now (Season 61627). 
+    # If multiple seasons, we should group by season too.
+    # The SQL query doesn't show season_id clearly, but we know we are working on one season usually.
+    # Let's assume 'round' is unique enough or we group by player.
+    
+    # Get all unique rounds present in data
+    # all_rounds = sorted(df['round'].unique())
+    # Actually, simpler: 
+    # Group by player, set index to round, reindex to range(min_round, max_round).
+    
+    print("Densifying Data (Filling missing rounds with 0)...")
+    
+    df_dense_list = []
+    
+    # We need to know the global round range to be fair?
+    # Or just individual range? 
+    # User said: "last 5 rounds". If I missed round 20, but played 19 and 21, 
+    # rolling(3) at 21 should see (21, 0, 19).
+    
+    min_round = df['round'].min()
+    max_round = df['round'].max()
+    all_rounds = np.arange(min_round, max_round + 1)
+    
+    # Pre-calculate round to date mapping for filling Nat dates
+    # We take the median date for each round to avoid outliers
+    round_dates = df.groupby('round')['date'].apply(lambda x: pd.to_datetime(x).dropna().median()).to_dict()
+    
+    # Iterate players
+    print(f"   --- Densifying data for rounds {min_round} to {max_round} ---")
+    
+    for pid, group in df.groupby('player_id'):
+        # Get static info
+        static_info = {
+            'player_id': pid,
+            'player_name': group['player_name'].iloc[0],
+            'position': group['position'].iloc[0],
+            'team_id': group['team_id'].iloc[0]
+        }
+        
+        # Deduplicate round (might happen if dummy matches existing)
+        group = group.drop_duplicates(subset=['round'], keep='last')
+        
+        # Set round as index
+        g_idx = group.set_index('round')
+        
+        # Reindex
+        g_dense = g_idx.reindex(all_rounds)
+        
+        # Fill static
+        for col, val in static_info.items():
+            g_dense[col] = g_dense[col].fillna(val)
+            
+        # Fill Date using round mapping if missing
+        g_dense['date'] = g_dense.apply(
+            lambda row: round_dates.get(row.name, row['date']) if pd.isna(row['date']) else row['date'], 
+            axis=1
+        )
+        
+        # Fill metrics with 0
+        fill_zeros = ['minutes', 'total_points', 'goals', 'assists', 'rating']
+        for col in fill_zeros:
+            g_dense[col] = g_dense[col].fillna(0)
+            
+        # Fill date? We need date for sorting.
+        # We can interpolate or just not use date for sorting anymore, use Round.
+        # But rolling might depend on date sort? 
+        # Actually `calculate_rolling_features` sorts by [player_id, date].
+        # If date is NaT, problem.
+        # Let's fill Round column (index to col)
+        g_dense['round'] = g_dense.index
+        
+        if "Nick Pope" in static_info['player_name']:
+            print(f"Debug Pope: History Rounds: {group['round'].tolist()}")
+            print(f"Debug Pope: Densified Tail:\n{g_dense.tail(5)}")
+        
+        df_dense_list.append(g_dense)
+        
+    df_dense = pd.concat(df_dense_list, ignore_index=True)
+    
+    # Restore 'date' ? 
+    # We can assign a dummy date for the filled rows if needed, or sort by round.
+    # Let's assume sorting by Round is sufficient if Date is missing.
+    # But for opponent strength we need date order.
+    # Let's just Sort by Round.
+    
+    return df_dense
+
 def calculate_rolling_features(df):
     """Calculate rolling averages for each player."""
     print("Calculating Rolling Features...")
     
-    # Sort just in case
-    df = df.sort_values(['player_id', 'date'])
+    # 1. Densify first (Fill gaps)
+    # This ensures that rolling averages (like starts_last_5) account for MISSED games as 0s.
+    df = reindex_density(df)
+    
+    # Sort by player and ROUND
+    df = df.sort_values(['player_id', 'round'])
     
     # Metrics to aggregate
     metrics = ['total_points', 'minutes', 'goals', 'assists', 'rating']
-    windows = [3, 5, 38] # 38 is "season to date" effectively if window is large enough, or use expanding
+    windows = [3, 5, 38] 
     
     df_grouped = df.groupby('player_id')
     
     for m in metrics:
         # Lag 1 (Previous match stats)
         # We need to shift everything by 1 because we can't use current match stats to predict current match points
-        # But wait, the standard way is: Features = Rolling Avg of Previous N. Target = Current.
-        # So we calculate rolling mean of the stats, then SHIFT it down by 1 so that row T contains mean(T-1, T-2...).
-        
         
         # 1. Simple Lag (Last Game)
         df[f'last_{m}'] = df_grouped[m].shift(1)
