@@ -375,7 +375,7 @@ def create_odds_df(event_id):
     url = f"https://www.sofascore.com/api/v1/event/{event_id}/odds/1/all"
     odds_data = scrape_sofascore(url)
 
-    if odds_data["markets"]:
+    if odds_data.get("markets"):
         for market in odds_data['markets']:
             if (market['marketGroup'] == '1X2') and (market['marketName'] == 'Full time'):
                 for choice in market['choices']:
