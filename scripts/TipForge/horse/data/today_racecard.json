@@ -1,0 +1,532 @@
+[
+    {
+        "race_id": 18794,
+        "race_name": "Q1 KVALIFIKÁCIÓ",
+        "start_time": "11:45",
+        "distance": "1800A",
+        "participants": [
+            {
+                "horse_id": 7512,
+                "horse_name": "Red Eye",
+                "driver_id": 2271,
+                "driver_name": "Dukai Tamás"
+            },
+            {
+                "horse_id": 7500,
+                "horse_name": "Edmond H",
+                "driver_id": 1791,
+                "driver_name": "Milan Kovacevic"
+            },
+            {
+                "horse_id": 7264,
+                "horse_name": "Hópihe",
+                "driver_id": 898,
+                "driver_name": "Kolozsi Sándor"
+            },
+            {
+                "horse_id": 7265,
+                "horse_name": "Happiness",
+                "driver_id": 138,
+                "driver_name": "Kolozsi László"
+            }
+        ]
+    },
+    {
+        "race_id": 18795,
+        "race_name": "PRÓBAFUTAM",
+        "start_time": "12:00",
+        "distance": "1900A",
+        "participants": [
+            {
+                "horse_id": 7310,
+                "horse_name": "Hamidu",
+                "driver_id": 1076,
+                "driver_name": "Fejszés Kitti"
+            },
+            {
+                "horse_id": 7066,
+                "horse_name": "Gustavo",
+                "driver_id": 1509,
+                "driver_name": "Angyal Andor"
+            },
+            {
+                "horse_id": 6698,
+                "horse_name": "Easy Bet",
+                "driver_id": 69,
+                "driver_name": "Horváth Zoltán"
+            },
+            {
+                "horse_id": 7053,
+                "horse_name": "Fabio",
+                "driver_id": 1401,
+                "driver_name": "Goran Zolnaji"
+            },
+            {
+                "horse_id": 6912,
+                "horse_name": "Fiona TIM",
+                "driver_id": 1791,
+                "driver_name": "Milan Kovacevic"
+            },
+            {
+                "horse_id": 6464,
+                "horse_name": "Dolomit Boy",
+                "driver_id": 2237,
+                "driver_name": "Hegedűs Tamás"
+            }
+        ]
+    },
+    {
+        "race_id": 18797,
+        "race_name": "NYERETLENEK VERSENYE - ELEFÁNT DÍJ",
+        "start_time": "12:30",
+        "distance": "1800A",
+        "participants": [
+            {
+                "horse_id": 7306,
+                "horse_name": "Hella T Boko",
+                "driver_id": 69,
+                "driver_name": "Horváth Zoltán"
+            },
+            {
+                "horse_id": 7477,
+                "horse_name": "Gallius CD",
+                "driver_id": 1401,
+                "driver_name": "Goran Zolnaji"
+            },
+            {
+                "horse_id": 7368,
+                "horse_name": "Rafaela BD",
+                "driver_id": 2036,
+                "driver_name": "Gheorghe Tanase"
+            },
+            {
+                "horse_id": 7113,
+                "horse_name": "Gombóc Artúr",
+                "driver_id": 138,
+                "driver_name": "Kolozsi László"
+            },
+            {
+                "horse_id": 7461,
+                "horse_name": "Happy Lady VT",
+                "driver_id": 2527,
+                "driver_name": "Szokola Attila"
+            },
+            {
+                "horse_id": 7200,
+                "horse_name": "Icibell BD",
+                "driver_id": 1854,
+                "driver_name": "Kárai József"
+            },
+            {
+                "horse_id": 7421,
+                "horse_name": "Hórusz Szeme",
+                "driver_id": 33,
+                "driver_name": "Nagy Ferenc II."
+            },
+            {
+                "horse_id": 7064,
+                "horse_name": "Ganybody",
+                "driver_id": 23,
+                "driver_name": "Vezér Emese"
+            },
+            {
+                "horse_id": 7420,
+                "horse_name": "Héliosz R",
+                "driver_id": 32,
+                "driver_name": "Komáromi Krisztina"
+            }
+        ]
+    },
+    {
+        "race_id": 18802,
+        "race_name": "PAÁL LÁSZLÓ EMLÉKVERSENY HENDIKEP",
+        "start_time": "13:00",
+        "distance": "1800A",
+        "participants": [
+            {
+                "horse_id": 7190,
+                "horse_name": "Gucci",
+                "driver_id": 33,
+                "driver_name": "Nagy Ferenc II."
+            },
+            {
+                "horse_id": 6328,
+                "horse_name": "Credit Card",
+                "driver_id": 175,
+                "driver_name": "Szennovitz Adél"
+            },
+            {
+                "horse_id": 6703,
+                "horse_name": "Etalon N",
+                "driver_id": 28,
+                "driver_name": "Csordás Emil"
+            },
+            {
+                "horse_id": 6525,
+                "horse_name": "Big Ben Pax",
+                "driver_id": 898,
+                "driver_name": "Kolozsi Sándor"
+            },
+            {
+                "horse_id": 6023,
+                "horse_name": "Acélos Fiú",
+                "driver_id": 1409,
+                "driver_name": "Farkas György"
+            },
+            {
+                "horse_id": 7136,
+                "horse_name": "First Home",
+                "driver_id": 1791,
+                "driver_name": "Milan Kovacevic"
+            },
+            {
+                "horse_id": 6441,
+                "horse_name": "Diána Gull",
+                "driver_id": 69,
+                "driver_name": "Horváth Zoltán"
+            },
+            {
+                "horse_id": 6018,
+                "horse_name": "Bonus RG",
+                "driver_id": 2237,
+                "driver_name": "Hegedűs Tamás"
+            },
+            {
+                "horse_id": 6308,
+                "horse_name": "Csábító R.",
+                "driver_id": 2332,
+                "driver_name": "Takács Eszter Cseperke am."
+            },
+            {
+                "horse_id": 5725,
+                "horse_name": "Zente",
+                "driver_id": 1076,
+                "driver_name": "Fejszés Kitti"
+            },
+            {
+                "horse_id": 7168,
+                "horse_name": "God save the Queen",
+                "driver_id": 2271,
+                "driver_name": "Dukai Tamás"
+            }
+        ]
+    },
+    {
+        "race_id": 18798,
+        "race_name": "VEZÉR FERENC EMLÉKVERSENY",
+        "start_time": "13:30",
+        "distance": "1980",
+        "participants": [
+            {
+                "horse_id": 7175,
+                "horse_name": "Fearless ASM",
+                "driver_id": 2271,
+                "driver_name": "Dukai Tamás"
+            },
+            {
+                "horse_id": 7345,
+                "horse_name": "Esperanto",
+                "driver_id": 2277,
+                "driver_name": "Jelinek Zsolt"
+            },
+            {
+                "horse_id": 7338,
+                "horse_name": "Glory Grant K",
+                "driver_id": 451,
+                "driver_name": "Fenyvesi György"
+            },
+            {
+                "horse_id": 7508,
+                "horse_name": "Never Alone Venus",
+                "driver_id": 2125,
+                "driver_name": "Garai  Gábor"
+            },
+            {
+                "horse_id": 7116,
+                "horse_name": "Golden Girl",
+                "driver_id": 1380,
+                "driver_name": "Horváth Lilla"
+            },
+            {
+                "horse_id": 7086,
+                "horse_name": "Fakta",
+                "driver_id": 1854,
+                "driver_name": "Kárai József"
+            },
+            {
+                "horse_id": 7480,
+                "horse_name": "Mon Cherie C.G.",
+                "driver_id": 23,
+                "driver_name": "Vezér Emese"
+            },
+            {
+                "horse_id": 7189,
+                "horse_name": "Galatea",
+                "driver_id": 33,
+                "driver_name": "Nagy Ferenc II."
+            },
+            {
+                "horse_id": 6706,
+                "horse_name": "Eperke",
+                "driver_id": 2403,
+                "driver_name": "Nagyváry Andrea"
+            }
+        ]
+    },
+    {
+        "race_id": 18803,
+        "race_name": "GLOBUS DÍJ",
+        "start_time": "14:00",
+        "distance": "1900A",
+        "participants": [
+            {
+                "horse_id": 7255,
+                "horse_name": "Top Hill",
+                "driver_id": 1509,
+                "driver_name": "Angyal Andor"
+            },
+            {
+                "horse_id": 6973,
+                "horse_name": "Edoardo Ama",
+                "driver_id": 1791,
+                "driver_name": "Milan Kovacevic"
+            },
+            {
+                "horse_id": 6929,
+                "horse_name": "Fendi",
+                "driver_id": 148,
+                "driver_name": "Juhász Balázs"
+            },
+            {
+                "horse_id": 7363,
+                "horse_name": "Flying Dancer",
+                "driver_id": 841,
+                "driver_name": "Kurucz Attila am."
+            },
+            {
+                "horse_id": 6965,
+                "horse_name": "Felhők felett",
+                "driver_id": 2237,
+                "driver_name": "Hegedűs Tamás"
+            },
+            {
+                "horse_id": 7471,
+                "horse_name": "Doktor Adri",
+                "driver_id": 2271,
+                "driver_name": "Dukai Tamás"
+            },
+            {
+                "horse_id": 6163,
+                "horse_name": "Bombay",
+                "driver_id": 33,
+                "driver_name": "Nagy Ferenc II."
+            }
+        ]
+    },
+    {
+        "race_id": 18800,
+        "race_name": "VICEN ISTVÁN \"STEFI\" EMLÉKVERSENY - AMATŐRVERSENY HP.",
+        "start_time": "14:30",
+        "distance": "1900A",
+        "participants": [
+            {
+                "horse_id": 7186,
+                "horse_name": "Gina Fling",
+                "driver_id": 1463,
+                "driver_name": "Gyolai Zoltán"
+            },
+            {
+                "horse_id": 6877,
+                "horse_name": "Petra La Roque",
+                "driver_id": 1563,
+                "driver_name": "Pekker György"
+            },
+            {
+                "horse_id": 6310,
+                "horse_name": "Compact Boy",
+                "driver_id": 449,
+                "driver_name": "Fazekas Andrea"
+            },
+            {
+                "horse_id": 5907,
+                "horse_name": "Always Winner",
+                "driver_id": 2260,
+                "driver_name": "Takács Eszter Cseperke"
+            },
+            {
+                "horse_id": 6679,
+                "horse_name": "Inforgettable",
+                "driver_id": 758,
+                "driver_name": "Kurucz Attila"
+            },
+            {
+                "horse_id": 6342,
+                "horse_name": "Carlos Fox",
+                "driver_id": 2223,
+                "driver_name": "Vida József"
+            }
+        ]
+    },
+    {
+        "race_id": 18799,
+        "race_name": "ERIKA HENDIKEP",
+        "start_time": "15:00",
+        "distance": "1800A",
+        "participants": [
+            {
+                "horse_id": 7199,
+                "horse_name": "Gingerly KJ",
+                "driver_id": 1854,
+                "driver_name": "Kárai József"
+            },
+            {
+                "horse_id": 5700,
+                "horse_name": "Vezér",
+                "driver_id": 1064,
+                "driver_name": "Weber Zsolt"
+            },
+            {
+                "horse_id": 7085,
+                "horse_name": "El Nino N",
+                "driver_id": 1509,
+                "driver_name": "Angyal Andor"
+            },
+            {
+                "horse_id": 6153,
+                "horse_name": "Bing Crosby AT",
+                "driver_id": 1194,
+                "driver_name": "Paluska Tamás"
+            },
+            {
+                "horse_id": 5625,
+                "horse_name": "Vanderle",
+                "driver_id": 33,
+                "driver_name": "Nagy Ferenc II."
+            },
+            {
+                "horse_id": 6966,
+                "horse_name": "Eagle GG",
+                "driver_id": 138,
+                "driver_name": "Kolozsi László"
+            },
+            {
+                "horse_id": 6674,
+                "horse_name": "Démon Jewel GG",
+                "driver_id": 2125,
+                "driver_name": "Garai  Gábor"
+            },
+            {
+                "horse_id": 6312,
+                "horse_name": "Bongiovi",
+                "driver_id": 898,
+                "driver_name": "Kolozsi Sándor"
+            },
+            {
+                "horse_id": 6861,
+                "horse_name": "Emeli Sandé A.T.",
+                "driver_id": 69,
+                "driver_name": "Horváth Zoltán"
+            }
+        ]
+    },
+    {
+        "race_id": 18796,
+        "race_name": "SENNYEY GÉZA EMLÉKVERSENY",
+        "start_time": "15:30",
+        "distance": "1800A",
+        "participants": [
+            {
+                "horse_id": 7428,
+                "horse_name": "Pure Muscle",
+                "driver_id": 719,
+                "driver_name": "Horváth György"
+            },
+            {
+                "horse_id": 6433,
+                "horse_name": "Digital Races",
+                "driver_id": 2225,
+                "driver_name": "Balogh Bernadett"
+            },
+            {
+                "horse_id": 6355,
+                "horse_name": "Coach Degli Dei",
+                "driver_id": 1401,
+                "driver_name": "Goran Zolnaji"
+            },
+            {
+                "horse_id": 7375,
+                "horse_name": "Lola Dragon",
+                "driver_id": 1492,
+                "driver_name": "ifj. Veres László"
+            },
+            {
+                "horse_id": 5906,
+                "horse_name": "Anybody",
+                "driver_id": 28,
+                "driver_name": "Csordás Emil"
+            }
+        ]
+    },
+    {
+        "race_id": 18801,
+        "race_name": "WIND SCOT HENDIKEP",
+        "start_time": "16:00",
+        "distance": "1900A",
+        "participants": [
+            {
+                "horse_id": 6770,
+                "horse_name": "Top of Climb",
+                "driver_id": 1640,
+                "driver_name": "Gyolai Zoltán am."
+            },
+            {
+                "horse_id": 6546,
+                "horse_name": "Count Basie AT",
+                "driver_id": 69,
+                "driver_name": "Horváth Zoltán"
+            },
+            {
+                "horse_id": 6057,
+                "horse_name": "Bitangjó",
+                "driver_id": 175,
+                "driver_name": "Szennovitz Adél"
+            },
+            {
+                "horse_id": 6995,
+                "horse_name": "Fany",
+                "driver_id": 148,
+                "driver_name": "Juhász Balázs"
+            },
+            {
+                "horse_id": 7370,
+                "horse_name": "Another Star",
+                "driver_id": 138,
+                "driver_name": "Kolozsi László"
+            },
+            {
+                "horse_id": 6121,
+                "horse_name": "Farya BD",
+                "driver_id": 1854,
+                "driver_name": "Kárai József"
+            },
+            {
+                "horse_id": 6472,
+                "horse_name": "Dumbledore",
+                "driver_id": 2403,
+                "driver_name": "Nagyváry Andrea"
+            },
+            {
+                "horse_id": 5905,
+                "horse_name": "Adamo Fling",
+                "driver_id": 28,
+                "driver_name": "Csordás Emil"
+            },
+            {
+                "horse_id": 6854,
+                "horse_name": "Elegáns Hölgy",
+                "driver_id": 1076,
+                "driver_name": "Fejszés Kitti"
+            }
+        ]
+    }
+]

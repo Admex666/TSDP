@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta id="viewport" name="viewport" content ="width=device-width" />
+
+<head>
+  <title> 
+  Ügető
+  Eredmények
+  /
+  Trotting
+  Results
+</title>
+  
+  <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/featherlight.css?ver=3.5.9"/>
+  
+  <link rel="shortcut icon" href="/assets/favicon.ico?ver=3.5.9">
+  <link rel="stylesheet" href="/bootstrap/4.3.1/css/bootstrap.min.css?ver=3.5.9">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.css?ver=3.5.9" rel="stylesheet">
+  <link href="/tabulator/4.9.3/css/bootstrap/tabulator_bootstrap4.min.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/tabulator_common.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/trotting.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/common.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/menu.css?ver=3.5.9" rel="stylesheet">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/locale.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js.cookie-2.2.1.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap/4.3.1/js/bootstrap.bundle.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.hu.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/tabulator/4.9.3/js/tabulator.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/tab_common.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/cookies.min.js?ver=3.5.9"></script>
+  <script type="text/javascript">
+    var dictionary = {'en-gb': {'columns': {'1st': 'First', '1st_percentage': 'First %', '2nd': 'Second', '3rd': 'Third', '3rd_6th': 'Third - Sixth', '4th': 'Fourth', '4th_5th': 'Fourth- Fifth', '5th': 'Fifth', '6th': 'Sixth', 'age': 'Age', 'age_color_sex': 'Age, Color, Sex', 'age_sex': 'Age, Sex', 'allowance': 'Allowance', 'amateur_driver_jockey_name': 'Driver name', 'born': 'Born', 'born_date': 'Born date', 'breeder_name': 'Breeder name', 'daily': 'Daily', 'dam': 'Dam', 'dam_name': 'Dam name', 'date': 'Date', 'day': 'Day', 'distance': 'Distance', 'dividend': 'Dividend', 'driver': 'Driver', 'driver_jockey': 'Jockey', 'driver_jockey_name': 'Driver name', 'driver_name': 'Driver name', 'entries': 'Entries', 'feature': 'Feature', 'first_prize': 'First prize', 'form': 'Form', 'greyhound_name': 'Greyhound name', 'horse_name': 'Horse name', 'index': 'Index', 'jockey': 'Jockey', 'jockey_name': 'Jockey name', 'km_time': 'Km. avg.', 'month': 'Month', 'monthly': 'Monthly', 'name': 'Horse name', 'number': 'Number', 'other_parent_name': 'Other parent', 'participant': 'Horse name', 'participant_name': 'Horse name', 'pedigree': 'Pedigree', 'pdf_download': 'PDF download', 'placement': 'Placement', 'prize': 'Prize', 'progeny_name': 'Progeny name', 'race': 'Race', 'race_conditions': 'Race conditions', 'race_count': 'Race count', 'race_name': 'Race name', 'race_yearly_num': 'Race (yearly number)', 'racecard': 'Racecard', 'rank': 'Rank', 'rate': 'Rate', 'record': 'Record', 'results': 'Results', 'runs': 'Runs', 'sire': 'Sire', 'sire_name': 'Sire name', 'stable': 'Stable', 'stable_name': 'Stable name', 'sum': 'Sum', 'surface': 'Turf', 'time': 'Time', 'total': 'Total', 'total_prize': 'Total prize', 'track': 'Track', 'track_name': 'Track name', 'trainer': 'Trainer', 'trainer_name': 'Trainer name', 'unplaced': 'Unplaced', 'video': 'Video', 'weight': 'Weight', 'year': 'Year', 'year_earning': '. year', 'current_year_earning': '. year', 'yearly': 'Yearly', 'value_map': {'sex': {'male': 'm', 'female': 'k', 'gelding': 'her'}, 'earning_age_groups': {'all': 'All', '5': '5+ yo', '4': '4 yo', '3': '3 yo', '2': '2 yo'}, 'earning_age_group_headers': {'5': '5 year old and older horses', '4': '4 year old horses', '3': '3 year old horses', '2': '2 year old horses'}, 'yearly_stat_age_groups': {'all': 'All', '4': '4+ yo', '3': '3 yo', '2': '2 yo'}}, 'breeder': 'Breeder', 'earning': 'Earning', 'handicap_earning': 'Handicap earning', 'record_long_dist': 'Record, long dist.', 'record_medium_dist': 'Record, medium dist.', 'record_short_dist': 'Record, short dist.'}, 'headerFilters': {'default': 'filter...'}, 'general': {'abroad': 'abroad', 'age': 'age', 'age_group': 'age group', 'amateur_driver': 'amateur driver', 'amateur_jockey': 'amateur jockey', 'annual': 'annual', 'annual_stat': 'annual statistics', 'breeder': 'breeder', 'breeder_stats': 'breeder statistics', 'breeder_stats_by_year_of': 'breeder statistics by year - %s', 'breeder_stats_of': 'breeder statistics - %s', 'by_age_stat': 'statistics by age', 'combined': 'home and abroad', 'country': 'country', 'daily': 'daily', 'dam': 'Dam', 'date': 'date', 'day': 'day', 'discipline': 'discipline', 'distance': 'distance', 'doggy_participant': 'greyhound', 'doggy_sire': 'sire', 'doggy_stable': 'kennel', 'doggy_trainer': 'trainer', 'driver': 'driver', 'driver_jockey': 'driver', 'driver_jockey_stats': 'driver statistics', 'driver_jockey_stats_by_year_of': 'driver statistics by year - %s', 'driver_jockey_stats_of': 'driver statistics - %s', 'entries': 'entries', 'filters': 'filters', 'flat': 'flat', 'gallop': 'gallop', 'gallop_race_data': 'gallop race data', 'greyhound': 'greyhound', 'greyhound_race_data': 'greyhound race data', 'grouping': 'grouping', 'home': 'home', 'horsey_participant': 'horse', 'horsey_sire': 'sire', 'horsey_stable': 'stable', 'horsey_trainer': 'trainer', 'jockey': 'jockey', 'judgement_text': 'judgement', 'list_of_earnings': 'list of earnings', 'list_of_trainings': 'under training', 'lumps': 'lumps', 'month': 'month', 'monthly': 'monthly', 'nav_back': 'back', 'nav_to_entries': 'jump to entries', 'nav_to_gallop': 'jump to gallop', 'nav_to_greyhound': 'jump to greyhound', 'nav_to_race_conditions': 'jump to race conditions', 'nav_to_racecard': 'jump to racecard', 'nav_to_results': 'jump to results', 'nav_to_trainings': 'jump to trainings', 'nav_to_trotting': 'jump to trotting', 'updated': 'refreshed', 'progeny': 'progeny', 'progeny_stat': 'progeny statistics', 'participant': 'horse', 'participant_stats': 'horse statistics', 'participant_stats_by_year_of': 'horse statistics by year - %s', 'participant_stats_of': 'horse statistics - %s', 'photo_finish': 'photo finish', 'pdf_link_quick_results': 'Official results', 'pdf_link_race_conditions': 'Race Conditions PDF', 'pdf_link_racecard': 'Official racecard', 'pdf_link_results': 'Official results', 'pdf_link_turf': 'Hungarian Turf PDF download', 'pdf_not_found': 'File not found', 'prize': 'prize', 'quick_results': 'quick results', 'quick_result_invalid': 'nem indult / disq / egyéb', 'quick_result_warning_text': 'Az itt közölt eredmények tájékoztató jellegűek. A végleges eredményekről tájékozódjon a hivatalos eredmények menüpont alatt.', 'quick_results_no_races': 'No results yet.', 'race': 'race', 'race_career': 'career', 'race_conditions': 'race conditions', 'race_form_stat': 'race form statistics', 'race_name': 'race name', 'race_type': 'type', 'racecard': 'racecard', 'results': 'results', 'search': 'search', 'search2': 'search', 'search_results': 'search results', 'sire': 'sire', 'stable': 'stable', 'stable_stats': 'stable statistics', 'stable_stats_by_year_of': 'stable statistics by year - %s', 'stable_stats_of': 'stable statistics - %s', 'start': 'time', 'surface': 'turf', 'total': 'total', 'track': 'track', 'track_id': 'Track ID', 'track_name': 'Track name', 'trainer': 'trainer', 'trainer_stats': 'trainer statistics', 'trainer_stats_by_year_of': 'trainer statistics by year - %s', 'trainer_stats_of': 'trainer statistics - %s', 'trotting': 'trotting', 'trotting_race_data': 'trotting race data', 'type': 'type', 'video': 'video', 'view': 'view', 'year': 'year', 'yearly': 'yearly', 'yearly_amateur_driver_jockey_stats': 'yearly amateur driver statistics', 'yearly_breeder_stats': 'yearly breeder statistics', 'yearly_dam_stats': 'yearly dam statistics', 'yearly_driver_jockey_stats': 'yearly driver statistics', 'yearly_participant_stats': 'yearly horse statistics', 'yearly_sire_stats': 'yearly sire statistics', 'yearly_stable_stats': 'yearly stable statistics', 'yearly_trainer_stats': 'yearly trainer statistics', 'years_stat': 'yearly statistics', 'amateur_driver_jockey': 'amateur driver'}}, 'hu-hu': {'pagination': {'all': 'Mind', 'first': 'Első', 'first_title': 'Első', 'last': 'Utolsó', 'last_title': 'Utolsó', 'next': 'Következő', 'next_title': 'Következő', 'prev': 'Előző', 'prev_title': 'Előző'}, 'columns': {'1st': 'Első', '1st_percentage': 'Első %', '2nd': 'Második', '3rd': 'Harmadik', '3rd_6th': 'Harmadik - Hatodik', '4th': 'Negyedik', '4th_5th': 'Negyedik- Ötödik', '5th': 'Ötödik', '6th': 'Hatodik', 'age': 'Kor', 'age_color_sex': 'Kor, Szín, Nem', 'age_sex': 'Kor, Nem', 'allowance': 'Engedmény', 'amateur_driver_jockey_name': 'Hajtó neve', 'born': 'Született', 'born_date': 'Született', 'breeder': 'Tenyésztő', 'breeder_name': 'Tenyésztő neve', 'daily': 'Napi', 'dam': 'Anya', 'dam_name': 'Anya neve', 'date': 'Dátum', 'day': 'Nap', 'distance': 'Táv', 'dividend': 'Esetl. tét osztalék', 'driver': 'Hajtó', 'driver_jockey': 'Hajtó', 'driver_jockey_name': 'Hajtó neve', 'driver_name': 'Hajtó neve', 'earning': 'Életnyeremény', 'entries': 'Nevezések', 'feature': 'Kiemelt esemény', 'first_prize': 'Futam összdíjazása', 'form': 'Forma', 'greyhound_name': 'Agár neve', 'handicap_earning': 'Hendikepnyeremény', 'horse_name': 'Ló neve', 'index': 'Sorszám', 'jockey': 'Lovas', 'jockey_name': 'Lovas neve', 'km_time': 'Km. átlag', 'land': 'Ország', 'month': 'Hónap', 'monthly': 'Havi', 'name': 'Ló neve', 'number': 'Prg.sz.', 'other_parent_name': 'Másik szülő', 'participant': 'Ló neve', 'participant_name': 'Ló neve', 'pedigree': 'Származás', 'pdf_download': 'Letölthető PDF', 'placement': 'Helyezés', 'prize': 'Nyeremény', 'progeny_name': 'Ivadék neve', 'race': 'Futam', 'race_conditions': 'Versenykiírás', 'race_count': 'Futások', 'race_name': 'Futam neve', 'race_yearly_num': 'Futam (éves száma)', 'racecard': 'Versenyprogram', 'rank': 'Hely', 'rate': 'Forma', 'record': 'Rekord', 'record_long_dist': 'Rekord, hosszú táv', 'record_medium_dist': 'Rekord, közép táv', 'record_short_dist': 'Rekord, rövid táv', 'results': 'Eredmények', 'runs': 'Futások', 'short_name': 'Törzskönyvi név', 'sire': 'Apa', 'sire_name': 'Apa neve', 'stable': 'Istálló', 'stable_name': 'Istálló neve', 'sum': 'Összesen', 'surface': 'Talaj', 'time': 'Idő', 'total': 'Összesen', 'total_prize': 'Nyeremény', 'track': 'Pálya', 'track_name': 'Pálya neve', 'trainer': 'Idomár', 'trainer_name': 'Idomár neve', 'unplaced': 'Helyezetlen', 'video': 'Videó', 'weight': 'Vitt súly', 'year': 'Év', 'year_earning': '. év', 'current_year_earning': '. év', 'yearly': 'Éves szám', 'value_map': {'sex': {'male': 'm', 'female': 'k', 'gelding': 'her'}, 'earning_age_groups': {'all': 'Összes', '5': '5+ éves', '4': '4 éves', '3': '3 éves', '2': '2 éves'}, 'earning_age_group_headers': {'5': '5 éves és idősebb lovak', '4': '4 éves lovak', '3': '3 éves lovak', '2': '2 éves lovak'}, 'yearly_stat_age_groups': {'all': 'Összes', '4': '4+ éves', '3': '3 éves', '2': '2 éves'}}}, 'headerFilters': {'default': 'szűrés...'}, 'general': {'abroad': 'külföld', 'age': 'kor', 'age_group': 'korcsoport', 'amateur_driver': 'amatőrhajtó', 'amateur_jockey': 'amatőrlovas', 'annual': 'évenként', 'annual_stat': 'éves törzsadat statisztika', 'breeder': 'tenyésztő', 'breeder_stats': 'éves tenyésztő törzsadat statisztika', 'breeder_stats_by_year_of': '%s tenyésztő évenkénti statisztikája', 'breeder_stats_of': '%s tenyésztő éves törzsadat statisztikája', 'by_age_stat': 'kor szerinti statisztika', 'combined': 'belföld és külföld', 'country': 'ország', 'daily': 'napi', 'dam': 'Anya', 'date': 'dátum', 'day': 'nap', 'discipline': 'szakág', 'distance': 'táv', 'doggy_participant': 'agár', 'doggy_sire': 'apa', 'doggy_stable': 'kennel', 'doggy_trainer': 'tréner', 'driver': 'hajtó', 'driver_jockey': 'hajtó', 'driver_jockey_stats': 'éves hajtó törzsadat statisztika', 'driver_jockey_stats_by_year_of': '%s hajtó évenkénti statisztikája', 'driver_jockey_stats_of': '%s hajtó éves törzsadat statisztikája', 'entries': 'nevezések', 'filters': 'szűrők', 'flat': 'sík', 'gallop': 'galopp', 'gallop_race_data': 'integrált galopp futamadatok', 'greyhound': 'agár', 'greyhound_race_data': 'integrált agár futamadatok', 'grouping': 'bontás', 'home': 'belföld', 'horsey_participant': 'ló', 'horsey_sire': 'apamén', 'horsey_stable': 'istálló', 'horsey_trainer': 'idomár', 'jockey': 'lovas', 'judgement_text': 'bírói ítélet', 'list_of_earnings': 'nyereményjegyzék', 'list_of_trainings': 'tréninglista', 'lumps': 'ugró', 'month': 'hónap', 'monthly': 'havi', 'nav_back': 'vissza', 'nav_to_entries': 'ugrás a Nevezésekhez', 'nav_to_gallop': 'ugrás a galopp szakágra', 'nav_to_greyhound': 'ugrás az agár szakágra', 'nav_to_race_conditions': 'ugrás a Versenykiírásokhoz', 'nav_to_racecard': 'ugrás a Versenyprogramhoz', 'nav_to_results': 'ugrás a Versenyeredményekhez', 'nav_to_trainings': 'ugrás az edzésekre', 'nav_to_trotting': 'ugrás az ügető szakágra', 'updated': 'frissítve', 'progeny': 'ivadék', 'progeny_stat': 'ivadék statisztika', 'participant': 'ló', 'participant_stats': 'éves ló törzsadat statisztika', 'participant_stats_by_year_of': '%s ló évenkénti statisztikája', 'participant_stats_of': '%s ló éves törzsadat statisztikája', 'photo_finish': 'célfotó', 'pdf_link_race_conditions': 'Hivatalos versenykiírás PDF', 'pdf_link_racecard': 'Hivatalos versenyprogram', 'pdf_link_quick_results': 'Hivatalos eredmények', 'pdf_link_results': 'Hivatalos eredmények', 'pdf_link_turf': 'Magyar Turf PDF letöltés', 'pdf_not_found': 'Fájl nem található', 'prize': 'versenydíj', 'quick_results': 'gyorseredmények', 'quick_result_invalid': 'nem indult / disq / egyéb', 'quick_result_warning_text': 'Az itt közölt eredmények tájékoztató jellegűek. A végleges eredményekről tájékozódjon a hivatalos eredmények menüpont alatt.', 'quick_results_no_races': 'Nincsenek még eredmények.', 'race': 'futam', 'race_career': 'versenykarrier', 'race_conditions': 'versenykiírás', 'race_form_stat': 'futam forma statisztika', 'race_name': 'futam neve', 'race_type': 'típus', 'racecard': 'versenyprogram', 'results': 'eredmények', 'search': 'kereső', 'search2': 'keresés', 'sire': 'apamén', 'search_results': 'találatok', 'stable': 'istálló', 'stable_stats': 'éves istálló törzsadat statisztika', 'stable_stats_by_year_of': '%s istálló évenkénti statisztikája', 'stable_stats_of': '%s istálló éves törzsadat statisztikája', 'start': 'start', 'surface': 'talaj', 'total': 'összesen', 'track': 'pálya', 'track_id': 'Pálya Azonosító', 'track_name': 'Pálya neve', 'trainer': 'idomár', 'trainer_stats': 'éves idomár törzsadat statisztika', 'trainer_stats_by_year_of': '%s idomár évenkénti statisztikája', 'trainer_stats_of': '%s idomár éves törzsadat statisztikája', 'trotting': 'ügető', 'trotting_race_data': 'integrált ügető futamadatok', 'type': 'típus', 'video': 'videó', 'view': 'nézet', 'year': 'év', 'yearly': 'éves', 'yearly_amateur_driver_jockey_stats': 'éves amatőrhajtó statisztika', 'yearly_breeder_stats': 'éves tenyésztő statisztika', 'yearly_dam_stats': 'éves anya statisztika', 'yearly_driver_jockey_stats': 'éves hajtó statisztika', 'yearly_participant_stats': 'éves ló statisztika', 'yearly_sire_stats': 'éves apamén statisztika', 'yearly_stable_stats': 'éves istálló statisztika', 'yearly_trainer_stats': 'éves idomár statisztika', 'years_stat': 'évenkénti statisztika', 'amateur_driver_jockey': 'amatőrhajtó'}}};
+  </script>
+  
+  <script type="text/javascript">
+    var discipline = "trotting";
+    var races_table_divs = {};
+    var num_items = 8;
+    var goto_slide = null;
+    var asset_base_url = "https://mla.kincsempark.hu/api/v1/assets/";
+    var results_date = "2026-02-07";
+    var version = "3.5.9";
+    var race_header_items = ["daily", "yearly", "start", "race_name", "distance", "prize", "race_conditions"];
+    
+  </script>
+  <script type="text/javascript" src="/js/results.js?ver=3.5.9"></script>
+
+  <script type="text/javascript">
+    var racing_year_links = {
+      
+      
+        "2026": "/results/trotting/2026-12-31/",
+      
+        "2025": "/results/trotting/2025-12-31/",
+      
+        "2024": "/results/trotting/2024-12-31/",
+      
+        "2023": "/results/trotting/2023-12-31/",
+      
+        "2022": "/results/trotting/2022-12-31/",
+      
+        "2021": "/results/trotting/2021-12-31/",
+      
+        "2020": "/results/trotting/2020-12-30/",
+      
+        "2019": "/results/trotting/2019-12-31/",
+      
+        "2018": "/results/trotting/2018-12-31/",
+      
+        "2017": "/results/trotting/2017-12-31/",
+      
+        "2016": "/results/trotting/2016-12-31/",
+      
+        "2015": "/results/trotting/2015-12-31/",
+      
+        "2014": "/results/trotting/2014-12-31/",
+      
+        "2013": "/results/trotting/2013-12-31/",
+      
+        "2012": "/results/trotting/2012-12-31/",
+      
+        "2011": "/results/trotting/2011-12-31/",
+      
+        "2010": "/results/trotting/2010-12-31/",
+      
+        "2009": "/results/trotting/2009-12-31/",
+      
+        "2008": "/results/trotting/2008-12-31/",
+      
+        "2007": "/results/trotting/2007-12-31/",
+      
+        "2006": "/results/trotting/2006-12-31/",
+      
+        "2005": "/results/trotting/2005-12-31/",
+      
+        "2004": "/results/trotting/2004-12-31/",
+      
+        "2003": "/results/trotting/2003-12-31/",
+      
+        "2002": "/results/trotting/2002-12-31/",
+      
+        "2001": "/results/trotting/2001-12-31/",
+      
+        "2000": "/results/trotting/2000-12-31/",
+      
+        "1999": "/results/trotting/1999-12-31/",
+      
+        "1998": "/results/trotting/1998-12-31/",
+      
+    };
+
+    var racing_day_links = {
+          
+          "2026-12-31" : "/results/trotting/2026-12-31/",
+          
+          "2026-12-19" : "/results/trotting/2026-12-19/",
+          
+          "2026-12-12" : "/results/trotting/2026-12-12/",
+          
+          "2026-12-05" : "/results/trotting/2026-12-05/",
+          
+          "2026-11-21" : "/results/trotting/2026-11-21/",
+          
+          "2026-11-14" : "/results/trotting/2026-11-14/",
+          
+          "2026-11-07" : "/results/trotting/2026-11-07/",
+          
+          "2026-10-24" : "/results/trotting/2026-10-24/",
+          
+          "2026-10-17" : "/results/trotting/2026-10-17/",
+          
+          "2026-10-10" : "/results/trotting/2026-10-10/",
+          
+          "2026-09-26" : "/results/trotting/2026-09-26/",
+          
+          "2026-09-19" : "/results/trotting/2026-09-19/",
+          
+          "2026-09-12" : "/results/trotting/2026-09-12/",
+          
+          "2026-09-05" : "/results/trotting/2026-09-05/",
+          
+          "2026-08-22" : "/results/trotting/2026-08-22/",
+          
+          "2026-08-15" : "/results/trotting/2026-08-15/",
+          
+          "2026-08-01" : "/results/trotting/2026-08-01/",
+          
+          "2026-07-25" : "/results/trotting/2026-07-25/",
+          
+          "2026-07-04" : "/results/trotting/2026-07-04/",
+          
+          "2026-06-20" : "/results/trotting/2026-06-20/",
+          
+          "2026-06-13" : "/results/trotting/2026-06-13/",
+          
+          "2026-06-06" : "/results/trotting/2026-06-06/",
+          
+          "2026-05-30" : "/results/trotting/2026-05-30/",
+          
+          "2026-05-23" : "/results/trotting/2026-05-23/",
+          
+          "2026-05-16" : "/results/trotting/2026-05-16/",
+          
+          "2026-05-09" : "/results/trotting/2026-05-09/",
+          
+          "2026-05-08" : "/results/trotting/2026-05-08/",
+          
+          "2026-04-25" : "/results/trotting/2026-04-25/",
+          
+          "2026-04-18" : "/results/trotting/2026-04-18/",
+          
+          "2026-04-11" : "/results/trotting/2026-04-11/",
+          
+          "2026-04-04" : "/results/trotting/2026-04-04/",
+          
+          "2026-03-28" : "/results/trotting/2026-03-28/",
+          
+          "2026-03-14" : "/results/trotting/2026-03-14/",
+          
+          "2026-03-07" : "/results/trotting/2026-03-07/",
+          
+          "2026-02-21" : "/results/trotting/2026-02-21/",
+          
+          "2026-02-07" : "/results/trotting/2026-02-07/",
+          
+    }
+  </script>
+  <style>
+    @media only screen and (max-width: 600px) {
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+@media only screen and (max-width: 768px)
+{
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+@media only screen and (max-width: 400px)
+{
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+  </style>
+
+ <script type="text/javascript" src="/featherlight/1.7.14/featherlight.js?ver=3.5.9"></script>
+ <script type="text/javascript" src="/featherlight/1.7.14/featherlight.gallery.js?ver=3.5.9"></script>
+
+ 
+
+
+</head>
+<body>
+  <div id="loader" class="white_pre">
+    <div id="up_status"> 
+      <div class="preloader-img">
+        <img src="/assets/Kincsem-tr.png?ver=3.5.9" alt="Kincsem Park">   </div>
+      <div class="preloader-up">
+        <div class="spinner sp_2">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div> 
+    </div>
+  </div>
+    <div id="side-menu" class="navbar side-menu">
+      <ul class="navbar-nav">
+        <li class="logo nav-item">
+          <a href="https://kincsempark.hu">
+          <img src="/assets/Kincsem-tr.png?ver=3.5.9">
+            <div class="menutext">Kincsem Park</div>
+            <div class="brand-clicker"></div>
+          </a>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="gallopDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_gallop.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Gallop</span><span class="trans-text-hu">Galopp</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="gallopDropdown">
+            <a class="dropdown-item" href="/racing-days/gallop/">
+              <div class="menutext"><span class="trans-text-en hidden">Gallop race data</span><span class="trans-text-hu">Integrált galopp futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="gallopYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="gallopYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Horse</span><span class="trans-text-hu">Ló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apamén</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_dam_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Dam</span><span class="trans-text-hu">Anya</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_driver_jockey_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Jockey</span><span class="trans-text-hu">Lovas</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_amateur_driver_jockey_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Amateur jockey</span><span class="trans-text-hu">Amatőrlovas</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_stable_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_trainer_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_breeder_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/gallop">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/gallop/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="trottingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_trotting.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Trotting</span><span class="trans-text-hu">Ügető</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="trottingDropdown">
+            <a class="dropdown-item" href="/racing-days/trotting/">
+              <div class="menutext"><span class="trans-text-en hidden">Trotting race data</span><span class="trans-text-hu">Integrált ügető futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="trottingYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="trottingYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Horse</span><span class="trans-text-hu">Ló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apamén</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_dam_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Dam</span><span class="trans-text-hu">Anya</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_driver_jockey_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Driver</span><span class="trans-text-hu">Hajtó</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_amateur_driver_jockey_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Amateur driver</span><span class="trans-text-hu">Amatőrhajtó</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_stable_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_trainer_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_breeder_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/trotting">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/earnings/trotting">
+              <div class="menutext"><span class="trans-text-en hidden">List of earnings</span><span class="trans-text-hu">Nyereményjegyzék</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/trotting/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="greyhoundDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_greyhound.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Greyhound</span><span class="trans-text-hu">Agár</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="greyhoundDropdown">
+            <a class="dropdown-item" href="/racing-days/greyhound/">
+              <div class="menutext"><span class="trans-text-en hidden">Greyhound race data</span><span class="trans-text-hu">Integrált agár futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="greyhoundYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="greyhoundYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Greyhound</span><span class="trans-text-hu">Agár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apa</span></div>
+                </a>
+                
+                <a class="dropdown-item" href="/yearly_trainer_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Tréner</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/greyhound">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/greyhound/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid content-view">
+      <div class="row row-title">
+        <div class="col header-title-content">
+          <div class="h-100 d-flex flex-column">
+            
+  
+  <div class="row pb-2">
+    <div class="col-auto">
+      <a class=il-nav-link href="/racing-days/trotting/">
+        &lt;
+        <span style="font-style: italic;">
+          <span class="trans-text-en hidden">Back</span><span class="trans-text-hu">Vissza</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  
+  
+              <div class="row">
+                <div class="col">
+                  <div class="trans-text-en hidden">
+                    <h1> 
+  <img width="46" src="/assets/icon_trotting.svg?ver=3.5.9">
+  Trotting
+  Results
+</h1>
+                  </div>
+                  <div class="trans-text-hu">
+                    <h1> 
+  <img width="46" src="/assets/icon_trotting.svg?ver=3.5.9">
+  Ügető
+  Eredmények
+</h1>
+                  </div>
+                </div>
+              </div>
+            
+
+  
+  <div class="row align-items-end flex-grow-1 pt-3 pb-2">
+    <div class="col-auto">
+      
+        <a class="il-hiv-link-pdf-icon" target="_blank" rel="noopener noreferrer" href="https://kincsempark.hu/data/ugeto_eredmeny/2026/ugeto_eredmeny_20260207.pdf">
+          <img src="/assets/icon_pdf.svg?ver=3.5.9" alt="" height="32" width="32">
+        </a>
+        <a class="il-hiv-link" target="_blank" rel="noopener noreferrer" href="https://kincsempark.hu/data/ugeto_eredmeny/2026/ugeto_eredmeny_20260207.pdf">
+          <span class="trans-text-en hidden">Official results</span><span class="trans-text-hu">Hivatalos eredmények</span>
+        </a>
+      
+    </div>
+  </div>
+
+  
+  <div class="row align-items-end py-1">
+    <div class="col-auto pr-0">
+      <div class="dlabel"><span class="trans-text-en hidden">Year</span><span class="trans-text-hu">Év</span></div>
+    </div>
+    <div class="col-auto pl-2">
+      <div id="racing-years-datepicker" class="date">
+        <input type="text" class="form-control" value="2026" readonly="readonly"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+      </div>
+    </div>
+    <div class="col-auto pl-2 pr-0">
+      <div class="dlabel"><span class="trans-text-en hidden">Date</span><span class="trans-text-hu">Dátum</span></div>
+    </div>
+    <div class="col-auto pl-2">
+      <div id="racing-days-datepicker" class="date">
+        <input type="text" class="form-control" value="2026-02-07" readonly="readonly"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+      </div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+        <div class="col header-right-content">
+          <div class="h-100 d-flex flex-column">
+            
+  
+              <div class="row pb-2 justify-content-end">
+                <div class="col-auto">
+                  <img class='hidden' id="btn-lang-english" src="/assets/locale_hun_min.png?ver=3.5.9" alt="Magyar" title="Magyar">
+                  <img id="btn-lang-default" src="/assets/locale_eng_min.png?ver=3.5.9" alt="English" title="English">
+                </div>
+              </div>
+            
+  
+  <div class="row pb-2 justify-content-end">
+    <div class="col-auto">
+      <a class="il-nav-link"
+         href="/search/trotting/race">
+        <span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Keresés</span>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"></path>
+          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+  
+  
+    
+      
+        <div class="row pb-2 justify-content-end">
+          <div class="col-auto">
+            <a class=il-nav-link href="/race-conditions/trotting/2026-02-07/">
+              <span class="trans-text-en hidden">Jump to race conditions</span><span class="trans-text-hu">Ugrás a versenykiírásokhoz</span>
+              &gt;
+            </a>
+          </div>
+        </div>
+      
+    
+  
+    
+      
+        <div class="row pb-2 justify-content-end">
+          <div class="col-auto">
+            <a class=il-nav-link href="/entries/trotting/2026-02-07/">
+              <span class="trans-text-en hidden">Jump to entries</span><span class="trans-text-hu">Ugrás a nevezésekhez</span>
+              &gt;
+            </a>
+          </div>
+        </div>
+      
+    
+  
+    
+      
+        <div class="row pb-2 justify-content-end">
+          <div class="col-auto">
+            <a class=il-nav-link href="/racecards/trotting/2026-02-07/">
+              <span class="trans-text-en hidden">Jump to racecard</span><span class="trans-text-hu">Ugrás a versenyprogramhoz</span>
+              &gt;
+            </a>
+          </div>
+        </div>
+      
+    
+  
+    
+      
+      
+    
+  
+
+  
+    
+  
+
+  
+
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 pt-20px" id="content-col-div">
+            
+          
+
+
+  <div class="row">
+    <div id="content-r" class="col-sm-12 px-0 hidden">
+      <div class="slider slider-nav slider-nav-for">
+        
+          
+            <div class=""><h3>P</h3></div>
+          
+        
+          
+            <div class=""><h3>I.</h3></div>
+          
+        
+          
+            <div class=""><h3>II.</h3></div>
+          
+        
+          
+            <div class=""><h3>III.</h3></div>
+          
+        
+          
+            <div class=""><h3>IV.</h3></div>
+          
+        
+          
+            <div class=""><h3>V.</h3></div>
+          
+        
+          
+            <div class=""><h3>VI.</h3></div>
+          
+        
+          
+            <div class=""><h3>VII.</h3></div>
+          
+        
+      </div>
+      <div class="slider slider-for slider-nav-for">
+        
+          
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>P</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>1</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>12:00</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>PRÓBAFUTAM</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1900A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>0 Ft</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>4é. és idb. lovaknak.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-1" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-1"] = {"daily": "P", "description": "Dancing Lady (1) \u00e9s Cukrom (2) teljes\u00edtette a szintid\u0151t.\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 7 \u00b0C", "distance": "1900A", "participants": [{"age": 7, "asset_id": 549, "color": "p", "dam": "Iarissa Urby", "dam_id": 4270, "distance": 1900, "dividend": "0.0", "driver_jockey": "Dukai Tam\u00e1s", "driver_jockey_id": 2271, "id": 6778, "km_time": "1:21.8", "name": "Dancing Lady", "number": 1, "prize": 0.0, "rank": "1.", "sex": "female", "sire": "Nesta Effe", "sire_id": 6777, "stable": "F\u00f6ldi Ott\u00f3 \u00far lova", "stable_id": 218, "time": "2:35.4", "trainer": "Angyal Andor", "trainer_id": 657}, {"age": 8, "asset_id": 56, "color": "p", "dam": "Inzulin", "dam_id": 2579, "distance": 1900, "dividend": "0.0", "driver_jockey": "Gyolai Zolt\u00e1n am.", "driver_jockey_id": 1640, "id": 6380, "km_time": "1:21.8", "name": "Cukrom", "number": 2, "prize": 0.0, "rank": "2.", "sex": "female", "sire": "Calypso Capar", "sire_id": 5921, "stable": "Gyolai II. i.", "stable_id": 921, "time": "2:35.5", "trainer": "Kolozsi S\u00e1ndor", "trainer_id": 686}], "photo_finishes": [], "prize": "0 Ft", "race_conditions": "4\u00e9. \u00e9s idb. lovaknak.", "race_id": 18786, "race_name": "PR\u00d3BAFUTAM", "start": "12:00", "yearly": 1};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Dancing Lady (1) és Cukrom (2) teljesítette a szintidőt.<br>
+Pálya minősége/Track: jó. Hőmérséklet: 7 °C
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>I.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>1</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>12:30</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>BETOLAKODÓ DÍJ</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1900A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 45000 Ft (22500, 13500, 9000). 3é. és idb. lovaknak. Életnyeremény maximum: 300 eFt. Indulóadási díj: 9000 Ft.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-2" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-2"] = {"daily": "I.", "description": "Biztosan: 1 1/2, 50 m., 25 m., 60 m.\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 7 \u00b0C\nT\u00e9tre/Win: 1.8\nHelyre/Place: 1.2/1.2\nBefut\u00f3ra/Exacta: 2.4\nH\u00e1rmasbefut\u00f3ra/Trifecta: 4.2\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1900A", "participants": [{"age": 4, "asset_id": 306, "color": "p", "dam": "Pan Globe Jaycee", "dam_id": 6260, "distance": 1900, "dividend": "1.8", "driver_jockey": "Goran Zolnaji", "driver_jockey_id": 1401, "id": 7142, "km_time": "1:19.5", "name": "Gresham Palace", "number": 3, "prize": 300000.0, "rank": "I.", "sex": "male", "sire": "Unno del Duomo", "sire_id": 6409, "stable": "Simon\u0027s i.", "stable_id": 1288, "time": "2:31.0", "trainer": "Goran Zolnaji", "trainer_id": 428}, {"age": 5, "asset_id": 34, "color": "p", "dam": "Not Alone", "dam_id": 7507, "distance": 1900, "dividend": "1.8", "driver_jockey": "Kolozsi L\u00e1szl\u00f3", "driver_jockey_id": 138, "id": 7508, "km_time": "1:19.6", "name": "Never Alone Venus", "number": 4, "prize": 150000.0, "rank": "II.", "sex": "gelding", "sire": "Celebration XL", "sire_id": 7505, "stable": "Peter Titan \u00fcget\u0151 ist\u00e1ll\u00f3", "stable_id": 1708, "time": "2:31.3", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 5, "asset_id": 658, "color": "p", "dam": "Nota del Nord", "dam_id": 6938, "distance": 1900, "dividend": "11.2", "driver_jockey": "Milan Tasic", "driver_jockey_id": 1318, "id": 7414, "km_time": "1:22.2", "name": "Fusion", "number": 7, "prize": 72000.0, "rank": "III.", "sex": "female", "sire": "Credits by Myself", "sire_id": 4939, "stable": "Tasic III. i.", "stable_id": 1389, "time": "2:36.1", "trainer": "Goran Zolnaji", "trainer_id": 428}, {"age": 3, "asset_id": 712, "color": "p", "dam": "Insa", "dam_id": 5628, "distance": 1900, "dividend": "33.6", "driver_jockey": "Szokola Attila", "driver_jockey_id": 2527, "id": 7461, "km_time": "1:23.6", "name": "Happy Lady VT", "number": 5, "prize": 48000.0, "rank": "IV.", "sex": "female", "sire": "Miguel Duhamel", "sire_id": 3984, "stable": "Szoki i.", "stable_id": 1648, "time": "2:38.8", "trainer": "Angyal Andor", "trainer_id": 657}, {"age": 3, "asset_id": 285, "color": "p", "dam": "Hitves", "dam_id": 2103, "distance": 1900, "dividend": "16.8", "driver_jockey": "Vez\u00e9r Emese", "driver_jockey_id": 23, "id": 7400, "km_time": "1:26.7", "name": "Hites", "number": 1, "prize": 30000.0, "rank": "V.", "sex": "female", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Pajkos i.", "stable_id": 1527, "time": "2:44.8", "trainer": "Csord\u00e1s Emil", "trainer_id": 3}, {"age": 4, "asset_id": 49, "color": "stp", "dam": "Raffaella SM", "dam_id": 4814, "distance": 1900, "dividend": "13.4", "driver_jockey": "Papp Istv\u00e1n", "driver_jockey_id": 91, "id": 7368, "km_time": "0:00.0", "name": "Rafaela BD", "number": 2, "prize": 0.0, "rank": "gal.", "sex": "female", "sire": "Express Bourbon", "sire_id": 7087, "stable": "BD Versenyl\u00f3 i.", "stable_id": 1171, "time": "0:00.0", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 3, "asset_id": 39, "color": "p", "dam": "Rubin Lady", "dam_id": 4191, "distance": 1900, "dividend": "7.4", "driver_jockey": "Kom\u00e1romi Krisztina", "driver_jockey_id": 32, "id": 7420, "km_time": "0:00.0", "name": "H\u00e9liosz R", "number": 6, "prize": 0.0, "rank": "gal.", "sex": "gelding", "sire": "Underpaid Hanover", "sire_id": 5616, "stable": "Mount i.", "stable_id": 32, "time": "0:00.0", "trainer": "Nagy Ferenc II.", "trainer_id": 18}], "photo_finishes": [], "prize": "600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 45000 Ft (22500, 13500, 9000). 3\u00e9. \u00e9s idb. lovaknak. \u00c9letnyerem\u00e9ny maximum: 300 eFt. Indul\u00f3ad\u00e1si d\u00edj: 9000 Ft.", "race_id": 18787, "race_name": "BETOLAKOD\u00d3 D\u00cdJ", "race_video": "https://youtube.com/embed/PrBhco7Atmw", "start": "12:30", "yearly": 1};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Biztosan: 1 1/2, 50 m., 25 m., 60 m.<br>
+Pálya minősége/Track: jó. Hőmérséklet: 7 °C<br>
+Tétre/Win: 1.8<br>
+Helyre/Place: 1.2/1.2<br>
+Befutóra/Exacta: 2.4<br>
+Hármasbefutóra/Trifecta: 4.2<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/PrBhco7Atmw">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/PrBhco7Atmw" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>II.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>2</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>13:00</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>DERENGŐ DÍJ</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1900A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 45000 Ft (22500, 13500, 9000). 3é. és idb. lovaknak. Életnyeremény maximum: 800 eFt. Indulóadási díj: 9000 Ft.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-3" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-3"] = {"daily": "II.", "description": "Biztosan: 1, 6 1/2, 25 m., 20 m.\nB\u00fcntet\u00e9sek: Vez\u00e9r Emese 20.000 Ft (ostor 3-4/1. alk.), Nagy Ferenc II. 5.000 Ft (szab\u00e1lytalan hajt\u00e1s; l\u00e1bl\u00f3gat\u00e1s)\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 8 \u00b0C\nT\u00e9tre/Win: 2.3\nHelyre/Place: 1.9/3\nBefut\u00f3ra/Exacta: 75.3\nH\u00e1rmasbefut\u00f3ra/Trifecta: 107.2\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1900A", "participants": [{"age": 4, "asset_id": 50, "color": "p", "dam": "Terra Promesa", "dam_id": 7348, "distance": 1900, "dividend": "2.3", "driver_jockey": "ifj. Veres L\u00e1szl\u00f3", "driver_jockey_id": 1492, "id": 7349, "km_time": "1:17.8", "name": "Torra LV", "number": 6, "prize": 300000.0, "rank": "I.", "sex": "female", "sire": "Orchetto Jet", "sire_id": 6747, "stable": "LV i.", "stable_id": 1426, "time": "2:27.8", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 3, "asset_id": 658, "color": "stp", "dam": "Grant Me Glory", "dam_id": 5631, "distance": 1900, "dividend": "44.6", "driver_jockey": "Milan Tasic", "driver_jockey_id": 1318, "id": 7429, "km_time": "1:17.8", "name": "Hippy Glory K", "number": 4, "prize": 150000.0, "rank": "II.", "sex": "female", "sire": "Habitat", "sire_id": 7268, "stable": "Tasic \u0026 Dimitrijevic i.", "stable_id": 1705, "time": "2:27.9", "trainer": "Goran Zolnaji", "trainer_id": 428}, {"age": 4, "asset_id": 49, "color": "p", "dam": "Simply The Best", "dam_id": 7369, "distance": 1900, "dividend": "5.5", "driver_jockey": "Papp Istv\u00e1n", "driver_jockey_id": 91, "id": 7371, "km_time": "1:18.5", "name": "Tequila", "number": 2, "prize": 72000.0, "rank": "III.", "sex": "female", "sire": "Baltimore As", "sire_id": 6395, "stable": "Stall Stallion s.r.o.", "stable_id": 1657, "time": "2:29.2", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 4, "asset_id": 285, "color": "stp", "dam": "Dats Veronica", "dam_id": 6710, "distance": 1900, "dividend": "3.3", "driver_jockey": "Vez\u00e9r Emese", "driver_jockey_id": 23, "id": 7480, "km_time": "1:20.0", "name": "Mon Cherie C.G.", "number": 3, "prize": 48000.0, "rank": "IV.", "sex": "female", "sire": "Uncle Lasse", "sire_id": 6711, "stable": "E. and E. \u0026 Zsolnai i.", "stable_id": 1690, "time": "2:32.0", "trainer": "Csord\u00e1s Emil", "trainer_id": 3}, {"age": 4, "asset_id": 103, "color": "s", "dam": "Super Girl", "dam_id": 4566, "distance": 1900, "dividend": "11.1", "driver_jockey": "Horv\u00e1th Lilla", "driver_jockey_id": 1380, "id": 7116, "km_time": "1:21.1", "name": "Golden Girl", "number": 1, "prize": 30000.0, "rank": "V.", "sex": "female", "sire": "Broidi", "sire_id": 6868, "stable": "MoPi i.", "stable_id": 831, "time": "2:34.1", "trainer": "Szennovitz Ad\u00e9l", "trainer_id": 655}, {"age": 4, "asset_id": 38, "color": "p", "dam": "Jubilee Hut", "dam_id": 4559, "distance": 1900, "dividend": "8.9", "driver_jockey": "Nagy Ferenc II.", "driver_jockey_id": 33, "id": 7189, "km_time": "1:21.3", "name": "Galatea", "number": 5, "prize": 0.0, "rank": "6.", "sex": "female", "sire": "Dundee", "sire_id": 5081, "stable": "Mount i.", "stable_id": 32, "time": "2:34.5", "trainer": "Nagy Ferenc II.", "trainer_id": 18}, {"age": 5, "asset_id": 95, "color": "p", "dam": "Carpe Diem", "dam_id": 3566, "distance": 1900, "dividend": "2.8", "driver_jockey": "Szennovitz Ad\u00e9l", "driver_jockey_id": 175, "id": 6945, "km_time": "1:21.5", "name": "Faberg\u00e9 F", "number": 7, "prize": 0.0, "rank": "7.", "sex": "female", "sire": "Freiherr AS", "sire_id": 6263, "stable": "MoPi i.", "stable_id": 831, "time": "2:34.9", "trainer": "Szennovitz Ad\u00e9l", "trainer_id": 655}], "photo_finishes": [], "prize": "600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 45000 Ft (22500, 13500, 9000). 3\u00e9. \u00e9s idb. lovaknak. \u00c9letnyerem\u00e9ny maximum: 800 eFt. Indul\u00f3ad\u00e1si d\u00edj: 9000 Ft.", "race_id": 18788, "race_name": "DERENG\u0150 D\u00cdJ", "race_video": "https://youtube.com/embed/e6Xu7B3pwmE", "start": "13:00", "yearly": 2};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Biztosan: 1, 6 1/2, 25 m., 20 m.<br>
+Büntetések: Vezér Emese 20.000 Ft (ostor 3-4/1. alk.), Nagy Ferenc II. 5.000 Ft (szabálytalan hajtás; láblógatás)<br>
+Pálya minősége/Track: jó. Hőmérséklet: 8 °C<br>
+Tétre/Win: 2.3<br>
+Helyre/Place: 1.9/3<br>
+Befutóra/Exacta: 75.3<br>
+Hármasbefutóra/Trifecta: 107.2<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/e6Xu7B3pwmE">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/e6Xu7B3pwmE" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>III.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>3</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>13:38</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>TIPPMIX - HÍRESSÉGEK FUTAMA HENDIKEP</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1900A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>800 000 Ft (250 000, 125 000, 105 000, 85 000, 75 000, 60 000, 50 000, 50 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 60000 Ft (30000, 18000, 12000). 4é. és idb. lovaknak. Hendikep Ft. maximum: 800 eFt. Indulóadási díj: 12000 Ft. Meghívott hajtóknak. Ebben a versenyben szerzett díjnyeremények a HpFt. nyereménybe nem számítanak!</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-4" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-4"] = {"daily": "III.", "description": "Igen k\u00f6nnyen: 25 m., 2 1/2, nyak, 1 1/2\nTitus Livius (2) nem indult. Carlos Fox (8) a Versenyint\u00e9z\u0151s\u00e9g rendelkez\u00e9s\u00e9re nem indult.\r\nB\u00fcntet\u00e9sek: Kolozsi L\u00e1szl\u00f3 5.000 Ft (hanyag szersz\u00e1moz\u00e1s), Budai Attila 10.000 Ft (V.I. rendelkez\u00e9sre \u00e1ll\u00e1s elmulaszt\u00e1sa)\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 8 \u00b0C\nT\u00e9tre/Win: 2.4\nHelyre/Place: 1/1/1.1\nBefut\u00f3ra/Exacta: (7-5) 3.3 (7-nem indult l\u00f3ra) 2.4\nH\u00e1rmasbefut\u00f3ra/Trifecta: (7-5-6) 13.7 (7-5-nem indult l\u00f3ra) 3.3\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1900A", "participants": [{"age": 6, "asset_id": 182, "color": "stp", "dam": "Ottawa SAS", "dam_id": 6771, "distance": 1900, "dividend": "2.4", "driver_jockey": "N\u00e9meth G\u00e1bor", "driver_jockey_id": 1747, "id": 6899, "km_time": "1:18.3", "name": "Eunike T Boko", "number": 7, "prize": 250000.0, "rank": "I.", "sex": "female", "sire": "Chelsea Boko", "sire_id": 6900, "stable": "Gomez i.", "stable_id": 1229, "time": "2:28.8", "trainer": "Horv\u00e1th Zolt\u00e1n", "trainer_id": 293}, {"age": 13, "asset_id": 519, "color": "stp", "dam": "Dolores", "dam_id": 1475, "distance": 1900, "dividend": "3.8", "driver_jockey": "Eper M\u00e1rton", "driver_jockey_id": 2220, "id": 5288, "km_time": "1:19.6", "name": "Usain", "number": 5, "prize": 125000.0, "rank": "II.", "sex": "gelding", "sire": "Medic Hanover", "sire_id": 1050, "stable": "Mount i.", "stable_id": 32, "time": "2:31.2", "trainer": "Nagy Ferenc II.", "trainer_id": 18}, {"age": 11, "asset_id": 620, "color": "stp", "dam": "Nuage Noire", "dam_id": 6680, "distance": 1900, "dividend": "4.4", "driver_jockey": "Baji Bal\u00e1zs", "driver_jockey_id": 2397, "id": 6679, "km_time": "1:19.8", "name": "Inforgettable", "number": 6, "prize": 105000.0, "rank": "III.", "sex": "female", "sire": "Unforgettable", "sire_id": 6678, "stable": "Iris Kopp i.", "stable_id": 1445, "time": "2:31.7", "trainer": "Budai Attila", "trainer_id": 37}, {"age": 10, "asset_id": 621, "color": "stp", "dam": "Malhana Serey", "dam_id": 5074, "distance": 1900, "dividend": "0.0", "driver_jockey": "Burucs Borb\u00e1la", "driver_jockey_id": 1532, "id": 5960, "km_time": "1:19.9", "name": "Ann Bella M", "number": 9, "prize": 85000.0, "rank": "IV.", "sex": "female", "sire": "Cigar Dan", "sire_id": 5220, "stable": "Zs\u00f3fi \u0026 Luigi i.", "stable_id": 1535, "time": "2:31.8", "trainer": "M\u00e1rton Lajos", "trainer_id": 294}, {"age": 10, "asset_id": 661, "color": "p", "dam": "Katchmeifyoucan MS", "dam_id": 4490, "distance": 1900, "dividend": "23.5", "driver_jockey": "Gajdos Tam\u00e1s", "driver_jockey_id": 2446, "id": 5904, "km_time": "1:20.1", "name": "Australian Gold", "number": 1, "prize": 75000.0, "rank": "V.", "sex": "female", "sire": "From Above", "sire_id": 5634, "stable": "Laura i.", "stable_id": 936, "time": "2:32.1", "trainer": "Csord\u00e1s Emil", "trainer_id": 3}, {"age": 8, "asset_id": 412, "color": "p", "dam": "Nikkel Lady", "dam_id": 3530, "distance": 1900, "dividend": "5.4", "driver_jockey": "Epres Attila", "driver_jockey_id": 219, "id": 6330, "km_time": "1:20.5", "name": "Che Comandante", "number": 3, "prize": 60000.0, "rank": "VI.", "sex": "male", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Tabak Bank II. i.", "stable_id": 1645, "time": "2:33.0", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 7, "asset_id": 439, "color": "stp", "dam": "Virgi", "dam_id": 5679, "distance": 1900, "dividend": "13.5", "driver_jockey": "Urb\u00e1n Fl\u00f3ri\u00e1n", "driver_jockey_id": 2105, "id": 6438, "km_time": "1:20.6", "name": "Danny DeVito", "number": 4, "prize": 50000.0, "rank": "7.", "sex": "male", "sire": "Calypso Capar", "sire_id": 5921, "stable": "Gyolai II. i.", "stable_id": 921, "time": "2:33.1", "trainer": "Kolozsi S\u00e1ndor", "trainer_id": 686}], "photo_finishes": ["https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0003_1.jpg"], "prize": "800 000 Ft (250 000, 125 000, 105 000, 85 000, 75 000, 60 000, 50 000, 50 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 60000 Ft (30000, 18000, 12000). 4\u00e9. \u00e9s idb. lovaknak. Hendikep Ft. maximum: 800 eFt. Indul\u00f3ad\u00e1si d\u00edj: 12000 Ft. Megh\u00edvott hajt\u00f3knak. Ebben a versenyben szerzett d\u00edjnyerem\u00e9nyek a HpFt. nyerem\u00e9nybe nem sz\u00e1m\u00edtanak!", "race_id": 18792, "race_name": "TIPPMIX - H\u00cdRESS\u00c9GEK FUTAMA HENDIKEP", "race_video": "https://youtube.com/embed/Pc8yIoNcOKc", "start": "13:38", "yearly": 3};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Igen könnyen: 25 m., 2 1/2, nyak, 1 1/2<br>
+Titus Livius (2) nem indult. Carlos Fox (8) a Versenyintézőség rendelkezésére nem indult.<br>
+Büntetések: Kolozsi László 5.000 Ft (hanyag szerszámozás), Budai Attila 10.000 Ft (V.I. rendelkezésre állás elmulasztása)<br>
+Pálya minősége/Track: jó. Hőmérséklet: 8 °C<br>
+Tétre/Win: 2.4<br>
+Helyre/Place: 1/1/1.1<br>
+Befutóra/Exacta: (7-5) 3.3 (7-nem indult lóra) 2.4<br>
+Hármasbefutóra/Trifecta: (7-5-6) 13.7 (7-5-nem indult lóra) 3.3<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Photo finish</span><span class="trans-text-hu">Célfotó</span></h5>
+                      </div>
+                    </div>
+                    <section
+                    data-featherlight-gallery
+                    data-featherlight-filter=".18792_fgf">
+                      <div class="row">
+                        
+                          <div class="col-md-auto pt-5px">
+                            <a href="https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0003_1.jpg" class="18792_fgf">
+                              <img src="https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0003_1.jpg" alt="" width="300" height="200">
+                            </a>
+                          </div>
+                        
+                      </div>
+                    </section>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/Pc8yIoNcOKc">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/Pc8yIoNcOKc" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>IV.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>4</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>14:08</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>ÉVNYITÓ DÍJ</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1900A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>700 000 Ft (350 000, 175 000, 84 000, 56 000, 35 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 52500 Ft (26250, 15750, 10500). 3é. és idb. lovaknak. Életnyeremény maximum: 9100 eFt. Indulóadási díj: 10500 Ft.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-5" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-5"] = {"daily": "IV.", "description": "K\u00f6nnyen: 7 1/2, 3, fej, 2\nA Versenyint\u00e9z\u0151s\u00e9g szigor\u00faan figyelmezteti Kolozsi L\u00e1szl\u00f3 idom\u00e1rt lova (Lola Dragon) j\u00e1rm\u00f3dja miatt.\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 8 \u00b0C\nT\u00e9tre/Win: 3.7\nHelyre/Place: 1.2/1.2/1.4\nBefut\u00f3ra/Exacta: 5\nH\u00e1rmasbefut\u00f3ra/Trifecta: 46.3\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1900A", "participants": [{"age": 5, "asset_id": 30, "color": "p", "dam": "Piera del Bar", "dam_id": 5187, "distance": 1900, "dividend": "3.7", "driver_jockey": "Juh\u00e1sz Bal\u00e1zs", "driver_jockey_id": 148, "id": 6965, "km_time": "1:17.6", "name": "Felh\u0151k felett", "number": 3, "prize": 350000.0, "rank": "I.", "sex": "female", "sire": "Calypso Capar", "sire_id": 5921, "stable": "Ozsv\u00e1r \u0026 Homolya i.", "stable_id": 1700, "time": "2:27.5", "trainer": "Juh\u00e1sz Bal\u00e1zs", "trainer_id": 242}, {"age": 5, "asset_id": 340, "color": "p", "dam": "Bonjour Evo", "dam_id": 5649, "distance": 1900, "dividend": "1.9", "driver_jockey": "Angyal Andor", "driver_jockey_id": 1509, "id": 7001, "km_time": "1:18.4", "name": "F\u00e1rosz", "number": 6, "prize": 175000.0, "rank": "II.", "sex": "male", "sire": "Mereng\u0151", "sire_id": 3241, "stable": "Zsener\u0151z i.", "stable_id": 1441, "time": "2:29.0", "trainer": "Angyal Andor", "trainer_id": 657}, {"age": 8, "asset_id": 705, "color": "p", "dam": "Ylaine Hanover", "dam_id": 7374, "distance": 1900, "dividend": "12.2", "driver_jockey": "Garai  G\u00e1bor", "driver_jockey_id": 2125, "id": 7375, "km_time": "1:18.7", "name": "Lola Dragon", "number": 7, "prize": 84000.0, "rank": "III.", "sex": "female", "sire": "Clint W Boko", "sire_id": 7372, "stable": "Garai V. i.", "stable_id": 1639, "time": "2:29.6", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 9, "asset_id": 531, "color": "p", "dam": "Victory Va Bene", "dam_id": 5503, "distance": 1900, "dividend": "21.4", "driver_jockey": "Heged\u0171s Tam\u00e1s", "driver_jockey_id": 2237, "id": 6018, "km_time": "1:18.8", "name": "Bonus RG", "number": 4, "prize": 56000.0, "rank": "IV.", "sex": "gelding", "sire": "Racino", "sire_id": 3783, "stable": "Red Star i.", "stable_id": 1497, "time": "2:29.7", "trainer": "Papp Istv\u00e1n", "trainer_id": 20}, {"age": 13, "asset_id": 586, "color": "p", "dam": "Kamilla", "dam_id": 3136, "distance": 1900, "dividend": "4.3", "driver_jockey": "Tak\u00e1cs Eszter Cseperke am.", "driver_jockey_id": 2332, "id": 5325, "km_time": "1:19.0", "name": "Ultimate Force", "number": 8, "prize": 35000.0, "rank": "V.", "sex": "gelding", "sire": "Connecting People", "sire_id": 4169, "stable": "Cseperke i.", "stable_id": 1100, "time": "2:30.1", "trainer": "M\u00e1rton Lajos", "trainer_id": 294}, {"age": 4, "asset_id": 17, "color": "stp", "dam": "Cicciolina Fling", "dam_id": 5019, "distance": 1900, "dividend": "7.5", "driver_jockey": "Kolozsi S\u00e1ndor", "driver_jockey_id": 898, "id": 7186, "km_time": "1:19.0", "name": "Gina Fling", "number": 1, "prize": 0.0, "rank": "6.", "sex": "female", "sire": "Chelsea Boko", "sire_id": 6900, "stable": "Gyolai II. i.", "stable_id": 921, "time": "2:30.1", "trainer": "Kolozsi S\u00e1ndor", "trainer_id": 686}, {"age": 7, "asset_id": 712, "color": "p", "dam": "Tiffany Grad", "dam_id": 7327, "distance": 1900, "dividend": "12.8", "driver_jockey": "Szokola Attila", "driver_jockey_id": 2527, "id": 7471, "km_time": "1:19.3", "name": "Doktor Adri", "number": 5, "prize": 0.0, "rank": "7.", "sex": "gelding", "sire": "Nadal Di Jesolo", "sire_id": 7472, "stable": "Szoki i.", "stable_id": 1648, "time": "2:30.7", "trainer": "Angyal Andor", "trainer_id": 657}, {"age": 6, "asset_id": 285, "color": "stp", "dam": "Wale", "dam_id": 3983, "distance": 1900, "dividend": "7.3", "driver_jockey": "Vez\u00e9r Emese", "driver_jockey_id": 23, "id": 6704, "km_time": "1:20.5", "name": "Emerald", "number": 2, "prize": 0.0, "rank": "8.", "sex": "female", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Kavics i.", "stable_id": 1205, "time": "2:32.9", "trainer": "Vez\u00e9r Emese", "trainer_id": 211}], "photo_finishes": ["https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0004_1.jpg"], "prize": "700 000 Ft (350 000, 175 000, 84 000, 56 000, 35 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 52500 Ft (26250, 15750, 10500). 3\u00e9. \u00e9s idb. lovaknak. \u00c9letnyerem\u00e9ny maximum: 9100 eFt. Indul\u00f3ad\u00e1si d\u00edj: 10500 Ft.", "race_id": 18790, "race_name": "\u00c9VNYIT\u00d3 D\u00cdJ", "race_video": "https://youtube.com/embed/2k8wlfxj43k", "start": "14:08", "yearly": 4};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Könnyen: 7 1/2, 3, fej, 2<br>
+A Versenyintézőség szigorúan figyelmezteti Kolozsi László idomárt lova (Lola Dragon) jármódja miatt.<br>
+Pálya minősége/Track: jó. Hőmérséklet: 8 °C<br>
+Tétre/Win: 3.7<br>
+Helyre/Place: 1.2/1.2/1.4<br>
+Befutóra/Exacta: 5<br>
+Hármasbefutóra/Trifecta: 46.3<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Photo finish</span><span class="trans-text-hu">Célfotó</span></h5>
+                      </div>
+                    </div>
+                    <section
+                    data-featherlight-gallery
+                    data-featherlight-filter=".18790_fgf">
+                      <div class="row">
+                        
+                          <div class="col-md-auto pt-5px">
+                            <a href="https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0004_1.jpg" class="18790_fgf">
+                              <img src="https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0004_1.jpg" alt="" width="300" height="200">
+                            </a>
+                          </div>
+                        
+                      </div>
+                    </section>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/2k8wlfxj43k">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/2k8wlfxj43k" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>V.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>5</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>14:37</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>LÉZER HENDIKEP</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1800A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 45000 Ft (22500, 13500, 9000). 4é. és idb. lovaknak. Hendikep Ft. maximum: 1000 eFt. Indulóadási díj: 9000 Ft.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-6" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-6"] = {"daily": "V.", "description": "K\u00f6nnyen: 4, 1 1/2, 1 1/2, 1/2\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 8 \u00b0C\nT\u00e9tre/Win: 2.1\nHelyre/Place: 1.6/1.7/2.4\nBefut\u00f3ra/Exacta: 19.2\nH\u00e1rmasbefut\u00f3ra/Trifecta: 192.4\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1800A", "participants": [{"age": 11, "asset_id": 122, "color": "p", "dam": "Franciska", "dam_id": 1758, "distance": 1800, "dividend": "2.1", "driver_jockey": "Fejsz\u00e9s Kitti", "driver_jockey_id": 1076, "id": 5725, "km_time": "1:17.3", "name": "Zente", "number": 8, "prize": 300000.0, "rank": "I.", "sex": "gelding", "sire": "Frullino Jet", "sire_id": 3843, "stable": "Gomez i.", "stable_id": 1229, "time": "2:19.2", "trainer": "Horv\u00e1th Zolt\u00e1n", "trainer_id": 293}, {"age": 9, "asset_id": 586, "color": "p", "dam": "Keep Smiling", "dam_id": 2826, "distance": 1800, "dividend": "6.5", "driver_jockey": "Tak\u00e1cs Eszter Cseperke am.", "driver_jockey_id": 2332, "id": 6261, "km_time": "1:17.8", "name": "Be Happy", "number": 2, "prize": 150000.0, "rank": "II.", "sex": "gelding", "sire": "Com Muscle", "sire_id": 2667, "stable": "Hawk i.", "stable_id": 1557, "time": "2:20.0", "trainer": "M\u00e1rton Lajos", "trainer_id": 294}, {"age": 8, "asset_id": 95, "color": "p", "dam": "Turandot Matto", "dam_id": 5407, "distance": 1800, "dividend": "8.3", "driver_jockey": "Szennovitz Ad\u00e9l", "driver_jockey_id": 175, "id": 6328, "km_time": "1:17.9", "name": "Credit Card", "number": 6, "prize": 72000.0, "rank": "III.", "sex": "female", "sire": "Milliondollar Lux", "sire_id": 5417, "stable": "Gitti \u0026 Attila i.", "stable_id": 1544, "time": "2:20.3", "trainer": "Szennovitz Ad\u00e9l", "trainer_id": 655}, {"age": 5, "asset_id": 34, "color": "p", "dam": "Simply The Best", "dam_id": 7369, "distance": 1800, "dividend": "15.5", "driver_jockey": "Kolozsi L\u00e1szl\u00f3", "driver_jockey_id": 138, "id": 7370, "km_time": "1:18.1", "name": "Another Star", "number": 1, "prize": 48000.0, "rank": "IV.", "sex": "gelding", "sire": "Light Kronos", "sire_id": 6451, "stable": "Stall Stallion s.r.o.", "stable_id": 1657, "time": "2:20.6", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 10, "asset_id": 285, "color": "stp", "dam": "Cicciolina Fling", "dam_id": 5019, "distance": 1800, "dividend": "19.7", "driver_jockey": "Vez\u00e9r Emese", "driver_jockey_id": 23, "id": 5905, "km_time": "1:18.2", "name": "Adamo Fling", "number": 4, "prize": 30000.0, "rank": "V.", "sex": "male", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Laura i.", "stable_id": 936, "time": "2:20.7", "trainer": "Csord\u00e1s Emil", "trainer_id": 3}, {"age": 6, "asset_id": 340, "color": "p", "dam": "Fiorina", "dam_id": 3607, "distance": 1800, "dividend": "3.2", "driver_jockey": "Angyal Andor", "driver_jockey_id": 1509, "id": 6700, "km_time": "1:18.2", "name": "Escobar", "number": 7, "prize": 0.0, "rank": "6.", "sex": "gelding", "sire": "Miguel Duhamel", "sire_id": 3984, "stable": "Zabos i.", "stable_id": 819, "time": "2:20.8", "trainer": "Angyal Andor", "trainer_id": 657}, {"age": 7, "asset_id": 633, "color": "p", "dam": "Norah Jones", "dam_id": 3470, "distance": 1800, "dividend": "3.7", "driver_jockey": "Nagyv\u00e1ry Andrea", "driver_jockey_id": 2403, "id": 6472, "km_time": "1:18.6", "name": "Dumbledore", "number": 5, "prize": 0.0, "rank": "7.", "sex": "gelding", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Pimri i.", "stable_id": 9, "time": "2:21.4", "trainer": "Fazekas Imre", "trainer_id": 7}, {"age": 9, "asset_id": 422, "color": "p", "dam": "Fanciulla", "dam_id": 6124, "distance": 1800, "dividend": "27.2", "driver_jockey": "K\u00e1rai J\u00f3zsef", "driver_jockey_id": 1854, "id": 6121, "km_time": "1:18.6", "name": "Farya BD", "number": 3, "prize": 0.0, "rank": "8.", "sex": "female", "sire": "Andover Hall", "sire_id": 4167, "stable": "K\u00e1rai i.", "stable_id": 1130, "time": "2:21.5", "trainer": "T\u00f6r\u00f6k Istv\u00e1n", "trainer_id": 27}], "photo_finishes": [], "prize": "600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 45000 Ft (22500, 13500, 9000). 4\u00e9. \u00e9s idb. lovaknak. Hendikep Ft. maximum: 1000 eFt. Indul\u00f3ad\u00e1si d\u00edj: 9000 Ft.", "race_id": 18793, "race_name": "L\u00c9ZER HENDIKEP", "race_video": "https://youtube.com/embed/cvkJ_m5dq94", "start": "14:37", "yearly": 5};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Könnyen: 4, 1 1/2, 1 1/2, 1/2<br>
+Pálya minősége/Track: jó. Hőmérséklet: 8 °C<br>
+Tétre/Win: 2.1<br>
+Helyre/Place: 1.6/1.7/2.4<br>
+Befutóra/Exacta: 19.2<br>
+Hármasbefutóra/Trifecta: 192.4<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/cvkJ_m5dq94">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/cvkJ_m5dq94" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>VI.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>6</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>15:05</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>TOLNAY LÁSZLÓ EMLÉKVERSENY</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1800A</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 45000 Ft (22500, 13500, 9000). 3é. és idb. lovaknak. Életnyeremény maximum: 2500 eFt. Indulóadási díj: 9000 Ft.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-7" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-7"] = {"daily": "VI.", "description": "Biztosan: 3/4, fej, 5/4, 4\nB\u00fcntet\u00e9sek: ifj. Veres L\u00e1szl\u00f3 1 nap (2026. m\u00e1rcius 7. s\u00falyos hajt\u00e1si szab\u00e1lytalans\u00e1g; nekihajt\u00e1s)\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 8 \u00b0C\nT\u00e9tre/Win: 5.4\nHelyre/Place: 1.1/1/1.2\nBefut\u00f3ra/Exacta: 6.1\nH\u00e1rmasbefut\u00f3ra/Trifecta: 22.1\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1800A", "participants": [{"age": 6, "asset_id": 549, "color": "p", "dam": "Tiffany Grad", "dam_id": 7327, "distance": 1800, "dividend": "5.4", "driver_jockey": "Dukai Tam\u00e1s", "driver_jockey_id": 2271, "id": 7330, "km_time": "1:19.1", "name": "Emilia Adri", "number": 3, "prize": 300000.0, "rank": "I.", "sex": "female", "sire": "Poseido di Venere", "sire_id": 7326, "stable": "Szoki i.", "stable_id": 1648, "time": "2:22.3", "trainer": "Angyal Andor", "trainer_id": 657}, {"age": 4, "asset_id": 30, "color": "p", "dam": "Wale", "dam_id": 3983, "distance": 1800, "dividend": "1.8", "driver_jockey": "Juh\u00e1sz Bal\u00e1zs", "driver_jockey_id": 148, "id": 7065, "km_time": "1:19.2", "name": "Greenback", "number": 5, "prize": 150000.0, "rank": "II.", "sex": "male", "sire": "Milliondollar Lux", "sire_id": 5417, "stable": "Laura III. i.", "stable_id": 1269, "time": "2:22.5", "trainer": "Juh\u00e1sz Bal\u00e1zs", "trainer_id": 242}, {"age": 6, "asset_id": 34, "color": "p", "dam": "Luna", "dam_id": 7506, "distance": 1800, "dividend": "8.7", "driver_jockey": "Kolozsi L\u00e1szl\u00f3", "driver_jockey_id": 138, "id": 7509, "km_time": "1:19.2", "name": "Lumina Venus", "number": 6, "prize": 72000.0, "rank": "III.", "sex": "female", "sire": "Celebration XL", "sire_id": 7505, "stable": "Peter Titan \u00fcget\u0151 ist\u00e1ll\u00f3", "stable_id": 1708, "time": "2:22.5", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 5, "asset_id": 50, "color": "p", "dam": "Aria Cup", "dam_id": 6935, "distance": 1800, "dividend": "3.5", "driver_jockey": "ifj. Veres L\u00e1szl\u00f3", "driver_jockey_id": 1492, "id": 6936, "km_time": "1:19.3", "name": "Aaron LV", "number": 8, "prize": 48000.0, "rank": "IV.", "sex": "male", "sire": "Civil Action", "sire_id": 4335, "stable": "LV i.", "stable_id": 1426, "time": "2:22.7", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 4, "asset_id": 38, "color": "stp", "dam": "Bebop\u0027s Cassandra", "dam_id": 5469, "distance": 1800, "dividend": "7.7", "driver_jockey": "Nagy Ferenc II.", "driver_jockey_id": 33, "id": 7190, "km_time": "1:19.7", "name": "Gucci", "number": 1, "prize": 30000.0, "rank": "V.", "sex": "female", "sire": "Dundee", "sire_id": 5081, "stable": "Mount i.", "stable_id": 32, "time": "2:23.5", "trainer": "Nagy Ferenc II.", "trainer_id": 18}, {"age": 6, "asset_id": 56, "color": "vlp", "dam": "Quacelle", "dam_id": 6084, "distance": 1800, "dividend": "12.2", "driver_jockey": "Gyolai Zolt\u00e1n am.", "driver_jockey_id": 1640, "id": 6770, "km_time": "1:20.1", "name": "Top of Climb", "number": 7, "prize": 0.0, "rank": "6.", "sex": "gelding", "sire": "Scarlet Knight", "sire_id": 6032, "stable": "Gyolai II. i.", "stable_id": 921, "time": "2:24.2", "trainer": "Kolozsi S\u00e1ndor", "trainer_id": 686}, {"age": 5, "asset_id": 422, "color": "p", "dam": "Naomi", "dam_id": 3437, "distance": 1800, "dividend": "22.9", "driver_jockey": "K\u00e1rai J\u00f3zsef", "driver_jockey_id": 1854, "id": 6919, "km_time": "1:20.1", "name": "Fermina Daza", "number": 4, "prize": 0.0, "rank": "7.", "sex": "female", "sire": "Miguel Duhamel", "sire_id": 3984, "stable": "Olaj Shop i.", "stable_id": 1637, "time": "2:24.2", "trainer": "T\u00f6r\u00f6k Istv\u00e1n", "trainer_id": 27}, {"age": 4, "asset_id": 712, "color": "p", "dam": "Aida VDO", "dam_id": 7473, "distance": 1800, "dividend": "36.7", "driver_jockey": "Szokola Attila", "driver_jockey_id": 2527, "id": 7475, "km_time": "1:21.9", "name": "Glory VDO", "number": 2, "prize": 0.0, "rank": "8.", "sex": "female", "sire": "Timoz", "sire_id": 7474, "stable": "Szoki i.", "stable_id": 1648, "time": "2:27.4", "trainer": "Angyal Andor", "trainer_id": 657}], "photo_finishes": ["https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0006_1.jpg"], "prize": "600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 45000 Ft (22500, 13500, 9000). 3\u00e9. \u00e9s idb. lovaknak. \u00c9letnyerem\u00e9ny maximum: 2500 eFt. Indul\u00f3ad\u00e1si d\u00edj: 9000 Ft.", "race_id": 18789, "race_name": "TOLNAY L\u00c1SZL\u00d3 EML\u00c9KVERSENY", "race_video": "https://youtube.com/embed/gGc8ZwwSu_8", "start": "15:05", "yearly": 6};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Biztosan: 3/4, fej, 5/4, 4<br>
+Büntetések: ifj. Veres László 1 nap (2026. március 7. súlyos hajtási szabálytalanság; nekihajtás)<br>
+Pálya minősége/Track: jó. Hőmérséklet: 8 °C<br>
+Tétre/Win: 5.4<br>
+Helyre/Place: 1.1/1/1.2<br>
+Befutóra/Exacta: 6.1<br>
+Hármasbefutóra/Trifecta: 22.1<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Photo finish</span><span class="trans-text-hu">Célfotó</span></h5>
+                      </div>
+                    </div>
+                    <section
+                    data-featherlight-gallery
+                    data-featherlight-filter=".18789_fgf">
+                      <div class="row">
+                        
+                          <div class="col-md-auto pt-5px">
+                            <a href="https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0006_1.jpg" class="18789_fgf">
+                              <img src="https://kincsempark.hu/data/celfotok/ugeto_celfoto/2026/ugeto_celfoto_20260207_0006_1.jpg" alt="" width="300" height="200">
+                            </a>
+                          </div>
+                        
+                      </div>
+                    </section>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/gGc8ZwwSu_8">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/gGc8ZwwSu_8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+            
+            <div>
+              <div class="col-sm-12 pt-20px">
+                <div class="col-sm-12 race-head">
+                  <div class="row race-head-items">
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Daily</span><span class="trans-text-hu">Napi</span></h4>
+                        <span>VII.</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Yearly</span><span class="trans-text-hu">Éves</span></h4>
+                        <span>7</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Time</span><span class="trans-text-hu">Start</span></h4>
+                        <span>15:39</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race name</span><span class="trans-text-hu">Futam neve</span></h4>
+                        <span>2026. ÉVI JÁDER LÁSZLÓ KUPA I. FUTAMA HENDIKEP</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span></h4>
+                        <span>1980</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Prize</span><span class="trans-text-hu">Versenydíj</span></h4>
+                        <span>600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)</span>
+                      </div>
+                    
+                      <div class="race-head-item">
+                        <h4><span class="trans-text-en hidden">Race conditions</span><span class="trans-text-hu">Versenykiírás</span></h4>
+                        <span>Tulajdonosi prémium: 45000 Ft (22500, 13500, 9000). 4é. és idb. lovaknak. Hendikep Ft. maximum: 600 eFt. Térhátrány: 450 eFt.-20 m. Indulóadási díj: 9000 Ft. Bármilyen (amatőr, profi) licensszel rendelkező hajtónak! A 30 versenyt nem nyert amatőr- és segédhajtóknak 20 m engedmény.</span>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 pt-20px">
+                <div id="races-table-8" class="valami">
+                  <script type="text/javascript">
+                    races_table_divs["races-table-8"] = {"daily": "VII.", "description": "Biztosan: 1, 5, 3, 1 1/2\nPetra La Roque (11) kocsij\u00e1nak bal kereke megrong\u00e1l\u00f3dott.\r\nB\u00fcntet\u00e9sek: Kaczk\u00f3 Edit, Heged\u0171s Tam\u00e1s, K\u00e1rai J\u00f3zsef, Fenyvesi Gy\u00f6rgy, Vida J\u00f3zsef, Gras M\u00f3nika 5.000-5.000 Ft (Felvonul\u00e1si rend be nem tart\u00e1sa).  Gras M\u00f3nika 20.000 Ft (ostor 3-4/1. alk.)\nP\u00e1lya min\u0151s\u00e9ge/Track: j\u00f3. H\u0151m\u00e9rs\u00e9klet: 8 \u00b0C\nT\u00e9tre/Win: 7.5\nHelyre/Place: 2.5/2.5/3.6\nBefut\u00f3ra/Exacta: 115.4\nH\u00e1rmasbefut\u00f3ra/Trifecta: 1871.3\n(Osztal\u00e9kok 1 Ft-ra kisz\u00e1molva)", "distance": "1980", "participants": [{"age": 5, "asset_id": 422, "color": "p", "dam": "Bebop\u0027s Cassandra", "dam_id": 5469, "distance": 1960, "dividend": "7.5", "driver_jockey": "K\u00e1rai J\u00f3zsef", "driver_jockey_id": 1854, "id": 6999, "km_time": "1:20.8", "name": "First Lady KJ", "number": 3, "prize": 300000.0, "rank": "I.", "sex": "female", "sire": "Dundee", "sire_id": 5081, "stable": "K\u00e1rai i.", "stable_id": 1130, "time": "2:38.3", "trainer": "T\u00f6r\u00f6k Istv\u00e1n", "trainer_id": 27}, {"age": 7, "asset_id": 122, "color": "p", "dam": "Naomi", "dam_id": 3437, "distance": 2000, "dividend": "5.1", "driver_jockey": "Fejsz\u00e9s Kitti", "driver_jockey_id": 1076, "id": 6442, "km_time": "1:19.3", "name": "Dulcinea del Toboso", "number": 9, "prize": 150000.0, "rank": "II.", "sex": "female", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "El Lucero Syndicate i.", "stable_id": 1707, "time": "2:38.5", "trainer": "Horv\u00e1th Zolt\u00e1n", "trainer_id": 293}, {"age": 8, "asset_id": 421, "color": "stp", "dam": "Kentucky Girl", "dam_id": 2798, "distance": 1960, "dividend": "19.0", "driver_jockey": "Gras M\u00f3nika", "driver_jockey_id": 1023, "id": 6343, "km_time": "1:21.4", "name": "Chicago", "number": 6, "prize": 72000.0, "rank": "III.", "sex": "gelding", "sire": "What a Man", "sire_id": 3423, "stable": "Gyolai II. i.", "stable_id": 921, "time": "2:39.5", "trainer": "Kolozsi S\u00e1ndor", "trainer_id": 686}, {"age": 5, "asset_id": 48, "color": "p", "dam": "Nothing compares MS", "dam_id": 5205, "distance": 2000, "dividend": "14.2", "driver_jockey": "Weber Zsolt", "driver_jockey_id": 1064, "id": 6927, "km_time": "1:20.1", "name": "Fast Track", "number": 10, "prize": 48000.0, "rank": "IV.", "sex": "gelding", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Nala i.", "stable_id": 1687, "time": "2:40.1", "trainer": "Weber Zsolt", "trainer_id": 651}, {"age": 9, "asset_id": 147, "color": "stp", "dam": "Silent Yankee", "dam_id": 5809, "distance": 1980, "dividend": "16.8", "driver_jockey": "Paluska Tam\u00e1s", "driver_jockey_id": 1194, "id": 6153, "km_time": "1:21.0", "name": "Bing Crosby AT", "number": 7, "prize": 30000.0, "rank": "V.", "sex": "gelding", "sire": "Amiral Sund", "sire_id": 5958, "stable": "Pala i.", "stable_id": 659, "time": "2:40.4", "trainer": "T\u00f6r\u00f6k Istv\u00e1n", "trainer_id": 27}, {"age": 6, "asset_id": 657, "color": "p", "dam": "Inzulin", "dam_id": 2579, "distance": 1960, "dividend": "4.3", "driver_jockey": "Fenyvesi Gy\u00f6rgy", "driver_jockey_id": 451, "id": 6696, "km_time": "1:21.8", "name": "\u00c9des K", "number": 4, "prize": 0.0, "rank": "6.", "sex": "female", "sire": "Vanito", "sire_id": 2952, "stable": "Gyolai II. i.", "stable_id": 921, "time": "2:40.4", "trainer": "Kolozsi S\u00e1ndor", "trainer_id": 686}, {"age": 12, "asset_id": 716, "color": "p", "dam": "Motiv\u00e1l\u00f3", "dam_id": 3283, "distance": 1960, "dividend": "3.1", "driver_jockey": "Vida J\u00f3zsef am.", "driver_jockey_id": 2539, "id": 5700, "km_time": "1:21.8", "name": "Vez\u00e9r", "number": 5, "prize": 0.0, "rank": "7.", "sex": "gelding", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Kecsap i.", "stable_id": 273, "time": "2:40.4", "trainer": "Weber Zsolt", "trainer_id": 651}, {"age": 7, "asset_id": 285, "color": "p", "dam": "Lollo Tilly", "dam_id": 6875, "distance": 2000, "dividend": "12.9", "driver_jockey": "Vez\u00e9r Emese", "driver_jockey_id": 23, "id": 6877, "km_time": "1:20.7", "name": "Petra La Roque", "number": 11, "prize": 0.0, "rank": "8.", "sex": "female", "sire": "Raja Mirchi", "sire_id": 6876, "stable": "Laura \u0026 E. and E. \u0026 BBKR i.", "stable_id": 1507, "time": "2:41.3", "trainer": "Csord\u00e1s Emil", "trainer_id": 3}, {"age": 6, "asset_id": 705, "color": "p", "dam": "Jewel Leader", "dam_id": 6672, "distance": 1980, "dividend": "28.5", "driver_jockey": "Garai  G\u00e1bor", "driver_jockey_id": 2125, "id": 6966, "km_time": "1:21.7", "name": "Eagle GG", "number": 8, "prize": 0.0, "rank": "9.", "sex": "gelding", "sire": "P J Punjab", "sire_id": 5781, "stable": "Garai G\u00e1bor \u0026 Pinja J\u00e4ms\u00e4 lova", "stable_id": 1673, "time": "2:41.8", "trainer": "Kolozsi L\u00e1szl\u00f3", "trainer_id": 64}, {"age": 4, "asset_id": 531, "color": "p", "dam": "Piera del Bar", "dam_id": 5187, "distance": 1960, "dividend": "3.9", "driver_jockey": "Heged\u0171s Tam\u00e1s", "driver_jockey_id": 2237, "id": 7242, "km_time": "1:23.9", "name": "Golden Rose OZ", "number": 2, "prize": 0.0, "rank": "10.", "sex": "female", "sire": "Maximus Lindy", "sire_id": 4959, "stable": "Ozvar II. i.", "stable_id": 1198, "time": "2:44.5", "trainer": "Juh\u00e1sz Bal\u00e1zs", "trainer_id": 242}, {"age": 4, "asset_id": 386, "color": "p", "dam": "Angyalka", "dam_id": 6376, "distance": 1960, "dividend": "19.0", "driver_jockey": "Kaczk\u00f3 Edit", "driver_jockey_id": 2024, "id": 7199, "km_time": "0:00.0", "name": "Gingerly KJ", "number": 1, "prize": 0.0, "rank": "t\u00fc.", "sex": "female", "sire": "Dundee", "sire_id": 5081, "stable": "K\u00e1rai i.", "stable_id": 1130, "time": "0:00.0", "trainer": "T\u00f6r\u00f6k Istv\u00e1n", "trainer_id": 27}], "photo_finishes": [], "prize": "600 000 Ft (300 000, 150 000, 72 000, 48 000, 30 000)", "race_conditions": "Tulajdonosi pr\u00e9mium: 45000 Ft (22500, 13500, 9000). 4\u00e9. \u00e9s idb. lovaknak. Hendikep Ft. maximum: 600 eFt. T\u00e9rh\u00e1tr\u00e1ny: 450 eFt.-20 m. Indul\u00f3ad\u00e1si d\u00edj: 9000 Ft. B\u00e1rmilyen (amat\u0151r, profi) licensszel rendelkez\u0151 hajt\u00f3nak! A 30 versenyt nem nyert amat\u0151r- \u00e9s seg\u00e9dhajt\u00f3knak 20 m engedm\u00e9ny.", "race_id": 18791, "race_name": "2026. \u00c9VI J\u00c1DER L\u00c1SZL\u00d3 KUPA I. FUTAMA HENDIKEP", "race_video": "https://youtube.com/embed/9O07egulPoQ", "start": "15:39", "yearly": 7};
+                  </script>
+                </div>
+                
+                  <div class="race-foot">
+                    <div class="row">
+                      <div class="col race-footer-description">
+                          Biztosan: 1, 5, 3, 1 1/2<br>
+Petra La Roque (11) kocsijának bal kereke megrongálódott.<br>
+Büntetések: Kaczkó Edit, Hegedűs Tamás, Kárai József, Fenyvesi György, Vida József, Gras Mónika 5.000-5.000 Ft (Felvonulási rend be nem tartása).  Gras Mónika 20.000 Ft (ostor 3-4/1. alk.)<br>
+Pálya minősége/Track: jó. Hőmérséklet: 8 °C<br>
+Tétre/Win: 7.5<br>
+Helyre/Place: 2.5/2.5/3.6<br>
+Befutóra/Exacta: 115.4<br>
+Hármasbefutóra/Trifecta: 1871.3<br>
+(Osztalékok 1 Ft-ra kiszámolva)
+                      </div>
+                    </div>
+                    <span class='race-footer-photos'>
+                    
+                    </span>
+                    
+                    
+                    <span class='race-footer-videos'>
+                    
+                    <div class="row pt-20px">
+                      <div class="col">
+                        <h5><span class="trans-text-en hidden">Video</span><span class="trans-text-hu">Videó</span></h5>
+                        
+                          <div class="embed-responsive yt-video-container" yt_id="https://youtube.com/embed/9O07egulPoQ">
+                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/9O07egulPoQ" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </span>
+                  </div>
+                
+              </div>
+            </div>
+            
+        
+      </div>
+      
+    </div>
+  </div>
+  <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 pt-20px" id="footer-col-div">
+          
+          
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="CookieBanner">
+      <div class="Banner" id="Banner">
+        <div class="BannerContainer">
+          <div id="BannerTextContainer">
+            <div id="BannerText"><p>Ez a honlap sütiket használ. A sütik elfogadásával kényelmesebbé teheti a böngészést. A sütik útján végzett adatkezelés részleteit a Kincsem Nemzeti Kft. adatkezelési szabályzata és adatkezelési tájékoztatója tartalmazza. Megértettem az adatkezelési tájékoztatóban foglaltakat, <a id="Action_Accept" onclick="return false;">elfogadom</a> a sütik használatát.</p>
+      <div class="BannerContainerBottom">
+        <a class="Action_MoreInfo" href="https://kincsempark.hu/adatkezelesi-szabalyzat/" target="_blank">További információt kérek</a></div>
+      </div>
+    </div>
+    <div id="BannerActions">
+      <div id="BannerActionsContainer">
+        <a id="Action_Close" href="#" onclick="return false;" data-textdisable="X" data-textdisabled="X">X</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+    <script type="text/javascript">
+
+      setupCookieBanner();
+
+      $('#side-menu').on({
+        mouseleave: function(){
+          $('#side-menu .show').removeClass("show");
+        }
+      })
+
+      function clickHandler(e){
+          if(('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0) || (window.innerWidth <= 768)){
+            // disable expand-on-hover for touchscreen devices
+            return;
+          }
+
+          let currentToggler = $(this).parent();
+          let parentMenu = currentToggler.parent();
+          if(parentMenu.hasClass('discipline-dropdown')){
+              parentMenu = parentMenu.parent();
+          }
+          parentMenu.find('div.dropdown-menu').each(function(){
+            $(this).hide();
+          });
+          currentToggler.next('div.dropdown-menu').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+
+      $(".side-menu .dropdown-toggle .menutext, .side-menu .dropdown-item .menutext").on({
+        mouseenter: clickHandler
+      }).children().on("mouseenter", function (e) {
+          e.stopPropagation();
+      });
+    </script>
+</body>
+
+</html>

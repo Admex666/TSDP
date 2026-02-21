@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta id="viewport" name="viewport" content ="width=device-width" />
+
+<head>
+  <title> 
+  Éves hajtó statisztika / Yearly driver statistics
+</title>
+   
+  <link rel="shortcut icon" href="/assets/favicon.ico?ver=3.5.9">
+  <link rel="stylesheet" href="/bootstrap/4.3.1/css/bootstrap.min.css?ver=3.5.9">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.css?ver=3.5.9" rel="stylesheet">
+  <link href="/tabulator/4.9.3/css/bootstrap/tabulator_bootstrap4.min.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/tabulator_common.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/trotting.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/common.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/menu.css?ver=3.5.9" rel="stylesheet">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/locale.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js.cookie-2.2.1.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap/4.3.1/js/bootstrap.bundle.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.hu.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/tabulator/4.9.3/js/tabulator.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/tab_common.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/cookies.min.js?ver=3.5.9"></script>
+  <script type="text/javascript">
+    var dictionary = {'en-gb': {'columns': {'1st': 'First', '1st_percentage': 'First %', '2nd': 'Second', '3rd': 'Third', '3rd_6th': 'Third - Sixth', '4th': 'Fourth', '4th_5th': 'Fourth- Fifth', '5th': 'Fifth', '6th': 'Sixth', 'age': 'Age', 'age_color_sex': 'Age, Color, Sex', 'age_sex': 'Age, Sex', 'allowance': 'Allowance', 'amateur_driver_jockey_name': 'Driver name', 'born': 'Born', 'born_date': 'Born date', 'breeder_name': 'Breeder name', 'daily': 'Daily', 'dam': 'Dam', 'dam_name': 'Dam name', 'date': 'Date', 'day': 'Day', 'distance': 'Distance', 'dividend': 'Dividend', 'driver': 'Driver', 'driver_jockey': 'Jockey', 'driver_jockey_name': 'Driver name', 'driver_name': 'Driver name', 'entries': 'Entries', 'feature': 'Feature', 'first_prize': 'First prize', 'form': 'Form', 'greyhound_name': 'Greyhound name', 'horse_name': 'Horse name', 'index': 'Index', 'jockey': 'Jockey', 'jockey_name': 'Jockey name', 'km_time': 'Km. avg.', 'month': 'Month', 'monthly': 'Monthly', 'name': 'Horse name', 'number': 'Number', 'other_parent_name': 'Other parent', 'participant': 'Horse name', 'participant_name': 'Horse name', 'pedigree': 'Pedigree', 'pdf_download': 'PDF download', 'placement': 'Placement', 'prize': 'Prize', 'progeny_name': 'Progeny name', 'race': 'Race', 'race_conditions': 'Race conditions', 'race_count': 'Race count', 'race_name': 'Race name', 'race_yearly_num': 'Race (yearly number)', 'racecard': 'Racecard', 'rank': 'Rank', 'rate': 'Rate', 'record': 'Record', 'results': 'Results', 'runs': 'Runs', 'sire': 'Sire', 'sire_name': 'Sire name', 'stable': 'Stable', 'stable_name': 'Stable name', 'sum': 'Sum', 'surface': 'Turf', 'time': 'Time', 'total': 'Total', 'total_prize': 'Total prize', 'track': 'Track', 'track_name': 'Track name', 'trainer': 'Trainer', 'trainer_name': 'Trainer name', 'unplaced': 'Unplaced', 'video': 'Video', 'weight': 'Weight', 'year': 'Year', 'year_earning': '. year', 'current_year_earning': '. year', 'yearly': 'Yearly', 'value_map': {'sex': {'male': 'm', 'female': 'k', 'gelding': 'her'}, 'earning_age_groups': {'all': 'All', '5': '5+ yo', '4': '4 yo', '3': '3 yo', '2': '2 yo'}, 'earning_age_group_headers': {'5': '5 year old and older horses', '4': '4 year old horses', '3': '3 year old horses', '2': '2 year old horses'}, 'yearly_stat_age_groups': {'all': 'All', '4': '4+ yo', '3': '3 yo', '2': '2 yo'}}, 'breeder': 'Breeder', 'earning': 'Earning', 'handicap_earning': 'Handicap earning', 'record_long_dist': 'Record, long dist.', 'record_medium_dist': 'Record, medium dist.', 'record_short_dist': 'Record, short dist.'}, 'headerFilters': {'default': 'filter...'}, 'general': {'abroad': 'abroad', 'age': 'age', 'age_group': 'age group', 'amateur_driver': 'amateur driver', 'amateur_jockey': 'amateur jockey', 'annual': 'annual', 'annual_stat': 'annual statistics', 'breeder': 'breeder', 'breeder_stats': 'breeder statistics', 'breeder_stats_by_year_of': 'breeder statistics by year - %s', 'breeder_stats_of': 'breeder statistics - %s', 'by_age_stat': 'statistics by age', 'combined': 'home and abroad', 'country': 'country', 'daily': 'daily', 'dam': 'Dam', 'date': 'date', 'day': 'day', 'discipline': 'discipline', 'distance': 'distance', 'doggy_participant': 'greyhound', 'doggy_sire': 'sire', 'doggy_stable': 'kennel', 'doggy_trainer': 'trainer', 'driver': 'driver', 'driver_jockey': 'driver', 'driver_jockey_stats': 'driver statistics', 'driver_jockey_stats_by_year_of': 'driver statistics by year - %s', 'driver_jockey_stats_of': 'driver statistics - %s', 'entries': 'entries', 'filters': 'filters', 'flat': 'flat', 'gallop': 'gallop', 'gallop_race_data': 'gallop race data', 'greyhound': 'greyhound', 'greyhound_race_data': 'greyhound race data', 'grouping': 'grouping', 'home': 'home', 'horsey_participant': 'horse', 'horsey_sire': 'sire', 'horsey_stable': 'stable', 'horsey_trainer': 'trainer', 'jockey': 'jockey', 'judgement_text': 'judgement', 'list_of_earnings': 'list of earnings', 'list_of_trainings': 'under training', 'lumps': 'lumps', 'month': 'month', 'monthly': 'monthly', 'nav_back': 'back', 'nav_to_entries': 'jump to entries', 'nav_to_gallop': 'jump to gallop', 'nav_to_greyhound': 'jump to greyhound', 'nav_to_race_conditions': 'jump to race conditions', 'nav_to_racecard': 'jump to racecard', 'nav_to_results': 'jump to results', 'nav_to_trainings': 'jump to trainings', 'nav_to_trotting': 'jump to trotting', 'updated': 'refreshed', 'progeny': 'progeny', 'progeny_stat': 'progeny statistics', 'participant': 'horse', 'participant_stats': 'horse statistics', 'participant_stats_by_year_of': 'horse statistics by year - %s', 'participant_stats_of': 'horse statistics - %s', 'photo_finish': 'photo finish', 'pdf_link_quick_results': 'Official results', 'pdf_link_race_conditions': 'Race Conditions PDF', 'pdf_link_racecard': 'Official racecard', 'pdf_link_results': 'Official results', 'pdf_link_turf': 'Hungarian Turf PDF download', 'pdf_not_found': 'File not found', 'prize': 'prize', 'quick_results': 'quick results', 'quick_result_invalid': 'nem indult / disq / egyéb', 'quick_result_warning_text': 'Az itt közölt eredmények tájékoztató jellegűek. A végleges eredményekről tájékozódjon a hivatalos eredmények menüpont alatt.', 'quick_results_no_races': 'No results yet.', 'race': 'race', 'race_career': 'career', 'race_conditions': 'race conditions', 'race_form_stat': 'race form statistics', 'race_name': 'race name', 'race_type': 'type', 'racecard': 'racecard', 'results': 'results', 'search': 'search', 'search2': 'search', 'search_results': 'search results', 'sire': 'sire', 'stable': 'stable', 'stable_stats': 'stable statistics', 'stable_stats_by_year_of': 'stable statistics by year - %s', 'stable_stats_of': 'stable statistics - %s', 'start': 'time', 'surface': 'turf', 'total': 'total', 'track': 'track', 'track_id': 'Track ID', 'track_name': 'Track name', 'trainer': 'trainer', 'trainer_stats': 'trainer statistics', 'trainer_stats_by_year_of': 'trainer statistics by year - %s', 'trainer_stats_of': 'trainer statistics - %s', 'trotting': 'trotting', 'trotting_race_data': 'trotting race data', 'type': 'type', 'video': 'video', 'view': 'view', 'year': 'year', 'yearly': 'yearly', 'yearly_amateur_driver_jockey_stats': 'yearly amateur driver statistics', 'yearly_breeder_stats': 'yearly breeder statistics', 'yearly_dam_stats': 'yearly dam statistics', 'yearly_driver_jockey_stats': 'yearly driver statistics', 'yearly_participant_stats': 'yearly horse statistics', 'yearly_sire_stats': 'yearly sire statistics', 'yearly_stable_stats': 'yearly stable statistics', 'yearly_trainer_stats': 'yearly trainer statistics', 'years_stat': 'yearly statistics', 'amateur_driver_jockey': 'amateur driver'}}, 'hu-hu': {'pagination': {'all': 'Mind', 'first': 'Első', 'first_title': 'Első', 'last': 'Utolsó', 'last_title': 'Utolsó', 'next': 'Következő', 'next_title': 'Következő', 'prev': 'Előző', 'prev_title': 'Előző'}, 'columns': {'1st': 'Első', '1st_percentage': 'Első %', '2nd': 'Második', '3rd': 'Harmadik', '3rd_6th': 'Harmadik - Hatodik', '4th': 'Negyedik', '4th_5th': 'Negyedik- Ötödik', '5th': 'Ötödik', '6th': 'Hatodik', 'age': 'Kor', 'age_color_sex': 'Kor, Szín, Nem', 'age_sex': 'Kor, Nem', 'allowance': 'Engedmény', 'amateur_driver_jockey_name': 'Hajtó neve', 'born': 'Született', 'born_date': 'Született', 'breeder': 'Tenyésztő', 'breeder_name': 'Tenyésztő neve', 'daily': 'Napi', 'dam': 'Anya', 'dam_name': 'Anya neve', 'date': 'Dátum', 'day': 'Nap', 'distance': 'Táv', 'dividend': 'Esetl. tét osztalék', 'driver': 'Hajtó', 'driver_jockey': 'Hajtó', 'driver_jockey_name': 'Hajtó neve', 'driver_name': 'Hajtó neve', 'earning': 'Életnyeremény', 'entries': 'Nevezések', 'feature': 'Kiemelt esemény', 'first_prize': 'Futam összdíjazása', 'form': 'Forma', 'greyhound_name': 'Agár neve', 'handicap_earning': 'Hendikepnyeremény', 'horse_name': 'Ló neve', 'index': 'Sorszám', 'jockey': 'Lovas', 'jockey_name': 'Lovas neve', 'km_time': 'Km. átlag', 'land': 'Ország', 'month': 'Hónap', 'monthly': 'Havi', 'name': 'Ló neve', 'number': 'Prg.sz.', 'other_parent_name': 'Másik szülő', 'participant': 'Ló neve', 'participant_name': 'Ló neve', 'pedigree': 'Származás', 'pdf_download': 'Letölthető PDF', 'placement': 'Helyezés', 'prize': 'Nyeremény', 'progeny_name': 'Ivadék neve', 'race': 'Futam', 'race_conditions': 'Versenykiírás', 'race_count': 'Futások', 'race_name': 'Futam neve', 'race_yearly_num': 'Futam (éves száma)', 'racecard': 'Versenyprogram', 'rank': 'Hely', 'rate': 'Forma', 'record': 'Rekord', 'record_long_dist': 'Rekord, hosszú táv', 'record_medium_dist': 'Rekord, közép táv', 'record_short_dist': 'Rekord, rövid táv', 'results': 'Eredmények', 'runs': 'Futások', 'short_name': 'Törzskönyvi név', 'sire': 'Apa', 'sire_name': 'Apa neve', 'stable': 'Istálló', 'stable_name': 'Istálló neve', 'sum': 'Összesen', 'surface': 'Talaj', 'time': 'Idő', 'total': 'Összesen', 'total_prize': 'Nyeremény', 'track': 'Pálya', 'track_name': 'Pálya neve', 'trainer': 'Idomár', 'trainer_name': 'Idomár neve', 'unplaced': 'Helyezetlen', 'video': 'Videó', 'weight': 'Súly', 'year': 'Év', 'year_earning': '. év', 'current_year_earning': '. év', 'yearly': 'Éves szám', 'value_map': {'sex': {'male': 'm', 'female': 'k', 'gelding': 'her'}, 'earning_age_groups': {'all': 'Összes', '5': '5+ éves', '4': '4 éves', '3': '3 éves', '2': '2 éves'}, 'earning_age_group_headers': {'5': '5 éves és idősebb lovak', '4': '4 éves lovak', '3': '3 éves lovak', '2': '2 éves lovak'}, 'yearly_stat_age_groups': {'all': 'Összes', '4': '4+ éves', '3': '3 éves', '2': '2 éves'}}}, 'headerFilters': {'default': 'szűrés...'}, 'general': {'abroad': 'külföld', 'age': 'kor', 'age_group': 'korcsoport', 'amateur_driver': 'amatőrhajtó', 'amateur_jockey': 'amatőrlovas', 'annual': 'évenként', 'annual_stat': 'éves törzsadat statisztika', 'breeder': 'tenyésztő', 'breeder_stats': 'éves tenyésztő törzsadat statisztika', 'breeder_stats_by_year_of': '%s tenyésztő évenkénti statisztikája', 'breeder_stats_of': '%s tenyésztő éves törzsadat statisztikája', 'by_age_stat': 'kor szerinti statisztika', 'combined': 'belföld és külföld', 'country': 'ország', 'daily': 'napi', 'dam': 'Anya', 'date': 'dátum', 'day': 'nap', 'discipline': 'szakág', 'distance': 'táv', 'doggy_participant': 'agár', 'doggy_sire': 'apa', 'doggy_stable': 'kennel', 'doggy_trainer': 'tréner', 'driver': 'hajtó', 'driver_jockey': 'hajtó', 'driver_jockey_stats': 'éves hajtó törzsadat statisztika', 'driver_jockey_stats_by_year_of': '%s hajtó évenkénti statisztikája', 'driver_jockey_stats_of': '%s hajtó éves törzsadat statisztikája', 'entries': 'nevezések', 'filters': 'szűrők', 'flat': 'sík', 'gallop': 'galopp', 'gallop_race_data': 'integrált galopp futamadatok', 'greyhound': 'agár', 'greyhound_race_data': 'integrált agár futamadatok', 'grouping': 'bontás', 'home': 'belföld', 'horsey_participant': 'ló', 'horsey_sire': 'apamén', 'horsey_stable': 'istálló', 'horsey_trainer': 'idomár', 'jockey': 'lovas', 'judgement_text': 'bírói ítélet', 'list_of_earnings': 'nyereményjegyzék', 'list_of_trainings': 'tréninglista', 'lumps': 'ugró', 'month': 'hónap', 'monthly': 'havi', 'nav_back': 'vissza', 'nav_to_entries': 'ugrás a Nevezésekhez', 'nav_to_gallop': 'ugrás a galopp szakágra', 'nav_to_greyhound': 'ugrás az agár szakágra', 'nav_to_race_conditions': 'ugrás a Versenykiírásokhoz', 'nav_to_racecard': 'ugrás a Versenyprogramhoz', 'nav_to_results': 'ugrás a Versenyeredményekhez', 'nav_to_trainings': 'ugrás az edzésekre', 'nav_to_trotting': 'ugrás az ügető szakágra', 'updated': 'frissítve', 'progeny': 'ivadék', 'progeny_stat': 'ivadék statisztika', 'participant': 'ló', 'participant_stats': 'éves ló törzsadat statisztika', 'participant_stats_by_year_of': '%s ló évenkénti statisztikája', 'participant_stats_of': '%s ló éves törzsadat statisztikája', 'photo_finish': 'célfotó', 'pdf_link_race_conditions': 'Hivatalos versenykiírás PDF', 'pdf_link_racecard': 'Hivatalos versenyprogram', 'pdf_link_quick_results': 'Hivatalos eredmények', 'pdf_link_results': 'Hivatalos eredmények', 'pdf_link_turf': 'Magyar Turf PDF letöltés', 'pdf_not_found': 'Fájl nem található', 'prize': 'versenydíj', 'quick_results': 'gyorseredmények', 'quick_result_invalid': 'nem indult / disq / egyéb', 'quick_result_warning_text': 'Az itt közölt eredmények tájékoztató jellegűek. A végleges eredményekről tájékozódjon a hivatalos eredmények menüpont alatt.', 'quick_results_no_races': 'Nincsenek még eredmények.', 'race': 'futam', 'race_career': 'versenykarrier', 'race_conditions': 'versenykiírás', 'race_form_stat': 'futam forma statisztika', 'race_name': 'futam neve', 'race_type': 'típus', 'racecard': 'versenyprogram', 'results': 'eredmények', 'search': 'kereső', 'search2': 'keresés', 'sire': 'apamén', 'search_results': 'találatok', 'stable': 'istálló', 'stable_stats': 'éves istálló törzsadat statisztika', 'stable_stats_by_year_of': '%s istálló évenkénti statisztikája', 'stable_stats_of': '%s istálló éves törzsadat statisztikája', 'start': 'start', 'surface': 'talaj', 'total': 'összesen', 'track': 'pálya', 'track_id': 'Pálya Azonosító', 'track_name': 'Pálya neve', 'trainer': 'idomár', 'trainer_stats': 'éves idomár törzsadat statisztika', 'trainer_stats_by_year_of': '%s idomár évenkénti statisztikája', 'trainer_stats_of': '%s idomár éves törzsadat statisztikája', 'trotting': 'ügető', 'trotting_race_data': 'integrált ügető futamadatok', 'type': 'típus', 'video': 'videó', 'view': 'nézet', 'year': 'év', 'yearly': 'éves', 'yearly_amateur_driver_jockey_stats': 'éves amatőrhajtó statisztika', 'yearly_breeder_stats': 'éves tenyésztő statisztika', 'yearly_dam_stats': 'éves anya statisztika', 'yearly_driver_jockey_stats': 'éves hajtó statisztika', 'yearly_participant_stats': 'éves ló statisztika', 'yearly_sire_stats': 'éves apamén statisztika', 'yearly_stable_stats': 'éves istálló statisztika', 'yearly_trainer_stats': 'éves idomár statisztika', 'years_stat': 'évenkénti statisztika', 'amateur_driver_jockey': 'amatőrhajtó'}}};
+  </script>
+  
+  <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+  <script type="text/javascript">
+    var title = "yearly_driver_jockey_stats";
+    var discipline = "trotting";
+    var data = {'year': 2025, 'location': 'home', 'entity_type': 'driver_jockey', 'results': [{'id': 5, 'driver_jockey_name': 'Fazekas Imre', 'race_count': 100, 'total_prize': 26466000.0, 'unplaced': 32, '1st': 30, '2nd': 18, '3rd': 9, '4th': 7, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 30.0, '4th_5th': 11}, {'id': 255, 'driver_jockey_name': 'Veljko Mazsity', 'race_count': 59, 'total_prize': 20904000.0, 'unplaced': 8, '1st': 23, '2nd': 18, '3rd': 5, '4th': 3, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 38.983050847457626, '4th_5th': 5}, {'id': 1401, 'driver_jockey_name': 'Goran Zolnaji', 'race_count': 51, 'total_prize': 10766000.0, 'unplaced': 15, '1st': 11, '2nd': 7, '3rd': 8, '4th': 5, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 21.568627450980394, '4th_5th': 10}, {'id': 138, 'driver_jockey_name': 'Kolozsi László', 'race_count': 143, 'total_prize': 10099000.0, 'unplaced': 55, '1st': 14, '2nd': 18, '3rd': 17, '4th': 17, '5th': 22, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 9.79020979020979, '4th_5th': 39}, {'id': 33, 'driver_jockey_name': 'Nagy Ferenc II.', 'race_count': 139, 'total_prize': 9419000.0, 'unplaced': 45, '1st': 11, '2nd': 18, '3rd': 30, '4th': 20, '5th': 15, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 7.913669064748201, '4th_5th': 35}, {'id': 110, 'driver_jockey_name': 'Lakatos Csaba', 'race_count': 98, 'total_prize': 8968000.0, 'unplaced': 37, '1st': 13, '2nd': 10, '3rd': 16, '4th': 17, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 13.26530612244898, '4th_5th': 22}, {'id': 148, 'driver_jockey_name': 'Juhász Balázs', 'race_count': 57, 'total_prize': 8668000.0, 'unplaced': 11, '1st': 12, '2nd': 11, '3rd': 9, '4th': 7, '5th': 7, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 21.052631578947366, '4th_5th': 14}, {'id': 32, 'driver_jockey_name': 'Komáromi Krisztina', 'race_count': 101, 'total_prize': 8057000.0, 'unplaced': 39, '1st': 11, '2nd': 13, '3rd': 15, '4th': 11, '5th': 12, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 10.891089108910892, '4th_5th': 23}, {'id': 2271, 'driver_jockey_name': 'Dukai Tamás', 'race_count': 82, 'total_prize': 7411000.0, 'unplaced': 30, '1st': 17, '2nd': 11, '3rd': 14, '4th': 7, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 20.73170731707317, '4th_5th': 10}, {'id': 635, 'driver_jockey_name': 'Hajnal Tibor', 'race_count': 102, 'total_prize': 7326000.0, 'unplaced': 52, '1st': 13, '2nd': 9, '3rd': 9, '4th': 10, '5th': 9, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 12.745098039215685, '4th_5th': 19}, {'id': 860, 'driver_jockey_name': 'Márton Lajos', 'race_count': 106, 'total_prize': 7281000.0, 'unplaced': 35, '1st': 7, '2nd': 9, '3rd': 23, '4th': 16, '5th': 16, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 6.60377358490566, '4th_5th': 32}, {'id': 1437, 'driver_jockey_name': 'Michael Nimczyk', 'race_count': 3, 'total_prize': 7030000.0, 'unplaced': 1, '1st': 1, '2nd': 0, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 33.33333333333333, '4th_5th': 1}, {'id': 522, 'driver_jockey_name': 'Christoph Schwarz', 'race_count': 10, 'total_prize': 6514000.0, 'unplaced': 0, '1st': 2, '2nd': 1, '3rd': 4, '4th': 2, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 20.0, '4th_5th': 3}, {'id': 2437, 'driver_jockey_name': 'Marisa Bock', 'race_count': 2, 'total_prize': 6500000.0, 'unplaced': 0, '1st': 2, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 100.0, '4th_5th': 0}, {'id': 1509, 'driver_jockey_name': 'Angyal Andor', 'race_count': 61, 'total_prize': 6486000.0, 'unplaced': 18, '1st': 8, '2nd': 8, '3rd': 13, '4th': 9, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 13.114754098360656, '4th_5th': 14}, {'id': 1076, 'driver_jockey_name': 'Fejszés Kitti', 'race_count': 93, 'total_prize': 6062000.0, 'unplaced': 38, '1st': 7, '2nd': 16, '3rd': 8, '4th': 12, '5th': 12, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 7.526881720430108, '4th_5th': 24}, {'id': 27, 'driver_jockey_name': 'Budai Attila', 'race_count': 44, 'total_prize': 5625000.0, 'unplaced': 15, '1st': 7, '2nd': 6, '3rd': 4, '4th': 3, '5th': 9, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 15.909090909090908, '4th_5th': 12}, {'id': 23, 'driver_jockey_name': 'Vezér Emese', 'race_count': 80, 'total_prize': 4604000.0, 'unplaced': 34, '1st': 7, '2nd': 8, '3rd': 6, '4th': 13, '5th': 12, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 8.75, '4th_5th': 25}, {'id': 719, 'driver_jockey_name': 'Horváth György', 'race_count': 28, 'total_prize': 4260000.0, 'unplaced': 3, '1st': 5, '2nd': 7, '3rd': 6, '4th': 5, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 17.857142857142858, '4th_5th': 7}, {'id': 28, 'driver_jockey_name': 'Csordás Emil', 'race_count': 58, 'total_prize': 4148000.0, 'unplaced': 23, '1st': 3, '2nd': 6, '3rd': 3, '4th': 14, '5th': 9, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 5.172413793103448, '4th_5th': 23}, {'id': 1791, 'driver_jockey_name': 'Milan Kovacevic', 'race_count': 54, 'total_prize': 4144000.0, 'unplaced': 28, '1st': 9, '2nd': 6, '3rd': 3, '4th': 4, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 16.666666666666664, '4th_5th': 8}, {'id': 615, 'driver_jockey_name': 'Fazekas Andrea am.', 'race_count': 32, 'total_prize': 3927000.0, 'unplaced': 13, '1st': 2, '2nd': 5, '3rd': 3, '4th': 5, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 6.25, '4th_5th': 9}, {'id': 929, 'driver_jockey_name': 'Joze Sagaj', 'race_count': 18, 'total_prize': 3379000.0, 'unplaced': 4, '1st': 2, '2nd': 5, '3rd': 4, '4th': 1, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 11.11111111111111, '4th_5th': 3}, {'id': 1408, 'driver_jockey_name': 'Tänczer Tamás am.', 'race_count': 42, 'total_prize': 3112000.0, 'unplaced': 20, '1st': 7, '2nd': 4, '3rd': 3, '4th': 5, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 16.666666666666664, '4th_5th': 8}, {'id': 2225, 'driver_jockey_name': 'Balogh Bernadett', 'race_count': 35, 'total_prize': 2824000.0, 'unplaced': 10, '1st': 1, '2nd': 3, '3rd': 4, '4th': 6, '5th': 11, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 2.857142857142857, '4th_5th': 17}, {'id': 2450, 'driver_jockey_name': 'Búrány Adrián', 'race_count': 23, 'total_prize': 2683000.0, 'unplaced': 4, '1st': 4, '2nd': 8, '3rd': 2, '4th': 2, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 17.391304347826086, '4th_5th': 5}, {'id': 175, 'driver_jockey_name': 'Szennovitz Adél', 'race_count': 49, 'total_prize': 2683000.0, 'unplaced': 20, '1st': 5, '2nd': 3, '3rd': 8, '4th': 5, '5th': 8, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 10.204081632653061, '4th_5th': 13}, {'id': 1901, 'driver_jockey_name': 'Branko Skenderovic', 'race_count': 4, 'total_prize': 2662000.0, 'unplaced': 0, '1st': 0, '2nd': 1, '3rd': 2, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 898, 'driver_jockey_name': 'Kolozsi Sándor', 'race_count': 37, 'total_prize': 2580000.0, 'unplaced': 16, '1st': 5, '2nd': 3, '3rd': 5, '4th': 6, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 13.513513513513514, '4th_5th': 8}, {'id': 2237, 'driver_jockey_name': 'Hegedűs Tamás', 'race_count': 27, 'total_prize': 2571000.0, 'unplaced': 12, '1st': 7, '2nd': 2, '3rd': 3, '4th': 2, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 25.925925925925924, '4th_5th': 3}, {'id': 39, 'driver_jockey_name': 'Varga Sándor', 'race_count': 53, 'total_prize': 2544000.0, 'unplaced': 29, '1st': 2, '2nd': 10, '3rd': 5, '4th': 5, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 3.7735849056603774, '4th_5th': 7}, {'id': 91, 'driver_jockey_name': 'Papp István', 'race_count': 35, 'total_prize': 2541000.0, 'unplaced': 18, '1st': 2, '2nd': 3, '3rd': 3, '4th': 4, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 5.714285714285714, '4th_5th': 9}, {'id': 69, 'driver_jockey_name': 'Horváth Zoltán', 'race_count': 57, 'total_prize': 2452000.0, 'unplaced': 28, '1st': 2, '2nd': 5, '3rd': 5, '4th': 9, '5th': 8, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 3.508771929824561, '4th_5th': 17}, {'id': 1492, 'driver_jockey_name': 'ifj. Veres László', 'race_count': 44, 'total_prize': 2331000.0, 'unplaced': 25, '1st': 4, '2nd': 5, '3rd': 2, '4th': 4, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 9.090909090909092, '4th_5th': 8}, {'id': 1064, 'driver_jockey_name': 'Weber Zsolt', 'race_count': 44, 'total_prize': 2298000.0, 'unplaced': 20, '1st': 4, '2nd': 1, '3rd': 9, '4th': 6, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 9.090909090909092, '4th_5th': 10}, {'id': 841, 'driver_jockey_name': 'Kurucz Attila am.', 'race_count': 21, 'total_prize': 1955000.0, 'unplaced': 6, '1st': 5, '2nd': 1, '3rd': 2, '4th': 2, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 23.809523809523807, '4th_5th': 7}, {'id': 620, 'driver_jockey_name': 'Vekas Zoltán', 'race_count': 33, 'total_prize': 1787000.0, 'unplaced': 17, '1st': 2, '2nd': 6, '3rd': 4, '4th': 2, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 6.0606060606060606, '4th_5th': 4}, {'id': 1854, 'driver_jockey_name': 'Kárai József', 'race_count': 76, 'total_prize': 1762000.0, 'unplaced': 51, '1st': 2, '2nd': 5, '3rd': 3, '4th': 3, '5th': 12, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 2.631578947368421, '4th_5th': 15}, {'id': 2403, 'driver_jockey_name': 'Nagyváry Andrea', 'race_count': 33, 'total_prize': 1658000.0, 'unplaced': 22, '1st': 5, '2nd': 0, '3rd': 0, '4th': 1, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 15.151515151515152, '4th_5th': 6}, {'id': 451, 'driver_jockey_name': 'Fenyvesi György', 'race_count': 14, 'total_prize': 1496000.0, 'unplaced': 3, '1st': 3, '2nd': 2, '3rd': 2, '4th': 2, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 21.428571428571427, '4th_5th': 4}, {'id': 1506, 'driver_jockey_name': 'Boris Novic', 'race_count': 19, 'total_prize': 1111000.0, 'unplaced': 11, '1st': 1, '2nd': 2, '3rd': 2, '4th': 2, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 5.263157894736842, '4th_5th': 3}, {'id': 2362, 'driver_jockey_name': 'Carmine Piscuoglio', 'race_count': 2, 'total_prize': 1080000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 1, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2139, 'driver_jockey_name': 'Szokola László', 'race_count': 26, 'total_prize': 1072000.0, 'unplaced': 12, '1st': 2, '2nd': 0, '3rd': 4, '4th': 3, '5th': 5, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 7.6923076923076925, '4th_5th': 8}, {'id': 2100, 'driver_jockey_name': 'Erdei Péter', 'race_count': 22, 'total_prize': 1057000.0, 'unplaced': 13, '1st': 2, '2nd': 1, '3rd': 1, '4th': 1, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 9.090909090909092, '4th_5th': 5}, {'id': 1640, 'driver_jockey_name': 'Gyolai Zoltán am.', 'race_count': 21, 'total_prize': 1020000.0, 'unplaced': 9, '1st': 2, '2nd': 1, '3rd': 2, '4th': 5, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 9.523809523809524, '4th_5th': 7}, {'id': 1327, 'driver_jockey_name': 'Janko Sagaj', 'race_count': 3, 'total_prize': 975000.0, 'unplaced': 0, '1st': 2, '2nd': 1, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 66.66666666666666, '4th_5th': 0}, {'id': 2125, 'driver_jockey_name': 'Garai  Gábor', 'race_count': 45, 'total_prize': 940000.0, 'unplaced': 29, '1st': 1, '2nd': 2, '3rd': 1, '4th': 4, '5th': 8, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 2.2222222222222223, '4th_5th': 12}, {'id': 2274, 'driver_jockey_name': 'Rihard Cincurak', 'race_count': 9, 'total_prize': 931000.0, 'unplaced': 4, '1st': 2, '2nd': 2, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 22.22222222222222, '4th_5th': 1}, {'id': 1138, 'driver_jockey_name': 'Boris Kecenovic', 'race_count': 14, 'total_prize': 888000.0, 'unplaced': 5, '1st': 1, '2nd': 3, '3rd': 1, '4th': 1, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 7.142857142857142, '4th_5th': 4}, {'id': 1380, 'driver_jockey_name': 'Horváth Lilla', 'race_count': 12, 'total_prize': 860000.0, 'unplaced': 5, '1st': 2, '2nd': 1, '3rd': 0, '4th': 2, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 16.666666666666664, '4th_5th': 4}, {'id': 503, 'driver_jockey_name': 'Kovács József', 'race_count': 8, 'total_prize': 598000.0, 'unplaced': 3, '1st': 1, '2nd': 2, '3rd': 0, '4th': 1, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 12.5, '4th_5th': 2}, {'id': 1758, 'driver_jockey_name': 'Gyolai Nikolett', 'race_count': 10, 'total_prize': 550000.0, 'unplaced': 6, '1st': 2, '2nd': 0, '3rd': 0, '4th': 0, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 20.0, '4th_5th': 2}, {'id': 587, 'driver_jockey_name': 'Lakatos Árpád', 'race_count': 12, 'total_prize': 550000.0, 'unplaced': 7, '1st': 1, '2nd': 1, '3rd': 1, '4th': 1, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 8.333333333333332, '4th_5th': 2}, {'id': 1318, 'driver_jockey_name': 'Milan Tasic', 'race_count': 7, 'total_prize': 522000.0, 'unplaced': 2, '1st': 0, '2nd': 3, '3rd': 1, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 1778, 'driver_jockey_name': 'Iván Zoltán', 'race_count': 7, 'total_prize': 520000.0, 'unplaced': 3, '1st': 1, '2nd': 1, '3rd': 1, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 14.285714285714285, '4th_5th': 1}, {'id': 2332, 'driver_jockey_name': 'Takács Eszter Cseperke am.', 'race_count': 10, 'total_prize': 510000.0, 'unplaced': 5, '1st': 1, '2nd': 0, '3rd': 1, '4th': 2, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 10.0, '4th_5th': 3}, {'id': 2539, 'driver_jockey_name': 'Vida József am.', 'race_count': 5, 'total_prize': 480000.0, 'unplaced': 0, '1st': 1, '2nd': 1, '3rd': 0, '4th': 2, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 20.0, '4th_5th': 3}, {'id': 2144, 'driver_jockey_name': 'Dénes Ákos', 'race_count': 13, 'total_prize': 471000.0, 'unplaced': 5, '1st': 0, '2nd': 2, '3rd': 0, '4th': 3, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 6}, {'id': 2559, 'driver_jockey_name': 'Stefan Hiendlmeier am.', 'race_count': 1, 'total_prize': 450000.0, 'unplaced': 0, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2133, 'driver_jockey_name': 'Szepesi Kitti', 'race_count': 3, 'total_prize': 450000.0, 'unplaced': 0, '1st': 1, '2nd': 1, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 33.33333333333333, '4th_5th': 1}, {'id': 1141, 'driver_jockey_name': 'Veréb Andor', 'race_count': 5, 'total_prize': 437000.0, 'unplaced': 2, '1st': 0, '2nd': 1, '3rd': 1, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2277, 'driver_jockey_name': 'Jelinek Zsolt', 'race_count': 16, 'total_prize': 360000.0, 'unplaced': 12, '1st': 1, '2nd': 0, '3rd': 1, '4th': 0, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 6.25, '4th_5th': 2}, {'id': 2049, 'driver_jockey_name': 'id. Marko Slavic', 'race_count': 2, 'total_prize': 300000.0, 'unplaced': 1, '1st': 0, '2nd': 1, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 1409, 'driver_jockey_name': 'Farkas György', 'race_count': 12, 'total_prize': 289000.0, 'unplaced': 6, '1st': 0, '2nd': 0, '3rd': 3, '4th': 0, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 3}, {'id': 2036, 'driver_jockey_name': 'Gheorghe Tanase', 'race_count': 15, 'total_prize': 236000.0, 'unplaced': 10, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 4, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 5}, {'id': 1023, 'driver_jockey_name': 'Gras Mónika', 'race_count': 12, 'total_prize': 235000.0, 'unplaced': 6, '1st': 0, '2nd': 0, '3rd': 1, '4th': 2, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 5}, {'id': 1638, 'driver_jockey_name': 'Pekker György am.', 'race_count': 14, 'total_prize': 226000.0, 'unplaced': 8, '1st': 0, '2nd': 0, '3rd': 0, '4th': 3, '5th': 3, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 6}, {'id': 2024, 'driver_jockey_name': 'Kaczkó Edit', 'race_count': 13, 'total_prize': 185000.0, 'unplaced': 11, '1st': 0, '2nd': 1, '3rd': 1, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2449, 'driver_jockey_name': 'Losonc Kristóf', 'race_count': 6, 'total_prize': 165000.0, 'unplaced': 4, '1st': 0, '2nd': 1, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2527, 'driver_jockey_name': 'Szokola Attila', 'race_count': 21, 'total_prize': 163000.0, 'unplaced': 17, '1st': 0, '2nd': 0, '3rd': 1, '4th': 1, '5th': 2, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 3}, {'id': 100, 'driver_jockey_name': 'Bartucz Zoltán', 'race_count': 7, 'total_prize': 150000.0, 'unplaced': 5, '1st': 0, '2nd': 1, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2467, 'driver_jockey_name': 'Gódor Dávid am.', 'race_count': 5, 'total_prize': 145000.0, 'unplaced': 2, '1st': 0, '2nd': 0, '3rd': 2, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 236, 'driver_jockey_name': 'Kiss Csaba', 'race_count': 5, 'total_prize': 113000.0, 'unplaced': 2, '1st': 0, '2nd': 0, '3rd': 0, '4th': 2, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 3}, {'id': 2436, 'driver_jockey_name': 'Bordács Lajos', 'race_count': 6, 'total_prize': 108000.0, 'unplaced': 4, '1st': 0, '2nd': 0, '3rd': 1, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 1715, 'driver_jockey_name': 'Dejan Petrovic', 'race_count': 2, 'total_prize': 96000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 1803, 'driver_jockey_name': 'Vladan Popovic', 'race_count': 1, 'total_prize': 72000.0, 'unplaced': 0, '1st': 0, '2nd': 0, '3rd': 1, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2571, 'driver_jockey_name': 'George Mihai Costache', 'race_count': 1, 'total_prize': 60000.0, 'unplaced': 0, '1st': 0, '2nd': 0, '3rd': 1, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2546, 'driver_jockey_name': 'Szőke Attila', 'race_count': 1, 'total_prize': 60000.0, 'unplaced': 0, '1st': 0, '2nd': 0, '3rd': 1, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2379, 'driver_jockey_name': 'Paul Galea', 'race_count': 2, 'total_prize': 60000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 1, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 258, 'driver_jockey_name': 'Branislav Mukity', 'race_count': 1, 'total_prize': 56000.0, 'unplaced': 0, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2520, 'driver_jockey_name': 'Adrian Tudor Gheorghe', 'race_count': 2, 'total_prize': 48000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 1507, 'driver_jockey_name': 'Aleksandar Dimitrijevic', 'race_count': 2, 'total_prize': 48000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2020, 'driver_jockey_name': 'Franck Ouvrie', 'race_count': 1, 'total_prize': 40000.0, 'unplaced': 0, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 65, 'driver_jockey_name': 'Vicen Pál', 'race_count': 3, 'total_prize': 40000.0, 'unplaced': 2, '1st': 0, '2nd': 0, '3rd': 0, '4th': 1, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2232, 'driver_jockey_name': 'Balogh Roland', 'race_count': 2, 'total_prize': 30000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 1943, 'driver_jockey_name': 'Takács Krisztián am.', 'race_count': 2, 'total_prize': 30000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2421, 'driver_jockey_name': 'Milan Vasic', 'race_count': 2, 'total_prize': 25000.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 126, 'driver_jockey_name': 'ifj. Döme Imre', 'race_count': 4, 'total_prize': 25000.0, 'unplaced': 3, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 1, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 1}, {'id': 2552, 'driver_jockey_name': 'Denise Trinca', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 467, 'driver_jockey_name': 'Janez Hrovat', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2551, 'driver_jockey_name': 'José A. da Rocha Ferreira', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2538, 'driver_jockey_name': 'Szabó Nikolett am.', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2422, 'driver_jockey_name': 'Szőke Róbert', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2154, 'driver_jockey_name': 'Tibor Varga am.', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2550, 'driver_jockey_name': 'Viorel Gheorghe', 'race_count': 1, 'total_prize': 0.0, 'unplaced': 1, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 136, 'driver_jockey_name': 'Várhidi Róbert', 'race_count': 2, 'total_prize': 0.0, 'unplaced': 2, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2461, 'driver_jockey_name': 'Katona Csaba am.', 'race_count': 3, 'total_prize': 0.0, 'unplaced': 3, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 2402, 'driver_jockey_name': 'Mészáros Patrik am.', 'race_count': 3, 'total_prize': 0.0, 'unplaced': 3, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}, {'id': 1491, 'driver_jockey_name': 'ifj. Kulik Ferenc', 'race_count': 4, 'total_prize': 0.0, 'unplaced': 4, '1st': 0, '2nd': 0, '3rd': 0, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '1st_percentage': 0.0, '4th_5th': 0}]};
+    const entity_type = "driver_jockey";
+    var racing_year_links = {
+      
+        "2026": "/yearly_driver_jockey_stats/trotting/home/2026",
+      
+        "2025": "/yearly_driver_jockey_stats/trotting/home/2025",
+      
+        "2024": "/yearly_driver_jockey_stats/trotting/home/2024",
+      
+        "2023": "/yearly_driver_jockey_stats/trotting/home/2023",
+      
+        "2022": "/yearly_driver_jockey_stats/trotting/home/2022",
+      
+        "2021": "/yearly_driver_jockey_stats/trotting/home/2021",
+      
+        "2020": "/yearly_driver_jockey_stats/trotting/home/2020",
+      
+        "2019": "/yearly_driver_jockey_stats/trotting/home/2019",
+      
+        "2018": "/yearly_driver_jockey_stats/trotting/home/2018",
+      
+        "2017": "/yearly_driver_jockey_stats/trotting/home/2017",
+      
+        "2016": "/yearly_driver_jockey_stats/trotting/home/2016",
+      
+        "2015": "/yearly_driver_jockey_stats/trotting/home/2015",
+      
+        "2014": "/yearly_driver_jockey_stats/trotting/home/2014",
+      
+        "2013": "/yearly_driver_jockey_stats/trotting/home/2013",
+      
+        "2012": "/yearly_driver_jockey_stats/trotting/home/2012",
+      
+        "2011": "/yearly_driver_jockey_stats/trotting/home/2011",
+      
+        "2010": "/yearly_driver_jockey_stats/trotting/home/2010",
+      
+        "2009": "/yearly_driver_jockey_stats/trotting/home/2009",
+      
+        "2008": "/yearly_driver_jockey_stats/trotting/home/2008",
+      
+        "2007": "/yearly_driver_jockey_stats/trotting/home/2007",
+      
+        "2006": "/yearly_driver_jockey_stats/trotting/home/2006",
+      
+        "2005": "/yearly_driver_jockey_stats/trotting/home/2005",
+      
+        "2004": "/yearly_driver_jockey_stats/trotting/home/2004",
+      
+        "2003": "/yearly_driver_jockey_stats/trotting/home/2003",
+      
+        "2002": "/yearly_driver_jockey_stats/trotting/home/2002",
+      
+        "2001": "/yearly_driver_jockey_stats/trotting/home/2001",
+      
+        "2000": "/yearly_driver_jockey_stats/trotting/home/2000",
+      
+        "1999": "/yearly_driver_jockey_stats/trotting/home/1999",
+      
+        "1998": "/yearly_driver_jockey_stats/trotting/home/1998",
+      
+    };
+    var search_img_src = "/icons/search.png?ver=3.5.9";
+    var kincsempark_logo = "/assets/Kincsem-tr.png?ver=3.5.9";
+    var discipline_logo = "/assets/icon_trotting.png?ver=3.5.9";
+    var loc = "home";
+    var year = 2025;
+    var race_type = "null";
+    var current_group = "all";
+  </script>
+  <script type="text/javascript" src="/jspdf/jspdf.umd.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/assets/Roboto-Bold-bold.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/assets/Roboto-Regular-normal.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/jspdf/jspdf.plugin.autotable.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/luxon-1.26.0/luxon.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/xlsx/xlsx.full.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/yearly_stats.js?ver=3.5.9"></script>
+  <style>
+    .tabulator-row .tabulator-cell {
+      line-height: 10px;
+      padding: 1rem 0.75rem;
+  }
+@media only screen and (max-width: 600px) {
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+@media only screen and (max-width: 768px)
+{
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+@media only screen and (max-width: 400px)
+{
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+  </style>
+
+</head>
+<body>
+  <div id="loader" class="white_pre">
+    <div id="up_status"> 
+      <div class="preloader-img">
+        <img src="/assets/Kincsem-tr.png?ver=3.5.9" alt="Kincsem Park">   </div>
+      <div class="preloader-up">
+        <div class="spinner sp_2">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div> 
+    </div>
+  </div>
+    <div id="side-menu" class="navbar side-menu">
+      <ul class="navbar-nav">
+        <li class="logo nav-item">
+          <a href="https://kincsempark.hu">
+          <img src="/assets/Kincsem-tr.png?ver=3.5.9">
+            <div class="menutext">Kincsem Park</div>
+            <div class="brand-clicker"></div>
+          </a>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="gallopDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_gallop.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Gallop</span><span class="trans-text-hu">Galopp</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="gallopDropdown">
+            <a class="dropdown-item" href="/racing-days/gallop/">
+              <div class="menutext"><span class="trans-text-en hidden">Gallop race data</span><span class="trans-text-hu">Integrált galopp futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="gallopYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="gallopYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Horse</span><span class="trans-text-hu">Ló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apamén</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_dam_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Dam</span><span class="trans-text-hu">Anya</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_driver_jockey_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Jockey</span><span class="trans-text-hu">Lovas</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_amateur_driver_jockey_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Amateur jockey</span><span class="trans-text-hu">Amatőrlovas</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_stable_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_trainer_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_breeder_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/gallop">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/gallop/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="trottingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_trotting.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Trotting</span><span class="trans-text-hu">Ügető</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="trottingDropdown">
+            <a class="dropdown-item" href="/racing-days/trotting/">
+              <div class="menutext"><span class="trans-text-en hidden">Trotting race data</span><span class="trans-text-hu">Integrált ügető futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="trottingYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="trottingYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Horse</span><span class="trans-text-hu">Ló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apamén</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_dam_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Dam</span><span class="trans-text-hu">Anya</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_driver_jockey_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Driver</span><span class="trans-text-hu">Hajtó</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_amateur_driver_jockey_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Amateur driver</span><span class="trans-text-hu">Amatőrhajtó</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_stable_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_trainer_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_breeder_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/trotting">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/earnings/trotting">
+              <div class="menutext"><span class="trans-text-en hidden">List of earnings</span><span class="trans-text-hu">Nyereményjegyzék</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/trotting/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="greyhoundDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_greyhound.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Greyhound</span><span class="trans-text-hu">Agár</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="greyhoundDropdown">
+            <a class="dropdown-item" href="/racing-days/greyhound/">
+              <div class="menutext"><span class="trans-text-en hidden">Greyhound race data</span><span class="trans-text-hu">Integrált agár futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="greyhoundYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="greyhoundYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Greyhound</span><span class="trans-text-hu">Agár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apa</span></div>
+                </a>
+                
+                <a class="dropdown-item" href="/yearly_trainer_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Tréner</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/greyhound">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/greyhound/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid content-view">
+      <div class="row row-title">
+        <div class="col header-title-content">
+          <div class="h-100 d-flex flex-column">
+            
+              <div class="row">
+                <div class="col">
+                  <div class="trans-text-en hidden">
+                    <h1> 
+  <img width="46" src="/assets/icon_trotting.svg?ver=3.5.9">
+  Yearly driver statistics
+</h1>
+                  </div>
+                  <div class="trans-text-hu">
+                    <h1> 
+  <img width="46" src="/assets/icon_trotting.svg?ver=3.5.9">
+  Éves hajtó statisztika
+</h1>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        <div class="col header-right-content">
+          <div class="h-100 d-flex flex-column">
+            
+  
+              <div class="row pb-2 justify-content-end">
+                <div class="col-auto">
+                  <img class='hidden' id="btn-lang-english" src="/assets/locale_hun_min.png?ver=3.5.9" alt="Magyar" title="Magyar">
+                  <img id="btn-lang-default" src="/assets/locale_eng_min.png?ver=3.5.9" alt="English" title="English">
+                </div>
+              </div>
+            
+<div class="row pb-2 justify-content-end">
+  <div class="col-auto">
+    <a class="il-nav-link"
+       href="/search/trotting/participant">
+      <span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Keresés</span>
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"></path>
+        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
+      </svg>
+    </a>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 pt-20px" id="content-col-div">
+           
+          
+  <div class="row mb-2">
+    <div class="col-auto pr-0 pr-sm-0 pr-md-4 pr-lg-4">
+      <div class="dropdown">
+        <a class="btn btn-kp dropdown-toggle"
+          href="#" role="button" id="dropdown-menu-link-year"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="trans-text-en hidden">Home</span><span class="trans-text-hu">Belföld</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdown-menu-link-year">
+          
+            <a class="dropdown-item"
+               href="/yearly_driver_jockey_stats/trotting/home/2025">
+              <span class="trans-text-en hidden">Home</span><span class="trans-text-hu">Belföld</span>
+            </a>
+          
+            <a class="dropdown-item"
+               href="/yearly_driver_jockey_stats/trotting/abroad/2025">
+              <span class="trans-text-en hidden">Abroad</span><span class="trans-text-hu">Külföld</span>
+            </a>
+          
+            <a class="dropdown-item"
+               href="/yearly_driver_jockey_stats/trotting/combined/2025">
+              <span class="trans-text-en hidden">Home and abroad</span><span class="trans-text-hu">Belföld és külföld</span>
+            </a>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="col-auto pl-0 pr-0">
+      <div class="dlabel"><span class="trans-text-en hidden">Year</span><span class="trans-text-hu">Év</span></div>
+    </div>
+    <div class="col-auto ml-2 pl-0 pr-0 pr-sm-0 pr-md-4 pr-lg-4">
+      <div id="racing-years-datepicker" class="date">
+        <input type="text" class="form-control" value="2025" readonly="readonly"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+      </div>
+    </div>
+
+    
+
+    
+
+    <div id='export_pdf' class='col-auto ml-auto ml-sm-auto ml-md-auto ml-lg-auto align-self-center pr-0 pl-0'>
+      <img src="/assets/icon_pdf.svg?ver=3.5.9" alt="" height="24" width="24">
+    </div>
+    <div id='export_excel' class='col-auto align-self-center pr-3'>
+      <img src="/assets/icon_xls.png?ver=3.5.9" alt="" height="24" width="24">
+    </div>
+  </div>
+  
+  <div class="row pt-2">
+    <div id="content-r" class="col-sm-12 px-0 hidden">
+        <div class="col-sm-12">
+          <div id="yearly-results-table"></div>
+        </div>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 pt-20px" id="footer-col-div">
+          
+          
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="CookieBanner">
+      <div class="Banner" id="Banner">
+        <div class="BannerContainer">
+          <div id="BannerTextContainer">
+            <div id="BannerText"><p>Ez a honlap sütiket használ. A sütik elfogadásával kényelmesebbé teheti a böngészést. A sütik útján végzett adatkezelés részleteit a Kincsem Nemzeti Kft. adatkezelési szabályzata és adatkezelési tájékoztatója tartalmazza. Megértettem az adatkezelési tájékoztatóban foglaltakat, <a id="Action_Accept" onclick="return false;">elfogadom</a> a sütik használatát.</p>
+      <div class="BannerContainerBottom">
+        <a class="Action_MoreInfo" href="https://kincsempark.hu/adatkezelesi-szabalyzat/" target="_blank">További információt kérek</a></div>
+      </div>
+    </div>
+    <div id="BannerActions">
+      <div id="BannerActionsContainer">
+        <a id="Action_Close" href="#" onclick="return false;" data-textdisable="X" data-textdisabled="X">X</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+    <script type="text/javascript">
+
+      setupCookieBanner();
+
+      $('#side-menu').on({
+        mouseleave: function(){
+          $('#side-menu .show').removeClass("show");
+        }
+      })
+
+      function clickHandler(e){
+          if(('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0) || (window.innerWidth <= 768)){
+            // disable expand-on-hover for touchscreen devices
+            return;
+          }
+
+          let currentToggler = $(this).parent();
+          let parentMenu = currentToggler.parent();
+          if(parentMenu.hasClass('discipline-dropdown')){
+              parentMenu = parentMenu.parent();
+          }
+          parentMenu.find('div.dropdown-menu').each(function(){
+            $(this).hide();
+          });
+          currentToggler.next('div.dropdown-menu').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+
+      $(".side-menu .dropdown-toggle .menutext, .side-menu .dropdown-item .menutext").on({
+        mouseenter: clickHandler
+      }).children().on("mouseenter", function (e) {
+          e.stopPropagation();
+      });
+    </script>
+</body>
+
+</html>

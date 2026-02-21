@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta id="viewport" name="viewport" content ="width=device-width" />
+
+<head>
+  <title> 
+  Versenykarrier / Career
+</title>
+   
+  <link rel="shortcut icon" href="/assets/favicon.ico?ver=3.5.9">
+  <link rel="stylesheet" href="/bootstrap/4.3.1/css/bootstrap.min.css?ver=3.5.9">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.css?ver=3.5.9" rel="stylesheet">
+  <link href="/tabulator/4.9.3/css/bootstrap/tabulator_bootstrap4.min.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/tabulator_common.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/trotting.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/common.css?ver=3.5.9" rel="stylesheet">
+  <link href="/css/menu.css?ver=3.5.9" rel="stylesheet">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/locale.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js.cookie-2.2.1.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap/4.3.1/js/bootstrap.bundle.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.hu.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/tabulator/4.9.3/js/tabulator.min.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/tab_common.js?ver=3.5.9"></script>
+  <script type="text/javascript" src="/js/cookies.min.js?ver=3.5.9"></script>
+  <script type="text/javascript">
+    var dictionary = {'en-gb': {'columns': {'1st': 'First', '1st_percentage': 'First %', '2nd': 'Second', '3rd': 'Third', '3rd_6th': 'Third - Sixth', '4th': 'Fourth', '4th_5th': 'Fourth- Fifth', '5th': 'Fifth', '6th': 'Sixth', 'age': 'Age', 'age_color_sex': 'Age, Color, Sex', 'age_sex': 'Age, Sex', 'allowance': 'Allowance', 'amateur_driver_jockey_name': 'Driver name', 'born': 'Born', 'born_date': 'Born date', 'breeder_name': 'Breeder name', 'daily': 'Daily', 'dam': 'Dam', 'dam_name': 'Dam name', 'date': 'Date', 'day': 'Day', 'distance': 'Distance', 'dividend': 'Dividend', 'driver': 'Driver', 'driver_jockey': 'Jockey', 'driver_jockey_name': 'Driver name', 'driver_name': 'Driver name', 'entries': 'Entries', 'feature': 'Feature', 'first_prize': 'First prize', 'form': 'Form', 'greyhound_name': 'Greyhound name', 'horse_name': 'Horse name', 'index': 'Index', 'jockey': 'Jockey', 'jockey_name': 'Jockey name', 'km_time': 'Km. avg.', 'month': 'Month', 'monthly': 'Monthly', 'name': 'Horse name', 'number': 'Number', 'other_parent_name': 'Other parent', 'participant': 'Horse name', 'participant_name': 'Horse name', 'pedigree': 'Pedigree', 'pdf_download': 'PDF download', 'placement': 'Placement', 'prize': 'Prize', 'progeny_name': 'Progeny name', 'race': 'Race', 'race_conditions': 'Race conditions', 'race_count': 'Race count', 'race_name': 'Race name', 'race_yearly_num': 'Race (yearly number)', 'racecard': 'Racecard', 'rank': 'Rank', 'rate': 'Rate', 'record': 'Record', 'results': 'Results', 'runs': 'Runs', 'sire': 'Sire', 'sire_name': 'Sire name', 'stable': 'Stable', 'stable_name': 'Stable name', 'sum': 'Sum', 'surface': 'Turf', 'time': 'Time', 'total': 'Total', 'total_prize': 'Total prize', 'track': 'Track', 'track_name': 'Track name', 'trainer': 'Trainer', 'trainer_name': 'Trainer name', 'unplaced': 'Unplaced', 'video': 'Video', 'weight': 'Weight', 'year': 'Year', 'year_earning': '. year', 'current_year_earning': '. year', 'yearly': 'Yearly', 'value_map': {'sex': {'male': 'm', 'female': 'k', 'gelding': 'her'}, 'earning_age_groups': {'all': 'All', '5': '5+ yo', '4': '4 yo', '3': '3 yo', '2': '2 yo'}, 'earning_age_group_headers': {'5': '5 year old and older horses', '4': '4 year old horses', '3': '3 year old horses', '2': '2 year old horses'}, 'yearly_stat_age_groups': {'all': 'All', '4': '4+ yo', '3': '3 yo', '2': '2 yo'}, 'age': {'2': '2yo', '2-5': '2-5yo', '3': '3yo', '4+': '4yo+', '5+': '5yo+', 'total_results': 'Total'}}, 'breeder': 'Breeder', 'earning': 'Earning', 'handicap_earning': 'Handicap earning', 'record_long_dist': 'Record, long dist.', 'record_medium_dist': 'Record, medium dist.', 'record_short_dist': 'Record, short dist.'}, 'headerFilters': {'default': 'filter...'}, 'general': {'abroad': 'abroad', 'age': 'age', 'age_group': 'age group', 'amateur_driver': 'amateur driver', 'amateur_jockey': 'amateur jockey', 'annual': 'annual', 'annual_stat': 'annual statistics', 'breeder': 'breeder', 'breeder_stats': 'breeder statistics', 'breeder_stats_by_year_of': 'breeder statistics by year - %s', 'breeder_stats_of': 'breeder statistics - %s', 'by_age_stat': 'statistics by age', 'combined': 'home and abroad', 'country': 'country', 'daily': 'daily', 'dam': 'Dam', 'date': 'date', 'day': 'day', 'discipline': 'discipline', 'distance': 'distance', 'doggy_participant': 'greyhound', 'doggy_sire': 'sire', 'doggy_stable': 'kennel', 'doggy_trainer': 'trainer', 'driver': 'driver', 'driver_jockey': 'driver', 'driver_jockey_stats': 'driver statistics', 'driver_jockey_stats_by_year_of': 'driver statistics by year - %s', 'driver_jockey_stats_of': 'driver statistics - %s', 'entries': 'entries', 'filters': 'filters', 'flat': 'flat', 'gallop': 'gallop', 'gallop_race_data': 'gallop race data', 'greyhound': 'greyhound', 'greyhound_race_data': 'greyhound race data', 'grouping': 'grouping', 'home': 'home', 'horsey_participant': 'horse', 'horsey_sire': 'sire', 'horsey_stable': 'stable', 'horsey_trainer': 'trainer', 'jockey': 'jockey', 'judgement_text': 'judgement', 'list_of_earnings': 'list of earnings', 'list_of_trainings': 'under training', 'lumps': 'lumps', 'month': 'month', 'monthly': 'monthly', 'nav_back': 'back', 'nav_to_entries': 'jump to entries', 'nav_to_gallop': 'jump to gallop', 'nav_to_greyhound': 'jump to greyhound', 'nav_to_race_conditions': 'jump to race conditions', 'nav_to_racecard': 'jump to racecard', 'nav_to_results': 'jump to results', 'nav_to_trainings': 'jump to trainings', 'nav_to_trotting': 'jump to trotting', 'updated': 'refreshed', 'progeny': 'progeny', 'progeny_stat': 'progeny statistics', 'participant': 'horse', 'participant_stats': 'horse statistics', 'participant_stats_by_year_of': 'horse statistics by year - %s', 'participant_stats_of': 'horse statistics - %s', 'photo_finish': 'photo finish', 'pdf_link_quick_results': 'Official results', 'pdf_link_race_conditions': 'Race Conditions PDF', 'pdf_link_racecard': 'Official racecard', 'pdf_link_results': 'Official results', 'pdf_link_turf': 'Hungarian Turf PDF download', 'pdf_not_found': 'File not found', 'prize': 'prize', 'quick_results': 'quick results', 'quick_result_invalid': 'nem indult / disq / egyéb', 'quick_result_warning_text': 'Az itt közölt eredmények tájékoztató jellegűek. A végleges eredményekről tájékozódjon a hivatalos eredmények menüpont alatt.', 'quick_results_no_races': 'No results yet.', 'race': 'race', 'race_career': 'career', 'race_conditions': 'race conditions', 'race_form_stat': 'race form statistics', 'race_name': 'race name', 'race_type': 'type', 'racecard': 'racecard', 'results': 'results', 'search': 'search', 'search2': 'search', 'search_results': 'search results', 'sire': 'sire', 'stable': 'stable', 'stable_stats': 'stable statistics', 'stable_stats_by_year_of': 'stable statistics by year - %s', 'stable_stats_of': 'stable statistics - %s', 'start': 'time', 'surface': 'turf', 'total': 'total', 'track': 'track', 'track_id': 'Track ID', 'track_name': 'Track name', 'trainer': 'trainer', 'trainer_stats': 'trainer statistics', 'trainer_stats_by_year_of': 'trainer statistics by year - %s', 'trainer_stats_of': 'trainer statistics - %s', 'trotting': 'trotting', 'trotting_race_data': 'trotting race data', 'type': 'type', 'video': 'video', 'view': 'view', 'year': 'year', 'yearly': 'yearly', 'yearly_amateur_driver_jockey_stats': 'yearly amateur driver statistics', 'yearly_breeder_stats': 'yearly breeder statistics', 'yearly_dam_stats': 'yearly dam statistics', 'yearly_driver_jockey_stats': 'yearly driver statistics', 'yearly_participant_stats': 'yearly horse statistics', 'yearly_sire_stats': 'yearly sire statistics', 'yearly_stable_stats': 'yearly stable statistics', 'yearly_trainer_stats': 'yearly trainer statistics', 'years_stat': 'yearly statistics', 'amateur_driver_jockey': 'amateur driver'}}, 'hu-hu': {'pagination': {'all': 'Mind', 'first': 'Első', 'first_title': 'Első', 'last': 'Utolsó', 'last_title': 'Utolsó', 'next': 'Következő', 'next_title': 'Következő', 'prev': 'Előző', 'prev_title': 'Előző'}, 'columns': {'1st': 'Első', '1st_percentage': 'Első %', '2nd': 'Második', '3rd': 'Harmadik', '3rd_6th': 'Harmadik - Hatodik', '4th': 'Negyedik', '4th_5th': 'Negyedik- Ötödik', '5th': 'Ötödik', '6th': 'Hatodik', 'age': 'Kor', 'age_color_sex': 'Kor, Szín, Nem', 'age_sex': 'Kor, Nem', 'allowance': 'Engedmény', 'amateur_driver_jockey_name': 'Hajtó neve', 'born': 'Született', 'born_date': 'Született', 'breeder': 'Tenyésztő', 'breeder_name': 'Tenyésztő neve', 'daily': 'Napi', 'dam': 'Anya', 'dam_name': 'Anya neve', 'date': 'Dátum', 'day': 'Nap', 'distance': 'Táv', 'dividend': 'Esetl. tét osztalék', 'driver': 'Hajtó', 'driver_jockey': 'Hajtó', 'driver_jockey_name': 'Hajtó neve', 'driver_name': 'Hajtó neve', 'earning': 'Életnyeremény', 'entries': 'Nevezések', 'feature': 'Kiemelt esemény', 'first_prize': 'Futam összdíjazása', 'form': 'Forma', 'greyhound_name': 'Agár neve', 'handicap_earning': 'Hendikepnyeremény', 'horse_name': 'Ló neve', 'index': 'Sorszám', 'jockey': 'Lovas', 'jockey_name': 'Lovas neve', 'km_time': 'Km. átlag', 'land': 'Ország', 'month': 'Hónap', 'monthly': 'Havi', 'name': 'Ló neve', 'number': 'Prg.sz.', 'other_parent_name': 'Másik szülő', 'participant': 'Ló neve', 'participant_name': 'Ló neve', 'pedigree': 'Származás', 'pdf_download': 'Letölthető PDF', 'placement': 'Helyezés', 'prize': 'Nyeremény', 'progeny_name': 'Ivadék neve', 'race': 'Futam', 'race_conditions': 'Versenykiírás', 'race_count': 'Futások', 'race_name': 'Futam neve', 'race_yearly_num': 'Futam (éves száma)', 'racecard': 'Versenyprogram', 'rank': 'Hely', 'rate': 'Forma', 'record': 'Rekord', 'record_long_dist': 'Rekord, hosszú táv', 'record_medium_dist': 'Rekord, közép táv', 'record_short_dist': 'Rekord, rövid táv', 'results': 'Eredmények', 'runs': 'Futások', 'short_name': 'Törzskönyvi név', 'sire': 'Apa', 'sire_name': 'Apa neve', 'stable': 'Istálló', 'stable_name': 'Istálló neve', 'sum': 'Összesen', 'surface': 'Talaj', 'time': 'Idő', 'total': 'Összesen', 'total_prize': 'Nyeremény', 'track': 'Pálya', 'track_name': 'Pálya neve', 'trainer': 'Idomár', 'trainer_name': 'Idomár neve', 'unplaced': 'Helyezetlen', 'video': 'Videó', 'weight': 'Súly', 'year': 'Év', 'year_earning': '. év', 'current_year_earning': '. év', 'yearly': 'Éves szám', 'value_map': {'sex': {'male': 'm', 'female': 'k', 'gelding': 'her'}, 'earning_age_groups': {'all': 'Összes', '5': '5+ éves', '4': '4 éves', '3': '3 éves', '2': '2 éves'}, 'earning_age_group_headers': {'5': '5 éves és idősebb lovak', '4': '4 éves lovak', '3': '3 éves lovak', '2': '2 éves lovak'}, 'yearly_stat_age_groups': {'all': 'Összes', '4': '4+ éves', '3': '3 éves', '2': '2 éves'}, 'age': {'2': '2é', '2-5': '2-5é', '3': '3é', '4+': '4é+', '5+': '5é+', 'total_results': 'Összesen'}}}, 'headerFilters': {'default': 'szűrés...'}, 'general': {'abroad': 'külföld', 'age': 'kor', 'age_group': 'korcsoport', 'amateur_driver': 'amatőrhajtó', 'amateur_jockey': 'amatőrlovas', 'annual': 'évenként', 'annual_stat': 'éves törzsadat statisztika', 'breeder': 'tenyésztő', 'breeder_stats': 'éves tenyésztő törzsadat statisztika', 'breeder_stats_by_year_of': '%s tenyésztő évenkénti statisztikája', 'breeder_stats_of': '%s tenyésztő éves törzsadat statisztikája', 'by_age_stat': 'kor szerinti statisztika', 'combined': 'belföld és külföld', 'country': 'ország', 'daily': 'napi', 'dam': 'Anya', 'date': 'dátum', 'day': 'nap', 'discipline': 'szakág', 'distance': 'táv', 'doggy_participant': 'agár', 'doggy_sire': 'apa', 'doggy_stable': 'kennel', 'doggy_trainer': 'tréner', 'driver': 'hajtó', 'driver_jockey': 'hajtó', 'driver_jockey_stats': 'éves hajtó törzsadat statisztika', 'driver_jockey_stats_by_year_of': '%s hajtó évenkénti statisztikája', 'driver_jockey_stats_of': '%s hajtó éves törzsadat statisztikája', 'entries': 'nevezések', 'filters': 'szűrők', 'flat': 'sík', 'gallop': 'galopp', 'gallop_race_data': 'integrált galopp futamadatok', 'greyhound': 'agár', 'greyhound_race_data': 'integrált agár futamadatok', 'grouping': 'bontás', 'home': 'belföld', 'horsey_participant': 'ló', 'horsey_sire': 'apamén', 'horsey_stable': 'istálló', 'horsey_trainer': 'idomár', 'jockey': 'lovas', 'judgement_text': 'bírói ítélet', 'list_of_earnings': 'nyereményjegyzék', 'list_of_trainings': 'tréninglista', 'lumps': 'ugró', 'month': 'hónap', 'monthly': 'havi', 'nav_back': 'vissza', 'nav_to_entries': 'ugrás a Nevezésekhez', 'nav_to_gallop': 'ugrás a galopp szakágra', 'nav_to_greyhound': 'ugrás az agár szakágra', 'nav_to_race_conditions': 'ugrás a Versenykiírásokhoz', 'nav_to_racecard': 'ugrás a Versenyprogramhoz', 'nav_to_results': 'ugrás a Versenyeredményekhez', 'nav_to_trainings': 'ugrás az edzésekre', 'nav_to_trotting': 'ugrás az ügető szakágra', 'updated': 'frissítve', 'progeny': 'ivadék', 'progeny_stat': 'ivadék statisztika', 'participant': 'ló', 'participant_stats': 'éves ló törzsadat statisztika', 'participant_stats_by_year_of': '%s ló évenkénti statisztikája', 'participant_stats_of': '%s ló éves törzsadat statisztikája', 'photo_finish': 'célfotó', 'pdf_link_race_conditions': 'Hivatalos versenykiírás PDF', 'pdf_link_racecard': 'Hivatalos versenyprogram', 'pdf_link_quick_results': 'Hivatalos eredmények', 'pdf_link_results': 'Hivatalos eredmények', 'pdf_link_turf': 'Magyar Turf PDF letöltés', 'pdf_not_found': 'Fájl nem található', 'prize': 'versenydíj', 'quick_results': 'gyorseredmények', 'quick_result_invalid': 'nem indult / disq / egyéb', 'quick_result_warning_text': 'Az itt közölt eredmények tájékoztató jellegűek. A végleges eredményekről tájékozódjon a hivatalos eredmények menüpont alatt.', 'quick_results_no_races': 'Nincsenek még eredmények.', 'race': 'futam', 'race_career': 'versenykarrier', 'race_conditions': 'versenykiírás', 'race_form_stat': 'futam forma statisztika', 'race_name': 'futam neve', 'race_type': 'típus', 'racecard': 'versenyprogram', 'results': 'eredmények', 'search': 'kereső', 'search2': 'keresés', 'sire': 'apamén', 'search_results': 'találatok', 'stable': 'istálló', 'stable_stats': 'éves istálló törzsadat statisztika', 'stable_stats_by_year_of': '%s istálló évenkénti statisztikája', 'stable_stats_of': '%s istálló éves törzsadat statisztikája', 'start': 'start', 'surface': 'talaj', 'total': 'összesen', 'track': 'pálya', 'track_id': 'Pálya Azonosító', 'track_name': 'Pálya neve', 'trainer': 'idomár', 'trainer_stats': 'éves idomár törzsadat statisztika', 'trainer_stats_by_year_of': '%s idomár évenkénti statisztikája', 'trainer_stats_of': '%s idomár éves törzsadat statisztikája', 'trotting': 'ügető', 'trotting_race_data': 'integrált ügető futamadatok', 'type': 'típus', 'video': 'videó', 'view': 'nézet', 'year': 'év', 'yearly': 'éves', 'yearly_amateur_driver_jockey_stats': 'éves amatőrhajtó statisztika', 'yearly_breeder_stats': 'éves tenyésztő statisztika', 'yearly_dam_stats': 'éves anya statisztika', 'yearly_driver_jockey_stats': 'éves hajtó statisztika', 'yearly_participant_stats': 'éves ló statisztika', 'yearly_sire_stats': 'éves apamén statisztika', 'yearly_stable_stats': 'éves istálló statisztika', 'yearly_trainer_stats': 'éves idomár statisztika', 'years_stat': 'évenkénti statisztika', 'amateur_driver_jockey': 'amatőrhajtó'}}};
+  </script>
+  
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+  <script type="text/javascript">
+    var discipline = "trotting";
+    var static_stats_table_divs = {};
+    var entity_type = "participant";
+    var entity_id = 5;
+    var num_stats = 5;
+    var api_urls = {'years_stat': 'https://mla.kincsempark.hu/api/v1/participant_years/trotting', 'annual_stat': 'https://mla.kincsempark.hu/api/v1/annual_participant_stats/trotting', 'race_form_stat': 'https://mla.kincsempark.hu/api/v1/participant_race_form_stats/trotting', 'yt_media_api': 'https://mla.kincsempark.hu/media_api/wp-json/media/v1/videos/trotting/list'};
+    var cached_dyn_table_data = {}
+    let slide_loader_map = {0: 'race_form_stat', 1: 'years_stat', 2: 'annual_stat', 3: 'by_age_stat', 4: 'progeny_stat'}
+    var stats_table_divs = {};
+    var racing_years = [2026];
+    var yt_logo_url = "/yt/logo.png?ver=3.5.9";
+    var asset_base_url = "https://mla.kincsempark.hu/api/v1/assets/";
+    var version = "3.5.9";
+  </script>
+<script type="text/javascript" src="/js/race_careers_tabulators.js?ver=3.5.9"></script>
+<script type="text/javascript" src="/js/race_careers.js?ver=3.5.9"></script>
+<style>
+  .slick-track {
+    display: flex;
+  }
+  .slick-track .slick-slide {
+    flex: 1;
+  }
+  .modal-full{
+    max-width: 95%;
+  }
+  @media only screen and (max-width: 600px) {
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+@media only screen and (max-width: 768px)
+{
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+  }
+}
+@media only screen and (max-width: 400px)
+{
+  .header-title-content{
+    flex-basis: auto;
+    width: auto;
+    max-width: 60%;
+  }
+}
+</style>
+
+</head>
+<body>
+  <div id="loader" class="white_pre">
+    <div id="up_status"> 
+      <div class="preloader-img">
+        <img src="/assets/Kincsem-tr.png?ver=3.5.9" alt="Kincsem Park">   </div>
+      <div class="preloader-up">
+        <div class="spinner sp_2">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div> 
+    </div>
+  </div>
+    <div id="side-menu" class="navbar side-menu">
+      <ul class="navbar-nav">
+        <li class="logo nav-item">
+          <a href="https://kincsempark.hu">
+          <img src="/assets/Kincsem-tr.png?ver=3.5.9">
+            <div class="menutext">Kincsem Park</div>
+            <div class="brand-clicker"></div>
+          </a>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="gallopDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_gallop.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Gallop</span><span class="trans-text-hu">Galopp</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="gallopDropdown">
+            <a class="dropdown-item" href="/racing-days/gallop/">
+              <div class="menutext"><span class="trans-text-en hidden">Gallop race data</span><span class="trans-text-hu">Integrált galopp futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="gallopYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="gallopYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Horse</span><span class="trans-text-hu">Ló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apamén</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_dam_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Dam</span><span class="trans-text-hu">Anya</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_driver_jockey_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Jockey</span><span class="trans-text-hu">Lovas</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_amateur_driver_jockey_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Amateur jockey</span><span class="trans-text-hu">Amatőrlovas</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_stable_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_trainer_stats/gallop/home/flat">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_breeder_stats/gallop/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/gallop">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/gallop/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="trottingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_trotting.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Trotting</span><span class="trans-text-hu">Ügető</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="trottingDropdown">
+            <a class="dropdown-item" href="/racing-days/trotting/">
+              <div class="menutext"><span class="trans-text-en hidden">Trotting race data</span><span class="trans-text-hu">Integrált ügető futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="trottingYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="trottingYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Horse</span><span class="trans-text-hu">Ló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apamén</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_dam_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Dam</span><span class="trans-text-hu">Anya</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_driver_jockey_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Driver</span><span class="trans-text-hu">Hajtó</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_amateur_driver_jockey_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Amateur driver</span><span class="trans-text-hu">Amatőrhajtó</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_stable_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_trainer_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_breeder_stats/trotting/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/trotting">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/earnings/trotting">
+              <div class="menutext"><span class="trans-text-en hidden">List of earnings</span><span class="trans-text-hu">Nyereményjegyzék</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/trotting/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+        <li class="discipline-dropdown nav-item dropdown">
+          <a class="dropdown-toggle" href="#" id="greyhoundDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/icon_greyhound.svg?ver=3.5.9">
+            <div class="menutext"><span class="trans-text-en hidden">Greyhound</span><span class="trans-text-hu">Agár</span></div>
+          </a>
+          <div class="dropdown-menu dropdown-level-1" aria-labelledby="greyhoundDropdown">
+            <a class="dropdown-item" href="/racing-days/greyhound/">
+              <div class="menutext"><span class="trans-text-en hidden">Greyhound race data</span><span class="trans-text-hu">Integrált agár futamadatok</span></div>
+            </a>
+            <a class="dropdown-item dropdown-toggle" href="#" id="greyhoundYearlyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="menutext"><span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span></div>
+            </a>
+            <div class="dropdown-menu dropdown-level-2" aria-labelledby="greyhoundYearlyDropdown">
+                <a class="dropdown-item" href="/yearly_participant_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Greyhound</span><span class="trans-text-hu">Agár</span></div>
+                </a>
+                <a class="dropdown-item" href="/yearly_sire_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apa</span></div>
+                </a>
+                
+                <a class="dropdown-item" href="/yearly_trainer_stats/greyhound/home">
+                  <div class="menutext"><span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Tréner</span></div>
+                </a>
+            </div>
+            <a class="dropdown-item" href="/training_list/greyhound">
+              <div class="menutext"><span class="trans-text-en hidden">Under training</span><span class="trans-text-hu">Tréninglista</span></div>
+            </a>
+            <a class="dropdown-item" href="/search/greyhound/participant">
+              <div class="menutext"><span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Kereső</span></div>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid content-view">
+      <div class="row row-title">
+        <div class="col header-title-content">
+          <div class="h-100 d-flex flex-column">
+            
+              <div class="row">
+                <div class="col">
+                  <div class="trans-text-en hidden">
+                    <h1> 
+  <img width="46" src="/assets/icon_trotting.svg?ver=3.5.9">
+  Career
+</h1>
+                  </div>
+                  <div class="trans-text-hu">
+                    <h1> 
+  <img width="46" src="/assets/icon_trotting.svg?ver=3.5.9">
+  Versenykarrier
+</h1>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        <div class="col header-right-content">
+          <div class="h-100 d-flex flex-column">
+            
+  
+              <div class="row pb-2 justify-content-end">
+                <div class="col-auto">
+                  <img class='hidden' id="btn-lang-english" src="/assets/locale_hun_min.png?ver=3.5.9" alt="Magyar" title="Magyar">
+                  <img id="btn-lang-default" src="/assets/locale_eng_min.png?ver=3.5.9" alt="English" title="English">
+                </div>
+              </div>
+            
+  <div class="row pb-2 justify-content-end">
+    <div class="col-auto">
+      <a class="il-nav-link"
+         href="/search/trotting/participant">
+        <span class="trans-text-en hidden">Search</span><span class="trans-text-hu">Keresés</span>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"></path>
+          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 pt-20px" id="content-col-div">
+           
+          
+  <div class="row">
+    <div class="col-sm-12">
+        
+            <div class="col-sm-12 pt-10px">
+                <div class="row">
+                    <div class="col-sm-12 race-head">
+                        <div class="row">
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Horse name</span><span class="trans-text-hu">Ló neve</span></h4>
+                                    
+                                        <span>Anders Crown</span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Age, color, sex</span><span class="trans-text-hu">Kor, szín, nem</span></h4>
+                                    
+                                        <span>38p<span><span class="trans-text-en hidden">m</span><span class="trans-text-hu">m</span></span></span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Born</span><span class="trans-text-hu">Született</span></h4>
+                                    
+                                        <span>1988</span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Sire</span><span class="trans-text-hu">Apa</span></h4>
+                                    
+                                        <span><a href="/race_career_participant/trotting/3101" >Workaholic</a></span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Breeder</span><span class="trans-text-hu">Tenyésztő</span></h4>
+                                    
+                                        <span><a href="/race_career_breeder/trotting/386" >USA</a></span>
+                                    
+                                </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-sm-12 pt-10px">
+                <div class="row">
+                    <div class="col-sm-12 race-head">
+                        <div class="row">
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Record, short dist.</span><span class="trans-text-hu">Rekord, rövid táv</span></h4>
+                                    
+                                        <span>0:00.0</span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Record, medium dist.</span><span class="trans-text-hu">Rekord, közép táv</span></h4>
+                                    
+                                        <span>0:00.0</span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Record, long dist.</span><span class="trans-text-hu">Rekord, hosszú táv</span></h4>
+                                    
+                                        <span>0:00.0</span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Earning</span><span class="trans-text-hu">Életnyeremény</span></h4>
+                                    
+                                        <span>0 HUF</span>
+                                    
+                                </div>
+                            
+                            
+                            
+                                <div class="race-head-item">
+                                    <h4><span class="trans-text-en hidden">Handicap earning</span><span class="trans-text-hu">Hendikepnyeremény</span></h4>
+                                    
+                                        <span>0 HUF</span>
+                                    
+                                </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
+  <div class="row">
+    <div id="content-r" class="col-sm-12 px-0 pt-20px hidden">
+        <div class="slider slider-nav slider-nav-for w-100">
+          
+            <div class="slider-nav-box-inner">
+              <span class="trans-text-en hidden">Race form statistics</span><span class="trans-text-hu">Futam forma statisztika</span>
+            </div>
+          
+            <div class="slider-nav-box-inner">
+              <span class="trans-text-en hidden">Yearly statistics</span><span class="trans-text-hu">Évenkénti statisztika</span>
+            </div>
+          
+            <div class="slider-nav-box-inner">
+              <span class="trans-text-en hidden">Annual statistics</span><span class="trans-text-hu">Éves törzsadat statisztika</span>
+            </div>
+          
+            <div class="slider-nav-box-inner">
+              <span class="trans-text-en hidden">Statistics by age</span><span class="trans-text-hu">Kor szerinti statisztika</span>
+            </div>
+          
+            <div class="slider-nav-box-inner">
+              <span class="trans-text-en hidden">Progeny statistics</span><span class="trans-text-hu">Ivadék statisztika</span>
+            </div>
+          
+        </div>
+        <div class="slider slider-for slider-nav-for">
+          
+          
+            <div class="col-sm-12">
+              <script type="text/javascript">
+                static_stats_table_divs["race_form_stat"] = {};
+              </script>
+              
+                <div class="row">
+    <div class="col-sm-12 pt-20px">
+        <h2><span class="trans-text-en hidden">Race form statistics</span><span class="trans-text-hu">Futam forma statisztika</span></h2>
+        <div id="race_form_stat_static-stats-table-1">
+            <script type="text/javascript">
+            static_stats_table_divs["race_form_stat"]["race_form_stat_static-stats-table-1"] = {
+                'data': []
+            };
+            </script>
+        </div>
+    </div>
+</div>
+              
+            </div>
+          
+          
+            <div class="col-sm-12">
+              <script type="text/javascript">
+                static_stats_table_divs["years_stat"] = {};
+              </script>
+              
+                <div class="row">
+    <div class="col-auto pr-0 pt-20px">
+        <div class="dropdown">
+            <a class="btn btn-kp dropdown-toggle"
+            href="" onclick="return false;" role="button" id="dropdown-menu-link-year-years_stat"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" location="home">
+            <span class="trans-text-en hidden">Home</span><span class="trans-text-hu">Belföld</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-years-loc" aria-labelledby="dropdown-menu-link-year">
+            
+                <a id="" class="dropdown-item"
+                href="#" onclick="return false;" location="home">
+                <span class="trans-text-en hidden">Home</span><span class="trans-text-hu">Belföld</span>
+                </a>
+            
+                <a id="" class="dropdown-item"
+                href="#" onclick="return false;" location="abroad">
+                <span class="trans-text-en hidden">Abroad</span><span class="trans-text-hu">Külföld</span>
+                </a>
+            
+                <a id="" class="dropdown-item"
+                href="#" onclick="return false;" location="combined">
+                <span class="trans-text-en hidden">Home and abroad</span><span class="trans-text-hu">Belföld és külföld</span>
+                </a>
+            
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="row pb-80px">
+    <div class="col-sm-12 pt-10px">
+        
+        <h2><span class="trans-text-en hidden">Annual</span><span class="trans-text-hu">Évenként</span></h2>
+        <div id="static-stats-table-2">
+          <script type="text/javascript">
+            static_stats_table_divs["years_stat"]["static-stats-table-2"] = {
+              'table':  "yearly_results",
+              'url': true
+            };
+          </script>
+        </div>
+    </div>
+</div>
+              
+            </div>
+          
+          
+            <div class="col-sm-12">
+              <script type="text/javascript">
+                static_stats_table_divs["annual_stat"] = {};
+              </script>
+              
+                <div class="row">
+    <div class="col-auto pr-0 pt-20px">
+        <div class="dlabel"><span class="trans-text-en hidden">Year</span><span class="trans-text-hu">Év</span></div>
+    </div>
+    <div class="col-auto pl-2 pt-20px">
+        <div id="racing-years-datepicker" class="date">
+          <input type="text" class="form-control" value="2026" readonly="readonly"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+        </div>
+    </div>
+    <div class="col-auto pr-0 pt-20px">
+        <div class="dlabel">
+          
+        </div>
+    </div>
+    <div class="col-auto pl-0 pt-20px">
+        <div class="dropdown">
+          <a class="btn btn-kp dropdown-toggle"
+            href="" onclick="return false;" role="button" id="dropdown-menu-link-loc-annual_stat"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" location="home">
+            <span class="trans-text-en hidden">Home</span><span class="trans-text-hu">Belföld</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-annual-loc" aria-labelledby="dropdown-menu-link-year">
+            
+              <a id="" class="dropdown-item"
+                href="#" onclick="return false;" location="home">
+                <span class="trans-text-en hidden">Home</span><span class="trans-text-hu">Belföld</span>
+              </a>
+            
+              <a id="" class="dropdown-item"
+                href="#" onclick="return false;" location="abroad">
+                <span class="trans-text-en hidden">Abroad</span><span class="trans-text-hu">Külföld</span>
+              </a>
+            
+              <a id="" class="dropdown-item"
+                href="#" onclick="return false;" location="combined">
+                <span class="trans-text-en hidden">Home and abroad</span><span class="trans-text-hu">Belföld és külföld</span>
+              </a>
+            
+          </div>
+        </div>
+    </div>
+    
+    <div class="col-auto pr-0 pt-20px">
+        <div class="dlabel"><span class="trans-text-en hidden">Grouping</span><span class="trans-text-hu">Bontás</span></div>
+    </div>
+    <div class="col-auto pl-0 pt-20px">
+        <div class="dropdown">
+          <a class="btn btn-kp dropdown-toggle"
+            href="#" onclick="return false;" role="button" id="dropdown-menu-link-grouping-annual_stat"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" grouping="monthly">
+            <span class="trans-text-en hidden">Monthly</span><span class="trans-text-hu">Havi</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-annual-grouping" aria-labelledby="dropdown-menu-link-grouping">
+            
+                
+            
+            
+              
+                <a class="dropdown-item"
+                  href="#" onclick="return false;" grouping="monthly">
+                  <span class="trans-text-en hidden">Monthly</span><span class="trans-text-hu">Havi</span>
+                </a>
+              
+            
+              
+                <a class="dropdown-item"
+                  href="#" onclick="return false;" grouping="driver_jockey">
+                  <span class="trans-text-en hidden">Driver</span><span class="trans-text-hu">Hajtó</span>
+                </a>
+              
+            
+              
+            
+              
+                <a class="dropdown-item"
+                  href="#" onclick="return false;" grouping="stable">
+                  <span class="trans-text-en hidden">Stable</span><span class="trans-text-hu">Istálló</span>
+                </a>
+              
+            
+              
+                <a class="dropdown-item"
+                  href="#" onclick="return false;" grouping="distance">
+                  <span class="trans-text-en hidden">Distance</span><span class="trans-text-hu">Táv</span>
+                </a>
+              
+            
+              
+                <a class="dropdown-item"
+                  href="#" onclick="return false;" grouping="trainer">
+                  <span class="trans-text-en hidden">Trainer</span><span class="trans-text-hu">Idomár</span>
+                </a>
+              
+            
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row pb-80px">
+  <div class="col-sm-12">
+    <div id="annual_stat_grouping">
+      <h2><span class="trans-text-en hidden">Monthly</span><span class="trans-text-hu">Havi</span></h2>
+    </div>
+    <div id="static-stats-table-3">
+          <script type="text/javascript">
+            static_stats_table_divs["annual_stat"]["static-stats-table-3"] = {
+              'table':"annual_results",
+              'url': true,
+            };
+          </script>
+    </div>
+  </div>
+</div>
+              
+            </div>
+          
+          
+            <div class="col-sm-12">
+              <script type="text/javascript">
+                static_stats_table_divs["by_age_stat"] = {};
+              </script>
+              
+                <div class="row">
+    <div class="col-sm-12 pt-20px">
+        <h2><span class="trans-text-en hidden">Statistics by age</span><span class="trans-text-hu">Kor szerinti statisztika</span></h2>
+        <div id="by_age_stat_static-stats-table-4">
+            <script type="text/javascript">
+            static_stats_table_divs["by_age_stat"]["by_age_stat_static-stats-table-4"] = {
+                'data': []
+            };
+            </script>
+        </div>
+    </div>
+</div>
+              
+            </div>
+          
+          
+            <div class="col-sm-12">
+              <script type="text/javascript">
+                static_stats_table_divs["progeny_stat"] = {};
+              </script>
+              
+                <div class="row">
+    <div class="col-sm-12 pt-20px">
+        <h2><span class="trans-text-en hidden">Progeny statistics</span><span class="trans-text-hu">Ivadék statisztika</span></h2>
+        <div id="progeny_stat_static-stats-table-5">
+            <script type="text/javascript">
+            static_stats_table_divs["progeny_stat"]["progeny_stat_static-stats-table-5"] = {
+                'data': [{'id': 1122, 'progeny_name': 'Jessica Plough', 'born': 1995, 'other_parent_name': 'Jackie du Brienne', 'other_parent_id': 374, 'unplaced': 18, '1st': 11, '2nd': 9, '3rd': 5, '4th': 6, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '4th_5th': 6, 'race_count': 49, 'total_prize': 1441000.0}, {'id': 1309, 'progeny_name': 'Cosima', 'born': 1996, 'other_parent_name': 'Sun Glory', 'other_parent_id': 656, 'unplaced': 30, '1st': 8, '2nd': 1, '3rd': 2, '4th': 2, '5th': 0, '6th': 1, '7th': 0, '8th': 0, '4th_5th': 2, 'race_count': 44, 'total_prize': 652000.0}, {'id': 1354, 'progeny_name': 'Bandi bácsi', 'born': 1996, 'other_parent_name': 'Oceanite', 'other_parent_id': 538, 'unplaced': 22, '1st': 1, '2nd': 3, '3rd': 4, '4th': 0, '5th': 0, '6th': 0, '7th': 0, '8th': 0, '4th_5th': 0, 'race_count': 30, 'total_prize': 186000.0}]
+            };
+            </script>
+        </div>
+    </div>
+</div>
+              
+            </div>
+          
+        </div>
+    </div>
+  </div>
+  <div class="modal fade" id="race_form_modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-full">
+      <div class="modal-content" role="document">
+        <div class="modal-header">
+          <h4 class="modal-title" id="race_form_modal_title"><span class="trans-text-en hidden">Race form statistics</span><span class="trans-text-hu">Futam forma statisztika</span></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="race_form_modal_body"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/slick/slick.min.js"></script>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 pt-20px" id="footer-col-div">
+          
+          
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="CookieBanner">
+      <div class="Banner" id="Banner">
+        <div class="BannerContainer">
+          <div id="BannerTextContainer">
+            <div id="BannerText"><p>Ez a honlap sütiket használ. A sütik elfogadásával kényelmesebbé teheti a böngészést. A sütik útján végzett adatkezelés részleteit a Kincsem Nemzeti Kft. adatkezelési szabályzata és adatkezelési tájékoztatója tartalmazza. Megértettem az adatkezelési tájékoztatóban foglaltakat, <a id="Action_Accept" onclick="return false;">elfogadom</a> a sütik használatát.</p>
+      <div class="BannerContainerBottom">
+        <a class="Action_MoreInfo" href="https://kincsempark.hu/adatkezelesi-szabalyzat/" target="_blank">További információt kérek</a></div>
+      </div>
+    </div>
+    <div id="BannerActions">
+      <div id="BannerActionsContainer">
+        <a id="Action_Close" href="#" onclick="return false;" data-textdisable="X" data-textdisabled="X">X</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+    <script type="text/javascript">
+
+      setupCookieBanner();
+
+      $('#side-menu').on({
+        mouseleave: function(){
+          $('#side-menu .show').removeClass("show");
+        }
+      })
+
+      function clickHandler(e){
+          if(('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0) || (window.innerWidth <= 768)){
+            // disable expand-on-hover for touchscreen devices
+            return;
+          }
+
+          let currentToggler = $(this).parent();
+          let parentMenu = currentToggler.parent();
+          if(parentMenu.hasClass('discipline-dropdown')){
+              parentMenu = parentMenu.parent();
+          }
+          parentMenu.find('div.dropdown-menu').each(function(){
+            $(this).hide();
+          });
+          currentToggler.next('div.dropdown-menu').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+
+      $(".side-menu .dropdown-toggle .menutext, .side-menu .dropdown-item .menutext").on({
+        mouseenter: clickHandler
+      }).children().on("mouseenter", function (e) {
+          e.stopPropagation();
+      });
+    </script>
+</body>
+
+</html>
