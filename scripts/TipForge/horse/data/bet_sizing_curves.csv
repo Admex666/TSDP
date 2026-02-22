@@ -1,0 +1,1256 @@
+strategy,bet_num,bankroll
+A. Flat (1000 Ft) | Edge 5%,1,99000.0
+A. Flat (1000 Ft) | Edge 5%,2,98010.0
+A. Flat (1000 Ft) | Edge 5%,3,97030.0
+A. Flat (1000 Ft) | Edge 5%,4,96060.0
+A. Flat (1000 Ft) | Edge 5%,5,95099.0
+A. Flat (1000 Ft) | Edge 5%,6,99093.2
+A. Flat (1000 Ft) | Edge 5%,7,98102.2
+A. Flat (1000 Ft) | Edge 5%,8,104282.5
+A. Flat (1000 Ft) | Edge 5%,9,103239.5
+A. Flat (1000 Ft) | Edge 5%,10,110153.9
+A. Flat (1000 Ft) | Edge 5%,11,109051.9
+A. Flat (1000 Ft) | Edge 5%,12,107960.9
+A. Flat (1000 Ft) | Edge 5%,13,106880.9
+A. Flat (1000 Ft) | Edge 5%,14,105811.9
+A. Flat (1000 Ft) | Edge 5%,15,112371.5
+A. Flat (1000 Ft) | Edge 5%,16,117204.7
+A. Flat (1000 Ft) | Edge 5%,17,122947.5
+A. Flat (1000 Ft) | Edge 5%,18,121718.5
+A. Flat (1000 Ft) | Edge 5%,19,120501.5
+A. Flat (1000 Ft) | Edge 5%,20,119296.5
+A. Flat (1000 Ft) | Edge 5%,21,118103.5
+A. Flat (1000 Ft) | Edge 5%,22,116922.5
+A. Flat (1000 Ft) | Edge 5%,23,115753.5
+A. Flat (1000 Ft) | Edge 5%,24,114595.5
+A. Flat (1000 Ft) | Edge 5%,25,113449.5
+A. Flat (1000 Ft) | Edge 5%,26,112315.5
+A. Flat (1000 Ft) | Edge 5%,27,111192.5
+A. Flat (1000 Ft) | Edge 5%,28,110080.5
+A. Flat (1000 Ft) | Edge 5%,29,115805.7
+A. Flat (1000 Ft) | Edge 5%,30,114647.7
+A. Flat (1000 Ft) | Edge 5%,31,113501.7
+A. Flat (1000 Ft) | Edge 5%,32,112366.7
+A. Flat (1000 Ft) | Edge 5%,33,111242.7
+A. Flat (1000 Ft) | Edge 5%,34,110130.7
+A. Flat (1000 Ft) | Edge 5%,35,109029.7
+A. Flat (1000 Ft) | Edge 5%,36,114915.7
+A. Flat (1000 Ft) | Edge 5%,37,113766.7
+A. Flat (1000 Ft) | Edge 5%,38,112628.7
+A. Flat (1000 Ft) | Edge 5%,39,118821.7
+A. Flat (1000 Ft) | Edge 5%,40,117633.7
+A. Flat (1000 Ft) | Edge 5%,41,116457.7
+A. Flat (1000 Ft) | Edge 5%,42,115292.7
+A. Flat (1000 Ft) | Edge 5%,43,114139.7
+A. Flat (1000 Ft) | Edge 5%,44,112998.7
+A. Flat (1000 Ft) | Edge 5%,45,111868.7
+A. Flat (1000 Ft) | Edge 5%,46,117016.09999999999
+A. Flat (1000 Ft) | Edge 5%,47,115846.09999999999
+A. Flat (1000 Ft) | Edge 5%,48,114688.09999999999
+A. Flat (1000 Ft) | Edge 5%,49,113541.09999999999
+A. Flat (1000 Ft) | Edge 5%,50,112406.09999999999
+A. Flat (1000 Ft) | Edge 5%,51,117464.09999999999
+A. Flat (1000 Ft) | Edge 5%,52,116289.09999999999
+A. Flat (1000 Ft) | Edge 5%,53,115126.09999999999
+A. Flat (1000 Ft) | Edge 5%,54,113975.09999999999
+A. Flat (1000 Ft) | Edge 5%,55,112835.09999999999
+A. Flat (1000 Ft) | Edge 5%,56,111707.09999999999
+A. Flat (1000 Ft) | Edge 5%,57,110590.09999999999
+A. Flat (1000 Ft) | Edge 5%,58,109484.09999999999
+A. Flat (1000 Ft) | Edge 5%,59,108389.09999999999
+A. Flat (1000 Ft) | Edge 5%,60,107305.09999999999
+A. Flat (1000 Ft) | Edge 5%,61,106232.09999999999
+A. Flat (1000 Ft) | Edge 5%,62,105170.09999999999
+A. Flat (1000 Ft) | Edge 5%,63,108957.29999999999
+A. Flat (1000 Ft) | Edge 5%,64,107867.29999999999
+A. Flat (1000 Ft) | Edge 5%,65,106788.29999999999
+A. Flat (1000 Ft) | Edge 5%,66,105720.29999999999
+A. Flat (1000 Ft) | Edge 5%,67,109736.9
+A. Flat (1000 Ft) | Edge 5%,68,108639.9
+A. Flat (1000 Ft) | Edge 5%,69,111572.09999999999
+A. Flat (1000 Ft) | Edge 5%,70,110456.09999999999
+A. Flat (1000 Ft) | Edge 5%,71,109351.09999999999
+A. Flat (1000 Ft) | Edge 5%,72,108257.09999999999
+A. Flat (1000 Ft) | Edge 5%,73,107174.09999999999
+A. Flat (1000 Ft) | Edge 5%,74,106102.09999999999
+A. Flat (1000 Ft) | Edge 5%,75,105041.09999999999
+A. Flat (1000 Ft) | Edge 5%,76,103991.09999999999
+A. Flat (1000 Ft) | Edge 5%,77,102951.09999999999
+A. Flat (1000 Ft) | Edge 5%,78,101921.09999999999
+A. Flat (1000 Ft) | Edge 5%,79,108952.2
+A. Flat (1000 Ft) | Edge 5%,80,107862.2
+A. Flat (1000 Ft) | Edge 5%,81,106783.2
+A. Flat (1000 Ft) | Edge 5%,82,105715.2
+A. Flat (1000 Ft) | Edge 5%,83,104658.2
+A. Flat (1000 Ft) | Edge 5%,84,103611.2
+A. Flat (1000 Ft) | Edge 5%,85,102575.2
+A. Flat (1000 Ft) | Edge 5%,86,101549.2
+A. Flat (1000 Ft) | Edge 5%,87,100534.2
+A. Flat (1000 Ft) | Edge 5%,88,99529.2
+A. Flat (1000 Ft) | Edge 5%,89,98534.2
+A. Flat (1000 Ft) | Edge 5%,90,97549.2
+A. Flat (1000 Ft) | Edge 5%,91,96574.2
+B. Full Kelly | Edge 5%,1,99126.0
+B. Full Kelly | Edge 5%,2,97950.0
+B. Full Kelly | Edge 5%,3,95385.0
+B. Full Kelly | Edge 5%,4,85665.0
+B. Full Kelly | Edge 5%,5,76242.0
+B. Full Kelly | Edge 5%,6,88417.8
+B. Full Kelly | Edge 5%,7,80262.8
+B. Full Kelly | Edge 5%,8,92774.6
+B. Full Kelly | Edge 5%,9,88987.6
+B. Full Kelly | Edge 5%,10,105764.40000000001
+B. Full Kelly | Edge 5%,11,103309.40000000001
+B. Full Kelly | Edge 5%,12,100950.40000000001
+B. Full Kelly | Edge 5%,13,99924.40000000001
+B. Full Kelly | Edge 5%,14,90344.40000000001
+B. Full Kelly | Edge 5%,15,134383.0
+B. Full Kelly | Edge 5%,16,193671.4
+B. Full Kelly | Edge 5%,17,205553.9
+B. Full Kelly | Edge 5%,18,182698.9
+B. Full Kelly | Edge 5%,19,179868.9
+B. Full Kelly | Edge 5%,20,177002.9
+B. Full Kelly | Edge 5%,21,169454.9
+B. Full Kelly | Edge 5%,22,165912.9
+B. Full Kelly | Edge 5%,23,161917.9
+B. Full Kelly | Edge 5%,24,160485.9
+B. Full Kelly | Edge 5%,25,157220.9
+B. Full Kelly | Edge 5%,26,149423.9
+B. Full Kelly | Edge 5%,27,145253.9
+B. Full Kelly | Edge 5%,28,138880.9
+B. Full Kelly | Edge 5%,29,161521.69999999998
+B. Full Kelly | Edge 5%,30,158212.69999999998
+B. Full Kelly | Edge 5%,31,152934.69999999998
+B. Full Kelly | Edge 5%,32,145003.69999999998
+B. Full Kelly | Edge 5%,33,141001.69999999998
+B. Full Kelly | Edge 5%,34,139103.69999999998
+B. Full Kelly | Edge 5%,35,137426.69999999998
+B. Full Kelly | Edge 5%,36,200838.9
+B. Full Kelly | Edge 5%,37,198641.9
+B. Full Kelly | Edge 5%,38,176901.9
+B. Full Kelly | Edge 5%,39,191674.9
+B. Full Kelly | Edge 5%,40,172919.9
+B. Full Kelly | Edge 5%,41,170097.9
+B. Full Kelly | Edge 5%,42,166569.9
+B. Full Kelly | Edge 5%,43,149459.9
+B. Full Kelly | Edge 5%,44,130389.9
+B. Full Kelly | Edge 5%,45,127900.9
+B. Full Kelly | Edge 5%,46,172925.69999999998
+B. Full Kelly | Edge 5%,47,159663.69999999998
+B. Full Kelly | Edge 5%,48,155941.69999999998
+B. Full Kelly | Edge 5%,49,151284.69999999998
+B. Full Kelly | Edge 5%,50,145754.69999999998
+B. Full Kelly | Edge 5%,51,183640.19999999998
+B. Full Kelly | Edge 5%,52,178082.19999999998
+B. Full Kelly | Edge 5%,53,159335.19999999998
+B. Full Kelly | Edge 5%,54,136176.19999999998
+B. Full Kelly | Edge 5%,55,130851.19999999998
+B. Full Kelly | Edge 5%,56,126299.19999999998
+B. Full Kelly | Edge 5%,57,124956.19999999998
+B. Full Kelly | Edge 5%,58,121168.19999999998
+B. Full Kelly | Edge 5%,59,116293.19999999998
+B. Full Kelly | Edge 5%,60,112574.19999999998
+B. Full Kelly | Edge 5%,61,110540.19999999998
+B. Full Kelly | Edge 5%,62,107676.19999999998
+B. Full Kelly | Edge 5%,63,125154.19999999998
+B. Full Kelly | Edge 5%,64,122363.19999999998
+B. Full Kelly | Edge 5%,65,120910.19999999998
+B. Full Kelly | Edge 5%,66,114417.19999999998
+B. Full Kelly | Edge 5%,67,123217.99999999999
+B. Full Kelly | Edge 5%,68,120825.99999999999
+B. Full Kelly | Edge 5%,69,164422.9
+B. Full Kelly | Edge 5%,70,151228.9
+B. Full Kelly | Edge 5%,71,147168.9
+B. Full Kelly | Edge 5%,72,141580.9
+B. Full Kelly | Edge 5%,73,135566.9
+B. Full Kelly | Edge 5%,74,122345.9
+B. Full Kelly | Edge 5%,75,113879.9
+B. Full Kelly | Edge 5%,76,111880.9
+B. Full Kelly | Edge 5%,77,100344.9
+B. Full Kelly | Edge 5%,78,97690.9
+B. Full Kelly | Edge 5%,79,173570.2
+B. Full Kelly | Edge 5%,80,169251.2
+B. Full Kelly | Edge 5%,81,165039.2
+B. Full Kelly | Edge 5%,82,161582.2
+B. Full Kelly | Edge 5%,83,157669.2
+B. Full Kelly | Edge 5%,84,153620.2
+B. Full Kelly | Edge 5%,85,145816.2
+B. Full Kelly | Edge 5%,86,142694.2
+B. Full Kelly | Edge 5%,87,127656.20000000001
+B. Full Kelly | Edge 5%,88,113595.20000000001
+B. Full Kelly | Edge 5%,89,112512.20000000001
+B. Full Kelly | Edge 5%,90,109780.20000000001
+B. Full Kelly | Edge 5%,91,106641.20000000001
+C. Half Kelly | Edge 5%,1,99563.0
+C. Half Kelly | Edge 5%,2,98972.0
+C. Half Kelly | Edge 5%,3,97676.0
+C. Half Kelly | Edge 5%,4,92699.0
+C. Half Kelly | Edge 5%,5,87601.0
+C. Half Kelly | Edge 5%,6,94598.2
+C. Half Kelly | Edge 5%,7,90235.2
+C. Half Kelly | Edge 5%,8,97266.0
+C. Half Kelly | Edge 5%,9,95281.0
+C. Half Kelly | Edge 5%,10,104265.7
+C. Half Kelly | Edge 5%,11,103055.7
+C. Half Kelly | Edge 5%,12,101878.7
+C. Half Kelly | Edge 5%,13,101360.7
+C. Half Kelly | Edge 5%,14,96501.7
+C. Half Kelly | Edge 5%,15,120024.5
+C. Half Kelly | Edge 5%,16,146503.9
+C. Half Kelly | Edge 5%,17,150997.19999999998
+C. Half Kelly | Edge 5%,18,142603.19999999998
+C. Half Kelly | Edge 5%,19,141498.19999999998
+C. Half Kelly | Edge 5%,20,140371.19999999998
+C. Half Kelly | Edge 5%,21,137378.19999999998
+C. Half Kelly | Edge 5%,22,135942.19999999998
+C. Half Kelly | Edge 5%,23,134305.19999999998
+C. Half Kelly | Edge 5%,24,133711.19999999998
+C. Half Kelly | Edge 5%,25,132351.19999999998
+C. Half Kelly | Edge 5%,26,129069.19999999998
+C. Half Kelly | Edge 5%,27,127268.19999999998
+C. Half Kelly | Edge 5%,28,124476.19999999998
+C. Half Kelly | Edge 5%,29,134621.4
+C. Half Kelly | Edge 5%,30,133242.4
+C. Half Kelly | Edge 5%,31,131020.4
+C. Half Kelly | Edge 5%,32,127623.4
+C. Half Kelly | Edge 5%,33,125862.4
+C. Half Kelly | Edge 5%,34,125015.4
+C. Half Kelly | Edge 5%,35,124261.4
+C. Half Kelly | Edge 5%,36,152930.0
+C. Half Kelly | Edge 5%,37,152094.0
+C. Half Kelly | Edge 5%,38,143771.0
+C. Half Kelly | Edge 5%,39,149777.0
+C. Half Kelly | Edge 5%,40,142449.0
+C. Half Kelly | Edge 5%,41,141287.0
+C. Half Kelly | Edge 5%,42,139822.0
+C. Half Kelly | Edge 5%,43,132641.0
+C. Half Kelly | Edge 5%,44,124179.0
+C. Half Kelly | Edge 5%,45,122994.0
+C. Half Kelly | Edge 5%,46,144641.6
+C. Half Kelly | Edge 5%,47,139094.6
+C. Half Kelly | Edge 5%,48,137473.6
+C. Half Kelly | Edge 5%,49,135420.6
+C. Half Kelly | Edge 5%,50,132945.6
+C. Half Kelly | Edge 5%,51,150225.6
+C. Half Kelly | Edge 5%,52,147952.6
+C. Half Kelly | Edge 5%,53,140164.6
+C. Half Kelly | Edge 5%,54,129978.6
+C. Half Kelly | Edge 5%,55,127437.6
+C. Half Kelly | Edge 5%,56,125220.6
+C. Half Kelly | Edge 5%,57,124554.6
+C. Half Kelly | Edge 5%,58,122666.6
+C. Half Kelly | Edge 5%,59,120198.6
+C. Half Kelly | Edge 5%,60,118276.6
+C. Half Kelly | Edge 5%,61,117207.6
+C. Half Kelly | Edge 5%,62,115688.6
+C. Half Kelly | Edge 5%,63,125077.40000000001
+C. Half Kelly | Edge 5%,64,123683.40000000001
+C. Half Kelly | Edge 5%,65,122949.40000000001
+C. Half Kelly | Edge 5%,66,119648.40000000001
+C. Half Kelly | Edge 5%,67,124250.20000000001
+C. Half Kelly | Edge 5%,68,123044.20000000001
+C. Half Kelly | Edge 5%,69,145243.6
+C. Half Kelly | Edge 5%,70,139415.6
+C. Half Kelly | Edge 5%,71,137544.6
+C. Half Kelly | Edge 5%,72,134933.6
+C. Half Kelly | Edge 5%,73,132067.6
+C. Half Kelly | Edge 5%,74,125627.6
+C. Half Kelly | Edge 5%,75,121281.6
+C. Half Kelly | Edge 5%,76,120217.6
+C. Half Kelly | Edge 5%,77,114019.6
+C. Half Kelly | Edge 5%,78,112511.6
+C. Half Kelly | Edge 5%,79,156209.30000000002
+C. Half Kelly | Edge 5%,80,154265.30000000002
+C. Half Kelly | Edge 5%,81,152346.30000000002
+C. Half Kelly | Edge 5%,82,150751.30000000002
+C. Half Kelly | Edge 5%,83,148926.30000000002
+C. Half Kelly | Edge 5%,84,147014.30000000002
+C. Half Kelly | Edge 5%,85,143280.30000000002
+C. Half Kelly | Edge 5%,86,141746.30000000002
+C. Half Kelly | Edge 5%,87,134277.30000000002
+C. Half Kelly | Edge 5%,88,126882.30000000002
+C. Half Kelly | Edge 5%,89,126277.30000000002
+C. Half Kelly | Edge 5%,90,124744.30000000002
+C. Half Kelly | Edge 5%,91,122960.30000000002
+D. Quarter Kelly | Edge 5%,1,99782.0
+D. Quarter Kelly | Edge 5%,2,99486.0
+D. Quarter Kelly | Edge 5%,3,98835.0
+D. Quarter Kelly | Edge 5%,4,96317.0
+D. Quarter Kelly | Edge 5%,5,93668.0
+D. Quarter Kelly | Edge 5%,6,97410.2
+D. Quarter Kelly | Edge 5%,7,95164.2
+D. Quarter Kelly | Edge 5%,8,98874.9
+D. Quarter Kelly | Edge 5%,9,97865.9
+D. Quarter Kelly | Edge 5%,10,102482.2
+D. Quarter Kelly | Edge 5%,11,101887.2
+D. Quarter Kelly | Edge 5%,12,101305.2
+D. Quarter Kelly | Edge 5%,13,101048.2
+D. Quarter Kelly | Edge 5%,14,98626.2
+D. Quarter Kelly | Edge 5%,15,110648.0
+D. Quarter Kelly | Edge 5%,16,122851.4
+D. Quarter Kelly | Edge 5%,17,124737.9
+D. Quarter Kelly | Edge 5%,18,121270.9
+D. Quarter Kelly | Edge 5%,19,120800.9
+D. Quarter Kelly | Edge 5%,20,120319.9
+D. Quarter Kelly | Edge 5%,21,119036.9
+D. Quarter Kelly | Edge 5%,22,118414.9
+D. Quarter Kelly | Edge 5%,23,117701.9
+D. Quarter Kelly | Edge 5%,24,117441.9
+D. Quarter Kelly | Edge 5%,25,116844.9
+D. Quarter Kelly | Edge 5%,26,115395.9
+D. Quarter Kelly | Edge 5%,27,114590.9
+D. Quarter Kelly | Edge 5%,28,113333.9
+D. Quarter Kelly | Edge 5%,29,117951.5
+D. Quarter Kelly | Edge 5%,30,117347.5
+D. Quarter Kelly | Edge 5%,31,116368.5
+D. Quarter Kelly | Edge 5%,32,114859.5
+D. Quarter Kelly | Edge 5%,33,114066.5
+D. Quarter Kelly | Edge 5%,34,113682.5
+D. Quarter Kelly | Edge 5%,35,113339.5
+D. Quarter Kelly | Edge 5%,36,126412.9
+D. Quarter Kelly | Edge 5%,37,126066.9
+D. Quarter Kelly | Edge 5%,38,122617.9
+D. Quarter Kelly | Edge 5%,39,125175.4
+D. Quarter Kelly | Edge 5%,40,122113.4
+D. Quarter Kelly | Edge 5%,41,121615.4
+D. Quarter Kelly | Edge 5%,42,120984.4
+D. Quarter Kelly | Edge 5%,43,117877.4
+D. Quarter Kelly | Edge 5%,44,114117.4
+D. Quarter Kelly | Edge 5%,45,113572.4
+D. Quarter Kelly | Edge 5%,46,123568.2
+D. Quarter Kelly | Edge 5%,47,121199.2
+D. Quarter Kelly | Edge 5%,48,120493.2
+D. Quarter Kelly | Edge 5%,49,119593.2
+D. Quarter Kelly | Edge 5%,50,118500.2
+D. Quarter Kelly | Edge 5%,51,126199.7
+D. Quarter Kelly | Edge 5%,52,125244.7
+D. Quarter Kelly | Edge 5%,53,121948.7
+D. Quarter Kelly | Edge 5%,54,117517.7
+D. Quarter Kelly | Edge 5%,55,116368.7
+D. Quarter Kelly | Edge 5%,56,115356.7
+D. Quarter Kelly | Edge 5%,57,115049.7
+D. Quarter Kelly | Edge 5%,58,114177.7
+D. Quarter Kelly | Edge 5%,59,113029.7
+D. Quarter Kelly | Edge 5%,60,112125.7
+D. Quarter Kelly | Edge 5%,61,111619.7
+D. Quarter Kelly | Edge 5%,62,110896.7
+D. Quarter Kelly | Edge 5%,63,115396.7
+D. Quarter Kelly | Edge 5%,64,114753.7
+D. Quarter Kelly | Edge 5%,65,114412.7
+D. Quarter Kelly | Edge 5%,66,112876.7
+D. Quarter Kelly | Edge 5%,67,115046.5
+D. Quarter Kelly | Edge 5%,68,114488.5
+D. Quarter Kelly | Edge 5%,69,124816.0
+D. Quarter Kelly | Edge 5%,70,122312.0
+D. Quarter Kelly | Edge 5%,71,121491.0
+D. Quarter Kelly | Edge 5%,72,120338.0
+D. Quarter Kelly | Edge 5%,73,119060.0
+D. Quarter Kelly | Edge 5%,74,116157.0
+D. Quarter Kelly | Edge 5%,75,114148.0
+D. Quarter Kelly | Edge 5%,76,113647.0
+D. Quarter Kelly | Edge 5%,77,110718.0
+D. Quarter Kelly | Edge 5%,78,109986.0
+D. Quarter Kelly | Edge 5%,79,131341.5
+D. Quarter Kelly | Edge 5%,80,130524.5
+D. Quarter Kelly | Edge 5%,81,129712.5
+D. Quarter Kelly | Edge 5%,82,129033.5
+D. Quarter Kelly | Edge 5%,83,128252.5
+D. Quarter Kelly | Edge 5%,84,127429.5
+D. Quarter Kelly | Edge 5%,85,125811.5
+D. Quarter Kelly | Edge 5%,86,125138.5
+D. Quarter Kelly | Edge 5%,87,121841.5
+D. Quarter Kelly | Edge 5%,88,118486.5
+D. Quarter Kelly | Edge 5%,89,118204.5
+D. Quarter Kelly | Edge 5%,90,117486.5
+D. Quarter Kelly | Edge 5%,91,116646.5
+E. Prop. Edge (50%) | Edge 5%,1,97247.0
+E. Prop. Edge (50%) | Edge 5%,2,93844.0
+E. Prop. Edge (50%) | Edge 5%,3,85735.0
+E. Prop. Edge (50%) | Edge 5%,4,68588.0
+E. Prop. Edge (50%) | Edge 5%,5,54870.0
+E. Prop. Edge (50%) | Edge 5%,6,73274.4
+E. Prop. Edge (50%) | Edge 5%,7,58619.399999999994
+E. Prop. Edge (50%) | Edge 5%,8,87397.79999999999
+E. Prop. Edge (50%) | Edge 5%,9,75267.79999999999
+E. Prop. Edge (50%) | Edge 5%,10,122811.0
+E. Prop. Edge (50%) | Edge 5%,11,117109.0
+E. Prop. Edge (50%) | Edge 5%,12,111761.0
+E. Prop. Edge (50%) | Edge 5%,13,107842.0
+E. Prop. Edge (50%) | Edge 5%,14,90266.0
+E. Prop. Edge (50%) | Edge 5%,15,202194.6
+E. Prop. Edge (50%) | Edge 5%,16,376082.3
+E. Prop. Edge (50%) | Edge 5%,17,432613.6
+E. Prop. Edge (50%) | Edge 5%,18,346090.6
+E. Prop. Edge (50%) | Edge 5%,19,335367.6
+E. Prop. Edge (50%) | Edge 5%,20,318267.6
+E. Prop. Edge (50%) | Edge 5%,21,299267.6
+E. Prop. Edge (50%) | Edge 5%,22,283626.6
+E. Prop. Edge (50%) | Edge 5%,23,262794.6
+E. Prop. Edge (50%) | Edge 5%,24,254774.59999999998
+E. Prop. Edge (50%) | Edge 5%,25,237149.59999999998
+E. Prop. Edge (50%) | Edge 5%,26,195983.59999999998
+E. Prop. Edge (50%) | Edge 5%,27,178480.59999999998
+E. Prop. Edge (50%) | Edge 5%,28,156554.59999999998
+E. Prop. Edge (50%) | Edge 5%,29,222906.59999999998
+E. Prop. Edge (50%) | Edge 5%,30,211033.59999999998
+E. Prop. Edge (50%) | Edge 5%,31,189209.59999999998
+E. Prop. Edge (50%) | Edge 5%,32,170566.59999999998
+E. Prop. Edge (50%) | Edge 5%,33,158796.59999999998
+E. Prop. Edge (50%) | Edge 5%,34,154093.59999999998
+E. Prop. Edge (50%) | Edge 5%,35,147590.59999999998
+E. Prop. Edge (50%) | Edge 5%,36,306987.8
+E. Prop. Edge (50%) | Edge 5%,37,299263.8
+E. Prop. Edge (50%) | Edge 5%,38,239410.8
+E. Prop. Edge (50%) | Edge 5%,39,294394.3
+E. Prop. Edge (50%) | Edge 5%,40,235515.3
+E. Prop. Edge (50%) | Edge 5%,41,224946.3
+E. Prop. Edge (50%) | Edge 5%,42,214215.3
+E. Prop. Edge (50%) | Edge 5%,43,171372.3
+E. Prop. Edge (50%) | Edge 5%,44,137098.3
+E. Prop. Edge (50%) | Edge 5%,45,129507.29999999999
+E. Prop. Edge (50%) | Edge 5%,46,234364.3
+E. Prop. Edge (50%) | Edge 5%,47,187491.3
+E. Prop. Edge (50%) | Edge 5%,48,172851.3
+E. Prop. Edge (50%) | Edge 5%,49,157881.3
+E. Prop. Edge (50%) | Edge 5%,50,141146.3
+E. Prop. Edge (50%) | Edge 5%,51,223694.3
+E. Prop. Edge (50%) | Edge 5%,52,210153.3
+E. Prop. Edge (50%) | Edge 5%,53,168122.3
+E. Prop. Edge (50%) | Edge 5%,54,134498.3
+E. Prop. Edge (50%) | Edge 5%,55,116615.29999999999
+E. Prop. Edge (50%) | Edge 5%,56,102821.29999999999
+E. Prop. Edge (50%) | Edge 5%,57,99432.29999999999
+E. Prop. Edge (50%) | Edge 5%,58,90690.29999999999
+E. Prop. Edge (50%) | Edge 5%,59,79926.29999999999
+E. Prop. Edge (50%) | Edge 5%,60,72513.29999999999
+E. Prop. Edge (50%) | Edge 5%,61,67927.29999999999
+E. Prop. Edge (50%) | Edge 5%,62,62911.29999999999
+E. Prop. Edge (50%) | Edge 5%,63,81292.9
+E. Prop. Edge (50%) | Edge 5%,64,78029.9
+E. Prop. Edge (50%) | Edge 5%,65,75573.9
+E. Prop. Edge (50%) | Edge 5%,66,62789.899999999994
+E. Prop. Edge (50%) | Edge 5%,67,71966.9
+E. Prop. Edge (50%) | Edge 5%,68,67845.9
+E. Prop. Edge (50%) | Edge 5%,69,100893.9
+E. Prop. Edge (50%) | Edge 5%,70,85915.9
+E. Prop. Edge (50%) | Edge 5%,71,80726.9
+E. Prop. Edge (50%) | Edge 5%,72,70765.9
+E. Prop. Edge (50%) | Edge 5%,73,60545.899999999994
+E. Prop. Edge (50%) | Edge 5%,74,48436.899999999994
+E. Prop. Edge (50%) | Edge 5%,75,39722.899999999994
+E. Prop. Edge (50%) | Edge 5%,76,37282.899999999994
+E. Prop. Edge (50%) | Edge 5%,77,31516.899999999994
+E. Prop. Edge (50%) | Edge 5%,78,28807.899999999994
+E. Prop. Edge (50%) | Edge 5%,79,68565.7
+E. Prop. Edge (50%) | Edge 5%,80,62764.7
+E. Prop. Edge (50%) | Edge 5%,81,57454.7
+E. Prop. Edge (50%) | Edge 5%,82,56010.7
+E. Prop. Edge (50%) | Edge 5%,83,53229.7
+E. Prop. Edge (50%) | Edge 5%,84,50290.7
+E. Prop. Edge (50%) | Edge 5%,85,43775.7
+E. Prop. Edge (50%) | Edge 5%,86,40635.7
+E. Prop. Edge (50%) | Edge 5%,87,32508.699999999997
+E. Prop. Edge (50%) | Edge 5%,88,26006.699999999997
+E. Prop. Edge (50%) | Edge 5%,89,25150.699999999997
+E. Prop. Edge (50%) | Edge 5%,90,23684.699999999997
+E. Prop. Edge (50%) | Edge 5%,91,21415.699999999997
+A. Flat (1000 Ft) | Edge 10%,1,99000.0
+A. Flat (1000 Ft) | Edge 10%,2,98010.0
+A. Flat (1000 Ft) | Edge 10%,3,97030.0
+A. Flat (1000 Ft) | Edge 10%,4,101104.0
+A. Flat (1000 Ft) | Edge 10%,5,100093.0
+A. Flat (1000 Ft) | Edge 10%,6,106399.3
+A. Flat (1000 Ft) | Edge 10%,7,105335.3
+A. Flat (1000 Ft) | Edge 10%,8,112390.40000000001
+A. Flat (1000 Ft) | Edge 10%,9,111266.40000000001
+A. Flat (1000 Ft) | Edge 10%,10,118167.00000000001
+A. Flat (1000 Ft) | Edge 10%,11,123249.60000000002
+A. Flat (1000 Ft) | Edge 10%,12,122017.60000000002
+A. Flat (1000 Ft) | Edge 10%,13,120797.60000000002
+A. Flat (1000 Ft) | Edge 10%,14,119589.60000000002
+A. Flat (1000 Ft) | Edge 10%,15,118393.60000000002
+A. Flat (1000 Ft) | Edge 10%,16,117209.60000000002
+A. Flat (1000 Ft) | Edge 10%,17,116037.60000000002
+A. Flat (1000 Ft) | Edge 10%,18,114877.60000000002
+A. Flat (1000 Ft) | Edge 10%,19,113728.60000000002
+A. Flat (1000 Ft) | Edge 10%,20,112591.60000000002
+A. Flat (1000 Ft) | Edge 10%,21,118446.80000000002
+A. Flat (1000 Ft) | Edge 10%,22,117262.80000000002
+A. Flat (1000 Ft) | Edge 10%,23,116089.80000000002
+A. Flat (1000 Ft) | Edge 10%,24,114928.80000000002
+A. Flat (1000 Ft) | Edge 10%,25,113779.80000000002
+A. Flat (1000 Ft) | Edge 10%,26,119925.00000000001
+A. Flat (1000 Ft) | Edge 10%,27,118726.00000000001
+A. Flat (1000 Ft) | Edge 10%,28,117539.00000000001
+A. Flat (1000 Ft) | Edge 10%,29,116364.00000000001
+A. Flat (1000 Ft) | Edge 10%,30,115200.00000000001
+A. Flat (1000 Ft) | Edge 10%,31,114048.00000000001
+A. Flat (1000 Ft) | Edge 10%,32,119292.00000000001
+A. Flat (1000 Ft) | Edge 10%,33,118099.00000000001
+A. Flat (1000 Ft) | Edge 10%,34,116918.00000000001
+A. Flat (1000 Ft) | Edge 10%,35,115749.00000000001
+A. Flat (1000 Ft) | Edge 10%,36,114592.00000000001
+A. Flat (1000 Ft) | Edge 10%,37,119749.00000000001
+A. Flat (1000 Ft) | Edge 10%,38,118552.00000000001
+A. Flat (1000 Ft) | Edge 10%,39,117366.00000000001
+A. Flat (1000 Ft) | Edge 10%,40,116192.00000000001
+A. Flat (1000 Ft) | Edge 10%,41,115030.00000000001
+A. Flat (1000 Ft) | Edge 10%,42,113880.00000000001
+A. Flat (1000 Ft) | Edge 10%,43,112741.00000000001
+A. Flat (1000 Ft) | Edge 10%,44,111614.00000000001
+A. Flat (1000 Ft) | Edge 10%,45,110498.00000000001
+A. Flat (1000 Ft) | Edge 10%,46,109393.00000000001
+A. Flat (1000 Ft) | Edge 10%,47,108299.00000000001
+A. Flat (1000 Ft) | Edge 10%,48,112197.80000000002
+A. Flat (1000 Ft) | Edge 10%,49,111075.80000000002
+A. Flat (1000 Ft) | Edge 10%,50,109964.80000000002
+A. Flat (1000 Ft) | Edge 10%,51,112934.80000000002
+A. Flat (1000 Ft) | Edge 10%,52,111805.80000000002
+A. Flat (1000 Ft) | Edge 10%,53,110687.80000000002
+A. Flat (1000 Ft) | Edge 10%,54,109580.80000000002
+A. Flat (1000 Ft) | Edge 10%,55,108484.80000000002
+A. Flat (1000 Ft) | Edge 10%,56,107399.80000000002
+A. Flat (1000 Ft) | Edge 10%,57,106325.80000000002
+A. Flat (1000 Ft) | Edge 10%,58,105262.80000000002
+A. Flat (1000 Ft) | Edge 10%,59,104209.80000000002
+A. Flat (1000 Ft) | Edge 10%,60,103167.80000000002
+A. Flat (1000 Ft) | Edge 10%,61,110288.60000000002
+A. Flat (1000 Ft) | Edge 10%,62,109185.60000000002
+A. Flat (1000 Ft) | Edge 10%,63,108093.60000000002
+A. Flat (1000 Ft) | Edge 10%,64,107012.60000000002
+A. Flat (1000 Ft) | Edge 10%,65,105942.60000000002
+A. Flat (1000 Ft) | Edge 10%,66,104883.60000000002
+A. Flat (1000 Ft) | Edge 10%,67,103834.60000000002
+A. Flat (1000 Ft) | Edge 10%,68,102796.60000000002
+A. Flat (1000 Ft) | Edge 10%,69,101768.60000000002
+A. Flat (1000 Ft) | Edge 10%,70,100750.60000000002
+B. Full Kelly | Edge 10%,1,97381.0
+B. Full Kelly | Edge 10%,2,87457.0
+B. Full Kelly | Edge 10%,3,77837.0
+B. Full Kelly | Edge 10%,4,90269.0
+B. Full Kelly | Edge 10%,5,81943.0
+B. Full Kelly | Edge 10%,6,94713.1
+B. Full Kelly | Edge 10%,7,90847.1
+B. Full Kelly | Edge 10%,8,107979.0
+B. Full Kelly | Edge 10%,9,97627.0
+B. Full Kelly | Edge 10%,10,145218.2
+B. Full Kelly | Edge 10%,11,209288.2
+B. Full Kelly | Edge 10%,12,186018.2
+B. Full Kelly | Edge 10%,13,183054.2
+B. Full Kelly | Edge 10%,14,175248.2
+B. Full Kelly | Edge 10%,15,171584.2
+B. Full Kelly | Edge 10%,16,167452.2
+B. Full Kelly | Edge 10%,17,164045.2
+B. Full Kelly | Edge 10%,18,155909.2
+B. Full Kelly | Edge 10%,19,151558.2
+B. Full Kelly | Edge 10%,20,144908.2
+B. Full Kelly | Edge 10%,21,168531.80000000002
+B. Full Kelly | Edge 10%,22,165078.80000000002
+B. Full Kelly | Edge 10%,23,159571.80000000002
+B. Full Kelly | Edge 10%,24,151296.80000000002
+B. Full Kelly | Edge 10%,25,147120.80000000002
+B. Full Kelly | Edge 10%,26,215009.60000000003
+B. Full Kelly | Edge 10%,27,191477.60000000003
+B. Full Kelly | Edge 10%,28,172741.60000000003
+B. Full Kelly | Edge 10%,29,154997.60000000003
+B. Full Kelly | Edge 10%,30,135220.60000000003
+B. Full Kelly | Edge 10%,31,132638.60000000003
+B. Full Kelly | Edge 10%,32,179333.20000000004
+B. Full Kelly | Edge 10%,33,165579.20000000004
+B. Full Kelly | Edge 10%,34,161720.20000000004
+B. Full Kelly | Edge 10%,35,156890.20000000004
+B. Full Kelly | Edge 10%,36,151156.20000000004
+B. Full Kelly | Edge 10%,37,190445.70000000004
+B. Full Kelly | Edge 10%,38,184681.70000000004
+B. Full Kelly | Edge 10%,39,165239.70000000004
+B. Full Kelly | Edge 10%,40,141222.70000000004
+B. Full Kelly | Edge 10%,41,135699.70000000004
+B. Full Kelly | Edge 10%,42,130978.70000000004
+B. Full Kelly | Edge 10%,43,127007.70000000004
+B. Full Kelly | Edge 10%,44,121897.70000000004
+B. Full Kelly | Edge 10%,45,117998.70000000004
+B. Full Kelly | Edge 10%,46,115866.70000000004
+B. Full Kelly | Edge 10%,47,112864.70000000004
+B. Full Kelly | Edge 10%,48,131185.10000000003
+B. Full Kelly | Edge 10%,49,124140.10000000003
+B. Full Kelly | Edge 10%,50,121730.10000000003
+B. Full Kelly | Edge 10%,51,165653.70000000004
+B. Full Kelly | Edge 10%,52,152360.70000000004
+B. Full Kelly | Edge 10%,53,148270.70000000004
+B. Full Kelly | Edge 10%,54,142641.70000000004
+B. Full Kelly | Edge 10%,55,136582.70000000004
+B. Full Kelly | Edge 10%,56,123262.70000000004
+B. Full Kelly | Edge 10%,57,114733.70000000004
+B. Full Kelly | Edge 10%,58,112719.70000000004
+B. Full Kelly | Edge 10%,59,101097.70000000004
+B. Full Kelly | Edge 10%,60,98423.70000000004
+B. Full Kelly | Edge 10%,61,174875.70000000004
+B. Full Kelly | Edge 10%,62,170523.70000000004
+B. Full Kelly | Edge 10%,63,166280.70000000004
+B. Full Kelly | Edge 10%,64,162010.70000000004
+B. Full Kelly | Edge 10%,65,153779.70000000004
+B. Full Kelly | Edge 10%,66,150486.70000000004
+B. Full Kelly | Edge 10%,67,134627.70000000004
+B. Full Kelly | Edge 10%,68,119799.70000000004
+B. Full Kelly | Edge 10%,69,116890.70000000004
+B. Full Kelly | Edge 10%,70,113547.70000000004
+C. Half Kelly | Edge 10%,1,98691.0
+C. Half Kelly | Edge 10%,2,93662.0
+C. Half Kelly | Edge 10%,3,88511.0
+C. Half Kelly | Edge 10%,4,95579.6
+C. Half Kelly | Edge 10%,5,91171.6
+C. Half Kelly | Edge 10%,6,98278.0
+C. Half Kelly | Edge 10%,7,96272.0
+C. Half Kelly | Edge 10%,8,105350.5
+C. Half Kelly | Edge 10%,9,100300.5
+C. Half Kelly | Edge 10%,10,124747.1
+C. Half Kelly | Edge 10%,11,152267.1
+C. Half Kelly | Edge 10%,12,143802.1
+C. Half Kelly | Edge 10%,13,142656.1
+C. Half Kelly | Edge 10%,14,139614.1
+C. Half Kelly | Edge 10%,15,138155.1
+C. Half Kelly | Edge 10%,16,136492.1
+C. Half Kelly | Edge 10%,17,135103.1
+C. Half Kelly | Edge 10%,18,131753.1
+C. Half Kelly | Edge 10%,19,129914.1
+C. Half Kelly | Edge 10%,20,127064.1
+C. Half Kelly | Edge 10%,21,137422.5
+C. Half Kelly | Edge 10%,22,136014.5
+C. Half Kelly | Edge 10%,23,133745.5
+C. Half Kelly | Edge 10%,24,130277.5
+C. Half Kelly | Edge 10%,25,128479.5
+C. Half Kelly | Edge 10%,26,158120.1
+C. Half Kelly | Edge 10%,27,149467.1
+C. Half Kelly | Edge 10%,28,142154.1
+C. Half Kelly | Edge 10%,29,134853.1
+C. Half Kelly | Edge 10%,30,126250.1
+C. Half Kelly | Edge 10%,31,125045.1
+C. Half Kelly | Edge 10%,32,147056.1
+C. Half Kelly | Edge 10%,33,141417.1
+C. Half Kelly | Edge 10%,34,139769.1
+C. Half Kelly | Edge 10%,35,137682.1
+C. Half Kelly | Edge 10%,36,135166.1
+C. Half Kelly | Edge 10%,37,152734.1
+C. Half Kelly | Edge 10%,38,150423.1
+C. Half Kelly | Edge 10%,39,142505.1
+C. Half Kelly | Edge 10%,40,132149.1
+C. Half Kelly | Edge 10%,41,129565.1
+C. Half Kelly | Edge 10%,42,127311.1
+C. Half Kelly | Edge 10%,43,125381.1
+C. Half Kelly | Edge 10%,44,122859.1
+C. Half Kelly | Edge 10%,45,120894.1
+C. Half Kelly | Edge 10%,46,119802.1
+C. Half Kelly | Edge 10%,47,118250.1
+C. Half Kelly | Edge 10%,48,127847.70000000001
+C. Half Kelly | Edge 10%,49,124414.70000000001
+C. Half Kelly | Edge 10%,50,123207.70000000001
+C. Half Kelly | Edge 10%,51,145436.80000000002
+C. Half Kelly | Edge 10%,52,139601.80000000002
+C. Half Kelly | Edge 10%,53,137727.80000000002
+C. Half Kelly | Edge 10%,54,135112.80000000002
+C. Half Kelly | Edge 10%,55,132242.80000000002
+C. Half Kelly | Edge 10%,56,125793.80000000002
+C. Half Kelly | Edge 10%,57,121441.80000000002
+C. Half Kelly | Edge 10%,58,120375.80000000002
+C. Half Kelly | Edge 10%,59,114169.80000000002
+C. Half Kelly | Edge 10%,60,112659.80000000002
+C. Half Kelly | Edge 10%,61,156412.7
+C. Half Kelly | Edge 10%,62,154466.7
+C. Half Kelly | Edge 10%,63,152544.7
+C. Half Kelly | Edge 10%,64,150585.7
+C. Half Kelly | Edge 10%,65,146760.7
+C. Half Kelly | Edge 10%,66,145189.7
+C. Half Kelly | Edge 10%,67,137538.7
+C. Half Kelly | Edge 10%,68,129964.70000000001
+C. Half Kelly | Edge 10%,69,128386.70000000001
+C. Half Kelly | Edge 10%,70,126550.70000000001
+D. Quarter Kelly | Edge 10%,1,99345.0
+D. Quarter Kelly | Edge 10%,2,96814.0
+D. Quarter Kelly | Edge 10%,3,94152.0
+D. Quarter Kelly | Edge 10%,4,97911.0
+D. Quarter Kelly | Edge 10%,5,95653.0
+D. Quarter Kelly | Edge 10%,6,99382.6
+D. Quarter Kelly | Edge 10%,7,98368.6
+D. Quarter Kelly | Edge 10%,8,103005.0
+D. Quarter Kelly | Edge 10%,9,100536.0
+D. Quarter Kelly | Edge 10%,10,112787.2
+D. Quarter Kelly | Edge 10%,11,125227.09999999999
+D. Quarter Kelly | Edge 10%,12,121746.09999999999
+D. Quarter Kelly | Edge 10%,13,121261.09999999999
+D. Quarter Kelly | Edge 10%,14,119968.09999999999
+D. Quarter Kelly | Edge 10%,15,119341.09999999999
+D. Quarter Kelly | Edge 10%,16,118623.09999999999
+D. Quarter Kelly | Edge 10%,17,118020.09999999999
+D. Quarter Kelly | Edge 10%,18,116557.09999999999
+D. Quarter Kelly | Edge 10%,19,115744.09999999999
+D. Quarter Kelly | Edge 10%,20,114474.09999999999
+D. Quarter Kelly | Edge 10%,21,119138.49999999999
+D. Quarter Kelly | Edge 10%,22,118528.49999999999
+D. Quarter Kelly | Edge 10%,23,117539.49999999999
+D. Quarter Kelly | Edge 10%,24,116015.49999999999
+D. Quarter Kelly | Edge 10%,25,115214.49999999999
+D. Quarter Kelly | Edge 10%,26,128503.9
+D. Quarter Kelly | Edge 10%,27,124987.9
+D. Quarter Kelly | Edge 10%,28,121930.9
+D. Quarter Kelly | Edge 10%,29,118799.9
+D. Quarter Kelly | Edge 10%,30,115009.9
+D. Quarter Kelly | Edge 10%,31,114460.9
+D. Quarter Kelly | Edge 10%,32,124534.9
+D. Quarter Kelly | Edge 10%,33,122146.9
+D. Quarter Kelly | Edge 10%,34,121434.9
+D. Quarter Kelly | Edge 10%,35,120527.9
+D. Quarter Kelly | Edge 10%,36,119426.9
+D. Quarter Kelly | Edge 10%,37,127189.4
+D. Quarter Kelly | Edge 10%,38,126227.4
+D. Quarter Kelly | Edge 10%,39,122905.4
+D. Quarter Kelly | Edge 10%,40,118439.4
+D. Quarter Kelly | Edge 10%,41,117281.4
+D. Quarter Kelly | Edge 10%,42,116261.4
+D. Quarter Kelly | Edge 10%,43,115380.4
+D. Quarter Kelly | Edge 10%,44,114220.4
+D. Quarter Kelly | Edge 10%,45,113307.4
+D. Quarter Kelly | Edge 10%,46,112795.4
+D. Quarter Kelly | Edge 10%,47,112064.4
+D. Quarter Kelly | Edge 10%,48,116611.2
+D. Quarter Kelly | Edge 10%,49,115045.2
+D. Quarter Kelly | Edge 10%,50,114487.2
+D. Quarter Kelly | Edge 10%,51,124814.7
+D. Quarter Kelly | Edge 10%,52,122310.7
+D. Quarter Kelly | Edge 10%,53,121489.7
+D. Quarter Kelly | Edge 10%,54,120336.7
+D. Quarter Kelly | Edge 10%,55,119058.7
+D. Quarter Kelly | Edge 10%,56,116155.7
+D. Quarter Kelly | Edge 10%,57,114146.7
+D. Quarter Kelly | Edge 10%,58,113645.7
+D. Quarter Kelly | Edge 10%,59,110716.7
+D. Quarter Kelly | Edge 10%,60,109984.7
+D. Quarter Kelly | Edge 10%,61,131340.2
+D. Quarter Kelly | Edge 10%,62,130523.20000000001
+D. Quarter Kelly | Edge 10%,63,129711.20000000001
+D. Quarter Kelly | Edge 10%,64,128878.20000000001
+D. Quarter Kelly | Edge 10%,65,127241.20000000001
+D. Quarter Kelly | Edge 10%,66,126560.20000000001
+D. Quarter Kelly | Edge 10%,67,123226.20000000001
+D. Quarter Kelly | Edge 10%,68,119833.20000000001
+D. Quarter Kelly | Edge 10%,69,119105.20000000001
+D. Quarter Kelly | Edge 10%,70,118253.20000000001
+E. Prop. Edge (50%) | Edge 10%,1,91359.0
+E. Prop. Edge (50%) | Edge 10%,2,73087.0
+E. Prop. Edge (50%) | Edge 10%,3,58470.0
+E. Prop. Edge (50%) | Edge 10%,4,78079.8
+E. Prop. Edge (50%) | Edge 10%,5,62463.8
+E. Prop. Edge (50%) | Edge 10%,6,93132.2
+E. Prop. Edge (50%) | Edge 10%,7,80206.2
+E. Prop. Edge (50%) | Edge 10%,8,130871.6
+E. Prop. Edge (50%) | Edge 10%,9,109541.6
+E. Prop. Edge (50%) | Edge 10%,10,245371.2
+E. Prop. Edge (50%) | Edge 10%,11,456389.4
+E. Prop. Edge (50%) | Edge 10%,12,365111.4
+E. Prop. Edge (50%) | Edge 10%,13,346494.4
+E. Prop. Edge (50%) | Edge 10%,14,325809.4
+E. Prop. Edge (50%) | Edge 10%,15,308781.4
+E. Prop. Edge (50%) | Edge 10%,16,286101.4
+E. Prop. Edge (50%) | Edge 10%,17,266309.4
+E. Prop. Edge (50%) | Edge 10%,18,220082.40000000002
+E. Prop. Edge (50%) | Edge 10%,19,200427.40000000002
+E. Prop. Edge (50%) | Edge 10%,20,175804.40000000002
+E. Prop. Edge (50%) | Edge 10%,21,250315.2
+E. Prop. Edge (50%) | Edge 10%,22,236982.2
+E. Prop. Edge (50%) | Edge 10%,23,212475.2
+E. Prop. Edge (50%) | Edge 10%,24,191539.2
+E. Prop. Edge (50%) | Edge 10%,25,178322.2
+E. Prop. Edge (50%) | Edge 10%,26,370907.80000000005
+E. Prop. Edge (50%) | Edge 10%,27,296725.80000000005
+E. Prop. Edge (50%) | Edge 10%,28,237380.80000000005
+E. Prop. Edge (50%) | Edge 10%,29,189904.80000000005
+E. Prop. Edge (50%) | Edge 10%,30,151923.80000000005
+E. Prop. Edge (50%) | Edge 10%,31,143512.80000000005
+E. Prop. Edge (50%) | Edge 10%,32,259708.80000000005
+E. Prop. Edge (50%) | Edge 10%,33,207766.80000000005
+E. Prop. Edge (50%) | Edge 10%,34,191543.80000000005
+E. Prop. Edge (50%) | Edge 10%,35,174954.80000000005
+E. Prop. Edge (50%) | Edge 10%,36,156409.80000000005
+E. Prop. Edge (50%) | Edge 10%,37,247885.80000000005
+E. Prop. Edge (50%) | Edge 10%,38,232879.80000000005
+E. Prop. Edge (50%) | Edge 10%,39,186303.80000000005
+E. Prop. Edge (50%) | Edge 10%,40,149042.80000000005
+E. Prop. Edge (50%) | Edge 10%,41,129225.80000000005
+E. Prop. Edge (50%) | Edge 10%,42,113940.80000000005
+E. Prop. Edge (50%) | Edge 10%,43,103922.80000000005
+E. Prop. Edge (50%) | Edge 10%,44,91588.80000000005
+E. Prop. Edge (50%) | Edge 10%,45,83093.80000000005
+E. Prop. Edge (50%) | Edge 10%,46,77838.80000000005
+E. Prop. Edge (50%) | Edge 10%,47,72090.80000000005
+E. Prop. Edge (50%) | Edge 10%,48,93154.40000000005
+E. Prop. Edge (50%) | Edge 10%,49,77396.40000000005
+E. Prop. Edge (50%) | Edge 10%,50,72964.40000000005
+E. Prop. Edge (50%) | Edge 10%,51,108507.20000000006
+E. Prop. Edge (50%) | Edge 10%,52,92398.20000000006
+E. Prop. Edge (50%) | Edge 10%,53,86817.20000000006
+E. Prop. Edge (50%) | Edge 10%,54,76104.20000000006
+E. Prop. Edge (50%) | Edge 10%,55,65113.200000000055
+E. Prop. Edge (50%) | Edge 10%,56,52090.200000000055
+E. Prop. Edge (50%) | Edge 10%,57,42719.200000000055
+E. Prop. Edge (50%) | Edge 10%,58,40095.200000000055
+E. Prop. Edge (50%) | Edge 10%,59,33894.200000000055
+E. Prop. Edge (50%) | Edge 10%,60,30981.200000000055
+E. Prop. Edge (50%) | Edge 10%,61,73733.60000000006
+E. Prop. Edge (50%) | Edge 10%,62,67495.60000000006
+E. Prop. Edge (50%) | Edge 10%,63,61785.600000000064
+E. Prop. Edge (50%) | Edge 10%,64,58374.600000000064
+E. Prop. Edge (50%) | Edge 10%,65,50812.600000000064
+E. Prop. Edge (50%) | Edge 10%,66,47167.600000000064
+E. Prop. Edge (50%) | Edge 10%,67,37733.600000000064
+E. Prop. Edge (50%) | Edge 10%,68,30186.600000000064
+E. Prop. Edge (50%) | Edge 10%,69,28427.600000000064
+E. Prop. Edge (50%) | Edge 10%,70,25704.600000000064
+A. Flat (1000 Ft) | Edge 15%,1,99000.0
+A. Flat (1000 Ft) | Edge 15%,2,98010.0
+A. Flat (1000 Ft) | Edge 15%,3,97030.0
+A. Flat (1000 Ft) | Edge 15%,4,101104.0
+A. Flat (1000 Ft) | Edge 15%,5,100093.0
+A. Flat (1000 Ft) | Edge 15%,6,106399.3
+A. Flat (1000 Ft) | Edge 15%,7,105335.3
+A. Flat (1000 Ft) | Edge 15%,8,112390.40000000001
+A. Flat (1000 Ft) | Edge 15%,9,111266.40000000001
+A. Flat (1000 Ft) | Edge 15%,10,118167.00000000001
+A. Flat (1000 Ft) | Edge 15%,11,123249.60000000002
+A. Flat (1000 Ft) | Edge 15%,12,122017.60000000002
+A. Flat (1000 Ft) | Edge 15%,13,120797.60000000002
+A. Flat (1000 Ft) | Edge 15%,14,119589.60000000002
+A. Flat (1000 Ft) | Edge 15%,15,118393.60000000002
+A. Flat (1000 Ft) | Edge 15%,16,124550.40000000002
+A. Flat (1000 Ft) | Edge 15%,17,123304.40000000002
+A. Flat (1000 Ft) | Edge 15%,18,122071.40000000002
+A. Flat (1000 Ft) | Edge 15%,19,128664.80000000002
+A. Flat (1000 Ft) | Edge 15%,20,127377.80000000002
+A. Flat (1000 Ft) | Edge 15%,21,126103.80000000002
+A. Flat (1000 Ft) | Edge 15%,22,124842.80000000002
+A. Flat (1000 Ft) | Edge 15%,23,123594.80000000002
+A. Flat (1000 Ft) | Edge 15%,24,129280.40000000002
+A. Flat (1000 Ft) | Edge 15%,25,127987.40000000002
+A. Flat (1000 Ft) | Edge 15%,26,126707.40000000002
+A. Flat (1000 Ft) | Edge 15%,27,125440.40000000002
+A. Flat (1000 Ft) | Edge 15%,28,124186.40000000002
+A. Flat (1000 Ft) | Edge 15%,29,129775.40000000002
+A. Flat (1000 Ft) | Edge 15%,30,128477.40000000002
+A. Flat (1000 Ft) | Edge 15%,31,127192.40000000002
+A. Flat (1000 Ft) | Edge 15%,32,125920.40000000002
+A. Flat (1000 Ft) | Edge 15%,33,124661.40000000002
+A. Flat (1000 Ft) | Edge 15%,34,123414.40000000002
+A. Flat (1000 Ft) | Edge 15%,35,122180.40000000002
+A. Flat (1000 Ft) | Edge 15%,36,120958.40000000002
+A. Flat (1000 Ft) | Edge 15%,37,125314.40000000002
+A. Flat (1000 Ft) | Edge 15%,38,124061.40000000002
+A. Flat (1000 Ft) | Edge 15%,39,127412.10000000002
+A. Flat (1000 Ft) | Edge 15%,40,126138.10000000002
+A. Flat (1000 Ft) | Edge 15%,41,124877.10000000002
+A. Flat (1000 Ft) | Edge 15%,42,123628.10000000002
+A. Flat (1000 Ft) | Edge 15%,43,122392.10000000002
+A. Flat (1000 Ft) | Edge 15%,44,121168.10000000002
+A. Flat (1000 Ft) | Edge 15%,45,119956.10000000002
+A. Flat (1000 Ft) | Edge 15%,46,118756.10000000002
+A. Flat (1000 Ft) | Edge 15%,47,126953.30000000002
+A. Flat (1000 Ft) | Edge 15%,48,125683.30000000002
+A. Flat (1000 Ft) | Edge 15%,49,124426.30000000002
+A. Flat (1000 Ft) | Edge 15%,50,123182.30000000002
+A. Flat (1000 Ft) | Edge 15%,51,121950.30000000002
+A. Flat (1000 Ft) | Edge 15%,52,120730.30000000002
+A. Flat (1000 Ft) | Edge 15%,53,119523.30000000002
+B. Full Kelly | Edge 15%,1,97381.0
+B. Full Kelly | Edge 15%,2,87457.0
+B. Full Kelly | Edge 15%,3,77837.0
+B. Full Kelly | Edge 15%,4,90269.0
+B. Full Kelly | Edge 15%,5,81943.0
+B. Full Kelly | Edge 15%,6,94713.1
+B. Full Kelly | Edge 15%,7,90847.1
+B. Full Kelly | Edge 15%,8,107979.0
+B. Full Kelly | Edge 15%,9,97627.0
+B. Full Kelly | Edge 15%,10,145218.2
+B. Full Kelly | Edge 15%,11,209288.2
+B. Full Kelly | Edge 15%,12,186018.2
+B. Full Kelly | Edge 15%,13,176792.2
+B. Full Kelly | Edge 15%,14,171858.2
+B. Full Kelly | Edge 15%,15,164318.2
+B. Full Kelly | Edge 15%,16,191103.40000000002
+B. Full Kelly | Edge 15%,17,184728.40000000002
+B. Full Kelly | Edge 15%,18,175148.40000000002
+B. Full Kelly | Edge 15%,19,255970.2
+B. Full Kelly | Edge 15%,20,227956.2
+B. Full Kelly | Edge 15%,21,205651.2
+B. Full Kelly | Edge 15%,22,184527.2
+B. Full Kelly | Edge 15%,23,160983.2
+B. Full Kelly | Edge 15%,24,217655.2
+B. Full Kelly | Edge 15%,25,200962.2
+B. Full Kelly | Edge 15%,26,196278.2
+B. Full Kelly | Edge 15%,27,190416.2
+B. Full Kelly | Edge 15%,28,183456.2
+B. Full Kelly | Edge 15%,29,231142.7
+B. Full Kelly | Edge 15%,30,206809.7
+B. Full Kelly | Edge 15%,31,176749.7
+B. Full Kelly | Edge 15%,32,169837.7
+B. Full Kelly | Edge 15%,33,163928.7
+B. Full Kelly | Edge 15%,34,158958.7
+B. Full Kelly | Edge 15%,35,152563.7
+B. Full Kelly | Edge 15%,36,147684.7
+B. Full Kelly | Edge 15%,37,171657.1
+B. Full Kelly | Edge 15%,38,162439.1
+B. Full Kelly | Edge 15%,39,221050.7
+B. Full Kelly | Edge 15%,40,203311.7
+B. Full Kelly | Edge 15%,41,195592.7
+B. Full Kelly | Edge 15%,42,187284.7
+B. Full Kelly | Edge 15%,43,169019.7
+B. Full Kelly | Edge 15%,44,157324.7
+B. Full Kelly | Edge 15%,45,141103.7
+B. Full Kelly | Edge 15%,46,137371.7
+B. Full Kelly | Edge 15%,47,244073.30000000002
+B. Full Kelly | Edge 15%,48,237999.30000000002
+B. Full Kelly | Edge 15%,49,232077.30000000002
+B. Full Kelly | Edge 15%,50,220287.30000000002
+B. Full Kelly | Edge 15%,51,197072.30000000002
+B. Full Kelly | Edge 15%,52,175366.30000000002
+B. Full Kelly | Edge 15%,53,170351.30000000002
+C. Half Kelly | Edge 15%,1,98691.0
+C. Half Kelly | Edge 15%,2,93662.0
+C. Half Kelly | Edge 15%,3,88511.0
+C. Half Kelly | Edge 15%,4,95579.6
+C. Half Kelly | Edge 15%,5,91171.6
+C. Half Kelly | Edge 15%,6,98278.0
+C. Half Kelly | Edge 15%,7,96272.0
+C. Half Kelly | Edge 15%,8,105350.5
+C. Half Kelly | Edge 15%,9,100300.5
+C. Half Kelly | Edge 15%,10,124747.1
+C. Half Kelly | Edge 15%,11,152267.1
+C. Half Kelly | Edge 15%,12,143802.1
+C. Half Kelly | Edge 15%,13,140236.1
+C. Half Kelly | Edge 15%,14,138279.1
+C. Half Kelly | Edge 15%,15,135245.1
+C. Half Kelly | Edge 15%,16,146269.1
+C. Half Kelly | Edge 15%,17,143829.1
+C. Half Kelly | Edge 15%,18,140100.1
+C. Half Kelly | Edge 15%,19,172424.5
+C. Half Kelly | Edge 15%,20,162989.5
+C. Half Kelly | Edge 15%,21,155015.5
+C. Half Kelly | Edge 15%,22,147053.5
+C. Half Kelly | Edge 15%,23,137671.5
+C. Half Kelly | Edge 15%,24,161904.3
+C. Half Kelly | Edge 15%,25,155695.3
+C. Half Kelly | Edge 15%,26,153880.3
+C. Half Kelly | Edge 15%,27,151582.3
+C. Half Kelly | Edge 15%,28,148812.3
+C. Half Kelly | Edge 15%,29,168153.3
+C. Half Kelly | Edge 15%,30,159302.3
+C. Half Kelly | Edge 15%,31,147725.3
+C. Half Kelly | Edge 15%,32,144837.3
+C. Half Kelly | Edge 15%,33,142318.3
+C. Half Kelly | Edge 15%,34,140161.3
+C. Half Kelly | Edge 15%,35,137342.3
+C. Half Kelly | Edge 15%,36,135146.3
+C. Half Kelly | Edge 15%,37,146115.5
+C. Half Kelly | Edge 15%,38,142192.5
+C. Half Kelly | Edge 15%,39,167845.2
+C. Half Kelly | Edge 15%,40,161111.2
+C. Half Kelly | Edge 15%,41,158053.2
+C. Half Kelly | Edge 15%,42,154696.2
+C. Half Kelly | Edge 15%,43,147153.2
+C. Half Kelly | Edge 15%,44,142062.2
+C. Half Kelly | Edge 15%,45,134738.2
+C. Half Kelly | Edge 15%,46,132956.2
+C. Half Kelly | Edge 15%,47,184588.90000000002
+C. Half Kelly | Edge 15%,48,182291.90000000002
+C. Half Kelly | Edge 15%,49,180023.90000000002
+C. Half Kelly | Edge 15%,50,175450.90000000002
+C. Half Kelly | Edge 15%,51,166205.90000000002
+C. Half Kelly | Edge 15%,52,157052.90000000002
+C. Half Kelly | Edge 15%,53,154806.90000000002
+D. Quarter Kelly | Edge 15%,1,99345.0
+D. Quarter Kelly | Edge 15%,2,96814.0
+D. Quarter Kelly | Edge 15%,3,94152.0
+D. Quarter Kelly | Edge 15%,4,97911.0
+D. Quarter Kelly | Edge 15%,5,95653.0
+D. Quarter Kelly | Edge 15%,6,99382.6
+D. Quarter Kelly | Edge 15%,7,98368.6
+D. Quarter Kelly | Edge 15%,8,103005.0
+D. Quarter Kelly | Edge 15%,9,100536.0
+D. Quarter Kelly | Edge 15%,10,112787.2
+D. Quarter Kelly | Edge 15%,11,125227.09999999999
+D. Quarter Kelly | Edge 15%,12,121746.09999999999
+D. Quarter Kelly | Edge 15%,13,120236.09999999999
+D. Quarter Kelly | Edge 15%,14,119397.09999999999
+D. Quarter Kelly | Edge 15%,15,118087.09999999999
+D. Quarter Kelly | Edge 15%,16,122897.09999999999
+D. Quarter Kelly | Edge 15%,17,121872.09999999999
+D. Quarter Kelly | Edge 15%,18,120292.09999999999
+D. Quarter Kelly | Edge 15%,19,134170.1
+D. Quarter Kelly | Edge 15%,20,130499.1
+D. Quarter Kelly | Edge 15%,21,127307.1
+D. Quarter Kelly | Edge 15%,22,124038.1
+D. Quarter Kelly | Edge 15%,23,120081.1
+D. Quarter Kelly | Edge 15%,24,130647.3
+D. Quarter Kelly | Edge 15%,25,128142.3
+D. Quarter Kelly | Edge 15%,26,127395.3
+D. Quarter Kelly | Edge 15%,27,126444.3
+D. Quarter Kelly | Edge 15%,28,125289.3
+D. Quarter Kelly | Edge 15%,29,133429.8
+D. Quarter Kelly | Edge 15%,30,129917.79999999999
+D. Quarter Kelly | Edge 15%,31,125196.79999999999
+D. Quarter Kelly | Edge 15%,32,123972.79999999999
+D. Quarter Kelly | Edge 15%,33,122894.79999999999
+D. Quarter Kelly | Edge 15%,34,121963.79999999999
+D. Quarter Kelly | Edge 15%,35,120736.79999999999
+D. Quarter Kelly | Edge 15%,36,119771.79999999999
+D. Quarter Kelly | Edge 15%,37,124631.79999999999
+D. Quarter Kelly | Edge 15%,38,122958.79999999999
+D. Quarter Kelly | Edge 15%,39,134050.4
+D. Quarter Kelly | Edge 15%,40,131361.4
+D. Quarter Kelly | Edge 15%,41,130114.4
+D. Quarter Kelly | Edge 15%,42,128732.4
+D. Quarter Kelly | Edge 15%,43,125593.4
+D. Quarter Kelly | Edge 15%,44,123420.4
+D. Quarter Kelly | Edge 15%,45,120239.4
+D. Quarter Kelly | Edge 15%,46,119444.4
+D. Quarter Kelly | Edge 15%,47,142635.3
+D. Quarter Kelly | Edge 15%,48,141748.3
+D. Quarter Kelly | Edge 15%,49,140866.3
+D. Quarter Kelly | Edge 15%,50,139077.3
+D. Quarter Kelly | Edge 15%,51,135413.3
+D. Quarter Kelly | Edge 15%,52,131684.3
+D. Quarter Kelly | Edge 15%,53,130743.29999999999
+E. Prop. Edge (50%) | Edge 15%,1,91359.0
+E. Prop. Edge (50%) | Edge 15%,2,73087.0
+E. Prop. Edge (50%) | Edge 15%,3,58470.0
+E. Prop. Edge (50%) | Edge 15%,4,78079.8
+E. Prop. Edge (50%) | Edge 15%,5,62463.8
+E. Prop. Edge (50%) | Edge 15%,6,93132.2
+E. Prop. Edge (50%) | Edge 15%,7,80206.2
+E. Prop. Edge (50%) | Edge 15%,8,130871.6
+E. Prop. Edge (50%) | Edge 15%,9,109541.6
+E. Prop. Edge (50%) | Edge 15%,10,245371.2
+E. Prop. Edge (50%) | Edge 15%,11,456389.4
+E. Prop. Edge (50%) | Edge 15%,12,365111.4
+E. Prop. Edge (50%) | Edge 15%,13,301733.4
+E. Prop. Edge (50%) | Edge 15%,14,274786.4
+E. Prop. Edge (50%) | Edge 15%,15,241028.40000000002
+E. Prop. Edge (50%) | Edge 15%,16,343182.4
+E. Prop. Edge (50%) | Edge 15%,17,307692.4
+E. Prop. Edge (50%) | Edge 15%,18,277374.4
+E. Prop. Edge (50%) | Edge 15%,19,576939.4
+E. Prop. Edge (50%) | Edge 15%,20,461551.4
+E. Prop. Edge (50%) | Edge 15%,21,369241.4
+E. Prop. Edge (50%) | Edge 15%,22,295393.4
+E. Prop. Edge (50%) | Edge 15%,23,236314.40000000002
+E. Prop. Edge (50%) | Edge 15%,24,427651.4
+E. Prop. Edge (50%) | Edge 15%,25,342121.4
+E. Prop. Edge (50%) | Edge 15%,26,315407.4
+E. Prop. Edge (50%) | Edge 15%,27,288090.4
+E. Prop. Edge (50%) | Edge 15%,28,257553.40000000002
+E. Prop. Edge (50%) | Edge 15%,29,408181.9
+E. Prop. Edge (50%) | Edge 15%,30,326545.9
+E. Prop. Edge (50%) | Edge 15%,31,261236.90000000002
+E. Prop. Edge (50%) | Edge 15%,32,226502.90000000002
+E. Prop. Edge (50%) | Edge 15%,33,199710.90000000002
+E. Prop. Edge (50%) | Edge 15%,34,182152.90000000002
+E. Prop. Edge (50%) | Edge 15%,35,160533.90000000002
+E. Prop. Edge (50%) | Edge 15%,36,145643.90000000002
+E. Prop. Edge (50%) | Edge 15%,37,188199.50000000003
+E. Prop. Edge (50%) | Edge 15%,38,156364.50000000003
+E. Prop. Edge (50%) | Edge 15%,39,232531.50000000003
+E. Prop. Edge (50%) | Edge 15%,40,198010.50000000003
+E. Prop. Edge (50%) | Edge 15%,41,173577.50000000003
+E. Prop. Edge (50%) | Edge 15%,42,148508.50000000003
+E. Prop. Edge (50%) | Edge 15%,43,118806.50000000003
+E. Prop. Edge (50%) | Edge 15%,44,97432.50000000003
+E. Prop. Edge (50%) | Edge 15%,45,82363.50000000003
+E. Prop. Edge (50%) | Edge 15%,46,75284.50000000003
+E. Prop. Edge (50%) | Edge 15%,47,179177.80000000005
+E. Prop. Edge (50%) | Edge 15%,48,164018.80000000005
+E. Prop. Edge (50%) | Edge 15%,49,150141.80000000005
+E. Prop. Edge (50%) | Edge 15%,50,130691.80000000005
+E. Prop. Edge (50%) | Edge 15%,51,104553.80000000005
+E. Prop. Edge (50%) | Edge 15%,52,83642.80000000005
+E. Prop. Edge (50%) | Edge 15%,53,75629.80000000005
+A. Flat (1000 Ft) | Edge 20%,1,99000.0
+A. Flat (1000 Ft) | Edge 20%,2,98010.0
+A. Flat (1000 Ft) | Edge 20%,3,97030.0
+A. Flat (1000 Ft) | Edge 20%,4,96060.0
+A. Flat (1000 Ft) | Edge 20%,5,95099.0
+A. Flat (1000 Ft) | Edge 20%,6,100995.2
+A. Flat (1000 Ft) | Edge 20%,7,105338.2
+A. Flat (1000 Ft) | Edge 20%,8,104285.2
+A. Flat (1000 Ft) | Edge 20%,9,103242.2
+A. Flat (1000 Ft) | Edge 20%,10,102210.2
+A. Flat (1000 Ft) | Edge 20%,11,101188.2
+A. Flat (1000 Ft) | Edge 20%,12,106653.0
+A. Flat (1000 Ft) | Edge 20%,13,105586.0
+A. Flat (1000 Ft) | Edge 20%,14,104530.0
+A. Flat (1000 Ft) | Edge 20%,15,103485.0
+A. Flat (1000 Ft) | Edge 20%,16,102450.0
+A. Flat (1000 Ft) | Edge 20%,17,107160.4
+A. Flat (1000 Ft) | Edge 20%,18,106088.4
+A. Flat (1000 Ft) | Edge 20%,19,105027.4
+A. Flat (1000 Ft) | Edge 20%,20,109752.4
+A. Flat (1000 Ft) | Edge 20%,21,108654.4
+A. Flat (1000 Ft) | Edge 20%,22,107567.4
+A. Flat (1000 Ft) | Edge 20%,23,106491.4
+A. Flat (1000 Ft) | Edge 20%,24,105426.4
+A. Flat (1000 Ft) | Edge 20%,25,104372.4
+A. Flat (1000 Ft) | Edge 20%,26,103328.4
+A. Flat (1000 Ft) | Edge 20%,27,106117.5
+A. Flat (1000 Ft) | Edge 20%,28,105056.5
+A. Flat (1000 Ft) | Edge 20%,29,104005.5
+A. Flat (1000 Ft) | Edge 20%,30,102965.5
+A. Flat (1000 Ft) | Edge 20%,31,101935.5
+A. Flat (1000 Ft) | Edge 20%,32,100916.5
+A. Flat (1000 Ft) | Edge 20%,33,99907.5
+A. Flat (1000 Ft) | Edge 20%,34,106800.6
+A. Flat (1000 Ft) | Edge 20%,35,105732.6
+A. Flat (1000 Ft) | Edge 20%,36,104675.6
+A. Flat (1000 Ft) | Edge 20%,37,103628.6
+B. Full Kelly | Edge 20%,1,89809.0
+B. Full Kelly | Edge 20%,2,79930.0
+B. Full Kelly | Edge 20%,3,72558.0
+B. Full Kelly | Edge 20%,4,69596.0
+B. Full Kelly | Edge 20%,5,62924.0
+B. Full Kelly | Edge 20%,6,93595.4
+B. Full Kelly | Edge 20%,7,134888.3
+B. Full Kelly | Edge 20%,8,119890.29999999999
+B. Full Kelly | Edge 20%,9,113944.29999999999
+B. Full Kelly | Edge 20%,10,108945.29999999999
+B. Full Kelly | Edge 20%,11,105311.29999999999
+B. Full Kelly | Edge 20%,12,153905.9
+B. Full Kelly | Edge 20%,13,137061.9
+B. Full Kelly | Edge 20%,14,123650.9
+B. Full Kelly | Edge 20%,15,110949.9
+B. Full Kelly | Edge 20%,16,96793.9
+B. Full Kelly | Edge 20%,17,130866.09999999999
+B. Full Kelly | Edge 20%,18,120829.09999999999
+B. Full Kelly | Edge 20%,19,116413.09999999999
+B. Full Kelly | Edge 20%,20,146671.09999999998
+B. Full Kelly | Edge 20%,21,131231.09999999998
+B. Full Kelly | Edge 20%,22,112157.09999999998
+B. Full Kelly | Edge 20%,23,107771.09999999998
+B. Full Kelly | Edge 20%,24,104022.09999999998
+B. Full Kelly | Edge 20%,25,99837.09999999998
+B. Full Kelly | Edge 20%,26,94476.09999999998
+B. Full Kelly | Edge 20%,27,128566.29999999999
+B. Full Kelly | Edge 20%,28,118249.29999999999
+B. Full Kelly | Edge 20%,29,113759.29999999999
+B. Full Kelly | Edge 20%,30,108927.29999999999
+B. Full Kelly | Edge 20%,31,98304.29999999999
+B. Full Kelly | Edge 20%,32,91502.29999999999
+B. Full Kelly | Edge 20%,33,82068.29999999999
+B. Full Kelly | Edge 20%,34,145810.5
+B. Full Kelly | Edge 20%,35,138402.5
+B. Full Kelly | Edge 20%,36,123816.5
+B. Full Kelly | Edge 20%,37,110178.5
+C. Half Kelly | Edge 20%,1,94905.0
+C. Half Kelly | Edge 20%,2,89685.0
+C. Half Kelly | Edge 20%,3,85549.0
+C. Half Kelly | Edge 20%,4,83803.0
+C. Half Kelly | Edge 20%,5,79786.0
+C. Half Kelly | Edge 20%,6,99229.2
+C. Half Kelly | Edge 20%,7,121120.5
+C. Half Kelly | Edge 20%,8,114387.5
+C. Half Kelly | Edge 20%,9,111550.5
+C. Half Kelly | Edge 20%,10,109103.5
+C. Half Kelly | Edge 20%,11,107283.5
+C. Half Kelly | Edge 20%,12,132037.1
+C. Half Kelly | Edge 20%,13,124812.1
+C. Half Kelly | Edge 20%,14,118706.1
+C. Half Kelly | Edge 20%,15,112609.1
+C. Half Kelly | Edge 20%,16,105425.1
+C. Half Kelly | Edge 20%,17,123981.5
+C. Half Kelly | Edge 20%,18,119227.5
+C. Half Kelly | Edge 20%,19,117048.5
+C. Half Kelly | Edge 20%,20,132263.0
+C. Half Kelly | Edge 20%,21,125301.0
+C. Half Kelly | Edge 20%,22,116195.0
+C. Half Kelly | Edge 20%,23,113923.0
+C. Half Kelly | Edge 20%,24,111941.0
+C. Half Kelly | Edge 20%,25,109689.0
+C. Half Kelly | Edge 20%,26,106744.0
+C. Half Kelly | Edge 20%,27,126003.1
+C. Half Kelly | Edge 20%,28,120947.1
+C. Half Kelly | Edge 20%,29,118651.1
+C. Half Kelly | Edge 20%,30,116131.1
+C. Half Kelly | Edge 20%,31,110468.1
+C. Half Kelly | Edge 20%,32,106646.1
+C. Half Kelly | Edge 20%,33,101148.1
+C. Half Kelly | Edge 20%,34,140429.80000000002
+C. Half Kelly | Edge 20%,35,136862.80000000002
+C. Half Kelly | Edge 20%,36,129650.80000000002
+C. Half Kelly | Edge 20%,37,122510.80000000002
+D. Quarter Kelly | Edge 20%,1,97452.0
+D. Quarter Kelly | Edge 20%,2,94772.0
+D. Quarter Kelly | Edge 20%,3,92587.0
+D. Quarter Kelly | Edge 20%,4,91642.0
+D. Quarter Kelly | Edge 20%,5,89446.0
+D. Quarter Kelly | Edge 20%,6,100345.6
+D. Quarter Kelly | Edge 20%,7,111413.8
+D. Quarter Kelly | Edge 20%,8,108316.8
+D. Quarter Kelly | Edge 20%,9,106973.8
+D. Quarter Kelly | Edge 20%,10,105800.8
+D. Quarter Kelly | Edge 20%,11,104918.8
+D. Quarter Kelly | Edge 20%,12,117020.20000000001
+D. Quarter Kelly | Edge 20%,13,113818.20000000001
+D. Quarter Kelly | Edge 20%,14,111034.20000000001
+D. Quarter Kelly | Edge 20%,15,108183.20000000001
+D. Quarter Kelly | Edge 20%,16,104732.20000000001
+D. Quarter Kelly | Edge 20%,17,113950.6
+D. Quarter Kelly | Edge 20%,18,111765.6
+D. Quarter Kelly | Edge 20%,19,110744.6
+D. Quarter Kelly | Edge 20%,20,117940.1
+D. Quarter Kelly | Edge 20%,21,114836.1
+D. Quarter Kelly | Edge 20%,22,110663.1
+D. Quarter Kelly | Edge 20%,23,109581.1
+D. Quarter Kelly | Edge 20%,24,108628.1
+D. Quarter Kelly | Edge 20%,25,107535.1
+D. Quarter Kelly | Edge 20%,26,106091.1
+D. Quarter Kelly | Edge 20%,27,115662.6
+D. Quarter Kelly | Edge 20%,28,113342.6
+D. Quarter Kelly | Edge 20%,29,112266.6
+D. Quarter Kelly | Edge 20%,30,111074.6
+D. Quarter Kelly | Edge 20%,31,108366.6
+D. Quarter Kelly | Edge 20%,32,106491.6
+D. Quarter Kelly | Edge 20%,33,103746.6
+D. Quarter Kelly | Edge 20%,34,123894.6
+D. Quarter Kelly | Edge 20%,35,122320.6
+D. Quarter Kelly | Edge 20%,36,119097.6
+D. Quarter Kelly | Edge 20%,37,115818.6
+E. Prop. Edge (50%) | Edge 20%,1,80000.0
+E. Prop. Edge (50%) | Edge 20%,2,64000.0
+E. Prop. Edge (50%) | Edge 20%,3,51200.0
+E. Prop. Edge (50%) | Edge 20%,4,44094.0
+E. Prop. Edge (50%) | Edge 20%,5,36907.0
+E. Prop. Edge (50%) | Edge 20%,6,82669.20000000001
+E. Prop. Edge (50%) | Edge 20%,7,153765.40000000002
+E. Prop. Edge (50%) | Edge 20%,8,123012.40000000002
+E. Prop. Edge (50%) | Edge 20%,9,101659.40000000002
+E. Prop. Edge (50%) | Edge 20%,10,89170.40000000002
+E. Prop. Edge (50%) | Edge 20%,11,79948.40000000002
+E. Prop. Edge (50%) | Edge 20%,12,166294.40000000002
+E. Prop. Edge (50%) | Edge 20%,13,133035.40000000002
+E. Prop. Edge (50%) | Edge 20%,14,106428.40000000002
+E. Prop. Edge (50%) | Edge 20%,15,85142.40000000002
+E. Prop. Edge (50%) | Edge 20%,16,68114.40000000002
+E. Prop. Edge (50%) | Edge 20%,17,123263.80000000002
+E. Prop. Edge (50%) | Edge 20%,18,98610.80000000002
+E. Prop. Edge (50%) | Edge 20%,19,88158.80000000002
+E. Prop. Edge (50%) | Edge 20%,20,139719.80000000002
+E. Prop. Edge (50%) | Edge 20%,21,111775.80000000002
+E. Prop. Edge (50%) | Edge 20%,22,89420.80000000002
+E. Prop. Edge (50%) | Edge 20%,23,77531.80000000002
+E. Prop. Edge (50%) | Edge 20%,24,68360.80000000002
+E. Prop. Edge (50%) | Edge 20%,25,60247.80000000002
+E. Prop. Edge (50%) | Edge 20%,26,50056.80000000002
+E. Prop. Edge (50%) | Edge 20%,27,74440.50000000001
+E. Prop. Edge (50%) | Edge 20%,28,63389.500000000015
+E. Prop. Edge (50%) | Edge 20%,29,55567.500000000015
+E. Prop. Edge (50%) | Edge 20%,30,47542.500000000015
+E. Prop. Edge (50%) | Edge 20%,31,38033.500000000015
+E. Prop. Edge (50%) | Edge 20%,32,31191.500000000015
+E. Prop. Edge (50%) | Edge 20%,33,26367.500000000015
+E. Prop. Edge (50%) | Edge 20%,34,62758.10000000001
+E. Prop. Edge (50%) | Edge 20%,35,54628.10000000001
+E. Prop. Edge (50%) | Edge 20%,36,43702.10000000001
+E. Prop. Edge (50%) | Edge 20%,37,34962.10000000001

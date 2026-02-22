@@ -1,0 +1,1186 @@
+{
+  "date": "2025-04-12",
+  "source": "bet.lovi.hu",
+  "scrape_time": "2026-02-22T13:22:43.411010",
+  "races": [
+    {
+      "race_id": "1310714",
+      "title": "1. Futam - NYERETLENEK VERSENYE Autóstart!",
+      "meta": {
+        "start": "14:00",
+        "Táv": "1900 m",
+        "participants_count": 12
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Galatea",
+          "distance": "1900 m",
+          "jockey": "Komáromi Krisztina",
+          "trainer": "Nagy Ferenc II.",
+          "starting_odds": "-"
+        },
+        {
+          "program_num": "2",
+          "horse": "Fakta",
+          "distance": "1900 m",
+          "jockey": "Kárai József",
+          "trainer": "Török István",
+          "starting_odds": "7,60"
+        },
+        {
+          "program_num": "3",
+          "horse": "Golden Rose OZ",
+          "distance": "1900 m",
+          "jockey": "Boris Kecenovic",
+          "trainer": "Juhász Balázs",
+          "starting_odds": "2,50"
+        },
+        {
+          "program_num": "4",
+          "horse": "Grace Kelly",
+          "distance": "1900 m",
+          "jockey": "Kolozsi László",
+          "trainer": "Kolozsi László",
+          "starting_odds": "4,20"
+        },
+        {
+          "program_num": "5",
+          "horse": "Gentleman Jack",
+          "distance": "1900 m",
+          "jockey": "Fejszés Kitti",
+          "trainer": "Horváth Zoltán",
+          "starting_odds": "5,90"
+        },
+        {
+          "program_num": "6",
+          "horse": "God save the Queen",
+          "distance": "1900 m",
+          "jockey": "Angyal Andor",
+          "trainer": "Angyal Andor",
+          "starting_odds": "7,60"
+        },
+        {
+          "program_num": "7",
+          "horse": "Grazia",
+          "distance": "1900 m",
+          "jockey": "Nagy Ferenc II.",
+          "trainer": "Nagy Ferenc II.",
+          "starting_odds": "25,60"
+        },
+        {
+          "program_num": "8",
+          "horse": "Fire Bird",
+          "distance": "1900 m",
+          "jockey": "Milan Tasic",
+          "trainer": "Zoltan Ozvar",
+          "starting_odds": "8,50"
+        },
+        {
+          "program_num": "9",
+          "horse": "Farkasfog",
+          "distance": "1900 m",
+          "jockey": "Hajnal Tibor",
+          "trainer": "Hajnal Tibor",
+          "starting_odds": "9,60"
+        },
+        {
+          "program_num": "10",
+          "horse": "Gotti",
+          "distance": "1900 m",
+          "jockey": "Búrány Adrián",
+          "trainer": "Búrány Adrián",
+          "starting_odds": "6,90"
+        },
+        {
+          "program_num": "11",
+          "horse": "Fizető",
+          "distance": "1900 m",
+          "jockey": "Lakatos Árpád",
+          "trainer": "Budai Attila",
+          "starting_odds": "76,80"
+        },
+        {
+          "program_num": "12",
+          "horse": "Bitangjó",
+          "distance": "1900 m",
+          "jockey": "Szennovitz Adél",
+          "trainer": "Szennovitz Adél",
+          "starting_odds": "-"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "10",
+          "horse": "Gotti",
+          "odds_at_finish": "6,90",
+          "driver": "Búrány Adrián"
+        },
+        {
+          "rank": "2",
+          "program_num": "11",
+          "horse": "Fizető",
+          "odds_at_finish": "76,80",
+          "driver": "Lakatos Árpád"
+        },
+        {
+          "rank": "3",
+          "program_num": "4",
+          "horse": "Grace Kelly",
+          "odds_at_finish": "4,20",
+          "driver": "Kolozsi László"
+        },
+        {
+          "rank": "4",
+          "program_num": "5",
+          "horse": "Gentleman Jack",
+          "odds_at_finish": "5,90",
+          "driver": "Fejszés Kitti"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "10",
+          "desc": "",
+          "payout": "6,90"
+        },
+        {
+          "type": "Befutó",
+          "combination": "10 - 11",
+          "desc": "Helyes sorrend",
+          "payout": "71,40"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "10 - 11 - 4",
+          "desc": "Helyes sorrend",
+          "payout": "196,10"
+        }
+      ]
+    },
+    {
+      "race_id": "1310715",
+      "title": "2. Futam - TAYLOR BOKO HENDIKEP Autóstart!",
+      "meta": {
+        "start": "14:30",
+        "Táv": "1900 m",
+        "participants_count": 8
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Easy Bet",
+          "distance": "1900 m",
+          "jockey": "Fejszés Kitti",
+          "trainer": "Horváth Zoltán",
+          "starting_odds": "-"
+        },
+        {
+          "program_num": "2",
+          "horse": "Fabrice",
+          "distance": "1900 m",
+          "jockey": "Horváth György",
+          "trainer": "Horváth György",
+          "starting_odds": "2,80"
+        },
+        {
+          "program_num": "3",
+          "horse": "Firefly Shadow",
+          "distance": "1900 m",
+          "jockey": "Vicen Pál",
+          "trainer": "Budai Attila",
+          "starting_odds": "5,40"
+        },
+        {
+          "program_num": "4",
+          "horse": "Ezigen",
+          "distance": "1900 m",
+          "jockey": "Márton Lajos",
+          "trainer": "Márton Lajos",
+          "starting_odds": "2,10"
+        },
+        {
+          "program_num": "5",
+          "horse": "Despasito",
+          "distance": "1900 m",
+          "jockey": "Lakatos Csaba",
+          "trainer": "Lakatos Csaba",
+          "starting_odds": "3,40"
+        },
+        {
+          "program_num": "6",
+          "horse": "Downtown Girl M",
+          "distance": "1900 m",
+          "jockey": "Nagy Ferenc II.",
+          "trainer": "Nagy Ferenc II.",
+          "starting_odds": "9,30"
+        },
+        {
+          "program_num": "7",
+          "horse": "Édes K",
+          "distance": "1900 m",
+          "jockey": "Gyolai Zoltán am.",
+          "trainer": "Kolozsi Sándor",
+          "starting_odds": "16,30"
+        },
+        {
+          "program_num": "8",
+          "horse": "Donia d'Aunay",
+          "distance": "1900 m",
+          "jockey": "Weber Zsolt",
+          "trainer": "Weber Zsolt",
+          "starting_odds": "-"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "4",
+          "horse": "Ezigen",
+          "odds_at_finish": "2,10",
+          "driver": "Márton Lajos"
+        },
+        {
+          "rank": "2",
+          "program_num": "2",
+          "horse": "Fabrice",
+          "odds_at_finish": "2,80",
+          "driver": "Horváth György"
+        },
+        {
+          "rank": "3",
+          "program_num": "6",
+          "horse": "Downtown Girl M",
+          "odds_at_finish": "9,30",
+          "driver": "Nagy Ferenc II."
+        },
+        {
+          "rank": "4",
+          "program_num": "3",
+          "horse": "Firefly Shadow",
+          "odds_at_finish": "5,40",
+          "driver": "Vicen Pál"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "4",
+          "desc": "",
+          "payout": "2,10"
+        },
+        {
+          "type": "Befutó",
+          "combination": "4 - 2",
+          "desc": "Helyes sorrend",
+          "payout": "6,90"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "4 - 2 - 6",
+          "desc": "Helyes sorrend",
+          "payout": "32,20"
+        }
+      ]
+    },
+    {
+      "race_id": "1310716",
+      "title": "3. Futam - UNDERPAID HANOVER DÍJ Autóstart!",
+      "meta": {
+        "start": "15:00",
+        "Táv": "1900 m",
+        "participants_count": 8
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "El Valle Sagrado",
+          "distance": "1900 m",
+          "jockey": "Budai Attila",
+          "trainer": "Budai Attila",
+          "starting_odds": "2,40"
+        },
+        {
+          "program_num": "2",
+          "horse": "Daytona Spav",
+          "distance": "1900 m",
+          "jockey": "Veljko Mazsity",
+          "trainer": "Veljko Mazsity",
+          "starting_odds": "2,40"
+        },
+        {
+          "program_num": "3",
+          "horse": "Kasane du Hautvent",
+          "distance": "1900 m",
+          "jockey": "Hegedűs Tamás",
+          "trainer": "Zvonko Osterc (SLO)",
+          "starting_odds": "29,70"
+        },
+        {
+          "program_num": "4",
+          "horse": "Extra George",
+          "distance": "1900 m",
+          "jockey": "Varga Sándor",
+          "trainer": "Goran Zolnaji",
+          "starting_odds": "23,60"
+        },
+        {
+          "program_num": "5",
+          "horse": "Csábító R.",
+          "distance": "1900 m",
+          "jockey": "Márton Lajos",
+          "trainer": "Márton Lajos",
+          "starting_odds": "16,00"
+        },
+        {
+          "program_num": "6",
+          "horse": "Dumbledore",
+          "distance": "1900 m",
+          "jockey": "Nagyváry Andrea",
+          "trainer": "Fazekas Imre",
+          "starting_odds": "44,60"
+        },
+        {
+          "program_num": "7",
+          "horse": "Be Happy",
+          "distance": "1900 m",
+          "jockey": "Takács Eszter Cseperke am.",
+          "trainer": "Márton Lajos",
+          "starting_odds": "25,90"
+        },
+        {
+          "program_num": "8",
+          "horse": "Igor de Vrie",
+          "distance": "1900 m",
+          "jockey": "Branko Skenderovic",
+          "trainer": "Aleksandar Dimitrijevic (SRB)",
+          "starting_odds": "2,10"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "2",
+          "horse": "Daytona Spav",
+          "odds_at_finish": "2,40",
+          "driver": "Veljko Mazsity"
+        },
+        {
+          "rank": "2",
+          "program_num": "1",
+          "horse": "El Valle Sagrado",
+          "odds_at_finish": "2,40",
+          "driver": "Budai Attila"
+        },
+        {
+          "rank": "3",
+          "program_num": "8",
+          "horse": "Igor de Vrie",
+          "odds_at_finish": "2,10",
+          "driver": "Branko Skenderovic"
+        },
+        {
+          "rank": "4",
+          "program_num": "5",
+          "horse": "Csábító R.",
+          "odds_at_finish": "16,00",
+          "driver": "Márton Lajos"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "2",
+          "desc": "",
+          "payout": "3,20"
+        },
+        {
+          "type": "Befutó",
+          "combination": "2 - 1",
+          "desc": "Helyes sorrend",
+          "payout": "11,00"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "2 - 1 - 8",
+          "desc": "Helyes sorrend",
+          "payout": "17,30"
+        }
+      ]
+    },
+    {
+      "race_id": "1310717",
+      "title": "4. Futam - WHAT A MAN DÍJ Autóstart!",
+      "meta": {
+        "start": "15:30",
+        "Táv": "1800 m",
+        "participants_count": 12
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Fess Fiú",
+          "distance": "1800 m",
+          "jockey": "Horváth Zoltán",
+          "trainer": "Horváth Zoltán",
+          "starting_odds": "28,30"
+        },
+        {
+          "program_num": "2",
+          "horse": "Clearwater Belle",
+          "distance": "1800 m",
+          "jockey": "Milan Kovacevic",
+          "trainer": "Goran Zolnaji",
+          "starting_odds": "85,00"
+        },
+        {
+          "program_num": "3",
+          "horse": "Felix Charme",
+          "distance": "1800 m",
+          "jockey": "Csordás Emil",
+          "trainer": "Csordás Emil",
+          "starting_odds": "17,00"
+        },
+        {
+          "program_num": "4",
+          "horse": "Filthy Rich",
+          "distance": "1800 m",
+          "jockey": "Hajnal Tibor",
+          "trainer": "Hajnal Tibor",
+          "starting_odds": "5,30"
+        },
+        {
+          "program_num": "5",
+          "horse": "Genesis",
+          "distance": "1800 m",
+          "jockey": "Fazekas Imre",
+          "trainer": "Balogh Bernadett",
+          "starting_odds": "4,00"
+        },
+        {
+          "program_num": "6",
+          "horse": "Fondorlat",
+          "distance": "1800 m",
+          "jockey": "Dukai Tamás",
+          "trainer": "Angyal Andor",
+          "starting_odds": "21,20"
+        },
+        {
+          "program_num": "7",
+          "horse": "Senorita",
+          "distance": "1800 m",
+          "jockey": "Búrány Adrián",
+          "trainer": "Marina Stipic (SRB)",
+          "starting_odds": "2,20"
+        },
+        {
+          "program_num": "8",
+          "horse": "Guinevere",
+          "distance": "1800 m",
+          "jockey": "Fejszés Kitti",
+          "trainer": "Goran Zolnaji",
+          "starting_odds": "42,50"
+        },
+        {
+          "program_num": "9",
+          "horse": "Füge M",
+          "distance": "1800 m",
+          "jockey": "Nagy Ferenc II.",
+          "trainer": "Nagy Ferenc II.",
+          "starting_odds": "14,10"
+        },
+        {
+          "program_num": "10",
+          "horse": "Finiselj!",
+          "distance": "1800 m",
+          "jockey": "Vekas Zoltán",
+          "trainer": "Vekas Zoltán",
+          "starting_odds": "5,60"
+        },
+        {
+          "program_num": "11",
+          "horse": "Fancy Jet",
+          "distance": "1800 m",
+          "jockey": "Juhász Balázs",
+          "trainer": "Juhász Balázs",
+          "starting_odds": "7,00"
+        },
+        {
+          "program_num": "12",
+          "horse": "Fany",
+          "distance": "1800 m",
+          "jockey": "Milan Tasic",
+          "trainer": "Juhász Balázs",
+          "starting_odds": "42,50"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "6",
+          "horse": "Fondorlat",
+          "odds_at_finish": "21,20",
+          "driver": "Dukai Tamás"
+        },
+        {
+          "rank": "2",
+          "program_num": "4",
+          "horse": "Filthy Rich",
+          "odds_at_finish": "5,30",
+          "driver": "Hajnal Tibor"
+        },
+        {
+          "rank": "3",
+          "program_num": "1",
+          "horse": "Fess Fiú",
+          "odds_at_finish": "28,30",
+          "driver": "Horváth Zoltán"
+        },
+        {
+          "rank": "4",
+          "program_num": "2",
+          "horse": "Clearwater Belle",
+          "odds_at_finish": "85,00",
+          "driver": "Milan Kovacevic"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "6",
+          "desc": "",
+          "payout": "21,20"
+        },
+        {
+          "type": "Befutó",
+          "combination": "4 - 6",
+          "desc": "Helyes sorrend",
+          "payout": "81,80"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "6 - 4 - X",
+          "desc": "Helyes sorrend",
+          "payout": "355,60"
+        }
+      ]
+    },
+    {
+      "race_id": "1310718",
+      "title": "5. Futam - RINETTE STREAMLINE DÍJ Autóstart!",
+      "meta": {
+        "start": "16:00",
+        "Táv": "1900 m",
+        "participants_count": 10
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Treue",
+          "distance": "1900 m",
+          "jockey": "Goran Zolnaji",
+          "trainer": "Goran Zolnaji",
+          "starting_odds": "-"
+        },
+        {
+          "program_num": "2",
+          "horse": "Face to face",
+          "distance": "1900 m",
+          "jockey": "Fazekas Imre",
+          "trainer": "Balogh Bernadett",
+          "starting_odds": "1,50"
+        },
+        {
+          "program_num": "3",
+          "horse": "Västerbo No Edge",
+          "distance": "1900 m",
+          "jockey": "Hajnal Tibor",
+          "trainer": "Hajnal Tibor",
+          "starting_odds": "34,90"
+        },
+        {
+          "program_num": "4",
+          "horse": "Top Hill",
+          "distance": "1900 m",
+          "jockey": "Angyal Andor",
+          "trainer": "Angyal Andor",
+          "starting_odds": "14,90"
+        },
+        {
+          "program_num": "5",
+          "horse": "Gina Fling",
+          "distance": "1900 m",
+          "jockey": "Márton Lajos",
+          "trainer": "Kolozsi Sándor",
+          "starting_odds": "10,40"
+        },
+        {
+          "program_num": "6",
+          "horse": "Éden Evo",
+          "distance": "1900 m",
+          "jockey": "Lakatos Csaba",
+          "trainer": "Lakatos Csaba",
+          "starting_odds": "4,90"
+        },
+        {
+          "program_num": "7",
+          "horse": "Sinatra A.T.",
+          "distance": "1900 m",
+          "jockey": "Boris Kecenovic",
+          "trainer": "Aleksandar Dimitrijevic (SRB)",
+          "starting_odds": "17,40"
+        },
+        {
+          "program_num": "8",
+          "horse": "Fenegyerek",
+          "distance": "1900 m",
+          "jockey": "Juhász Balázs",
+          "trainer": "Juhász Balázs",
+          "starting_odds": "9,50"
+        },
+        {
+          "program_num": "9",
+          "horse": "Elizabeth Boss",
+          "distance": "1900 m",
+          "jockey": "Veljko Mazsity",
+          "trainer": "Veljko Mazsity",
+          "starting_odds": "3,60"
+        },
+        {
+          "program_num": "10",
+          "horse": "Emilio Family",
+          "distance": "1900 m",
+          "jockey": "Weber Zsolt",
+          "trainer": "Weber Zsolt",
+          "starting_odds": "-"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "2",
+          "horse": "Face to face",
+          "odds_at_finish": "1,50",
+          "driver": "Fazekas Imre"
+        },
+        {
+          "rank": "2",
+          "program_num": "8",
+          "horse": "Fenegyerek",
+          "odds_at_finish": "9,50",
+          "driver": "Juhász Balázs"
+        },
+        {
+          "rank": "3",
+          "program_num": "4",
+          "horse": "Top Hill",
+          "odds_at_finish": "14,90",
+          "driver": "Angyal Andor"
+        },
+        {
+          "rank": "4",
+          "program_num": "3",
+          "horse": "Västerbo No Edge",
+          "odds_at_finish": "34,90",
+          "driver": "Hajnal Tibor"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "2",
+          "desc": "",
+          "payout": "1,50"
+        },
+        {
+          "type": "Befutó",
+          "combination": "2 - R",
+          "desc": "",
+          "payout": "1,50"
+        },
+        {
+          "type": "Befutó",
+          "combination": "2 - 8",
+          "desc": "Helyes sorrend",
+          "payout": "15,20"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "2 - 8 - 4",
+          "desc": "Helyes sorrend",
+          "payout": "50,40"
+        }
+      ]
+    },
+    {
+      "race_id": "1310719",
+      "title": "6. Futam - 2025. ÉVI SEGÉDHAJTÓ KUPA II. FUTAMA HENDIKEP Autóstart!",
+      "meta": {
+        "start": "16:30",
+        "Táv": "1800 m",
+        "participants_count": 8
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Briliáns BD",
+          "distance": "1800 m",
+          "jockey": "Balogh Roland",
+          "trainer": "Török István",
+          "starting_odds": "18,70"
+        },
+        {
+          "program_num": "2",
+          "horse": "Magic Bucks",
+          "distance": "1800 m",
+          "jockey": "Kárai József",
+          "trainer": "Török István",
+          "starting_odds": "37,40"
+        },
+        {
+          "program_num": "3",
+          "horse": "Chicago",
+          "distance": "1800 m",
+          "jockey": "Gras Mónika",
+          "trainer": "Kolozsi Sándor",
+          "starting_odds": "18,70"
+        },
+        {
+          "program_num": "4",
+          "horse": "Etalon N",
+          "distance": "1800 m",
+          "jockey": "Hegedűs Tamás",
+          "trainer": "Csordás Emil",
+          "starting_odds": "6,20"
+        },
+        {
+          "program_num": "5",
+          "horse": "Chesterfield",
+          "distance": "1800 m",
+          "jockey": "Bartucz Zoltán",
+          "trainer": "Kolozsi László",
+          "starting_odds": "18,70"
+        },
+        {
+          "program_num": "6",
+          "horse": "Csikós",
+          "distance": "1800 m",
+          "jockey": "Iván Zoltán",
+          "trainer": "Márton Lajos",
+          "starting_odds": "6,20"
+        },
+        {
+          "program_num": "7",
+          "horse": "Boszi",
+          "distance": "1800 m",
+          "jockey": "Kiss Csaba",
+          "trainer": "Kolozsi László",
+          "starting_odds": "6,20"
+        },
+        {
+          "program_num": "8",
+          "horse": "Valentino",
+          "distance": "1800 m",
+          "jockey": "Dukai Tamás",
+          "trainer": "Budai Attila",
+          "starting_odds": "1,20"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "4",
+          "horse": "Etalon N",
+          "odds_at_finish": "6,20",
+          "driver": "Hegedűs Tamás"
+        },
+        {
+          "rank": "2",
+          "program_num": "6",
+          "horse": "Csikós",
+          "odds_at_finish": "6,20",
+          "driver": "Iván Zoltán"
+        },
+        {
+          "rank": "3",
+          "program_num": "3",
+          "horse": "Chicago",
+          "odds_at_finish": "18,70",
+          "driver": "Gras Mónika"
+        },
+        {
+          "rank": "4",
+          "program_num": "7",
+          "horse": "Boszi",
+          "odds_at_finish": "6,20",
+          "driver": "Kiss Csaba"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "4",
+          "desc": "",
+          "payout": "6,20"
+        },
+        {
+          "type": "Befutó",
+          "combination": "4 - 6",
+          "desc": "Helyes sorrend",
+          "payout": "17,30"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "4 - 6 - 3",
+          "desc": "Helyes sorrend",
+          "payout": "304,60"
+        }
+      ]
+    },
+    {
+      "race_id": "1310720",
+      "title": "7. Futam - UKIYA HENDIKEP Autóstart!",
+      "meta": {
+        "start": "17:00",
+        "Táv": "1800 m",
+        "participants_count": 6
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Bűbájos",
+          "distance": "1800 m",
+          "jockey": "Nagy Ferenc II.",
+          "trainer": "Nagy Ferenc II.",
+          "starting_odds": "26,50"
+        },
+        {
+          "program_num": "2",
+          "horse": "Zente",
+          "distance": "1800 m",
+          "jockey": "Tänczer Tamás am.",
+          "trainer": "Horváth Zoltán",
+          "starting_odds": "18,50"
+        },
+        {
+          "program_num": "3",
+          "horse": "Diófás",
+          "distance": "1800 m",
+          "jockey": "Kurucz Attila am.",
+          "trainer": "Varga Sándor",
+          "starting_odds": "12,30"
+        },
+        {
+          "program_num": "4",
+          "horse": "My Dyla LV",
+          "distance": "1800 m",
+          "jockey": "Kolozsi László",
+          "trainer": "Kolozsi László",
+          "starting_odds": "1,00"
+        },
+        {
+          "program_num": "5",
+          "horse": "Adamo Fling",
+          "distance": "1800 m",
+          "jockey": "Csordás Emil",
+          "trainer": "Csordás Emil",
+          "starting_odds": "26,50"
+        },
+        {
+          "program_num": "6",
+          "horse": "Charming Boy",
+          "distance": "1800 m",
+          "jockey": "Hajnal Tibor",
+          "trainer": "Hajnal Tibor",
+          "starting_odds": "11,60"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "6",
+          "horse": "Charming Boy",
+          "odds_at_finish": "11,60",
+          "driver": "Hajnal Tibor"
+        },
+        {
+          "rank": "2",
+          "program_num": "4",
+          "horse": "My Dyla LV",
+          "odds_at_finish": "1,00",
+          "driver": "Kolozsi László"
+        },
+        {
+          "rank": "3",
+          "program_num": "3",
+          "horse": "Diófás",
+          "odds_at_finish": "12,30",
+          "driver": "Kurucz Attila am."
+        },
+        {
+          "rank": "4",
+          "program_num": "1",
+          "horse": "Bűbájos",
+          "odds_at_finish": "26,50",
+          "driver": "Nagy Ferenc II."
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "6",
+          "desc": "",
+          "payout": "11,60"
+        },
+        {
+          "type": "Befutó",
+          "combination": "6 - 4",
+          "desc": "Helyes sorrend",
+          "payout": "15,50"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "6 - 4 - 3",
+          "desc": "Helyes sorrend",
+          "payout": "43,60"
+        }
+      ]
+    },
+    {
+      "race_id": "1310721",
+      "title": "8. Futam - PULAY KORNÉL EMLÉKVERSENY Autóstart!",
+      "meta": {
+        "start": "17:30",
+        "Táv": "1900 m",
+        "participants_count": 7
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Cardenas Baba",
+          "distance": "1900 m",
+          "jockey": "Goran Zolnaji",
+          "trainer": "Goran Zolnaji",
+          "starting_odds": "6,60"
+        },
+        {
+          "program_num": "2",
+          "horse": "Vulcano NP",
+          "distance": "1900 m",
+          "jockey": "Gheorghe Tanase",
+          "trainer": "Fazekas Imre",
+          "starting_odds": "71,40"
+        },
+        {
+          "program_num": "3",
+          "horse": "Bonaparte Boss",
+          "distance": "1900 m",
+          "jockey": "Veljko Mazsity",
+          "trainer": "Veljko Mazsity",
+          "starting_odds": "3,20"
+        },
+        {
+          "program_num": "4",
+          "horse": "Eternity Bar",
+          "distance": "1900 m",
+          "jockey": "Nagy Ferenc II.",
+          "trainer": "Balogh Bernadett",
+          "starting_odds": "19,40"
+        },
+        {
+          "program_num": "5",
+          "horse": "Enjoy",
+          "distance": "1900 m",
+          "jockey": "Fazekas Imre",
+          "trainer": "Balogh Bernadett",
+          "starting_odds": "1,20"
+        },
+        {
+          "program_num": "6",
+          "horse": "ZACAPA U.S.",
+          "distance": "1900 m",
+          "jockey": "Lakatos Csaba",
+          "trainer": "Lakatos Csaba",
+          "starting_odds": "19,40"
+        },
+        {
+          "program_num": "7",
+          "horse": "Palace Bo",
+          "distance": "1900 m",
+          "jockey": "Márton Lajos",
+          "trainer": "Balogh Bernadett",
+          "starting_odds": "9,30"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "5",
+          "horse": "Enjoy",
+          "odds_at_finish": "1,20",
+          "driver": "Fazekas Imre"
+        },
+        {
+          "rank": "2",
+          "program_num": "3",
+          "horse": "Bonaparte Boss",
+          "odds_at_finish": "3,20",
+          "driver": "Veljko Mazsity"
+        },
+        {
+          "rank": "3",
+          "program_num": "6",
+          "horse": "ZACAPA U.S.",
+          "odds_at_finish": "19,40",
+          "driver": "Lakatos Csaba"
+        },
+        {
+          "rank": "4",
+          "program_num": "1",
+          "horse": "Cardenas Baba",
+          "odds_at_finish": "6,60",
+          "driver": "Goran Zolnaji"
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "5",
+          "desc": "",
+          "payout": "1,20"
+        },
+        {
+          "type": "Befutó",
+          "combination": "5 - 3",
+          "desc": "Helyes sorrend",
+          "payout": "4,30"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "5 - 3 - 6",
+          "desc": "Helyes sorrend",
+          "payout": "48,50"
+        }
+      ]
+    },
+    {
+      "race_id": "1310722",
+      "title": "9. Futam - MILLIONDOLLAR LUX HENDIKEP Fordulóstart!",
+      "meta": {
+        "start": "18:00",
+        "Táv": "1960 m",
+        "participants_count": 7
+      },
+      "participants": [
+        {
+          "program_num": "1",
+          "horse": "Inforgettable",
+          "distance": "1960 m",
+          "jockey": "Kurucz Attila am.",
+          "trainer": "Budai Attila",
+          "starting_odds": "55,00"
+        },
+        {
+          "program_num": "2",
+          "horse": "Danny DeVito",
+          "distance": "1960 m",
+          "jockey": "Gyolai Zoltán am.",
+          "trainer": "Kolozsi Sándor",
+          "starting_odds": "10,30"
+        },
+        {
+          "program_num": "3",
+          "horse": "Dulcinea del Toboso",
+          "distance": "1960 m",
+          "jockey": "Tänczer Tamás am.",
+          "trainer": "Horváth Zoltán",
+          "starting_odds": "6,80"
+        },
+        {
+          "program_num": "4",
+          "horse": "Ann Bella M",
+          "distance": "1960 m",
+          "jockey": "Márton Lajos",
+          "trainer": "Márton Lajos",
+          "starting_odds": "3,50"
+        },
+        {
+          "program_num": "5",
+          "horse": "Vakarcs RG",
+          "distance": "1980 m",
+          "jockey": "Szokola Attila",
+          "trainer": "Vekas Zoltán",
+          "starting_odds": "11,00"
+        },
+        {
+          "program_num": "6",
+          "horse": "PETER PIPER",
+          "distance": "1980 m",
+          "jockey": "Lakatos Csaba",
+          "trainer": "Lakatos Csaba",
+          "starting_odds": "6,30"
+        },
+        {
+          "program_num": "7",
+          "horse": "Usain",
+          "distance": "1980 m",
+          "jockey": "Komáromi Krisztina",
+          "trainer": "Nagy Ferenc II.",
+          "starting_odds": "1,40"
+        }
+      ],
+      "results": [
+        {
+          "rank": "1",
+          "program_num": "6",
+          "horse": "PETER PIPER",
+          "odds_at_finish": "6,30",
+          "driver": "Lakatos Csaba"
+        },
+        {
+          "rank": "2",
+          "program_num": "4",
+          "horse": "Ann Bella M",
+          "odds_at_finish": "3,50",
+          "driver": "Márton Lajos"
+        },
+        {
+          "rank": "3",
+          "program_num": "7",
+          "horse": "Usain",
+          "odds_at_finish": "1,40",
+          "driver": "Komáromi Krisztina"
+        },
+        {
+          "rank": "4",
+          "program_num": "2",
+          "horse": "Danny DeVito",
+          "odds_at_finish": "10,30",
+          "driver": "Gyolai Zoltán am."
+        }
+      ],
+      "dividends": [
+        {
+          "type": "Tét",
+          "combination": "6",
+          "desc": "",
+          "payout": "6,30"
+        },
+        {
+          "type": "Befutó",
+          "combination": "6 - 4",
+          "desc": "Helyes sorrend",
+          "payout": "5,10"
+        },
+        {
+          "type": "Hármasbefutó",
+          "combination": "6 - 4 - 7",
+          "desc": "Helyes sorrend",
+          "payout": "43,30"
+        }
+      ]
+    }
+  ]
+}

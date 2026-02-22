@@ -1,0 +1,7 @@
+strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
+1. Random (1 per race),308,308000,-190400,-61.82,9.42,12.47
+2. Always Favorite (lowest odds),323,323000,-72300,-22.38,39.63,2.08
+3a. Best Form (h_points_l5),310,310000,-85700,-27.65,21.29,9.89
+3b. Fastest (h_avg_speed_l5),313,313000,-43100,-13.77,21.09,9.3
+3c. Peak Form Ratio (h_speed_ratio),306,306000,-86100,-28.14,16.01,12.64
+"4. V3 Model (edge 15%, MaxOdds ≤8)",53,53000,19600,36.98,22.64,6.7
