@@ -1,0 +1,1465 @@
+﻿league_name,league_id,season_id,round_nr,match_id,start_timestamp,home_team_name,home_team_id,home_score,away_team_name,away_team_id,away_score,status
+English Premier League,17,61627,1,12436870,1723834800,Manchester United,35,1,Fulham,43,0,finished
+English Premier League,17,61627,1,12436871,1723894200,Ipswich Town,32,0,Liverpool,44,2,finished
+English Premier League,17,61627,1,12436872,1723903200,Arsenal,42,2,Wolverhampton,3,0,finished
+English Premier League,17,61627,1,12436873,1723903200,Everton,48,0,Brighton & Hove Albion,30,3,finished
+English Premier League,17,61627,1,12436874,1723903200,Newcastle United,39,1,Southampton,45,0,finished
+English Premier League,17,61627,1,12436875,1723903200,Nottingham Forest,14,1,Bournemouth,60,1,finished
+English Premier League,17,61627,1,12436877,1723912200,West Ham United,37,1,Aston Villa,40,2,finished
+English Premier League,17,61627,1,12436879,1723986000,Brentford,50,2,Crystal Palace,7,1,finished
+English Premier League,17,61627,1,12436880,1723995000,Chelsea,38,0,Manchester City,17,2,finished
+English Premier League,17,61627,1,12436881,1724094000,Leicester City,31,1,Tottenham Hotspur,33,1,finished
+English Premier League,17,61627,2,12436888,1724499000,Brighton & Hove Albion,30,2,Manchester United,35,1,finished
+English Premier League,17,61627,2,12436892,1724508000,Crystal Palace,7,0,West Ham United,37,2,finished
+English Premier League,17,61627,2,12436894,1724508000,Fulham,43,2,Leicester City,31,1,finished
+English Premier League,17,61627,2,12436898,1724508000,Manchester City,17,4,Ipswich Town,32,1,finished
+English Premier League,17,61627,2,12436900,1724508000,Southampton,45,0,Nottingham Forest,14,1,finished
+English Premier League,17,61627,2,12436902,1724508000,Tottenham Hotspur,33,4,Everton,48,0,finished
+English Premier League,17,61627,2,12436886,1724517000,Aston Villa,40,0,Arsenal,42,2,finished
+English Premier League,17,61627,2,12436884,1724590800,Bournemouth,60,1,Newcastle United,39,1,finished
+English Premier League,17,61627,2,12436904,1724590800,Wolverhampton,3,2,Chelsea,38,6,finished
+English Premier League,17,61627,2,12436896,1724599800,Liverpool,44,2,Brentford,50,0,finished
+English Premier League,17,61627,3,12436906,1725103800,Arsenal,42,1,Brighton & Hove Albion,30,1,finished
+English Premier League,17,61627,3,12436908,1725112800,Brentford,50,3,Southampton,45,1,finished
+English Premier League,17,61627,3,12436912,1725112800,Everton,48,2,Bournemouth,60,3,finished
+English Premier League,17,61627,3,12436915,1725112800,Ipswich Town,32,1,Fulham,43,1,finished
+English Premier League,17,61627,3,12436918,1725112800,Leicester City,31,1,Aston Villa,40,2,finished
+English Premier League,17,61627,3,12436926,1725112800,Nottingham Forest,14,1,Wolverhampton,3,1,finished
+English Premier League,17,61627,3,12436927,1725121800,West Ham United,37,1,Manchester City,17,3,finished
+English Premier League,17,61627,3,12436910,1725193800,Chelsea,38,1,Crystal Palace,7,1,finished
+English Premier League,17,61627,3,12436923,1725193800,Newcastle United,39,2,Tottenham Hotspur,33,1,finished
+English Premier League,17,61627,3,12436920,1725202800,Manchester United,35,0,Liverpool,44,3,finished
+English Premier League,17,61627,4,12436949,1726313400,Southampton,45,0,Manchester United,35,3,finished
+English Premier League,17,61627,4,12436936,1726322400,Brighton & Hove Albion,30,0,Ipswich Town,32,0,finished
+English Premier League,17,61627,4,12436938,1726322400,Crystal Palace,7,2,Leicester City,31,2,finished
+English Premier League,17,61627,4,12436941,1726322400,Fulham,43,1,West Ham United,37,1,finished
+English Premier League,17,61627,4,12436944,1726322400,Liverpool,44,0,Nottingham Forest,14,1,finished
+English Premier League,17,61627,4,12436946,1726322400,Manchester City,17,2,Brentford,50,1,finished
+English Premier League,17,61627,4,12436933,1726331400,Aston Villa,40,3,Everton,48,2,finished
+English Premier League,17,61627,4,12436931,1726340400,Bournemouth,60,0,Chelsea,38,1,finished
+English Premier League,17,61627,4,12436951,1726405200,Tottenham Hotspur,33,0,Arsenal,42,1,finished
+English Premier League,17,61627,4,12436954,1726414200,Wolverhampton,3,1,Newcastle United,39,2,finished
+English Premier League,17,61627,5,12436980,1726918200,West Ham United,37,0,Chelsea,38,3,finished
+English Premier League,17,61627,5,12436957,1726927200,Aston Villa,40,3,Wolverhampton,3,1,finished
+English Premier League,17,61627,5,12436964,1726927200,Fulham,43,3,Newcastle United,39,1,finished
+English Premier League,17,61627,5,12436967,1726927200,Leicester City,31,1,Everton,48,1,finished
+English Premier League,17,61627,5,12436969,1726927200,Liverpool,44,3,Bournemouth,60,0,finished
+English Premier League,17,61627,5,12436973,1726927200,Southampton,45,1,Ipswich Town,32,1,finished
+English Premier League,17,61627,5,12436977,1726927200,Tottenham Hotspur,33,3,Brentford,50,1,finished
+English Premier League,17,61627,5,12436962,1726936200,Crystal Palace,7,0,Manchester United,35,0,finished
+English Premier League,17,61627,5,12436959,1727010000,Brighton & Hove Albion,30,2,Nottingham Forest,14,2,finished
+English Premier League,17,61627,5,12436971,1727019000,Manchester City,17,2,Arsenal,42,2,finished
+English Premier League,17,61627,6,12436999,1727523000,Newcastle United,39,1,Manchester City,17,1,finished
+English Premier League,17,61627,6,12436985,1727532000,Arsenal,42,4,Leicester City,31,2,finished
+English Premier League,17,61627,6,12436987,1727532000,Brentford,50,1,West Ham United,37,1,finished
+English Premier League,17,61627,6,12436989,1727532000,Chelsea,38,4,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,6,12436992,1727532000,Everton,48,2,Crystal Palace,7,1,finished
+English Premier League,17,61627,6,12437001,1727532000,Nottingham Forest,14,0,Fulham,43,1,finished
+English Premier League,17,61627,6,12437002,1727541000,Wolverhampton,3,1,Liverpool,44,2,finished
+English Premier League,17,61627,6,12436993,1727614800,Ipswich Town,32,2,Aston Villa,40,2,finished
+English Premier League,17,61627,6,12436995,1727623800,Manchester United,35,0,Tottenham Hotspur,33,3,finished
+English Premier League,17,61627,6,12436982,1727722800,Bournemouth,60,3,Southampton,45,1,finished
+English Premier League,17,61627,7,12437015,1728127800,Crystal Palace,7,0,Liverpool,44,1,finished
+English Premier League,17,61627,7,12437004,1728136800,Arsenal,42,3,Southampton,45,1,finished
+English Premier League,17,61627,7,12437008,1728136800,Brentford,50,5,Wolverhampton,3,3,finished
+English Premier League,17,61627,7,12437020,1728136800,Leicester City,31,1,Bournemouth,60,0,finished
+English Premier League,17,61627,7,12437022,1728136800,Manchester City,17,3,Fulham,43,2,finished
+English Premier League,17,61627,7,12437024,1728136800,West Ham United,37,4,Ipswich Town,32,1,finished
+English Premier League,17,61627,7,12437018,1728145800,Everton,48,0,Newcastle United,39,0,finished
+English Premier League,17,61627,7,12437006,1728219600,Aston Villa,40,0,Manchester United,35,0,finished
+English Premier League,17,61627,7,12437013,1728219600,Chelsea,38,1,Nottingham Forest,14,1,finished
+English Premier League,17,61627,7,12437011,1728228600,Brighton & Hove Albion,30,3,Tottenham Hotspur,33,2,finished
+English Premier League,17,61627,8,12437038,1729337400,Tottenham Hotspur,33,4,West Ham United,37,1,finished
+English Premier League,17,61627,8,12437028,1729346400,Fulham,43,1,Aston Villa,40,3,finished
+English Premier League,17,61627,8,12437034,1729346400,Manchester United,35,2,Brentford,50,1,finished
+English Premier League,17,61627,8,12437035,1729346400,Newcastle United,39,0,Brighton & Hove Albion,30,1,finished
+English Premier League,17,61627,8,12437037,1729346400,Southampton,45,2,Leicester City,31,3,finished
+English Premier League,17,61627,8,12437030,1729347300,Ipswich Town,32,0,Everton,48,2,finished
+English Premier League,17,61627,8,12437026,1729355400,Bournemouth,60,2,Arsenal,42,0,finished
+English Premier League,17,61627,8,12437039,1729429200,Wolverhampton,3,1,Manchester City,17,2,finished
+English Premier League,17,61627,8,12437032,1729438200,Liverpool,44,2,Chelsea,38,1,finished
+English Premier League,17,61627,8,12437036,1729537200,Nottingham Forest,14,1,Crystal Palace,7,0,finished
+English Premier League,17,61627,9,12437048,1729882800,Leicester City,31,1,Nottingham Forest,14,3,finished
+English Premier League,17,61627,9,12437041,1729951200,Aston Villa,40,1,Bournemouth,60,1,finished
+English Premier League,17,61627,9,12437043,1729951200,Brentford,50,4,Ipswich Town,32,3,finished
+English Premier League,17,61627,9,12437044,1729951200,Brighton & Hove Albion,30,2,Wolverhampton,3,2,finished
+English Premier League,17,61627,9,12437049,1729951200,Manchester City,17,1,Southampton,45,0,finished
+English Premier League,17,61627,9,12437047,1729960200,Everton,48,1,Fulham,43,1,finished
+English Premier League,17,61627,9,12437045,1730037600,Chelsea,38,2,Newcastle United,39,1,finished
+English Premier League,17,61627,9,12437046,1730037600,Crystal Palace,7,1,Tottenham Hotspur,33,0,finished
+English Premier League,17,61627,9,12437050,1730037600,West Ham United,37,2,Manchester United,35,1,finished
+English Premier League,17,61627,9,12437040,1730046600,Arsenal,42,2,Liverpool,44,2,finished
+English Premier League,17,61627,10,12437056,1730550600,Newcastle United,39,1,Arsenal,42,0,finished
+English Premier League,17,61627,10,12437051,1730559600,Bournemouth,60,2,Manchester City,17,1,finished
+English Premier League,17,61627,10,12437053,1730559600,Ipswich Town,32,1,Leicester City,31,1,finished
+English Premier League,17,61627,10,12437054,1730559600,Liverpool,44,2,Brighton & Hove Albion,30,1,finished
+English Premier League,17,61627,10,12437057,1730559600,Nottingham Forest,14,3,West Ham United,37,0,finished
+English Premier League,17,61627,10,12437058,1730559600,Southampton,45,1,Everton,48,0,finished
+English Premier League,17,61627,10,12437060,1730568600,Wolverhampton,3,2,Crystal Palace,7,2,finished
+English Premier League,17,61627,10,12437059,1730642400,Tottenham Hotspur,33,4,Aston Villa,40,1,finished
+English Premier League,17,61627,10,12437055,1730651400,Manchester United,35,1,Chelsea,38,1,finished
+English Premier League,17,61627,10,12437052,1730750400,Fulham,43,2,Brentford,50,1,finished
+English Premier League,17,61627,11,12436876,1731164400,Brentford,50,3,Bournemouth,60,2,finished
+English Premier League,17,61627,11,12436483,1731164400,Crystal Palace,7,0,Fulham,43,2,finished
+English Premier League,17,61627,11,12436486,1731164400,West Ham United,37,0,Everton,48,0,finished
+English Premier League,17,61627,11,12436485,1731164400,Wolverhampton,3,2,Southampton,45,0,finished
+English Premier League,17,61627,11,12436882,1731173400,Brighton & Hove Albion,30,2,Manchester City,17,1,finished
+English Premier League,17,61627,11,12436484,1731182400,Liverpool,44,2,Aston Villa,40,0,finished
+English Premier League,17,61627,11,12436494,1731247200,Manchester United,35,3,Leicester City,31,0,finished
+English Premier League,17,61627,11,12436487,1731247200,Nottingham Forest,14,1,Newcastle United,39,3,finished
+English Premier League,17,61627,11,12436492,1731247200,Tottenham Hotspur,33,1,Ipswich Town,32,2,finished
+English Premier League,17,61627,11,12436890,1731256200,Chelsea,38,1,Arsenal,42,1,finished
+English Premier League,17,61627,12,12436495,1732365000,Leicester City,31,1,Chelsea,38,2,finished
+English Premier League,17,61627,12,12436489,1732374000,Arsenal,42,3,Nottingham Forest,14,0,finished
+English Premier League,17,61627,12,12436493,1732374000,Aston Villa,40,2,Crystal Palace,7,2,finished
+English Premier League,17,61627,12,12436491,1732374000,Bournemouth,60,1,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,12,12436488,1732374000,Everton,48,0,Brentford,50,0,finished
+English Premier League,17,61627,12,12436490,1732374000,Fulham,43,1,Wolverhampton,3,4,finished
+English Premier League,17,61627,12,12436499,1732383000,Manchester City,17,0,Tottenham Hotspur,33,4,finished
+English Premier League,17,61627,12,12436506,1732456800,Southampton,45,2,Liverpool,44,3,finished
+English Premier League,17,61627,12,12436497,1732465800,Ipswich Town,32,1,Manchester United,35,1,finished
+English Premier League,17,61627,12,12436496,1732564800,Newcastle United,39,0,West Ham United,37,2,finished
+English Premier League,17,61627,13,12436501,1732910400,Brighton & Hove Albion,30,1,Southampton,45,1,finished
+English Premier League,17,61627,13,12436500,1732978800,Brentford,50,4,Leicester City,31,1,finished
+English Premier League,17,61627,13,12436502,1732978800,Crystal Palace,7,1,Newcastle United,39,1,finished
+English Premier League,17,61627,13,12436503,1732978800,Nottingham Forest,14,1,Ipswich Town,32,0,finished
+English Premier League,17,61627,13,12436922,1732978800,Wolverhampton,3,2,Bournemouth,60,4,finished
+English Premier League,17,61627,13,12436914,1732987800,West Ham United,37,2,Arsenal,42,5,finished
+English Premier League,17,61627,13,12436498,1733059800,Chelsea,38,3,Aston Villa,40,0,finished
+English Premier League,17,61627,13,12436505,1733059800,Manchester United,35,4,Everton,48,0,finished
+English Premier League,17,61627,13,12436507,1733059800,Tottenham Hotspur,33,1,Fulham,43,1,finished
+English Premier League,17,61627,13,12436504,1733068800,Liverpool,44,2,Manchester City,17,0,finished
+English Premier League,17,61627,14,12436961,1733254200,Ipswich Town,32,0,Crystal Palace,7,1,finished
+English Premier League,17,61627,14,12436966,1733256900,Leicester City,31,3,West Ham United,37,1,finished
+English Premier League,17,61627,14,12436947,1733340600,Everton,48,4,Wolverhampton,3,0,finished
+English Premier League,17,61627,14,12436972,1733340600,Manchester City,17,3,Nottingham Forest,14,0,finished
+English Premier League,17,61627,14,12436978,1733340600,Newcastle United,39,3,Liverpool,44,3,finished
+English Premier League,17,61627,14,12436984,1733340600,Southampton,45,1,Chelsea,38,5,finished
+English Premier League,17,61627,14,12436935,1733343300,Arsenal,42,2,Manchester United,35,0,finished
+English Premier League,17,61627,14,12436942,1733343300,Aston Villa,40,3,Brentford,50,1,finished
+English Premier League,17,61627,14,12436955,1733427000,Fulham,43,3,Brighton & Hove Albion,30,1,finished
+English Premier League,17,61627,14,13015216,1733429700,Bournemouth,60,1,Tottenham Hotspur,33,0,finished
+English Premier League,17,61627,15,12436990,1733583600,Aston Villa,40,1,Southampton,45,0,finished
+English Premier League,17,61627,15,12436450,1733583600,Brentford,50,4,Newcastle United,39,2,finished
+English Premier League,17,61627,15,12436445,1733583600,Crystal Palace,7,2,Manchester City,17,2,finished
+English Premier League,17,61627,15,12436449,1733592600,Manchester United,35,2,Nottingham Forest,14,3,finished
+English Premier League,17,61627,15,12436459,1733666400,Fulham,43,1,Arsenal,42,1,finished
+English Premier League,17,61627,15,12436462,1733666400,Ipswich Town,32,1,Bournemouth,60,2,finished
+English Premier League,17,61627,15,12436444,1733666400,Leicester City,31,2,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,15,12436441,1733675400,Tottenham Hotspur,33,3,Chelsea,38,4,finished
+English Premier League,17,61627,15,12436454,1733774400,West Ham United,37,2,Wolverhampton,3,1,finished
+English Premier League,17,61627,15,13344418,1739388600,Everton,48,2,Liverpool,44,2,finished
+English Premier League,17,61627,16,12436438,1734188400,Arsenal,42,0,Everton,48,0,finished
+English Premier League,17,61627,16,12436446,1734188400,Liverpool,44,2,Fulham,43,2,finished
+English Premier League,17,61627,16,12436460,1734188400,Newcastle United,39,4,Leicester City,31,0,finished
+English Premier League,17,61627,16,12436456,1734188400,Wolverhampton,3,1,Ipswich Town,32,2,finished
+English Premier League,17,61627,16,12436447,1734197400,Nottingham Forest,14,2,Aston Villa,40,1,finished
+English Premier League,17,61627,16,12436457,1734271200,Brighton & Hove Albion,30,1,Crystal Palace,7,3,finished
+English Premier League,17,61627,16,12436451,1734280200,Manchester City,17,1,Manchester United,35,2,finished
+English Premier League,17,61627,16,12436461,1734289200,Chelsea,38,2,Brentford,50,1,finished
+English Premier League,17,61627,16,12436458,1734289200,Southampton,45,0,Tottenham Hotspur,33,5,finished
+English Premier League,17,61627,16,12436465,1734379200,Bournemouth,60,1,West Ham United,37,1,finished
+English Premier League,17,61627,17,12436453,1734784200,Aston Villa,40,2,Manchester City,17,1,finished
+English Premier League,17,61627,17,12436463,1734793200,Brentford,50,0,Nottingham Forest,14,2,finished
+English Premier League,17,61627,17,12436467,1734793200,Ipswich Town,32,0,Newcastle United,39,4,finished
+English Premier League,17,61627,17,12436478,1734793200,West Ham United,37,1,Brighton & Hove Albion,30,1,finished
+English Premier League,17,61627,17,12436464,1734802200,Crystal Palace,7,1,Arsenal,42,5,finished
+English Premier League,17,61627,17,12436466,1734876000,Everton,48,0,Chelsea,38,0,finished
+English Premier League,17,61627,17,12436468,1734876000,Fulham,43,0,Southampton,45,0,finished
+English Premier League,17,61627,17,12436469,1734876000,Leicester City,31,0,Wolverhampton,3,3,finished
+English Premier League,17,61627,17,12436470,1734876000,Manchester United,35,0,Bournemouth,60,3,finished
+English Premier League,17,61627,17,12436471,1734885000,Tottenham Hotspur,33,3,Liverpool,44,6,finished
+English Premier League,17,61627,18,12436481,1735216200,Manchester City,17,1,Everton,48,1,finished
+English Premier League,17,61627,18,12436476,1735225200,Bournemouth,60,0,Crystal Palace,7,0,finished
+English Premier League,17,61627,18,12436473,1735225200,Chelsea,38,1,Fulham,43,2,finished
+English Premier League,17,61627,18,12436477,1735225200,Newcastle United,39,3,Aston Villa,40,0,finished
+English Premier League,17,61627,18,12436479,1735225200,Nottingham Forest,14,1,Tottenham Hotspur,33,0,finished
+English Premier League,17,61627,18,12436480,1735225200,Southampton,45,0,West Ham United,37,1,finished
+English Premier League,17,61627,18,12436482,1735234200,Wolverhampton,3,2,Manchester United,35,0,finished
+English Premier League,17,61627,18,12436474,1735243200,Liverpool,44,3,Leicester City,31,1,finished
+English Premier League,17,61627,18,12436475,1735327800,Brighton & Hove Albion,30,0,Brentford,50,0,finished
+English Premier League,17,61627,18,12436472,1735330500,Arsenal,42,1,Ipswich Town,32,0,finished
+English Premier League,17,61627,19,12436512,1735482600,Leicester City,31,0,Manchester City,17,2,finished
+English Premier League,17,61627,19,12436532,1735484400,Crystal Palace,7,2,Southampton,45,1,finished
+English Premier League,17,61627,19,12436517,1735484400,Everton,48,0,Nottingham Forest,14,2,finished
+English Premier League,17,61627,19,12436515,1735484400,Fulham,43,2,Bournemouth,60,2,finished
+English Premier League,17,61627,19,12436521,1735484400,Tottenham Hotspur,33,2,Wolverhampton,3,2,finished
+English Premier League,17,61627,19,12436513,1735492500,West Ham United,37,0,Liverpool,44,5,finished
+English Premier League,17,61627,19,12436530,1735587900,Aston Villa,40,2,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,19,12436510,1735587900,Ipswich Town,32,2,Chelsea,38,0,finished
+English Premier League,17,61627,19,12436522,1735588800,Manchester United,35,0,Newcastle United,39,2,finished
+English Premier League,17,61627,19,12436410,1735752600,Brentford,50,1,Arsenal,42,3,finished
+English Premier League,17,61627,20,12436519,1735993800,Tottenham Hotspur,33,1,Newcastle United,39,2,finished
+English Premier League,17,61627,20,12436523,1736002800,Aston Villa,40,2,Leicester City,31,1,finished
+English Premier League,17,61627,20,12436518,1736002800,Bournemouth,60,1,Everton,48,0,finished
+English Premier League,17,61627,20,12436419,1736002800,Crystal Palace,7,1,Chelsea,38,1,finished
+English Premier League,17,61627,20,12436508,1736002800,Manchester City,17,4,West Ham United,37,1,finished
+English Premier League,17,61627,20,12436520,1736002800,Southampton,45,0,Brentford,50,5,finished
+English Premier League,17,61627,20,12436528,1736011800,Brighton & Hove Albion,30,1,Arsenal,42,1,finished
+English Premier League,17,61627,20,12436525,1736085600,Fulham,43,2,Ipswich Town,32,2,finished
+English Premier League,17,61627,20,12436514,1736094600,Liverpool,44,2,Manchester United,35,2,finished
+English Premier League,17,61627,20,12436437,1736193600,Wolverhampton,3,0,Nottingham Forest,14,3,finished
+English Premier League,17,61627,21,12436436,1736883000,Brentford,50,2,Manchester City,17,2,finished
+English Premier League,17,61627,21,12436531,1736883000,Chelsea,38,2,Bournemouth,60,2,finished
+English Premier League,17,61627,21,12436509,1736883000,West Ham United,37,3,Fulham,43,2,finished
+English Premier League,17,61627,21,12436526,1736884800,Nottingham Forest,14,1,Liverpool,44,1,finished
+English Premier League,17,61627,21,12436434,1736969400,Everton,48,0,Aston Villa,40,1,finished
+English Premier League,17,61627,21,12436527,1736969400,Leicester City,31,0,Crystal Palace,7,2,finished
+English Premier League,17,61627,21,12436529,1736969400,Newcastle United,39,3,Wolverhampton,3,0,finished
+English Premier League,17,61627,21,12436511,1736971200,Arsenal,42,2,Tottenham Hotspur,33,1,finished
+English Premier League,17,61627,21,12436524,1737055800,Ipswich Town,32,0,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,21,12436516,1737057600,Manchester United,35,3,Southampton,45,1,finished
+English Premier League,17,61627,22,12436885,1737203400,Newcastle United,39,1,Bournemouth,60,4,finished
+English Premier League,17,61627,22,12436440,1737212400,Brentford,50,0,Liverpool,44,2,finished
+English Premier League,17,61627,22,12436442,1737212400,Leicester City,31,0,Fulham,43,2,finished
+English Premier League,17,61627,22,12436889,1737212400,West Ham United,37,0,Crystal Palace,7,2,finished
+English Premier League,17,61627,22,12436443,1737221400,Arsenal,42,2,Aston Villa,40,2,finished
+English Premier League,17,61627,22,12436448,1737295200,Everton,48,3,Tottenham Hotspur,33,2,finished
+English Premier League,17,61627,22,12436883,1737295200,Manchester United,35,1,Brighton & Hove Albion,30,3,finished
+English Premier League,17,61627,22,12436887,1737295200,Nottingham Forest,14,3,Southampton,45,2,finished
+English Premier League,17,61627,22,12436439,1737304200,Ipswich Town,32,0,Manchester City,17,6,finished
+English Premier League,17,61627,22,12436455,1737403200,Chelsea,38,3,Wolverhampton,3,1,finished
+English Premier League,17,61627,23,12436891,1737817200,Bournemouth,60,5,Nottingham Forest,14,0,finished
+English Premier League,17,61627,23,12436895,1737817200,Brighton & Hove Albion,30,0,Everton,48,1,finished
+English Premier League,17,61627,23,12436901,1737817200,Liverpool,44,4,Ipswich Town,32,1,finished
+English Premier League,17,61627,23,12436905,1737817200,Southampton,45,1,Newcastle United,39,3,finished
+English Premier League,17,61627,23,12436909,1737817200,Wolverhampton,3,0,Arsenal,42,1,finished
+English Premier League,17,61627,23,12436903,1737826200,Manchester City,17,3,Chelsea,38,1,finished
+English Premier League,17,61627,23,12436897,1737900000,Crystal Palace,7,1,Brentford,50,2,finished
+English Premier League,17,61627,23,12436907,1737900000,Tottenham Hotspur,33,1,Leicester City,31,2,finished
+English Premier League,17,61627,23,12436893,1737909000,Aston Villa,40,1,West Ham United,37,1,finished
+English Premier League,17,61627,23,12436899,1737918000,Fulham,43,0,Manchester United,35,1,finished
+English Premier League,17,61627,24,12436930,1738413000,Nottingham Forest,14,7,Brighton & Hove Albion,30,0,finished
+English Premier League,17,61627,24,12436911,1738422000,Bournemouth,60,0,Liverpool,44,2,finished
+English Premier League,17,61627,24,12436921,1738422000,Everton,48,4,Leicester City,31,0,finished
+English Premier League,17,61627,24,12436924,1738422000,Ipswich Town,32,1,Southampton,45,2,finished
+English Premier League,17,61627,24,12436928,1738422000,Newcastle United,39,1,Fulham,43,2,finished
+English Premier League,17,61627,24,12436932,1738431000,Wolverhampton,3,2,Aston Villa,40,0,finished
+English Premier League,17,61627,24,12436916,1738504800,Brentford,50,0,Tottenham Hotspur,33,2,finished
+English Premier League,17,61627,24,12436925,1738504800,Manchester United,35,0,Crystal Palace,7,2,finished
+English Premier League,17,61627,24,12436913,1738513800,Arsenal,42,5,Manchester City,17,1,finished
+English Premier League,17,61627,24,12436919,1738612800,Chelsea,38,2,West Ham United,37,1,finished
+English Premier League,17,61627,25,12436937,1739563200,Brighton & Hove Albion,30,3,Chelsea,38,0,finished
+English Premier League,17,61627,25,12436943,1739622600,Leicester City,31,0,Arsenal,42,2,finished
+English Premier League,17,61627,25,12436934,1739631600,Aston Villa,40,1,Ipswich Town,32,1,finished
+English Premier League,17,61627,25,12436940,1739631600,Fulham,43,2,Nottingham Forest,14,1,finished
+English Premier League,17,61627,25,12436948,1739631600,Manchester City,17,4,Newcastle United,39,0,finished
+English Premier League,17,61627,25,12436950,1739631600,Southampton,45,1,Bournemouth,60,3,finished
+English Premier League,17,61627,25,12436956,1739631600,West Ham United,37,0,Brentford,50,1,finished
+English Premier League,17,61627,25,12436939,1739640600,Crystal Palace,7,1,Everton,48,2,finished
+English Premier League,17,61627,25,12436945,1739714400,Liverpool,44,2,Wolverhampton,3,1,finished
+English Premier League,17,61627,25,12436952,1739723400,Tottenham Hotspur,33,1,Manchester United,35,0,finished
+English Premier League,17,61627,26,12436623,1740168000,Leicester City,31,0,Brentford,50,4,finished
+English Premier League,17,61627,26,12436625,1740227400,Everton,48,2,Manchester United,35,2,finished
+English Premier League,17,61627,26,12436960,1740236400,Arsenal,42,0,West Ham United,37,1,finished
+English Premier League,17,61627,26,12436958,1740236400,Bournemouth,60,0,Wolverhampton,3,1,finished
+English Premier League,17,61627,26,12436624,1740236400,Fulham,43,0,Crystal Palace,7,2,finished
+English Premier League,17,61627,26,12436629,1740236400,Ipswich Town,32,1,Tottenham Hotspur,33,4,finished
+English Premier League,17,61627,26,12436965,1740236400,Southampton,45,0,Brighton & Hove Albion,30,4,finished
+English Premier League,17,61627,26,12436621,1740245400,Aston Villa,40,2,Chelsea,38,1,finished
+English Premier League,17,61627,26,12436963,1740319200,Newcastle United,39,4,Nottingham Forest,14,3,finished
+English Premier League,17,61627,26,12436627,1740328200,Manchester City,17,0,Liverpool,44,2,finished
+English Premier League,17,61627,27,12436970,1740511800,Brighton & Hove Albion,30,2,Bournemouth,60,1,finished
+English Premier League,17,61627,27,12436983,1740511800,Crystal Palace,7,4,Aston Villa,40,1,finished
+English Premier League,17,61627,27,12436981,1740511800,Wolverhampton,3,1,Fulham,43,2,finished
+English Premier League,17,61627,27,12436986,1740514500,Chelsea,38,4,Southampton,45,0,finished
+English Premier League,17,61627,27,12436968,1740598200,Brentford,50,1,Everton,48,1,finished
+English Premier League,17,61627,27,12436991,1740598200,Manchester United,35,3,Ipswich Town,32,2,finished
+English Premier League,17,61627,27,12436974,1740598200,Nottingham Forest,14,0,Arsenal,42,0,finished
+English Premier League,17,61627,27,12436975,1740598200,Tottenham Hotspur,33,0,Manchester City,17,1,finished
+English Premier League,17,61627,27,12436988,1740600900,Liverpool,44,2,Newcastle United,39,0,finished
+English Premier League,17,61627,27,13365051,1740686400,West Ham United,37,2,Leicester City,31,0,finished
+English Premier League,17,61627,28,12437007,1741437000,Nottingham Forest,14,1,Manchester City,17,0,finished
+English Premier League,17,61627,28,12436996,1741446000,Brighton & Hove Albion,30,2,Fulham,43,1,finished
+English Premier League,17,61627,28,12437000,1741446000,Crystal Palace,7,1,Ipswich Town,32,0,finished
+English Premier League,17,61627,28,12437003,1741446000,Liverpool,44,3,Southampton,45,1,finished
+English Premier League,17,61627,28,12436994,1741455000,Brentford,50,0,Aston Villa,40,1,finished
+English Premier League,17,61627,28,12437012,1741464000,Wolverhampton,3,1,Everton,48,1,finished
+English Premier League,17,61627,28,12436998,1741528800,Chelsea,38,1,Leicester City,31,0,finished
+English Premier League,17,61627,28,12437009,1741528800,Tottenham Hotspur,33,2,Bournemouth,60,2,finished
+English Premier League,17,61627,28,12437005,1741537800,Manchester United,35,1,Arsenal,42,1,finished
+English Premier League,17,61627,28,12437010,1741636800,West Ham United,37,0,Newcastle United,39,1,finished
+English Premier League,17,61627,29,12437019,1739993400,Aston Villa,40,2,Liverpool,44,2,finished
+English Premier League,17,61627,29,12437021,1742050800,Everton,48,1,West Ham United,37,1,finished
+English Premier League,17,61627,29,12437025,1742050800,Ipswich Town,32,2,Nottingham Forest,14,4,finished
+English Premier League,17,61627,29,12437029,1742050800,Manchester City,17,2,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,29,12436578,1742050800,Southampton,45,1,Wolverhampton,3,2,finished
+English Premier League,17,61627,29,12437014,1742059800,Bournemouth,60,1,Brentford,50,2,finished
+English Premier League,17,61627,29,12437017,1742131800,Arsenal,42,1,Chelsea,38,0,finished
+English Premier League,17,61627,29,12437023,1742131800,Fulham,43,2,Tottenham Hotspur,33,0,finished
+English Premier League,17,61627,29,12437027,1742151600,Leicester City,31,0,Manchester United,35,3,finished
+English Premier League,17,61627,29,12437031,1744828200,Newcastle United,39,5,Crystal Palace,7,0,finished
+English Premier League,17,61627,30,12436580,1743533100,Arsenal,42,2,Fulham,43,1,finished
+English Premier League,17,61627,30,12436599,1743533100,Wolverhampton,3,1,West Ham United,37,0,finished
+English Premier League,17,61627,30,12436591,1743534000,Nottingham Forest,14,1,Manchester United,35,0,finished
+English Premier League,17,61627,30,12436576,1743619500,Bournemouth,60,1,Ipswich Town,32,2,finished
+English Premier League,17,61627,30,12436584,1743619500,Brighton & Hove Albion,30,0,Aston Villa,40,3,finished
+English Premier League,17,61627,30,12436594,1743619500,Manchester City,17,2,Leicester City,31,0,finished
+English Premier League,17,61627,30,12436600,1743619500,Newcastle United,39,2,Brentford,50,1,finished
+English Premier League,17,61627,30,12436588,1743619500,Southampton,45,1,Crystal Palace,7,1,finished
+English Premier League,17,61627,30,12436593,1743620400,Liverpool,44,1,Everton,48,0,finished
+English Premier League,17,61627,30,12436587,1743706800,Chelsea,38,1,Tottenham Hotspur,33,0,finished
+English Premier League,17,61627,31,12436596,1743852600,Everton,48,1,Arsenal,42,1,finished
+English Premier League,17,61627,31,12436595,1743861600,Crystal Palace,7,2,Brighton & Hove Albion,30,1,finished
+English Premier League,17,61627,31,12436601,1743861600,Ipswich Town,32,1,Wolverhampton,3,2,finished
+English Premier League,17,61627,31,12436604,1743861600,West Ham United,37,2,Bournemouth,60,2,finished
+English Premier League,17,61627,31,12436597,1743870600,Aston Villa,40,2,Nottingham Forest,14,1,finished
+English Premier League,17,61627,31,12436589,1743944400,Brentford,50,0,Chelsea,38,0,finished
+English Premier League,17,61627,31,12436598,1743944400,Fulham,43,3,Liverpool,44,2,finished
+English Premier League,17,61627,31,12436606,1743944400,Tottenham Hotspur,33,3,Southampton,45,1,finished
+English Premier League,17,61627,31,12436602,1743953400,Manchester United,35,0,Manchester City,17,0,finished
+English Premier League,17,61627,31,13560219,1744052400,Leicester City,31,0,Newcastle United,39,3,finished
+English Premier League,17,61627,32,12436610,1744457400,Manchester City,17,5,Crystal Palace,7,2,finished
+English Premier League,17,61627,32,12436607,1744466400,Brighton & Hove Albion,30,2,Leicester City,31,2,finished
+English Premier League,17,61627,32,12436613,1744466400,Nottingham Forest,14,0,Everton,48,1,finished
+English Premier League,17,61627,32,12436614,1744466400,Southampton,45,0,Aston Villa,40,3,finished
+English Premier League,17,61627,32,12436608,1744475400,Arsenal,42,1,Brentford,50,1,finished
+English Premier League,17,61627,32,12436609,1744549200,Chelsea,38,2,Ipswich Town,32,2,finished
+English Premier League,17,61627,32,12436612,1744549200,Liverpool,44,2,West Ham United,37,1,finished
+English Premier League,17,61627,32,12436617,1744549200,Wolverhampton,3,4,Tottenham Hotspur,33,2,finished
+English Premier League,17,61627,32,12436611,1744558200,Newcastle United,39,4,Manchester United,35,1,finished
+English Premier League,17,61627,32,13560222,1744657200,Bournemouth,60,1,Fulham,43,0,finished
+English Premier League,17,61627,33,12436619,1745071200,Brentford,50,4,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,33,12436616,1745071200,Crystal Palace,7,0,Bournemouth,60,0,finished
+English Premier League,17,61627,33,12436628,1745071200,Everton,48,0,Manchester City,17,2,finished
+English Premier League,17,61627,33,12436554,1745071200,West Ham United,37,1,Southampton,45,1,finished
+English Premier League,17,61627,33,12436615,1745080200,Aston Villa,40,4,Newcastle United,39,1,finished
+English Premier League,17,61627,33,12436618,1745154000,Fulham,43,1,Chelsea,38,2,finished
+English Premier League,17,61627,33,12436620,1745154000,Ipswich Town,32,0,Arsenal,42,4,finished
+English Premier League,17,61627,33,12436622,1745154000,Manchester United,35,0,Wolverhampton,3,1,finished
+English Premier League,17,61627,33,12436626,1745163000,Leicester City,31,0,Liverpool,44,1,finished
+English Premier League,17,61627,33,12436537,1745262000,Tottenham Hotspur,33,1,Nottingham Forest,14,2,finished
+English Premier League,17,61627,34,12436551,1745348400,Manchester City,17,2,Aston Villa,40,1,finished
+English Premier League,17,61627,34,12436547,1745434800,Arsenal,42,2,Crystal Palace,7,2,finished
+English Premier League,17,61627,34,12436550,1745667000,Chelsea,38,1,Everton,48,0,finished
+English Premier League,17,61627,34,12436546,1745676000,Brighton & Hove Albion,30,3,West Ham United,37,2,finished
+English Premier League,17,61627,34,12436545,1745676000,Newcastle United,39,3,Ipswich Town,32,0,finished
+English Premier League,17,61627,34,12436539,1745676000,Southampton,45,1,Fulham,43,2,finished
+English Premier League,17,61627,34,12436558,1745676000,Wolverhampton,3,3,Leicester City,31,0,finished
+English Premier League,17,61627,34,12436535,1745758800,Bournemouth,60,1,Manchester United,35,1,finished
+English Premier League,17,61627,34,12436544,1745767800,Liverpool,44,5,Tottenham Hotspur,33,1,finished
+English Premier League,17,61627,34,12436552,1746124200,Nottingham Forest,14,0,Brentford,50,2,finished
+English Premier League,17,61627,35,12436562,1746212400,Manchester City,17,1,Wolverhampton,3,0,finished
+English Premier League,17,61627,35,12436553,1746271800,Aston Villa,40,1,Fulham,43,0,finished
+English Premier League,17,61627,35,12436572,1746280800,Everton,48,2,Ipswich Town,32,2,finished
+English Premier League,17,61627,35,12436571,1746280800,Leicester City,31,2,Southampton,45,0,finished
+English Premier League,17,61627,35,12436543,1746289800,Arsenal,42,1,Bournemouth,60,2,finished
+English Premier League,17,61627,35,12436560,1746363600,Brentford,50,4,Manchester United,35,3,finished
+English Premier League,17,61627,35,12436567,1746363600,Brighton & Hove Albion,30,1,Newcastle United,39,1,finished
+English Premier League,17,61627,35,12436565,1746363600,West Ham United,37,1,Tottenham Hotspur,33,1,finished
+English Premier League,17,61627,35,12436563,1746372600,Chelsea,38,3,Liverpool,44,1,finished
+English Premier League,17,61627,35,12436561,1746471600,Crystal Palace,7,1,Nottingham Forest,14,1,finished
+English Premier League,17,61627,36,12436566,1746885600,Fulham,43,1,Everton,48,3,finished
+English Premier League,17,61627,36,12436564,1746885600,Ipswich Town,32,0,Brentford,50,1,finished
+English Premier League,17,61627,36,12436575,1746885600,Southampton,45,0,Manchester City,17,0,finished
+English Premier League,17,61627,36,12436581,1746885600,Wolverhampton,3,0,Brighton & Hove Albion,30,2,finished
+English Premier League,17,61627,36,12436570,1746894600,Bournemouth,60,0,Aston Villa,40,1,finished
+English Premier League,17,61627,36,12436573,1746961200,Newcastle United,39,2,Chelsea,38,0,finished
+English Premier League,17,61627,36,12436569,1746969300,Manchester United,35,0,West Ham United,37,2,finished
+English Premier League,17,61627,36,12436574,1746969300,Nottingham Forest,14,2,Leicester City,31,2,finished
+English Premier League,17,61627,36,12436583,1746969300,Tottenham Hotspur,33,0,Crystal Palace,7,2,finished
+English Premier League,17,61627,36,12436568,1746977400,Liverpool,44,2,Arsenal,42,2,finished
+English Premier League,17,61627,37,12436577,1747420200,Aston Villa,40,2,Tottenham Hotspur,33,0,finished
+English Premier League,17,61627,37,12436582,1747422900,Chelsea,38,1,Manchester United,35,0,finished
+English Premier League,17,61627,37,12436579,1747566000,Everton,48,2,Southampton,45,0,finished
+English Premier League,17,61627,37,12436533,1747574100,West Ham United,37,1,Nottingham Forest,14,2,finished
+English Premier League,17,61627,37,12436586,1747576800,Brentford,50,2,Fulham,43,3,finished
+English Premier League,17,61627,37,12436534,1747576800,Leicester City,31,2,Ipswich Town,32,0,finished
+English Premier League,17,61627,37,12436585,1747582200,Arsenal,42,1,Newcastle United,39,0,finished
+English Premier League,17,61627,37,12436590,1747681200,Brighton & Hove Albion,30,3,Liverpool,44,2,finished
+English Premier League,17,61627,37,12436592,1747767600,Crystal Palace,7,4,Wolverhampton,3,2,finished
+English Premier League,17,61627,37,13854588,1747767600,Manchester City,17,3,Bournemouth,60,1,finished
+English Premier League,17,61627,38,12436536,1748185200,Bournemouth,60,2,Leicester City,31,0,finished
+English Premier League,17,61627,38,12436559,1748185200,Fulham,43,0,Manchester City,17,2,finished
+English Premier League,17,61627,38,12436538,1748185200,Ipswich Town,32,1,West Ham United,37,3,finished
+English Premier League,17,61627,38,12436548,1748185200,Liverpool,44,1,Crystal Palace,7,1,finished
+English Premier League,17,61627,38,12436540,1748185200,Manchester United,35,2,Aston Villa,40,0,finished
+English Premier League,17,61627,38,12436541,1748185200,Newcastle United,39,0,Everton,48,1,finished
+English Premier League,17,61627,38,12436556,1748185200,Nottingham Forest,14,0,Chelsea,38,1,finished
+English Premier League,17,61627,38,12436549,1748185200,Southampton,45,1,Arsenal,42,2,finished
+English Premier League,17,61627,38,12436557,1748185200,Tottenham Hotspur,33,1,Brighton & Hove Albion,30,4,finished
+English Premier League,17,61627,38,12436542,1748185200,Wolverhampton,3,1,Brentford,50,1,finished
+Spanish La Liga,8,61643,1,12437604,1723741200,Athletic Club,2825,1,Getafe,2859,1,finished
+Spanish La Liga,8,61643,1,12437605,1723750200,Real Betis,2816,1,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,1,12437617,1723827600,Celta Vigo,2821,2,Deportivo Alavés,2885,1,finished
+Spanish La Liga,8,61643,1,12437608,1723836600,Las Palmas,6577,2,Sevilla,2833,2,finished
+Spanish La Liga,8,61643,1,12437619,1723914000,Osasuna,2820,1,Leganés,2845,1,finished
+Spanish La Liga,8,61643,1,12437612,1723923000,Valencia,2828,1,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,1,12437615,1724000400,Real Sociedad,2824,1,Rayo Vallecano,2818,2,finished
+Spanish La Liga,8,61643,1,12437606,1724009400,Mallorca,2826,1,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,1,12437624,1724086800,Real Valladolid,2831,1,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,1,12437610,1724095800,Villarreal,2819,2,Atlético Madrid,2836,2,finished
+Spanish La Liga,8,61643,2,12437631,1724432400,Celta Vigo,2821,3,Valencia,2828,1,finished
+Spanish La Liga,8,61643,2,12437642,1724441400,Sevilla,2833,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,2,12437656,1724511600,Osasuna,2820,1,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,2,12437652,1724518800,Barcelona,2817,2,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,2,12437650,1724527800,Espanyol,2814,0,Real Sociedad,2824,1,finished
+Spanish La Liga,8,61643,2,12437636,1724527800,Getafe,2859,0,Rayo Vallecano,2818,0,finished
+Spanish La Liga,8,61643,2,12437638,1724598000,Real Madrid,2829,3,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,2,12437647,1724605200,Leganés,2845,2,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,2,12437645,1724606100,Deportivo Alavés,2885,0,Real Betis,2816,0,finished
+Spanish La Liga,8,61643,2,12437628,1724614200,Atlético Madrid,2836,3,Girona FC,24264,0,finished
+Spanish La Liga,8,61643,3,12437674,1724700600,Villarreal,2819,4,Celta Vigo,2821,3,finished
+Spanish La Liga,8,61643,3,12437667,1724778000,Mallorca,2826,0,Sevilla,2833,0,finished
+Spanish La Liga,8,61643,3,12437672,1724787000,Rayo Vallecano,2818,1,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,3,12437659,1724864400,Athletic Club,2825,1,Valencia,2828,0,finished
+Spanish La Liga,8,61643,3,12437679,1724864400,Real Valladolid,2831,0,Leganés,2845,0,finished
+Spanish La Liga,8,61643,3,12437681,1724873400,Atlético Madrid,2836,0,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,3,12437676,1724873400,Real Sociedad,2824,1,Deportivo Alavés,2885,2,finished
+Spanish La Liga,8,61643,3,12437664,1724950800,Girona FC,24264,4,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,3,12437669,1724959800,Las Palmas,6577,1,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,3,12778688,1726678800,Real Betis,2816,2,Getafe,2859,1,finished
+Spanish La Liga,8,61643,4,12437687,1725116400,Barcelona,2817,7,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,4,12437684,1725123600,Athletic Club,2825,0,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,4,12437699,1725124500,Espanyol,2814,2,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,4,12437697,1725132600,Leganés,2845,0,Mallorca,2826,1,finished
+Spanish La Liga,8,61643,4,12437692,1725132600,Valencia,2828,1,Villarreal,2819,1,finished
+Spanish La Liga,8,61643,4,12437694,1725202800,Deportivo Alavés,2885,2,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,4,12437704,1725202800,Osasuna,2820,3,Celta Vigo,2821,2,finished
+Spanish La Liga,8,61643,4,12437706,1725210000,Sevilla,2833,0,Girona FC,24264,2,finished
+Spanish La Liga,8,61643,4,12437690,1725210900,Getafe,2859,0,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,4,12437702,1725219000,Real Madrid,2829,2,Real Betis,2816,0,finished
+Spanish La Liga,8,61643,5,12437711,1726254000,Real Betis,2816,2,Leganés,2845,0,finished
+Spanish La Liga,8,61643,5,12437716,1726315200,Mallorca,2826,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,5,12437730,1726323300,Espanyol,2814,3,Deportivo Alavés,2885,2,finished
+Spanish La Liga,8,61643,5,12437723,1726331400,Sevilla,2833,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,5,12437728,1726340400,Real Sociedad,2824,0,Real Madrid,2829,2,finished
+Spanish La Liga,8,61643,5,12437714,1726401600,Celta Vigo,2821,3,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,5,12437721,1726409700,Girona FC,24264,1,Barcelona,2817,4,finished
+Spanish La Liga,8,61643,5,12437718,1726417800,Las Palmas,6577,2,Athletic Club,2825,3,finished
+Spanish La Liga,8,61643,5,12437709,1726426800,Atlético Madrid,2836,3,Valencia,2828,0,finished
+Spanish La Liga,8,61643,5,12437726,1726513200,Rayo Vallecano,2818,3,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,6,12437741,1726858800,Deportivo Alavés,2885,2,Sevilla,2833,1,finished
+Spanish La Liga,8,61643,6,12437751,1726920000,Real Valladolid,2831,0,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,6,12437753,1726928100,Osasuna,2820,2,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,6,12437748,1726936200,Valencia,2828,2,Girona FC,24264,0,finished
+Spanish La Liga,8,61643,6,12437756,1726945200,Real Madrid,2829,4,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,6,12437739,1727006400,Getafe,2859,1,Leganés,2845,1,finished
+Spanish La Liga,8,61643,6,12437734,1727014500,Athletic Club,2825,3,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,6,12437746,1727022600,Villarreal,2819,1,Barcelona,2817,5,finished
+Spanish La Liga,8,61643,6,12437744,1727031600,Rayo Vallecano,2818,1,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,6,12437736,1727118000,Real Betis,2816,1,Mallorca,2826,2,finished
+Spanish La Liga,8,61643,7,12437763,1726592400,Mallorca,2826,1,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,7,12437772,1726765200,Leganés,2845,0,Athletic Club,2825,2,finished
+Spanish La Liga,8,61643,7,12437766,1727197200,Sevilla,2833,2,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,7,12437779,1727197200,Valencia,2828,0,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,7,12437782,1727204400,Real Madrid,2829,3,Deportivo Alavés,2885,2,finished
+Spanish La Liga,8,61643,7,12437761,1727283600,Girona FC,24264,0,Rayo Vallecano,2818,0,finished
+Spanish La Liga,8,61643,7,12437758,1727290800,Barcelona,2817,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,7,12437768,1727370000,Espanyol,2814,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,7,12437777,1727370000,Las Palmas,6577,1,Real Betis,2816,1,finished
+Spanish La Liga,8,61643,7,12437774,1727377200,Celta Vigo,2821,0,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,8,12437798,1727463600,Real Valladolid,2831,1,Mallorca,2826,2,finished
+Spanish La Liga,8,61643,8,12437803,1727524800,Getafe,2859,2,Deportivo Alavés,2885,0,finished
+Spanish La Liga,8,61643,8,12437805,1727532900,Rayo Vallecano,2818,1,Leganés,2845,1,finished
+Spanish La Liga,8,61643,8,12437792,1727541000,Real Sociedad,2824,3,Valencia,2828,0,finished
+Spanish La Liga,8,61643,8,12437795,1727550000,Osasuna,2820,4,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,8,12437789,1727611200,Celta Vigo,2821,1,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,8,12437784,1727619300,Athletic Club,2825,1,Sevilla,2833,1,finished
+Spanish La Liga,8,61643,8,12437808,1727627400,Real Betis,2816,1,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,8,12437787,1727636400,Atlético Madrid,2836,1,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,8,12437800,1727722800,Villarreal,2819,3,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,9,12437818,1728068400,Leganés,2845,0,Valencia,2828,0,finished
+Spanish La Liga,8,61643,9,12437820,1728129600,Espanyol,2814,2,Mallorca,2826,1,finished
+Spanish La Liga,8,61643,9,12437810,1728137700,Getafe,2859,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,9,12437832,1728145800,Las Palmas,6577,0,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,9,12437833,1728145800,Real Valladolid,2831,1,Rayo Vallecano,2818,2,finished
+Spanish La Liga,8,61643,9,12437813,1728154800,Real Madrid,2829,2,Villarreal,2819,0,finished
+Spanish La Liga,8,61643,9,12437824,1728216000,Girona FC,24264,2,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,9,12437815,1728224100,Deportivo Alavés,2885,0,Barcelona,2817,3,finished
+Spanish La Liga,8,61643,9,12437828,1728232200,Sevilla,2833,1,Real Betis,2816,0,finished
+Spanish La Liga,8,61643,9,12437826,1728241200,Real Sociedad,2824,1,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,10,12437849,1729278000,Deportivo Alavés,2885,2,Real Valladolid,2831,3,finished
+Spanish La Liga,8,61643,10,12437855,1729339200,Athletic Club,2825,4,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,10,12437851,1729347300,Osasuna,2820,1,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,10,12437843,1729355400,Girona FC,24264,0,Real Sociedad,2824,1,finished
+Spanish La Liga,8,61643,10,12437842,1729364400,Celta Vigo,2821,1,Real Madrid,2829,2,finished
+Spanish La Liga,8,61643,10,12437847,1729425600,Mallorca,2826,1,Rayo Vallecano,2818,0,finished
+Spanish La Liga,8,61643,10,12437835,1729433700,Atlético Madrid,2836,3,Leganés,2845,1,finished
+Spanish La Liga,8,61643,10,12437852,1729441800,Villarreal,2819,1,Getafe,2859,1,finished
+Spanish La Liga,8,61643,10,12437839,1729450800,Barcelona,2817,5,Sevilla,2833,1,finished
+Spanish La Liga,8,61643,10,12437854,1729537200,Valencia,2828,2,Las Palmas,6577,3,finished
+Spanish La Liga,8,61643,11,12437609,1729882800,Espanyol,2814,0,Sevilla,2833,2,finished
+Spanish La Liga,8,61643,11,12437627,1729944000,Real Valladolid,2831,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,11,12437630,1729952100,Rayo Vallecano,2818,1,Deportivo Alavés,2885,0,finished
+Spanish La Liga,8,61643,11,12437620,1729960200,Las Palmas,6577,1,Girona FC,24264,0,finished
+Spanish La Liga,8,61643,11,12437616,1729969200,Real Madrid,2829,0,Barcelona,2817,4,finished
+Spanish La Liga,8,61643,11,12437618,1730034000,Leganés,2845,3,Celta Vigo,2821,0,finished
+Spanish La Liga,8,61643,11,12437607,1730042100,Getafe,2859,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,11,12437613,1730050200,Real Betis,2816,1,Atlético Madrid,2836,0,finished
+Spanish La Liga,8,61643,11,12437625,1730059200,Real Sociedad,2824,0,Osasuna,2820,2,finished
+Spanish La Liga,8,61643,11,12437611,1730145600,Mallorca,2826,0,Athletic Club,2825,0,finished
+Spanish La Liga,8,61643,12,12437646,1730491200,Deportivo Alavés,2885,1,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,12,12437644,1730552400,Osasuna,2820,1,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,12,12437641,1730560500,Girona FC,24264,4,Leganés,2845,3,finished
+Spanish La Liga,8,61643,12,12437637,1730638800,Atlético Madrid,2836,2,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,12,12437658,1730646900,Barcelona,2817,3,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,12,12437655,1730655000,Sevilla,2833,0,Real Sociedad,2824,2,finished
+Spanish La Liga,8,61643,12,12437634,1730664000,Athletic Club,2825,1,Real Betis,2816,1,finished
+Spanish La Liga,8,61643,12,12437639,1730750400,Celta Vigo,2821,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,12,13096804,1734553800,Villarreal,2819,1,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,12,13199638,1735934400,Valencia,2828,1,Real Madrid,2829,2,finished
+Spanish La Liga,8,61643,13,12437680,1731096000,Rayo Vallecano,2818,1,Las Palmas,6577,3,finished
+Spanish La Liga,8,61643,13,12437678,1731157200,Real Madrid,2829,4,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,13,12437682,1731165300,Villarreal,2819,3,Deportivo Alavés,2885,0,finished
+Spanish La Liga,8,61643,13,12437666,1731182400,Leganés,2845,1,Sevilla,2833,0,finished
+Spanish La Liga,8,61643,13,12437660,1731243600,Real Betis,2816,2,Celta Vigo,2821,2,finished
+Spanish La Liga,8,61643,13,12437673,1731251700,Mallorca,2826,0,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,13,12437662,1731259800,Getafe,2859,0,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,13,12437670,1731259800,Real Valladolid,2831,1,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,13,12437675,1731268800,Real Sociedad,2824,1,Barcelona,2817,0,finished
+Spanish La Liga,8,61643,13,13128822,1734553800,Espanyol,2814,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,14,12437686,1732305600,Getafe,2859,2,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,14,12437698,1732366800,Valencia,2828,4,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,14,12437703,1732374900,Atlético Madrid,2836,2,Deportivo Alavés,2885,1,finished
+Spanish La Liga,8,61643,14,12437705,1732383000,Girona FC,24264,4,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,14,12437691,1732383000,Las Palmas,6577,2,Mallorca,2826,3,finished
+Spanish La Liga,8,61643,14,12437696,1732392000,Celta Vigo,2821,2,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,14,12437688,1732453200,Osasuna,2820,2,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,14,12437700,1732461300,Sevilla,2833,1,Rayo Vallecano,2818,0,finished
+Spanish La Liga,8,61643,14,12437693,1732469400,Leganés,2845,0,Real Madrid,2829,3,finished
+Spanish La Liga,8,61643,14,12437685,1732478400,Athletic Club,2825,1,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,15,12437710,1732910400,Mallorca,2826,2,Valencia,2828,1,finished
+Spanish La Liga,8,61643,15,12437708,1732971600,Barcelona,2817,1,Las Palmas,6577,2,finished
+Spanish La Liga,8,61643,15,12437712,1732979700,Deportivo Alavés,2885,1,Leganés,2845,1,finished
+Spanish La Liga,8,61643,15,12437715,1732987800,Espanyol,2814,3,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,15,12437720,1732996800,Real Valladolid,2831,0,Atlético Madrid,2836,5,finished
+Spanish La Liga,8,61643,15,12437727,1733058000,Villarreal,2819,2,Girona FC,24264,2,finished
+Spanish La Liga,8,61643,15,12437724,1733066100,Real Madrid,2829,2,Getafe,2859,0,finished
+Spanish La Liga,8,61643,15,12437717,1733074200,Rayo Vallecano,2818,1,Athletic Club,2825,2,finished
+Spanish La Liga,8,61643,15,12437722,1733083200,Real Sociedad,2824,2,Real Betis,2816,0,finished
+Spanish La Liga,8,61643,15,12437729,1733169600,Sevilla,2833,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,16,12437735,1733515200,Celta Vigo,2821,2,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,16,12437740,1733576400,Las Palmas,6577,2,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,16,12437745,1733584500,Real Betis,2816,2,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,16,12437747,1733592600,Valencia,2828,0,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,16,12437738,1733601600,Girona FC,24264,0,Real Madrid,2829,3,finished
+Spanish La Liga,8,61643,16,12437742,1733662800,Leganés,2845,0,Real Sociedad,2824,3,finished
+Spanish La Liga,8,61643,16,12437731,1733670900,Athletic Club,2825,2,Villarreal,2819,0,finished
+Spanish La Liga,8,61643,16,12437750,1733679000,Osasuna,2820,2,Deportivo Alavés,2885,2,finished
+Spanish La Liga,8,61643,16,12437733,1733688000,Atlético Madrid,2836,4,Sevilla,2833,3,finished
+Spanish La Liga,8,61643,16,12437752,1733774400,Getafe,2859,1,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,17,12437773,1734120000,Real Valladolid,2831,1,Valencia,2828,0,finished
+Spanish La Liga,8,61643,17,12437764,1734181200,Espanyol,2814,0,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,17,12437771,1734189300,Mallorca,2826,2,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,17,12437769,1734197400,Sevilla,2833,1,Celta Vigo,2821,0,finished
+Spanish La Liga,8,61643,17,12437759,1734206400,Rayo Vallecano,2818,3,Real Madrid,2829,3,finished
+Spanish La Liga,8,61643,17,12437755,1734267600,Atlético Madrid,2836,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,17,12437762,1734275700,Deportivo Alavés,2885,1,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,17,12437776,1734283800,Real Sociedad,2824,0,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,17,12437767,1734283800,Villarreal,2819,1,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,17,12437757,1734292800,Barcelona,2817,0,Leganés,2845,1,finished
+Spanish La Liga,8,61643,18,12437785,1734724800,Girona FC,24264,3,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,18,12437783,1734786000,Getafe,2859,0,Mallorca,2826,1,finished
+Spanish La Liga,8,61643,18,12437780,1734794100,Celta Vigo,2821,2,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,18,12437793,1734802200,Osasuna,2820,1,Athletic Club,2825,2,finished
+Spanish La Liga,8,61643,18,12437794,1734811200,Barcelona,2817,1,Atlético Madrid,2836,2,finished
+Spanish La Liga,8,61643,18,12437797,1734872400,Valencia,2828,2,Deportivo Alavés,2885,2,finished
+Spanish La Liga,8,61643,18,12437788,1734880500,Real Madrid,2829,4,Sevilla,2833,2,finished
+Spanish La Liga,8,61643,18,12437799,1734888600,Las Palmas,6577,1,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,18,12437790,1734888600,Leganés,2845,2,Villarreal,2819,5,finished
+Spanish La Liga,8,61643,18,12437778,1734897600,Real Betis,2816,1,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,19,12437816,1733248800,Mallorca,2826,1,Barcelona,2817,5,finished
+Spanish La Liga,8,61643,19,12437801,1733342400,Athletic Club,2825,2,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,19,12437822,1736539200,Rayo Vallecano,2818,2,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,19,12437812,1736600400,Deportivo Alavés,2885,0,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,19,12437819,1736608500,Real Valladolid,2831,1,Real Betis,2816,0,finished
+Spanish La Liga,8,61643,19,12437814,1736616600,Espanyol,2814,1,Leganés,2845,1,finished
+Spanish La Liga,8,61643,19,12437809,1736625600,Sevilla,2833,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,19,12437823,1736686800,Las Palmas,6577,1,Getafe,2859,2,finished
+Spanish La Liga,8,61643,19,12437804,1736694900,Atlético Madrid,2836,1,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,19,12437807,1736798400,Real Sociedad,2824,1,Villarreal,2819,0,finished
+Spanish La Liga,8,61643,20,12437831,1737144000,Espanyol,2814,2,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,20,12437827,1737205200,Girona FC,24264,1,Sevilla,2833,2,finished
+Spanish La Liga,8,61643,20,12437837,1737213300,Leganés,2845,1,Atlético Madrid,2836,0,finished
+Spanish La Liga,8,61643,20,12437848,1737221400,Real Betis,2816,1,Deportivo Alavés,2885,3,finished
+Spanish La Liga,8,61643,20,12437838,1737230400,Getafe,2859,1,Barcelona,2817,1,finished
+Spanish La Liga,8,61643,20,12437834,1737291600,Celta Vigo,2821,1,Athletic Club,2825,2,finished
+Spanish La Liga,8,61643,20,12437845,1737299700,Real Madrid,2829,4,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,20,12437829,1737307800,Osasuna,2820,1,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,20,12437844,1737316800,Valencia,2828,1,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,20,12437840,1737403200,Villarreal,2819,4,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,21,12437643,1737748800,Las Palmas,6577,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,21,12437657,1737810000,Mallorca,2826,0,Real Betis,2816,1,finished
+Spanish La Liga,8,61643,21,12437622,1737818100,Atlético Madrid,2836,1,Villarreal,2819,1,finished
+Spanish La Liga,8,61643,21,12437683,1737826200,Sevilla,2833,1,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,21,12437677,1737835200,Real Valladolid,2831,0,Real Madrid,2829,3,finished
+Spanish La Liga,8,61643,21,12437671,1737896400,Rayo Vallecano,2818,2,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,21,12437665,1737904500,Real Sociedad,2824,0,Getafe,2859,3,finished
+Spanish La Liga,8,61643,21,12437614,1737912600,Athletic Club,2825,0,Leganés,2845,0,finished
+Spanish La Liga,8,61643,21,12437633,1737921600,Barcelona,2817,7,Valencia,2828,1,finished
+Spanish La Liga,8,61643,21,12437649,1738008000,Deportivo Alavés,2885,1,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,22,12437719,1738353600,Leganés,2845,0,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,22,12437695,1738414800,Getafe,2859,0,Sevilla,2833,0,finished
+Spanish La Liga,8,61643,22,12437713,1738422900,Villarreal,2819,5,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,22,12437689,1738431000,Atlético Madrid,2836,2,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,22,12437725,1738440000,Espanyol,2814,1,Real Madrid,2829,0,finished
+Spanish La Liga,8,61643,22,12437743,1738501200,Barcelona,2817,1,Deportivo Alavés,2885,0,finished
+Spanish La Liga,8,61643,22,12437737,1738509300,Valencia,2828,2,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,22,12437707,1738517400,Osasuna,2820,2,Real Sociedad,2824,1,finished
+Spanish La Liga,8,61643,22,12437732,1738526400,Real Betis,2816,2,Athletic Club,2825,2,finished
+Spanish La Liga,8,61643,22,12437701,1738612800,Girona FC,24264,2,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,23,12437760,1738958400,Rayo Vallecano,2818,1,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,23,12437786,1739019600,Celta Vigo,2821,3,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,23,12437749,1739027700,Athletic Club,2825,3,Girona FC,24264,0,finished
+Spanish La Liga,8,61643,23,12437765,1739035800,Las Palmas,6577,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,23,12437775,1739044800,Real Madrid,2829,1,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,23,12437770,1739106000,Deportivo Alavés,2885,0,Getafe,2859,1,finished
+Spanish La Liga,8,61643,23,12437791,1739114100,Valencia,2828,2,Leganés,2845,0,finished
+Spanish La Liga,8,61643,23,12437796,1739122200,Real Sociedad,2824,2,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,23,12437781,1739131200,Sevilla,2833,1,Barcelona,2817,4,finished
+Spanish La Liga,8,61643,23,12437754,1739217600,Mallorca,2826,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,24,12437825,1739563200,Girona FC,24264,1,Getafe,2859,2,finished
+Spanish La Liga,8,61643,24,12437846,1739624400,Leganés,2845,3,Deportivo Alavés,2885,3,finished
+Spanish La Liga,8,61643,24,12437817,1739632500,Osasuna,2820,1,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,24,12437802,1739640600,Atlético Madrid,2836,1,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,24,12437836,1739649600,Villarreal,2819,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,24,12437821,1739710800,Espanyol,2814,1,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,24,12437830,1739718900,Real Valladolid,2831,0,Sevilla,2833,4,finished
+Spanish La Liga,8,61643,24,12437841,1739727000,Mallorca,2826,3,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,24,12437811,1739736000,Real Betis,2816,3,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,24,12437806,1739822400,Barcelona,2817,1,Rayo Vallecano,2818,0,finished
+Spanish La Liga,8,61643,25,12437853,1740168000,Celta Vigo,2821,1,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,25,12437857,1740229200,Deportivo Alavés,2885,0,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,25,12437856,1740237300,Rayo Vallecano,2818,0,Villarreal,2819,1,finished
+Spanish La Liga,8,61643,25,12437858,1740245400,Valencia,2828,0,Atlético Madrid,2836,3,finished
+Spanish La Liga,8,61643,25,12437859,1740254400,Las Palmas,6577,0,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,25,12437850,1740315600,Athletic Club,2825,7,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,25,12437861,1740323700,Real Madrid,2829,2,Girona FC,24264,0,finished
+Spanish La Liga,8,61643,25,12437860,1740331800,Getafe,2859,1,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,25,12437863,1740340800,Real Sociedad,2824,3,Leganés,2845,0,finished
+Spanish La Liga,8,61643,25,12437862,1740427200,Sevilla,2833,1,Mallorca,2826,1,finished
+Spanish La Liga,8,61643,26,12437871,1740772800,Real Valladolid,2831,1,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,26,12437869,1740834000,Girona FC,24264,2,Celta Vigo,2821,2,finished
+Spanish La Liga,8,61643,26,12437867,1740842100,Rayo Vallecano,2818,1,Sevilla,2833,1,finished
+Spanish La Liga,8,61643,26,12437865,1740850200,Real Betis,2816,2,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,26,12437868,1740859200,Atlético Madrid,2836,1,Athletic Club,2825,0,finished
+Spanish La Liga,8,61643,26,12437870,1740920400,Leganés,2845,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,26,12437864,1740928500,Barcelona,2817,4,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,26,12437872,1740936600,Mallorca,2826,1,Deportivo Alavés,2885,1,finished
+Spanish La Liga,8,61643,26,12437866,1740945600,Osasuna,2820,3,Valencia,2828,3,finished
+Spanish La Liga,8,61643,26,13607777,1745763300,Villarreal,2819,1,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,27,12437877,1741438800,Celta Vigo,2821,2,Leganés,2845,1,finished
+Spanish La Liga,8,61643,27,12437552,1741446900,Deportivo Alavés,2885,1,Villarreal,2819,0,finished
+Spanish La Liga,8,61643,27,12437879,1741455000,Valencia,2828,2,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,27,12437558,1741525200,Getafe,2859,2,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,27,12437549,1741533300,Real Madrid,2829,2,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,27,12437874,1741541400,Athletic Club,2825,1,Mallorca,2826,1,finished
+Spanish La Liga,8,61643,27,12437876,1741541400,Real Betis,2816,1,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,27,12437878,1741550400,Real Sociedad,2824,0,Sevilla,2833,1,finished
+Spanish La Liga,8,61643,27,12437880,1741636800,Espanyol,2814,1,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,27,13637082,1743105600,Barcelona,2817,3,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,28,12437566,1741982400,Las Palmas,6577,2,Deportivo Alavés,2885,2,finished
+Spanish La Liga,8,61643,28,12437557,1742043600,Real Valladolid,2831,0,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,28,12437565,1742051700,Mallorca,2826,2,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,28,12437562,1742059800,Villarreal,2819,1,Real Madrid,2829,2,finished
+Spanish La Liga,8,61643,28,12437556,1742068800,Girona FC,24264,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,28,12437560,1742130000,Leganés,2845,2,Real Betis,2816,3,finished
+Spanish La Liga,8,61643,28,12437559,1742138100,Sevilla,2833,0,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,28,12437563,1742146200,Osasuna,2820,1,Getafe,2859,2,finished
+Spanish La Liga,8,61643,28,12437553,1742146200,Rayo Vallecano,2818,2,Real Sociedad,2824,2,finished
+Spanish La Liga,8,61643,28,12437550,1742155200,Atlético Madrid,2836,2,Barcelona,2817,4,finished
+Spanish La Liga,8,61643,29,12437571,1743253200,Real Sociedad,2824,2,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,29,12437881,1743261300,Espanyol,2814,1,Atlético Madrid,2836,1,finished
+Spanish La Liga,8,61643,29,12437572,1743269400,Deportivo Alavés,2885,0,Rayo Vallecano,2818,2,finished
+Spanish La Liga,8,61643,29,12437573,1743278400,Real Madrid,2829,3,Leganés,2845,2,finished
+Spanish La Liga,8,61643,29,12437568,1743336000,Getafe,2859,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,29,12437570,1743344100,Barcelona,2817,4,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,29,12437564,1743352200,Athletic Club,2825,0,Osasuna,2820,0,finished
+Spanish La Liga,8,61643,29,12437576,1743352200,Valencia,2828,1,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,29,12437567,1743361200,Real Betis,2816,2,Sevilla,2833,1,finished
+Spanish La Liga,8,61643,29,12437569,1743447600,Celta Vigo,2821,1,Las Palmas,6577,1,finished
+Spanish La Liga,8,61643,30,12437888,1743793200,Rayo Vallecano,2818,0,Espanyol,2814,4,finished
+Spanish La Liga,8,61643,30,12437887,1743854400,Girona FC,24264,0,Deportivo Alavés,2885,1,finished
+Spanish La Liga,8,61643,30,12437577,1743862500,Real Madrid,2829,1,Valencia,2828,2,finished
+Spanish La Liga,8,61643,30,12437885,1743870600,Mallorca,2826,1,Celta Vigo,2821,2,finished
+Spanish La Liga,8,61643,30,12437575,1743879600,Barcelona,2817,1,Real Betis,2816,1,finished
+Spanish La Liga,8,61643,30,12437574,1743940800,Las Palmas,6577,1,Real Sociedad,2824,3,finished
+Spanish La Liga,8,61643,30,12437884,1743948900,Sevilla,2833,1,Atlético Madrid,2836,2,finished
+Spanish La Liga,8,61643,30,12437886,1743957000,Real Valladolid,2831,0,Getafe,2859,4,finished
+Spanish La Liga,8,61643,30,12437883,1743966000,Villarreal,2819,0,Athletic Club,2825,0,finished
+Spanish La Liga,8,61643,30,12437882,1744052400,Leganés,2845,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,31,12437517,1744398000,Valencia,2828,1,Sevilla,2833,0,finished
+Spanish La Liga,8,61643,31,12437513,1744459200,Real Sociedad,2824,0,Mallorca,2826,2,finished
+Spanish La Liga,8,61643,31,12437629,1744467300,Getafe,2859,1,Las Palmas,6577,3,finished
+Spanish La Liga,8,61643,31,12437515,1744475400,Celta Vigo,2821,0,Espanyol,2814,2,finished
+Spanish La Liga,8,61643,31,12437635,1744484400,Leganés,2845,0,Barcelona,2817,1,finished
+Spanish La Liga,8,61643,31,12437514,1744545600,Osasuna,2820,2,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,31,12437632,1744553700,Deportivo Alavés,2885,0,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,31,12437626,1744561800,Real Betis,2816,1,Villarreal,2819,2,finished
+Spanish La Liga,8,61643,31,12437621,1744570800,Athletic Club,2825,3,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,31,12437623,1744657200,Atlético Madrid,2836,4,Real Valladolid,2831,2,finished
+Spanish La Liga,8,61643,32,12437640,1745002800,Espanyol,2814,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,32,12437518,1745064000,Rayo Vallecano,2818,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,32,12437521,1745072100,Barcelona,2817,4,Celta Vigo,2821,3,finished
+Spanish La Liga,8,61643,32,12437525,1745080200,Mallorca,2826,0,Leganés,2845,0,finished
+Spanish La Liga,8,61643,32,12437519,1745089200,Las Palmas,6577,1,Atlético Madrid,2836,0,finished
+Spanish La Liga,8,61643,32,12437522,1745150400,Real Valladolid,2831,2,Osasuna,2820,3,finished
+Spanish La Liga,8,61643,32,12437524,1745158500,Villarreal,2819,2,Real Sociedad,2824,2,finished
+Spanish La Liga,8,61643,32,12437528,1745166600,Sevilla,2833,1,Deportivo Alavés,2885,1,finished
+Spanish La Liga,8,61643,32,12437523,1745175600,Real Madrid,2829,1,Athletic Club,2825,0,finished
+Spanish La Liga,8,61643,32,12437520,1745262000,Girona FC,24264,1,Real Betis,2816,3,finished
+Spanish La Liga,8,61643,33,12437531,1745341200,Valencia,2828,1,Espanyol,2814,1,finished
+Spanish La Liga,8,61643,33,12437529,1745350200,Barcelona,2817,1,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,33,12437527,1745427600,Athletic Club,2825,1,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,33,12437543,1745427600,Celta Vigo,2821,3,Villarreal,2819,0,finished
+Spanish La Liga,8,61643,33,12437561,1745436600,Deportivo Alavés,2885,1,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,33,12437530,1745436600,Getafe,2859,0,Real Madrid,2829,1,finished
+Spanish La Liga,8,61643,33,12437535,1745514000,Leganés,2845,1,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,33,12437539,1745514000,Osasuna,2820,1,Sevilla,2833,0,finished
+Spanish La Liga,8,61643,33,12437533,1745523000,Atlético Madrid,2836,3,Rayo Vallecano,2818,0,finished
+Spanish La Liga,8,61643,33,12437526,1745523000,Real Betis,2816,5,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,34,12437542,1746212400,Rayo Vallecano,2818,1,Getafe,2859,0,finished
+Spanish La Liga,8,61643,34,12437536,1746273600,Deportivo Alavés,2885,0,Atlético Madrid,2836,0,finished
+Spanish La Liga,8,61643,34,12437541,1746281700,Villarreal,2819,4,Osasuna,2820,2,finished
+Spanish La Liga,8,61643,34,12437540,1746289800,Las Palmas,6577,2,Valencia,2828,3,finished
+Spanish La Liga,8,61643,34,12437534,1746298800,Real Valladolid,2831,1,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,34,12437532,1746360000,Real Madrid,2829,3,Celta Vigo,2821,2,finished
+Spanish La Liga,8,61643,34,12437546,1746368100,Sevilla,2833,2,Leganés,2845,2,finished
+Spanish La Liga,8,61643,34,12437648,1746376200,Espanyol,2814,1,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,34,12437538,1746385200,Real Sociedad,2824,0,Athletic Club,2825,0,finished
+Spanish La Liga,8,61643,34,12437537,1746471600,Girona FC,24264,1,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,35,12437555,1746817200,Las Palmas,6577,0,Rayo Vallecano,2818,1,finished
+Spanish La Liga,8,61643,35,12437494,1746878400,Valencia,2828,3,Getafe,2859,0,finished
+Spanish La Liga,8,61643,35,12437548,1746886500,Celta Vigo,2821,3,Sevilla,2833,2,finished
+Spanish La Liga,8,61643,35,12437551,1746894600,Girona FC,24264,0,Villarreal,2819,1,finished
+Spanish La Liga,8,61643,35,12437554,1746894600,Mallorca,2826,2,Real Valladolid,2831,1,finished
+Spanish La Liga,8,61643,35,12437544,1746903600,Atlético Madrid,2836,4,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,35,12437579,1746964800,Leganés,2845,3,Espanyol,2814,2,finished
+Spanish La Liga,8,61643,35,12437545,1746972900,Barcelona,2817,4,Real Madrid,2829,3,finished
+Spanish La Liga,8,61643,35,12437501,1746981000,Athletic Club,2825,1,Deportivo Alavés,2885,0,finished
+Spanish La Liga,8,61643,35,12437547,1746990000,Real Betis,2816,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,36,12437485,1747155600,Real Valladolid,2831,0,Girona FC,24264,1,finished
+Spanish La Liga,8,61643,36,12437498,1747159200,Real Sociedad,2824,0,Celta Vigo,2821,1,finished
+Spanish La Liga,8,61643,36,12437495,1747164600,Sevilla,2833,1,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,36,12437484,1747242000,Deportivo Alavés,2885,1,Valencia,2828,0,finished
+Spanish La Liga,8,61643,36,12437500,1747242000,Villarreal,2819,3,Leganés,2845,0,finished
+Spanish La Liga,8,61643,36,12437491,1747251000,Real Madrid,2829,2,Mallorca,2826,1,finished
+Spanish La Liga,8,61643,36,12437502,1747328400,Osasuna,2820,2,Atlético Madrid,2836,0,finished
+Spanish La Liga,8,61643,36,12437504,1747328400,Rayo Vallecano,2818,2,Real Betis,2816,2,finished
+Spanish La Liga,8,61643,36,12437654,1747337400,Espanyol,2814,0,Barcelona,2817,2,finished
+Spanish La Liga,8,61643,36,12437492,1747337400,Getafe,2859,0,Athletic Club,2825,2,finished
+Spanish La Liga,8,61643,37,12437493,1747587600,Atlético Madrid,2836,4,Real Betis,2816,1,finished
+Spanish La Liga,8,61643,37,12437489,1747587600,Barcelona,2817,2,Villarreal,2819,3,finished
+Spanish La Liga,8,61643,37,12437483,1747587600,Celta Vigo,2821,1,Rayo Vallecano,2818,2,finished
+Spanish La Liga,8,61643,37,12437497,1747587600,Las Palmas,6577,0,Leganés,2845,1,finished
+Spanish La Liga,8,61643,37,12437490,1747587600,Mallorca,2826,1,Getafe,2859,2,finished
+Spanish La Liga,8,61643,37,12437505,1747587600,Osasuna,2820,2,Espanyol,2814,0,finished
+Spanish La Liga,8,61643,37,12437578,1747587600,Real Sociedad,2824,3,Girona FC,24264,2,finished
+Spanish La Liga,8,61643,37,12437486,1747587600,Real Valladolid,2831,0,Deportivo Alavés,2885,1,finished
+Spanish La Liga,8,61643,37,12437499,1747587600,Sevilla,2833,0,Real Madrid,2829,2,finished
+Spanish La Liga,8,61643,37,12437496,1747587600,Valencia,2828,0,Athletic Club,2825,1,finished
+Spanish La Liga,8,61643,38,12437510,1748026800,Real Betis,2816,1,Valencia,2828,1,finished
+Spanish La Liga,8,61643,38,12437506,1748096100,Real Madrid,2829,2,Real Sociedad,2824,0,finished
+Spanish La Liga,8,61643,38,12437663,1748104200,Espanyol,2814,2,Las Palmas,6577,0,finished
+Spanish La Liga,8,61643,38,12437511,1748104200,Leganés,2845,3,Real Valladolid,2831,0,finished
+Spanish La Liga,8,61643,38,12437507,1748113200,Deportivo Alavés,2885,1,Osasuna,2820,1,finished
+Spanish La Liga,8,61643,38,12437516,1748113200,Getafe,2859,1,Celta Vigo,2821,2,finished
+Spanish La Liga,8,61643,38,12437508,1748113200,Rayo Vallecano,2818,0,Mallorca,2826,0,finished
+Spanish La Liga,8,61643,38,12437509,1748174400,Girona FC,24264,0,Atlético Madrid,2836,4,finished
+Spanish La Liga,8,61643,38,12437512,1748182500,Villarreal,2819,4,Sevilla,2833,2,finished
+Spanish La Liga,8,61643,38,12437503,1748199600,Athletic Club,2825,0,Barcelona,2817,3,finished
+Italian Serie A,23,63515,1,12499256,1723912200,Genoa,2713,2,Inter,2697,2,finished
+Italian Serie A,23,63515,1,12499262,1723912200,Parma,2690,1,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,1,12499255,1723920300,Empoli,2705,0,Monza,2729,0,finished
+Italian Serie A,23,63515,1,12499261,1723920300,Milan,2692,2,Torino,2696,2,finished
+Italian Serie A,23,63515,1,12499253,1723998600,Bologna,2685,1,Udinese,2695,1,finished
+Italian Serie A,23,63515,1,12499257,1723998600,Hellas Verona,2701,3,Napoli,2714,0,finished
+Italian Serie A,23,63515,1,12499254,1724006700,Cagliari,2719,0,Roma,2702,0,finished
+Italian Serie A,23,63515,1,12499259,1724006700,Lazio,2699,3,Venezia,2688,1,finished
+Italian Serie A,23,63515,1,12499260,1724085000,Lecce,2689,0,Atalanta,2686,4,finished
+Italian Serie A,23,63515,1,12499258,1724093100,Juventus,2687,3,Como,2704,0,finished
+Italian Serie A,23,63515,2,12499271,1724517000,Parma,2690,2,Milan,2692,1,finished
+Italian Serie A,23,63515,2,12499274,1724517000,Udinese,2695,2,Lazio,2699,1,finished
+Italian Serie A,23,63515,2,12499268,1724525100,Inter,2697,2,Lecce,2689,0,finished
+Italian Serie A,23,63515,2,12499269,1724525100,Monza,2729,0,Genoa,2713,1,finished
+Italian Serie A,23,63515,2,12499266,1724603400,Fiorentina,2693,0,Venezia,2688,0,finished
+Italian Serie A,23,63515,2,12499273,1724603400,Torino,2696,2,Atalanta,2686,1,finished
+Italian Serie A,23,63515,2,12499270,1724611500,Napoli,2714,3,Bologna,2685,0,finished
+Italian Serie A,23,63515,2,12499272,1724611500,Roma,2702,1,Empoli,2705,2,finished
+Italian Serie A,23,63515,2,12499265,1724689800,Cagliari,2719,1,Como,2704,1,finished
+Italian Serie A,23,63515,2,12499267,1724697900,Hellas Verona,2701,0,Juventus,2687,3,finished
+Italian Serie A,23,63515,3,12499284,1725035400,Venezia,2688,0,Torino,2696,1,finished
+Italian Serie A,23,63515,3,12499278,1725043500,Inter,2697,4,Atalanta,2686,0,finished
+Italian Serie A,23,63515,3,12499275,1725121800,Bologna,2685,1,Empoli,2705,1,finished
+Italian Serie A,23,63515,3,12499281,1725121800,Lecce,2689,1,Cagliari,2719,0,finished
+Italian Serie A,23,63515,3,12499280,1725129900,Lazio,2699,2,Milan,2692,2,finished
+Italian Serie A,23,63515,3,12499282,1725129900,Napoli,2714,2,Parma,2690,1,finished
+Italian Serie A,23,63515,3,12499276,1725208200,Fiorentina,2693,2,Monza,2729,2,finished
+Italian Serie A,23,63515,3,12499277,1725208200,Genoa,2713,0,Hellas Verona,2701,2,finished
+Italian Serie A,23,63515,3,12499279,1725216300,Juventus,2687,0,Roma,2702,0,finished
+Italian Serie A,23,63515,3,12499283,1725216300,Udinese,2695,1,Como,2704,0,finished
+Italian Serie A,23,63515,4,12499287,1726318800,Como,2704,2,Bologna,2685,2,finished
+Italian Serie A,23,63515,4,12499288,1726329600,Empoli,2705,0,Juventus,2687,0,finished
+Italian Serie A,23,63515,4,12499291,1726339500,Milan,2692,4,Venezia,2688,0,finished
+Italian Serie A,23,63515,4,12499289,1726396200,Genoa,2713,1,Roma,2702,1,finished
+Italian Serie A,23,63515,4,12499285,1726405200,Atalanta,2686,3,Fiorentina,2693,2,finished
+Italian Serie A,23,63515,4,12499294,1726405200,Torino,2696,0,Lecce,2689,0,finished
+Italian Serie A,23,63515,4,12499286,1726416000,Cagliari,2719,0,Napoli,2714,4,finished
+Italian Serie A,23,63515,4,12499292,1726425900,Monza,2729,1,Inter,2697,1,finished
+Italian Serie A,23,63515,4,12499293,1726504200,Parma,2690,2,Udinese,2695,3,finished
+Italian Serie A,23,63515,4,12499290,1726512300,Lazio,2699,2,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,5,12499296,1726849800,Cagliari,2719,0,Empoli,2705,2,finished
+Italian Serie A,23,63515,5,12499298,1726857900,Hellas Verona,2701,2,Torino,2696,3,finished
+Italian Serie A,23,63515,5,12499304,1726923600,Venezia,2688,2,Genoa,2713,0,finished
+Italian Serie A,23,63515,5,12499300,1726934400,Juventus,2687,0,Napoli,2714,0,finished
+Italian Serie A,23,63515,5,12499301,1726944300,Lecce,2689,2,Parma,2690,2,finished
+Italian Serie A,23,63515,5,12499297,1727001000,Fiorentina,2693,2,Lazio,2699,1,finished
+Italian Serie A,23,63515,5,12499302,1727010000,Monza,2729,1,Bologna,2685,2,finished
+Italian Serie A,23,63515,5,12499303,1727020800,Roma,2702,3,Udinese,2695,0,finished
+Italian Serie A,23,63515,5,12499299,1727030700,Inter,2697,1,Milan,2692,2,finished
+Italian Serie A,23,63515,5,12499295,1727203500,Atalanta,2686,2,Como,2704,3,finished
+Italian Serie A,23,63515,6,12499309,1727462700,Milan,2692,3,Lecce,2689,0,finished
+Italian Serie A,23,63515,6,12499314,1727528400,Udinese,2695,2,Inter,2697,3,finished
+Italian Serie A,23,63515,6,12499308,1727539200,Genoa,2713,0,Juventus,2687,3,finished
+Italian Serie A,23,63515,6,12499305,1727549100,Bologna,2685,1,Atalanta,2686,1,finished
+Italian Serie A,23,63515,6,12499313,1727605800,Torino,2696,2,Lazio,2699,3,finished
+Italian Serie A,23,63515,6,12499306,1727614800,Como,2704,3,Hellas Verona,2701,2,finished
+Italian Serie A,23,63515,6,12499312,1727614800,Roma,2702,2,Venezia,2688,1,finished
+Italian Serie A,23,63515,6,12499307,1727625600,Empoli,2705,0,Fiorentina,2693,0,finished
+Italian Serie A,23,63515,6,12499310,1727635500,Napoli,2714,2,Monza,2729,0,finished
+Italian Serie A,23,63515,6,12499311,1727721900,Parma,2690,2,Cagliari,2719,3,finished
+Italian Serie A,23,63515,7,12499323,1728059400,Napoli,2714,3,Como,2704,1,finished
+Italian Serie A,23,63515,7,12499318,1728067500,Hellas Verona,2701,2,Venezia,2688,1,finished
+Italian Serie A,23,63515,7,12499324,1728133200,Udinese,2695,1,Lecce,2689,0,finished
+Italian Serie A,23,63515,7,12499315,1728144000,Atalanta,2686,5,Genoa,2713,1,finished
+Italian Serie A,23,63515,7,12499319,1728153900,Inter,2697,3,Torino,2696,2,finished
+Italian Serie A,23,63515,7,12499320,1728210600,Juventus,2687,1,Cagliari,2719,1,finished
+Italian Serie A,23,63515,7,12499316,1728219600,Bologna,2685,0,Parma,2690,0,finished
+Italian Serie A,23,63515,7,12499321,1728219600,Lazio,2699,2,Empoli,2705,1,finished
+Italian Serie A,23,63515,7,12499322,1728230400,Monza,2729,1,Roma,2702,1,finished
+Italian Serie A,23,63515,7,12499317,1728240300,Fiorentina,2693,2,Milan,2692,1,finished
+Italian Serie A,23,63515,8,12499326,1729342800,Como,2704,1,Parma,2690,1,finished
+Italian Serie A,23,63515,8,12499328,1729342800,Genoa,2713,2,Bologna,2685,2,finished
+Italian Serie A,23,63515,8,12499333,1729353600,Milan,2692,1,Udinese,2695,0,finished
+Italian Serie A,23,63515,8,12499330,1729363500,Juventus,2687,1,Lazio,2699,0,finished
+Italian Serie A,23,63515,8,12499327,1729420200,Empoli,2705,0,Napoli,2714,1,finished
+Italian Serie A,23,63515,8,12499331,1729429200,Lecce,2689,0,Fiorentina,2693,6,finished
+Italian Serie A,23,63515,8,12499335,1729429200,Venezia,2688,0,Atalanta,2686,2,finished
+Italian Serie A,23,63515,8,12499325,1729440000,Cagliari,2719,3,Torino,2696,2,finished
+Italian Serie A,23,63515,8,12499334,1729449900,Roma,2702,0,Inter,2697,1,finished
+Italian Serie A,23,63515,8,12499329,1729536300,Hellas Verona,2701,0,Monza,2729,3,finished
+Italian Serie A,23,63515,9,12499346,1729873800,Udinese,2695,2,Cagliari,2719,0,finished
+Italian Serie A,23,63515,9,12499345,1729881900,Torino,2696,1,Como,2704,0,finished
+Italian Serie A,23,63515,9,12499342,1729947600,Napoli,2714,1,Lecce,2689,0,finished
+Italian Serie A,23,63515,9,12499336,1729968300,Atalanta,2686,6,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,9,12499344,1730028600,Parma,2690,1,Empoli,2705,1,finished
+Italian Serie A,23,63515,9,12499340,1730037600,Lazio,2699,3,Genoa,2713,0,finished
+Italian Serie A,23,63515,9,12499341,1730037600,Monza,2729,2,Venezia,2688,2,finished
+Italian Serie A,23,63515,9,12499339,1730048400,Inter,2697,4,Juventus,2687,4,finished
+Italian Serie A,23,63515,9,12499338,1730058300,Fiorentina,2693,5,Roma,2702,1,finished
+Italian Serie A,23,63515,9,13416148,1740685500,Bologna,2685,2,Milan,2692,1,finished
+Italian Serie A,23,63515,10,12499348,1730223000,Cagliari,2719,0,Bologna,2685,2,finished
+Italian Serie A,23,63515,10,12499354,1730223000,Lecce,2689,1,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,10,12499355,1730231100,Milan,2692,0,Napoli,2714,2,finished
+Italian Serie A,23,63515,10,12499350,1730309400,Empoli,2705,0,Inter,2697,3,finished
+Italian Serie A,23,63515,10,12499357,1730309400,Venezia,2688,3,Udinese,2695,2,finished
+Italian Serie A,23,63515,10,12499347,1730317500,Atalanta,2686,2,Monza,2729,0,finished
+Italian Serie A,23,63515,10,12499353,1730317500,Juventus,2687,2,Parma,2690,2,finished
+Italian Serie A,23,63515,10,12499351,1730395800,Genoa,2713,0,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,10,12499349,1730403900,Como,2704,1,Lazio,2699,5,finished
+Italian Serie A,23,63515,10,12499356,1730403900,Roma,2702,1,Torino,2696,0,finished
+Italian Serie A,23,63515,11,12499359,1730556000,Bologna,2685,1,Lecce,2689,0,finished
+Italian Serie A,23,63515,11,12504703,1730566800,Udinese,2695,0,Juventus,2687,2,finished
+Italian Serie A,23,63515,11,12504705,1730576700,Monza,2729,0,Milan,2692,1,finished
+Italian Serie A,23,63515,11,12504704,1730633400,Napoli,2714,0,Atalanta,2686,3,finished
+Italian Serie A,23,63515,11,12504700,1730642400,Torino,2696,0,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,11,12504706,1730653200,Hellas Verona,2701,3,Roma,2702,2,finished
+Italian Serie A,23,63515,11,12504702,1730663100,Inter,2697,1,Venezia,2688,0,finished
+Italian Serie A,23,63515,11,12499360,1730741400,Empoli,2705,1,Como,2704,0,finished
+Italian Serie A,23,63515,11,12504699,1730741400,Parma,2690,0,Genoa,2713,1,finished
+Italian Serie A,23,63515,11,12504698,1730749500,Lazio,2699,2,Cagliari,2719,1,finished
+Italian Serie A,23,63515,12,12504693,1731008700,Genoa,2713,1,Como,2704,1,finished
+Italian Serie A,23,63515,12,12504694,1731095100,Lecce,2689,1,Empoli,2705,1,finished
+Italian Serie A,23,63515,12,12504688,1731160800,Venezia,2688,1,Parma,2690,2,finished
+Italian Serie A,23,63515,12,12504701,1731171600,Cagliari,2719,3,Milan,2692,3,finished
+Italian Serie A,23,63515,12,12504692,1731181500,Juventus,2687,2,Torino,2696,0,finished
+Italian Serie A,23,63515,12,12504697,1731238200,Atalanta,2686,2,Udinese,2695,1,finished
+Italian Serie A,23,63515,12,12504696,1731247200,Fiorentina,2693,3,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,12,12504690,1731247200,Roma,2702,2,Bologna,2685,3,finished
+Italian Serie A,23,63515,12,12504691,1731258000,Monza,2729,0,Lazio,2699,1,finished
+Italian Serie A,23,63515,12,12504695,1731267900,Inter,2697,1,Napoli,2714,1,finished
+Italian Serie A,23,63515,13,12504684,1732370400,Hellas Verona,2701,0,Inter,2697,5,finished
+Italian Serie A,23,63515,13,12504679,1732381200,Milan,2692,0,Juventus,2687,0,finished
+Italian Serie A,23,63515,13,12504683,1732391100,Parma,2690,1,Atalanta,2686,3,finished
+Italian Serie A,23,63515,13,12504689,1732447800,Genoa,2713,2,Cagliari,2719,2,finished
+Italian Serie A,23,63515,13,12504686,1732456800,Como,2704,0,Fiorentina,2693,2,finished
+Italian Serie A,23,63515,13,12504682,1732456800,Torino,2696,1,Monza,2729,1,finished
+Italian Serie A,23,63515,13,12504680,1732467600,Napoli,2714,1,Roma,2702,0,finished
+Italian Serie A,23,63515,13,12504687,1732477500,Lazio,2699,3,Bologna,2685,0,finished
+Italian Serie A,23,63515,13,12504685,1732555800,Empoli,2705,1,Udinese,2695,1,finished
+Italian Serie A,23,63515,13,12504675,1732563900,Venezia,2688,0,Lecce,2689,1,finished
+Italian Serie A,23,63515,14,12504678,1732909500,Cagliari,2719,1,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,14,12504681,1732975200,Como,2704,1,Monza,2729,1,finished
+Italian Serie A,23,63515,14,12504672,1732986000,Milan,2692,3,Empoli,2705,0,finished
+Italian Serie A,23,63515,14,12504677,1732995900,Bologna,2685,3,Venezia,2688,0,finished
+Italian Serie A,23,63515,14,12504665,1733052600,Udinese,2695,0,Genoa,2713,2,finished
+Italian Serie A,23,63515,14,12504666,1733061600,Parma,2690,3,Lazio,2699,1,finished
+Italian Serie A,23,63515,14,12504669,1733061600,Torino,2696,0,Napoli,2714,1,finished
+Italian Serie A,23,63515,14,12504674,1733082300,Lecce,2689,1,Juventus,2687,1,finished
+Italian Serie A,23,63515,14,12504673,1733168700,Roma,2702,0,Atalanta,2686,2,finished
+Italian Serie A,23,63515,14,12504676,1738871100,Fiorentina,2693,3,Inter,2697,0,finished
+Italian Serie A,23,63515,15,12504670,1733506200,Inter,2697,3,Parma,2690,1,finished
+Italian Serie A,23,63515,15,12504663,1733514300,Atalanta,2686,2,Milan,2692,1,finished
+Italian Serie A,23,63515,15,12504667,1733580000,Genoa,2713,0,Torino,2696,0,finished
+Italian Serie A,23,63515,15,12504671,1733590800,Juventus,2687,2,Bologna,2685,2,finished
+Italian Serie A,23,63515,15,12504659,1733600700,Roma,2702,4,Lecce,2689,1,finished
+Italian Serie A,23,63515,15,12504668,1733657400,Fiorentina,2693,1,Cagliari,2719,0,finished
+Italian Serie A,23,63515,15,12504664,1733666400,Hellas Verona,2701,1,Empoli,2705,4,finished
+Italian Serie A,23,63515,15,12504655,1733677200,Venezia,2688,2,Como,2704,2,finished
+Italian Serie A,23,63515,15,12504661,1733687100,Napoli,2714,0,Lazio,2699,1,finished
+Italian Serie A,23,63515,15,12504662,1733773500,Monza,2729,1,Udinese,2695,2,finished
+Italian Serie A,23,63515,16,12504649,1734119100,Empoli,2705,0,Torino,2696,1,finished
+Italian Serie A,23,63515,16,12504651,1734184800,Cagliari,2719,0,Atalanta,2686,1,finished
+Italian Serie A,23,63515,16,12504648,1734195600,Udinese,2695,1,Napoli,2714,3,finished
+Italian Serie A,23,63515,16,12504650,1734205500,Juventus,2687,2,Venezia,2688,2,finished
+Italian Serie A,23,63515,16,12504660,1734262200,Lecce,2689,2,Monza,2729,1,finished
+Italian Serie A,23,63515,16,12504656,1734271200,Bologna,2685,1,Fiorentina,2693,0,finished
+Italian Serie A,23,63515,16,12504647,1734271200,Parma,2690,2,Hellas Verona,2701,3,finished
+Italian Serie A,23,63515,16,12504658,1734282000,Como,2704,2,Roma,2702,0,finished
+Italian Serie A,23,63515,16,12504652,1734291900,Milan,2692,0,Genoa,2713,0,finished
+Italian Serie A,23,63515,16,12504657,1734378300,Lazio,2699,0,Inter,2697,6,finished
+Italian Serie A,23,63515,17,12504645,1734723900,Hellas Verona,2701,0,Milan,2692,1,finished
+Italian Serie A,23,63515,17,12504640,1734789600,Torino,2696,0,Bologna,2685,2,finished
+Italian Serie A,23,63515,17,12504646,1734800400,Genoa,2713,1,Napoli,2714,2,finished
+Italian Serie A,23,63515,17,12504641,1734810300,Lecce,2689,1,Lazio,2699,2,finished
+Italian Serie A,23,63515,17,12504654,1734867000,Roma,2702,5,Parma,2690,0,finished
+Italian Serie A,23,63515,17,12504637,1734876000,Venezia,2688,2,Cagliari,2719,1,finished
+Italian Serie A,23,63515,17,12504653,1734886800,Atalanta,2686,3,Empoli,2705,2,finished
+Italian Serie A,23,63515,17,12504642,1734896700,Monza,2729,1,Juventus,2687,2,finished
+Italian Serie A,23,63515,17,12504643,1734975000,Fiorentina,2693,1,Udinese,2695,2,finished
+Italian Serie A,23,63515,17,12504644,1734983100,Inter,2697,2,Como,2704,0,finished
+Italian Serie A,23,63515,18,12504632,1735394400,Empoli,2705,1,Genoa,2713,2,finished
+Italian Serie A,23,63515,18,12504636,1735394400,Parma,2690,2,Monza,2729,1,finished
+Italian Serie A,23,63515,18,12504633,1735405200,Cagliari,2719,0,Inter,2697,3,finished
+Italian Serie A,23,63515,18,12504630,1735415100,Lazio,2699,1,Atalanta,2686,1,finished
+Italian Serie A,23,63515,18,12504627,1735471800,Udinese,2695,2,Torino,2696,2,finished
+Italian Serie A,23,63515,18,12504629,1735480800,Napoli,2714,1,Venezia,2688,0,finished
+Italian Serie A,23,63515,18,12504635,1735491600,Juventus,2687,2,Fiorentina,2693,2,finished
+Italian Serie A,23,63515,18,12504631,1735501500,Milan,2692,1,Roma,2702,1,finished
+Italian Serie A,23,63515,18,12504639,1735579800,Como,2704,2,Lecce,2689,0,finished
+Italian Serie A,23,63515,18,12504638,1735587900,Bologna,2685,2,Hellas Verona,2701,3,finished
+Italian Serie A,23,63515,19,12504619,1735999200,Venezia,2688,1,Empoli,2705,1,finished
+Italian Serie A,23,63515,19,12504628,1736010000,Fiorentina,2693,0,Napoli,2714,3,finished
+Italian Serie A,23,63515,19,12504623,1736019900,Hellas Verona,2701,0,Udinese,2695,0,finished
+Italian Serie A,23,63515,19,12504622,1736076600,Monza,2729,1,Cagliari,2719,2,finished
+Italian Serie A,23,63515,19,12504626,1736085600,Lecce,2689,0,Genoa,2713,0,finished
+Italian Serie A,23,63515,19,12504617,1736096400,Torino,2696,0,Parma,2690,0,finished
+Italian Serie A,23,63515,19,12504618,1736106300,Roma,2702,2,Lazio,2699,0,finished
+Italian Serie A,23,63515,19,12504625,1736875800,Como,2704,1,Milan,2692,2,finished
+Italian Serie A,23,63515,19,12504624,1736883900,Atalanta,2686,1,Juventus,2687,1,finished
+Italian Serie A,23,63515,19,12504620,1736970300,Inter,2697,2,Bologna,2685,2,finished
+Italian Serie A,23,63515,20,12504440,1736538300,Lazio,2699,1,Como,2704,1,finished
+Italian Serie A,23,63515,20,12504439,1736604000,Empoli,2705,1,Lecce,2689,3,finished
+Italian Serie A,23,63515,20,12504428,1736604000,Udinese,2695,0,Atalanta,2686,0,finished
+Italian Serie A,23,63515,20,12504431,1736614800,Torino,2696,1,Juventus,2687,1,finished
+Italian Serie A,23,63515,20,12504437,1736624700,Milan,2692,1,Cagliari,2719,1,finished
+Italian Serie A,23,63515,20,12504436,1736681400,Genoa,2713,1,Parma,2690,0,finished
+Italian Serie A,23,63515,20,12504432,1736690400,Venezia,2688,0,Inter,2697,1,finished
+Italian Serie A,23,63515,20,12504438,1736701200,Bologna,2685,2,Roma,2702,2,finished
+Italian Serie A,23,63515,20,12504433,1736711100,Napoli,2714,2,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,20,12504435,1736797500,Monza,2729,2,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,21,12504424,1737143100,Roma,2702,3,Genoa,2713,1,finished
+Italian Serie A,23,63515,21,12504434,1737208800,Bologna,2685,3,Monza,2729,1,finished
+Italian Serie A,23,63515,21,12504427,1737219600,Juventus,2687,2,Milan,2692,0,finished
+Italian Serie A,23,63515,21,12504426,1737229500,Atalanta,2686,2,Napoli,2714,3,finished
+Italian Serie A,23,63515,21,12504425,1737286200,Fiorentina,2693,1,Torino,2696,1,finished
+Italian Serie A,23,63515,21,12504429,1737295200,Cagliari,2719,4,Lecce,2689,1,finished
+Italian Serie A,23,63515,21,12504423,1737295200,Parma,2690,1,Venezia,2688,1,finished
+Italian Serie A,23,63515,21,12504418,1737306000,Hellas Verona,2701,0,Lazio,2699,3,finished
+Italian Serie A,23,63515,21,12504421,1737315900,Inter,2697,3,Empoli,2705,1,finished
+Italian Serie A,23,63515,21,12504430,1737402300,Como,2704,4,Udinese,2695,1,finished
+Italian Serie A,23,63515,22,12504409,1737747900,Torino,2696,2,Cagliari,2719,0,finished
+Italian Serie A,23,63515,22,12504420,1737813600,Como,2704,1,Atalanta,2686,2,finished
+Italian Serie A,23,63515,22,12504413,1737824400,Napoli,2714,2,Juventus,2687,1,finished
+Italian Serie A,23,63515,22,12504422,1737834300,Empoli,2705,1,Bologna,2685,1,finished
+Italian Serie A,23,63515,22,12504415,1737891000,Milan,2692,3,Parma,2690,2,finished
+Italian Serie A,23,63515,22,12504414,1737900000,Udinese,2695,1,Roma,2702,2,finished
+Italian Serie A,23,63515,22,12504419,1737910800,Lecce,2689,0,Inter,2697,4,finished
+Italian Serie A,23,63515,22,12504416,1737920700,Lazio,2699,1,Fiorentina,2693,2,finished
+Italian Serie A,23,63515,22,12504412,1737999000,Venezia,2688,1,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,22,12504417,1738007100,Genoa,2713,2,Monza,2729,0,finished
+Italian Serie A,23,63515,23,12504400,1738352700,Parma,2690,1,Lecce,2689,3,finished
+Italian Serie A,23,63515,23,12504405,1738418400,Monza,2729,0,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,23,12504399,1738418400,Udinese,2695,3,Venezia,2688,2,finished
+Italian Serie A,23,63515,23,12504411,1738429200,Atalanta,2686,1,Torino,2696,1,finished
+Italian Serie A,23,63515,23,12504406,1738439100,Bologna,2685,2,Como,2704,0,finished
+Italian Serie A,23,63515,23,12504407,1738495800,Juventus,2687,4,Empoli,2705,1,finished
+Italian Serie A,23,63515,23,12504408,1738504800,Fiorentina,2693,2,Genoa,2713,1,finished
+Italian Serie A,23,63515,23,12504404,1738515600,Milan,2692,1,Inter,2697,1,finished
+Italian Serie A,23,63515,23,12504402,1738525500,Roma,2702,1,Napoli,2714,1,finished
+Italian Serie A,23,63515,23,12504410,1738611900,Cagliari,2719,1,Lazio,2699,2,finished
+Italian Serie A,23,63515,24,12504403,1738957500,Como,2704,1,Juventus,2687,2,finished
+Italian Serie A,23,63515,24,12504397,1739023200,Hellas Verona,2701,0,Atalanta,2686,5,finished
+Italian Serie A,23,63515,24,12504401,1739034000,Empoli,2705,0,Milan,2692,2,finished
+Italian Serie A,23,63515,24,12504391,1739043900,Torino,2696,1,Genoa,2713,1,finished
+Italian Serie A,23,63515,24,12504389,1739100600,Venezia,2688,0,Roma,2702,1,finished
+Italian Serie A,23,63515,24,12504398,1739109600,Cagliari,2719,2,Parma,2690,1,finished
+Italian Serie A,23,63515,24,12504395,1739109600,Lazio,2699,5,Monza,2729,1,finished
+Italian Serie A,23,63515,24,12504392,1739120400,Lecce,2689,0,Bologna,2685,0,finished
+Italian Serie A,23,63515,24,12504394,1739130300,Napoli,2714,1,Udinese,2695,1,finished
+Italian Serie A,23,63515,24,12504396,1739216700,Inter,2697,2,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,25,12504388,1739562300,Bologna,2685,3,Torino,2696,2,finished
+Italian Serie A,23,63515,25,12504393,1739628000,Atalanta,2686,0,Cagliari,2719,0,finished
+Italian Serie A,23,63515,25,12504385,1739638800,Lazio,2699,2,Napoli,2714,2,finished
+Italian Serie A,23,63515,25,12504384,1739648700,Milan,2692,1,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,25,12504390,1739705400,Fiorentina,2693,0,Como,2704,2,finished
+Italian Serie A,23,63515,25,12504383,1739714400,Monza,2729,0,Lecce,2689,0,finished
+Italian Serie A,23,63515,25,12504379,1739714400,Udinese,2695,3,Empoli,2705,0,finished
+Italian Serie A,23,63515,25,12504380,1739725200,Parma,2690,0,Roma,2702,1,finished
+Italian Serie A,23,63515,25,12504387,1739735100,Juventus,2687,1,Inter,2697,0,finished
+Italian Serie A,23,63515,25,12504386,1739821500,Genoa,2713,2,Venezia,2688,0,finished
+Italian Serie A,23,63515,26,12504375,1740167100,Lecce,2689,0,Udinese,2695,1,finished
+Italian Serie A,23,63515,26,12504367,1740232800,Parma,2690,2,Bologna,2685,0,finished
+Italian Serie A,23,63515,26,12501577,1740232800,Venezia,2688,0,Lazio,2699,0,finished
+Italian Serie A,23,63515,26,12501588,1740243600,Torino,2696,2,Milan,2692,1,finished
+Italian Serie A,23,63515,26,12504374,1740253500,Inter,2697,1,Genoa,2713,0,finished
+Italian Serie A,23,63515,26,12504378,1740310200,Como,2704,2,Napoli,2714,1,finished
+Italian Serie A,23,63515,26,12504377,1740319200,Hellas Verona,2701,1,Fiorentina,2693,0,finished
+Italian Serie A,23,63515,26,12504382,1740330000,Empoli,2705,0,Atalanta,2686,5,finished
+Italian Serie A,23,63515,26,12504376,1740339900,Cagliari,2719,0,Juventus,2687,1,finished
+Italian Serie A,23,63515,26,12504371,1740426300,Roma,2702,4,Monza,2729,0,finished
+Italian Serie A,23,63515,27,12501593,1740771900,Fiorentina,2693,1,Lecce,2689,0,finished
+Italian Serie A,23,63515,27,12501580,1740837600,Atalanta,2686,0,Venezia,2688,0,finished
+Italian Serie A,23,63515,27,12501589,1740848400,Napoli,2714,1,Inter,2697,1,finished
+Italian Serie A,23,63515,27,12501591,1740858300,Udinese,2695,1,Parma,2690,0,finished
+Italian Serie A,23,63515,27,12501594,1740915000,Monza,2729,0,Torino,2696,2,finished
+Italian Serie A,23,63515,27,12501582,1740924000,Bologna,2685,2,Cagliari,2719,1,finished
+Italian Serie A,23,63515,27,12501592,1740924000,Genoa,2713,1,Empoli,2705,1,finished
+Italian Serie A,23,63515,27,12501596,1740934800,Roma,2702,2,Como,2704,1,finished
+Italian Serie A,23,63515,27,12501584,1740944700,Milan,2692,1,Lazio,2699,2,finished
+Italian Serie A,23,63515,27,12501590,1741031100,Juventus,2687,2,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,28,12501595,1741376700,Cagliari,2719,1,Genoa,2713,1,finished
+Italian Serie A,23,63515,28,12501598,1741442400,Como,2704,1,Venezia,2688,1,finished
+Italian Serie A,23,63515,28,12504368,1741442400,Parma,2690,2,Torino,2696,2,finished
+Italian Serie A,23,63515,28,12504370,1741453200,Lecce,2689,2,Milan,2692,3,finished
+Italian Serie A,23,63515,28,12504372,1741463100,Inter,2697,3,Monza,2729,2,finished
+Italian Serie A,23,63515,28,12504381,1741519800,Hellas Verona,2701,1,Bologna,2685,2,finished
+Italian Serie A,23,63515,28,12504373,1741528800,Napoli,2714,2,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,28,12501597,1741539600,Empoli,2705,0,Roma,2702,1,finished
+Italian Serie A,23,63515,28,12504369,1741549500,Juventus,2687,0,Atalanta,2686,4,finished
+Italian Serie A,23,63515,28,12504365,1741635900,Lazio,2699,1,Udinese,2695,1,finished
+Italian Serie A,23,63515,29,12504360,1741981500,Genoa,2713,2,Lecce,2689,1,finished
+Italian Serie A,23,63515,29,12504361,1742047200,Monza,2729,1,Parma,2690,1,finished
+Italian Serie A,23,63515,29,12504358,1742047200,Udinese,2695,0,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,29,12504356,1742058000,Milan,2692,2,Como,2704,1,finished
+Italian Serie A,23,63515,29,12504359,1742067900,Torino,2696,1,Empoli,2705,0,finished
+Italian Serie A,23,63515,29,12504357,1742124600,Venezia,2688,0,Napoli,2714,0,finished
+Italian Serie A,23,63515,29,12504366,1742133600,Bologna,2685,5,Lazio,2699,0,finished
+Italian Serie A,23,63515,29,12504352,1742137200,Roma,2702,1,Cagliari,2719,0,finished
+Italian Serie A,23,63515,29,12504363,1742144400,Fiorentina,2693,3,Juventus,2687,0,finished
+Italian Serie A,23,63515,29,12504364,1742154300,Atalanta,2686,0,Inter,2697,2,finished
+Italian Serie A,23,63515,30,12504354,1743256800,Como,2704,1,Empoli,2705,1,finished
+Italian Serie A,23,63515,30,12501546,1743256800,Venezia,2688,0,Bologna,2685,1,finished
+Italian Serie A,23,63515,30,12504349,1743267600,Juventus,2687,1,Genoa,2713,0,finished
+Italian Serie A,23,63515,30,12501547,1743277500,Lecce,2689,0,Roma,2702,1,finished
+Italian Serie A,23,63515,30,12504355,1743330600,Cagliari,2719,3,Monza,2729,0,finished
+Italian Serie A,23,63515,30,12504362,1743339600,Fiorentina,2693,1,Atalanta,2686,0,finished
+Italian Serie A,23,63515,30,12504351,1743350400,Inter,2697,2,Udinese,2695,1,finished
+Italian Serie A,23,63515,30,12501548,1743360300,Napoli,2714,2,Milan,2692,1,finished
+Italian Serie A,23,63515,30,12504347,1743438600,Hellas Verona,2701,0,Parma,2690,0,finished
+Italian Serie A,23,63515,30,12504350,1743446700,Lazio,2699,1,Torino,2696,1,finished
+Italian Serie A,23,63515,31,12501560,1743792300,Genoa,2713,1,Udinese,2695,0,finished
+Italian Serie A,23,63515,31,12501551,1743858000,Monza,2729,1,Como,2704,3,finished
+Italian Serie A,23,63515,31,12501556,1743868800,Parma,2690,2,Inter,2697,2,finished
+Italian Serie A,23,63515,31,12501557,1743878700,Milan,2692,2,Fiorentina,2693,2,finished
+Italian Serie A,23,63515,31,12501549,1743935400,Lecce,2689,1,Venezia,2688,1,finished
+Italian Serie A,23,63515,31,12501554,1743944400,Empoli,2705,0,Cagliari,2719,0,finished
+Italian Serie A,23,63515,31,12501555,1743944400,Torino,2696,1,Hellas Verona,2701,1,finished
+Italian Serie A,23,63515,31,12501550,1743955200,Atalanta,2686,0,Lazio,2699,1,finished
+Italian Serie A,23,63515,31,12501558,1743965100,Roma,2702,1,Juventus,2687,1,finished
+Italian Serie A,23,63515,31,12501553,1744051500,Bologna,2685,1,Napoli,2714,1,finished
+Italian Serie A,23,63515,32,12501565,1744397100,Udinese,2695,0,Milan,2692,4,finished
+Italian Serie A,23,63515,32,12501574,1744462800,Venezia,2688,1,Monza,2729,0,finished
+Italian Serie A,23,63515,32,12501564,1744473600,Inter,2697,3,Cagliari,2719,1,finished
+Italian Serie A,23,63515,32,12501563,1744483500,Juventus,2687,2,Lecce,2689,1,finished
+Italian Serie A,23,63515,32,12501552,1744540200,Atalanta,2686,2,Bologna,2685,0,finished
+Italian Serie A,23,63515,32,12501561,1744549200,Fiorentina,2693,0,Parma,2690,0,finished
+Italian Serie A,23,63515,32,12501562,1744549200,Hellas Verona,2701,0,Genoa,2713,0,finished
+Italian Serie A,23,63515,32,12501559,1744560000,Como,2704,1,Torino,2696,0,finished
+Italian Serie A,23,63515,32,12501569,1744569900,Lazio,2699,1,Roma,2702,1,finished
+Italian Serie A,23,63515,32,12501567,1744656300,Napoli,2714,3,Empoli,2705,0,finished
+Italian Serie A,23,63515,33,12501568,1745067600,Lecce,2689,0,Como,2704,3,finished
+Italian Serie A,23,63515,33,12501587,1745078400,Monza,2729,0,Napoli,2714,1,finished
+Italian Serie A,23,63515,33,12501575,1745088300,Roma,2702,1,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,33,12501572,1745154000,Empoli,2705,2,Venezia,2688,2,finished
+Italian Serie A,23,63515,33,12501578,1745164800,Bologna,2685,1,Inter,2697,0,finished
+Italian Serie A,23,63515,33,12501576,1745174700,Milan,2692,0,Atalanta,2686,1,finished
+Italian Serie A,23,63515,33,13797484,1745425800,Cagliari,2719,1,Fiorentina,2693,2,finished
+Italian Serie A,23,63515,33,13797464,1745425800,Genoa,2713,0,Lazio,2699,2,finished
+Italian Serie A,23,63515,33,12501579,1745425800,Parma,2690,1,Juventus,2687,0,finished
+Italian Serie A,23,63515,33,13797456,1745425800,Torino,2696,2,Udinese,2695,0,finished
+Italian Serie A,23,63515,34,12501571,1745749800,Como,2704,1,Genoa,2713,0,finished
+Italian Serie A,23,63515,34,12501504,1745749800,Venezia,2688,0,Milan,2692,2,finished
+Italian Serie A,23,63515,34,12501585,1745758800,Fiorentina,2693,2,Empoli,2705,1,finished
+Italian Serie A,23,63515,34,12501583,1745758800,Inter,2697,0,Roma,2702,1,finished
+Italian Serie A,23,63515,34,12501511,1745769600,Juventus,2687,2,Monza,2729,0,finished
+Italian Serie A,23,63515,34,12501581,1745779500,Atalanta,2686,1,Lecce,2689,1,finished
+Italian Serie A,23,63515,34,12501522,1745779500,Napoli,2714,2,Torino,2696,0,finished
+Italian Serie A,23,63515,34,12501505,1745857800,Udinese,2695,0,Bologna,2685,0,finished
+Italian Serie A,23,63515,34,12501586,1745865900,Hellas Verona,2701,0,Cagliari,2719,2,finished
+Italian Serie A,23,63515,34,12501506,1745865900,Lazio,2699,2,Parma,2690,2,finished
+Italian Serie A,23,63515,35,12501523,1746211500,Torino,2696,1,Venezia,2688,1,finished
+Italian Serie A,23,63515,35,12501513,1746277200,Cagliari,2719,1,Udinese,2695,2,finished
+Italian Serie A,23,63515,35,12501521,1746277200,Parma,2690,0,Como,2704,1,finished
+Italian Serie A,23,63515,35,12501525,1746288000,Lecce,2689,0,Napoli,2714,1,finished
+Italian Serie A,23,63515,35,12501526,1746297900,Inter,2697,1,Hellas Verona,2701,0,finished
+Italian Serie A,23,63515,35,12501512,1746354600,Empoli,2705,0,Lazio,2699,1,finished
+Italian Serie A,23,63515,35,12501509,1746363600,Monza,2729,0,Atalanta,2686,4,finished
+Italian Serie A,23,63515,35,12501516,1746374400,Roma,2702,1,Fiorentina,2693,0,finished
+Italian Serie A,23,63515,35,12501520,1746384300,Bologna,2685,1,Juventus,2687,1,finished
+Italian Serie A,23,63515,35,12501514,1746470700,Genoa,2713,1,Milan,2692,2,finished
+Italian Serie A,23,63515,36,12501518,1746816300,Milan,2692,3,Bologna,2685,1,finished
+Italian Serie A,23,63515,36,12501510,1746882000,Como,2704,3,Cagliari,2719,1,finished
+Italian Serie A,23,63515,36,12501530,1746892800,Lazio,2699,1,Juventus,2687,1,finished
+Italian Serie A,23,63515,36,12501515,1746902700,Empoli,2705,2,Parma,2690,1,finished
+Italian Serie A,23,63515,36,12501533,1746959400,Udinese,2695,1,Monza,2729,2,finished
+Italian Serie A,23,63515,36,12501524,1746968400,Hellas Verona,2701,1,Lecce,2689,1,finished
+Italian Serie A,23,63515,36,12501529,1746979200,Torino,2696,0,Inter,2697,2,finished
+Italian Serie A,23,63515,36,12501531,1746989100,Napoli,2714,2,Genoa,2713,2,finished
+Italian Serie A,23,63515,36,12501532,1747067400,Venezia,2688,2,Fiorentina,2693,1,finished
+Italian Serie A,23,63515,36,12501528,1747075500,Atalanta,2686,2,Roma,2702,1,finished
+Italian Serie A,23,63515,37,12501535,1747507500,Genoa,2713,2,Atalanta,2686,3,finished
+Italian Serie A,23,63515,37,12501534,1747593900,Cagliari,2719,3,Venezia,2688,0,finished
+Italian Serie A,23,63515,37,12501538,1747593900,Fiorentina,2693,3,Bologna,2685,2,finished
+Italian Serie A,23,63515,37,12501536,1747593900,Hellas Verona,2701,1,Como,2704,1,finished
+Italian Serie A,23,63515,37,12501541,1747593900,Inter,2697,2,Lazio,2699,2,finished
+Italian Serie A,23,63515,37,12501540,1747593900,Juventus,2687,2,Udinese,2695,0,finished
+Italian Serie A,23,63515,37,12501542,1747593900,Lecce,2689,1,Torino,2696,0,finished
+Italian Serie A,23,63515,37,12501539,1747593900,Monza,2729,1,Empoli,2705,3,finished
+Italian Serie A,23,63515,37,12501537,1747593900,Parma,2690,0,Napoli,2714,0,finished
+Italian Serie A,23,63515,37,12501545,1747593900,Roma,2702,3,Milan,2692,1,finished
+Italian Serie A,23,63515,38,12501501,1748025900,Como,2704,0,Inter,2697,2,finished
+Italian Serie A,23,63515,38,12501502,1748025900,Napoli,2714,2,Cagliari,2719,0,finished
+Italian Serie A,23,63515,38,12501543,1748102400,Bologna,2685,1,Genoa,2713,3,finished
+Italian Serie A,23,63515,38,12501503,1748112300,Milan,2692,2,Monza,2729,0,finished
+Italian Serie A,23,63515,38,12501544,1748198700,Atalanta,2686,2,Parma,2690,3,finished
+Italian Serie A,23,63515,38,12501519,1748198700,Empoli,2705,1,Hellas Verona,2701,2,finished
+Italian Serie A,23,63515,38,12501517,1748198700,Lazio,2699,0,Lecce,2689,1,finished
+Italian Serie A,23,63515,38,12501508,1748198700,Torino,2696,0,Roma,2702,2,finished
+Italian Serie A,23,63515,38,12501527,1748198700,Udinese,2695,2,Fiorentina,2693,3,finished
+Italian Serie A,23,63515,38,12501507,1748198700,Venezia,2688,2,Juventus,2687,3,finished
+German Bundesliga,35,63516,1,12499375,1724437800,Borussia M'gladbach,2527,2,Bayer 04 Leverkusen,2681,3,finished
+German Bundesliga,35,63516,1,12499452,1724506200,1. FSV Mainz 05,2556,1,1. FC Union Berlin,2547,1,finished
+German Bundesliga,35,63516,1,12499430,1724506200,FC Augsburg,2600,2,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,1,12499386,1724506200,RB Leipzig,36360,1,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,1,12499418,1724506200,SC Freiburg,2538,3,VfB Stuttgart,2677,1,finished
+German Bundesliga,35,63516,1,12499406,1724506200,TSG Hoffenheim,2569,3,Holstein Kiel,2573,2,finished
+German Bundesliga,35,63516,1,12499391,1724517000,Borussia Dortmund,2673,2,Eintracht Frankfurt,2674,0,finished
+German Bundesliga,35,63516,1,12583571,1724592600,VfL Wolfsburg,2524,2,FC Bayern München,2672,3,finished
+German Bundesliga,35,63516,1,12499462,1724599800,FC St. Pauli,2526,0,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,2,12499524,1725042600,1. FC Union Berlin,2547,1,FC St. Pauli,2526,0,finished
+German Bundesliga,35,63516,2,12499498,1725111000,Eintracht Frankfurt,2674,3,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,2,12499540,1725111000,Holstein Kiel,2573,0,VfL Wolfsburg,2524,2,finished
+German Bundesliga,35,63516,2,12499514,1725111000,SV Werder Bremen,2534,0,Borussia Dortmund,2673,0,finished
+German Bundesliga,35,63516,2,12499480,1725111000,VfB Stuttgart,2677,3,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,2,12499533,1725111000,VfL Bochum 1848,2542,0,Borussia M'gladbach,2527,2,finished
+German Bundesliga,35,63516,2,12499471,1725121800,Bayer 04 Leverkusen,2681,2,RB Leipzig,36360,3,finished
+German Bundesliga,35,63516,2,12499507,1725197400,1. FC Heidenheim,5885,4,FC Augsburg,2600,0,finished
+German Bundesliga,35,63516,2,12499488,1725204600,FC Bayern München,2672,2,SC Freiburg,2538,0,finished
+German Bundesliga,35,63516,3,12499549,1726252200,Borussia Dortmund,2673,4,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,3,12499585,1726320600,Borussia M'gladbach,2527,1,VfB Stuttgart,2677,3,finished
+German Bundesliga,35,63516,3,12499546,1726320600,RB Leipzig,36360,0,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,3,12499571,1726320600,SC Freiburg,2538,2,VfL Bochum 1848,2542,1,finished
+German Bundesliga,35,63516,3,12499552,1726320600,TSG Hoffenheim,2569,1,Bayer 04 Leverkusen,2681,4,finished
+German Bundesliga,35,63516,3,12499577,1726320600,VfL Wolfsburg,2524,1,Eintracht Frankfurt,2674,2,finished
+German Bundesliga,35,63516,3,12499588,1726331400,Holstein Kiel,2573,1,FC Bayern München,2672,6,finished
+German Bundesliga,35,63516,3,12499575,1726407000,FC Augsburg,2600,3,FC St. Pauli,2526,1,finished
+German Bundesliga,35,63516,3,12499581,1726414200,1. FSV Mainz 05,2556,1,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,4,12499607,1726857000,FC Augsburg,2600,2,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,4,12499600,1726925400,1. FC Heidenheim,5885,0,SC Freiburg,2538,3,finished
+German Bundesliga,35,63516,4,12499610,1726925400,1. FC Union Berlin,2547,2,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,4,12499604,1726925400,SV Werder Bremen,2534,0,FC Bayern München,2672,5,finished
+German Bundesliga,35,63516,4,12499614,1726925400,VfL Bochum 1848,2542,2,Holstein Kiel,2573,2,finished
+German Bundesliga,35,63516,4,12499598,1726936200,Eintracht Frankfurt,2674,2,Borussia M'gladbach,2527,0,finished
+German Bundesliga,35,63516,4,12499591,1727011800,Bayer 04 Leverkusen,2681,4,VfL Wolfsburg,2524,3,finished
+German Bundesliga,35,63516,4,12499595,1727019000,VfB Stuttgart,2677,5,Borussia Dortmund,2673,1,finished
+German Bundesliga,35,63516,4,12499617,1727026200,FC St. Pauli,2526,0,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,5,12499627,1727461800,Borussia Dortmund,2673,4,VfL Bochum 1848,2542,2,finished
+German Bundesliga,35,63516,5,12499642,1727530200,1. FSV Mainz 05,2556,0,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,5,12499644,1727530200,Borussia M'gladbach,2527,1,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,5,12499624,1727530200,RB Leipzig,36360,4,FC Augsburg,2600,0,finished
+German Bundesliga,35,63516,5,12499633,1727530200,SC Freiburg,2538,0,FC St. Pauli,2526,3,finished
+German Bundesliga,35,63516,5,12499638,1727530200,VfL Wolfsburg,2524,2,VfB Stuttgart,2677,2,finished
+German Bundesliga,35,63516,5,12499620,1727541000,FC Bayern München,2672,1,Bayer 04 Leverkusen,2681,1,finished
+German Bundesliga,35,63516,5,12499648,1727616600,Holstein Kiel,2573,2,Eintracht Frankfurt,2674,4,finished
+German Bundesliga,35,63516,5,12499631,1727623800,TSG Hoffenheim,2569,3,SV Werder Bremen,2534,4,finished
+German Bundesliga,35,63516,6,12499666,1728066600,FC Augsburg,2600,2,Borussia M'gladbach,2527,1,finished
+German Bundesliga,35,63516,6,12499671,1728135000,1. FC Union Berlin,2547,2,Borussia Dortmund,2673,1,finished
+German Bundesliga,35,63516,6,12499652,1728135000,Bayer 04 Leverkusen,2681,2,Holstein Kiel,2573,2,finished
+German Bundesliga,35,63516,6,12499664,1728135000,SV Werder Bremen,2534,0,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,6,12499674,1728135000,VfL Bochum 1848,2542,1,VfL Wolfsburg,2524,3,finished
+German Bundesliga,35,63516,6,12499677,1728145800,FC St. Pauli,2526,0,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,6,12499660,1728221400,1. FC Heidenheim,5885,0,RB Leipzig,36360,1,finished
+German Bundesliga,35,63516,6,12499656,1728228600,Eintracht Frankfurt,2674,3,FC Bayern München,2672,3,finished
+German Bundesliga,35,63516,6,12499654,1728235800,VfB Stuttgart,2677,1,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,7,12499687,1729276200,Borussia Dortmund,2673,2,FC St. Pauli,2526,1,finished
+German Bundesliga,35,63516,7,12499703,1729344600,1. FSV Mainz 05,2556,0,RB Leipzig,36360,2,finished
+German Bundesliga,35,63516,7,12499681,1729344600,Bayer 04 Leverkusen,2681,2,Eintracht Frankfurt,2674,1,finished
+German Bundesliga,35,63516,7,12499707,1729344600,Borussia M'gladbach,2527,3,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,7,12499694,1729344600,SC Freiburg,2538,3,FC Augsburg,2600,1,finished
+German Bundesliga,35,63516,7,12499690,1729344600,TSG Hoffenheim,2569,3,VfL Bochum 1848,2542,1,finished
+German Bundesliga,35,63516,7,12499684,1729355400,FC Bayern München,2672,4,VfB Stuttgart,2677,0,finished
+German Bundesliga,35,63516,7,12499710,1729431000,Holstein Kiel,2573,0,1. FC Union Berlin,2547,2,finished
+German Bundesliga,35,63516,7,12499700,1729438200,VfL Wolfsburg,2524,2,SV Werder Bremen,2534,4,finished
+German Bundesliga,35,63516,8,12499730,1729881000,1. FSV Mainz 05,2556,1,Borussia M'gladbach,2527,1,finished
+German Bundesliga,35,63516,8,12499727,1729949400,FC Augsburg,2600,2,Borussia Dortmund,2673,1,finished
+German Bundesliga,35,63516,8,12499740,1729949400,FC St. Pauli,2526,0,VfL Wolfsburg,2524,0,finished
+German Bundesliga,35,63516,8,12499717,1729949400,RB Leipzig,36360,3,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,8,12499713,1729949400,VfB Stuttgart,2677,2,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,8,12499723,1729960200,SV Werder Bremen,2534,2,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,8,12499737,1730039400,VfL Bochum 1848,2542,0,FC Bayern München,2672,5,finished
+German Bundesliga,35,63516,8,12499734,1730046600,1. FC Union Berlin,2547,1,Eintracht Frankfurt,2674,1,finished
+German Bundesliga,35,63516,8,12499720,1730053800,1. FC Heidenheim,5885,0,TSG Hoffenheim,2569,0,finished
+German Bundesliga,35,63516,9,12499743,1730489400,Bayer 04 Leverkusen,2681,0,VfB Stuttgart,2677,0,finished
+German Bundesliga,35,63516,9,12499753,1730557800,Eintracht Frankfurt,2674,7,VfL Bochum 1848,2542,2,finished
+German Bundesliga,35,63516,9,12499746,1730557800,FC Bayern München,2672,3,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,9,12499771,1730557800,Holstein Kiel,2573,1,1. FC Heidenheim,5885,0,finished
+German Bundesliga,35,63516,9,12499757,1730557800,TSG Hoffenheim,2569,0,FC St. Pauli,2526,2,finished
+German Bundesliga,35,63516,9,12499763,1730557800,VfL Wolfsburg,2524,1,FC Augsburg,2600,1,finished
+German Bundesliga,35,63516,9,12499750,1730568600,Borussia Dortmund,2673,2,RB Leipzig,36360,1,finished
+German Bundesliga,35,63516,9,12499760,1730644200,SC Freiburg,2538,0,1. FSV Mainz 05,2556,0,finished
+German Bundesliga,35,63516,9,12499767,1730651400,Borussia M'gladbach,2527,4,SV Werder Bremen,2534,1,finished
+German Bundesliga,35,63516,10,12499794,1731094200,1. FC Union Berlin,2547,0,SC Freiburg,2538,0,finished
+German Bundesliga,35,63516,10,12499791,1731162600,1. FSV Mainz 05,2556,3,Borussia Dortmund,2673,1,finished
+German Bundesliga,35,63516,10,12499802,1731162600,FC St. Pauli,2526,0,FC Bayern München,2672,1,finished
+German Bundesliga,35,63516,10,12499783,1731162600,SV Werder Bremen,2534,2,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,10,12499797,1731162600,VfL Bochum 1848,2542,1,Bayer 04 Leverkusen,2681,1,finished
+German Bundesliga,35,63516,10,12499777,1731173400,RB Leipzig,36360,0,Borussia M'gladbach,2527,0,finished
+German Bundesliga,35,63516,10,12499788,1731249000,FC Augsburg,2600,0,TSG Hoffenheim,2569,0,finished
+German Bundesliga,35,63516,10,12499773,1731256200,VfB Stuttgart,2677,2,Eintracht Frankfurt,2674,3,finished
+German Bundesliga,35,63516,10,12499781,1731263400,1. FC Heidenheim,5885,1,VfL Wolfsburg,2524,3,finished
+German Bundesliga,35,63516,11,12499812,1732303800,FC Bayern München,2672,3,FC Augsburg,2600,0,finished
+German Bundesliga,35,63516,11,12499806,1732372200,Bayer 04 Leverkusen,2681,5,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,11,12499816,1732372200,Borussia Dortmund,2673,4,SC Freiburg,2538,0,finished
+German Bundesliga,35,63516,11,12499822,1732372200,TSG Hoffenheim,2569,4,RB Leipzig,36360,3,finished
+German Bundesliga,35,63516,11,12499808,1732372200,VfB Stuttgart,2677,2,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,11,12499826,1732372200,VfL Wolfsburg,2524,1,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,11,12499819,1732383000,Eintracht Frankfurt,2674,1,SV Werder Bremen,2534,0,finished
+German Bundesliga,35,63516,11,12499833,1732458600,Holstein Kiel,2573,0,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,11,12499829,1732465800,Borussia M'gladbach,2527,2,FC St. Pauli,2526,0,finished
+German Bundesliga,35,63516,12,12499468,1732908600,FC St. Pauli,2526,3,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,12,12499457,1732977000,1. FC Union Berlin,2547,1,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,12,12499436,1732977000,FC Augsburg,2600,1,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,12,12499836,1732977000,RB Leipzig,36360,1,VfL Wolfsburg,2524,5,finished
+German Bundesliga,35,63516,12,12499424,1732977000,SC Freiburg,2538,3,Borussia M'gladbach,2527,1,finished
+German Bundesliga,35,63516,12,12499411,1732977000,SV Werder Bremen,2534,2,VfB Stuttgart,2677,2,finished
+German Bundesliga,35,63516,12,12499387,1732987800,Borussia Dortmund,2673,1,FC Bayern München,2672,1,finished
+German Bundesliga,35,63516,12,12499448,1733063400,1. FSV Mainz 05,2556,2,TSG Hoffenheim,2569,0,finished
+German Bundesliga,35,63516,12,12499399,1733070600,1. FC Heidenheim,5885,0,Eintracht Frankfurt,2674,4,finished
+German Bundesliga,35,63516,13,12499484,1733513400,VfB Stuttgart,2677,3,1. FC Union Berlin,2547,2,finished
+German Bundesliga,35,63516,13,12499477,1733581800,Bayer 04 Leverkusen,2681,2,FC St. Pauli,2526,1,finished
+German Bundesliga,35,63516,13,12499502,1733581800,Eintracht Frankfurt,2674,2,FC Augsburg,2600,2,finished
+German Bundesliga,35,63516,13,12499495,1733581800,FC Bayern München,2672,4,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,13,12499545,1733581800,Holstein Kiel,2573,0,RB Leipzig,36360,2,finished
+German Bundesliga,35,63516,13,12499537,1733581800,VfL Bochum 1848,2542,0,SV Werder Bremen,2534,1,finished
+German Bundesliga,35,63516,13,12499529,1733592600,Borussia M'gladbach,2527,1,Borussia Dortmund,2673,1,finished
+German Bundesliga,35,63516,13,12499521,1733668200,VfL Wolfsburg,2524,4,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,13,12499511,1733675400,TSG Hoffenheim,2569,1,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,14,12499573,1734118200,SC Freiburg,2538,3,VfL Wolfsburg,2524,2,finished
+German Bundesliga,35,63516,14,12499586,1734186600,1. FC Union Berlin,2547,0,VfL Bochum 1848,2542,2,finished
+German Bundesliga,35,63516,14,12499580,1734186600,1. FSV Mainz 05,2556,2,FC Bayern München,2672,1,finished
+German Bundesliga,35,63516,14,12499583,1734186600,Borussia M'gladbach,2527,4,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,14,12499576,1734186600,FC Augsburg,2600,0,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,14,12499590,1734197400,FC St. Pauli,2526,0,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,14,12499570,1734273000,1. FC Heidenheim,5885,1,VfB Stuttgart,2677,3,finished
+German Bundesliga,35,63516,14,12499551,1734280200,Borussia Dortmund,2673,1,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,14,12499548,1734287400,RB Leipzig,36360,2,Eintracht Frankfurt,2674,1,finished
+German Bundesliga,35,63516,15,12499599,1734723000,FC Bayern München,2672,5,RB Leipzig,36360,1,finished
+German Bundesliga,35,63516,15,12499603,1734791400,Eintracht Frankfurt,2674,1,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,15,12499619,1734791400,Holstein Kiel,2573,5,FC Augsburg,2600,1,finished
+German Bundesliga,35,63516,15,12499609,1734791400,SV Werder Bremen,2534,4,1. FC Union Berlin,2547,1,finished
+German Bundesliga,35,63516,15,12499606,1734791400,TSG Hoffenheim,2569,1,Borussia M'gladbach,2527,2,finished
+German Bundesliga,35,63516,15,12499596,1734791400,VfB Stuttgart,2677,0,FC St. Pauli,2526,1,finished
+German Bundesliga,35,63516,15,12499593,1734802200,Bayer 04 Leverkusen,2681,5,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,15,12499616,1734877800,VfL Bochum 1848,2542,2,1. FC Heidenheim,5885,0,finished
+German Bundesliga,35,63516,15,12499613,1734885000,VfL Wolfsburg,2524,1,Borussia Dortmund,2673,3,finished
+German Bundesliga,35,63516,16,12499626,1736538300,Borussia Dortmund,2673,2,Bayer 04 Leverkusen,2681,3,finished
+German Bundesliga,35,63516,16,12499632,1736605800,1. FC Heidenheim,5885,2,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,16,12499643,1736605800,1. FSV Mainz 05,2556,2,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,16,12499650,1736605800,FC St. Pauli,2526,0,Eintracht Frankfurt,2674,1,finished
+German Bundesliga,35,63516,16,12499637,1736605800,SC Freiburg,2538,3,Holstein Kiel,2573,2,finished
+German Bundesliga,35,63516,16,12499629,1736605800,TSG Hoffenheim,2569,0,VfL Wolfsburg,2524,1,finished
+German Bundesliga,35,63516,16,12499647,1736616600,Borussia M'gladbach,2527,0,FC Bayern München,2672,1,finished
+German Bundesliga,35,63516,16,12499622,1736692200,RB Leipzig,36360,4,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,16,12499640,1736699400,FC Augsburg,2600,0,VfB Stuttgart,2677,1,finished
+German Bundesliga,35,63516,17,12499682,1736875800,Holstein Kiel,2573,4,Borussia Dortmund,2673,2,finished
+German Bundesliga,35,63516,17,12499653,1736883000,Bayer 04 Leverkusen,2681,1,1. FSV Mainz 05,2556,0,finished
+German Bundesliga,35,63516,17,12499665,1736883000,Eintracht Frankfurt,2674,4,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,17,12499672,1736883000,VfL Wolfsburg,2524,5,Borussia M'gladbach,2527,1,finished
+German Bundesliga,35,63516,17,12499678,1736962200,VfL Bochum 1848,2542,1,FC St. Pauli,2526,0,finished
+German Bundesliga,35,63516,17,12499675,1736969400,1. FC Union Berlin,2547,0,FC Augsburg,2600,2,finished
+German Bundesliga,35,63516,17,12499661,1736969400,FC Bayern München,2672,5,TSG Hoffenheim,2569,0,finished
+German Bundesliga,35,63516,17,12499667,1736969400,SV Werder Bremen,2534,3,1. FC Heidenheim,5885,3,finished
+German Bundesliga,35,63516,17,12499657,1736969400,VfB Stuttgart,2677,2,RB Leipzig,36360,1,finished
+German Bundesliga,35,63516,18,12499695,1737142200,Eintracht Frankfurt,2674,2,Borussia Dortmund,2673,0,finished
+German Bundesliga,35,63516,18,12499702,1737210600,1. FC Heidenheim,5885,0,FC St. Pauli,2526,2,finished
+German Bundesliga,35,63516,18,12499691,1737210600,FC Bayern München,2672,3,VfL Wolfsburg,2524,2,finished
+German Bundesliga,35,63516,18,12499715,1737210600,Holstein Kiel,2573,1,TSG Hoffenheim,2569,3,finished
+German Bundesliga,35,63516,18,12499689,1737210600,VfB Stuttgart,2677,4,SC Freiburg,2538,0,finished
+German Bundesliga,35,63516,18,12499712,1737210600,VfL Bochum 1848,2542,3,RB Leipzig,36360,3,finished
+German Bundesliga,35,63516,18,12499685,1737221400,Bayer 04 Leverkusen,2681,3,Borussia M'gladbach,2527,1,finished
+German Bundesliga,35,63516,18,12499708,1737297000,1. FC Union Berlin,2547,2,1. FSV Mainz 05,2556,1,finished
+German Bundesliga,35,63516,18,12499704,1737304200,SV Werder Bremen,2534,0,FC Augsburg,2600,2,finished
+German Bundesliga,35,63516,19,12499735,1737747000,VfL Wolfsburg,2524,2,Holstein Kiel,2573,2,finished
+German Bundesliga,35,63516,19,12499739,1737815400,1. FSV Mainz 05,2556,2,VfB Stuttgart,2677,0,finished
+German Bundesliga,35,63516,19,12499722,1737815400,Borussia Dortmund,2673,2,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,19,12499732,1737815400,FC Augsburg,2600,2,1. FC Heidenheim,5885,1,finished
+German Bundesliga,35,63516,19,12499718,1737815400,RB Leipzig,36360,2,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,19,12499729,1737815400,SC Freiburg,2538,1,FC Bayern München,2672,2,finished
+German Bundesliga,35,63516,19,12499741,1737826200,Borussia M'gladbach,2527,3,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,19,12499725,1737901800,TSG Hoffenheim,2569,2,Eintracht Frankfurt,2674,2,finished
+German Bundesliga,35,63516,19,12499745,1737909000,FC St. Pauli,2526,3,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,20,12499766,1738351800,SV Werder Bremen,2534,1,1. FSV Mainz 05,2556,0,finished
+German Bundesliga,35,63516,20,12499762,1738420200,1. FC Heidenheim,5885,1,Borussia Dortmund,2673,2,finished
+German Bundesliga,35,63516,20,12499755,1738420200,FC Bayern München,2672,4,Holstein Kiel,2573,3,finished
+German Bundesliga,35,63516,20,12499776,1738420200,FC St. Pauli,2526,1,FC Augsburg,2600,1,finished
+German Bundesliga,35,63516,20,12499752,1738420200,VfB Stuttgart,2677,1,Borussia M'gladbach,2527,2,finished
+German Bundesliga,35,63516,20,12499772,1738420200,VfL Bochum 1848,2542,0,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,20,12499769,1738431000,1. FC Union Berlin,2547,0,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,20,12499759,1738506600,Eintracht Frankfurt,2674,1,VfL Wolfsburg,2524,1,finished
+German Bundesliga,35,63516,20,12499749,1738513800,Bayer 04 Leverkusen,2681,3,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,21,12499779,1738956600,FC Bayern München,2672,3,SV Werder Bremen,2534,0,finished
+German Bundesliga,35,63516,21,12499801,1739025000,1. FSV Mainz 05,2556,0,FC Augsburg,2600,0,finished
+German Bundesliga,35,63516,21,12499786,1739025000,Borussia Dortmund,2673,1,VfB Stuttgart,2677,2,finished
+German Bundesliga,35,63516,21,12499793,1739025000,SC Freiburg,2538,1,1. FC Heidenheim,5885,0,finished
+German Bundesliga,35,63516,21,12499790,1739025000,TSG Hoffenheim,2569,0,1. FC Union Berlin,2547,4,finished
+German Bundesliga,35,63516,21,12499796,1739025000,VfL Wolfsburg,2524,0,Bayer 04 Leverkusen,2681,0,finished
+German Bundesliga,35,63516,21,12499805,1739035800,Borussia M'gladbach,2527,1,Eintracht Frankfurt,2674,1,finished
+German Bundesliga,35,63516,21,12499807,1739111400,Holstein Kiel,2573,2,VfL Bochum 1848,2542,2,finished
+German Bundesliga,35,63516,21,12499782,1739118600,RB Leipzig,36360,2,FC St. Pauli,2526,0,finished
+German Bundesliga,35,63516,22,12499828,1739561400,FC Augsburg,2600,0,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,22,12499832,1739629800,1. FC Union Berlin,2547,1,Borussia M'gladbach,2527,2,finished
+German Bundesliga,35,63516,22,12499838,1739629800,FC St. Pauli,2526,0,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,22,12499815,1739629800,VfB Stuttgart,2677,1,VfL Wolfsburg,2524,2,finished
+German Bundesliga,35,63516,22,12499835,1739629800,VfL Bochum 1848,2542,2,Borussia Dortmund,2673,0,finished
+German Bundesliga,35,63516,22,12499811,1739640600,Bayer 04 Leverkusen,2681,0,FC Bayern München,2672,0,finished
+German Bundesliga,35,63516,22,12499825,1739716200,SV Werder Bremen,2534,1,TSG Hoffenheim,2569,3,finished
+German Bundesliga,35,63516,22,12499818,1739723400,Eintracht Frankfurt,2674,3,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,22,12499821,1739730600,1. FC Heidenheim,5885,0,1. FSV Mainz 05,2556,2,finished
+German Bundesliga,35,63516,23,12499392,1740166200,SC Freiburg,2538,5,SV Werder Bremen,2534,0,finished
+German Bundesliga,35,63516,23,12499395,1740234600,1. FSV Mainz 05,2556,2,FC St. Pauli,2526,0,finished
+German Bundesliga,35,63516,23,12499396,1740234600,Borussia M'gladbach,2527,0,FC Augsburg,2600,3,finished
+German Bundesliga,35,63516,23,12499398,1740234600,Holstein Kiel,2573,0,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,23,12499394,1740234600,VfL Wolfsburg,2524,1,VfL Bochum 1848,2542,1,finished
+German Bundesliga,35,63516,23,12499389,1740245400,Borussia Dortmund,2673,6,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,23,12499845,1740321000,RB Leipzig,36360,2,1. FC Heidenheim,5885,2,finished
+German Bundesliga,35,63516,23,12499842,1740328200,FC Bayern München,2672,4,Eintracht Frankfurt,2674,0,finished
+German Bundesliga,35,63516,23,12499390,1740335400,TSG Hoffenheim,2569,1,VfB Stuttgart,2677,1,finished
+German Bundesliga,35,63516,24,12499400,1740771000,VfB Stuttgart,2677,1,FC Bayern München,2672,3,finished
+German Bundesliga,35,63516,24,12499404,1740839400,1. FC Heidenheim,5885,0,Borussia M'gladbach,2527,3,finished
+German Bundesliga,35,63516,24,12499410,1740839400,FC St. Pauli,2526,0,Borussia Dortmund,2673,2,finished
+German Bundesliga,35,63516,24,12499401,1740839400,RB Leipzig,36360,1,1. FSV Mainz 05,2556,2,finished
+German Bundesliga,35,63516,24,12499405,1740839400,SV Werder Bremen,2534,1,VfL Wolfsburg,2524,2,finished
+German Bundesliga,35,63516,24,12499409,1740839400,VfL Bochum 1848,2542,0,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,24,12499402,1740850200,Eintracht Frankfurt,2674,1,Bayer 04 Leverkusen,2681,4,finished
+German Bundesliga,35,63516,24,12499408,1740925800,1. FC Union Berlin,2547,0,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,24,12499407,1740933000,FC Augsburg,2600,0,SC Freiburg,2538,0,finished
+German Bundesliga,35,63516,25,12499423,1741375800,Borussia M'gladbach,2527,1,1. FSV Mainz 05,2556,3,finished
+German Bundesliga,35,63516,25,12499413,1741444200,Bayer 04 Leverkusen,2681,0,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,25,12499416,1741444200,Borussia Dortmund,2673,0,FC Augsburg,2600,1,finished
+German Bundesliga,35,63516,25,12499414,1741444200,FC Bayern München,2672,2,VfL Bochum 1848,2542,3,finished
+German Bundesliga,35,63516,25,12499426,1741444200,Holstein Kiel,2573,2,VfB Stuttgart,2677,2,finished
+German Bundesliga,35,63516,25,12499421,1741444200,VfL Wolfsburg,2524,1,FC St. Pauli,2526,1,finished
+German Bundesliga,35,63516,25,12499420,1741455000,SC Freiburg,2538,0,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,25,12499417,1741530600,Eintracht Frankfurt,2674,1,1. FC Union Berlin,2547,2,finished
+German Bundesliga,35,63516,25,12499419,1741537800,TSG Hoffenheim,2569,1,1. FC Heidenheim,5885,1,finished
+German Bundesliga,35,63516,26,12499439,1741980600,FC St. Pauli,2526,1,TSG Hoffenheim,2569,0,finished
+German Bundesliga,35,63516,26,12499434,1742049000,1. FC Union Berlin,2547,1,FC Bayern München,2672,1,finished
+German Bundesliga,35,63516,26,12499433,1742049000,1. FSV Mainz 05,2556,2,SC Freiburg,2538,2,finished
+German Bundesliga,35,63516,26,12499432,1742049000,FC Augsburg,2600,1,VfL Wolfsburg,2524,0,finished
+German Bundesliga,35,63516,26,12499431,1742049000,SV Werder Bremen,2534,2,Borussia M'gladbach,2527,4,finished
+German Bundesliga,35,63516,26,12499428,1742059800,RB Leipzig,36360,2,Borussia Dortmund,2673,0,finished
+German Bundesliga,35,63516,26,12499437,1742135400,VfL Bochum 1848,2542,1,Eintracht Frankfurt,2674,3,finished
+German Bundesliga,35,63516,26,12499429,1742142600,1. FC Heidenheim,5885,3,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,26,12499427,1742149800,VfB Stuttgart,2677,3,Bayer 04 Leverkusen,2681,4,finished
+German Bundesliga,35,63516,27,12499441,1743190200,Bayer 04 Leverkusen,2681,3,VfL Bochum 1848,2542,1,finished
+German Bundesliga,35,63516,27,12499451,1743258600,Borussia M'gladbach,2527,1,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,27,12499443,1743258600,FC Bayern München,2672,3,FC St. Pauli,2526,2,finished
+German Bundesliga,35,63516,27,12499453,1743258600,Holstein Kiel,2573,0,SV Werder Bremen,2534,3,finished
+German Bundesliga,35,63516,27,12499446,1743258600,TSG Hoffenheim,2569,1,FC Augsburg,2600,1,finished
+German Bundesliga,35,63516,27,12499450,1743258600,VfL Wolfsburg,2524,0,1. FC Heidenheim,5885,1,finished
+German Bundesliga,35,63516,27,12499445,1743269400,Eintracht Frankfurt,2674,1,VfB Stuttgart,2677,0,finished
+German Bundesliga,35,63516,27,12499449,1743341400,SC Freiburg,2538,1,1. FC Union Berlin,2547,2,finished
+German Bundesliga,35,63516,27,12499444,1743348600,Borussia Dortmund,2673,3,1. FSV Mainz 05,2556,1,finished
+German Bundesliga,35,63516,28,12499461,1743791400,FC Augsburg,2600,1,FC Bayern München,2672,3,finished
+German Bundesliga,35,63516,28,12499455,1743859800,1. FC Heidenheim,5885,0,Bayer 04 Leverkusen,2681,1,finished
+German Bundesliga,35,63516,28,12499463,1743859800,1. FSV Mainz 05,2556,1,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,28,12499454,1743859800,RB Leipzig,36360,3,TSG Hoffenheim,2569,1,finished
+German Bundesliga,35,63516,28,12499460,1743859800,SC Freiburg,2538,1,Borussia Dortmund,2673,4,finished
+German Bundesliga,35,63516,28,12499466,1743859800,VfL Bochum 1848,2542,0,VfB Stuttgart,2677,4,finished
+German Bundesliga,35,63516,28,12499458,1743870600,SV Werder Bremen,2534,2,Eintracht Frankfurt,2674,0,finished
+German Bundesliga,35,63516,28,12499467,1743946200,FC St. Pauli,2526,1,Borussia M'gladbach,2527,1,finished
+German Bundesliga,35,63516,28,12499464,1743953400,1. FC Union Berlin,2547,1,VfL Wolfsburg,2524,0,finished
+German Bundesliga,35,63516,29,12499476,1744396200,VfL Wolfsburg,2524,2,RB Leipzig,36360,3,finished
+German Bundesliga,35,63516,29,12499469,1744464600,Bayer 04 Leverkusen,2681,0,1. FC Union Berlin,2547,0,finished
+German Bundesliga,35,63516,29,12499478,1744464600,Borussia M'gladbach,2527,1,SC Freiburg,2538,2,finished
+German Bundesliga,35,63516,29,12499481,1744464600,Holstein Kiel,2573,1,FC St. Pauli,2526,2,finished
+German Bundesliga,35,63516,29,12499474,1744464600,TSG Hoffenheim,2569,2,1. FSV Mainz 05,2556,0,finished
+German Bundesliga,35,63516,29,12499479,1744464600,VfL Bochum 1848,2542,1,FC Augsburg,2600,2,finished
+German Bundesliga,35,63516,29,12499472,1744475400,FC Bayern München,2672,2,Borussia Dortmund,2673,2,finished
+German Bundesliga,35,63516,29,12499470,1744551000,VfB Stuttgart,2677,1,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,29,12499473,1744558200,Eintracht Frankfurt,2674,3,1. FC Heidenheim,5885,0,finished
+German Bundesliga,35,63516,30,12499485,1745069400,1. FC Heidenheim,5885,0,FC Bayern München,2672,4,finished
+German Bundesliga,35,63516,30,12499492,1745069400,1. FSV Mainz 05,2556,2,VfL Wolfsburg,2524,2,finished
+German Bundesliga,35,63516,30,12499482,1745069400,RB Leipzig,36360,1,Holstein Kiel,2573,1,finished
+German Bundesliga,35,63516,30,12499487,1745069400,SC Freiburg,2538,3,TSG Hoffenheim,2569,2,finished
+German Bundesliga,35,63516,30,12499486,1745069400,SV Werder Bremen,2534,1,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,30,12499493,1745080200,1. FC Union Berlin,2547,4,VfB Stuttgart,2677,4,finished
+German Bundesliga,35,63516,30,12499490,1745155800,FC Augsburg,2600,0,Eintracht Frankfurt,2674,0,finished
+German Bundesliga,35,63516,30,12499483,1745163000,Borussia Dortmund,2673,3,Borussia M'gladbach,2527,2,finished
+German Bundesliga,35,63516,30,12499494,1745170200,FC St. Pauli,2526,1,Bayer 04 Leverkusen,2681,1,finished
+German Bundesliga,35,63516,31,12499497,1745605800,VfB Stuttgart,2677,0,1. FC Heidenheim,5885,1,finished
+German Bundesliga,35,63516,31,12499496,1745674200,Bayer 04 Leverkusen,2681,2,FC Augsburg,2600,0,finished
+German Bundesliga,35,63516,31,12499499,1745674200,FC Bayern München,2672,3,1. FSV Mainz 05,2556,0,finished
+German Bundesliga,35,63516,31,12499509,1745674200,Holstein Kiel,2573,4,Borussia M'gladbach,2527,3,finished
+German Bundesliga,35,63516,31,12499501,1745674200,TSG Hoffenheim,2569,2,Borussia Dortmund,2673,3,finished
+German Bundesliga,35,63516,31,12499506,1745674200,VfL Wolfsburg,2524,0,SC Freiburg,2538,1,finished
+German Bundesliga,35,63516,31,12499500,1745685000,Eintracht Frankfurt,2674,4,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,31,12499508,1745760600,VfL Bochum 1848,2542,1,1. FC Union Berlin,2547,1,finished
+German Bundesliga,35,63516,31,12499503,1745767800,SV Werder Bremen,2534,0,FC St. Pauli,2526,0,finished
+German Bundesliga,35,63516,32,12499513,1746210600,1. FC Heidenheim,5885,0,VfL Bochum 1848,2542,0,finished
+German Bundesliga,35,63516,32,12499522,1746279000,1. FC Union Berlin,2547,2,SV Werder Bremen,2534,2,finished
+German Bundesliga,35,63516,32,12499520,1746279000,Borussia M'gladbach,2527,4,TSG Hoffenheim,2569,4,finished
+German Bundesliga,35,63516,32,12499523,1746279000,FC St. Pauli,2526,0,VfB Stuttgart,2677,1,finished
+German Bundesliga,35,63516,32,12499510,1746279000,RB Leipzig,36360,3,FC Bayern München,2672,3,finished
+German Bundesliga,35,63516,32,12499512,1746289800,Borussia Dortmund,2673,4,VfL Wolfsburg,2524,0,finished
+German Bundesliga,35,63516,32,12499517,1746365400,FC Augsburg,2600,1,Holstein Kiel,2573,3,finished
+German Bundesliga,35,63516,32,12499515,1746372600,SC Freiburg,2538,2,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,32,12499519,1746379800,1. FSV Mainz 05,2556,1,Eintracht Frankfurt,2674,1,finished
+German Bundesliga,35,63516,33,12499534,1746815400,VfL Wolfsburg,2524,2,TSG Hoffenheim,2569,2,finished
+German Bundesliga,35,63516,33,12499535,1746883800,1. FC Union Berlin,2547,0,1. FC Heidenheim,5885,3,finished
+German Bundesliga,35,63516,33,12499538,1746883800,Holstein Kiel,2573,1,SC Freiburg,2538,2,finished
+German Bundesliga,35,63516,33,12499532,1746883800,SV Werder Bremen,2534,0,RB Leipzig,36360,0,finished
+German Bundesliga,35,63516,33,12499536,1746883800,VfL Bochum 1848,2542,1,1. FSV Mainz 05,2556,4,finished
+German Bundesliga,35,63516,33,12499528,1746894600,FC Bayern München,2672,2,Borussia M'gladbach,2527,0,finished
+German Bundesliga,35,63516,33,12499525,1746970200,Bayer 04 Leverkusen,2681,2,Borussia Dortmund,2673,4,finished
+German Bundesliga,35,63516,33,12499530,1746977400,Eintracht Frankfurt,2674,2,FC St. Pauli,2526,2,finished
+German Bundesliga,35,63516,33,12499526,1746984600,VfB Stuttgart,2677,4,FC Augsburg,2600,0,finished
+German Bundesliga,35,63516,34,12499397,1747488600,1. FC Heidenheim,5885,1,SV Werder Bremen,2534,4,finished
+German Bundesliga,35,63516,34,12499435,1747488600,1. FSV Mainz 05,2556,2,Bayer 04 Leverkusen,2681,2,finished
+German Bundesliga,35,63516,34,12499542,1747488600,Borussia Dortmund,2673,3,Holstein Kiel,2573,0,finished
+German Bundesliga,35,63516,34,12499447,1747488600,Borussia M'gladbach,2527,0,VfL Wolfsburg,2524,1,finished
+German Bundesliga,35,63516,34,12499425,1747488600,FC Augsburg,2600,1,1. FC Union Berlin,2547,2,finished
+German Bundesliga,35,63516,34,12499456,1747488600,FC St. Pauli,2526,0,VfL Bochum 1848,2542,2,finished
+German Bundesliga,35,63516,34,12499539,1747488600,RB Leipzig,36360,2,VfB Stuttgart,2677,3,finished
+German Bundesliga,35,63516,34,12499412,1747488600,SC Freiburg,2538,1,Eintracht Frankfurt,2674,3,finished
+German Bundesliga,35,63516,34,12499543,1747488600,TSG Hoffenheim,2569,0,FC Bayern München,2672,4,finished
+French Ligue 1,34,61736,1,12450872,1723833900,Le Havre,1662,1,Paris Saint-Germain,1644,4,finished
+French Ligue 1,34,61736,1,12450865,1723906800,Stade Brestois,1715,1,Olympique de Marseille,1641,5,finished
+French Ligue 1,34,61736,1,12450870,1723914000,Stade de Reims,1682,0,Lille,1643,2,finished
+French Ligue 1,34,61736,1,12450869,1723921200,AS Monaco,1653,1,Saint-Étienne,1678,0,finished
+French Ligue 1,34,61736,1,12450871,1723986000,Auxerre,1646,2,Nice,1661,1,finished
+French Ligue 1,34,61736,1,12450867,1723993200,Angers,1684,0,RC Lens,1648,1,finished
+French Ligue 1,34,61736,1,12450866,1723993200,Montpellier,1642,1,RC Strasbourg,1659,1,finished
+French Ligue 1,34,61736,1,12450868,1723993200,Toulouse,1681,0,Nantes,1647,0,finished
+French Ligue 1,34,61736,1,12450873,1724006700,Stade Rennais,1658,3,Olympique Lyonnais,1649,0,finished
+French Ligue 1,34,61736,2,12450874,1724438700,Paris Saint-Germain,1644,6,Montpellier,1642,0,finished
+French Ligue 1,34,61736,2,12450881,1724511600,Olympique Lyonnais,1649,0,AS Monaco,1653,2,finished
+French Ligue 1,34,61736,2,12450878,1724518800,Lille,1643,2,Angers,1684,0,finished
+French Ligue 1,34,61736,2,12450877,1724526000,Saint-Étienne,1678,0,Le Havre,1662,2,finished
+French Ligue 1,34,61736,2,12450880,1724590800,RC Lens,1648,2,Stade Brestois,1715,0,finished
+French Ligue 1,34,61736,2,12450876,1724598000,Nantes,1647,2,Auxerre,1646,0,finished
+French Ligue 1,34,61736,2,12450879,1724598000,Nice,1661,1,Toulouse,1681,1,finished
+French Ligue 1,34,61736,2,12450875,1724598000,RC Strasbourg,1659,3,Stade Rennais,1658,1,finished
+French Ligue 1,34,61736,2,12450882,1724611500,Olympique de Marseille,1641,2,Stade de Reims,1682,2,finished
