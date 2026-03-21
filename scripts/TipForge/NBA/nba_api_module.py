@@ -106,6 +106,9 @@ def extract_game_meta(game_id):
 
 # Season game log
 from nba_api.stats.endpoints import leaguegamelog
+import functools
+
+@functools.lru_cache(maxsize=10)
 def get_season_game_log(season='2025-26'):
     log = leaguegamelog.LeagueGameLog(season=season, season_type_all_star='Regular Season')
     games = log.get_dict()
@@ -145,6 +148,8 @@ def get_game_snapshots(game_id):
 
 # League Dash Stats (pre-game)
 from nba_api.stats.endpoints import leaguedashteamstats
+
+@functools.lru_cache(maxsize=10)
 def get_team_dash_stats(season='2024-25', date_from=None, date_to='2025-02-05'):
     ldts_raw = leaguedashteamstats.LeagueDashTeamStats(
         season=season,
@@ -185,6 +190,8 @@ def get_inactive_players(game_id):
 
 # Dash starters
 from nba_api.stats.endpoints import leaguedashlineups
+
+@functools.lru_cache(maxsize=100)
 def get_dash_lineup(team_id, season, date_to=None):
     ldl = leaguedashlineups.LeagueDashLineups(season=season,
                                             date_to_nullable=date_to
@@ -544,6 +551,15 @@ def extract_injury(game_id):
 
     return injuries
 
+@functools.lru_cache(maxsize=10)
+def get_cached_player_stats(season_id, game_date):
+    from nba_api.stats.endpoints import leaguedashplayerstats
+    return leaguedashplayerstats.LeagueDashPlayerStats(
+        season=season_id,
+        season_type_all_star="Regular Season",
+        date_to_nullable=game_date
+    ).get_dict()
+
 def extract_advanced_stats(game_id, game_date=None, season=None, home_id=None, away_id=None):
     from nba_api.stats.endpoints import leaguedashplayerstats, playergamelog
     import pandas as pd
@@ -559,11 +575,7 @@ def extract_advanced_stats(game_id, game_date=None, season=None, home_id=None, a
     away_starters = get_dash_lineup(team_id=away_id, season=season, date_to=game_date)
 
     # 1) Lekérjük a liga összes játékosát adott napig
-    stats_raw = leaguedashplayerstats.LeagueDashPlayerStats(
-        season="2024-25",
-        season_type_all_star="Regular Season",
-        date_to_nullable=game_date
-    ).get_dict()
+    stats_raw = get_cached_player_stats(season, game_date)
 
     headers = stats_raw["resultSets"][0]["headers"]
     rows = stats_raw["resultSets"][0]["rowSet"]

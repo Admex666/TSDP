@@ -142,6 +142,7 @@ def get_league_odds(url, headless=False):
     driver = webdriver.Chrome(options=chrome_options)
 
     driver.get(url)
+    time.sleep(5) # CRITICAL: Wait for top level SPA to resolve URL and inject the accurate context into the Iframe
 
     # Handle cookie consent
     try:
@@ -161,6 +162,7 @@ def get_league_odds(url, headless=False):
     driver.switch_to.frame(iframe)
     
     # Várunk amíg betöltődnek az EventItem elemek
+    time.sleep(3) # Wait for the SPA to route to the NBA page inside the iframe!
     WebDriverWait(driver, 10).until(
         EC.presence_of_all_elements_located((By.CLASS_NAME, "EventItem"))
     )
@@ -172,13 +174,15 @@ def get_league_odds(url, headless=False):
 
     for item in event_items:
         try:
-            # Dátum kinyerése (MM.dd formátumból YYYY-MM-dd-be)
-            date_elem = item.find_element(By.CSS_SELECTOR, ".MatchTime__InfoPart--Date")
-            date_raw = date_elem.text.strip()  # pl. "11.22"
-            
-            # Átalakítás YYYY-MM-dd formátumra
-            month, day = date_raw.rstrip('.').split('.')
-            date_formatted = f"{current_year}-{month.zfill(2)}-{day.zfill(2)}"
+            # Dátum kinyerése
+            try:
+                date_elem = item.find_element(By.CSS_SELECTOR, ".MatchTime__InfoPart--Date")
+                date_raw = date_elem.text.strip()  # pl. "11.22"
+                month, day = date_raw.rstrip('.').split('.')
+                date_formatted = f"{current_year}-{month.zfill(2)}-{day.zfill(2)}"
+            except:
+                # If there's no explicit DD.MM date, it's usually "Ma" (Today) or "Holnap" (Tomorrow)
+                date_formatted = datetime.now().strftime("%Y-%m-%d")
             # Csapatok kinyerése
             participants = item.find_elements(By.CSS_SELECTOR, ".Details__ParticipantName")
             home_team = participants[0].text.strip()
