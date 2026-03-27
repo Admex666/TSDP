@@ -1,0 +1,145 @@
+﻿round,event_id,startTimestamp,homeTeam_name,homeTeam_id,awayTeam_name,awayTeam_id,homeScore,awayScore,status_type,status_desc,winnerCode
+1,14572760,1758732300,FC Midtjylland,1289,SK Sturm Graz,2051,2,0,finished,Ended,1
+1,14572714,1758732300,PAOK,3251,Maccabi Tel Aviv,5198,0,0,finished,Ended,3
+1,14572707,1758740400,FK Crvena zvezda,5149,Celtic,2352,1,1,finished,Ended,3
+1,14572652,1758740400,GNK Dinamo Zagreb,2032,Fenerbahçe,3052,3,1,finished,Ended,1
+1,14572805,1758740400,Malmö FF,1892,Ludogorets,43840,1,2,finished,Ended,2
+1,14572781,1758740400,Nice,1661,Roma,2702,1,2,finished,Ended,2
+1,14572657,1758740400,Real Betis,2816,Nottingham Forest,14,2,2,finished,Ended,3
+1,14572770,1758740400,SC Freiburg,2538,Basel,2501,2,1,finished,Ended,1
+1,14572697,1758740400,Sporting Braga,2999,Feyenoord,2959,1,0,finished,Ended,1
+1,14572813,1758818700,Go Ahead Eagles,2979,FCSB,3301,0,1,finished,Ended,2
+1,14572650,1758818700,Lille,1643,SK Brann,1159,2,1,finished,Ended,1
+1,14572679,1758826800,Aston Villa,40,Bologna,2685,1,0,finished,Ended,1
+1,14572756,1758826800,BSC Young Boys,2445,Panathinaikos FC,3248,1,4,finished,Ended,2
+1,14572817,1758826800,FC Utrecht,2948,Olympique Lyonnais,1649,0,1,finished,Ended,2
+1,14572734,1758826800,Ferencváros TC,1925,FC Viktoria Plzeň,4502,1,1,finished,Ended,3
+1,14572641,1758826800,Rangers,2351,KRC Genk,2890,0,1,finished,Ended,2
+1,14572659,1758826800,Red Bull Salzburg,2046,FC Porto,3002,0,1,finished,Ended,2
+1,14572802,1758826800,VfB Stuttgart,2677,Celta Vigo,2821,2,1,finished,Ended,1
+2,14572797,1759423500,Bologna,2685,SC Freiburg,2538,1,1,finished,Ended,3
+2,14572729,1759423500,Celtic,2352,Sporting Braga,2999,0,2,finished,Ended,2
+2,14572727,1759423500,FC Viktoria Plzeň,4502,Malmö FF,1892,3,0,finished,Ended,1
+2,14572779,1759423500,FCSB,3301,BSC Young Boys,2445,0,2,finished,Ended,2
+2,14572703,1759423500,Fenerbahçe,3052,Nice,1661,2,1,finished,Ended,1
+2,14572764,1759423500,Ludogorets,43840,Real Betis,2816,0,2,finished,Ended,2
+2,14572810,1759423500,Panathinaikos FC,3248,Go Ahead Eagles,2979,1,2,finished,Ended,2
+2,14572627,1759423500,Roma,2702,Lille,1643,0,1,finished,Ended,2
+2,14572827,1759423500,SK Brann,1159,FC Utrecht,2948,1,0,finished,Ended,1
+2,14572751,1759431600,Basel,2501,VfB Stuttgart,2677,2,0,finished,Ended,1
+2,14572792,1759431600,Celta Vigo,2821,PAOK,3251,3,1,finished,Ended,1
+2,14572633,1759431600,FC Porto,3002,FK Crvena zvezda,5149,2,1,finished,Ended,1
+2,14572642,1759431600,Feyenoord,2959,Aston Villa,40,0,2,finished,Ended,2
+2,14572821,1759431600,KRC Genk,2890,Ferencváros TC,1925,0,1,finished,Ended,2
+2,14572738,1759431600,Maccabi Tel Aviv,5198,GNK Dinamo Zagreb,2032,1,3,finished,Ended,2
+2,14572774,1759431600,Nottingham Forest,14,FC Midtjylland,1289,2,3,finished,Ended,2
+2,14572718,1759431600,Olympique Lyonnais,1649,Red Bull Salzburg,2046,2,0,finished,Ended,1
+2,14572786,1759431600,SK Sturm Graz,2051,Rangers,2351,2,1,finished,Ended,1
+3,14572780,1761237900,FCSB,3301,Bologna,2685,1,2,finished,Ended,2
+3,14572704,1761237900,Fenerbahçe,3052,VfB Stuttgart,2677,1,0,finished,Ended,1
+3,14572811,1761237900,Go Ahead Eagles,2979,Aston Villa,40,2,1,finished,Ended,1
+3,14572820,1761237900,KRC Genk,2890,Real Betis,2816,0,0,finished,Ended,3
+3,14572720,1761237900,Olympique Lyonnais,1649,Basel,2501,2,0,finished,Ended,1
+3,14572660,1761237900,Red Bull Salzburg,2046,Ferencváros TC,1925,2,3,finished,Ended,2
+3,14572824,1761237900,SK Brann,1159,Rangers,2351,3,0,finished,Ended,1
+3,14572698,1761237900,Sporting Braga,2999,FK Crvena zvezda,5149,2,0,finished,Ended,1
+3,14572755,1761246000,BSC Young Boys,2445,Ludogorets,43840,3,2,finished,Ended,1
+3,14572793,1761246000,Celta Vigo,2821,Nice,1661,2,1,finished,Ended,1
+3,14572730,1761246000,Celtic,2352,SK Sturm Graz,2051,2,1,finished,Ended,1
+3,14572645,1761246000,Feyenoord,2959,Panathinaikos FC,3248,3,1,finished,Ended,1
+3,14572648,1761246000,Lille,1643,PAOK,3251,3,4,finished,Ended,2
+3,14572740,1761246000,Maccabi Tel Aviv,5198,FC Midtjylland,1289,0,3,finished,Ended,2
+3,14572803,1761246000,Malmö FF,1892,GNK Dinamo Zagreb,2032,1,1,finished,Ended,3
+3,14572772,1761246000,Nottingham Forest,14,FC Porto,3002,2,0,finished,Ended,1
+3,14572628,1761246000,Roma,2702,FC Viktoria Plzeň,4502,1,2,finished,Ended,2
+3,14572771,1761246000,SC Freiburg,2538,FC Utrecht,2948,2,0,finished,Ended,1
+4,14572750,1762451100,Basel,2501,FCSB,3301,3,1,finished,Ended,1
+4,14572759,1762451100,FC Midtjylland,1289,Celtic,2352,3,1,finished,Ended,1
+4,14572816,1762451100,FC Utrecht,2948,FC Porto,3002,1,1,finished,Ended,3
+4,14572706,1762451100,FK Crvena zvezda,5149,Lille,1643,1,0,finished,Ended,1
+4,14572654,1762451100,GNK Dinamo Zagreb,2032,Celta Vigo,2821,0,3,finished,Ended,2
+4,14572806,1762451100,Malmö FF,1892,Panathinaikos FC,3248,0,1,finished,Ended,2
+4,14572783,1762451100,Nice,1661,SC Freiburg,2538,1,3,finished,Ended,2
+4,14572662,1762451100,Red Bull Salzburg,2046,Go Ahead Eagles,2979,2,0,finished,Ended,1
+4,14572788,1762451100,SK Sturm Graz,2051,Nottingham Forest,14,0,0,finished,Ended,3
+4,14572677,1762459200,Aston Villa,40,Maccabi Tel Aviv,5198,2,0,finished,Ended,1
+4,14572798,1762459200,Bologna,2685,SK Brann,1159,0,0,finished,Ended,3
+4,14572725,1762459200,FC Viktoria Plzeň,4502,Fenerbahçe,3052,0,0,finished,Ended,3
+4,14572735,1762459200,Ferencváros TC,1925,Ludogorets,43840,3,1,finished,Ended,1
+4,14572715,1762459200,PAOK,3251,BSC Young Boys,2445,4,0,finished,Ended,1
+4,14572638,1762459200,Rangers,2351,Roma,2702,0,2,finished,Ended,2
+4,14572656,1762459200,Real Betis,2816,Olympique Lyonnais,1649,2,0,finished,Ended,1
+4,14572700,1762459200,Sporting Braga,2999,KRC Genk,2890,3,4,finished,Ended,2
+4,14572799,1762459200,VfB Stuttgart,2677,Feyenoord,2959,2,0,finished,Ended,1
+5,14572678,1764265500,Aston Villa,40,BSC Young Boys,2445,2,1,finished,Ended,1
+5,14572634,1764265500,FC Porto,3002,Nice,1661,3,0,finished,Ended,1
+5,14572726,1764265500,FC Viktoria Plzeň,4502,SC Freiburg,2538,0,0,finished,Ended,3
+5,14572702,1764265500,Fenerbahçe,3052,Ferencváros TC,1925,1,1,finished,Ended,3
+5,14572643,1764265500,Feyenoord,2959,Celtic,2352,1,3,finished,Ended,2
+5,14572647,1764265500,Lille,1643,GNK Dinamo Zagreb,2032,4,0,finished,Ended,1
+5,14572862,1764265500,Ludogorets,43840,Celta Vigo,2821,3,2,finished,Ended,1
+5,14572716,1764265500,PAOK,3251,SK Brann,1159,1,1,finished,Ended,3
+5,14572629,1764265500,Roma,2702,FC Midtjylland,1289,2,1,finished,Ended,1
+5,14572795,1764273600,Bologna,2685,Red Bull Salzburg,2046,4,1,finished,Ended,1
+5,14572708,1764273600,FK Crvena zvezda,5149,FCSB,3301,1,0,finished,Ended,1
+5,14572814,1764273600,Go Ahead Eagles,2979,VfB Stuttgart,2677,0,4,finished,Ended,2
+5,14572822,1764273600,KRC Genk,2890,Basel,2501,2,1,finished,Ended,1
+5,14572739,1764273600,Maccabi Tel Aviv,5198,Olympique Lyonnais,1649,0,6,finished,Ended,2
+5,14572775,1764273600,Nottingham Forest,14,Malmö FF,1892,3,0,finished,Ended,1
+5,14572809,1764273600,Panathinaikos FC,3248,SK Sturm Graz,2051,2,1,finished,Ended,1
+5,14572639,1764273600,Rangers,2351,Sporting Braga,2999,1,1,finished,Ended,3
+5,14572658,1764273600,Real Betis,2816,FC Utrecht,2948,2,1,finished,Ended,1
+6,14572753,1765475100,BSC Young Boys,2445,Lille,1643,1,0,finished,Ended,1
+6,14572761,1765475100,FC Midtjylland,1289,KRC Genk,2890,1,0,finished,Ended,1
+6,14572818,1765475100,FC Utrecht,2948,Nottingham Forest,14,1,2,finished,Ended,2
+6,14572733,1765475100,Ferencváros TC,1925,Rangers,2351,2,1,finished,Ended,1
+6,14572651,1765475100,GNK Dinamo Zagreb,2032,Real Betis,2816,1,3,finished,Ended,2
+6,14572765,1765475100,Ludogorets,43840,PAOK,3251,3,3,finished,Ended,3
+6,14572782,1765475100,Nice,1661,Sporting Braga,2999,0,1,finished,Ended,2
+6,14572787,1765475100,SK Sturm Graz,2051,FK Crvena zvezda,5149,0,1,finished,Ended,2
+6,14572800,1765475100,VfB Stuttgart,2677,Maccabi Tel Aviv,5198,4,1,finished,Ended,1
+6,14572748,1765483200,Basel,2501,Aston Villa,40,1,2,finished,Ended,2
+6,14572794,1765483200,Celta Vigo,2821,Bologna,2685,1,2,finished,Ended,2
+6,14572728,1765483200,Celtic,2352,Roma,2702,0,3,finished,Ended,2
+6,14572635,1765483200,FC Porto,3002,Malmö FF,1892,2,1,finished,Ended,1
+6,14572777,1765483200,FCSB,3301,Feyenoord,2959,4,3,finished,Ended,1
+6,14572721,1765483200,Olympique Lyonnais,1649,Go Ahead Eagles,2979,2,1,finished,Ended,1
+6,14572808,1765483200,Panathinaikos FC,3248,FC Viktoria Plzeň,4502,0,0,finished,Ended,3
+6,14572768,1765483200,SC Freiburg,2538,Red Bull Salzburg,2046,1,0,finished,Ended,1
+6,14572825,1765483200,SK Brann,1159,Fenerbahçe,3052,0,4,finished,Ended,2
+7,14572754,1769103900,BSC Young Boys,2445,Olympique Lyonnais,1649,0,1,finished,Ended,2
+7,14572796,1769103900,Bologna,2685,Celtic,2352,2,2,finished,Ended,3
+7,14572724,1769103900,FC Viktoria Plzeň,4502,FC Porto,3002,1,1,finished,Ended,3
+7,14572701,1769103900,Fenerbahçe,3052,Aston Villa,40,0,1,finished,Ended,2
+7,14572644,1769103900,Feyenoord,2959,SK Sturm Graz,2051,3,0,finished,Ended,1
+7,14572804,1769103900,Malmö FF,1892,FK Crvena zvezda,5149,0,1,finished,Ended,2
+7,14572713,1769103900,PAOK,3251,Real Betis,2816,2,0,finished,Ended,1
+7,14572769,1769103900,SC Freiburg,2538,Maccabi Tel Aviv,5198,1,0,finished,Ended,1
+7,14572826,1769103900,SK Brann,1159,FC Midtjylland,1289,3,3,finished,Ended,3
+7,14572791,1769112000,Celta Vigo,2821,Lille,1643,2,1,finished,Ended,1
+7,14572819,1769112000,FC Utrecht,2948,KRC Genk,2890,0,2,finished,Ended,2
+7,14572736,1769112000,Ferencváros TC,1925,Panathinaikos FC,3248,1,1,finished,Ended,3
+7,14572653,1769112000,GNK Dinamo Zagreb,2032,FCSB,3301,4,1,finished,Ended,1
+7,14572784,1769112000,Nice,1661,Go Ahead Eagles,2979,3,1,finished,Ended,1
+7,14572640,1769112000,Rangers,2351,Ludogorets,43840,1,0,finished,Ended,1
+7,14572661,1769112000,Red Bull Salzburg,2046,Basel,2501,3,1,finished,Ended,1
+7,14572630,1769112000,Roma,2702,VfB Stuttgart,2677,2,0,finished,Ended,1
+7,14572699,1769112000,Sporting Braga,2999,Nottingham Forest,14,1,0,finished,Ended,1
+8,14572676,1769716800,Aston Villa,40,Red Bull Salzburg,2046,3,2,finished,Ended,1
+8,14572749,1769716800,Basel,2501,FC Viktoria Plzeň,4502,0,1,finished,Ended,2
+8,14572731,1769716800,Celtic,2352,FC Utrecht,2948,4,2,finished,Ended,1
+8,14572758,1769716800,FC Midtjylland,1289,GNK Dinamo Zagreb,2032,2,0,finished,Ended,1
+8,14572632,1769716800,FC Porto,3002,Rangers,2351,3,1,finished,Ended,1
+8,14572778,1769716800,FCSB,3301,Fenerbahçe,3052,1,1,finished,Ended,3
+8,14572709,1769716800,FK Crvena zvezda,5149,Celta Vigo,2821,1,1,finished,Ended,3
+8,14572812,1769716800,Go Ahead Eagles,2979,Sporting Braga,2999,0,0,finished,Ended,3
+8,14572823,1769716800,KRC Genk,2890,Malmö FF,1892,2,1,finished,Ended,1
+8,14572649,1769716800,Lille,1643,SC Freiburg,2538,1,0,finished,Ended,1
+8,14572766,1769716800,Ludogorets,43840,Nice,1661,1,0,finished,Ended,1
+8,14572741,1769716800,Maccabi Tel Aviv,5198,Bologna,2685,0,3,finished,Ended,2
+8,14572773,1769716800,Nottingham Forest,14,Ferencváros TC,1925,4,0,finished,Ended,1
+8,14572719,1769716800,Olympique Lyonnais,1649,PAOK,3251,4,2,finished,Ended,1
+8,14572807,1769716800,Panathinaikos FC,3248,Roma,2702,1,1,finished,Ended,3
+8,14572655,1769716800,Real Betis,2816,Feyenoord,2959,2,1,finished,Ended,1
+8,14572789,1769716800,SK Sturm Graz,2051,SK Brann,1159,1,0,finished,Ended,1
+8,14572801,1769716800,VfB Stuttgart,2677,BSC Young Boys,2445,3,2,finished,Ended,1
