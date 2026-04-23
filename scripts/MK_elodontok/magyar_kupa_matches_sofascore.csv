@@ -1,0 +1,63 @@
+﻿event_id,round,home_team,home_id,away_team,away_id,score_home,score_away,odds_1,odds_X,odds_2,status
+14561756,Round 3,FC Ajka,25580,Kisvárda FC,25397,3,1,3.4,3.8,1.8,Ended
+14561729,Round 3,STC Salgótarján,229214,Tiszakécskei LC,267058,1,4,,,,Ended
+14561750,Round 3,Kelen SC,330275,Tarpa SC,368383,2,2,4.5,4.0,1.57,AP
+14561730,Round 3,Iváncsa KSE,170384,Kazincbarcikai SC,8059,0,1,,,,Ended
+14561741,Round 3,Szarvaskend SE,266597,Ferencváros TC,1925,0,15,,,,Ended
+14561733,Round 3,Békéscsaba 1912 Előre,1927,Nyiregyháza Spartacus,5124,0,0,,,,AP
+14561751,Round 3,Rákospalotai EAC,5126,Karcagi SC,250725,2,4,4.75,4.0,1.53,Ended
+14561758,Round 3,Gyirmót Győr,8057,Aqvital FC Csákvár,44141,0,1,2.2,3.25,2.8,Ended
+14561731,Round 3,Érdi VSE,228089,ETO FC Győr,1923,0,3,15.0,9.0,1.1,Ended
+14561738,Round 3,Sárvár FC,25620,Pilisi Lk,119766,2,5,1.67,4.5,3.4,Ended
+14561740,Round 3,Majosi SE,350940,Gödöllői SK,44205,2,0,,,,Ended
+14561752,Round 3,Videoton FC Fehérvár,1926,Szentlőrinc SE,25395,3,0,2.38,3.25,2.6,Ended
+14561732,Round 3,BFC Siófok,1928,MTK Budapest,1915,1,7,17.0,7.5,1.12,Ended
+14561747,Round 3,Gyulai Termál FC,379727,Mezőkövesd Zsóry,25608,0,2,,,,Ended
+14561745,Round 3,Kecskemét TE,23956,Újpest,1924,3,2,3.6,3.6,1.8,AET
+14561743,Round 3,Tiszafüred VSE,291836,Putnok FC,25614,3,2,1.8,4.0,3.25,Ended
+14561728,Round 3,VSC Veszprém,25399,Debreceni VSC,1921,0,2,9.0,6.0,1.2,Ended
+14561755,Round 3,Móri SE,235502,Budapest Honvéd FC,1916,1,4,,,,Ended
+14561748,Round 3,FC Nagykanizsa,267146,Kozármisleny FC,25393,1,2,3.25,3.8,1.83,Ended
+14561737,Round 3,Szolnoki MÁV,25627,ESMTK,25595,0,3,4.33,4.0,1.57,Ended
+14561757,Round 3,Martfűi LSE,489402,Dombóvár FC,378921,4,4,1.91,3.75,3.1,AP
+14561742,Round 3,Szajol KLK,330278,Paksi FC,6059,1,5,,,,Ended
+14561744,Round 3,Hódmezővásárhelyi FC,235504,Diósgyőri VTK,5121,1,3,9.0,7.0,1.17,Ended
+14561759,Round 3,Dorogi FC,102007,Szeged-Csanád Grosics Akadémia,25624,0,2,3.6,3.6,1.8,Ended
+14561734,Round 3,Vásárosnamény SE,448208,Zalaegerszegi TE,1922,0,13,,,,Ended
+14561746,Round 3,Eger SE,44142,Budafoki MTE,37285,0,2,6.0,4.2,1.4,Ended
+14561754,Round 3,Vasas,1919,Puskás Akadémia,25596,4,1,5.0,4.0,1.5,Ended
+14561749,Round 3,Mezőörs KSE,449095,Komárom VSE,235508,1,0,2.3,4.2,2.25,Ended
+14637100,Round 3,Pécsi MFC,5125,Debreceni EAC,318692,0,2,2.38,3.25,2.6,Ended
+14561753,Round 3,Füzesabonyi SC,490258,BVSC-Zugló,298854,0,4,5.0,4.0,1.5,Ended
+14561739,Round 3,PTE-PEAC,298840,III. Kerületi TVE,207185,1,3,4.0,4.0,1.62,Ended
+14561764,Round 3,FC Tatabánya,1930,Soroksár SC,25621,0,2,3.4,3.9,1.8,Ended
+14696179,Round of 32,FC Ajka,25580,Tiszakécskei LC,267058,2,1,2.6,3.5,2.3,AET
+14696178,Round of 32,Kelen SC,330275,Kazincbarcikai SC,8059,0,1,23.0,13.0,1.06,Ended
+14696173,Round of 32,Ferencváros TC,1925,Békéscsaba 1912 Előre,1927,4,0,1.14,7.5,13.0,Ended
+14696177,Round of 32,Karcagi SC,250725,Aqvital FC Csákvár,44141,2,3,2.9,3.0,2.25,AET
+14696171,Round of 32,ETO FC Győr,1923,Pilisi Lk,119766,9,0,1.02,21.0,51.0,Ended
+14696184,Round of 32,Majosi SE,350940,Videoton FC Fehérvár,1926,0,1,,,,Ended
+14696174,Round of 32,MTK Budapest,1915,Mezőkövesd Zsóry,25608,5,1,1.33,4.75,6.0,Ended
+14696180,Round of 32,Kecskemét TE,23956,Tiszafüred VSE,291836,2,1,1.2,6.25,9.0,Ended
+14696185,Round of 32,Debreceni VSC,1921,Budapest Honvéd FC,1916,1,2,1.67,4.33,3.6,AET
+14696182,Round of 32,Kozármisleny FC,25393,ESMTK,25595,0,0,1.57,4.0,4.33,AP
+14696187,Round of 32,Martfűi LSE,489402,Paksi FC,6059,1,4,26.0,13.0,1.05,Ended
+14696190,Round of 32,Diósgyőri VTK,5121,Szeged-Csanád Grosics Akadémia,25624,2,0,1.53,3.9,5.5,Ended
+14696172,Round of 32,Zalaegerszegi TE,1922,Budafoki MTE,37285,3,1,1.33,4.33,7.0,Ended
+14696176,Round of 32,Vasas,1919,Mezőörs KSE,449095,3,0,1.17,7.0,9.0,Ended
+14696175,Round of 32,Debreceni EAC,318692,BVSC-Zugló,298854,1,0,3.9,3.9,1.67,AET
+14696188,Round of 32,III. Kerületi TVE,207185,Soroksár SC,25621,0,1,4.75,3.8,1.57,Ended
+14987798,Round of 16,FC Ajka,25580,Kazincbarcikai SC,8059,0,1,3.4,3.6,1.85,Ended
+14987799,Round of 16,Ferencváros TC,1925,Aqvital FC Csákvár,44141,4,0,1.18,6.5,10.0,Ended
+14987797,Round of 16,ETO FC Győr,1923,Videoton FC Fehérvár,1926,2,0,1.44,4.0,5.75,Ended
+14987801,Round of 16,MTK Budapest,1915,Kecskemét TE,23956,1,2,2.05,3.6,2.88,Ended
+14987796,Round of 16,Budapest Honvéd FC,1916,ESMTK,25595,2,0,1.18,6.25,11.0,Ended
+14987800,Round of 16,Paksi FC,6059,Diósgyőri VTK,5121,2,6,1.55,4.2,4.2,Ended
+14987802,Round of 16,Zalaegerszegi TE,1922,Vasas,1919,2,1,1.85,3.5,3.4,Ended
+14987803,Round of 16,Debreceni EAC,318692,Soroksár SC,25621,0,1,3.75,4.0,1.67,Ended
+15537037,Quarterfinal,Kazincbarcikai SC,8059,Ferencváros TC,1925,0,5,7.5,5.25,1.25,Ended
+15537040,Quarterfinal,ETO FC Győr,1923,Kecskemét TE,23956,3,1,1.38,4.33,6.25,AET
+15537039,Quarterfinal,Budapest Honvéd FC,1916,Diósgyőri VTK,5121,1,0,1.85,3.5,3.5,Ended
+15537041,Quarterfinal,Zalaegerszegi TE,1922,Soroksár SC,25621,1,0,1.33,4.5,6.5,Ended
+15679214,Semifinal,Ferencváros TC,1925,ETO FC Győr,1923,2,2,1.7,3.5,4.0,AP
+15679215,Semifinal,Budapest Honvéd FC,1916,Zalaegerszegi TE,1922,2,2,3.5,3.4,1.85,AP
