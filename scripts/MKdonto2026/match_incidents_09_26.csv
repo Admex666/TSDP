@@ -1,0 +1,296 @@
+time,added_time,type,text,is_home,player_name,player_in,player_out,incident_class,description,home_score,away_score,match_id,season
+120.0,999.0,period,ET,,,,,,,1.0,0.0,16079853,Magyar Kupa 25/26
+114.0,,card,,True,Mohammad Abu Fani,,,yellow,,,,16079853,Magyar Kupa 25/26
+111.0,,goal,,True,Toon Raemaekers,,,regular,,1.0,0.0,16079853,Magyar Kupa 25/26
+110.0,,substitution,,False,,Lucas Alfonso,Bence Kiss,regular,,,,16079853,Magyar Kupa 25/26
+106.0,,substitution,,True,,Krisztián Lisztes,Lenny Joseph,regular,,,,16079853,Magyar Kupa 25/26
+100.0,,card,,False,Norbert Szendrei,,,yellow,,,,16079853,Magyar Kupa 25/26
+98.0,,substitution,,True,,Barnabás Nagy,Callum O'Dowda,regular,,,,16079853,Magyar Kupa 25/26
+96.0,,card,,False,Guilherme Luiz Teixeira,,,yellow,,,,16079853,Magyar Kupa 25/26
+95.0,,inGamePenalty,,True,Yusuf Bamidele,,,missed,,,,16079853,Magyar Kupa 25/26
+91.0,,substitution,,True,,Marius Corbu,Philippe Rommens,regular,,,,16079853,Magyar Kupa 25/26
+91.0,,substitution,,False,,David López,András Csonka,regular,,,,16079853,Magyar Kupa 25/26
+90.0,999.0,period,FT,,,,,,,0.0,0.0,16079853,Magyar Kupa 25/26
+90.0,,substitution,,False,,Guilherme Luiz Teixeira,João Victor,regular,,,,16079853,Magyar Kupa 25/26
+87.0,,card,,True,Gábor Szalai,,,yellow,,,,16079853,Magyar Kupa 25/26
+79.0,,substitution,,True,,Mohammad Abu Fani,Kristoffer Zachariassen,regular,,,,16079853,Magyar Kupa 25/26
+79.0,,substitution,,True,,Gábor Szalai,Cadu,regular,,,,16079853,Magyar Kupa 25/26
+63.0,,substitution,,True,,Yusuf Bamidele,Zsombor Gruber,regular,,,,16079853,Magyar Kupa 25/26
+63.0,,substitution,,False,,Daniel Alves,Maxsuell Alegria,regular,,,,16079853,Magyar Kupa 25/26
+45.0,999.0,period,HT,,,,,,,0.0,0.0,16079853,Magyar Kupa 25/26
+999.0,999.0,period,PEN,,,,,,,3.0,4.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,False,Bálint Vécsei,,,scored,Scored,3.0,4.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,True,Ibrahim Cissé,,,scored,Scored,3.0,3.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,False,Gergő Gyurkits,,,scored,Scored,2.0,3.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,True,Raul Gustavo,,,scored,Scored,2.0,2.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,False,Balázs Balogh,,,missed,,1.0,2.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,True,Lenny Joseph,,,missed,,1.0,2.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,False,Martin Ádám,,,scored,Scored,1.0,2.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,True,Kristoffer Zachariassen,,,scored,Scored,1.0,1.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,False,József Windecker,,,scored,Scored,0.0,1.0,13829083,Magyar Kupa 24/25
+,,penaltyShootout,,True,Aleksandar Pešić,,,missed,,0.0,0.0,13829083,Magyar Kupa 24/25
+120.0,999.0,period,ET,,,,,,,1.0,1.0,13829083,Magyar Kupa 24/25
+118.0,,card,,True,Gábor Szalai,,,yellow,,,,13829083,Magyar Kupa 24/25
+107.0,,card,,True,Alex Tóth,,,yellow,,,,13829083,Magyar Kupa 24/25
+106.0,,substitution,,False,,Gergő Gyurkits,János Szabó,regular,,,,13829083,Magyar Kupa 24/25
+105.0,1.0,card,,False,Ákos Kinyik,,,yellow,,,,13829083,Magyar Kupa 24/25
+105.0,0.0,injuryTime,,,,,,,,,,13829083,Magyar Kupa 24/25
+99.0,,substitution,,True,,Raul Gustavo,Habib Maïga,regular,,,,13829083,Magyar Kupa 24/25
+96.0,,card,,False,Martin Ádám,,,yellow,,,,13829083,Magyar Kupa 24/25
+91.0,,substitution,,False,,Martin Ádám,Kristóf Hinora,regular,,,,13829083,Magyar Kupa 24/25
+90.0,999.0,period,FT,,,,,,,1.0,1.0,13829083,Magyar Kupa 24/25
+90.0,3.0,goal,,True,Lenny Joseph,,,regular,,1.0,1.0,13829083,Magyar Kupa 24/25
+90.0,,substitution,,False,,Balázs Balogh,Szabolcs Mezei,regular,,,,13829083,Magyar Kupa 24/25
+90.0,0.0,injuryTime,,,,,,,,,,13829083,Magyar Kupa 24/25
+88.0,,card,,False,Dániel Böde,,,yellow,,,,13829083,Magyar Kupa 24/25
+83.0,,substitution,,True,,Aleksandar Ćirković,Stefan Gartenmann,regular,,,,13829083,Magyar Kupa 24/25
+79.0,,substitution,,False,,Ákos Kinyik,Bence Ötvös,regular,,,,13829083,Magyar Kupa 24/25
+77.0,,substitution,,True,,Kristoffer Zachariassen,Matheus Saldanha,regular,,,,13829083,Magyar Kupa 24/25
+75.0,,substitution,,False,,Dániel Böde,Barna Tóth,regular,,,,13829083,Magyar Kupa 24/25
+75.0,,substitution,,False,,Bálint Vécsei,Zsolt Haraszti,regular,,,,13829083,Magyar Kupa 24/25
+65.0,,substitution,,True,,Aleksandar Pešić,Barnabás Varga,regular,,,,13829083,Magyar Kupa 24/25
+64.0,,substitution,,True,,Adama Malouda Traoré,Eldar Ćivić,regular,,,,13829083,Magyar Kupa 24/25
+64.0,,substitution,,True,,Lenny Joseph,Mohammad Abu Fani,regular,,,,13829083,Magyar Kupa 24/25
+55.0,,card,,False,Bence Ötvös,,,yellow,,,,13829083,Magyar Kupa 24/25
+45.0,999.0,period,HT,,,,,,,0.0,1.0,13829083,Magyar Kupa 24/25
+45.0,1.0,goal,,False,Barna Tóth,,,regular,,0.0,1.0,13829083,Magyar Kupa 24/25
+34.0,,card,,False,János Szabó,,,yellow,,,,13829083,Magyar Kupa 24/25
+120.0,999.0,period,ET,,,,,,,2.0,0.0,12282003,Magyar Kupa 23/24
+120.0,2.0,goal,,True,Zsolt Haraszti,,,regular,,2.0,0.0,12282003,Magyar Kupa 23/24
+120.0,,substitution,,True,,Zsolt Haraszti,Balázs Balogh,regular,,,,12282003,Magyar Kupa 23/24
+118.0,,substitution,,True,,Szabolcs Mezei,Bálint Szabó,regular,,,,12282003,Magyar Kupa 23/24
+117.0,,card,,True,Péter Szappanos,,,yellow,,,,12282003,Magyar Kupa 23/24
+114.0,,card,,True,Attila Osváth,,,yellow,,,,12282003,Magyar Kupa 23/24
+112.0,,card,,False,Edgar Sevikyan,,,yellow,,,,12282003,Magyar Kupa 23/24
+100.0,,substitution,,False,,Edgar Sevikyan,Krisztián Lisztes,regular,,,,12282003,Magyar Kupa 23/24
+98.0,,goal,,True,Kristóf Papp,,,regular,,1.0,0.0,12282003,Magyar Kupa 23/24
+91.0,,substitution,,False,,Cristian Ramírez,Eldar Ćivić,regular,,,,12282003,Magyar Kupa 23/24
+90.0,999.0,period,FT,,,,,,,0.0,0.0,12282003,Magyar Kupa 23/24
+90.0,1.0,card,,False,Endre Botka,,,yellow,,,,12282003,Magyar Kupa 23/24
+85.0,,substitution,,True,,Bálint Szabó,József Windecker,regular,,,,12282003,Magyar Kupa 23/24
+82.0,,substitution,,False,,Krisztián Lisztes,Barnabás Varga,regular,,,,12282003,Magyar Kupa 23/24
+82.0,,substitution,,False,,Kristoffer Zachariassen,Marquinhos,regular,,,,12282003,Magyar Kupa 23/24
+75.0,,card,,False,Myenty Abena,,,yellowRed,,,,12282003,Magyar Kupa 23/24
+72.0,,substitution,,True,,Dániel Böde,János Hahn,regular,,,,12282003,Magyar Kupa 23/24
+59.0,,substitution,,False,,Stjepan Lončar,Habib Maïga,regular,,,,12282003,Magyar Kupa 23/24
+55.0,,substitution,,False,,Kenan Kodro,Mohamed Ali Ben Romdhane,regular,,,,12282003,Magyar Kupa 23/24
+46.0,,substitution,,True,,Balázs Balogh,Norbert Könyves,regular,,,,12282003,Magyar Kupa 23/24
+45.0,999.0,period,HT,,,,,,,0.0,0.0,12282003,Magyar Kupa 23/24
+45.0,1.0,card,,False,Myenty Abena,,,yellow,,,,12282003,Magyar Kupa 23/24
+45.0,1.0,card,,True,Norbert Könyves,,,yellow,,,,12282003,Magyar Kupa 23/24
+38.0,,card,,True,Bálint Vécsei,,,red,,,,12282003,Magyar Kupa 23/24
+34.0,,inGamePenalty,,False,Barnabás Varga,,,missed,,,,12282003,Magyar Kupa 23/24
+16.0,,card,,True,Ákos Kinyik,,,yellow,,,,12282003,Magyar Kupa 23/24
+120.0,1.0,goal,,False,Szabolcs Szalay,,,regular,,0.0,2.0,11193495,Magyar Kupa 22/23
+120.0,0.0,card,,True,Márk Jagodics,,,yellow,,,,11193495,Magyar Kupa 22/23
+120.0,0.0,substitution,,False,,Zoran Lesjak,Mátyás Tajti,regular,,,,11193495,Magyar Kupa 22/23
+117.0,,goal,,False,Dániel Németh,,,regular,,0.0,1.0,11193495,Magyar Kupa 22/23
+112.0,,substitution,,False,,Barnabás Kovács,Bojan Sanković,regular,,,,11193495,Magyar Kupa 22/23
+110.0,,card,,True,Márió Németh,,,yellow,,,,11193495,Magyar Kupa 22/23
+106.0,,substitution,,True,,Gergő Vaszicsku,Nándori Botond,regular,,,,11193495,Magyar Kupa 22/23
+106.0,,substitution,,True,,Andor Margitics,Olivér Kalmár,regular,,,,11193495,Magyar Kupa 22/23
+100.0,,substitution,,True,,Balázs Bakti,Péter Beke,regular,,,,11193495,Magyar Kupa 22/23
+98.0,,substitution,,False,,Bence Bedi,Bence Gergényi,regular,,,,11193495,Magyar Kupa 22/23
+93.0,,card,,False,András Huszti,,,yellow,,,,11193495,Magyar Kupa 22/23
+90.0,999.0,period,FT,,,,,,,0.0,0.0,11193495,Magyar Kupa 22/23
+90.0,0.0,injuryTime,,,,,,,,,,11193495,Magyar Kupa 22/23
+89.0,,substitution,,True,,Máté Fekete,Márk Bíró,regular,,,,11193495,Magyar Kupa 22/23
+78.0,,substitution,,True,,Zoltán Vasvári,Olivér Horváth,regular,,,,11193495,Magyar Kupa 22/23
+77.0,,substitution,,False,,Szabolcs Szalay,Meshack Ubochioma,regular,,,,11193495,Magyar Kupa 22/23
+72.0,,card,,True,András Csonka,,,yellow,,,,11193495,Magyar Kupa 22/23
+65.0,,substitution,,True,,Márió Németh,Dávid Kovács,regular,,,,11193495,Magyar Kupa 22/23
+46.0,,substitution,,False,,Dániel Németh,Eduvie Ikoba,regular,,,,11193495,Magyar Kupa 22/23
+46.0,,substitution,,False,,András Huszti,Gergely Mim,regular,,,,11193495,Magyar Kupa 22/23
+45.0,999.0,period,HT,,,,,,,0.0,0.0,11193495,Magyar Kupa 22/23
+24.0,,card,,True,Péter Beke,,,yellow,,,,11193495,Magyar Kupa 22/23
+90.0,999.0,period,FT,,,,,,,3.0,0.0,10266960,Magyar Kupa 21/22
+90.0,3.0,card,,False,Martin Ádám,,,yellow,,,,10266960,Magyar Kupa 21/22
+90.0,0.0,injuryTime,,,,,,,,,,10266960,Magyar Kupa 21/22
+86.0,,goal,,True,Franck Boli,,,regular,,3.0,0.0,10266960,Magyar Kupa 21/22
+85.0,,substitution,,False,,Attila Osváth,János Szabó,regular,,,,10266960,Magyar Kupa 21/22
+83.0,,goal,,True,Franck Boli,,,regular,,2.0,0.0,10266960,Magyar Kupa 21/22
+81.0,,substitution,,True,,Bálint Vécsei,Endre Botka,regular,,,,10266960,Magyar Kupa 21/22
+80.0,,substitution,,False,,Richárd Nagy,Nikolasz Kovács,regular,,,,10266960,Magyar Kupa 21/22
+76.0,,substitution,,True,,Henry Wingo,Carlos Auzqui,regular,,,,10266960,Magyar Kupa 21/22
+76.0,,substitution,,True,,Eldar Ćivić,Lóránd Pászka,regular,,,,10266960,Magyar Kupa 21/22
+75.0,,card,,True,Endre Botka,,,yellow,,,,10266960,Magyar Kupa 21/22
+68.0,,card,,True,Stjepan Lončar,,,yellow,,,,10266960,Magyar Kupa 21/22
+66.0,,substitution,,False,,Dániel Böde,Zsolt Haraszti,regular,,,,10266960,Magyar Kupa 21/22
+66.0,,substitution,,False,,Olivér Tamás,Bálint Szabó,regular,,,,10266960,Magyar Kupa 21/22
+65.0,,card,,False,Bence Lenzsér,,,yellow,,,,10266960,Magyar Kupa 21/22
+60.0,,card,,False,József Windecker,,,yellow,,,,10266960,Magyar Kupa 21/22
+59.0,,substitution,,True,,Stjepan Lončar,Marquinhos,regular,,,,10266960,Magyar Kupa 21/22
+46.0,,substitution,,False,,Máté Sajbán,Balázs Balogh,regular,,,,10266960,Magyar Kupa 21/22
+45.0,999.0,period,HT,,,,,,,1.0,0.0,10266960,Magyar Kupa 21/22
+45.0,0.0,injuryTime,,,,,,,,,,10266960,Magyar Kupa 21/22
+16.0,,goal,,True,Kristoffer Zachariassen,,,regular,,1.0,0.0,10266960,Magyar Kupa 21/22
+120.0,999.0,period,ET,,,,,,,0.0,1.0,9479581,Magyar Kupa 20/21
+120.0,1.0,card,,False,Nemanja Antonov,,,yellow,,,,9479581,Magyar Kupa 20/21
+119.0,,substitution,,False,,Zsolt Máté,Branko Pauljević,regular,,,,9479581,Magyar Kupa 20/21
+114.0,,substitution,,False,,Krisztián Simon,Junior Tallo,regular,,,,9479581,Magyar Kupa 20/21
+114.0,,substitution,,False,,Antonio Perošević,Giorgi Beridze,regular,,,,9479581,Magyar Kupa 20/21
+101.0,,goal,,False,Lirim Kastrati,,,regular,,0.0,1.0,9479581,Magyar Kupa 20/21
+101.0,,substitution,,False,,Péter Szakály,Georgios Koutroubis,regular,,,,9479581,Magyar Kupa 20/21
+97.0,,card,,True,Alef,,,yellowRed,,,,9479581,Magyar Kupa 20/21
+96.0,,card,,True,Alef,,,yellow,,,,9479581,Magyar Kupa 20/21
+91.0,,substitution,,True,,Alef,Funsho Bamgboye,regular,,,,9479581,Magyar Kupa 20/21
+90.0,999.0,period,FT,,,,,,,0.0,0.0,9479581,Magyar Kupa 20/21
+90.0,1.0,card,,True,Adrian Rus,,,yellowRed,,,,9479581,Magyar Kupa 20/21
+76.0,,substitution,,True,,Lyes Houri,Nemanja Nikolics,regular,,,,9479581,Magyar Kupa 20/21
+75.0,,substitution,,False,,Áron Csongvai,Yohan Croizet-Kollár,regular,,,,9479581,Magyar Kupa 20/21
+63.0,,substitution,,True,,Attila Fiola,Bendegúz Bolla,regular,,,,9479581,Magyar Kupa 20/21
+59.0,,card,,True,Funsho Bamgboye,,,yellow,,,,9479581,Magyar Kupa 20/21
+45.0,999.0,period,HT,,,,,,,0.0,0.0,9479581,Magyar Kupa 20/21
+45.0,1.0,card,,False,Nikola Mitrović,,,yellow,,,,9479581,Magyar Kupa 20/21
+45.0,1.0,card,,True,Adrian Rus,,,yellow,,,,9479581,Magyar Kupa 20/21
+45.0,,card,,False,Vincent Onovo,,,yellow,,,,9479581,Magyar Kupa 20/21
+90.0,999.0,period,FT,,,,,,,2.0,1.0,8673672,Magyar Kupa 19/20
+90.0,5.0,substitution,,True,,Macdonald Ngwa Niba,Naser Aliji,injury,,,,8673672,Magyar Kupa 19/20
+90.0,1.0,card,,False,Dino Beširović,,,yellow,,,,8673672,Magyar Kupa 19/20
+90.0,0.0,injuryTime,,,,,,,,,,8673672,Magyar Kupa 19/20
+88.0,,card,,False,Dániel Vadnai,,,yellow,,,,8673672,Magyar Kupa 19/20
+85.0,,substitution,,True,,Mayron George,Patrick Ikenne-King,regular,,,,8673672,Magyar Kupa 19/20
+85.0,,substitution,,True,,Naser Aliji,Davide Lanzafame,regular,,,,8673672,Magyar Kupa 19/20
+85.0,,substitution,,True,,Gergő Nagy,Dániel Gazdag,regular,,,,8673672,Magyar Kupa 19/20
+80.0,,card,,True,Roland Ugrai,,,yellow,,,,8673672,Magyar Kupa 19/20
+79.0,,substitution,,False,,Marin Jurina,László Pekár,regular,,,,8673672,Magyar Kupa 19/20
+79.0,,substitution,,True,,Barna Kesztyűs,Roland Ugrai,regular,,,,8673672,Magyar Kupa 19/20
+70.0,,substitution,,False,,Dániel Farkas,Gábor Eperjesi,regular,,,,8673672,Magyar Kupa 19/20
+70.0,,substitution,,False,,Dániel Vadnai,Erik Silye,regular,,,,8673672,Magyar Kupa 19/20
+56.0,,goal,,True,Đorđe Kamber,,,regular,,2.0,1.0,8673672,Magyar Kupa 19/20
+55.0,,card,,True,Dániel Gazdag,,,yellow,,,,8673672,Magyar Kupa 19/20
+45.0,999.0,period,HT,,,,,,,1.0,1.0,8673672,Magyar Kupa 19/20
+45.0,0.0,injuryTime,,,,,,,,,,8673672,Magyar Kupa 19/20
+42.0,,card,,True,Ivan Lovrić,,,yellow,,,,8673672,Magyar Kupa 19/20
+37.0,,goal,,False,László Pekár,,,regular,,1.0,1.0,8673672,Magyar Kupa 19/20
+33.0,,goal,,True,Andriy Nesterov,,,ownGoal,,1.0,0.0,8673672,Magyar Kupa 19/20
+90.0,999.0,period,FT,,,,,,,1.0,2.0,8203350,Magyar Kupa 18/19
+90.0,5.0,card,,False,István Kovács,,,yellow,,,,8203350,Magyar Kupa 18/19
+90.0,3.0,card,,True,Tonći Kukoč-Petraello,,,yellow,,,,8203350,Magyar Kupa 18/19
+90.0,2.0,card,,False,Anel Hadžić,,,yellow,,,,8203350,Magyar Kupa 18/19
+90.0,1.0,goal,,False,Anel Hadžić,,,regular,,1.0,2.0,8203350,Magyar Kupa 18/19
+90.0,0.0,injuryTime,,,,,,,,,,8203350,Magyar Kupa 18/19
+80.0,,goal,,False,Marko Šćepović,,,regular,,1.0,1.0,8203350,Magyar Kupa 18/19
+80.0,,substitution,,True,,Tonći Kukoč-Petraello,Eke Uzoma,regular,,,,8203350,Magyar Kupa 18/19
+77.0,,substitution,,True,,Danilo,David N'Gog,regular,,,,8203350,Magyar Kupa 18/19
+72.0,,substitution,,False,,Márkó Futács,Máté Pátkai,regular,,,,8203350,Magyar Kupa 18/19
+69.0,,substitution,,True,,Änis Ben-Hatira,Dániel Gazdag,regular,,,,8203350,Magyar Kupa 18/19
+62.0,,card,,True,Dávid Gróf,,,yellow,,,,8203350,Magyar Kupa 18/19
+57.0,,card,,True,Bence Batik,,,yellow,,,,8203350,Magyar Kupa 18/19
+56.0,,card,,False,Boban Nikolov,,,yellow,,,,8203350,Magyar Kupa 18/19
+46.0,,substitution,,False,,Anel Hadžić,Ákos Elek,regular,,,,8203350,Magyar Kupa 18/19
+46.0,,substitution,,False,,István Kovács,Attila Fiola,regular,,,,8203350,Magyar Kupa 18/19
+45.0,999.0,period,HT,,,,,,,1.0,0.0,8203350,Magyar Kupa 18/19
+45.0,0.0,injuryTime,,,,,,,,,,8203350,Magyar Kupa 18/19
+38.0,,card,,False,Marko Šćepović,,,yellow,,,,8203350,Magyar Kupa 18/19
+35.0,,card,,False,Ákos Elek,,,yellow,,,,8203350,Magyar Kupa 18/19
+32.0,,card,,True,Gergő Nagy,,,yellow,,,,8203350,Magyar Kupa 18/19
+27.0,,card,,False,Stopira,,,yellow,,,,8203350,Magyar Kupa 18/19
+14.0,,goal,,True,Filip Holender,,,penalty,,1.0,0.0,8203350,Magyar Kupa 18/19
+13.0,,card,,False,Paulo Vinícius,,,yellow,,,,8203350,Magyar Kupa 18/19
+999.0,999.0,period,PEN,,,,,,,4.0,5.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,True,János Hegedűs,,,missed,,4.0,5.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,False,Mijuško Bojović,,,scored,,4.0,5.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,True,Balázs Balogh,,,scored,,4.0,4.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,False,Donát Zsótér,,,scored,,3.0,4.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,True,Ezekiel Henty,,,missed,,3.0,3.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,False,Benjámin Balázs,,,missed,,3.0,3.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,True,Ulysse Diallo,,,scored,,3.0,3.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,False,,,,scored,,2.0,3.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,True,Stipe Bačelić-Grgić,,,scored,,2.0,2.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,False,Róbert Litauszki,,,scored,,1.0,2.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,True,Antonio Perošević,,,scored,,1.0,1.0,7801730,Magyar Kupa 17/18
+,,penaltyShootout,,False,Vincent Onovo,,,scored,,0.0,1.0,7801730,Magyar Kupa 17/18
+120.0,999.0,period,ET,,,,,,,2.0,2.0,7801730,Magyar Kupa 17/18
+117.0,,substitution,,True,,Stipe Bačelić-Grgić,Dávid Márkvárt,regular,,,,7801730,Magyar Kupa 17/18
+113.0,,card,,True,Lajos Hegedüs,,,yellow,,,,7801730,Magyar Kupa 17/18
+113.0,,card,,False,Branko Pauljević,,,yellow,,,,7801730,Magyar Kupa 17/18
+109.0,,card,,True,János Hegedűs,,,yellow,,,,7801730,Magyar Kupa 17/18
+108.0,,substitution,,False,,Patrik Tischler,Soma Novothny,regular,,,,7801730,Magyar Kupa 17/18
+105.0,,card,,False,Obinna Nwobodo,,,yellow,,,,7801730,Magyar Kupa 17/18
+90.0,999.0,period,FT,,,,,,,2.0,2.0,7801730,Magyar Kupa 17/18
+90.0,0.0,injuryTime,,,,,,,,,,7801730,Magyar Kupa 17/18
+89.0,,substitution,,True,,Ulysse Diallo,Josip Knežević,regular,,,,7801730,Magyar Kupa 17/18
+88.0,,card,,False,Donát Zsótér,,,yellow,,,,7801730,Magyar Kupa 17/18
+67.0,,goal,,True,Antonio Perošević,,,regular,,2.0,2.0,7801730,Magyar Kupa 17/18
+62.0,,goal,,False,Mijuško Bojović,,,regular,,1.0,2.0,7801730,Magyar Kupa 17/18
+60.0,,card,,True,Dávid Márkvárt,,,yellow,,,,7801730,Magyar Kupa 17/18
+55.0,,goal,,False,Donát Zsótér,,,regular,,1.0,1.0,7801730,Magyar Kupa 17/18
+45.0,999.0,period,HT,,,,,,,1.0,0.0,7801730,Magyar Kupa 17/18
+38.0,,goal,,True,Josip Knežević,,,regular,,1.0,0.0,7801730,Magyar Kupa 17/18
+999.0,999.0,period,PEN,,,,,,,4.0,5.0,7417800,Magyar Kupa 16/17
+120.0,999.0,period,ET,,,,,,,1.0,1.0,7417800,Magyar Kupa 16/17
+96.0,,substitution,,True,,Bálint Gaál,Tamás Kulcsár,regular,,,,7417800,Magyar Kupa 16/17
+90.0,999.0,period,FT,,,,,,,1.0,1.0,7417800,Magyar Kupa 16/17
+90.0,7.0,card,,False,Vladan Čukić,,,yellow,,,,7417800,Magyar Kupa 16/17
+90.0,6.0,substitution,,False,,Kornél Csernik,Gergő Lovrencsics,regular,,,,7417800,Magyar Kupa 16/17
+81.0,,card,,False,Amadou Moutari,,,yellow,,,,7417800,Magyar Kupa 16/17
+80.0,,substitution,,False,,Janek Sternberg,Tamás Hajnal,regular,,,,7417800,Magyar Kupa 16/17
+69.0,,substitution,,False,,Vladan Čukić,Zoltán Gera,regular,,,,7417800,Magyar Kupa 16/17
+57.0,,substitution,,True,,Benedek Murka,Szilveszter Hangya,regular,,,,7417800,Magyar Kupa 16/17
+47.0,,goal,,True,Tamás Kulcsár,,,regular,,1.0,1.0,7417800,Magyar Kupa 16/17
+46.0,,substitution,,True,,Zsolt Korcsmár,Felix Burmeister,regular,,,,7417800,Magyar Kupa 16/17
+45.0,999.0,period,HT,,,,,,,0.0,1.0,7417800,Magyar Kupa 16/17
+45.0,0.0,injuryTime,,,,,,,,,,7417800,Magyar Kupa 16/17
+42.0,,card,,True,Mahir Saglik,,,yellow,,,,7417800,Magyar Kupa 16/17
+37.0,,card,,True,Mohamed Remili,,,yellow,,,,7417800,Magyar Kupa 16/17
+26.0,,goal,,False,Roland Varga,,,regular,,0.0,1.0,7417800,Magyar Kupa 16/17
+25.0,,card,,True,Felix Burmeister,,,yellow,,,,7417800,Magyar Kupa 16/17
+90.0,999.0,period,FT,,,,,,,0.0,1.0,7054776,Magyar Kupa 15/16
+90.0,2.0,card,,True,,,,yellow,,,,7054776,Magyar Kupa 15/16
+90.0,1.0,card,,False,,,,yellow,,,,7054776,Magyar Kupa 15/16
+78.0,,goal,,False,Zoltán Gera,,,regular,,0.0,1.0,7054776,Magyar Kupa 15/16
+57.0,,card,,False,,,,yellow,,,,7054776,Magyar Kupa 15/16
+45.0,999.0,period,HT,,,,,,,0.0,0.0,7054776,Magyar Kupa 15/16
+45.0,0.0,injuryTime,,,,,,,,,,7054776,Magyar Kupa 15/16
+25.0,,card,,True,,,,yellow,,,,7054776,Magyar Kupa 15/16
+90.0,999.0,period,FT,,,,,,,0.0,4.0,6743411,Magyar Kupa 14/15
+90.0,0.0,injuryTime,,,,,,,,,,6743411,Magyar Kupa 14/15
+86.0,,goal,,False,Roland Szolnoki,,,ownGoal,,0.0,4.0,6743411,Magyar Kupa 14/15
+69.0,,goal,,False,Roland Lamah,,,regular,,0.0,3.0,6743411,Magyar Kupa 14/15
+61.0,,goal,,False,Bence Batik,,,regular,,0.0,2.0,6743411,Magyar Kupa 14/15
+54.0,,goal,,False,Roland Varga,,,regular,,0.0,1.0,6743411,Magyar Kupa 14/15
+45.0,999.0,period,HT,,,,,,,0.0,0.0,6743411,Magyar Kupa 14/15
+999.0,999.0,period,PEN,,,,,,,4.0,3.0,5458644,Magyar Kupa 13/14
+120.0,999.0,period,ET,,,,,,,1.0,1.0,5458644,Magyar Kupa 13/14
+100.0,,card,,False,Tamás Kádár,,,yellowRed,,,,5458644,Magyar Kupa 13/14
+90.0,999.0,period,FT,,,,,,,1.0,1.0,5458644,Magyar Kupa 13/14
+90.0,,goal,,False,Patrik Bacsa,,,regular,,1.0,1.0,5458644,Magyar Kupa 13/14
+45.0,999.0,period,HT,,,,,,,1.0,0.0,5458644,Magyar Kupa 13/14
+22.0,,inGamePenalty,,False,,,,missed,,,,5458644,Magyar Kupa 13/14
+6.0,,goal,,True,Róbert Litauszki,,,regular,,1.0,0.0,5458644,Magyar Kupa 13/14
+90.0,999.0,period,FT,,,,,,,2.0,1.0,3847625,Magyar Kupa 12/13
+86.0,,goal,,True,Adamo Coulibaly,,,regular,,2.0,1.0,3847625,Magyar Kupa 12/13
+51.0,,goal,,True,Adamo Coulibaly,,,regular,,1.0,1.0,3847625,Magyar Kupa 12/13
+45.0,999.0,period,HT,,,,,,,0.0,1.0,3847625,Magyar Kupa 12/13
+17.0,,goal,,False,Nemanja Andrić,,,regular,,0.0,1.0,3847625,Magyar Kupa 12/13
+999.0,999.0,period,PEN,,,,,,,7.0,8.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,10.0,11.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,10.0,10.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,9.0,10.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,9.0,9.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,8.0,9.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,8.0,8.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,7.0,8.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,7.0,7.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,6.0,7.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,6.0,6.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,5.0,6.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,5.0,5.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,4.0,5.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,True,,,,regular,,4.0,4.0,2609030,Magyar Kupa 11/12
+-1.0,,goal,,False,,,,regular,,3.0,4.0,2609030,Magyar Kupa 11/12
+120.0,999.0,period,ET,,,,,,,3.0,3.0,2609030,Magyar Kupa 11/12
+90.0,999.0,period,FT,,,,,,,3.0,3.0,2609030,Magyar Kupa 11/12
+89.0,,goal,,False,Péter Szakály,,,regular,,3.0,3.0,2609030,Magyar Kupa 11/12
+87.0,,goal,,True,László Zsidai,,,regular,,3.0,2.0,2609030,Magyar Kupa 11/12
+62.0,,goal,,True,Tibor Ladanyi,,,regular,,2.0,2.0,2609030,Magyar Kupa 11/12
+60.0,,card,,False,Balazs Nikolov,,,red,,,,2609030,Magyar Kupa 11/12
+55.0,,goal,,False,Péter Szakály,,,regular,,1.0,2.0,2609030,Magyar Kupa 11/12
+51.0,,goal,,False,Selim Bouadla,,,regular,,1.0,1.0,2609030,Magyar Kupa 11/12
+45.0,999.0,period,HT,,,,,,,1.0,0.0,2609030,Magyar Kupa 11/12
+45.0,,goal,,True,Norbert Könyves,,,regular,,1.0,0.0,2609030,Magyar Kupa 11/12
+90.0,999.0,period,FT,,,,,,,3.0,2.0,1737374,Magyar Kupa 10/11
+45.0,999.0,period,HT,,,,,,,2.0,0.0,1737374,Magyar Kupa 10/11
+90.0,999.0,period,FT,,,,,,,3.0,2.0,1362187,Magyar Kupa 09/10
+45.0,999.0,period,HT,,,,,,,2.0,1.0,1362187,Magyar Kupa 09/10

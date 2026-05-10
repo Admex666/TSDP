@@ -75,7 +75,7 @@ def _rate_limit():
         _request_count = 0
         time.sleep(random.uniform(3, 5))  # Longer break
 
-def _get_headers(url: str) -> Dict[str, str]:
+def _get_headers(url: str, referer: str = "https://www.sofascore.com/") -> Dict[str, str]:
     """Generate realistic headers with rotation"""
     user_agent = random.choice(USER_AGENTS)
     
@@ -84,7 +84,7 @@ def _get_headers(url: str) -> Dict[str, str]:
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "en-US,en;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
-        "Referer": "https://www.sofascore.com/",
+        "Referer": referer,
         "Origin": "https://www.sofascore.com",
         "DNT": "1",
         "Connection": "keep-alive",
@@ -103,13 +103,14 @@ def _get_headers(url: str) -> Dict[str, str]:
     
     return headers
 
-def scrape_sofascore(url: str, max_retries: int = 5) -> Dict[str, Any]:
+def scrape_sofascore(url: str, max_retries: int = 10, referer: str = "https://www.sofascore.com/") -> Dict[str, Any]:
     """
     Scrape SofaScore API with advanced anti-403 protection
     
     Args:
         url: API endpoint URL
         max_retries: Maximum number of retry attempts
+        referer: Referer URL to use in headers
         
     Returns:
         JSON response as dictionary, empty dict on failure
@@ -120,10 +121,10 @@ def scrape_sofascore(url: str, max_retries: int = 5) -> Dict[str, Any]:
         try:
             # Get session and headers
             sess = _get_session()
-            headers = _get_headers(url)
+            headers = _get_headers(url, referer=referer)
             
             # Add small random delay before request
-            time.sleep(random.uniform(0.1, 0.3))
+            time.sleep(random.uniform(0.2, 0.5))
             
             # Make request
             resp = sess.get(url, headers=headers)
@@ -139,21 +140,22 @@ def scrape_sofascore(url: str, max_retries: int = 5) -> Dict[str, Any]:
                     return {}
             
             elif resp.status_code == 403:
-                print(f"403 Forbidden (attempt {attempt + 1}/{max_retries})")
+                # print(f"403 Forbidden (attempt {attempt + 1}/{max_retries})")
                 
-                # Exponential backoff with jitter
-                wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"Waiting {wait_time:.2f}s before retry...")
+                # Exponential backoff with more jitter and higher base
+                wait_time = (3 ** (attempt // 2)) + random.uniform(2, 5)
+                # print(f"Waiting {wait_time:.2f}s before retry...")
                 time.sleep(wait_time)
                 
-                # Clear session pool to force new sessions
+                # Clear session pool periodically
                 global _session_pool
-                _session_pool = []
+                if len(_session_pool) > 0:
+                    _session_pool = []
                 
                 if attempt < max_retries - 1:
                     continue
                 else:
-                    print(f"Failed after {max_retries} attempts")
+                    print(f"Failed after {max_retries} attempts: {url}")
                     return {}
             
             elif resp.status_code == 429:  # Too Many Requests
@@ -418,3 +420,66 @@ def fetch_passmap(event_id, player_id):
     df = pd.DataFrame(rows)
 
     return df
+
+
+def fetch_match_incidents(event_id: int, referer: str = "https://www.sofascore.com/") -> pd.DataFrame:
+    """
+    Fetch match incidents (goals, cards, substitutions, etc.) for a given event ID.
+    """
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/incidents"
+    data = scrape_sofascore(url, referer=referer)
+    
+    if not data or 'incidents' not in data:
+        return pd.DataFrame()
+        
+    incidents = []
+    for incident in data['incidents']:
+        incident_type = incident.get('incidentType')
+        player_name = incident.get('player', {}).get('name')
+        player_in_name = incident.get('playerIn', {}).get('name')
+        player_out_name = incident.get('playerOut', {}).get('name')
+        
+        incidents.append({
+            'time': incident.get('time'),
+            'added_time': incident.get('addedTime'),
+            'type': incident_type,
+            'text': incident.get('text'),
+            'is_home': incident.get('isHome'),
+            'player_name': player_name,
+            'player_in': player_in_name,
+            'player_out': player_out_name,
+            'incident_class': incident.get('incidentClass'),
+            'description': incident.get('description'),
+            'home_score': incident.get('homeScore'),
+            'away_score': incident.get('awayScore')
+        })
+        
+    return pd.DataFrame(incidents)
+
+
+def fetch_match_details(event_id: int, referer: str = "https://www.sofascore.com/") -> Dict[str, Any]:
+    """
+    Fetch general match details (teams, status, scores, etc.) for a given event ID.
+    """
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}"
+    data = scrape_sofascore(url, referer=referer)
+    
+    if not data or 'event' not in data:
+        return {}
+        
+    event = data['event']
+    
+    details = {
+        'match_id': event.get('id'),
+        'home_team': event.get('homeTeam', {}).get('name'),
+        'away_team': event.get('awayTeam', {}).get('name'),
+        'home_score': event.get('homeScore', {}).get('display'),
+        'away_score': event.get('awayScore', {}).get('display'),
+        'status': event.get('status', {}).get('description'),
+        'extra_time': event.get('time', {}).get('extra') is not None or 'After extra time' in event.get('status', {}).get('description', ''),
+        'penalties': 'penalties' in event.get('status', {}).get('type', '') or 'After penalties' in event.get('status', {}).get('description', ''),
+        'winner_code': event.get('winnerCode'),
+        'start_timestamp': event.get('startTimestamp'),
+    }
+    
+    return details
