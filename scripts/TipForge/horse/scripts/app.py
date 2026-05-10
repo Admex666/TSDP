@@ -64,8 +64,9 @@ def get_horse_stats(horse_id, all_horses):
 import pickle
 
 def load_ml_assets():
-    """Prefers V3 calibrated model, falls back to V2."""
+    """Prefers V4 calibrated model, falls back to V3, then V2."""
     for model_path, shap_path, label in [
+        ("models/horse_model_v4.pkl", "models/shap_explainer_v4.pkl", "V4"),
         ("models/horse_model_v3.pkl", "models/shap_explainer_v3.pkl", "V3"),
         ("models/horse_model.pkl",    "models/shap_explainer.pkl",    "V2"),
     ]:
@@ -83,29 +84,50 @@ def load_ml_assets():
     return None, None, None
 
 def calculate_ml_odds(participants, all_horses, model, all_drivers, race_field_map, date_str, race_dist,
-                      track_quality=0, temperature=15.0, pair_experience=None):
-    """Builds V3 feature rows and returns calibrated win probabilities & fair odds."""
-    if pair_experience is None:
-        pair_experience = {}
+                      track_quality=0, temperature=15.0, pair_experience=None, trainer_stats=None):
+    """Builds V4 feature rows and returns calibrated win probabilities & fair odds."""
+    if pair_experience is None: pair_experience = {}
+    if trainer_stats is None: trainer_stats = {}
+    
     rows = []
     for p in participants:
         h_id = str(p["horse_id"])
         d_id = str(p["driver_id"])
+        t_id = str(p.get("trainer_id"))
         
-        h_stats = calculate_point_in_time_stats(all_horses.get("data", {}).get(h_id, {}).get("results", []), date_str, race_field_map)
+        h_history = all_horses.get("data", {}).get(h_id, {}).get("results", [])
+        h_stats = calculate_point_in_time_stats(h_history, date_str, race_field_map)
         d_stats = calculate_point_in_time_stats(all_drivers.get("data", {}).get(d_id, {}).get("results", []), date_str, race_field_map)
         
+        # New V4 features extraction
+        h_age = p.get("age", 5)
+        h_sex_str = str(p.get("sex", "male")).lower()
+        h_sex_val = 0
+        if "female" in h_sex_str: h_sex_val = 1
+        elif "gelding" in h_sex_str or "herelt" in h_sex_str: h_sex_val = 2
+        
+        past_h = [r for r in h_history if r.get("date") and r["date"] < date_str][-10:]
+        gallops = sum(1 for r in past_h if "gal" in str(r.get("placement", r.get("rank", ""))).lower())
+        h_gallop_rate = gallops / len(past_h) if past_h else 0
+        
+        win_dists = [float(r.get("distance", 1900)) for r in h_history 
+                     if r.get("date") and r["date"] < date_str and str(r.get("rank")).startswith(("1.", "I."))]
+        avg_win_dist = sum(win_dists)/len(win_dists) if win_dists else 1900.0
+        dist_diff = abs(race_dist - avg_win_dist)
+
+        t_s = trainer_stats.get(t_id, {"win_rate": 0.05, "top3_rate": 0.15})
+
         row = [
-            race_dist,
-            track_quality,
-            temperature,
+            race_dist, track_quality, temperature,
             h_stats["win_rate"], h_stats["top_3_rate"], h_stats["avg_percentile"], h_stats["avg_speed"],
             h_stats.get("best_speed_life"), h_stats.get("speed_ratio", 1.0),
             h_stats["total_prize"], h_stats["days_since_last"],
             h_stats["win_rate_l5"], h_stats["top_3_rate_l5"], h_stats["avg_percentile_l5"], h_stats["avg_speed_l5"],
             h_stats.get("points_l5", 0), h_stats.get("top3_l3", 0),
             d_stats["win_rate"], d_stats["top_3_rate"],
-            pair_experience.get((h_id, d_id), 0)
+            pair_experience.get((h_id, d_id), 0),
+            # V4 extra columns
+            h_age, h_sex_val, h_gallop_rate, dist_diff, t_s["win_rate"], t_s["top3_rate"]
         ]
         rows.append(row)
     
@@ -117,11 +139,11 @@ def calculate_ml_odds(participants, all_horses, model, all_drivers, race_field_m
         "h_win_rate_l5", "h_top_3_rate_l5", "h_avg_percentile_l5", "h_avg_speed_l5",
         "h_points_l5", "h_top3_l3",
         "d_win_rate", "d_top_3_rate",
-        "hd_pair_runs"
+        "hd_pair_runs",
+        "h_age", "h_sex", "h_gallop_rate", "dist_diff", "t_win_rate", "t_top3_rate"
     ]
     feature_df = pd.DataFrame(rows, columns=feature_names)
     
-    # Fillna for speed fields
     for col in ["h_avg_speed", "h_avg_speed_l5", "h_best_speed"]:
         feature_df[col] = feature_df[col].fillna(feature_df[col].mean() or 12.8)
     feature_df["h_speed_ratio"] = feature_df["h_speed_ratio"].fillna(1.0)
@@ -143,6 +165,7 @@ def show_predictions_page():
     racecard = load_json_cached("data/today_racecard.json")
     all_horses = load_json_cached("data/today_horses.json")
     all_drivers = load_json_cached("data/today_drivers.json")
+    trainer_stats = load_json_cached("data/trainer_stats.json")
 
     # Build map for today's races
     race_field_map = {}
@@ -186,7 +209,8 @@ def show_predictions_page():
 
     if model:
         st.sidebar.success(f"🤖 XGBoost {model_label} Active (Calibrated)")
-        probs, odds = calculate_ml_odds(selected_race["participants"], all_horses, model, all_drivers, race_field_map, date_str, race_dist)
+        probs, odds = calculate_ml_odds(selected_race["participants"], all_horses, model, all_drivers, 
+                                        race_field_map, date_str, race_dist, trainer_stats=trainer_stats)
     else:
         st.sidebar.warning("⚠️ No Model Found")
         probs = [1.0/len(selected_race["participants"])] * len(selected_race["participants"])
@@ -289,8 +313,6 @@ def show_predictions_page():
 
     st.caption(f"Bankroll: **{bankroll:,} Ft** | Módszer: **{kelly_mode}** | Max tét/fogadás: 20%")
 
-
-
     # Explainability Section
     st.subheader("💡 Why these odds? (AI Explanation)")
     
@@ -301,6 +323,7 @@ def show_predictions_page():
         top_p = selected_race["participants"][top_horse_idx]
         h_id = str(top_p["horse_id"])
         d_id = str(top_p["driver_id"])
+        t_id = str(top_p.get("trainer_id"))
         
         h_stats = calculate_point_in_time_stats(all_horses.get("data", {}).get(h_id, {}).get("results", []), date_str, race_field_map)
         d_stats = calculate_point_in_time_stats(all_drivers.get("data", {}).get(d_id, {}).get("results", []), date_str, race_field_map)
@@ -326,28 +349,44 @@ def show_predictions_page():
             "d_win_rate":         "Hajtó győzelmi arány (Driver win rate)",
             "d_top_3_rate":       "Hajtó podium arány (Driver top-3 rate)",
             "hd_pair_runs":       "Pár tapasztalat (Horse-driver pair runs)",
+            "h_age":              "Ló kora (Horse Age)",
+            "h_sex":              "Ló neme (Horse Sex)",
+            "h_gallop_rate":      "Hiba arány (Gallop/Break rate)",
+            "dist_diff":          "Távolság preferencia (Dist delta)",
+            "t_win_rate":         "Tréner győzelmi arány (Trainer win rate)",
+            "t_top3_rate":        "Tréner podium arány (Trainer top-3 rate)",
         }
         
         model_features = list(feature_map.keys())
         
         try:
-            race_dist = float(selected_race.get("distance", "1900").replace("A", "").replace("G", ""))
-        except:
-            race_dist = 1900.0
+            # Re-calculate values for SHAP
+            h_sex_str = str(top_p.get("sex", "male")).lower()
+            h_sex_val = 1 if "female" in h_sex_str else (2 if ("gelding" in h_sex_str or "herelt" in h_sex_str) else 0)
+            
+            h_history = all_horses.get("data", {}).get(h_id, {}).get("results", [])
+            past_h = [r for r in h_history if r.get("date") and r["date"] < date_str][-10:]
+            h_gallop_rate = sum(1 for r in past_h if "gal" in str(r.get("placement", r.get("rank", ""))).lower()) / len(past_h) if past_h else 0
+            
+            win_dists = [float(r.get("distance", 1900)) for r in h_history 
+                         if r.get("date") and r["date"] < date_str and str(r.get("rank")).startswith(("1.", "I."))]
+            dist_diff = abs(race_dist - (sum(win_dists)/len(win_dists) if win_dists else 1900.0))
+            
+            t_s = (trainer_stats or {}).get(t_id, {"win_rate": 0.05, "top3_rate": 0.15})
 
-        feature_values = [
-            race_dist, 0, 15.0,
-            h_stats["win_rate"], h_stats["top_3_rate"], h_stats["avg_percentile"], h_stats["avg_speed"] or 12.8,
-            h_stats.get("best_speed_life") or 12.8, h_stats.get("speed_ratio", 1.0),
-            h_stats["total_prize"], h_stats["days_since_last"],
-            h_stats["win_rate_l5"], h_stats["top_3_rate_l5"], h_stats["avg_percentile_l5"], h_stats["avg_speed_l5"] or 12.8,
-            h_stats.get("points_l5", 0), h_stats.get("top3_l3", 0),
-            d_stats["win_rate"], d_stats["top_3_rate"],
-            0  # hd_pair_runs (unknown for today)
-        ]
-        
-        shap_df = pd.DataFrame([feature_values], columns=model_features)
-        try:
+            feature_values = [
+                race_dist, 0, 15.0,
+                h_stats["win_rate"], h_stats["top_3_rate"], h_stats["avg_percentile"], h_stats["avg_speed"] or 12.8,
+                h_stats.get("best_speed_life") or 12.8, h_stats.get("speed_ratio", 1.0),
+                h_stats["total_prize"], h_stats["days_since_last"],
+                h_stats["win_rate_l5"], h_stats["top_3_rate_l5"], h_stats["avg_percentile_l5"], h_stats["avg_speed_l5"] or 12.8,
+                h_stats.get("points_l5", 0), h_stats.get("top3_l3", 0),
+                d_stats["win_rate"], d_stats["top_3_rate"],
+                0, # hd_pair_runs
+                top_p.get("age", 5), h_sex_val, h_gallop_rate, dist_diff, t_s["win_rate"], t_s["top3_rate"]
+            ]
+            
+            shap_df = pd.DataFrame([feature_values], columns=model_features)
             shap_values = explainer.shap_values(shap_df)
             
             s_df = pd.DataFrame({
@@ -375,7 +414,7 @@ def show_analytics_page():
     st.title("📈 Model Performance & Analytics")
     st.markdown("### Historical Backtest Analysis (2025 Test Set)")
 
-    csv_path = "data/training_set_v3.csv" if os.path.exists("data/training_set_v3.csv") else "data/training_set_v2.csv"
+    csv_path = "data/training_set_v4.csv" if os.path.exists("data/training_set_v4.csv") else "data/training_set_v3.csv"
     if not os.path.exists(csv_path):
         st.error("Training dataset not found. Run prepare_features.py first.")
         return
@@ -395,7 +434,7 @@ def show_analytics_page():
 
     st.info(f"Model: **{model_label}** | Dataset: `{csv_path}`")
 
-    # V3 features (fallback to available subset)
+    # V4 features (fallback to available subset)
     all_features = [
         "distance", "track_quality", "temperature",
         "h_win_rate", "h_top_3_rate", "h_avg_percentile", "h_avg_speed",
@@ -405,6 +444,7 @@ def show_analytics_page():
         "h_points_l5", "h_top3_l3",
         "d_win_rate", "d_top_3_rate",
         "hd_pair_runs",
+        "h_age", "h_sex", "h_gallop_rate", "dist_diff", "t_win_rate", "t_top3_rate"
     ]
     features = [f for f in all_features if f in test_df.columns]
     X_test = test_df[features].fillna(test_df[features].mean())
@@ -414,7 +454,7 @@ def show_analytics_page():
     test_df["ml_prob"] = probs
 
     # Metrics
-    from sklearn.metrics import accuracy_score, brier_score_loss, precision_score
+    from sklearn.metrics import accuracy_score, brier_score_loss
     preds = model.predict(X_test)
     
     acc = accuracy_score(y_test, preds)
@@ -428,228 +468,44 @@ def show_analytics_page():
     # ── Baseline Strategy Comparison ──────────────────────────────────────────
     st.markdown("---")
     st.subheader("🏆 Baseline Strategy Comparison")
-    st.write("How does Model V3 compare against simple betting strategies on the 2025 test set?")
+    st.write(f"How does Model {model_label} compare against simple betting strategies?")
 
     baseline_path = "data/baseline_results.csv"
     if os.path.exists(baseline_path):
         bl_df = pd.read_csv(baseline_path)
-        
-        # ROI bar chart
-        colors = ["#ef553b" if r < 0 else "#00cc96" for r in bl_df["roi_pct"]]
         fig_bl = px.bar(
             bl_df, x="roi_pct", y="strategy", orientation="h",
             title="ROI by Strategy (2025 Test Set)",
-            labels={"roi_pct": "ROI (%)", "strategy": "Strategy"},
             text="roi_pct",
             color="roi_pct",
             color_continuous_scale=["#ef553b", "#ffa15a", "#00cc96"],
             range_color=[-70, 40],
         )
-        fig_bl.update_traces(texttemplate="%{text:+.1f}%", textposition="outside")
-        fig_bl.add_vline(x=0, line_dash="dash", line_color="white", opacity=0.5)
-        fig_bl.update_layout(coloraxis_showscale=False, showlegend=False,
-                             yaxis={"categoryorder": "total ascending"})
         st.plotly_chart(fig_bl, use_container_width=True)
-
-        # Comparison table
-        display_cols = {"strategy": "Strategy", "bets": "Bets", "pnl_ft": "P/L (Ft)",
-                        "roi_pct": "ROI (%)", "hit_rate_pct": "Hit Rate (%)", "avg_odds": "Avg Odds"}
-        bl_show = bl_df[[c for c in display_cols if c in bl_df.columns]].rename(columns=display_cols)
-        st.dataframe(
-            bl_show.style.format({"ROI (%)": "{:+.2f}", "P/L (Ft)": "{:+,d}"})
-                         .background_gradient(subset=["ROI (%)"], cmap="RdYlGn"),
-            use_container_width=True
-        )
-        
-        st.caption("💡 Run `scripts/baseline_comparison.py` to refresh these results.")
     else:
-        st.info("Baseline results not found. Run `scripts/baseline_comparison.py` to generate them.")
-
-    # Real Money ROI Section
-    st.markdown("---")
-    st.subheader("💰 Real-World ROI Analysis (Lovi Odds)")
-    st.write("Model V3 (Optuna + Isotonic Calibration) — backtested against actual starting odds from bet.lovi.hu.")
-    
-    sim_path = "data/simulation_results.csv"
-    if os.path.exists(sim_path):
-        import numpy as np
-        sim_df = pd.read_csv(sim_path)
-        
-        # Strategy Controls
-        col_s1, col_s2, col_s3 = st.columns(3)
-        with col_s1:
-            edge_req = st.slider("Required Edge (%)", 0, 40, 15, help="Min edge: Market Odds vs Fair Odds")
-        with col_s2:
-            max_odds = st.slider("Max Market Odds", 2.0, 30.0, 8.0, step=0.5, help="Avoid longshots — caps market odds")
-        with col_s3:
-            min_prob = st.slider("Min Win Prob (%)", 0, 50, 5, help="Only bet if AI win probability is above this")
-
-        # Re-run simulation logic
-        margin = edge_req / 100
-        min_p = min_prob / 100
-        
-        sim_df['is_value_dynamic'] = (
-            (sim_df['market_odds'] > sim_df['fair_odds'] * (1 + margin))
-            & (sim_df['market_odds'] <= max_odds)
-            & (sim_df['prob_norm'] > min_p)
-        )
-        
-        stake = 1000
-        sim_df['pnl_dynamic'] = np.where(sim_df['is_value_dynamic'], 
-                                  np.where(sim_df['win'] == 1, (sim_df['market_odds'] - 1) * stake, -stake), 
-                                  0)
-        
-        # Metrics
-        total_bets = sim_df['is_value_dynamic'].sum()
-        total_pnl = sim_df['pnl_dynamic'].sum()
-        total_staked = total_bets * stake
-        roi = (total_pnl / total_staked * 100) if total_staked > 0 else 0
-        hits = sim_df[sim_df['is_value_dynamic']]['win'].sum() if total_bets > 0 else 0
-        hit_rate = hits / total_bets * 100 if total_bets > 0 else 0
-        
-        m1, m2, m3, m4, m5 = st.columns(5)
-        m1.metric("Total Bets", int(total_bets))
-        m2.metric("Total Staked", f"{total_staked:,.0f} Ft")
-        m3.metric("Net P/L", f"{total_pnl:+,.0f} Ft")
-        m4.metric("Real ROI", f"{roi:+.2f}%")
-        m5.metric("Hit Rate", f"{hit_rate:.1f}%")
-        
-        # Cumulative P/L Chart
-        actual_bets = sim_df[sim_df['is_value_dynamic']].copy()
-        if not actual_bets.empty:
-            actual_bets['cum_pnl'] = actual_bets['pnl_dynamic'].cumsum()
-            actual_bets['bet_index'] = range(1, len(actual_bets) + 1)
-            
-            fig_pnl = px.line(actual_bets, x='bet_index', y='cum_pnl',
-                              title=f"Cumulative P/L (Edge ≥{edge_req}%, MaxOdds ≤{max_odds})",
-                              labels={"bet_index": "Bet Number", "cum_pnl": "Profit/Loss (Ft)"},
-                              markers=True)
-            fig_pnl.add_hline(y=0, line_dash="dash", line_color="red")
-            st.plotly_chart(fig_pnl, use_container_width=True)
-            
-            # Top Value Horses
-            st.write("**Top Value Bets (Highest Edge):**")
-            actual_bets['edge_pct'] = ((actual_bets['market_odds'] / actual_bets['fair_odds']) - 1) * 100
-            top_value = actual_bets.sort_values('edge_pct', ascending=False).head(10)
-            cols_show = [c for c in ['date', 'horse_name', 'market_odds', 'fair_odds', 'prob_norm', 'win', 'pnl_dynamic'] if c in top_value.columns]
-            st.dataframe(top_value[cols_show].rename(columns={'pnl_dynamic': 'P/L (Ft)', 'prob_norm': 'AI Prob'}))
-        else:
-            st.warning("No bets match the selected criteria. Try lowering the edge or increasing max odds.")
-    else:
-        st.info("Simulation results not found. Run scripts/simulate_value_betting.py to see real ROI analysis.")
-
-    # ── Bet-Sizing Analysis ───────────────────────────────────────────────────
-    st.markdown("---")
-    st.subheader("📐 Bet-Sizing Analysis (Kelly Criterion)")
-    st.write("Comparing fixed stake vs dynamic bet-sizing. Starting bankroll: **100,000 Ft** | Max Odds: 8.0")
-
-    bs_path    = "data/bet_sizing_results.csv"
-    curve_path = "data/bet_sizing_curves.csv"
-
-    if os.path.exists(bs_path) and os.path.exists(curve_path):
-        import numpy as np
-        bs_df    = pd.read_csv(bs_path)
-        curve_df = pd.read_csv(curve_path)
-
-        # Edge filter (matches the strategies available)
-        edge_options = sorted(bs_df["edge_min_pct"].unique())
-        sel_edge = st.select_slider(
-            "Edge threshold for bankroll chart",
-            options=[int(e) for e in edge_options],
-            value=15
-        )
-
-        # Filter curves to selected edge
-        filtered_curves = curve_df[curve_df["strategy"].str.contains(f"Edge {sel_edge}%")]
-
-        if not filtered_curves.empty:
-            fig_curves = px.line(
-                filtered_curves, x="bet_num", y="bankroll", color="strategy",
-                title=f"Bankroll Curve — Edge ≥{sel_edge}% | MaxOdds ≤8",
-                labels={"bet_num": "Bet Number", "bankroll": "Bankroll (Ft)", "strategy": "Sizing Method"},
-            )
-            fig_curves.add_hline(y=100_000, line_dash="dash", line_color="white",
-                                 opacity=0.4, annotation_text="Starting bankroll")
-            st.plotly_chart(fig_curves, use_container_width=True)
-        else:
-            st.info("No curves for this edge threshold.")
-
-        # Summary table filtered to selected edge
-        bs_sel = bs_df[bs_df["edge_min_pct"] == sel_edge].copy()
-        bs_disp = bs_sel[["name", "bets", "hit_rate_pct", "total_pnl",
-                           "roi_on_staked_pct", "bank_growth_pct", "final_bank"]].rename(columns={
-            "name": "Strategy", "bets": "Bets", "hit_rate_pct": "Hit %",
-            "total_pnl": "P/L (Ft)", "roi_on_staked_pct": "ROI on Staked %",
-            "bank_growth_pct": "Bankroll Growth %", "final_bank": "Final Bank (Ft)"
-        })
-        st.dataframe(
-            bs_disp.style
-                .format({"Bankroll Growth %": "{:+.2f}", "P/L (Ft)": "{:+,d}",
-                         "Final Bank (Ft)": "{:,d}", "ROI on Staked %": "{:+.2f}"})
-                .background_gradient(subset=["Bankroll Growth %"], cmap="RdYlGn"),
-            use_container_width=True
-        )
-
-        # Best config callout
-        best_row = bs_df.loc[bs_df["bank_growth_pct"].idxmax()]
-        st.success(
-            f"🏆 Best Config: **{best_row['name']}** @ Edge ≥{int(best_row['edge_min_pct'])}%  →  "
-            f"Bankroll growth: **{best_row['bank_growth_pct']:+.2f}%** | "
-            f"Final bank: **{int(best_row['final_bank']):,} Ft**"
-        )
-        st.caption("💡 Run `scripts/bet_sizing_comparison.py` to refresh. Kelly assumes calibrated win probabilities.")
-    else:
-        st.info("Bet-sizing results not found. Run `scripts/bet_sizing_comparison.py` to generate them.")
+        st.info("Baseline results not found.")
 
     # Calibration Plot
     st.markdown("---")
-    st.subheader("🎯 Probability Calibration (V3 Isotonic)")
+    st.subheader(f"🎯 Probability Calibration ({model_label})")
     cal_bins = pd.cut(test_df['ml_prob'], bins=10)
     cal_data = test_df.groupby(cal_bins, observed=False)['win'].agg(['mean', 'count']).reset_index()
     cal_data.columns = ['bin', 'actual_win_rate', 'count']
     cal_data['mid_prob'] = [iv.mid for iv in cal_data['bin']]
-    
-    fig_cal = px.scatter(cal_data, x='mid_prob', y='actual_win_rate', size='count',
-                         title="Reliability Diagram (Calibration Plot)",
-                         labels={"mid_prob": "Predicted Probability", "actual_win_rate": "Actual Win Rate"})
+    fig_cal = px.scatter(cal_data, x='mid_prob', y='actual_win_rate', size='count', title="Reliability Diagram")
     fig_cal.add_shape(type="line", x0=0, y0=0, x1=1, y1=1, line=dict(color="red", dash="dash"))
-    fig_cal.update_layout(xaxis_range=[0, 1], yaxis_range=[0, 1])
     st.plotly_chart(fig_cal, use_container_width=True)
-    st.caption("Dots close to the red diagonal = well-calibrated. Larger dots = more data in that bin.")
 
     # Feature Importance
-    st.subheader("📊 Global Feature Importance")
+    st.subheader(f"📊 Global Feature Importance ({model_label})")
     try:
-        # CalibratedClassifierCV — extract inner model
         inner = model.calibrated_classifiers_[0].estimator
         importance_vals = inner.feature_importances_
-    except:
-        try:
-            importance_vals = model.feature_importances_
-        except:
-            importance_vals = None
-
-    if importance_vals is not None:
-        importances = pd.DataFrame({
-            'Feature': features,
-            'Importance': importance_vals[:len(features)]
-        }).sort_values('Importance', ascending=True)
-        
-        fig_imp = px.bar(importances, x="Importance", y="Feature", orientation='h',
-                         title="XGBoost Feature Gain Importance (V3 Model)",
-                         color="Importance",
-                         color_continuous_scale="Viridis")
+        importances = pd.DataFrame({'Feature': features, 'Importance': importance_vals[:len(features)]}).sort_values('Importance', ascending=True)
+        fig_imp = px.bar(importances, x="Importance", y="Feature", orientation='h', title="XGBoost Feature Gain", color="Importance", color_continuous_scale="Viridis")
         st.plotly_chart(fig_imp, use_container_width=True)
-    else:
-        st.info("Feature importance not available for this model type.")
-
-    # Probability Distribution
-    st.subheader("📉 Probability Distribution")
-    fig_dist = px.histogram(test_df, x="ml_prob", color="win", barmode="overlay",
-                            title="ML Probability vs Actual Win (V3 Calibrated)",
-                            labels={"ml_prob": "Predicted Probability", "win": "Actually Won"},
-                            color_discrete_map={0: "#ef553b", 1: "#00cc96"})
-    st.plotly_chart(fig_dist, use_container_width=True)
+    except:
+        st.info("Feature importance unavailable.")
 
 if page == "Daily Predictions":
     show_predictions_page()
@@ -658,4 +514,4 @@ elif page == "Model Analytics":
 
 # Footer
 st.markdown("---")
-st.caption("Data provided by Kincsem Park. Model V3 (Calibrated XGBoost). Predictions are for educational purposes only.")
+st.caption(f"TipForge Horse Racing. Model V4 (XGBoost Calibrated). Data from Kincsem Park.")

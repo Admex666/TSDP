@@ -7,9 +7,10 @@ from datetime import datetime
 
 def load_data():
     """Loads all consolidated JSON files and pre-normalizes dates."""
-    results = json.load(open("data/historical_results_combined.json", encoding="utf-8"))
-    horses = json.load(open("data/all_horses.json", encoding="utf-8"))["data"]
-    drivers = json.load(open("data/all_drivers.json", encoding="utf-8"))["data"]
+    base_path = r"E:\Data\TSDP\scripts\TipForge\horse\data"
+    results = json.load(open(os.path.join(base_path, "historical_results_combined.json"), encoding="utf-8"))
+    horses = json.load(open(os.path.join(base_path, "all_horses.json"), encoding="utf-8"))["data"]
+    drivers = json.load(open(os.path.join(base_path, "all_drivers.json"), encoding="utf-8"))["data"]
     
     # Build race_id -> field_size map
     race_field_map = {}
@@ -159,13 +160,29 @@ def engineer_features():
     results, horse_data, driver_data, race_field_map = load_data()
     
     rows = []
-    print(f"Processing {len(results['races'])} races with expanded Form & Track features...")
+    print(f"Processing {len(results['races'])} races with V4 features (Age, Sex, Trainer, Reliability)...")
 
-    # Pattern for track/temp
+    # Pre-calculate Trainer Stats
+    all_trainers = {}
+    for race in results["races"]:
+        for p in race.get("participants", []):
+            tid = str(p.get("trainer_id"))
+            if tid not in all_trainers:
+                all_trainers[tid] = {"runs": 0, "wins": 0, "top3": 0}
+            all_trainers[tid]["runs"] += 1
+            if p.get("rank") in ["I.", "1."]: all_trainers[tid]["wins"] += 1
+            if p.get("rank") in ["I.", "1.", "II.", "2.", "III.", "3."]: all_trainers[tid]["top3"] += 1
+    
+    trainer_stats_map = {
+        tid: {
+            "win_rate": v["wins"]/v["runs"] if v["runs"] > 0 else 0.05,
+            "top3_rate": v["top3"]/v["runs"] if v["runs"] > 0 else 0.15
+        } for tid, v in all_trainers.items()
+    }
+
     track_pattern = re.compile(r'Track:\s*([^.]+)', re.IGNORECASE)
     temp_pattern = re.compile(r'Hőmérséklet:\s*([-\d]+)', re.IGNORECASE)
 
-    # Experience storage: (h_id, d_id) -> count
     pair_experience = {}
 
     for race in results["races"]:
@@ -173,17 +190,13 @@ def engineer_features():
         date_str = race.get("race_date")
         desc = race.get("description", "")
         
-        # Track categorization
         track_match = track_pattern.search(desc)
         track_str = track_match.group(1).strip().lower() if track_match else "jó"
-        
-        # Simple encoding: jó=0, puha=1, sáros=2, heavier=3
         track_val = 0
         if "puha" in track_str: track_val = 1
         elif "sáros" in track_str or "nehéz" in track_str: track_val = 2
         elif "fagyos" in track_str: track_val = 3
 
-        # Temp extraction
         temp_match = temp_pattern.search(desc)
         temp_val = float(temp_match.group(1)) if temp_match else 15.0
 
@@ -195,66 +208,76 @@ def engineer_features():
         for p in race.get("participants", []):
             h_id = str(p.get("id"))
             d_id = str(p.get("driver_jockey_id"))
+            t_id = str(p.get("trainer_id"))
             
-            # Target
             rank = p.get("rank")
             target_win = 1 if rank in ["I.", "1."] else 0
             
-            # Pair experience (count before this date)
             pair_key = (h_id, d_id)
             hd_pair_runs = pair_experience.get(pair_key, 0)
             pair_experience[pair_key] = hd_pair_runs + 1
             
-            # Horse PiT stats
-            h_stats = calculate_point_in_time_stats(horse_data.get(h_id, {}).get("results", []), date_str, race_field_map)
-            
-            # Driver PiT stats
+            h_history = horse_data.get(h_id, {}).get("results", [])
+            h_stats = calculate_point_in_time_stats(h_history, date_str, race_field_map)
             d_stats = calculate_point_in_time_stats(driver_data.get(d_id, {}).get("results", []), date_str, race_field_map)
             
+            # V4 New Features
+            h_age = p.get("age", 5)
+            h_sex_str = str(p.get("sex", "male")).lower()
+            h_sex_val = 0 # male/mén
+            if "female" in h_sex_str or "kanca" in h_sex_str: h_sex_val = 1
+            elif "gelding" in h_sex_str or "herelt" in h_sex_str: h_sex_val = 2
+            
+            # Reliability (Gallop rate in last 10)
+            past_h = [r for r in h_history if r.get("date") and r["date"] < date_str][-10:]
+            gallops = sum(1 for r in past_h if "gal" in str(r.get("placement", r.get("rank", ""))).lower())
+            h_gallop_rate = gallops / len(past_h) if past_h else 0
+            
+            # Distance Preference (current vs median winning distance)
+            win_dists = [float(r.get("distance", 1900)) for r in h_history 
+                         if r.get("date") and r["date"] < date_str and str(r.get("rank")).startswith(("1.", "I."))]
+            avg_win_dist = sum(win_dists)/len(win_dists) if win_dists else 1900.0
+            dist_diff = abs(race_dist - avg_win_dist)
+
+            t_stats = trainer_stats_map.get(t_id, {"win_rate": 0.05, "top3_rate": 0.15})
+            
             row = {
-                "race_id": race_id,
-                "date": date_str,
-                "distance": race_dist,
-                "track_quality": track_val,
-                "temperature": temp_val,
-                "horse_id": h_id,
-                "driver_id": d_id,
-                "h_win_rate": h_stats["win_rate"],
-                "h_top_3_rate": h_stats["top_3_rate"],
-                "h_avg_percentile": h_stats["avg_percentile"],
-                "h_avg_speed": h_stats["avg_speed"],
-                "h_best_speed": h_stats["best_speed_life"],
-                "h_speed_ratio": h_stats["speed_ratio"],
-                "h_points_l5": h_stats["points_l5"],
-                "h_top3_l3": h_stats["top3_l3"],
-                "h_total_prize": h_stats["total_prize"],
-                "h_days_since": h_stats["days_since_last"],
-                "h_win_rate_l5": h_stats["win_rate_l5"],
-                "h_top_3_rate_l5": h_stats["top_3_rate_l5"],
-                "h_avg_percentile_l5": h_stats["avg_percentile_l5"],
-                "h_avg_speed_l5": h_stats["avg_speed_l5"],
-                "d_win_rate": d_stats["win_rate"],
-                "d_top_3_rate": d_stats["top_3_rate"],
+                "race_id": race_id, "date": date_str, "distance": race_dist,
+                "track_quality": track_val, "temperature": temp_val,
+                "h_age": h_age, "h_sex": h_sex_val,
+                "h_win_rate": h_stats["win_rate"], "h_top_3_rate": h_stats["top_3_rate"],
+                "h_avg_percentile": h_stats["avg_percentile"], "h_avg_speed": h_stats["avg_speed"],
+                "h_best_speed": h_stats["best_speed_life"], "h_speed_ratio": h_stats["speed_ratio"],
+                "h_points_l5": h_stats["points_l5"], "h_gallop_rate": h_gallop_rate,
+                "h_total_prize": h_stats["total_prize"], "h_days_since": h_stats["days_since_last"],
+                "dist_diff": dist_diff,
+                "d_win_rate": d_stats["win_rate"], "d_top_3_rate": d_stats["top_3_rate"],
+                "t_win_rate": t_stats["win_rate"], "t_top3_rate": t_stats["top3_rate"],
                 "hd_pair_runs": hd_pair_runs,
                 "win": target_win
             }
             rows.append(row)
 
     df = pd.DataFrame(rows)
-    # Global fillna
-    df["h_avg_speed"] = df["h_avg_speed"].fillna(df["h_avg_speed"].mean())
-    df["h_avg_speed_l5"] = df["h_avg_speed_l5"].fillna(df["h_avg_speed_l5"].mean())
-    df["h_best_speed"] = df["h_best_speed"].fillna(df["h_best_speed"].mean())
+    for col in ["h_avg_speed", "h_best_speed"]:
+        df[col] = df[col].fillna(df[col].mean())
     df["h_speed_ratio"] = df["h_speed_ratio"].fillna(1.0)
     
-    output_path = "data/training_set_v3.csv"
+    output_path = r"E:\Data\TSDP\scripts\TipForge\horse\data\training_set_v4.csv"
     df.to_csv(output_path, index=False)
     print(f"Success. dataset with {len(df)} entries saved to {output_path}")
 
+    # Export Trainer Stats for the App
+    trainer_json_path = r"E:\Data\TSDP\scripts\TipForge\horse\data\trainer_stats.json"
+    with open(trainer_json_path, "w", encoding="utf-8") as f:
+        json.dump(trainer_stats_map, f, indent=2)
+    print(f"Trainer stats exported to {trainer_json_path}")
+
 if __name__ == "__main__":
-    if os.path.exists("data/historical_results_combined.json") and \
-       os.path.exists("data/all_horses.json") and \
-       os.path.exists("data/all_drivers.json"):
+    base_path = r"E:\Data\TSDP\scripts\TipForge\horse\data"
+    if os.path.exists(os.path.join(base_path, "historical_results_combined.json")) and \
+       os.path.exists(os.path.join(base_path, "all_horses.json")) and \
+       os.path.exists(os.path.join(base_path, "all_drivers.json")):
         engineer_features()
     else:
         print("Required JSON files for feature engineering not found yet.")

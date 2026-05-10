@@ -55,8 +55,15 @@ def parse_racecard(html_file):
     return racecard, horses, drivers
 
 if __name__ == "__main__":
-    html_path = "research/racecard_today.html"
-    racecard, horses, drivers = parse_racecard(html_path)
+    base_dir = r"E:\Data\TSDP\scripts\TipForge\horse"
+    html_path = os.path.join(base_dir, "research", "racecard_today.html")
+    
+    result = parse_racecard(html_path)
+    if result is None:
+        print("Stopping execution because racecard file was not found.")
+        exit(1)
+        
+    racecard, horses, drivers = result
 
     # Save unique IDs for batch fetching
     ids_data = {"horses": horses, "drivers": drivers}
