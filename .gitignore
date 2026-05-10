@@ -4,3 +4,4 @@
 "object_detection/models/*.pt" 
 .env
 modules/.env
+scripts/garbage_time/00_event.xlsx
