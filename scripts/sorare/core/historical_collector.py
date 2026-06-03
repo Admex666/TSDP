@@ -3,6 +3,10 @@ import time
 import random
 import requests
 from datetime import datetime, timedelta
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from api_client import SorareApiClient
 from database import DatabaseManager
 
@@ -102,6 +106,12 @@ class HistoricalDataCollector:
               averageScore(type: LAST_FIFTEEN_SO5_AVERAGE_SCORE)
               activeClub {
                 name
+              }
+              activeInjuries {
+                active
+              }
+              activeSuspensions {
+                active
               }
               so5Scores(last: 15) {
                 score

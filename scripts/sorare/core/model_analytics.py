@@ -104,6 +104,8 @@ class SorareModelAnalytics:
                 'position': player['position'],
                 'age': player['age'],
                 'club_name': player['club_name'],
+                'is_injured': int(player.get('is_injured', 0)),
+                'is_suspended': int(player.get('is_suspended', 0)),
                 'l5_score': l5_score,
                 'l15_score': l15_score,
                 'std_score': std_score,

@@ -1,8 +1,12 @@
 import logging
 import time
 from datetime import datetime
-from database import DatabaseManager
-from historical_collector import HistoricalDataCollector
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from core.database import DatabaseManager
+from core.historical_collector import HistoricalDataCollector
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

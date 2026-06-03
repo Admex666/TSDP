@@ -30,6 +30,8 @@ class DatabaseManager:
                         position TEXT,
                         club_name TEXT,
                         average_score REAL,
+                        is_injured INTEGER DEFAULT 0,
+                        is_suspended INTEGER DEFAULT 0,
                         last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     )
                 ''')
@@ -116,16 +118,33 @@ class DatabaseManager:
         try:
             with self.get_connection() as conn:
                 cursor = conn.cursor()
-                # Ha a tábla már létezett korábban de nem volt average_score oszlopa, érdemes ALTER TABLE-lel hozzáadni
+                # Dinamikus oszlop hozzáadások a visszamenőleges kompatibilitásért
                 try:
                     cursor.execute('ALTER TABLE players ADD COLUMN average_score REAL')
                 except sqlite3.OperationalError:
-                    pass # Már létezik
+                    pass
+                
+                try:
+                    cursor.execute('ALTER TABLE players ADD COLUMN is_injured INTEGER DEFAULT 0')
+                except sqlite3.OperationalError:
+                    pass
+                
+                try:
+                    cursor.execute('ALTER TABLE players ADD COLUMN is_suspended INTEGER DEFAULT 0')
+                except sqlite3.OperationalError:
+                    pass
+
+                # Kiszámoljuk, hogy van-e aktív sérülés vagy eltiltás
+                active_injuries = player_data.get('activeInjuries', [])
+                is_injured = 1 if any(inj.get('active') for inj in active_injuries if inj) else 0
+                
+                active_suspensions = player_data.get('activeSuspensions', [])
+                is_suspended = 1 if any(susp.get('active') for susp in active_suspensions if susp) else 0
 
                 cursor.execute('''
                     INSERT OR REPLACE INTO players 
-                    (id, slug, display_name, age, position, club_name, average_score, last_updated)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                    (id, slug, display_name, age, position, club_name, average_score, is_injured, is_suspended, last_updated)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
                 ''', (
                     player_data.get('id'),
                     player_data.get('slug'),
@@ -133,7 +152,9 @@ class DatabaseManager:
                     player_data.get('age'),
                     player_data.get('position'),
                     player_data.get('activeClub', {}).get('name') if player_data.get('activeClub') else "Unknown",
-                    player_data.get('averageScore')
+                    player_data.get('averageScore'),
+                    is_injured,
+                    is_suspended
                 ))
                 conn.commit()
         except Exception as e:
