@@ -1,0 +1,2 @@
+strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
+"5. Walk-Forward Odds-Specific Calibration (Honest: edge 5%, MaxOdds <= 6)",6,6000,-3000,-50.0,16.67,3.77

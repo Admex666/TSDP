@@ -1,0 +1,2 @@
+strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
+"5a. Walk-Forward V4.2A (Odds Feature) (edge 20%, MaxOdds <=6)",20,20000,22700,113.5,45.0,4.8

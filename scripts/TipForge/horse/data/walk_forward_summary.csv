@@ -1,0 +1,2 @@
+strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
+"5. Walk-Forward Walk-Forward V4 (Base) (Honest: edge 20%, MaxOdds <= 12)",196,196000,-63300,-32.3,9.18,9.04

@@ -302,12 +302,14 @@ def show_predictions_page():
             c6.markdown("*nincs érték*")
         else:
             c5.markdown(f"**{stake:,} Ft**")
-            if edge_pct >= 15 and mkt <= 8.0:
-                c6.markdown(f"🔥 **VALUE** `+{edge_pct:.1f}%`")
-            elif edge_pct >= 5:
-                c6.markdown(f"🟡 gyenge edge `+{edge_pct:.1f}%`")
+            # V4.3A Dynamic Edge formula: Required edge = 10% * (odds / 3.0)
+            required_edge_pct = 10.0 * (mkt / 3.0)
+            if edge_pct >= required_edge_pct and mkt <= 8.0:
+                c6.markdown(f"🔥 **VALUE (V4.3A)** `+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)")
+            elif edge_pct >= (required_edge_pct * 0.5) and mkt <= 8.0:
+                c6.markdown(f"🟡 *gyenge edge* `+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)")
             else:
-                c6.markdown(f"⚪ `{edge_pct:+.1f}%`")
+                c6.markdown(f"❌ nincs elég edge (elvárt: `>{required_edge_pct:.1f}%`)")
 
         st.divider()
 
@@ -317,10 +319,15 @@ def show_predictions_page():
     st.subheader("💡 Why these odds? (AI Explanation)")
     
     if model and explainer:
-        top_horse_idx = rdf.index[0]
-        top_horse_name = rdf.loc[top_horse_idx, "Horse"]
+        selected_explain_horse = st.selectbox(
+            "Válaszd ki a lovat a magyarázathoz:",
+            options=rdf["Horse"].tolist(),
+            key="explain_horse_select"
+        )
         
-        top_p = selected_race["participants"][top_horse_idx]
+        # Get participant index of selected horse
+        p_idx = next(idx for idx, p in enumerate(selected_race["participants"]) if p["horse_name"] == selected_explain_horse)
+        top_p = selected_race["participants"][p_idx]
         h_id = str(top_p["horse_id"])
         d_id = str(top_p["driver_id"])
         t_id = str(top_p.get("trainer_id"))
@@ -359,6 +366,27 @@ def show_predictions_page():
         
         model_features = list(feature_map.keys())
         
+        # Helper to format feature values for tooltips
+        def format_feature_value(name, val):
+            if name == "distance": return f"{val:.0f} m"
+            if name == "track_quality": return "Jó" if val == 0 else "Gát / Nehéz"
+            if name == "temperature": return f"{val:.1f} °C"
+            if name in ["h_win_rate", "h_top_3_rate", "h_win_rate_l5", "h_top_3_rate_l5", "h_top3_l3", "d_win_rate", "d_top_3_rate", "t_win_rate", "t_top3_rate", "h_gallop_rate"]:
+                return f"{val * 100:.1f}%"
+            if name in ["h_avg_percentile", "h_avg_percentile_l5"]:
+                return f"{val * 100:.1f} percentile"
+            if name in ["h_avg_speed", "h_avg_speed_l5", "h_best_speed"]:
+                return f"{val:.2f} s/km"
+            if name == "h_speed_ratio": return f"{val:.3f}"
+            if name == "h_total_prize": return f"{val:,.0f} Ft"
+            if name == "h_days_since": return f"{val:.0f} nap"
+            if name == "h_points_l5": return f"{val:.1f} pont"
+            if name == "hd_pair_runs": return f"{val:.0f} futás"
+            if name == "h_age": return f"{val:.0f} éves"
+            if name == "h_sex": return "Kanca" if val == 1 else ("Herélt" if val == 2 else "Mén")
+            if name == "dist_diff": return f"{val:.0f} m"
+            return str(val)
+
         try:
             # Re-calculate values for SHAP
             h_sex_str = str(top_p.get("sex", "male")).lower()
@@ -387,25 +415,58 @@ def show_predictions_page():
             ]
             
             shap_df = pd.DataFrame([feature_values], columns=model_features)
+            
+            # Align shap_df with the explainer's expected features
+            if hasattr(explainer, "data_feature_names") and explainer.data_feature_names:
+                expected_shap_features = list(explainer.data_feature_names)
+            elif hasattr(explainer, "model") and hasattr(explainer.model, "feature_names"):
+                expected_shap_features = list(explainer.model.feature_names)
+            else:
+                expected_shap_features = list(model.feature_names_in_) if hasattr(model, "feature_names_in_") else model_features
+                
+            for col in expected_shap_features:
+                if col not in shap_df.columns:
+                    shap_df[col] = 0.0
+            shap_df = shap_df[expected_shap_features]
+            
             shap_values = explainer.shap_values(shap_df)
             
+            # Match calculated values and formats to expectations
+            val_dict = dict(zip(model_features, feature_values))
+            feature_desc_list = []
+            val_formatted_list = []
+            
+            for f_key in expected_shap_features:
+                val_raw = val_dict.get(f_key, 0.0)
+                val_fmt = format_feature_value(f_key, val_raw)
+                
+                feature_desc_list.append(feature_map.get(f_key, f_key))
+                val_formatted_list.append(val_fmt)
+            
             s_df = pd.DataFrame({
-                "Feature": [feature_map[f] for f in model_features],
-                "Impact Score": shap_values[0]
+                "Feature": feature_desc_list,
+                "Impact Score": shap_values[0],
+                "Tényleges Érték": val_formatted_list
             }).sort_values("Impact Score", ascending=False)
             
-            st.write(f"Top factor for **{top_horse_name}**:")
-            fig_shap = px.bar(s_df, x="Impact Score", y="Feature", orientation='h',
-                              title=f"Factor Impact for {top_horse_name}",
-                              color="Impact Score",
-                              color_continuous_scale="RdYlGn")
+            st.write(f"A tényezők hatása **{selected_explain_horse}** nyerési esélyére:")
+            fig_shap = px.bar(
+                s_df, 
+                x="Impact Score", 
+                y="Feature", 
+                orientation='h',
+                title=f"Factor Impact for {selected_explain_horse}",
+                color="Impact Score",
+                color_continuous_scale="RdYlGn",
+                hover_data={"Feature": True, "Impact Score": ":.4f", "Tényleges Érték": True}
+            )
             st.plotly_chart(fig_shap, use_container_width=True)
         except Exception as shap_err:
             st.info(f"SHAP explanation unavailable for this model version. ({shap_err})")
         
         st.markdown("""
-        - **Green bars:** These factors increased the horse's win probability.
-        - **Red bars:** These factors decreased the horse's win probability.
+        - **Zöld oszlopok:** Ezek a tényezők növelték a ló nyerési esélyét.
+        - **Piros oszlopok:** Ezek a tényezők csökkentették a ló nyerési esélyét.
         """)
     else:
         st.info("No explainer loaded. Run train_model.py to generate SHAP explainer.")

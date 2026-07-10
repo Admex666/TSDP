@@ -1,0 +1,2 @@
+strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
+"5. Walk-Forward 2B (Weighted Train) (Honest: edge 10%, MaxOdds <= 12)",276,276000,-118900,-43.08,6.88,9.05

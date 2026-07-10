@@ -1,0 +1,2 @@
+strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
+"5. Walk-Forward Bayesian Shrinkage (Honest: edge 20%, MaxOdds <= 99)",476,476000,-49900,-10.48,5.25,25.82
