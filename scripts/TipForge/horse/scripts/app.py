@@ -13,6 +13,14 @@ parent_dir = os.path.dirname(current_dir)
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
+def get_path(rel_path):
+    if os.path.exists(rel_path):
+        return rel_path
+    alt_path = os.path.join(parent_dir, rel_path)
+    if os.path.exists(alt_path):
+        return alt_path
+    return rel_path
+
 from scripts.prepare_features import calculate_point_in_time_stats
 
 # Page config
@@ -45,8 +53,9 @@ st.markdown("""
 
 @st.cache_data
 def load_json_cached(path):
-    if os.path.exists(path):
-        with open(path, "r", encoding="utf-8") as f:
+    resolved = get_path(path)
+    if os.path.exists(resolved):
+        with open(resolved, "r", encoding="utf-8") as f:
             return json.load(f)
     return None
 
@@ -65,11 +74,13 @@ import pickle
 
 def load_ml_assets():
     """Prefers V4 calibrated model, falls back to V3, then V2."""
-    for model_path, shap_path, label in [
+    for model_rel, shap_rel, label in [
         ("models/horse_model_v4.pkl", "models/shap_explainer_v4.pkl", "V4"),
         ("models/horse_model_v3.pkl", "models/shap_explainer_v3.pkl", "V3"),
         ("models/horse_model.pkl",    "models/shap_explainer.pkl",    "V2"),
     ]:
+        model_path = get_path(model_rel)
+        shap_path = get_path(shap_rel)
         if os.path.exists(model_path):
             try:
                 with open(model_path, "rb") as f:
@@ -484,7 +495,9 @@ def show_analytics_page():
     st.title("📈 Model Performance & Analytics")
     st.markdown("### Historical Backtest Analysis (2025 Test Set)")
 
-    csv_path = "data/training_set_v4.csv" if os.path.exists("data/training_set_v4.csv") else "data/training_set_v3.csv"
+    v4_path = get_path("data/training_set_v4.csv")
+    v3_path = get_path("data/training_set_v3.csv")
+    csv_path = v4_path if os.path.exists(v4_path) else v3_path
     if not os.path.exists(csv_path):
         st.error("Training dataset not found. Run prepare_features.py first.")
         return
@@ -540,7 +553,7 @@ def show_analytics_page():
     st.subheader("🏆 Baseline Strategy Comparison")
     st.write(f"How does Model {model_label} compare against simple betting strategies?")
 
-    baseline_path = "data/baseline_results.csv"
+    baseline_path = get_path("data/baseline_results.csv")
     if os.path.exists(baseline_path):
         bl_df = pd.read_csv(baseline_path)
         fig_bl = px.bar(
