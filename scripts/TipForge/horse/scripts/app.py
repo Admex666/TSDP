@@ -153,7 +153,7 @@ def calculate_ml_odds(participants, all_horses, model, all_drivers, race_field_m
         "hd_pair_runs",
         "h_age", "h_sex", "h_gallop_rate", "dist_diff", "t_win_rate", "t_top3_rate"
     ]
-    feature_df = pd.DataFrame(rows, columns=feature_names)
+    feature_df = pd.DataFrame(rows, columns=feature_names).astype(float)
     
     for col in ["h_avg_speed", "h_avg_speed_l5", "h_best_speed"]:
         feature_df[col] = feature_df[col].fillna(feature_df[col].mean() or 12.8)
