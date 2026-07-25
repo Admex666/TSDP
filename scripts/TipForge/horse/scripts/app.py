@@ -268,13 +268,10 @@ def show_predictions_page():
         return stake, raw_f * 100, edge_pct
 
     # Header row
-    h1, h2, h3, h4, h5, h6 = st.columns([3, 1.5, 1.5, 1.5, 1.5, 2])
-    h1.markdown("**🐎 Ló**")
-    h2.markdown("**AI Prob**")
-    h3.markdown("**Fair Odds**")
-    h4.markdown("**Odds (add meg)**")
-    h5.markdown("**Kelly Tét**")
-    h6.markdown("**Értékelés**")
+    h1, h2, h3 = st.columns([5, 2.5, 2.5])
+    h1.markdown("**🐎 Induló & AI Odds**")
+    h2.markdown("**Odds (BetLovi)**")
+    h3.markdown("**Értékelés & Tét**")
 
     st.divider()
 
@@ -283,33 +280,45 @@ def show_predictions_page():
         fair      = row["_fair_odds"]
         horse     = row["Horse"]
 
-        c1, c2, c3, c4, c5, c6 = st.columns([3, 1.5, 1.5, 1.5, 1.5, 2])
-        c1.markdown(f"**{horse}**<br><small>{row['Driver']}</small>", unsafe_allow_html=True)
-        c2.markdown(f"`{prob*100:.1f}%`")
-        c3.markdown(f"`{fair:.2f}`")
+        c1, c2, c3 = st.columns([5, 2.5, 2.5])
+        
+        # Column 1: Horse info, AI Probability, Fair Odds, and Min Odds range
+        info_html = f"**{horse}** ({row['Driver']})<br>`AI: {prob*100:.1f}%` | `Fair: {fair:.2f}`"
+        c1.markdown(info_html, unsafe_allow_html=True)
+        if fair < 30.0:
+            min_val_odds = (30.0 * fair) / (30.0 - fair)
+            if min_val_odds <= 8.0:
+                c1.markdown(f"<small style='color: #4CAF50;'>Min odds: **{min_val_odds:.2f}**</small>", unsafe_allow_html=True)
+            else:
+                c1.markdown(f"<small style='color: #FF9800;'>Min odds > 8.0</small>", unsafe_allow_html=True)
+        else:
+            c1.markdown(f"<small style='color: #757575;'>Nincs value</small>", unsafe_allow_html=True)
 
-        mkt = c4.number_input(
-            "", min_value=1.01, max_value=100.0, value=float(fair),
+        # Column 2: Number input for bookmaker odds
+        mkt = c2.number_input(
+            "Odds", min_value=1.01, max_value=100.0, value=float(fair),
             step=0.05, format="%.2f",
             key=f"odds_{i}_{horse[:8]}",
             label_visibility="collapsed"
         )
 
+        # Column 3: Kelly Sizing and Value assessment
         stake, raw_kelly_pct, edge_pct = calc_kelly(prob, mkt, bankroll, kelly_frac)
-
+        
         if raw_kelly_pct <= 0:
-            c5.markdown("❌ —")
-            c6.markdown("*nincs érték*")
+            c3.markdown("**Tét: —**")
+            c3.markdown("<small style='color:#757575;'>nincs érték</small>", unsafe_allow_html=True)
         else:
-            c5.markdown(f"**{stake:,} Ft**")
-            # V4.3A Dynamic Edge formula: Required edge = 10% * (odds / 3.0)
             required_edge_pct = 10.0 * (mkt / 3.0)
             if edge_pct >= required_edge_pct and mkt <= 8.0:
-                c6.markdown(f"🔥 **VALUE (V4.3A)** `+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)")
+                c3.markdown(f"**Tét: {stake:,} Ft**")
+                c3.markdown(f"<span style='color:#4CAF50; font-weight:bold;'>🔥 VALUE</span><br><small>`+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)</small>", unsafe_allow_html=True)
             elif edge_pct >= (required_edge_pct * 0.5) and mkt <= 8.0:
-                c6.markdown(f"🟡 *gyenge edge* `+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)")
+                c3.markdown(f"**Tét: {stake:,} Ft**")
+                c3.markdown(f"<span style='color:#FF9800; font-weight:bold;'>🟡 gyenge edge</span><br><small>`+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)</small>", unsafe_allow_html=True)
             else:
-                c6.markdown(f"❌ nincs elég edge (elvárt: `>{required_edge_pct:.1f}%`)")
+                c3.markdown("**Tét: —**")
+                c3.markdown(f"<span style='color:#f44336; font-weight:bold;'>❌ nincs elég edge</span><br><small>(elvárt: `>{required_edge_pct:.1f}%`)</small>", unsafe_allow_html=True)
 
         st.divider()
 
