@@ -277,6 +277,9 @@ def run_walk_forward_v43(df, features, variant_label, output_summary_path, outpu
         test_df["prob_norm"] = test_df.groupby("race_id")["temp_prob"].transform(lambda x: x / x.sum())
         test_df["fair_odds"] = 1.0 / test_df["prob_norm"]
 
+    if variant_label == "V4.3A (Dynamic Margin)":
+        test_df.to_csv("data/walk_forward_v43a_predictions.csv", index=False)
+
     grid_results = []
     print(f"\n{'Margin':>8} | {'MaxOdds':>8} | {'Bets':>6} | {'P/L':>12} | {'ROI':>8} | {'Hit Rate':>8}")
     print("-" * 65)

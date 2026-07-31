@@ -286,28 +286,49 @@ def show_predictions_page():
 
     st.divider()
 
+    # Pre-read all market odds to calculate market ranks
+    mkt_odds_list = []
+    for i, row in rdf.iterrows():
+        horse = row["Horse"]
+        key = f"odds_{i}_{horse[:8]}"
+        mkt_val = st.session_state.get(key, float(row["_fair_odds"]))
+        mkt_odds_list.append((i, mkt_val))
+    
+    # Sort and rank: lower odds = smaller rank (favorite)
+    sorted_mkt = sorted(mkt_odds_list, key=lambda x: (x[1], x[0]))
+    ranks = {item[0]: rank + 1 for rank, item in enumerate(sorted_mkt)}
+
     for i, row in rdf.iterrows():
         prob      = row["_prob"]
         fair      = row["_fair_odds"]
         horse     = row["Horse"]
+        rank      = ranks[i]
 
         c1, c2, c3 = st.columns([5, 2.5, 2.5])
         
-        # Column 1: Horse info, AI Probability, Fair Odds, and Min Odds range
-        info_html = f"**{horse}** ({row['Driver']})<br>`AI: {prob*100:.1f}%` | `Fair: {fair:.2f}`"
+        # Column 1: Horse info, AI Probability, Fair Odds, and Rank
+        rank_badge = ""
+        if rank == 1:
+            rank_badge = "🥇 Favorit"
+        elif rank == 2:
+            rank_badge = "🥈 2. Favorit"
+        elif rank == 3:
+            rank_badge = "🥉 3. Favorit"
+        else:
+            rank_badge = f"{rank}. hely a piacon"
+            
+        info_html = f"**{horse}** ({row['Driver']})<br>`AI: {prob*100:.1f}%` | `Fair: {fair:.2f}`<br><small style='color:#cccccc;'>{rank_badge}</small>"
         c1.markdown(info_html, unsafe_allow_html=True)
+        
         if fair < 30.0:
             min_val_odds = (30.0 * fair) / (30.0 - fair)
-            if min_val_odds <= 8.0:
-                c1.markdown(f"<small style='color: #4CAF50;'>Min odds: **{min_val_odds:.2f}**</small>", unsafe_allow_html=True)
-            else:
-                c1.markdown(f"<small style='color: #FF9800;'>Min odds > 8.0</small>", unsafe_allow_html=True)
+            c1.markdown(f"<small style='color: #4CAF50;'>Value odds küszöb: **{min_val_odds:.2f}**</small>", unsafe_allow_html=True)
         else:
             c1.markdown(f"<small style='color: #757575;'>Nincs value</small>", unsafe_allow_html=True)
 
         # Column 2: Number input for bookmaker odds
         mkt = c2.number_input(
-            "Odds", min_value=1.01, max_value=100.0, value=float(fair),
+            "Odds", min_value=1.01, max_value=100.0, value=max(1.01, float(fair)),
             step=0.05, format="%.2f",
             key=f"odds_{i}_{horse[:8]}",
             label_visibility="collapsed"
@@ -321,15 +342,19 @@ def show_predictions_page():
             c3.markdown("<small style='color:#757575;'>nincs érték</small>", unsafe_allow_html=True)
         else:
             required_edge_pct = 10.0 * (mkt / 3.0)
-            if edge_pct >= required_edge_pct and mkt <= 8.0:
-                c3.markdown(f"**Tét: {stake:,} Ft**")
-                c3.markdown(f"<span style='color:#4CAF50; font-weight:bold;'>🔥 VALUE</span><br><small>`+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)</small>", unsafe_allow_html=True)
-            elif edge_pct >= (required_edge_pct * 0.5) and mkt <= 8.0:
-                c3.markdown(f"**Tét: {stake:,} Ft**")
-                c3.markdown(f"<span style='color:#FF9800; font-weight:bold;'>🟡 gyenge edge</span><br><small>`+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%`)</small>", unsafe_allow_html=True)
+            if rank <= 3:
+                if edge_pct >= required_edge_pct:
+                    c3.markdown(f"**Tét: {stake:,} Ft**")
+                    c3.markdown(f"<span style='color:#4CAF50; font-weight:bold;'>🔥 VALUE</span><br><small>`+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%` / Rank: **{rank}.**)</small>", unsafe_allow_html=True)
+                elif edge_pct >= (required_edge_pct * 0.5):
+                    c3.markdown(f"**Tét: {stake:,} Ft**")
+                    c3.markdown(f"<span style='color:#FF9800; font-weight:bold;'>🟡 gyenge edge</span><br><small>`+{edge_pct:.1f}%` (elvárt: `>{required_edge_pct:.1f}%` / Rank: **{rank}.**)</small>", unsafe_allow_html=True)
+                else:
+                    c3.markdown("**Tét: —**")
+                    c3.markdown(f"<span style='color:#f44336; font-weight:bold;'>❌ nincs elég edge</span><br><small>(elvárt: `>{required_edge_pct:.1f}%` / Rank: **{rank}.**)</small>", unsafe_allow_html=True)
             else:
                 c3.markdown("**Tét: —**")
-                c3.markdown(f"<span style='color:#f44336; font-weight:bold;'>❌ nincs elég edge</span><br><small>(elvárt: `>{required_edge_pct:.1f}%`)</small>", unsafe_allow_html=True)
+                c3.markdown(f"<span style='color:#757575; font-weight:bold;'>❌ Nem TOP 3 favorit</span><br><small>(Rank: **{rank}.** / odds: {mkt:.2f})</small>", unsafe_allow_html=True)
 
         st.divider()
 

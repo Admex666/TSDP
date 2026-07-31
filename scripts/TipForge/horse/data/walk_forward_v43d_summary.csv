@@ -1,2 +1,2 @@
 strategy,bets,staked_ft,pnl_ft,roi_pct,hit_rate_pct,avg_odds
-"5. Walk-Forward Direct EV Regression (Honest: edge 5%, MaxOdds <= 99)",84,84000,-28900,-34.4,14.29,10.27
+"5. Walk-Forward Direct EV Regression (Honest: edge 15%, MaxOdds <= 99)",44,44000,-11900,-27.05,18.18,8.46
