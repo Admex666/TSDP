@@ -1,0 +1,199 @@
+﻿matchday,date,time,home_team,away_team,home_score,away_score
+1,2025-07-25,14:00,Újpest FC,Diósgyőri VTK,3,1
+1,2025-07-26,11:45,Zalaegerszegi TE FC,Debreceni VSC,3,3
+1,2025-07-26,14:15,MTK Budapest,Ferencvárosi TC,1,1
+1,2025-07-27,10:00,Nyíregyháza Spartacus,Kisvárda FC,1,1
+1,2025-07-27,12:00,Paksi FC,ETO FC,3,3
+1,2025-07-27,14:00,Puskás Akadémia FC,Kazincbarcikai SC,2,1
+2,2025-08-01,14:00,Debreceni VSC,MTK Budapest,1,0
+2,2025-08-02,11:45,Diósgyőri VTK,Zalaegerszegi TE FC,2,2
+2,2025-08-02,14:15,Ferencvárosi TC,Kazincbarcikai SC,3,0
+2,2025-08-03,11:45,Puskás Akadémia FC,Nyíregyháza Spartacus,3,2
+2,2025-08-03,11:45,Kisvárda FC,Paksi FC,1,5
+2,2025-08-03,14:00,ETO FC,Újpest FC,1,1
+3,2025-08-08,14:00,Kazincbarcikai SC,Debreceni VSC,1,2
+3,2025-08-09,11:45,MTK Budapest,Diósgyőri VTK,5,0
+3,2025-08-09,14:15,Nyíregyháza Spartacus,Ferencvárosi TC,1,4
+3,2025-08-10,11:45,Zalaegerszegi TE FC,ETO FC,1,1
+3,2025-08-10,11:45,Kisvárda FC,Puskás Akadémia FC,2,1
+3,2025-08-10,14:00,Újpest FC,Paksi FC,1,2
+4,2025-08-15,14:15,Újpest FC,Kisvárda FC,0,1
+4,2025-08-16,12:15,Diósgyőri VTK,Kazincbarcikai SC,2,2
+4,2025-08-16,14:15,Ferencvárosi TC,Puskás Akadémia FC,1,2
+4,2025-08-17,09:30,Debreceni VSC,Nyíregyháza Spartacus,1,2
+4,2025-08-17,11:45,MTK Budapest,ETO FC,2,7
+4,2025-08-17,14:00,Paksi FC,Zalaegerszegi TE FC,2,2
+5,2025-08-22,14:00,Puskás Akadémia FC,Debreceni VSC,1,3
+5,2025-08-23,11:45,Zalaegerszegi TE FC,Újpest FC,1,4
+5,2025-08-23,14:15,Nyíregyháza Spartacus,Diósgyőri VTK,1,4
+5,2025-08-24,14:00,MTK Budapest,Paksi FC,2,3
+5,2025-12-03,12:00,Kazincbarcikai SC,ETO FC,1,3
+5,2025-12-04,12:00,Kisvárda FC,Ferencvárosi TC,0,1
+6,2025-08-29,14:00,Paksi FC,Kazincbarcikai SC,3,0
+6,2025-08-30,08:45,Zalaegerszegi TE FC,Kisvárda FC,1,2
+6,2025-08-30,11:00,Diósgyőri VTK,Puskás Akadémia FC,1,1
+6,2025-08-30,13:30,Újpest FC,MTK Budapest,1,2
+6,2025-08-31,11:30,ETO FC,Nyíregyháza Spartacus,1,0
+6,2025-08-31,14:00,Debreceni VSC,Ferencvárosi TC,0,3
+7,2025-09-19,14:00,Ferencvárosi TC,Diósgyőri VTK,2,2
+7,2025-09-20,10:00,Nyíregyháza Spartacus,Paksi FC,1,1
+7,2025-09-20,12:00,Kazincbarcikai SC,Újpest FC,2,0
+7,2025-09-20,14:15,Puskás Akadémia FC,ETO FC,0,2
+7,2025-09-21,11:45,Kisvárda FC,Debreceni VSC,0,1
+7,2025-09-21,14:00,MTK Budapest,Zalaegerszegi TE FC,1,0
+8,2025-09-26,14:00,Újpest FC,Nyíregyháza Spartacus,2,2
+8,2025-09-27,09:30,Zalaegerszegi TE FC,Kazincbarcikai SC,5,0
+8,2025-09-27,11:30,Diósgyőri VTK,Debreceni VSC,0,0
+8,2025-09-27,14:00,Paksi FC,Puskás Akadémia FC,3,2
+8,2025-09-28,08:15,MTK Budapest,Kisvárda FC,4,0
+8,2025-09-28,12:00,ETO FC,Ferencvárosi TC,0,2
+9,2025-10-03,14:00,Kazincbarcikai SC,MTK Budapest,3,1
+9,2025-10-04,08:15,Nyíregyháza Spartacus,Zalaegerszegi TE FC,3,1
+9,2025-10-04,11:00,Puskás Akadémia FC,Újpest FC,0,0
+9,2025-10-04,13:30,Debreceni VSC,ETO FC,1,1
+9,2025-10-05,10:30,Ferencvárosi TC,Paksi FC,2,2
+9,2025-10-05,13:00,Kisvárda FC,Diósgyőri VTK,1,0
+10,2025-10-18,08:00,MTK Budapest,Nyíregyháza Spartacus,5,1
+10,2025-10-18,10:15,Paksi FC,Debreceni VSC,1,1
+10,2025-10-18,14:30,ETO FC,Diósgyőri VTK,3,1
+10,2025-10-19,07:15,Kazincbarcikai SC,Kisvárda FC,0,1
+10,2025-10-19,09:30,Zalaegerszegi TE FC,Puskás Akadémia FC,0,1
+10,2025-10-19,12:00,Újpest FC,Ferencvárosi TC,1,1
+11,2025-10-25,08:30,Puskás Akadémia FC,MTK Budapest,1,1
+11,2025-10-25,11:00,Diósgyőri VTK,Paksi FC,2,1
+11,2025-10-25,13:30,Nyíregyháza Spartacus,Kazincbarcikai SC,0,1
+11,2025-10-26,07:45,Kisvárda FC,ETO FC,3,2
+11,2025-10-26,10:00,Debreceni VSC,Újpest FC,5,2
+11,2025-10-26,12:30,Ferencvárosi TC,Zalaegerszegi TE FC,1,2
+12,2025-10-31,15:00,Kisvárda FC,Nyíregyháza Spartacus,0,0
+12,2025-11-01,08:15,Kazincbarcikai SC,Puskás Akadémia FC,1,3
+12,2025-11-01,10:30,ETO FC,Paksi FC,0,0
+12,2025-11-01,15:00,Ferencvárosi TC,MTK Budapest,4,1
+12,2025-11-02,09:30,Diósgyőri VTK,Újpest FC,1,3
+12,2025-11-02,12:00,Debreceni VSC,Zalaegerszegi TE FC,2,1
+13,2025-11-08,06:45,Újpest FC,ETO FC,0,3
+13,2025-11-08,08:45,Zalaegerszegi TE FC,Diósgyőri VTK,2,0
+13,2025-11-08,13:15,Paksi FC,Kisvárda FC,5,3
+13,2025-11-09,06:45,MTK Budapest,Debreceni VSC,3,0
+13,2025-11-09,09:15,Kazincbarcikai SC,Ferencvárosi TC,1,3
+13,2025-11-09,11:30,Nyíregyháza Spartacus,Puskás Akadémia FC,1,1
+14,2025-11-21,14:00,ETO FC,Zalaegerszegi TE FC,0,1
+14,2025-11-22,08:30,Puskás Akadémia FC,Kisvárda FC,2,0
+14,2025-11-22,11:00,Debreceni VSC,Kazincbarcikai SC,2,1
+14,2025-11-22,13:30,Ferencvárosi TC,Nyíregyháza Spartacus,1,3
+14,2025-11-23,10:00,Paksi FC,Újpest FC,1,3
+14,2025-11-23,12:30,Diósgyőri VTK,MTK Budapest,4,0
+15,2025-11-28,14:00,Nyíregyháza Spartacus,Debreceni VSC,0,3
+15,2025-11-29,06:30,Zalaegerszegi TE FC,Paksi FC,1,0
+15,2025-11-29,08:30,Kazincbarcikai SC,Diósgyőri VTK,1,1
+15,2025-11-29,10:15,ETO FC,MTK Budapest,3,0
+15,2025-11-30,07:45,Kisvárda FC,Újpest FC,3,0
+15,2025-11-30,13:30,Puskás Akadémia FC,Ferencvárosi TC,1,2
+16,2025-12-06,06:30,Diósgyőri VTK,Nyíregyháza Spartacus,2,0
+16,2025-12-06,08:45,Debreceni VSC,Puskás Akadémia FC,0,1
+16,2025-12-06,11:00,Paksi FC,MTK Budapest,3,1
+16,2025-12-07,07:15,ETO FC,Kazincbarcikai SC,3,1
+16,2025-12-07,11:00,Ferencvárosi TC,Kisvárda FC,3,0
+16,2025-12-07,13:30,Újpest FC,Zalaegerszegi TE FC,0,2
+17,2025-12-13,08:00,Nyíregyháza Spartacus,ETO FC,0,1
+17,2025-12-13,10:30,Puskás Akadémia FC,Diósgyőri VTK,2,1
+17,2025-12-13,13:00,MTK Budapest,Újpest FC,3,4
+17,2025-12-14,06:15,Kazincbarcikai SC,Paksi FC,0,2
+17,2025-12-14,08:45,Ferencvárosi TC,Debreceni VSC,0,1
+17,2025-12-14,12:45,Kisvárda FC,Zalaegerszegi TE FC,3,3
+18,2025-12-19,14:00,Diósgyőri VTK,Ferencvárosi TC,0,1
+18,2025-12-20,07:00,Zalaegerszegi TE FC,MTK Budapest,1,1
+18,2025-12-20,09:30,Paksi FC,Nyíregyháza Spartacus,2,1
+18,2025-12-20,12:00,ETO FC,Puskás Akadémia FC,2,0
+18,2025-12-21,09:00,Újpest FC,Kazincbarcikai SC,2,1
+18,2025-12-21,11:30,Debreceni VSC,Kisvárda FC,0,1
+19,2026-01-24,06:30,Nyíregyháza Spartacus,Újpest FC,1,1
+19,2026-01-24,09:00,Kisvárda FC,MTK Budapest,2,3
+19,2026-01-24,13:45,Puskás Akadémia FC,Paksi FC,1,2
+19,2026-01-25,07:00,Debreceni VSC,Diósgyőri VTK,3,2
+19,2026-01-25,09:00,Kazincbarcikai SC,Zalaegerszegi TE FC,0,1
+19,2026-01-25,12:15,Ferencvárosi TC,ETO FC,1,3
+20,2026-01-31,07:30,MTK Budapest,Kazincbarcikai SC,1,3
+20,2026-01-31,10:00,ETO FC,Debreceni VSC,2,2
+20,2026-01-31,12:30,Újpest FC,Puskás Akadémia FC,0,1
+20,2026-02-01,06:45,Diósgyőri VTK,Kisvárda FC,1,1
+20,2026-02-01,09:15,Paksi FC,Ferencvárosi TC,0,1
+20,2026-02-01,13:45,Zalaegerszegi TE FC,Nyíregyháza Spartacus,0,1
+21,2026-02-06,11:45,Kisvárda FC,Kazincbarcikai SC,1,0
+21,2026-02-07,06:45,Diósgyőri VTK,ETO FC,1,1
+21,2026-02-07,08:45,Debreceni VSC,Paksi FC,1,0
+21,2026-02-07,11:00,Ferencvárosi TC,Újpest FC,3,0
+21,2026-02-08,09:00,Puskás Akadémia FC,Zalaegerszegi TE FC,0,1
+21,2026-02-08,11:15,Nyíregyháza Spartacus,MTK Budapest,4,2
+22,2026-02-13,14:00,Újpest FC,Debreceni VSC,2,1
+22,2026-02-14,08:45,MTK Budapest,Puskás Akadémia FC,2,2
+22,2026-02-14,11:00,Zalaegerszegi TE FC,Ferencvárosi TC,3,1
+22,2026-02-14,13:15,Paksi FC,Diósgyőri VTK,1,2
+22,2026-02-15,09:30,Kazincbarcikai SC,Nyíregyháza Spartacus,0,4
+22,2026-02-15,11:45,ETO FC,Kisvárda FC,1,0
+23,2026-02-21,08:00,Nyíregyháza Spartacus,Kisvárda FC,2,2
+23,2026-02-21,10:15,Kazincbarcikai SC,Puskás Akadémia FC,0,2
+23,2026-02-21,12:30,Újpest FC,Diósgyőri VTK,2,1
+23,2026-02-22,08:45,Zalaegerszegi TE FC,Debreceni VSC,1,1
+23,2026-02-22,11:30,Paksi FC,ETO FC,3,4
+23,2026-02-23,14:00,MTK Budapest,Ferencvárosi TC,1,3
+24,2026-02-27,14:15,Debreceni VSC,MTK Budapest,2,2
+24,2026-02-28,08:30,Kisvárda FC,Paksi FC,2,1
+24,2026-02-28,11:00,Diósgyőri VTK,Zalaegerszegi TE FC,1,1
+24,2026-02-28,13:30,ETO FC,Újpest FC,2,1
+24,2026-03-01,10:15,Puskás Akadémia FC,Nyíregyháza Spartacus,1,2
+24,2026-03-01,12:45,Ferencvárosi TC,Kazincbarcikai SC,2,1
+25,2026-03-06,14:00,Kisvárda FC,Puskás Akadémia FC,1,0
+25,2026-03-07,11:00,Zalaegerszegi TE FC,ETO FC,2,1
+25,2026-03-07,13:30,Újpest FC,Paksi FC,0,0
+25,2026-03-08,08:30,MTK Budapest,Diósgyőri VTK,1,1
+25,2026-03-08,12:45,Kazincbarcikai SC,Debreceni VSC,0,3
+25,2026-03-08,13:30,Nyíregyháza Spartacus,Ferencvárosi TC,1,3
+26,2026-03-13,12:45,Diósgyőri VTK,Kazincbarcikai SC,0,4
+26,2026-03-13,15:00,ETO FC,MTK Budapest,0,0
+26,2026-03-14,09:30,Újpest FC,Kisvárda FC,2,1
+26,2026-03-14,12:00,Paksi FC,Zalaegerszegi TE FC,1,1
+26,2026-03-14,14:30,Debreceni VSC,Nyíregyháza Spartacus,1,1
+26,2026-04-14,12:45,Ferencvárosi TC,Puskás Akadémia FC,2,1
+27,2026-03-20,15:00,MTK Budapest,Paksi FC,0,2
+27,2026-03-21,09:00,Nyíregyháza Spartacus,Diósgyőri VTK,3,1
+27,2026-03-21,11:30,Zalaegerszegi TE FC,Újpest FC,2,0
+27,2026-03-22,09:30,Puskás Akadémia FC,Debreceni VSC,1,1
+27,2026-03-22,11:45,Kazincbarcikai SC,ETO FC,1,3
+27,2026-03-22,14:15,Kisvárda FC,Ferencvárosi TC,1,1
+28,2026-04-04,08:30,Zalaegerszegi TE FC,Kisvárda FC,2,0
+28,2026-04-04,11:00,Paksi FC,Kazincbarcikai SC,5,1
+28,2026-04-04,13:30,Újpest FC,MTK Budapest,2,2
+28,2026-04-05,08:30,Diósgyőri VTK,Puskás Akadémia FC,1,2
+28,2026-04-05,11:00,Debreceni VSC,Ferencvárosi TC,0,2
+28,2026-04-05,13:30,ETO FC,Nyíregyháza Spartacus,1,0
+29,2026-04-10,11:45,Puskás Akadémia FC,ETO FC,1,4
+29,2026-04-10,14:00,Ferencvárosi TC,Diósgyőri VTK,3,1
+29,2026-04-11,09:15,Kazincbarcikai SC,Újpest FC,0,3
+29,2026-04-11,11:45,MTK Budapest,Zalaegerszegi TE FC,3,0
+29,2026-04-11,14:00,Nyíregyháza Spartacus,Paksi FC,2,0
+29,2026-04-13,14:00,Kisvárda FC,Debreceni VSC,0,0
+30,2026-04-17,14:00,Újpest FC,Nyíregyháza Spartacus,7,2
+30,2026-04-18,08:15,Zalaegerszegi TE FC,Kazincbarcikai SC,4,0
+30,2026-04-18,11:00,MTK Budapest,Kisvárda FC,2,1
+30,2026-04-18,13:30,Diósgyőri VTK,Debreceni VSC,0,5
+30,2026-04-19,08:15,Paksi FC,Puskás Akadémia FC,1,0
+30,2026-04-19,13:30,ETO FC,Ferencvárosi TC,1,0
+31,2026-04-24,14:00,Kazincbarcikai SC,MTK Budapest,0,0
+31,2026-04-25,08:30,Kisvárda FC,Diósgyőri VTK,1,2
+31,2026-04-25,11:00,Puskás Akadémia FC,Újpest FC,2,0
+31,2026-04-25,13:30,Nyíregyháza Spartacus,Zalaegerszegi TE FC,2,1
+31,2026-04-26,11:00,Ferencvárosi TC,Paksi FC,2,0
+31,2026-04-26,13:30,Debreceni VSC,ETO FC,1,1
+32,2026-05-01,14:00,Zalaegerszegi TE FC,Puskás Akadémia FC,1,3
+32,2026-05-02,07:00,MTK Budapest,Nyíregyháza Spartacus,1,1
+32,2026-05-02,10:00,Kazincbarcikai SC,Kisvárda FC,2,1
+32,2026-05-02,13:15,ETO FC,Diósgyőri VTK,4,0
+32,2026-05-03,07:30,Paksi FC,Debreceni VSC,5,2
+32,2026-05-03,10:00,Újpest FC,Ferencvárosi TC,0,5
+33,2026-05-15,11:45,Nyíregyháza Spartacus,Kazincbarcikai SC,2,2
+33,2026-05-15,14:00,Puskás Akadémia FC,MTK Budapest,2,2
+33,2026-05-16,11:15,Diósgyőri VTK,Paksi FC,1,3
+33,2026-05-16,11:15,Debreceni VSC,Újpest FC,2,1
+33,2026-05-16,11:15,Ferencvárosi TC,Zalaegerszegi TE FC,3,0
+33,2026-05-16,11:15,Kisvárda FC,ETO FC,0,1
