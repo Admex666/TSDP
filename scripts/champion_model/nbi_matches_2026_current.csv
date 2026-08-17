@@ -1,0 +1,199 @@
+﻿match_id,season_id,matchday,date,time,home_team,away_team,home_score,away_score,result,goal_diff,is_played
+2026_1_NYIREGYHAZA_UJPEST,2026,1,2026-07-24,14:00,Nyíregyháza Spartacus,Újpest FC,2.0,1.0,H,1.0,True
+2026_1_KISVARDA_KISP,2026,1,2026-07-25,13:30,Kisvárda FC,Kispest–Honvéd FC,1.0,1.0,D,0.0,True
+2026_1_VASAS_ETO,2026,1,2026-07-26,09:45,Vasas FC,ETO FC,2.0,2.0,D,0.0,True
+2026_1_DVSC_PUSKAS,2026,1,2026-07-26,12:00,Debreceni VSC,Puskás Akadémia FC,0.0,2.0,A,-2.0,True
+2026_1_PAKS_FTC,2026,1,2026-07-26,14:00,Paksi FC,Ferencvárosi TC,4.0,2.0,H,2.0,True
+2026_1_MTK_ZTE,2026,1,2026-07-27,13:30,MTK Budapest,Zalaegerszegi TE FC,3.0,0.0,H,3.0,True
+2026_2_PUSKAS_KISVARDA,2026,2,2026-07-31,14:00,Puskás Akadémia FC,Kisvárda FC,0.0,2.0,A,-2.0,True
+2026_2_KISP_MTK,2026,2,2026-08-01,11:30,Kispest–Honvéd FC,MTK Budapest,3.0,3.0,D,0.0,True
+2026_2_UJPEST_DVSC,2026,2,2026-08-02,09:30,Újpest FC,Debreceni VSC,4.0,2.0,H,2.0,True
+2026_2_FTC_VASAS,2026,2,2026-08-02,11:30,Ferencvárosi TC,Vasas FC,0.0,0.0,D,0.0,True
+2026_2_ETO_NYIREGYHAZA,2026,2,2026-08-02,11:30,ETO FC,Nyíregyháza Spartacus,4.0,0.0,H,4.0,True
+2026_2_ZTE_PAKS,2026,2,2026-08-03,11:30,Zalaegerszegi TE FC,Paksi FC,5.0,2.0,H,3.0,True
+2026_3_MTK_PUSKAS,2026,3,2026-08-07,11:30,MTK Budapest,Puskás Akadémia FC,2.0,3.0,A,-1.0,True
+2026_3_ETO_FTC,2026,3,2026-08-08,11:30,ETO FC,Ferencvárosi TC,,,,,False
+2026_3_VASAS_ZTE,2026,3,2026-08-08,09:30,Vasas FC,Zalaegerszegi TE FC,5.0,0.0,H,5.0,True
+2026_3_KISVARDA_UJPEST,2026,3,2026-08-08,11:30,Kisvárda FC,Újpest FC,2.0,4.0,A,-2.0,True
+2026_3_PAKS_KISP,2026,3,2026-08-09,09:30,Paksi FC,Kispest–Honvéd FC,2.0,2.0,D,0.0,True
+2026_3_DVSC_NYIREGYHAZA,2026,3,2026-08-09,11:30,Debreceni VSC,Nyíregyháza Spartacus,1.0,0.0,H,1.0,True
+2026_4_KISP_VASAS,2026,4,2026-08-14,11:30,Kispest–Honvéd FC,Vasas FC,1.0,2.0,A,-1.0,True
+2026_4_UJPEST_MTK,2026,4,2026-08-15,10:30,Újpest FC,MTK Budapest,1.0,1.0,D,0.0,True
+2026_4_NYIREGYHAZA_KISVARDA,2026,4,2026-08-15,11:30,Nyíregyháza Spartacus,Kisvárda FC,2.0,1.0,H,1.0,True
+2026_4_DVSC_ETO,2026,4,2026-08-16,10:30,Debreceni VSC,ETO FC,1.0,1.0,D,0.0,True
+2026_4_PUSKAS_PAKS,2026,4,2026-08-16,11:30,Puskás Akadémia FC,Paksi FC,3.0,2.0,H,1.0,True
+2026_4_ZTE_FTC,2026,4,2026-08-17,11:30,Zalaegerszegi TE FC,Ferencvárosi TC,0.0,1.0,A,-1.0,True
+2026_5_PAKS_UJPEST,2026,5,2026-08-21,11:30,Paksi FC,Újpest FC,,,,,False
+2026_5_VASAS_PUSKAS,2026,5,2026-08-22,09:30,Vasas FC,Puskás Akadémia FC,,,,,False
+2026_5_MTK_NYIREGYHAZA,2026,5,2026-08-22,11:30,MTK Budapest,Nyíregyháza Spartacus,,,,,False
+2026_5_KISVARDA_DVSC,2026,5,2026-08-23,11:30,Kisvárda FC,Debreceni VSC,,,,,False
+2026_5_ETO_ZTE,2026,5,2026-08-23,11:30,ETO FC,Zalaegerszegi TE FC,,,,,False
+2026_5_FTC_KISP,2026,5,2026-12-02,13:00,Ferencvárosi TC,Kispest–Honvéd FC,,,,,False
+2026_6_KISVARDA_ETO,2026,6,2026-08-29,,Kisvárda FC,ETO FC,,,,,False
+2026_6_DVSC_MTK,2026,6,2026-08-29,,Debreceni VSC,MTK Budapest,,,,,False
+2026_6_NYIREGYHAZA_PAKS,2026,6,2026-08-29,,Nyíregyháza Spartacus,Paksi FC,,,,,False
+2026_6_UJPEST_VASAS,2026,6,2026-08-29,,Újpest FC,Vasas FC,,,,,False
+2026_6_PUSKAS_FTC,2026,6,2026-08-29,,Puskás Akadémia FC,Ferencvárosi TC,,,,,False
+2026_6_KISP_ZTE,2026,6,2026-08-29,,Kispest–Honvéd FC,Zalaegerszegi TE FC,,,,,False
+2026_7_VASAS_NYIREGYHAZA,2026,7,2026-09-05,,Vasas FC,Nyíregyháza Spartacus,,,,,False
+2026_7_PAKS_DVSC,2026,7,2026-09-05,,Paksi FC,Debreceni VSC,,,,,False
+2026_7_MTK_KISVARDA,2026,7,2026-09-05,,MTK Budapest,Kisvárda FC,,,,,False
+2026_7_ZTE_PUSKAS,2026,7,2026-09-05,,Zalaegerszegi TE FC,Puskás Akadémia FC,,,,,False
+2026_7_FTC_UJPEST,2026,7,2026-09-05,,Ferencvárosi TC,Újpest FC,,,,,False
+2026_7_ETO_KISP,2026,7,2026-09-05,,ETO FC,Kispest–Honvéd FC,,,,,False
+2026_8_MTK_ETO,2026,8,2026-09-19,,MTK Budapest,ETO FC,,,,,False
+2026_8_KISVARDA_PAKS,2026,8,2026-09-19,,Kisvárda FC,Paksi FC,,,,,False
+2026_8_DVSC_VASAS,2026,8,2026-09-19,,Debreceni VSC,Vasas FC,,,,,False
+2026_8_NYIREGYHAZA_FTC,2026,8,2026-09-19,,Nyíregyháza Spartacus,Ferencvárosi TC,,,,,False
+2026_8_UJPEST_ZTE,2026,8,2026-09-19,,Újpest FC,Zalaegerszegi TE FC,,,,,False
+2026_8_PUSKAS_KISP,2026,8,2026-09-19,,Puskás Akadémia FC,Kispest–Honvéd FC,,,,,False
+2026_9_VASAS_KISVARDA,2026,9,2026-10-10,,Vasas FC,Kisvárda FC,,,,,False
+2026_9_PAKS_MTK,2026,9,2026-10-10,,Paksi FC,MTK Budapest,,,,,False
+2026_9_KISP_UJPEST,2026,9,2026-10-10,,Kispest–Honvéd FC,Újpest FC,,,,,False
+2026_9_ZTE_NYIREGYHAZA,2026,9,2026-10-10,,Zalaegerszegi TE FC,Nyíregyháza Spartacus,,,,,False
+2026_9_FTC_DVSC,2026,9,2026-10-10,,Ferencvárosi TC,Debreceni VSC,,,,,False
+2026_9_ETO_PUSKAS,2026,9,2026-10-10,,ETO FC,Puskás Akadémia FC,,,,,False
+2026_10_PAKS_ETO,2026,10,2026-10-17,,Paksi FC,ETO FC,,,,,False
+2026_10_MTK_VASAS,2026,10,2026-10-17,,MTK Budapest,Vasas FC,,,,,False
+2026_10_KISVARDA_FTC,2026,10,2026-10-17,,Kisvárda FC,Ferencvárosi TC,,,,,False
+2026_10_DVSC_ZTE,2026,10,2026-10-17,,Debreceni VSC,Zalaegerszegi TE FC,,,,,False
+2026_10_NYIREGYHAZA_KISP,2026,10,2026-10-17,,Nyíregyháza Spartacus,Kispest–Honvéd FC,,,,,False
+2026_10_UJPEST_PUSKAS,2026,10,2026-10-17,,Újpest FC,Puskás Akadémia FC,,,,,False
+2026_11_VASAS_PAKS,2026,11,2026-10-24,,Vasas FC,Paksi FC,,,,,False
+2026_11_PUSKAS_NYIREGYHAZA,2026,11,2026-10-24,,Puskás Akadémia FC,Nyíregyháza Spartacus,,,,,False
+2026_11_KISP_DVSC,2026,11,2026-10-24,,Kispest–Honvéd FC,Debreceni VSC,,,,,False
+2026_11_ZTE_KISVARDA,2026,11,2026-10-24,,Zalaegerszegi TE FC,Kisvárda FC,,,,,False
+2026_11_FTC_MTK,2026,11,2026-10-24,,Ferencvárosi TC,MTK Budapest,,,,,False
+2026_11_ETO_UJPEST,2026,11,2026-10-24,,ETO FC,Újpest FC,,,,,False
+2026_12_ETO_VASAS,2026,12,2026-10-31,,ETO FC,Vasas FC,,,,,False
+2026_12_FTC_PAKS,2026,12,2026-10-31,,Ferencvárosi TC,Paksi FC,,,,,False
+2026_12_ZTE_MTK,2026,12,2026-10-31,,Zalaegerszegi TE FC,MTK Budapest,,,,,False
+2026_12_KISP_KISVARDA,2026,12,2026-10-31,,Kispest–Honvéd FC,Kisvárda FC,,,,,False
+2026_12_PUSKAS_DVSC,2026,12,2026-10-31,,Puskás Akadémia FC,Debreceni VSC,,,,,False
+2026_12_UJPEST_NYIREGYHAZA,2026,12,2026-10-31,,Újpest FC,Nyíregyháza Spartacus,,,,,False
+2026_13_DVSC_UJPEST,2026,13,2026-11-07,,Debreceni VSC,Újpest FC,,,,,False
+2026_13_KISVARDA_PUSKAS,2026,13,2026-11-07,,Kisvárda FC,Puskás Akadémia FC,,,,,False
+2026_13_MTK_KISP,2026,13,2026-11-07,,MTK Budapest,Kispest–Honvéd FC,,,,,False
+2026_13_PAKS_ZTE,2026,13,2026-11-07,,Paksi FC,Zalaegerszegi TE FC,,,,,False
+2026_13_VASAS_FTC,2026,13,2026-11-07,,Vasas FC,Ferencvárosi TC,,,,,False
+2026_13_NYIREGYHAZA_ETO,2026,13,2026-11-07,,Nyíregyháza Spartacus,ETO FC,,,,,False
+2026_14_ZTE_VASAS,2026,14,2026-11-21,,Zalaegerszegi TE FC,Vasas FC,,,,,False
+2026_14_KISP_PAKS,2026,14,2026-11-21,,Kispest–Honvéd FC,Paksi FC,,,,,False
+2026_14_PUSKAS_MTK,2026,14,2026-11-21,,Puskás Akadémia FC,MTK Budapest,,,,,False
+2026_14_UJPEST_KISVARDA,2026,14,2026-11-21,,Újpest FC,Kisvárda FC,,,,,False
+2026_14_NYIREGYHAZA_DVSC,2026,14,2026-11-21,,Nyíregyháza Spartacus,Debreceni VSC,,,,,False
+2026_14_FTC_ETO,2026,14,2026-11-21,,Ferencvárosi TC,ETO FC,,,,,False
+2026_15_ETO_DVSC,2026,15,2026-11-28,,ETO FC,Debreceni VSC,,,,,False
+2026_15_KISVARDA_NYIREGYHAZA,2026,15,2026-11-28,,Kisvárda FC,Nyíregyháza Spartacus,,,,,False
+2026_15_MTK_UJPEST,2026,15,2026-11-28,,MTK Budapest,Újpest FC,,,,,False
+2026_15_PAKS_PUSKAS,2026,15,2026-11-28,,Paksi FC,Puskás Akadémia FC,,,,,False
+2026_15_VASAS_KISP,2026,15,2026-11-28,,Vasas FC,Kispest–Honvéd FC,,,,,False
+2026_15_FTC_ZTE,2026,15,2026-11-28,,Ferencvárosi TC,Zalaegerszegi TE FC,,,,,False
+2026_16_PUSKAS_VASAS,2026,16,2026-12-05,,Puskás Akadémia FC,Vasas FC,,,,,False
+2026_16_UJPEST_PAKS,2026,16,2026-12-05,,Újpest FC,Paksi FC,,,,,False
+2026_16_NYIREGYHAZA_MTK,2026,16,2026-12-05,,Nyíregyháza Spartacus,MTK Budapest,,,,,False
+2026_16_DVSC_KISVARDA,2026,16,2026-12-05,,Debreceni VSC,Kisvárda FC,,,,,False
+2026_16_KISP_FTC,2026,16,2026-12-05,,Kispest–Honvéd FC,Ferencvárosi TC,,,,,False
+2026_16_ZTE_ETO,2026,16,2026-12-05,,Zalaegerszegi TE FC,ETO FC,,,,,False
+2026_17_ETO_KISVARDA,2026,17,2026-12-12,,ETO FC,Kisvárda FC,,,,,False
+2026_17_MTK_DVSC,2026,17,2026-12-12,,MTK Budapest,Debreceni VSC,,,,,False
+2026_17_PAKS_NYIREGYHAZA,2026,17,2026-12-12,,Paksi FC,Nyíregyháza Spartacus,,,,,False
+2026_17_VASAS_UJPEST,2026,17,2026-12-12,,Vasas FC,Újpest FC,,,,,False
+2026_17_FTC_PUSKAS,2026,17,2026-12-12,,Ferencvárosi TC,Puskás Akadémia FC,,,,,False
+2026_17_ZTE_KISP,2026,17,2026-12-12,,Zalaegerszegi TE FC,Kispest–Honvéd FC,,,,,False
+2026_18_NYIREGYHAZA_VASAS,2026,18,2026-12-19,,Nyíregyháza Spartacus,Vasas FC,,,,,False
+2026_18_DVSC_PAKS,2026,18,2026-12-19,,Debreceni VSC,Paksi FC,,,,,False
+2026_18_KISVARDA_MTK,2026,18,2026-12-19,,Kisvárda FC,MTK Budapest,,,,,False
+2026_18_PUSKAS_ZTE,2026,18,2026-12-19,,Puskás Akadémia FC,Zalaegerszegi TE FC,,,,,False
+2026_18_UJPEST_FTC,2026,18,2026-12-19,,Újpest FC,Ferencvárosi TC,,,,,False
+2026_18_KISP_ETO,2026,18,2026-12-19,,Kispest–Honvéd FC,ETO FC,,,,,False
+2026_19_ETO_MTK,2026,19,2027-01-30,,ETO FC,MTK Budapest,,,,,False
+2026_19_PAKS_KISVARDA,2026,19,2027-01-30,,Paksi FC,Kisvárda FC,,,,,False
+2026_19_VASAS_DVSC,2026,19,2027-01-30,,Vasas FC,Debreceni VSC,,,,,False
+2026_19_FTC_NYIREGYHAZA,2026,19,2027-01-30,,Ferencvárosi TC,Nyíregyháza Spartacus,,,,,False
+2026_19_ZTE_UJPEST,2026,19,2027-01-30,,Zalaegerszegi TE FC,Újpest FC,,,,,False
+2026_19_KISP_PUSKAS,2026,19,2027-01-30,,Kispest–Honvéd FC,Puskás Akadémia FC,,,,,False
+2026_20_KISVARDA_VASAS,2026,20,2027-02-06,,Kisvárda FC,Vasas FC,,,,,False
+2026_20_MTK_PAKS,2026,20,2027-02-06,,MTK Budapest,Paksi FC,,,,,False
+2026_20_UJPEST_KISP,2026,20,2027-02-06,,Újpest FC,Kispest–Honvéd FC,,,,,False
+2026_20_NYIREGYHAZA_ZTE,2026,20,2027-02-06,,Nyíregyháza Spartacus,Zalaegerszegi TE FC,,,,,False
+2026_20_DVSC_FTC,2026,20,2027-02-06,,Debreceni VSC,Ferencvárosi TC,,,,,False
+2026_20_PUSKAS_ETO,2026,20,2027-02-06,,Puskás Akadémia FC,ETO FC,,,,,False
+2026_21_ETO_PAKS,2026,21,2027-02-13,,ETO FC,Paksi FC,,,,,False
+2026_21_VASAS_MTK,2026,21,2027-02-13,,Vasas FC,MTK Budapest,,,,,False
+2026_21_FTC_KISVARDA,2026,21,2027-02-13,,Ferencvárosi TC,Kisvárda FC,,,,,False
+2026_21_ZTE_DVSC,2026,21,2027-02-13,,Zalaegerszegi TE FC,Debreceni VSC,,,,,False
+2026_21_KISP_NYIREGYHAZA,2026,21,2027-02-13,,Kispest–Honvéd FC,Nyíregyháza Spartacus,,,,,False
+2026_21_PUSKAS_UJPEST,2026,21,2027-02-13,,Puskás Akadémia FC,Újpest FC,,,,,False
+2026_22_PAKS_VASAS,2026,22,2027-02-20,,Paksi FC,Vasas FC,,,,,False
+2026_22_NYIREGYHAZA_PUSKAS,2026,22,2027-02-20,,Nyíregyháza Spartacus,Puskás Akadémia FC,,,,,False
+2026_22_DVSC_KISP,2026,22,2027-02-20,,Debreceni VSC,Kispest–Honvéd FC,,,,,False
+2026_22_KISVARDA_ZTE,2026,22,2027-02-20,,Kisvárda FC,Zalaegerszegi TE FC,,,,,False
+2026_22_MTK_FTC,2026,22,2027-02-20,,MTK Budapest,Ferencvárosi TC,,,,,False
+2026_22_UJPEST_ETO,2026,22,2027-02-20,,Újpest FC,ETO FC,,,,,False
+2026_23_VASAS_ETO,2026,23,2027-02-27,,Vasas FC,ETO FC,,,,,False
+2026_23_PAKS_FTC,2026,23,2027-02-27,,Paksi FC,Ferencvárosi TC,,,,,False
+2026_23_MTK_ZTE,2026,23,2027-02-27,,MTK Budapest,Zalaegerszegi TE FC,,,,,False
+2026_23_KISVARDA_KISP,2026,23,2027-02-27,,Kisvárda FC,Kispest–Honvéd FC,,,,,False
+2026_23_DVSC_PUSKAS,2026,23,2027-02-27,,Debreceni VSC,Puskás Akadémia FC,,,,,False
+2026_23_NYIREGYHAZA_UJPEST,2026,23,2027-02-27,,Nyíregyháza Spartacus,Újpest FC,,,,,False
+2026_24_UJPEST_DVSC,2026,24,2027-03-06,,Újpest FC,Debreceni VSC,,,,,False
+2026_24_PUSKAS_KISVARDA,2026,24,2027-03-06,,Puskás Akadémia FC,Kisvárda FC,,,,,False
+2026_24_KISP_MTK,2026,24,2027-03-06,,Kispest–Honvéd FC,MTK Budapest,,,,,False
+2026_24_ZTE_PAKS,2026,24,2027-03-06,,Zalaegerszegi TE FC,Paksi FC,,,,,False
+2026_24_FTC_VASAS,2026,24,2027-03-06,,Ferencvárosi TC,Vasas FC,,,,,False
+2026_24_ETO_NYIREGYHAZA,2026,24,2027-03-06,,ETO FC,Nyíregyháza Spartacus,,,,,False
+2026_25_VASAS_ZTE,2026,25,2027-03-13,,Vasas FC,Zalaegerszegi TE FC,,,,,False
+2026_25_PAKS_KISP,2026,25,2027-03-13,,Paksi FC,Kispest–Honvéd FC,,,,,False
+2026_25_MTK_PUSKAS,2026,25,2027-03-13,,MTK Budapest,Puskás Akadémia FC,,,,,False
+2026_25_KISVARDA_UJPEST,2026,25,2027-03-13,,Kisvárda FC,Újpest FC,,,,,False
+2026_25_DVSC_NYIREGYHAZA,2026,25,2027-03-13,,Debreceni VSC,Nyíregyháza Spartacus,,,,,False
+2026_25_ETO_FTC,2026,25,2027-03-13,,ETO FC,Ferencvárosi TC,,,,,False
+2026_26_DVSC_ETO,2026,26,2027-03-20,,Debreceni VSC,ETO FC,,,,,False
+2026_26_NYIREGYHAZA_KISVARDA,2026,26,2027-03-20,,Nyíregyháza Spartacus,Kisvárda FC,,,,,False
+2026_26_UJPEST_MTK,2026,26,2027-03-20,,Újpest FC,MTK Budapest,,,,,False
+2026_26_PUSKAS_PAKS,2026,26,2027-03-20,,Puskás Akadémia FC,Paksi FC,,,,,False
+2026_26_KISP_VASAS,2026,26,2027-03-20,,Kispest–Honvéd FC,Vasas FC,,,,,False
+2026_26_ZTE_FTC,2026,26,2027-03-20,,Zalaegerszegi TE FC,Ferencvárosi TC,,,,,False
+2026_27_VASAS_PUSKAS,2026,27,2027-04-03,,Vasas FC,Puskás Akadémia FC,,,,,False
+2026_27_PAKS_UJPEST,2026,27,2027-04-03,,Paksi FC,Újpest FC,,,,,False
+2026_27_MTK_NYIREGYHAZA,2026,27,2027-04-03,,MTK Budapest,Nyíregyháza Spartacus,,,,,False
+2026_27_KISVARDA_DVSC,2026,27,2027-04-03,,Kisvárda FC,Debreceni VSC,,,,,False
+2026_27_FTC_KISP,2026,27,2027-04-03,,Ferencvárosi TC,Kispest–Honvéd FC,,,,,False
+2026_27_ETO_ZTE,2026,27,2027-04-03,,ETO FC,Zalaegerszegi TE FC,,,,,False
+2026_28_KISVARDA_ETO,2026,28,2027-04-10,,Kisvárda FC,ETO FC,,,,,False
+2026_28_DVSC_MTK,2026,28,2027-04-10,,Debreceni VSC,MTK Budapest,,,,,False
+2026_28_NYIREGYHAZA_PAKS,2026,28,2027-04-10,,Nyíregyháza Spartacus,Paksi FC,,,,,False
+2026_28_UJPEST_VASAS,2026,28,2027-04-10,,Újpest FC,Vasas FC,,,,,False
+2026_28_PUSKAS_FTC,2026,28,2027-04-10,,Puskás Akadémia FC,Ferencvárosi TC,,,,,False
+2026_28_KISP_ZTE,2026,28,2027-04-10,,Kispest–Honvéd FC,Zalaegerszegi TE FC,,,,,False
+2026_29_VASAS_NYIREGYHAZA,2026,29,2027-04-17,,Vasas FC,Nyíregyháza Spartacus,,,,,False
+2026_29_PAKS_DVSC,2026,29,2027-04-17,,Paksi FC,Debreceni VSC,,,,,False
+2026_29_MTK_KISVARDA,2026,29,2027-04-17,,MTK Budapest,Kisvárda FC,,,,,False
+2026_29_ZTE_PUSKAS,2026,29,2027-04-17,,Zalaegerszegi TE FC,Puskás Akadémia FC,,,,,False
+2026_29_FTC_UJPEST,2026,29,2027-04-17,,Ferencvárosi TC,Újpest FC,,,,,False
+2026_29_ETO_KISP,2026,29,2027-04-17,,ETO FC,Kispest–Honvéd FC,,,,,False
+2026_30_MTK_ETO,2026,30,2027-04-24,,MTK Budapest,ETO FC,,,,,False
+2026_30_KISVARDA_PAKS,2026,30,2027-04-24,,Kisvárda FC,Paksi FC,,,,,False
+2026_30_DVSC_VASAS,2026,30,2027-04-24,,Debreceni VSC,Vasas FC,,,,,False
+2026_30_NYIREGYHAZA_FTC,2026,30,2027-04-24,,Nyíregyháza Spartacus,Ferencvárosi TC,,,,,False
+2026_30_UJPEST_ZTE,2026,30,2027-04-24,,Újpest FC,Zalaegerszegi TE FC,,,,,False
+2026_30_PUSKAS_KISP,2026,30,2027-04-24,,Puskás Akadémia FC,Kispest–Honvéd FC,,,,,False
+2026_31_VASAS_KISVARDA,2026,31,2027-05-01,,Vasas FC,Kisvárda FC,,,,,False
+2026_31_PAKS_MTK,2026,31,2027-05-01,,Paksi FC,MTK Budapest,,,,,False
+2026_31_KISP_UJPEST,2026,31,2027-05-01,,Kispest–Honvéd FC,Újpest FC,,,,,False
+2026_31_ZTE_NYIREGYHAZA,2026,31,2027-05-01,,Zalaegerszegi TE FC,Nyíregyháza Spartacus,,,,,False
+2026_31_FTC_DVSC,2026,31,2027-05-01,,Ferencvárosi TC,Debreceni VSC,,,,,False
+2026_31_ETO_PUSKAS,2026,31,2027-05-01,,ETO FC,Puskás Akadémia FC,,,,,False
+2026_32_PAKS_ETO,2026,32,2027-05-15,,Paksi FC,ETO FC,,,,,False
+2026_32_MTK_VASAS,2026,32,2027-05-15,,MTK Budapest,Vasas FC,,,,,False
+2026_32_KISVARDA_FTC,2026,32,2027-05-15,,Kisvárda FC,Ferencvárosi TC,,,,,False
+2026_32_DVSC_ZTE,2026,32,2027-05-15,,Debreceni VSC,Zalaegerszegi TE FC,,,,,False
+2026_32_NYIREGYHAZA_KISP,2026,32,2027-05-15,,Nyíregyháza Spartacus,Kispest–Honvéd FC,,,,,False
+2026_32_UJPEST_PUSKAS,2026,32,2027-05-15,,Újpest FC,Puskás Akadémia FC,,,,,False
+2026_33_VASAS_PAKS,2026,33,2027-05-22,,Vasas FC,Paksi FC,,,,,False
+2026_33_PUSKAS_NYIREGYHAZA,2026,33,2027-05-22,,Puskás Akadémia FC,Nyíregyháza Spartacus,,,,,False
+2026_33_KISP_DVSC,2026,33,2027-05-22,,Kispest–Honvéd FC,Debreceni VSC,,,,,False
+2026_33_ZTE_KISVARDA,2026,33,2027-05-22,,Zalaegerszegi TE FC,Kisvárda FC,,,,,False
+2026_33_FTC_MTK,2026,33,2027-05-22,,Ferencvárosi TC,MTK Budapest,,,,,False
+2026_33_ETO_UJPEST,2026,33,2027-05-22,,ETO FC,Újpest FC,,,,,False
