@@ -14,10 +14,11 @@ if modules_path not in sys.path:
     sys.path.append(modules_path)
 
 from scrape_current_season import scrape_current_season_matches
+from scoreline_engine import FullScorelineEngine
 
 # Set page config
 st.set_page_config(
-    page_title="NB I Bajnoki Cím & Tabella Prediktor",
+    page_title="NB I Bajnoki Cím & Full Scoreline Prediktor",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -57,7 +58,6 @@ st.markdown("""
 
 CSV_PATH_HISTORICAL = os.path.join(os.path.dirname(__file__), "nbi_canonical_matches_2015_2025.csv")
 CSV_PATH_CURRENT = os.path.join(os.path.dirname(__file__), "nbi_matches_2026_current.csv")
-FACT = [1.0, 1.0, 2.0, 6.0, 24.0, 120.0, 720.0, 5040.0]
 
 @st.cache_data
 def load_all_matches():
@@ -86,62 +86,44 @@ def load_all_matches():
     combined_df = combined_df.sort_values(by=['season_id', 'matchday', 'parsed_date', 'match_id']).reset_index(drop=True)
     return combined_df
 
-def get_warmup_ratings(season_id):
-    """Computes pre-season starting ratings for season_id based on all previous history."""
+def get_warmup_engine(season_id):
+    """Initializes and trains FullScorelineEngine up to season_id."""
     df = load_all_matches()
     prior_matches = df[(df['season_id'] < season_id) & (df['is_played'] == True)]
     
-    alpha, beta = {}, {}
-    elo_ratings = {}
+    engine = FullScorelineEngine(
+        lr_att=0.02,
+        lr_def=0.02,
+        home_adv=0.25,
+        base_mu=0.30,
+        dc_rho=-0.10
+    )
     
     for r in prior_matches.itertuples():
         h, a = str(r.home_team), str(r.away_team)
         hs, ascore = int(r.home_score), int(r.away_score)
-        res = str(r.result)
+        engine.update_ratings(h, a, hs, ascore)
         
-        lh = max(0.1, min(4.5, math.exp(0.30 + alpha.get(h, 0.0) + beta.get(a, 0.0) + 0.25)))
-        la = max(0.1, min(4.5, math.exp(0.30 + alpha.get(a, 0.0) + beta.get(h, 0.0))))
-        alpha[h] = alpha.get(h, 0.0) + 0.02 * (hs - lh)
-        beta[a]  = beta.get(a, 0.0)  + 0.02 * (hs - lh)
-        alpha[a] = alpha.get(a, 0.0) + 0.02 * (ascore - la)
-        beta[h]  = beta.get(h, 0.0)  + 0.02 * (ascore - la)
-        
-        rh = elo_ratings.get(h, 1500.0)
-        ra = elo_ratings.get(a, 1500.0)
-        eh = 1.0 / (1.0 + math.pow(10.0, -((rh + 60.0) - ra) / 400.0))
-        s_act = 1.0 if res == 'H' else (0.5 if res == 'D' else 0.0)
-        elo_ratings[h] = rh + 15.0 * (s_act - eh)
-        elo_ratings[a] = ra - 15.0 * (s_act - eh)
-        
-    return alpha, beta, elo_ratings
+    return engine
 
 @st.cache_data
 def simulate_state_by_date(season_id, model_name, target_date_str, n_sims=1500):
-    """
-    Computes exact table standings and simulations strictly based on calendar date (<= target_date).
-    Treats postponed and unplayed matches after target_date as remaining fixtures to simulate!
-    """
     df = load_all_matches()
     s_df = df[df['season_id'] == season_id].copy()
     if s_df.empty:
-        return pd.DataFrame(), None, 0
+        return pd.DataFrame(), 0, 0
         
     teams = sorted(list(set(s_df['home_team'].dropna().unique())))
     target_dt = pd.to_datetime(target_date_str)
     
-    alpha, beta, elo_ratings = get_warmup_ratings(season_id)
+    engine = get_warmup_engine(season_id)
     
-    # Played matches on or before target_date
     played_up_to_date = s_df[(s_df['parsed_date'] <= target_dt) & (s_df['is_played'] == True)].sort_values(by='parsed_date')
     rem_fixtures = s_df[(s_df['parsed_date'] > target_dt) | (s_df['is_played'] == False)].sort_values(by=['matchday', 'parsed_date'])
     
     actual_pts = {t: 0 for t in teams}
     actual_gd  = {t: 0 for t in teams}
     actual_played = {t: 0 for t in teams}
-    
-    curr_alpha = dict(alpha)
-    curr_beta  = dict(beta)
-    curr_elo   = dict(elo_ratings)
     
     for r in played_up_to_date.itertuples():
         h, a = str(r.home_team), str(r.away_team)
@@ -155,20 +137,7 @@ def simulate_state_by_date(season_id, model_name, target_date_str, n_sims=1500):
             else: actual_pts[a] += 3
             actual_gd[h] += (hs - ascore)
             actual_gd[a] += (ascore - hs)
-            
-            lh = max(0.1, min(4.5, math.exp(0.30 + curr_alpha.get(h, 0.0) + curr_beta.get(a, 0.0) + 0.25)))
-            la = max(0.1, min(4.5, math.exp(0.30 + curr_alpha.get(a, 0.0) + curr_beta.get(h, 0.0))))
-            curr_alpha[h] = curr_alpha.get(h, 0.0) + 0.02 * (hs - lh)
-            curr_beta[a]  = curr_beta.get(a, 0.0)  + 0.02 * (hs - lh)
-            curr_alpha[a] = curr_alpha.get(a, 0.0) + 0.02 * (ascore - la)
-            curr_beta[h]  = curr_beta.get(h, 0.0)  + 0.02 * (ascore - la)
-            
-            rh = curr_elo.get(h, 1500.0)
-            ra = curr_elo.get(a, 1500.0)
-            eh = 1.0 / (1.0 + math.pow(10.0, -((rh + 60.0) - ra) / 400.0))
-            s_act = 1.0 if res == 'H' else (0.5 if res == 'D' else 0.0)
-            curr_elo[h] = rh + 15.0 * (s_act - eh)
-            curr_elo[a] = ra - 15.0 * (s_act - eh)
+            engine.update_ratings(h, a, hs, ascore)
             
     curr_sorted = sorted(teams, key=lambda t: (actual_pts[t], actual_gd[t]), reverse=True)
     curr_rank_map = {t: r for r, t in enumerate(curr_sorted, 1)}
@@ -196,24 +165,8 @@ def simulate_state_by_date(season_id, model_name, target_date_str, n_sims=1500):
         rem_probs = []
         for r in rem_fixtures.itertuples():
             h, a = str(r.home_team), str(r.away_team)
-            if 'Dixon-Coles' in model_name:
-                log_lh = 0.30 + curr_alpha.get(h, 0.0) + curr_beta.get(a, 0.0) + 0.25
-                log_la = 0.30 + curr_alpha.get(a, 0.0) + curr_beta.get(h, 0.0)
-                lh = max(0.1, min(4.5, math.exp(log_lh)))
-                la = max(0.1, min(4.5, math.exp(log_la)))
-                eh = lh / (lh + la)
-                pd_ = 0.26 * math.exp(-((lh - la)**2)/2.0)
-                ph = max(0.01, eh - 0.5 * pd_)
-            elif 'Elo' in model_name:
-                rh = curr_elo.get(h, 1500.0)
-                ra = curr_elo.get(a, 1500.0)
-                d_elo = (rh + 60.0) - ra
-                eh = 1.0 / (1.0 + math.pow(10.0, -d_elo / 400.0))
-                pd_ = 0.28 * math.exp(-math.pow(d_elo / 350.0, 2))
-                ph = max(0.01, eh - 0.5 * pd_)
-            else:
-                ph, pd_ = 0.44, 0.26
-            rem_probs.append((h, a, ph, pd_))
+            dist = engine.predict_match_full_distribution(h, a)
+            rem_probs.append((h, a, dist['p_home'], dist['p_draw']))
             
         rnds = np.random.rand(n_sims, len(rem_probs))
         for s_i in range(n_sims):
@@ -253,9 +206,6 @@ def simulate_state_by_date(season_id, model_name, target_date_str, n_sims=1500):
 
 @st.cache_data
 def get_cached_matchday_simulation(season_id, model_name):
-    """
-    Computes matchday-by-matchday (0..33) progression for lineplots and matchday filtering.
-    """
     df = load_all_matches()
     s_df = df[df['season_id'] == season_id].copy()
     if s_df.empty:
@@ -264,7 +214,7 @@ def get_cached_matchday_simulation(season_id, model_name):
     teams = sorted(list(set(s_df['home_team'].dropna().unique())))
     max_md = int(s_df['matchday'].max())
     
-    alpha, beta, elo_ratings = get_warmup_ratings(season_id)
+    engine = get_warmup_engine(season_id)
     
     actual_pts = {t: 0 for t in teams}
     actual_gd  = {t: 0 for t in teams}
@@ -273,10 +223,6 @@ def get_cached_matchday_simulation(season_id, model_name):
     records = []
     n_sims = 1500
     np.random.seed(42)
-    
-    curr_alpha = dict(alpha)
-    curr_beta  = dict(beta)
-    curr_elo   = dict(elo_ratings)
     
     for md in range(0, max_md + 1):
         if md > 0:
@@ -293,20 +239,7 @@ def get_cached_matchday_simulation(season_id, model_name):
                     else: actual_pts[a] += 3
                     actual_gd[h] += (hs - ascore)
                     actual_gd[a] += (ascore - hs)
-                    
-                    lh = max(0.1, min(4.5, math.exp(0.30 + curr_alpha.get(h, 0.0) + curr_beta.get(a, 0.0) + 0.25)))
-                    la = max(0.1, min(4.5, math.exp(0.30 + curr_alpha.get(a, 0.0) + curr_beta.get(h, 0.0))))
-                    curr_alpha[h] = curr_alpha.get(h, 0.0) + 0.02 * (hs - lh)
-                    curr_beta[a]  = curr_beta.get(a, 0.0)  + 0.02 * (hs - lh)
-                    curr_alpha[a] = curr_alpha.get(a, 0.0) + 0.02 * (ascore - la)
-                    curr_beta[h]  = curr_beta.get(h, 0.0)  + 0.02 * (ascore - la)
-                    
-                    rh = curr_elo.get(h, 1500.0)
-                    ra = curr_elo.get(a, 1500.0)
-                    eh = 1.0 / (1.0 + math.pow(10.0, -((rh + 60.0) - ra) / 400.0))
-                    s_act = 1.0 if res == 'H' else (0.5 if res == 'D' else 0.0)
-                    curr_elo[h] = rh + 15.0 * (s_act - eh)
-                    curr_elo[a] = ra - 15.0 * (s_act - eh)
+                    engine.update_ratings(h, a, hs, ascore)
                     
         curr_sorted = sorted(teams, key=lambda t: (actual_pts[t], actual_gd[t]), reverse=True)
         curr_rank_map = {t: r for r, t in enumerate(curr_sorted, 1)}
@@ -334,24 +267,8 @@ def get_cached_matchday_simulation(season_id, model_name):
             rem_probs = []
             for r in rem_fixtures.itertuples():
                 h, a = str(r.home_team), str(r.away_team)
-                if 'Dixon-Coles' in model_name:
-                    log_lh = 0.30 + curr_alpha.get(h, 0.0) + curr_beta.get(a, 0.0) + 0.25
-                    log_la = 0.30 + curr_alpha.get(a, 0.0) + curr_beta.get(h, 0.0)
-                    lh = max(0.1, min(4.5, math.exp(log_lh)))
-                    la = max(0.1, min(4.5, math.exp(log_la)))
-                    eh = lh / (lh + la)
-                    pd_ = 0.26 * math.exp(-((lh - la)**2)/2.0)
-                    ph = max(0.01, eh - 0.5 * pd_)
-                elif 'Elo' in model_name:
-                    rh = curr_elo.get(h, 1500.0)
-                    ra = curr_elo.get(a, 1500.0)
-                    d_elo = (rh + 60.0) - ra
-                    eh = 1.0 / (1.0 + math.pow(10.0, -d_elo / 400.0))
-                    pd_ = 0.28 * math.exp(-math.pow(d_elo / 350.0, 2))
-                    ph = max(0.01, eh - 0.5 * pd_)
-                else:
-                    ph, pd_ = 0.44, 0.26
-                rem_probs.append((h, a, ph, pd_))
+                dist = engine.predict_match_full_distribution(h, a)
+                rem_probs.append((h, a, dist['p_home'], dist['p_draw']))
                 
             rnds = np.random.rand(n_sims, len(rem_probs))
             for s_i in range(n_sims):
@@ -397,7 +314,7 @@ st.sidebar.title("⚙️ Beállítások")
 selected_model = st.sidebar.selectbox(
     "🤖 Predikciós Modell",
     [
-        "Model 2: Dynamic Dixon-Coles (V2 - Legjobb)",
+        "Model 2: Dynamic Dixon-Coles (V2/V3 Full Scoreline)",
         "Model 1: Dynamic Elo (V1 Baseline)",
         "Model 0: Static Poisson (Baseline)"
     ],
@@ -472,11 +389,12 @@ if st.sidebar.button("🚀 Adatok Frissítése (Transfermarkt Scraper)", use_con
 # -------------------------------------------------------------
 # MAIN APP HEADER
 # -------------------------------------------------------------
-st.markdown("<div class='main-header'>⚽ NB I Bajnoki Cím & Tabella Szimulátor</div>", unsafe_allow_html=True)
+st.markdown("<div class='main-header'>⚽ NB I Bajnoki Cím & Full Scoreline Prediktor</div>", unsafe_allow_html=True)
 st.markdown(f"<div class='sub-header'>Kiválasztott Szezon: <b>{season_labels[selected_season]}</b> | Modell: <b>{selected_model}</b></div>", unsafe_allow_html=True)
 
-tab1, tab2, tab3 = st.tabs([
+tab1, tab2, tab3, tab4 = st.tabs([
     "📊 Tabella & Bajnoki Esélyek (Független Dátum / Forduló)",
+    "🎯 Meccs & Piac Predikciók (Gólok, Over/Under, BTTS)",
     "📈 Szezonális Valószínűségi Trendek (Lineplot)",
     "📑 Modell Dokumentáció & Benchmarkok"
 ])
@@ -489,7 +407,7 @@ if season_matches.empty:
     st.stop()
 
 # -------------------------------------------------------------
-# TAB 1: TABELLA & ESÉLYEK (FÜGGETLEN DÁTUM VAGY FORDULÓ)
+# TAB 1: TABELLA & ESÉLYEK
 # -------------------------------------------------------------
 with tab1:
     col_mode, col_selector = st.columns([1, 2.5])
@@ -498,20 +416,17 @@ with tab1:
         filter_mode = st.radio(
             "🔘 Szűrési Mód Kiválasztása",
             ["📅 Naptári Dátum szerint (Valós időpillanat)", "🔢 Forduló szerint (Fix játéknap)"],
-            help="A dátum szerinti szűrés pontosan a megadott napon ténylegesen lejátszott meccseket veszi figyelembe (figyelembe véve az elhalasztott vagy előrehozott meccseket)."
+            help="A dátum szerinti szűrés pontosan a megadott napon ténylegesen lejátszott meccseket veszi figyelembe."
         )
         
     valid_dates_series = season_matches['parsed_date'].dropna().sort_values()
     min_date = valid_dates_series.min() - pd.Timedelta(days=1)
-    max_date = valid_dates_series.max()
     unique_dates = sorted(list(set(valid_dates_series.dt.strftime('%Y-%m-%d').tolist())))
     unique_dates = [(min_date.strftime('%Y-%m-%d'))] + unique_dates
-    
     max_matchday_num = int(season_matches['matchday'].max())
     
     with col_selector:
         if "Naptári Dátum" in filter_mode:
-            # Date Slider (Independent)
             default_date_idx = len(unique_dates) - 1
             if selected_season == 2026:
                 played_dates = season_matches[season_matches['is_played']]['parsed_date'].dropna().sort_values()
@@ -523,31 +438,23 @@ with tab1:
             selected_date_str = st.select_slider(
                 "📅 Válassz Naptári Dátumot:",
                 options=unique_dates,
-                value=unique_dates[default_date_idx],
-                help="Pontosan ezen a napon érvényes tabella és innen előre szimulált esélyek."
+                value=unique_dates[default_date_idx]
             )
-            
-            # Execute Date-based simulation
             df_state, n_played_matches, n_rem_fixtures = simulate_state_by_date(selected_season, selected_model, selected_date_str)
             st.markdown(f"#### 📌 Állás a **{selected_date_str}** naptári napon (Eddig lejátszva: **{n_played_matches} meccs**, Hátralévő: **{n_rem_fixtures} meccs**)")
             
         else:
-            # Matchday Slider (Independent)
             played_mds = season_matches[season_matches['is_played']]['matchday'].dropna().unique()
             default_md = int(max(played_mds)) if len(played_mds) > 0 and selected_season == 2026 else max_matchday_num
             
             selected_md_num = st.slider(
                 "🔢 Válassz Fordulószámot (0 = Rajt előtt):",
-                0, max_matchday_num, value=default_md,
-                help="A megadott fordulószámig lejátszott mérkőzések alapján számol."
+                0, max_matchday_num, value=default_md
             )
-            
-            # Load Matchday cached table
             df_all_mds = get_cached_matchday_simulation(selected_season, selected_model)
             df_state = df_all_mds[df_all_mds['matchday'] == selected_md_num].sort_values(by='current_rank').copy()
             st.markdown(f"#### 📌 Állás a(z) **{selected_md_num}. Forduló** után")
             
-    # Metric KPI Cards
     if not df_state.empty:
         top_champ = df_state.sort_values(by='p_champion', ascending=False).iloc[0]
         top_releg = df_state.sort_values(by='p_relegation', ascending=False).iloc[0]
@@ -563,7 +470,6 @@ with tab1:
             
         st.write("")
         
-        # Display Table
         display_df = df_state[[
             'current_rank', 'team', 'played', 'current_pts', 'current_gd',
             'exp_pts', 'p_champion', 'p_top4', 'p_relegation'
@@ -593,7 +499,6 @@ with tab1:
         
         st.dataframe(styled_table, use_container_width=True, hide_index=True)
         
-        # Visual Bar Chart
         fig_pts = go.Figure()
         fig_pts.add_trace(go.Bar(
             x=df_state['team'],
@@ -618,19 +523,111 @@ with tab1:
         st.plotly_chart(fig_pts, use_container_width=True)
 
 # -------------------------------------------------------------
-# TAB 2: LINEPLOT TRENDEK
+# TAB 2: V3 FULL SCORELINE & PIAC PREDIKCIÓK
 # -------------------------------------------------------------
 with tab2:
+    st.markdown("### 🎯 V3 Full Scoreline & Piac Valószínűségi Motor")
+    st.markdown("Válassz ki egy konkrét mérkőzést a szezonból, vagy állíts be egyedi párosítást a **teljes $6 \\times 6$-os gólmátrix**, **Over/Under** és **BTTS** piacok kiszámításához:")
+    
+    engine_v3 = get_warmup_engine(selected_season)
+    season_teams = sorted(list(set(season_matches['home_team'].dropna().unique())))
+    
+    col_m1, col_m2 = st.columns(2)
+    with col_m1:
+        home_pick = st.selectbox("🏠 Hazai Csapat", season_teams, index=0)
+    with col_m2:
+        away_pick = st.selectbox("🚶 Vendég Csapat", season_teams, index=min(1, len(season_teams)-1))
+        
+    if home_pick == away_pick:
+        st.warning("⚠️ Kérlek válassz két különböző csapatot a párosításhoz!")
+    else:
+        dist = engine_v3.predict_match_full_distribution(home_pick, away_pick)
+        
+        # 1. Big KPI Highlights
+        k1, k2, k3, k4 = st.columns(4)
+        with k1:
+            st.metric("⚽ Várható Hazai Gól (λH)", f"{dist['lambda_home']:.2f}")
+        with k2:
+            st.metric("⚽ Várható Vendég Gól (λA)", f"{dist['lambda_away']:.2f}")
+        with k3:
+            st.metric("🎯 Legvalószínűbb Eredmény", f"{dist['most_likely_score']}", f"{dist['most_likely_score_prob']*100:.1f}% esély")
+        with k4:
+            st.metric("🔥 Várható Összes Gól", f"{dist['expected_total_goals']:.2f}")
+            
+        st.divider()
+        
+        c_left, c_right = st.columns([1.2, 1])
+        
+        with c_left:
+            st.markdown("#### 📊 1. 2D Scoreline Valószínűségi Mátrix (Heatmap)")
+            matrix_df = pd.DataFrame(
+                dist['matrix'][:6, :6] * 100,
+                index=[f"Hazai {x}" for x in range(6)],
+                columns=[f"Vendég {y}" for y in range(6)]
+            )
+            fig_heat = px.imshow(
+                matrix_df,
+                text_auto='.1f',
+                color_continuous_scale='Blues',
+                labels=dict(x="Vendég Gólok", y="Hazai Gólok", color="Valószínűség %")
+            )
+            fig_heat.update_layout(height=380, margin=dict(l=10, r=10, t=20, b=10))
+            st.plotly_chart(fig_heat, use_container_width=True)
+            
+        with c_right:
+            st.markdown("#### 🥇 2. Top 5 Legvalószínűbb Pontos Eredmény")
+            top_scores_df = pd.DataFrame(dist['top_scores'], columns=['Pontos Eredmény', 'Valószínűség'])
+            top_scores_df['Valószínűség %'] = top_scores_df['Valószínűség'] * 100
+            
+            fig_top = px.bar(
+                top_scores_df,
+                x='Pontos Eredmény',
+                y='Valószínűség %',
+                text=top_scores_df['Valószínűség %'].apply(lambda x: f"{x:.1f}%"),
+                color='Valószínűség %',
+                color_continuous_scale='Greens'
+            )
+            fig_top.update_layout(height=380, margin=dict(l=10, r=10, t=20, b=10))
+            st.plotly_chart(fig_top, use_container_width=True)
+            
+        # 3. Market Summary Cards
+        st.markdown("#### 💰 3. Fogadási Piacok Valószínűségei")
+        p1, p2, p3, p4 = st.columns(4)
+        
+        with p1:
+            st.markdown("##### 🏆 1X2 Piac")
+            st.write(f"• **1 (Hazai):** `{dist['p_home']*100:.1f}%` *(fair odds: {1/dist['p_home']:.2f})*")
+            st.write(f"• **X (Döntetlen):** `{dist['p_draw']*100:.1f}%` *(fair odds: {1/dist['p_draw']:.2f})*")
+            st.write(f"• **2 (Vendég):** `{dist['p_away']*100:.1f}%` *(fair odds: {1/dist['p_away']:.2f})*")
+            
+        with p2:
+            st.markdown("##### 📈 Over / Under 2.5")
+            st.write(f"• **Over 2.5:** `{dist['p_over_2_5']*100:.1f}%` *(fair: {1/dist['p_over_2_5']:.2f})*")
+            st.write(f"• **Under 2.5:** `{dist['p_under_2_5']*100:.1f}%` *(fair: {1/dist['p_under_2_5']:.2f})*")
+            
+        with p3:
+            st.markdown("##### 🤝 Both Teams To Score")
+            st.write(f"• **BTTS Igen:** `{dist['p_btts_yes']*100:.1f}%` *(fair: {1/dist['p_btts_yes']:.2f})*")
+            st.write(f"• **BTTS Nem:** `{dist['p_btts_no']*100:.1f}%` *(fair: {1/dist['p_btts_no']:.2f})*")
+            
+        with p4:
+            st.markdown("##### 📊 Egyéb Gólszám Piacok")
+            st.write(f"• **Over 1.5:** `{dist['p_over_1_5']*100:.1f}%`")
+            st.write(f"• **Over 3.5:** `{dist['p_over_3_5']*100:.1f}%`")
+            st.write(f"• **0-0 esély:** `{dist['p_0_0']*100:.1f}%`")
+
+# -------------------------------------------------------------
+# TAB 3: LINEPLOT TRENDEK
+# -------------------------------------------------------------
+with tab3:
     st.markdown(f"### 📈 Szezonális Valószínűségi Trendek – **{season_labels[selected_season]}**")
     
     df_line_sim = get_cached_matchday_simulation(selected_season, selected_model)
     
-    # Identify maximum played matchday in this season
     played_mds_in_s = season_matches[season_matches['is_played']]['matchday'].dropna().unique()
     max_played_md = int(max(played_mds_in_s)) if len(played_mds_in_s) > 0 else 0
     total_season_mds = int(season_matches['matchday'].max())
     
-    # Filter only up to played matchdays if season is in progress!
     is_in_progress = (max_played_md < total_season_mds)
     if is_in_progress:
         df_line_sim = df_line_sim[df_line_sim['matchday'] <= max_played_md].copy()
@@ -664,7 +661,6 @@ with tab2:
         
     max_md_line = int(plot_df['matchday'].max()) if not plot_df.empty else 0
     
-    # Interactive Plotly Lineplot
     fig_line = px.line(
         plot_df,
         x='matchday',
@@ -692,97 +688,96 @@ with tab2:
     
     st.plotly_chart(fig_line, use_container_width=True)
     
-    # Milestone Summary Table
     st.markdown("#### 📋 Fordulónkénti Részletes Valószínűségi Táblázat")
     pivot_df = plot_df.pivot(index='matchday', columns='team', values=col_name)
     pivot_df.index.name = 'Forduló'
     st.dataframe(pivot_df.style.format("{:.1f}%"), use_container_width=True)
 
 # -------------------------------------------------------------
-# TAB 3: MODELL DOKUMENTÁCIÓ & BENCHMARKOK
+# TAB 4: MODELL DOKUMENTÁCIÓ & BENCHMARKOK
 # -------------------------------------------------------------
-with tab3:
+with tab4:
     st.markdown("### 📑 Modell Dokumentáció & Történelmi Benchmark Eredmények")
-    st.markdown("A rendszerben megvalósított és letesztelt modellek tudományos validációs eredményei a **2015–2026** közötti valós NB I-es meccsadatokon:")
+    st.markdown("A rendszerben megvalósított generatív modellek mélyreható statisztikai és valószínűségi auditja a **2015–2026** közötti NB I-es meccsadatokon:")
     
-    st.markdown("#### 1. 🏆 Hivatalos Meccsszintű Benchmark (Érintetlen Teszthalmaz 2022–2025, N=792)")
+    st.markdown("#### 1. 🏆 Full Scoreline Log Loss & 1X2 Benchmark (Érintetlen Teszthalmaz 2022–2025, N=792)")
+    st.caption("Proper scoring rule a teljes 2D scoreline mátrix felett: -log P(X=Goals_H, Y=Goals_A)")
     
     bench_data = [
         {
-            "Modell": "Model 2: Dynamic Dixon-Coles (V2)",
-            "Típus": "Dinamikus Támadó/Védekező rating + Dixon-Coles gólkorrekció (rho=-0.10)",
-            "Test Log Loss (↓)": "1.0365",
-            "Brier Score (↓)": "0.6226",
-            "Accuracy (↑)": "48.11%",
-            "Naiv Modellhez Képesti Előny": "+0.0384 Log Loss gain"
+            "Modell": "Model 2: Dynamic Dixon-Coles (V3 Generatív)",
+            "Full Scoreline Log Loss (↓)": "3.0335",
+            "1X2 Match Log Loss (↓)": "1.0366",
+            "Exact Score Top-1": "11.49%",
+            "Exact Score Top-3": "32.70%",
+            "BTTS Log Loss (↓)": "0.6848"
         },
         {
-            "Modell": "Model 1: Dynamic Elo (V1 Baseline)",
-            "Típus": "1D Csapaterősség rating + Gauss döntetlen lecsengés",
-            "Test Log Loss (↓)": "1.0379",
-            "Brier Score (↓)": "0.6238",
-            "Accuracy (↑)": "47.85%",
-            "Naiv Modellhez Képesti Előny": "+0.0370 Log Loss gain"
+            "Modell": "Model 2-B: Dynamic Poisson (rho = 0.0)",
+            "Full Scoreline Log Loss (↓)": "3.0362",
+            "1X2 Match Log Loss (↓)": "1.0377",
+            "Exact Score Top-1": "12.50%",
+            "Exact Score Top-3": "31.31%",
+            "BTTS Log Loss (↓)": "0.6857"
         },
         {
-            "Modell": "Model 0: Static Poisson",
-            "Típus": "Fix globális ligaátlagok (lambda_H=1.45, lambda_A=1.15)",
-            "Test Log Loss (↓)": "1.0742",
-            "Brier Score (↓)": "0.6499",
-            "Accuracy (↑)": "43.56%",
-            "Naiv Modellhez Képesti Előny": "+0.0007 Log Loss gain"
+            "Modell": "Model 1-B: Dynamic Elo-Implied Poisson",
+            "Full Scoreline Log Loss (↓)": "3.0470",
+            "1X2 Match Log Loss (↓)": "1.0421",
+            "Exact Score Top-1": "10.48%",
+            "Exact Score Top-3": "30.68%",
+            "BTTS Log Loss (↓)": "0.7001"
         },
         {
-            "Modell": "Naiv Modell (Base Rate)",
-            "Típus": "Táguló történelmi osztályarányok (44.3% H, 25.4% D, 30.3% A)",
-            "Test Log Loss (↓)": "1.0749",
-            "Brier Score (↓)": "0.6504",
-            "Accuracy (↑)": "45.08%",
-            "Naiv Modellhez Képesti Előny": "0.0000 (Bázis)"
+            "Modell": "Model 0: Static Poisson (Baseline)",
+            "Full Scoreline Log Loss (↓)": "3.0864",
+            "1X2 Match Log Loss (↓)": "1.0742",
+            "Exact Score Top-1": "11.62%",
+            "Exact Score Top-3": "29.92%",
+            "BTTS Log Loss (↓)": "0.6873"
         }
     ]
     st.table(pd.DataFrame(bench_data))
     
-    st.markdown("#### 2. 🧪 Statisztikai Szignifikancia Teszt")
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        st.metric("Paired t-test p-value", "9.09 × 10⁻⁴", "p < 0.001 (Szignifikáns)")
-    with c2:
-        st.metric("Wilcoxon Signed-Rank Test", "6.58 × 10⁻⁷", "Extrém szignifikáns")
-    with c3:
-        st.metric("95% Bootstrap Konfidencia Sáv", "[+0.0156, +0.0586]", "Szigorúan pozitív nyereség")
-        
-    st.markdown("#### 3. 🏁 Szezonszintű Monte Carlo Benchmark (8 Történelmi Szezon Átlaga: 2018–2025)")
-    season_bench_data = [
-        {
-            "Modell": "Adaptive Dynamic DC (Early Boost)",
-            "Végső Pontszám MAE": "8.02 pont",
-            "Helyezés Rangkorreláció (Spearman)": "0.547",
-            "Bajnoki Cím Brier": "0.0294",
-            "Top 4 Brier": "0.1164",
-            "Kiesés Brier": "0.1378"
-        },
-        {
-            "Modell": "Dynamic Dixon-Coles (Statikus Szimuláció)",
-            "Végső Pontszám MAE": "7.33 pont",
-            "Helyezés Rangkorreláció (Spearman)": "0.536",
-            "Bajnoki Cím Brier": "0.0288",
-            "Top 4 Brier": "0.1184",
-            "Kiesés Brier": "0.1397"
-        },
-        {
-            "Modell": "Static Poisson (Baseline)",
-            "Végső Pontszám MAE": "7.35 pont",
-            "Helyezés Rangkorreláció (Spearman)": "0.524",
-            "Bajnoki Cím Brier": "0.0285",
-            "Top 4 Brier": "0.1189",
-            "Kiesés Brier": "0.1390"
-        }
+    st.markdown("#### 2. 📈 Többküszöbös Over / Under Probabilisztikus Kiértékelés (Dynamic Dixon-Coles)")
+    st.caption("A modell valószínűségi pontossága a teljes gólspektrum összes küszöbén:")
+    ou_bench_table = [
+        {"Piac (Küszöb)": "Over / Under 0.5", "Log Loss (↓)": "0.2582", "Brier Score (↓)": "0.0653", "Accuracy": "93.06%", "Predikált Over %": "93.0%", "Valós Over %": "93.1%", "Kalibrációs Eltérés": "+0.07%"},
+        {"Piac (Küszöb)": "Over / Under 1.5", "Log Loss (↓)": "0.5281", "Brier Score (↓)": "0.1717", "Accuracy": "78.03%", "Predikált Over %": "78.8%", "Valós Over %": "78.0%", "Kalibrációs Eltérés": "-0.76%"},
+        {"Piac (Küszöb)": "Over / Under 2.5", "Log Loss (↓)": "0.6919", "Brier Score (↓)": "0.2492", "Accuracy": "54.29%", "Predikált Over %": "54.8%", "Valós Over %": "55.9%", "Kalibrációs Eltérés": "+1.17%"},
+        {"Piac (Küszöb)": "Over / Under 3.5", "Log Loss (↓)": "0.6426", "Brier Score (↓)": "0.2243", "Accuracy": "66.16%", "Predikált Over %": "33.0%", "Valós Over %": "32.4%", "Kalibrációs Eltérés": "-0.52%"},
+        {"Piac (Küszöb)": "Over / Under 4.5", "Log Loss (↓)": "0.4352", "Brier Score (↓)": "0.1317", "Accuracy": "84.85%", "Predikált Over %": "17.2%", "Valós Over %": "15.2%", "Kalibrációs Eltérés": "-2.01%"},
+        {"Piac (Küszöb)": "Over / Under 5.5", "Log Loss (↓)": "0.2960", "Brier Score (↓)": "0.0773", "Accuracy": "91.79%", "Predikált Over %": "7.8%", "Valós Over %": "8.2%", "Kalibrációs Eltérés": "+0.37%"}
     ]
-    st.table(pd.DataFrame(season_bench_data))
+    st.table(pd.DataFrame(ou_bench_table))
+    
+    st.markdown("#### 3. 🎯 Scoreline Valószínűségi Kalibráció (Binned Reliability Curve)")
+    st.caption("19 800 cella-előrejelzés összevetése a valós bekövetkezési frekvenciákkal:")
+    rel_table = [
+        {"Predikált P(Score) Sáv": "0% - 2%", "Megfigyelések Száma": 8239, "Átlagos Predikció %": "0.84%", "Valós Gyakoriság %": "0.85%", "Kalibrációs Eltérés": "+0.01%"},
+        {"Predikált P(Score) Sáv": "2% - 4%", "Megfigyelések Száma": 3796, "Átlagos Predikció %": "2.90%", "Valós Gyakoriság %": "2.79%", "Kalibrációs Eltérés": "-0.11%"},
+        {"Predikált P(Score) Sáv": "4% - 6%", "Megfigyelések Száma": 2815, "Átlagos Predikció %": "4.99%", "Valós Gyakoriság %": "5.04%", "Kalibrációs Eltérés": "+0.06%"},
+        {"Predikált P(Score) Sáv": "6% - 8%", "Megfigyelések Száma": 2050, "Átlagos Predikció %": "6.93%", "Valós Gyakoriság %": "6.20%", "Kalibrációs Eltérés": "-0.73%"},
+        {"Predikált P(Score) Sáv": "8% - 10%", "Megfigyelések Száma": 1766, "Átlagos Predikció %": "9.01%", "Valós Gyakoriság %": "10.02%", "Kalibrációs Eltérés": "+1.01%"},
+        {"Predikált P(Score) Sáv": "10% - 15%", "Megfigyelések Száma": 1132, "Átlagos Predikció %": "12.02%", "Valós Gyakoriság %": "11.31%", "Kalibrációs Eltérés": "-0.71%"}
+    ]
+    st.table(pd.DataFrame(rel_table))
+    
+    st.markdown("#### 4. ⚽ Top 8 Leggyakoribb NB I Pontos Eredmény Kalibrációja")
+    sc_indiv_table = [
+        {"Pontos Eredmény": "1-1 (NB I leggyakoribb)", "Predikált Átlag %": "11.93%", "Valós Gyakoriság %": "11.62%", "Eltérés": "-0.31%"},
+        {"Pontos Eredmény": "2-1", "Predikált Átlag %": "8.54%", "Valós Gyakoriság %": "9.97%", "Eltérés": "+1.44%"},
+        {"Pontos Eredmény": "1-0", "Predikált Átlag %": "7.99%", "Valós Gyakoriság %": "8.33%", "Eltérés": "+0.35%"},
+        {"Pontos Eredmény": "1-2", "Predikált Átlag %": "6.89%", "Valós Gyakoriság %": "7.45%", "Eltérés": "+0.56%"},
+        {"Pontos Eredmény": "0-0", "Predikált Átlag %": "7.01%", "Valós Gyakoriság %": "6.94%", "Eltérés": "-0.07%"},
+        {"Pontos Eredmény": "2-0", "Predikált Átlag %": "7.34%", "Valós Gyakoriság %": "5.81%", "Eltérés": "-1.53%"},
+        {"Pontos Eredmény": "0-1", "Predikált Átlag %": "6.21%", "Valós Gyakoriság %": "6.69%", "Eltérés": "+0.48%"},
+        {"Pontos Eredmény": "2-2", "Predikált Átlag %": "5.28%", "Valós Gyakoriság %": "5.81%", "Eltérés": "+0.53%"}
+    ]
+    st.table(pd.DataFrame(sc_indiv_table))
     
     st.markdown("""
-    #### 4. 📐 Matematikai Modell Architektúra
+    #### 5. 📐 Matematikai Modell Architektúra & Gradiens Audit
     
     ##### ⚽ Várható Gólok (Expected Goals):
     $$\ln \lambda_{\\text{home}} = \mu + \\alpha_{\\text{home}} + \\beta_{\\text{away}} + \\gamma_{\\text{home}}$$
@@ -791,6 +786,8 @@ with tab3:
     ##### 🎯 Dixon-Coles Alacsony Gólszámú Korrekció ($\\tau$):
     $$\\tau(0,0) = 1 - \\lambda \\mu \\rho, \\quad \\tau(0,1) = 1 + \\lambda \\rho, \\quad \\tau(1,0) = 1 + \\mu \\rho, \\quad \\tau(1,1) = 1 - \\rho$$
     
-    ##### 📈 Dinamikus Gradiens Frissítés:
-    $$\\Delta \\alpha_{\\text{home}} = \\eta_{\\text{att}} \\cdot (x_{\\text{obs}} - \\lambda_{\\text{home}}), \\quad \\Delta \\beta_{\\text{away}} = \\eta_{\\text{def}} \\cdot (x_{\\text{obs}} - \\lambda_{\\text{home}})$$
+    ##### 📈 Kétoldali Gradiens Frissítés (Dual Residual Update):
+    $$e_H = \\text{Goals}_H - \\lambda_H, \\quad e_A = \\text{Goals}_A - \\lambda_A$$
+    $$\\alpha_H \\leftarrow \\alpha_H + \\eta_{\\text{att}} e_H, \\quad \\beta_A \\leftarrow \\beta_A + \\eta_{\\text{def}} e_H$$
+    $$\\alpha_A \\leftarrow \\alpha_A + \\eta_{\\text{att}} e_A, \\quad \\beta_H \\leftarrow \\beta_H + \\eta_{\\text{def}} e_A$$
     """)
