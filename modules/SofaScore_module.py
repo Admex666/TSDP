@@ -482,4 +482,50 @@ def fetch_match_details(event_id: int, referer: str = "https://www.sofascore.com
         'start_timestamp': event.get('startTimestamp'),
     }
     
-    return details
+    return details
+
+
+# 8. Match Comments / Play-by-Play DataFrame
+def create_comments_df(event_id: int, referer: str = "https://www.sofascore.com/") -> pd.DataFrame:
+    """
+    Fetch play-by-play comments and micro-events for a given event ID and return as DataFrame.
+    """
+    url = f"https://www.sofascore.com/api/v1/event/{event_id}/comments"
+    data = scrape_sofascore(url, referer=referer)
+    
+    if not data or 'comments' not in data:
+        return pd.DataFrame()
+        
+    comments_list = []
+    for c in data['comments']:
+        player = c.get('player') or {}
+        
+        row = {
+            'comment_id': c.get('id'),
+            'time': c.get('time'),
+            'period_name': c.get('periodName'),
+            'type': c.get('type'),
+            'text': c.get('text'),
+            'is_home': c.get('isHome'),
+            'player_id': player.get('id'),
+            'player_name': player.get('name'),
+            'player_slug': player.get('slug'),
+            'player_position': player.get('position'),
+            'player_jersey': player.get('jerseyNumber'),
+        }
+        comments_list.append(row)
+        
+    df = pd.DataFrame(comments_list)
+    # Sort chronologically if time is present
+    if not df.empty and 'time' in df.columns:
+        df = df.sort_values(by=['time', 'comment_id'], ascending=[True, True]).reset_index(drop=True)
+        
+    return df
+
+
+def fetch_match_comments(event_id: int, referer: str = "https://www.sofascore.com/") -> pd.DataFrame:
+    """
+    Alias for create_comments_df to maintain naming consistency with other fetch_* functions.
+    """
+    return create_comments_df(event_id, referer=referer)
+
