@@ -599,15 +599,16 @@ def fetch_match_passes(event_id: int, referer: str = "https://www.sofascore.com/
 
 
 # 10. Live Match Stream Recorder & Parser
-def record_live_match_stream(event_id: int, duration_seconds: int = 5400, output_file: Optional[str] = None) -> List[Dict[str, Any]]:
+def record_live_match_stream(event_id: Union[int, str], duration_seconds: int = 5400, output_file: Optional[str] = None, match_url: Optional[str] = None) -> List[Dict[str, Any]]:
     """
     Record real-time live match stream (Sportradar timeline, ball coordinates, possession, micro-events).
     Uses headless Chrome CDP to capture the WebSocket data stream.
     
     Args:
-        event_id: SofaScore match ID
+        event_id: SofaScore match ID (or URL)
         duration_seconds: How long to record in seconds (default 5400s = 90 mins)
         output_file: Optional path to save JSON output
+        match_url: Optional explicit SofaScore match URL
         
     Returns:
         List of captured raw/parsed event records
@@ -620,6 +621,28 @@ def record_live_match_stream(event_id: int, duration_seconds: int = 5400, output
         
     import base64
     
+    target_url = match_url
+    clean_id = str(event_id)
+    
+    if isinstance(event_id, str) and ("sofascore.com" in event_id or "http" in event_id):
+        target_url = event_id
+        if "#id:" in event_id:
+            clean_id = event_id.split("#id:")[-1]
+    
+    if not target_url:
+        try:
+            event_info = scrape_sofascore(f"https://www.sofascore.com/api/v1/event/{clean_id}")
+            if event_info and "event" in event_info:
+                slug = event_info["event"].get("slug")
+                custom_id = event_info["event"].get("customId")
+                if slug and custom_id:
+                    target_url = f"https://www.sofascore.com/hu/football/match/{slug}/{custom_id}#id:{clean_id}"
+        except Exception:
+            pass
+            
+    if not target_url:
+        target_url = f"https://www.sofascore.com/hu/football/match/match/#id:{clean_id}"
+    
     options = Options()
     options.add_argument("--headless=new")
     options.add_argument("--disable-gpu")
@@ -630,11 +653,10 @@ def record_live_match_stream(event_id: int, duration_seconds: int = 5400, output
     options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
     
     driver = webdriver.Chrome(options=options)
-    url = f"https://www.sofascore.com/hu/football/match/match/#id:{event_id}"
     
     try:
-        driver.get(url)
-        time.sleep(4)
+        driver.get(target_url)
+        time.sleep(3)
         
         recorded_events = []
         start_time = time.time()
@@ -688,6 +710,7 @@ def parse_live_stream_to_df(stream_data_or_file: Union[str, List[Dict[str, Any]]
     Returns:
         pd.DataFrame with parsed real-time events, coordinates, situations, and timestamps.
     """
+    import re
     if isinstance(stream_data_or_file, str):
         with open(stream_data_or_file, "r", encoding="utf-8") as f:
             events_data = json.load(f)
@@ -700,51 +723,177 @@ def parse_live_stream_to_df(stream_data_or_file: Union[str, List[Dict[str, Any]]
         raw = ev.get('raw_payload', '')
         time_str = ev.get('time_str', '')
         
-        if 'match_timelinedelta' in raw:
-            parts = raw.split('}{')
-            for part in parts:
-                p = part if part.startswith('{') else '{' + part
-                if not p.endswith('}'):
-                    p = p + '}'
-                try:
-                    obj = json.loads(p)
-                    for d in obj.get('data', []):
-                        for sub_ev in d.get('data', {}).get('events', []):
-                            coords = sub_ev.get('coordinates', [])
-                            start_x, start_y, end_x, end_y = None, None, None, None
+        if 'match_timelinedelta' in raw or 'match_timeline' in raw:
+            json_matches = re.findall(r'\{.*\}', raw)
+            for jm in json_matches:
+                decoder = json.JSONDecoder()
+                idx = 0
+                while idx < len(jm):
+                    while idx < len(jm) and jm[idx] != '{':
+                        idx += 1
+                    if idx >= len(jm):
+                        break
+                    try:
+                        obj, end_idx = decoder.raw_decode(jm[idx:])
+                        idx += end_idx
+                        
+                        data_entries = obj.get('data', []) if isinstance(obj, dict) else []
+                        if isinstance(data_entries, dict):
+                            data_entries = [data_entries]
                             
-                            if coords and len(coords) >= 1:
-                                end_x = coords[0].get('X')
-                                end_y = coords[0].get('Y')
-                                if len(coords) >= 2:
-                                    start_x = coords[-1].get('X')
-                                    start_y = coords[-1].get('Y')
-                            elif sub_ev.get('X') is not None and sub_ev.get('Y') is not None:
-                                end_x = sub_ev.get('X')
-                                end_y = sub_ev.get('Y')
+                        for d in data_entries:
+                            if not isinstance(d, dict):
+                                continue
+                            events_inner = d.get('data', {}).get('events', []) if isinstance(d.get('data'), dict) else []
+                            for sub_ev in events_inner:
+                                if not isinstance(sub_ev, dict):
+                                    continue
+                                coords = sub_ev.get('coordinates', [])
+                                start_x, start_y, end_x, end_y = None, None, None, None
+                                
+                                if coords and len(coords) >= 1:
+                                    end_x = coords[0].get('X')
+                                    end_y = coords[0].get('Y')
+                                    if len(coords) >= 2:
+                                        start_x = coords[-1].get('X')
+                                        start_y = coords[-1].get('Y')
+                                elif sub_ev.get('X') is not None and sub_ev.get('Y') is not None:
+                                    end_x = sub_ev.get('X')
+                                    end_y = sub_ev.get('Y')
 
-                            row = {
-                                'time_captured': time_str,
-                                'match_minute': sub_ev.get('time') if sub_ev.get('time', -1) >= 0 else None,
-                                'match_seconds': sub_ev.get('seconds') if sub_ev.get('seconds', -1) >= 0 else None,
-                                'type': sub_ev.get('type'),
-                                'name': sub_ev.get('name'),
-                                'situation': sub_ev.get('situation'),
-                                'team': sub_ev.get('team') or (coords[0].get('team') if coords else None),
-                                'possession': sub_ev.get('name') == 'Ball possession',
-                                'x': end_x,
-                                'y': end_y,
-                                'start_x': start_x,
-                                'start_y': start_y,
-                                'trajectory_points': coords if coords else None,
-                                'event_id': sub_ev.get('_id'),
-                            }
-                            parsed_rows.append(row)
-                except Exception:
-                    continue
+                                row = {
+                                    'time_captured': time_str,
+                                    'match_minute': sub_ev.get('time') if sub_ev.get('time', -1) >= 0 else None,
+                                    'match_seconds': sub_ev.get('seconds') if sub_ev.get('seconds', -1) >= 0 else None,
+                                    'type': sub_ev.get('type'),
+                                    'name': sub_ev.get('name'),
+                                    'situation': sub_ev.get('situation'),
+                                    'team': sub_ev.get('team') or (coords[0].get('team') if coords and isinstance(coords[0], dict) else None),
+                                    'possession': sub_ev.get('name') == 'Ball possession',
+                                    'x': end_x,
+                                    'y': end_y,
+                                    'start_x': start_x,
+                                    'start_y': start_y,
+                                    'trajectory_points': coords if coords else None,
+                                    'event_id': sub_ev.get('_id'),
+                                    'home_score': sub_ev.get('homeScore'),
+                                    'away_score': sub_ev.get('awayScore'),
+                                }
+                                parsed_rows.append(row)
+                    except Exception:
+                        idx += 1
                     
     df = pd.DataFrame(parsed_rows)
+    if not df.empty and 'event_id' in df.columns:
+        df = df.drop_duplicates(subset=['event_id']).reset_index(drop=True)
     return df
 
 
-
+def fetch_live_match_events(event_id: Union[int, str], duration_seconds: int = 60, output_file: Optional[str] = None, match_url: Optional[str] = None) -> pd.DataFrame:
+    """
+    High-level function: Record live match stream for specified duration and return structured event DataFrame.
+    
+    Args:
+        event_id: SofaScore match ID or URL
+        duration_seconds: How long to record in seconds
+        output_file: Optional path to save JSON raw stream
+        match_url: Optional explicit match URL
+        
+    Returns:
+        pd.DataFrame with parsed live events
+    """
+    events = record_live_match_stream(event_id=event_id, duration_seconds=duration_seconds, output_file=output_file, match_url=match_url)
+    return parse_live_stream_to_df(events)
+
+# 11. Match Live Events with Player Actions & Passes
+def match_live_events_with_player_passes(
+    live_events_df_or_path: Union[pd.DataFrame, str],
+    match_id: Optional[Union[int, str]] = None,
+    player_passes_df: Optional[pd.DataFrame] = None,
+    max_coord_distance: float = 25.0
+) -> pd.DataFrame:
+    """
+    Spatially and contextually match live WebSocket stream events with player passes, 
+    ball-carries, and defensive actions from rating breakdown.
+    
+    Args:
+        live_events_df_or_path: DataFrame or CSV path of recorded live stream events
+        match_id: SofaScore match ID (required if player_passes_df is not provided)
+        player_passes_df: Optional pre-fetched DataFrame of player passes (create_all_passes_df)
+        max_coord_distance: Maximum coordinate distance threshold for matching
+        
+    Returns:
+        pd.DataFrame containing enriched live events with player names, action types, outcome, and keypass flags.
+    """
+    import numpy as np
+    
+    if isinstance(live_events_df_or_path, str):
+        df_live = pd.read_csv(live_events_df_or_path)
+    else:
+        df_live = live_events_df_or_path.copy()
+        
+    if df_live.empty:
+        return pd.DataFrame()
+        
+    if player_passes_df is not None:
+        df_passes = player_passes_df.copy()
+    elif match_id:
+        df_passes = create_all_passes_df(match_id)
+    else:
+        raise ValueError("Either player_passes_df or match_id must be provided.")
+        
+    if df_passes.empty:
+        return df_live
+        
+    live_coords = df_live[df_live['x'].notna()].copy()
+    matched_rows = []
+    
+    for _, live_row in live_coords.iterrows():
+        team = live_row.get('team')
+        lx = live_row['x']
+        ly = live_row['y']
+        ls_x = live_row['start_x'] if pd.notna(live_row.get('start_x')) else lx
+        ls_y = live_row['start_y'] if pd.notna(live_row.get('start_y')) else ly
+        
+        team_passes = df_passes[df_passes['team'] == team].copy()
+        if team_passes.empty:
+            continue
+            
+        dist_start_end = np.sqrt(
+            (team_passes['start_x'] - ls_x)**2 + (team_passes['start_y'] - ls_y)**2 +
+            (team_passes['end_x'] - lx)**2 + (team_passes['end_y'] - ly)**2
+        )
+        
+        best_idx = dist_start_end.idxmin()
+        min_dist = dist_start_end[best_idx]
+        best_row = team_passes.loc[best_idx]
+        
+        res = live_row.to_dict()
+        if min_dist <= max_coord_distance:
+            res['player_id'] = best_row['player_id']
+            res['player_name'] = best_row['player_name']
+            res['action_type'] = best_row['event_action_type']
+            res['category'] = best_row['event_category']
+            res['outcome'] = best_row['outcome']
+            res['keypass'] = best_row['keypass']
+            res['pass_start_x'] = best_row['start_x']
+            res['pass_start_y'] = best_row['start_y']
+            res['pass_end_x'] = best_row['end_x']
+            res['pass_end_y'] = best_row['end_y']
+            res['match_coord_dist'] = round(min_dist, 2)
+        else:
+            res['player_id'] = None
+            res['player_name'] = None
+            res['action_type'] = None
+            res['category'] = None
+            res['outcome'] = None
+            res['keypass'] = None
+            res['pass_start_x'] = None
+            res['pass_start_y'] = None
+            res['pass_end_x'] = None
+            res['pass_end_y'] = None
+            res['match_coord_dist'] = round(min_dist, 2)
+            
+        matched_rows.append(res)
+        
+    return pd.DataFrame(matched_rows)

@@ -1,0 +1,92 @@
+[
+  {
+    "timestamp": 799875.779432,
+    "time_str": "18:10:24",
+    "raw_payload": "INFO {\"server_id\":\"NCDX3HGCN6HL25HUT4ONP7QXCQNUHFIQICYWS7L7X4NM7NRHEFHKLMO5\",\"server_name\":\"rbx-soc06\",\"version\":\"2.12.4\",\"proto\":1,\"git_commit\":\"34894c1\",\"go\":\"go1.25.6\",\"host\":\"0.0.0.0\",\"port\":9222,\"headers\":true,\"auth_required\":true,\"tls_required\":true,\"tls_available\":true,\"max_payload\":1048576,\"jetstream\":true,\"client_id\":641782149,\"client_ip\":\"212.40.89.249\",\"nonce\":\"UdgfCF-kTPydQjY\",\"cluster\":\"nats\",\"connect_urls\":[\"51.91.169.180:9222\",\"[2001:41d0:26e:b400::]:9222\",\"172.16.14.6:9222\",\"172.16.4.7:9222\",\"[2001:41d0:33d:6400::]:9222\",\"51.91.169.160:9222\",\"172.16.14.7:9222\",\"172.16.14.5:9222\",\"[2001:41d0:203:c009::]:9222\",\"172.16.4.1:9222\",\"51.77.236.69:9222\",\"172.16.4.3:9222\",\"[2001:41d0:257:1c00::]:9222\",\"141.95.172.136:9222\",\"141.94.242.9:9222\",\"172.16.14.2:9222\",\"[2001:41d0:306:b31::]:9222\",\"172.16.14.3:9222\",\"51.77.236.30:9222\",\"[2001:41d0:358:4500::]:9222\",\"141.94.254.238:9222\",\"172.16.4.2:9222\",\"91.134.9.100:9222\",\"172.16.4.5:9222\",\"91.134.54.36:9222\",\"[2001:41d0:203:c788::]:9222\",\"91.134.8.208:9222\",\"172.16.4.4:9222\",\"[2001:41d0:306:fef::]:9222\",\"[2001:41d0:257:2400::]:9222\",\"[2001:41d0:203:ba8e::]:9222\",\"141.94.219.49:9222\",\"172.16.4.6:9222\",\"[2001:41d0:306:dee::]:9222\",\"[2001:41d0:26e:a000::]:9222\",\"91.134.54.28:9222\",\"141.95.144.239:9222\",\"172.16.14.4:9222\",\"172.16.14.1:9222\",\"[2001:41d0:33c:d000::]:9222\",\"[2001:41d0:358:1e00::]:9222\"],\"api_lvl\":2,\"xkey\":\"XBECUVRO2XUZ3HNB5UPB3RBBRVRICNUTXJH7WZAR3GFHZTXTEJQRNNRF\"} \r\n"
+  },
+  {
+    "timestamp": 799876.069267,
+    "time_str": "18:10:24",
+    "raw_payload": "PONG\r\nINFO {\"server_id\":\"NCDX3HGCN6HL25HUT4ONP7QXCQNUHFIQICYWS7L7X4NM7NRHEFHKLMO5\",\"server_name\":\"rbx-soc06\",\"version\":\"2.12.4\",\"proto\":1,\"git_commit\":\"34894c1\",\"go\":\"go1.25.6\",\"host\":\"0.0.0.0\",\"port\":9222,\"headers\":true,\"auth_required\":true,\"tls_required\":true,\"tls_available\":true,\"max_payload\":1048576,\"jetstream\":true,\"client_id\":641782149,\"client_ip\":\"212.40.89.249\",\"cluster\":\"nats\",\"connect_urls\":[\"51.91.169.180:9222\",\"[2001:41d0:26e:b400::]:9222\",\"172.16.14.6:9222\",\"172.16.4.7:9222\",\"[2001:41d0:33d:6400::]:9222\",\"51.91.169.160:9222\",\"172.16.14.7:9222\",\"172.16.14.5:9222\",\"[2001:41d0:203:c009::]:9222\",\"172.16.4.1:9222\",\"51.77.236.69:9222\",\"172.16.4.3:9222\",\"[2001:41d0:257:1c00::]:9222\",\"141.95.172.136:9222\",\"141.94.242.9:9222\",\"172.16.14.2:9222\",\"[2001:41d0:306:b31::]:9222\",\"172.16.14.3:9222\",\"51.77.236.30:9222\",\"[2001:41d0:358:4500::]:9222\",\"141.94.254.238:9222\",\"172.16.4.2:9222\",\"91.134.9.100:9222\",\"172.16.4.5:9222\",\"91.134.54.36:9222\",\"[2001:41d0:203:c788::]:9222\",\"91.134.8.208:9222\",\"172.16.4.4:9222\",\"[2001:41d0:306:fef::]:9222\",\"[2001:41d0:257:2400::]:9222\",\"[2001:41d0:203:ba8e::]:9222\",\"141.94.219.49:9222\",\"172.16.4.6:9222\",\"[2001:41d0:306:dee::]:9222\",\"[2001:41d0:26e:a000::]:9222\",\"91.134.54.28:9222\",\"141.95.144.239:9222\",\"172.16.14.4:9222\",\"172.16.14.1:9222\",\"[2001:41d0:33c:d000::]:9222\",\"[2001:41d0:358:1e00::]:9222\"],\"connect_info\":true,\"remote_account\":\"$G\",\"api_lvl\":2,\"xkey\":\"XBECUVRO2XUZ3HNB5UPB3RBBRVRICNUTXJH7WZAR3GFHZTXTEJQRNNRF\"} \r\n"
+  },
+  {
+    "timestamp": 799876.877383,
+    "time_str": "18:10:24",
+    "raw_payload": "\u0001\u0000Q{\"type\":\"sub_ack\",\"subject\":\"match_timeline_fn.events.72723146\",\"sub\":\"combined\"}"
+  },
+  {
+    "timestamp": 799876.877819,
+    "time_str": "18:10:24",
+    "raw_payload": "\u0001\u0000H{\"type\":\"sub_ack\",\"subject\":\"match_timeline_fn.health\",\"sub\":\"combined\"}"
+  },
+  {
+    "timestamp": 799878.167007,
+    "time_str": "18:10:24",
+    "raw_payload": "PING\r\n"
+  },
+  {
+    "timestamp": 799879.800862,
+    "time_str": "18:10:24",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456143751,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"dcc74231-ca8b-449a-9be8-4ed4b69190df\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501421,\"updated_uts\":1787501421,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"away\",\"_typeid\":\"1103\",\"seconds\":548,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":10,\"Y\":52,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"dangerous\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"dcc74231-ca8b-449a-9be8-4ed4b69190df-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501421,\"updated_uts\":1787501421,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"away\",\"X\":10,\"Y\":52},{\"team\":\"away\",\"X\":16,\"Y\":58},{\"team\":\"away\",\"X\":28,\"Y\":92},{\"team\":\"away\",\"X\":20,\"Y\":90}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:10:23.936459022Z\"}"
+  },
+  {
+    "timestamp": 799884.25239,
+    "time_str": "18:10:29",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456143875,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"da5ea1e3-4a1b-4ab7-9106-67db3bb1d4ed\",\"_sid\":1,\"type\":\"possession\",\"uts\":1787501424,\"updated_uts\":1787501424,\"injurytime\":0,\"_doctype\":\"possessionevent\",\"team\":\"home\",\"_typeid\":\"110\",\"seconds\":551,\"_doc\":\"event\",\"name\":\"Ball possession\",\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false},{\"_id\":\"8a84fff4-6022-495e-80a7-ab16f5aa0520\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501424,\"updated_uts\":1787501424,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"home\",\"_typeid\":\"1103\",\"seconds\":551,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":10,\"Y\":52,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"safe\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"8a84fff4-6022-495e-80a7-ab16f5aa0520-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501424,\"updated_uts\":1787501424,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"home\",\"X\":10,\"Y\":52},{\"team\":\"away\",\"X\":10,\"Y\":52},{\"team\":\"away\",\"X\":16,\"Y\":58},{\"team\":\"away\",\"X\":28,\"Y\":92}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:10:28.387077265Z\"}"
+  },
+  {
+    "timestamp": 799885.277488,
+    "time_str": "18:10:30",
+    "raw_payload": "\u0001\u0000D{\"type\":\"data\",\"seq\":456143920,\"subject\":\"match_timeline_fn.health\"}{\"status\":\"SUCCESS\",\"heartbeatIntervalMs\":20000}"
+  },
+  {
+    "timestamp": 799886.027218,
+    "time_str": "18:10:30",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456143947,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"d4727271-d3e6-4adc-9e5b-174f3ec8e2a7\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501427,\"updated_uts\":1787501427,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"home\",\"_typeid\":\"1103\",\"seconds\":553,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":22,\"Y\":85,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"safe\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"d4727271-d3e6-4adc-9e5b-174f3ec8e2a7-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501427,\"updated_uts\":1787501427,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"home\",\"X\":22,\"Y\":85},{\"team\":\"home\",\"X\":10,\"Y\":52},{\"team\":\"away\",\"X\":10,\"Y\":52},{\"team\":\"away\",\"X\":16,\"Y\":58}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:10:30.162216227Z\"}"
+  },
+  {
+    "timestamp": 799887.543932,
+    "time_str": "18:10:32",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456144019,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"7bac5ee9-1fb8-4fbf-a33a-57946c851717\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501429,\"updated_uts\":1787501429,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"home\",\"_typeid\":\"1103\",\"seconds\":556,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":41,\"Y\":88,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"safe\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"7bac5ee9-1fb8-4fbf-a33a-57946c851717-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501429,\"updated_uts\":1787501429,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"home\",\"X\":41,\"Y\":88},{\"team\":\"home\",\"X\":22,\"Y\":85},{\"team\":\"home\",\"X\":10,\"Y\":52},{\"team\":\"away\",\"X\":10,\"Y\":52}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:10:31.654438899Z\"}"
+  },
+  {
+    "timestamp": 799892.508195,
+    "time_str": "18:10:37",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456144193,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"2672dee0-4e93-4482-b693-35c2dee3a2c0\",\"_sid\":1,\"type\":\"freekick\",\"uts\":1787501433,\"updated_uts\":1787501433,\"injurytime\":0,\"_doctype\":\"freekick\",\"team\":\"home\",\"_typeid\":\"150\",\"seconds\":560,\"_doc\":\"event\",\"name\":\"Freekick\",\"X\":41,\"Y\":88,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"player\":{\"name\":\"\"},\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:10:36.632567664Z\"}"
+  },
+  {
+    "timestamp": 799895.583375,
+    "time_str": "18:10:40",
+    "raw_payload": "MSG event.16416302 26 376\r\n{\"status.code\":7,\"status.description\":\"2nd half\",\"statusDescription\":\"46\",\"time.currentPeriodStartTimestamp\":1787501435,\"time.initial\":2700,\"time.max\":5400,\"time.extra\":540,\"currentPeriodStartTimestamp\":1787501435,\"statusTime\":{\"prefix\":\"\",\"initial\":2700,\"max\":5400,\"timestamp\":1787501435,\"extra\":540},\"lastPeriod\":\"period2\",\"changes.changeTimestamp\":1787501439,\"id\":16416302}\r\n"
+  },
+  {
+    "timestamp": 799904.494809,
+    "time_str": "18:10:49",
+    "raw_payload": "MSG event.16416302 26 74\r\n{\"awayScore.period2\":0,\"changes.changeTimestamp\":1787501448,\"id\":16416302}\r\n"
+  },
+  {
+    "timestamp": 799905.280151,
+    "time_str": "18:10:50",
+    "raw_payload": "\u0001\u0000D{\"type\":\"data\",\"seq\":456144666,\"subject\":\"match_timeline_fn.health\"}{\"status\":\"SUCCESS\",\"heartbeatIntervalMs\":20000}"
+  },
+  {
+    "timestamp": 799917.437555,
+    "time_str": "18:11:02",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456145028,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"e06add5e-94cf-4e36-8c61-f7ee2649fb80\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501459,\"updated_uts\":1787501459,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"home\",\"_typeid\":\"1103\",\"seconds\":585,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":31,\"Y\":23,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"safe\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"e06add5e-94cf-4e36-8c61-f7ee2649fb80-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501459,\"updated_uts\":1787501459,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"home\",\"X\":31,\"Y\":23},{\"team\":\"home\",\"X\":27,\"Y\":51},{\"team\":\"home\",\"X\":41,\"Y\":88},{\"team\":\"home\",\"X\":22,\"Y\":85}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:11:01.573456145Z\"}"
+  },
+  {
+    "timestamp": 799921.04538,
+    "time_str": "18:11:06",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456145166,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"1815a25d-5998-4106-885c-97cbe355fefd\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501463,\"updated_uts\":1787501463,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"home\",\"_typeid\":\"1103\",\"seconds\":589,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":40,\"Y\":33,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"safe\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"1815a25d-5998-4106-885c-97cbe355fefd-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501463,\"updated_uts\":1787501463,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"home\",\"X\":40,\"Y\":33},{\"team\":\"home\",\"X\":31,\"Y\":23},{\"team\":\"home\",\"X\":27,\"Y\":51},{\"team\":\"home\",\"X\":41,\"Y\":88}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:11:05.182077085Z\"}"
+  },
+  {
+    "timestamp": 799922.125497,
+    "time_str": "18:11:07",
+    "raw_payload": "MSG odds.395282024 61 49\r\n{\"choice3.fractionalValue\":\"7\\/5\",\"id\":395282024}\r\n"
+  },
+  {
+    "timestamp": 799922.768219,
+    "time_str": "18:11:07",
+    "raw_payload": "\u0001\u0000M{\"type\":\"data\",\"seq\":456145231,\"subject\":\"match_timeline_fn.events.72723146\"}{\"data\":[{\"event\":\"match_timelinedelta\",\"data\":{\"events\":[{\"_id\":\"68ca477b-6c8c-410a-b80b-8630252b3dc3\",\"_sid\":1,\"type\":\"matchsituation\",\"uts\":1787501464,\"updated_uts\":1787501464,\"injurytime\":0,\"_doctype\":\"matchsituation\",\"team\":\"home\",\"_typeid\":\"1103\",\"seconds\":590,\"_doc\":\"event\",\"name\":\"matchsituation\",\"X\":48,\"Y\":35,\"disabled\":0,\"time\":10,\"_rcid\":46,\"_tid\":62,\"situation\":\"safe\",\"matchid\":72723146,\"_dc\":false},{\"_id\":\"68ca477b-6c8c-410a-b80b-8630252b3dc3-1140\",\"_sid\":1,\"type\":\"ballcoordinates\",\"uts\":1787501464,\"updated_uts\":1787501464,\"injurytime\":0,\"_doctype\":\"ballcoordinates\",\"coordinates\":[{\"team\":\"home\",\"X\":48,\"Y\":35},{\"team\":\"home\",\"X\":40,\"Y\":33},{\"team\":\"home\",\"X\":31,\"Y\":23},{\"team\":\"home\",\"X\":27,\"Y\":51}],\"team\":\"\",\"_typeid\":\"1140\",\"seconds\":-1,\"_doc\":\"event\",\"name\":\"Pitch coordinates\",\"disabled\":0,\"time\":-1,\"_rcid\":46,\"_tid\":62,\"matchid\":72723146,\"_dc\":false}]}}],\"timestamp\":\"2026-08-23T16:11:06.898377006Z\"}"
+  }
+]

@@ -1,0 +1,369 @@
+event_category,event_action_type,player_id,player_name,team,is_home,outcome,keypass,start_x,start_y,end_x,end_y
+passes,pass,857065,Horațiu Moldovan,home,True,True,False,6.1,62.0,12.3,28.0
+passes,pass,857065,Horațiu Moldovan,home,True,True,False,10.9,43.9,16.8,56.6
+passes,pass,857065,Horațiu Moldovan,home,True,True,False,3.7,25.6,47.8,39.8
+passes,pass,857065,Horațiu Moldovan,home,True,True,False,5.7,53.1,12.2,77.6
+passes,pass,857065,Horațiu Moldovan,home,True,,False,11.7,27.6,55.9,32.7
+passes,pass,857065,Horațiu Moldovan,home,True,True,False,5.3,56.3,9.2,69.9
+passes,pass,857065,Horațiu Moldovan,home,True,,False,9.7,30.9,72.9,16.8
+passes,pass,857065,Horațiu Moldovan,home,True,,False,4.8,59.3,38.9,100.0
+passes,pass,857065,Horațiu Moldovan,home,True,True,False,4.8,37.7,58.0,28.0
+defensive,ball-recovery,857065,Horațiu Moldovan,home,True,True,False,6.1,64.8,,
+defensive,ball-recovery,857065,Horațiu Moldovan,home,True,True,False,14.4,58.5,,
+ball-carries,ball-carry,857065,Horațiu Moldovan,home,True,,False,10.2,34.9,11.7,27.6
+ball-carries,ball-carry,857065,Horațiu Moldovan,home,True,,False,8.6,39.7,9.7,30.9
+passes,pass,1084164,Talha Ülvan,home,True,,False,45.1,6.5,56.7,27.6
+passes,pass,1084164,Talha Ülvan,home,True,,False,73.2,19.1,74.7,17.3
+passes,pass,1084164,Talha Ülvan,home,True,True,False,33.2,4.3,36.1,12.9
+passes,pass,1084164,Talha Ülvan,home,True,True,False,18.3,7.4,42.5,4.0
+passes,pass,1084164,Talha Ülvan,home,True,True,False,44.1,3.7,35.6,16.2
+passes,pass,1084164,Talha Ülvan,home,True,True,False,8.3,22.8,7.2,31.2
+passes,pass,1084164,Talha Ülvan,home,True,True,False,55.9,3.5,42.0,12.9
+passes,pass,1084164,Talha Ülvan,home,True,True,False,40.0,17.6,32.2,23.1
+passes,pass,1084164,Talha Ülvan,home,True,,False,64.6,11.1,63.9,29.2
+passes,pass,1084164,Talha Ülvan,home,True,True,False,35.2,4.9,34.2,17.9
+dribbles,dribble,1084164,Talha Ülvan,home,True,True,False,78.5,41.2,,
+dribbles,dribble,1084164,Talha Ülvan,home,True,,False,84.4,34.9,,
+defensive,tackle,1084164,Talha Ülvan,home,True,True,False,66.4,11.5,,
+defensive,ball-recovery,1084164,Talha Ülvan,home,True,True,False,8.3,22.8,,
+ball-carries,ball-carry,1084164,Talha Ülvan,home,True,,False,40.0,0.8,45.1,6.5
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,30.1,22.4,40.0,0.8
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,43.1,34.9,46.2,94.5
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,57.4,27.1,79.7,6.2
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,36.6,18.6,31.0,51.9
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,46.5,28.3,48.1,32.1
+passes,pass,877103,Jawad El Yamiq,home,True,,False,44.1,8.6,77.3,34.5
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,32.2,23.1,36.2,30.6
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,32.5,15.5,34.0,7.9
+passes,pass,877103,Jawad El Yamiq,home,True,,False,38.5,16.7,88.8,49.0
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,29.3,20.0,36.8,30.3
+passes,pass,877103,Jawad El Yamiq,home,True,True,False,38.0,26.1,38.0,83.2
+defensive,clearance,877103,Jawad El Yamiq,home,True,True,False,16.6,3.8,16.8,2.5
+defensive,clearance,877103,Jawad El Yamiq,home,True,True,False,39.8,6.8,41.3,0.0
+defensive,clearance,877103,Jawad El Yamiq,home,True,True,False,7.4,30.4,10.1,28.8
+defensive,ball-recovery,877103,Jawad El Yamiq,home,True,True,False,32.2,23.1,,
+defensive,clearance,877103,Jawad El Yamiq,home,True,True,False,22.7,39.2,19.7,16.1
+ball-carries,ball-carry,877103,Jawad El Yamiq,home,True,,False,12.3,28.0,30.1,22.4
+ball-carries,ball-carry,877103,Jawad El Yamiq,home,True,,False,42.2,34.8,46.5,28.3
+ball-carries,ball-carry,877103,Jawad El Yamiq,home,True,,False,42.0,12.9,44.1,8.6
+passes,pass,556774,Zak Jules,home,True,True,False,18.1,66.3,25.9,82.3
+passes,pass,556774,Zak Jules,home,True,True,False,14.7,54.8,3.5,25.6
+passes,pass,556774,Zak Jules,home,True,True,False,7.7,76.9,10.6,95.7
+passes,pass,556774,Zak Jules,home,True,,False,13.6,84.4,14.3,85.6
+passes,pass,556774,Zak Jules,home,True,True,False,16.7,69.3,23.0,98.1
+passes,pass,556774,Zak Jules,home,True,True,False,33.6,57.5,34.5,89.1
+passes,pass,556774,Zak Jules,home,True,True,False,26.0,62.7,10.2,34.9
+passes,pass,556774,Zak Jules,home,True,True,False,9.2,69.9,18.7,97.4
+passes,pass,556774,Zak Jules,home,True,True,False,24.5,60.9,8.6,39.7
+passes,pass,556774,Zak Jules,home,True,True,False,34.5,26.7,40.0,17.6
+passes,pass,556774,Zak Jules,home,True,True,False,25.6,54.5,27.4,22.7
+defensive,clearance,556774,Zak Jules,home,True,True,False,13.3,63.0,12.2,100.0
+defensive,block,556774,Zak Jules,home,True,True,False,4.8,37.5,,
+defensive,block,556774,Zak Jules,home,True,True,False,11.9,50.9,,
+ball-carries,ball-carry,556774,Zak Jules,home,True,,False,16.8,56.6,18.1,66.3
+ball-carries,ball-carry,556774,Zak Jules,home,True,,False,12.2,77.6,7.7,76.9
+ball-carries,ball-carry,556774,Zak Jules,home,True,,False,31.0,51.9,33.6,57.5
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,26.4,82.3,32.9,71.7
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,24.9,86.8,14.3,55.2
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,46.6,95.6,51.2,98.9
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,31.8,95.3,6.0,55.1
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,11.7,94.2,13.6,82.7
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,,False,36.8,98.1,41.0,77.8
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,24.4,98.6,34.8,97.5
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,,False,23.1,98.4,38.5,83.2
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,35.1,89.3,51.6,74.7
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,34.9,84.7,26.0,62.7
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,43.8,97.1,47.8,81.1
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,,False,21.2,97.4,43.7,65.8
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,44.4,70.3,47.3,64.2
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,40.5,77.3,24.6,60.9
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,,False,46.7,58.4,59.9,27.4
+passes,pass,999646,Seyfettin Anıl Yaşar,home,True,True,False,38.2,85.4,49.8,97.7
+defensive,clearance,999646,Seyfettin Anıl Yaşar,home,True,True,False,12.9,35.8,24.7,18.3
+passes,pass,769163,Bilal Boutobba,home,True,True,False,77.6,9.2,78.0,17.9
+passes,pass,769163,Bilal Boutobba,home,True,True,False,36.1,2.2,33.3,3.7
+passes,pass,769163,Bilal Boutobba,home,True,True,False,39.8,3.4,39.1,11.6
+passes,pass,769163,Bilal Boutobba,home,True,True,False,25.1,18.9,18.3,7.4
+passes,pass,769163,Bilal Boutobba,home,True,True,False,34.2,5.2,39.7,8.2
+passes,pass,769163,Bilal Boutobba,home,True,True,False,35.9,5.9,32.5,15.5
+passes,pass,769163,Bilal Boutobba,home,True,True,False,34.8,6.7,38.5,16.7
+passes,pass,769163,Bilal Boutobba,home,True,True,False,78.7,11.3,78.3,25.0
+defensive,ball-recovery,769163,Bilal Boutobba,home,True,True,False,77.6,9.2,,
+defensive,ball-recovery,769163,Bilal Boutobba,home,True,True,False,24.9,19.7,,
+ball-carries,ball-carry,769163,Bilal Boutobba,home,True,,False,42.6,3.1,36.1,2.2
+ball-carries,ball-carry,769163,Bilal Boutobba,home,True,,False,70.0,3.4,78.7,11.3
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,14.4,59.1,33.8,98.1
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,33.7,76.0,36.9,98.1
+passes,pass,1083138,Chandrel Massanga,home,True,,False,62.9,57.5,65.8,0.0
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,65.1,16.8,75.5,16.5
+passes,pass,1083138,Chandrel Massanga,home,True,,False,40.1,23.3,49.1,35.1
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,42.8,70.9,47.3,68.7
+passes,pass,1083138,Chandrel Massanga,home,True,,False,7.2,31.2,44.1,21.8
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,48.1,31.8,55.1,3.5
+passes,pass,1083138,Chandrel Massanga,home,True,,False,36.2,30.6,36.6,27.1
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,40.8,15.0,41.3,30.9
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,40.2,21.5,39.4,36.1
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,33.2,47.2,37.1,53.4
+passes,pass,1083138,Chandrel Massanga,home,True,True,False,53.6,86.3,55.8,69.0
+defensive,ball-recovery,1083138,Chandrel Massanga,home,True,True,False,14.4,59.1,,
+defensive,ball-recovery,1083138,Chandrel Massanga,home,True,True,False,65.1,16.8,,
+defensive,tackle,1083138,Chandrel Massanga,home,True,,False,80.4,5.8,,
+defensive,interception,1083138,Chandrel Massanga,home,True,True,False,73.3,17.6,,
+defensive,block,1083138,Chandrel Massanga,home,True,True,False,15.6,33.0,,
+ball-carries,ball-carry,1083138,Chandrel Massanga,home,True,,False,60.9,62.1,62.9,57.5
+ball-carries,ball-carry,1083138,Chandrel Massanga,home,True,,False,36.8,30.3,33.2,47.2
+passes,pass,1622183,Charles-Andre Raux Yao,home,True,True,False,32.9,71.7,24.9,86.8
+passes,pass,1622183,Charles-Andre Raux Yao,home,True,True,False,62.8,73.5,60.9,62.1
+passes,pass,1622183,Charles-Andre Raux Yao,home,True,True,False,40.7,66.0,34.9,84.7
+passes,pass,1622183,Charles-Andre Raux Yao,home,True,True,False,47.2,69.0,42.2,34.8
+passes,pass,1622183,Charles-Andre Raux Yao,home,True,True,False,46.8,66.4,40.5,77.5
+passes,pass,1622183,Charles-Andre Raux Yao,home,True,True,False,55.8,63.9,56.2,49.7
+passes,cross,1622183,Charles-Andre Raux Yao,home,True,,False,90.1,22.1,89.3,56.1
+dribbles,dribble,1622183,Charles-Andre Raux Yao,home,True,True,False,83.4,21.6,,
+defensive,ball-recovery,1622183,Charles-Andre Raux Yao,home,True,True,False,14.0,97.5,,
+defensive,tackle,1622183,Charles-Andre Raux Yao,home,True,True,False,23.0,22.0,,
+defensive,ball-recovery,1622183,Charles-Andre Raux Yao,home,True,True,False,25.7,27.3,,
+ball-carries,ball-carry,1622183,Charles-Andre Raux Yao,home,True,,False,40.0,61.4,40.7,66.0
+ball-carries,ball-carry,1622183,Charles-Andre Raux Yao,home,True,,False,47.8,81.1,47.2,69.0
+ball-carries,ball-carry,1622183,Charles-Andre Raux Yao,home,True,,False,25.7,27.3,38.4,13.0
+ball-carries,ball-carry,1622183,Charles-Andre Raux Yao,home,True,,False,55.8,69.0,55.8,63.9
+passes,pass,896596,Lenny Pintor,home,True,True,False,49.1,98.1,33.3,95.3
+passes,pass,896596,Lenny Pintor,home,True,True,False,33.8,98.1,40.5,94.1
+passes,pass,896596,Lenny Pintor,home,True,True,False,27.6,98.3,22.8,98.4
+passes,pass,896596,Lenny Pintor,home,True,True,False,63.4,89.9,62.8,77.3
+passes,cross,896596,Lenny Pintor,home,True,,False,79.4,92.4,100.0,20.1
+passes,pass,896596,Lenny Pintor,home,True,True,False,66.1,97.5,43.8,97.1
+passes,pass,896596,Lenny Pintor,home,True,True,False,60.8,96.3,53.5,87.5
+dribbles,dribble,896596,Lenny Pintor,home,True,,False,40.6,69.8,,
+dribbles,dribble,896596,Lenny Pintor,home,True,True,False,63.4,89.8,,
+defensive,ball-recovery,896596,Lenny Pintor,home,True,True,False,63.4,89.9,,
+defensive,ball-recovery,896596,Lenny Pintor,home,True,True,False,77.6,95.9,,
+ball-carries,ball-carry,896596,Lenny Pintor,home,True,,False,41.0,77.8,40.6,69.8
+ball-carries,ball-carry,896596,Lenny Pintor,home,True,,False,34.8,97.5,27.6,98.3
+ball-carries,ball-carry,896596,Lenny Pintor,home,True,,False,49.8,97.7,60.8,96.3
+passes,pass,807400,Abdelhamid Sabiri,home,True,,False,47.8,39.8,73.7,45.8
+passes,pass,807400,Abdelhamid Sabiri,home,True,,False,75.7,16.5,87.7,6.7
+passes,cross,807400,Abdelhamid Sabiri,home,True,,False,76.0,5.0,80.7,10.1
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,78.0,17.4,72.5,18.5
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,36.1,12.9,38.5,4.6
+passes,pass,807400,Abdelhamid Sabiri,home,True,,False,39.1,11.7,41.5,9.5
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,51.6,74.7,42.8,70.9
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,47.3,68.7,40.0,61.4
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,56.0,92.3,68.2,98.6
+passes,pass,807400,Abdelhamid Sabiri,home,True,,False,58.1,28.0,81.8,17.1
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,41.3,30.9,40.2,21.5
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,38.9,40.0,25.6,56.0
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,30.1,31.6,35.0,4.4
+passes,pass,807400,Abdelhamid Sabiri,home,True,True,False,56.2,45.4,70.0,3.4
+dribbles,dribble,807400,Abdelhamid Sabiri,home,True,True,False,36.8,33.2,,
+defensive,ball-recovery,807400,Abdelhamid Sabiri,home,True,True,False,53.0,94.1,,
+ball-carries,ball-carry,807400,Abdelhamid Sabiri,home,True,,False,79.7,6.2,79.3,1.6
+ball-carries,ball-carry,807400,Abdelhamid Sabiri,home,True,,False,53.0,94.1,56.0,92.3
+ball-carries,ball-carry,807400,Abdelhamid Sabiri,home,True,,False,37.1,53.4,36.8,33.2
+passes,pass,1083777,Kacper Tobiasz,away,False,True,False,23.3,53.0,82.1,22.3
+passes,pass,1083777,Kacper Tobiasz,away,False,True,False,20.9,42.9,24.6,61.4
+passes,pass,1083777,Kacper Tobiasz,away,False,True,False,4.0,52.0,25.0,9.5
+defensive,ball-recovery,1083777,Kacper Tobiasz,away,False,True,False,13.0,53.3,,
+passes,pass,843180,Luis Pérez,away,False,,False,43.6,67.3,82.7,90.3
+passes,pass,843180,Luis Pérez,away,False,True,False,28.8,11.2,31.9,30.0
+passes,pass,843180,Luis Pérez,away,False,True,False,25.0,9.5,29.8,7.4
+passes,pass,843180,Luis Pérez,away,False,True,False,21.9,11.3,12.2,32.4
+passes,cross,843180,Luis Pérez,away,False,,False,66.3,14.5,85.6,38.3
+passes,pass,843180,Luis Pérez,away,False,True,False,76.8,7.6,56.6,29.8
+passes,pass,843180,Luis Pérez,away,False,True,False,41.9,44.7,54.4,42.7
+passes,pass,843180,Luis Pérez,away,False,True,False,35.5,26.7,27.7,86.4
+passes,pass,843180,Luis Pérez,away,False,True,False,32.6,14.2,28.6,46.2
+passes,pass,843180,Luis Pérez,away,False,True,False,44.9,46.5,46.2,51.2
+passes,pass,843180,Luis Pérez,away,False,True,False,44.7,17.7,53.1,9.4
+passes,pass,843180,Luis Pérez,away,False,True,False,40.2,23.0,32.5,46.8
+passes,pass,843180,Luis Pérez,away,False,True,False,44.0,20.4,35.8,49.5
+passes,pass,843180,Luis Pérez,away,False,True,False,34.9,30.4,39.7,39.1
+passes,pass,843180,Luis Pérez,away,False,True,False,40.6,33.5,33.4,52.7
+passes,pass,843180,Luis Pérez,away,False,,False,45.5,18.9,78.4,57.9
+defensive,clearance,843180,Luis Pérez,away,False,True,False,52.4,11.8,55.9,0.0
+defensive,interception,843180,Luis Pérez,away,False,True,False,59.5,25.6,,
+defensive,tackle,843180,Luis Pérez,away,False,True,False,16.0,64.0,,
+defensive,ball-recovery,843180,Luis Pérez,away,False,True,False,45.0,46.7,,
+defensive,clearance,843180,Luis Pérez,away,False,True,False,28.4,74.7,54.3,50.0
+ball-carries,ball-carry,843180,Luis Pérez,away,False,,False,39.3,50.9,41.9,44.7
+ball-carries,ball-carry,843180,Luis Pérez,away,False,,False,29.3,8.6,32.6,14.2
+ball-carries,ball-carry,843180,Luis Pérez,away,False,,False,52.2,13.2,44.0,20.4
+passes,pass,933448,Ulrich Meleke,away,False,True,False,27.0,87.1,19.4,67.9
+passes,pass,933448,Ulrich Meleke,away,False,True,False,36.2,17.9,20.9,42.9
+passes,pass,933448,Ulrich Meleke,away,False,True,False,28.5,32.3,28.8,11.2
+passes,pass,933448,Ulrich Meleke,away,False,True,False,11.8,90.3,13.8,91.7
+passes,pass,933448,Ulrich Meleke,away,False,True,False,12.7,37.7,17.6,75.0
+passes,pass,933448,Ulrich Meleke,away,False,True,False,56.7,29.4,59.3,42.0
+passes,pass,933448,Ulrich Meleke,away,False,True,False,44.6,75.2,39.3,50.9
+passes,pass,933448,Ulrich Meleke,away,False,True,False,32.4,85.5,31.4,60.8
+passes,pass,933448,Ulrich Meleke,away,False,True,False,56.1,92.4,67.5,90.0
+passes,pass,933448,Ulrich Meleke,away,False,,False,61.8,90.9,69.9,92.8
+passes,pass,933448,Ulrich Meleke,away,False,True,False,63.5,85.9,45.0,46.7
+passes,pass,933448,Ulrich Meleke,away,False,True,False,41.5,84.6,43.7,70.5
+passes,pass,933448,Ulrich Meleke,away,False,True,False,48.3,87.4,88.7,93.5
+passes,pass,933448,Ulrich Meleke,away,False,True,False,16.7,84.3,23.9,93.5
+passes,pass,933448,Ulrich Meleke,away,False,True,False,28.2,86.5,32.7,90.2
+passes,pass,933448,Ulrich Meleke,away,False,True,False,42.4,84.1,37.4,58.5
+passes,pass,933448,Ulrich Meleke,away,False,True,False,73.6,91.2,72.1,84.6
+passes,pass,933448,Ulrich Meleke,away,False,True,False,37.4,79.4,45.5,90.2
+defensive,interception,933448,Ulrich Meleke,away,False,True,False,46.2,73.8,,
+defensive,ball-recovery,933448,Ulrich Meleke,away,False,True,False,28.2,87.1,,
+defensive,ball-recovery,933448,Ulrich Meleke,away,False,True,False,38.7,17.9,,
+defensive,clearance,933448,Ulrich Meleke,away,False,True,False,18.2,71.5,19.7,68.8
+defensive,ball-recovery,933448,Ulrich Meleke,away,False,True,False,44.3,76.1,,
+defensive,ball-recovery,933448,Ulrich Meleke,away,False,True,False,17.0,84.3,,
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,12.2,32.4,12.7,37.7
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,27.7,86.4,32.4,85.5
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,38.2,89.0,56.1,92.4
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,34.5,79.9,41.5,84.6
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,31.7,87.6,28.2,86.5
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,56.7,90.0,73.6,91.2
+ball-carries,ball-carry,933448,Ulrich Meleke,away,False,,False,35.1,75.9,37.4,79.4
+passes,pass,555422,Myenty Abena,away,False,True,False,69.5,91.7,76.7,95.0
+passes,pass,555422,Myenty Abena,away,False,True,False,24.8,62.9,29.5,31.8
+passes,pass,555422,Myenty Abena,away,False,True,False,10.5,92.9,20.2,85.5
+passes,pass,555422,Myenty Abena,away,False,True,False,20.7,86.2,21.1,92.4
+passes,pass,555422,Myenty Abena,away,False,,False,67.1,83.7,78.4,100.0
+passes,pass,555422,Myenty Abena,away,False,True,False,31.3,60.6,35.8,56.1
+passes,pass,555422,Myenty Abena,away,False,True,False,29.7,50.5,38.2,89.0
+passes,pass,555422,Myenty Abena,away,False,True,False,43.5,33.8,44.7,17.7
+passes,pass,555422,Myenty Abena,away,False,True,False,23.2,64.4,30.1,63.0
+passes,pass,555422,Myenty Abena,away,False,True,False,33.4,52.1,34.5,79.9
+passes,pass,555422,Myenty Abena,away,False,True,False,26.7,74.6,31.7,68.3
+passes,pass,555422,Myenty Abena,away,False,True,False,40.6,55.0,48.3,87.4
+passes,pass,555422,Myenty Abena,away,False,True,False,36.1,55.3,39.2,34.7
+passes,pass,555422,Myenty Abena,away,False,True,False,42.8,56.2,45.8,15.1
+passes,pass,555422,Myenty Abena,away,False,True,False,54.7,55.9,58.4,62.3
+defensive,interception,555422,Myenty Abena,away,False,True,False,12.7,91.1,,
+defensive,ball-recovery,555422,Myenty Abena,away,False,True,False,12.3,92.4,,
+defensive,ball-recovery,555422,Myenty Abena,away,False,True,False,25.0,74.4,,
+defensive,ball-recovery,555422,Myenty Abena,away,False,True,False,27.5,87.9,,
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,17.6,75.0,20.7,86.2
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,51.7,67.1,67.1,83.7
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,28.6,46.2,29.7,50.5
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,25.0,74.4,23.2,64.4
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,32.5,46.8,33.4,52.1
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,27.5,87.9,26.7,74.6
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,35.8,49.5,40.6,55.0
+ball-carries,ball-carry,555422,Myenty Abena,away,False,,False,33.4,52.7,42.8,56.2
+passes,pass,797602,Deian Sorescu,away,False,True,False,77.3,16.3,77.5,27.3
+passes,pass,797602,Deian Sorescu,away,False,True,False,78.5,10.6,72.2,16.8
+passes,pass,797602,Deian Sorescu,away,False,True,False,7.4,6.9,18.3,8.3
+passes,pass,797602,Deian Sorescu,away,False,True,False,30.5,7.4,22.4,11.0
+passes,pass,797602,Deian Sorescu,away,False,True,False,45.0,8.8,45.7,24.2
+passes,pass,797602,Deian Sorescu,away,False,,False,62.1,3.9,60.7,4.8
+passes,pass,797602,Deian Sorescu,away,False,True,False,53.9,8.5,48.9,24.4
+passes,pass,797602,Deian Sorescu,away,False,True,False,60.6,5.0,92.6,10.9
+passes,pass,797602,Deian Sorescu,away,False,True,False,29.7,45.8,31.7,87.6
+passes,cross,797602,Deian Sorescu,away,False,True,True,83.8,17.1,97.0,53.8
+passes,pass,797602,Deian Sorescu,away,False,True,False,36.9,14.2,33.5,28.8
+defensive,ball-recovery,797602,Deian Sorescu,away,False,True,False,7.5,7.1,,
+defensive,clearance,797602,Deian Sorescu,away,False,True,False,16.2,53.3,63.6,90.0
+defensive,clearance,797602,Deian Sorescu,away,False,True,False,13.4,52.0,23.7,75.2
+ball-carries,ball-carry,797602,Deian Sorescu,away,False,,False,11.8,62.4,7.5,7.1
+ball-carries,ball-carry,797602,Deian Sorescu,away,False,,False,45.4,13.2,45.0,8.8
+ball-carries,ball-carry,797602,Deian Sorescu,away,False,,False,77.2,16.3,83.8,17.1
+ball-carries,ball-carry,797602,Deian Sorescu,away,False,,False,36.9,21.2,36.9,14.2
+passes,pass,788971,Juninho Bacuna,away,False,True,False,72.9,95.3,28.2,87.1
+passes,pass,788971,Juninho Bacuna,away,False,,False,86.3,18.6,84.5,43.3
+passes,pass,788971,Juninho Bacuna,away,False,True,False,64.1,30.7,68.2,42.7
+passes,pass,788971,Juninho Bacuna,away,False,True,False,31.9,30.1,36.9,11.3
+passes,pass,788971,Juninho Bacuna,away,False,True,False,59.3,42.0,51.7,67.1
+passes,pass,788971,Juninho Bacuna,away,False,True,False,49.2,52.4,52.1,60.0
+passes,pass,788971,Juninho Bacuna,away,False,,False,48.9,24.5,48.0,24.5
+passes,pass,788971,Juninho Bacuna,away,False,True,False,38.3,56.8,40.2,23.0
+passes,pass,788971,Juninho Bacuna,away,False,,False,34.7,65.2,100.0,6.8
+passes,pass,788971,Juninho Bacuna,away,False,True,False,31.4,71.5,28.4,74.7
+defensive,ball-recovery,788971,Juninho Bacuna,away,False,True,False,86.3,18.6,,
+defensive,tackle,788971,Juninho Bacuna,away,False,,False,59.4,30.2,,
+defensive,interception,788971,Juninho Bacuna,away,False,True,False,65.6,92.3,,
+ball-carries,ball-carry,788971,Juninho Bacuna,away,False,,False,76.7,95.0,72.9,95.3
+ball-carries,ball-carry,788971,Juninho Bacuna,away,False,,False,61.1,25.0,60.5,47.4
+ball-carries,ball-carry,788971,Juninho Bacuna,away,False,,False,63.2,88.8,63.2,94.4
+ball-carries,ball-carry,788971,Juninho Bacuna,away,False,,False,46.2,51.2,49.2,52.4
+ball-carries,ball-carry,788971,Juninho Bacuna,away,False,,False,30.1,63.0,38.3,56.8
+ball-carries,ball-carry,788971,Juninho Bacuna,away,False,,False,31.7,68.3,34.7,65.2
+passes,pass,180511,Alexandru Maxim,away,False,True,False,49.6,50.6,23.1,53.0
+passes,pass,180511,Alexandru Maxim,away,False,True,False,68.1,29.5,61.1,25.0
+passes,pass,180511,Alexandru Maxim,away,False,True,False,24.3,90.5,32.1,88.4
+passes,pass,180511,Alexandru Maxim,away,False,True,False,20.4,93.2,11.8,90.3
+passes,pass,180511,Alexandru Maxim,away,False,True,False,63.0,27.6,64.0,13.8
+passes,cross,180511,Alexandru Maxim,away,False,,False,63.8,93.1,81.9,71.2
+passes,pass,180511,Alexandru Maxim,away,False,True,False,38.6,48.3,62.1,3.9
+passes,pass,180511,Alexandru Maxim,away,False,True,False,69.2,78.3,78.8,87.3
+passes,pass,180511,Alexandru Maxim,away,False,True,False,52.3,60.2,43.5,33.8
+passes,pass,180511,Alexandru Maxim,away,False,True,False,45.0,52.9,60.6,5.0
+passes,cross,180511,Alexandru Maxim,away,False,True,True,99.5,0.5,93.2,44.8
+passes,cross,180511,Alexandru Maxim,away,False,,False,95.9,91.2,91.0,75.6
+passes,pass,180511,Alexandru Maxim,away,False,,False,34.7,82.6,59.3,100.0
+passes,pass,180511,Alexandru Maxim,away,False,,False,42.1,84.9,49.3,90.2
+passes,pass,180511,Alexandru Maxim,away,False,True,False,55.9,56.4,56.7,90.0
+passes,pass,180511,Alexandru Maxim,away,False,True,False,37.6,36.5,36.9,21.2
+passes,pass,180511,Alexandru Maxim,away,False,True,False,37.5,31.5,39.4,41.2
+passes,pass,180511,Alexandru Maxim,away,False,True,False,42.3,30.0,40.4,38.2
+passes,pass,180511,Alexandru Maxim,away,False,True,False,54.9,69.3,65.2,11.9
+defensive,ball-recovery,180511,Alexandru Maxim,away,False,True,False,65.7,26.0,,
+defensive,tackle,180511,Alexandru Maxim,away,False,True,False,18.8,92.6,,
+defensive,tackle,180511,Alexandru Maxim,away,False,,False,64.4,78.4,,
+defensive,ball-recovery,180511,Alexandru Maxim,away,False,True,False,23.7,75.2,,
+defensive,tackle,180511,Alexandru Maxim,away,False,True,False,25.5,75.4,,
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,65.7,26.0,68.1,29.5
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,35.8,56.1,38.6,48.3
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,64.5,84.1,69.2,78.3
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,43.7,70.5,45.0,52.9
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,58.4,62.3,55.9,56.4
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,23.7,75.2,37.6,36.5
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,33.5,28.8,37.5,31.5
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,38.6,32.6,42.3,30.0
+ball-carries,ball-carry,180511,Alexandru Maxim,away,False,,False,53.2,77.6,54.9,69.3
+passes,pass,887741,Florin Ştefan,away,False,,False,13.8,91.7,44.4,84.1
+passes,pass,887741,Florin Ştefan,away,False,,False,20.6,94.4,23.8,84.3
+passes,pass,887741,Florin Ştefan,away,False,True,False,59.8,83.7,63.2,88.8
+passes,pass,887741,Florin Ştefan,away,False,True,False,68.3,90.0,61.8,90.6
+passes,pass,887741,Florin Ştefan,away,False,True,False,69.2,93.5,64.5,84.1
+passes,cross,887741,Florin Ştefan,away,False,,False,89.8,93.2,89.5,89.6
+passes,cross,887741,Florin Ştefan,away,False,,False,91.3,94.0,91.5,90.8
+passes,pass,887741,Florin Ştefan,away,False,,False,23.9,93.7,70.8,66.5
+passes,pass,887741,Florin Ştefan,away,False,True,False,32.8,90.2,34.7,82.6
+passes,pass,887741,Florin Ştefan,away,False,True,False,54.0,90.6,42.4,84.1
+passes,pass,887741,Florin Ştefan,away,False,True,False,78.4,91.2,73.5,87.6
+passes,pass,887741,Florin Ştefan,away,False,True,True,88.8,92.1,77.8,87.6
+passes,pass,887741,Florin Ştefan,away,False,True,False,45.6,90.2,61.8,92.8
+passes,pass,887741,Florin Ştefan,away,False,True,False,35.0,67.9,53.2,77.6
+defensive,ball-recovery,887741,Florin Ştefan,away,False,True,False,59.8,82.7,,
+defensive,tackle,887741,Florin Ştefan,away,False,,False,26.6,69.9,,
+defensive,ball-recovery,887741,Florin Ştefan,away,False,True,False,33.7,66.4,,
+ball-carries,ball-carry,887741,Florin Ştefan,away,False,,False,97.8,83.0,88.8,92.1
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,77.7,27.4,80.3,12.7
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,45.4,33.2,45.4,13.2
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,45.8,24.7,35.3,25.1
+passes,cross,984602,Kacper Kozłowski,away,False,,False,94.2,19.8,94.5,22.4
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,40.6,37.4,29.7,45.8
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,40.2,42.0,38.6,32.6
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,40.5,38.9,35.1,75.9
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,35.0,38.6,31.3,14.8
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,32.7,31.4,38.3,36.5
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,40.5,29.7,43.0,37.3
+passes,pass,984602,Kacper Kozłowski,away,False,True,False,41.5,32.3,31.0,50.8
+ball-carries,ball-carry,984602,Kacper Kozłowski,away,False,,False,54.4,42.7,45.4,33.2
+ball-carries,ball-carry,984602,Kacper Kozłowski,away,False,,False,92.6,10.9,94.2,19.8
+ball-carries,ball-carry,984602,Kacper Kozłowski,away,False,,False,31.4,51.4,35.0,38.6
+ball-carries,ball-carry,984602,Kacper Kozłowski,away,False,,False,27.7,27.3,32.7,31.4
+ball-carries,ball-carry,984602,Kacper Kozłowski,away,False,,False,39.9,23.0,40.5,29.7
+passes,pass,958167,Drissa Camara,away,False,,False,65.7,49.5,85.3,47.2
+passes,pass,958167,Drissa Camara,away,False,True,False,20.2,85.5,22.5,93.4
+passes,pass,958167,Drissa Camara,away,False,True,False,86.3,87.3,88.8,92.0
+passes,pass,958167,Drissa Camara,away,False,True,False,77.6,82.4,78.1,88.5
+passes,pass,958167,Drissa Camara,away,False,True,False,71.7,87.0,77.2,16.3
+passes,pass,958167,Drissa Camara,away,False,True,False,72.3,86.8,76.5,80.2
+passes,pass,958167,Drissa Camara,away,False,True,False,72.5,55.9,69.2,56.7
+ball-carries,ball-carry,958167,Drissa Camara,away,False,,False,68.2,42.7,65.7,49.5
+ball-carries,ball-carry,958167,Drissa Camara,away,False,,False,78.8,87.3,86.3,87.3
+ball-carries,ball-carry,958167,Drissa Camara,away,False,,False,77.8,87.6,77.3,75.5
+ball-carries,ball-carry,958167,Drissa Camara,away,False,,False,61.8,92.8,71.3,84.7
+passes,pass,1431516,Trivante Stewart,away,False,True,False,83.1,20.6,76.0,17.9
+passes,pass,1431516,Trivante Stewart,away,False,True,False,68.9,61.7,67.4,70.9
+dribbles,dribble,1431516,Trivante Stewart,away,False,,False,77.5,75.7,,
+defensive,clearance,1431516,Trivante Stewart,away,False,True,False,12.5,65.9,11.8,62.4
+ball-carries,ball-carry,1431516,Trivante Stewart,away,False,,False,76.5,80.2,77.5,75.7
+ball-carries,ball-carry,1431516,Trivante Stewart,away,False,,False,69.2,56.7,68.9,61.7
