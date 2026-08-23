@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import time
 import random
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List, Union
 import tls_client
 from functools import lru_cache
 
@@ -528,4 +528,223 @@ def fetch_match_comments(event_id: int, referer: str = "https://www.sofascore.co
     Alias for create_comments_df to maintain naming consistency with other fetch_* functions.
     """
     return create_comments_df(event_id, referer=referer)
+
+
+# 9. All Match Passes & Ball Movements DataFrame
+def create_all_passes_df(event_id: int, referer: str = "https://www.sofascore.com/") -> pd.DataFrame:
+    """
+    Fetch and aggregate all passes, ball-carries, and defensive actions for all players in a match.
+    
+    Returns:
+        pd.DataFrame: Table containing all ball actions with player info, start (x, y) and end (x, y) coordinates,
+                      outcome, and keypass indicators.
+    """
+    lineups_url = f"https://www.sofascore.com/api/v1/event/{event_id}/lineups"
+    lineups_data = scrape_sofascore(lineups_url, referer=referer)
+    
+    if not lineups_data or ('home' not in lineups_data and 'away' not in lineups_data):
+        return pd.DataFrame()
+        
+    all_players = []
+    for side in ['home', 'away']:
+        if side in lineups_data:
+            for p in lineups_data[side].get('players', []):
+                p_info = p.get('player', {})
+                all_players.append({
+                    'id': p_info.get('id'),
+                    'name': p_info.get('name'),
+                    'team': side,
+                    'is_substitute': p.get('substitute', False)
+                })
+                
+    all_events = []
+    for player in all_players:
+        pid = player['id']
+        if not pid:
+            continue
+            
+        rb_url = f"https://www.sofascore.com/api/v1/event/{event_id}/player/{pid}/rating-breakdown"
+        rb_data = scrape_sofascore(rb_url, referer=referer)
+        
+        if not rb_data or not isinstance(rb_data, dict):
+            continue
+            
+        for category, events in rb_data.items():
+            if isinstance(events, list):
+                for e in events:
+                    row = {
+                        'event_category': category,
+                        'event_action_type': e.get('eventActionType'),
+                        'player_id': pid,
+                        'player_name': player['name'],
+                        'team': player['team'],
+                        'is_home': e.get('isHome'),
+                        'outcome': e.get('outcome'),
+                        'keypass': e.get('keypass', False),
+                        'start_x': e.get('playerCoordinates', {}).get('x') if 'playerCoordinates' in e else None,
+                        'start_y': e.get('playerCoordinates', {}).get('y') if 'playerCoordinates' in e else None,
+                        'end_x': e.get('passEndCoordinates', {}).get('x') if 'passEndCoordinates' in e else None,
+                        'end_y': e.get('passEndCoordinates', {}).get('y') if 'passEndCoordinates' in e else None,
+                    }
+                    all_events.append(row)
+                    
+    return pd.DataFrame(all_events)
+
+
+def fetch_match_passes(event_id: int, referer: str = "https://www.sofascore.com/") -> pd.DataFrame:
+    """
+    Alias for create_all_passes_df.
+    """
+    return create_all_passes_df(event_id, referer=referer)
+
+
+# 10. Live Match Stream Recorder & Parser
+def record_live_match_stream(event_id: int, duration_seconds: int = 5400, output_file: Optional[str] = None) -> List[Dict[str, Any]]:
+    """
+    Record real-time live match stream (Sportradar timeline, ball coordinates, possession, micro-events).
+    Uses headless Chrome CDP to capture the WebSocket data stream.
+    
+    Args:
+        event_id: SofaScore match ID
+        duration_seconds: How long to record in seconds (default 5400s = 90 mins)
+        output_file: Optional path to save JSON output
+        
+    Returns:
+        List of captured raw/parsed event records
+    """
+    try:
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+    except ImportError:
+        raise ImportError("Selenium is required for live stream recording. Install with: pip install selenium")
+        
+    import base64
+    
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
+    
+    driver = webdriver.Chrome(options=options)
+    url = f"https://www.sofascore.com/hu/football/match/match/#id:{event_id}"
+    
+    try:
+        driver.get(url)
+        time.sleep(4)
+        
+        recorded_events = []
+        start_time = time.time()
+        
+        while time.time() - start_time < duration_seconds:
+            logs = driver.get_log("performance")
+            for entry in logs:
+                try:
+                    log = json.loads(entry["message"])["message"]
+                    method = log.get("method")
+                    
+                    if method == "Network.webSocketFrameReceived":
+                        payload = log.get("params", {}).get("response", {}).get("payloadData", "")
+                        timestamp = log.get("params", {}).get("timestamp", time.time())
+                        
+                        if payload:
+                            try:
+                                decoded_bytes = base64.b64decode(payload)
+                                decoded_text = decoded_bytes.decode('utf-8', errors='ignore')
+                            except Exception:
+                                decoded_text = payload
+                                
+                            entry_data = {
+                                "timestamp": timestamp,
+                                "time_str": time.strftime("%H:%M:%S"),
+                                "raw_payload": decoded_text
+                            }
+                            recorded_events.append(entry_data)
+                except Exception:
+                    continue
+                    
+            time.sleep(0.5)
+            
+        if output_file:
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(recorded_events, f, ensure_ascii=False, indent=2)
+                
+        return recorded_events
+        
+    finally:
+        driver.quit()
+
+
+def parse_live_stream_to_df(stream_data_or_file: Union[str, List[Dict[str, Any]]]) -> pd.DataFrame:
+    """
+    Parse captured live stream data into a structured pandas DataFrame.
+    
+    Args:
+        stream_data_or_file: File path string to JSON or list of captured raw stream dictionaries.
+        
+    Returns:
+        pd.DataFrame with parsed real-time events, coordinates, situations, and timestamps.
+    """
+    if isinstance(stream_data_or_file, str):
+        with open(stream_data_or_file, "r", encoding="utf-8") as f:
+            events_data = json.load(f)
+    else:
+        events_data = stream_data_or_file
+        
+    parsed_rows = []
+    
+    for ev in events_data:
+        raw = ev.get('raw_payload', '')
+        time_str = ev.get('time_str', '')
+        
+        if 'match_timelinedelta' in raw:
+            parts = raw.split('}{')
+            for part in parts:
+                p = part if part.startswith('{') else '{' + part
+                if not p.endswith('}'):
+                    p = p + '}'
+                try:
+                    obj = json.loads(p)
+                    for d in obj.get('data', []):
+                        for sub_ev in d.get('data', {}).get('events', []):
+                            coords = sub_ev.get('coordinates', [])
+                            start_x, start_y, end_x, end_y = None, None, None, None
+                            
+                            if coords and len(coords) >= 1:
+                                end_x = coords[0].get('X')
+                                end_y = coords[0].get('Y')
+                                if len(coords) >= 2:
+                                    start_x = coords[-1].get('X')
+                                    start_y = coords[-1].get('Y')
+                            elif sub_ev.get('X') is not None and sub_ev.get('Y') is not None:
+                                end_x = sub_ev.get('X')
+                                end_y = sub_ev.get('Y')
+
+                            row = {
+                                'time_captured': time_str,
+                                'match_minute': sub_ev.get('time') if sub_ev.get('time', -1) >= 0 else None,
+                                'match_seconds': sub_ev.get('seconds') if sub_ev.get('seconds', -1) >= 0 else None,
+                                'type': sub_ev.get('type'),
+                                'name': sub_ev.get('name'),
+                                'situation': sub_ev.get('situation'),
+                                'team': sub_ev.get('team') or (coords[0].get('team') if coords else None),
+                                'possession': sub_ev.get('name') == 'Ball possession',
+                                'x': end_x,
+                                'y': end_y,
+                                'start_x': start_x,
+                                'start_y': start_y,
+                                'trajectory_points': coords if coords else None,
+                                'event_id': sub_ev.get('_id'),
+                            }
+                            parsed_rows.append(row)
+                except Exception:
+                    continue
+                    
+    df = pd.DataFrame(parsed_rows)
+    return df
+
+
 
