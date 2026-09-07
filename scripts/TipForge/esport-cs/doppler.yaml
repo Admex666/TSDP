@@ -1,0 +1,3 @@
+﻿setup:
+  - project: tsdp
+    config: dev_tipforge_esport_cs
