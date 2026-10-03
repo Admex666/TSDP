@@ -1,0 +1,8 @@
+Strategy,Bets,Win Rate %,Avg Odds,Avg CLV %,Open Bet ROI %,Close Bet ROI %,Edge Gain (Open vs Close ROI %)
+All Bets (Blind Benchmark Open),20958,33.33,3.68,-0.46,-4.89,-4.43,-0.46
+High Positive CLV (> +5%),3991,32.52,4.16,10.31,0.84,-8.53,9.37
+Extreme Positive CLV (> +10%),1406,28.95,5.12,16.2,5.14,-9.49,14.63
+Steam Following (Prob Shift > +3%),1664,46.75,2.84,12.4,9.81,-2.34,12.15
+Negative CLV (Faded < -5%),4865,26.7,4.23,-10.58,-17.62,-7.89,-9.73
+Moderate Favorites with +CLV (Odds 1.5-2.5 & CLV > 3%),1367,52.74,2.02,7.09,4.69,-2.32,7.01
+Underdogs with +CLV (Odds > 3.5 & CLV > 5%),2063,20.55,5.71,11.63,-2.78,-12.8,10.02
