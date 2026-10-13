@@ -45,12 +45,13 @@ def scrape_live_events(
 
 if __name__ == "__main__":
     match_id = 16483643
+    DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
     
     df_events = scrape_live_events(
         match_id_or_url=match_id,
         duration_seconds=45,
-        output_json=f"live_stream_{match_id}.json",
-        output_csv=f"live_events_{match_id}.csv"
+        output_json=os.path.join(DATA_DIR, "raw", f"live_stream_{match_id}.json"),
+        output_csv=os.path.join(DATA_DIR, "processed", f"live_events_{match_id}.csv")
     )
     
     if not df_events.empty:

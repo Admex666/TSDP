@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabah FK vs SK Slavia Praha | 3D Live Match Tracking Visualizer</title>
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-card: #151d2f;
+            --bg-panel: #1b253b;
+            --border-color: #27354f;
+            --accent-safe: #38bdf8;
+            --accent-attack: #f97316;
+            --accent-dangerous: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --pitch-green: #113824;
+            --pitch-line: rgba(255, 255, 255, 0.45);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(180deg, #182238 0%, var(--bg-primary) 100%);
+            padding: 16px 28px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+        .header-title p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+        .badge {
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-live {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .badge-live::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ef4444;
+            display: inline-block;
+            box-shadow: 0 0 8px #ef4444;
+        }
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            padding: 20px 28px;
+            flex: 1;
+        }
+        @media (max-width: 1100px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .pitch-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .pitch-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 105 / 68;
+            background: var(--pitch-green);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.15);
+        }
+        svg.pitch-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .controls-card {
+            background: var(--bg-panel);
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border: 1px solid var(--border-color);
+        }
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        button.btn {
+            background: #25334e;
+            color: #ffffff;
+            border: 1px solid #374b6e;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        button.btn:hover {
+            background: #334568;
+            border-color: var(--accent-safe);
+        }
+        button.btn:active {
+            transform: scale(0.97);
+        }
+        .timeline-slider {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        input[type="range"] {
+            flex: 1;
+            accent-color: var(--accent-safe);
+            height: 6px;
+            cursor: pointer;
+        }
+        .sidebar {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: calc(100vh - 140px);
+        }
+        .sidebar-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-panel);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar-header h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .event-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .event-item {
+            background: #172136;
+            border: 1px solid #23324d;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .event-item:hover {
+            background: #1e2c47;
+            border-color: #38bdf8;
+        }
+        .event-item.active {
+            background: #1a2a46;
+            border-color: var(--accent-safe);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+        }
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .event-time {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .pill {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .pill-safe { background: rgba(56, 189, 248, 0.18); color: var(--accent-safe); }
+        .pill-attack { background: rgba(249, 115, 22, 0.18); color: var(--accent-attack); }
+        .pill-dangerous { background: rgba(239, 68, 68, 0.18); color: var(--accent-dangerous); }
+        .event-body {
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+        }
+        .legend-row {
+            display: flex;
+            gap: 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            align-items: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+        /* Animation elements on SVG */
+        .ball-pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { r: 2; opacity: 1; }
+            100% { r: 6; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-title">
+        <h1>Sabah FK vs SK Slavia Praha (ID: 16939017)</h1>
+        <p>Live Micro-Events & 3D Tracking Trajectories (SofaScore / Sportradar)</p>
+    </div>
+    <div class="badge badge-live">Live Stream Data</div>
+</header>
+
+<div class="main-container">
+    <div class="pitch-card">
+        <div class="pitch-container" id="pitchContainer">
+            <!-- Full Pitch SVG (100x100 viewBox matching normalized coordinates) -->
+            <svg class="pitch-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <!-- Lawn stripes -->
+                <defs>
+                    <pattern id="grassStripes" width="10" height="100" patternUnits="userSpaceOnUse">
+                        <rect width="5" height="100" fill="#143e28" />
+                        <rect x="5" width="5" height="100" fill="#0f3421" />
+                    </pattern>
+                </defs>
+                <rect width="100" height="100" fill="url(#grassStripes)" />
+
+                <!-- Pitch markings -->
+                <!-- Outer Border -->
+                <rect x="3" y="3" width="94" height="94" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                
+                <!-- Halfway line -->
+                <line x1="50" y1="3" x2="50" y2="97" stroke="var(--pitch-line)" stroke-width="0.8" />
+                
+                <!-- Center circle -->
+                <circle cx="50" cy="50" r="10" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <circle cx="50" cy="50" r="0.6" fill="var(--pitch-line)" />
+                
+                <!-- Home Penalty Area (Left) -->
+                <rect x="3" y="24" width="16" height="52" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <rect x="3" y="37" width="5.5" height="26" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <circle cx="11" cy="50" r="0.6" fill="var(--pitch-line)" />
+                <path d="M 19 42 A 9 9 0 0 1 19 58" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <!-- Home Goal -->
+                <rect x="0.8" y="44" width="2.2" height="12" fill="rgba(255,255,255,0.2)" stroke="var(--pitch-line)" stroke-width="0.8" />
+
+                <!-- Away Penalty Area (Right) -->
+                <rect x="81" y="24" width="16" height="52" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <rect x="91.5" y="37" width="5.5" height="26" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <circle cx="89" cy="50" r="0.6" fill="var(--pitch-line)" />
+                <path d="M 81 42 A 9 9 0 0 0 81 58" fill="none" stroke="var(--pitch-line)" stroke-width="0.8" />
+                <!-- Away Goal -->
+                <rect x="97" y="44" width="2.2" height="12" fill="rgba(255,255,255,0.2)" stroke="var(--pitch-line)" stroke-width="0.8" />
+
+                <!-- Dynamic Layer for Trajectories & Points -->
+                <g id="trajectoryLayer"></g>
+                <g id="playersLayer"></g>
+                <g id="ballLayer"></g>
+            </svg>
+        </div>
+
+        <div class="controls-card">
+            <div class="btn-group">
+                <button class="btn" id="btnPrev">⏮ Prev</button>
+                <button class="btn" id="btnPlay">▶ Play</button>
+                <button class="btn" id="btnNext">Next ⏭</button>
+            </div>
+            <div class="timeline-slider">
+                <span id="currentTime" style="font-size: 0.85rem; font-weight: 600; min-width: 60px;">--:--</span>
+                <input type="range" id="eventSlider" min="0" max="0" value="0">
+                <span id="stepCounter" style="font-size: 0.85rem; color: var(--text-muted); min-width: 50px;">0 / 0</span>
+            </div>
+            <div class="legend-row">
+                <div class="legend-item"><span class="dot" style="background: var(--accent-safe)"></span> Safe</div>
+                <div class="legend-item"><span class="dot" style="background: var(--accent-attack)"></span> Attack</div>
+                <div class="legend-item"><span class="dot" style="background: var(--accent-dangerous)"></span> Dangerous</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Micro-Event Stream</h2>
+            <span id="eventCount" style="font-size: 0.8rem; color: var(--text-muted);">0 events</span>
+        </div>
+        <div class="event-list" id="eventList"></div>
+    </div>
+</div>
+
+<script>
+    const eventsData = [{"index": 1, "time_captured": "19:32:35", "match_minute": 45.0, "match_seconds": 2700.0, "type": "matchsituation", "name": "matchsituation", "situation": "safe", "team": "home", "x": 11.0, "y": 36.0, "start_x": null, "start_y": null, "trajectory": [], "event_id": "a97d6c72-73e9-4e3a-abc4-5c52118aa610"}, {"index": 2, "time_captured": "19:32:35", "match_minute": null, "match_seconds": null, "type": "ballcoordinates", "name": "Pitch coordinates", "situation": "nan", "team": "home", "x": 11.0, "y": 36.0, "start_x": 35.0, "start_y": 74.0, "trajectory": [{"team": "home", "X": 11, "Y": 36}, {"team": "home", "X": 28, "Y": 35}, {"team": "home", "X": 21, "Y": 69}, {"team": "home", "X": 35, "Y": 74}], "event_id": "a97d6c72-73e9-4e3a-abc4-5c52118aa610-1140"}, {"index": 3, "time_captured": "19:32:42", "match_minute": 45.0, "match_seconds": 2700.0, "type": "matchsituation", "name": "matchsituation", "situation": "safe", "team": "home", "x": 15.0, "y": 50.0, "start_x": null, "start_y": null, "trajectory": [], "event_id": "e70473d1-a90f-4281-902c-9d94f0b81d7b"}, {"index": 4, "time_captured": "19:32:42", "match_minute": null, "match_seconds": null, "type": "ballcoordinates", "name": "Pitch coordinates", "situation": "nan", "team": "home", "x": 15.0, "y": 50.0, "start_x": 21.0, "start_y": 69.0, "trajectory": [{"team": "home", "X": 15, "Y": 50}, {"team": "home", "X": 11, "Y": 36}, {"team": "home", "X": 28, "Y": 35}, {"team": "home", "X": 21, "Y": 69}], "event_id": "e70473d1-a90f-4281-902c-9d94f0b81d7b-1140"}, {"index": 5, "time_captured": "19:32:42", "match_minute": 45.0, "match_seconds": 2700.0, "type": "matchsituation", "name": "matchsituation", "situation": "safe", "team": "home", "x": 16.0, "y": 48.0, "start_x": null, "start_y": null, "trajectory": [], "event_id": "0b27318d-4a97-4bd8-b2fc-26b6c08f061f"}, {"index": 6, "time_captured": "19:32:42", "match_minute": null, "match_seconds": null, "type": "ballcoordinates", "name": "Pitch coordinates", "situation": "nan", "team": "home", "x": 16.0, "y": 48.0, "start_x": 28.0, "start_y": 35.0, "trajectory": [{"team": "home", "X": 16, "Y": 48}, {"team": "home", "X": 15, "Y": 50}, {"team": "home", "X": 11, "Y": 36}, {"team": "home", "X": 28, "Y": 35}], "event_id": "0b27318d-4a97-4bd8-b2fc-26b6c08f061f-1140"}, {"index": 7, "time_captured": "19:32:46", "match_minute": 45.0, "match_seconds": 2700.0, "type": "matchsituation", "name": "matchsituation", "situation": "attack", "team": "home", "x": 62.0, "y": 21.0, "start_x": null, "start_y": null, "trajectory": [], "event_id": "44b604b1-95c4-4510-92ac-c7760dfac0c3"}, {"index": 8, "time_captured": "19:32:46", "match_minute": null, "match_seconds": null, "type": "ballcoordinates", "name": "Pitch coordinates", "situation": "nan", "team": "home", "x": 62.0, "y": 21.0, "start_x": 11.0, "start_y": 36.0, "trajectory": [{"team": "home", "X": 62, "Y": 21}, {"team": "home", "X": 16, "Y": 48}, {"team": "home", "X": 15, "Y": 50}, {"team": "home", "X": 11, "Y": 36}], "event_id": "44b604b1-95c4-4510-92ac-c7760dfac0c3-1140"}, {"index": 9, "time_captured": "19:32:47", "match_minute": 45.0, "match_seconds": 2700.0, "type": "matchsituation", "name": "matchsituation", "situation": "attack", "team": "home", "x": 68.0, "y": 14.0, "start_x": null, "start_y": null, "trajectory": [], "event_id": "91e53d6d-cb99-4852-9aab-f6c705b151cd"}, {"index": 10, "time_captured": "19:32:47", "match_minute": null, "match_seconds": null, "type": "ballcoordinates", "name": "Pitch coordinates", "situation": "nan", "team": "home", "x": 68.0, "y": 14.0, "start_x": 15.0, "start_y": 50.0, "trajectory": [{"team": "home", "X": 68, "Y": 14}, {"team": "home", "X": 62, "Y": 21}, {"team": "home", "X": 16, "Y": 48}, {"team": "home", "X": 15, "Y": 50}], "event_id": "91e53d6d-cb99-4852-9aab-f6c705b151cd-1140"}];
+
+    // Filter to only events with coordinates or trajectory
+    const trackableEvents = eventsData.filter(e => (e.x !== null && e.y !== null) || (e.trajectory && e.trajectory.length > 0));
+
+    let currentIndex = 0;
+    let isPlaying = false;
+    let playInterval = null;
+
+    const trajectoryLayer = document.getElementById('trajectoryLayer');
+    const ballLayer = document.getElementById('ballLayer');
+    const eventList = document.getElementById('eventList');
+    const eventSlider = document.getElementById('eventSlider');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const currentTimeEl = document.getElementById('currentTime');
+    const stepCounterEl = document.getElementById('stepCounter');
+    const eventCountEl = document.getElementById('eventCount');
+
+    // Init slider bounds
+    eventSlider.max = Math.max(0, trackableEvents.length - 1);
+    eventCountEl.textContent = `${trackableEvents.length} records`;
+
+    function getSituationColor(sit) {
+        switch ((sit || '').toLowerCase()) {
+            case 'attack': return '#f97316';
+            case 'dangerous': return '#ef4444';
+            default: return '#38bdf8';
+        }
+    }
+
+    // Render sidebar items
+    function populateSidebar() {
+        eventList.innerHTML = '';
+        trackableEvents.forEach((ev, idx) => {
+            const div = document.createElement('div');
+            div.className = `event-item ${idx === currentIndex ? 'active' : ''}`;
+            div.dataset.index = idx;
+            
+            const colorClass = `pill-${ev.situation.toLowerCase()}`;
+            div.innerHTML = `
+                <div class="event-header">
+                    <span class="event-time">${ev.time_captured || 'Live'} (${ev.match_minute ? ev.match_minute + "'" : '45''})</span>
+                    <span class="pill ${colorClass}">${ev.situation.toUpperCase()}</span>
+                </div>
+                <div class="event-body">
+                    <span>${ev.name || ev.type}</span>
+                    <span>X: ${ev.x ? ev.x.toFixed(1) : '-'}, Y: ${ev.y ? ev.y.toFixed(1) : '-'}</span>
+                </div>
+            `;
+            div.addEventListener('click', () => {
+                setStep(idx);
+            });
+            eventList.appendChild(div);
+        });
+    }
+
+    // Render pitch graphics for specific index
+    function renderStep(idx) {
+        if (trackableEvents.length === 0) return;
+        const current = trackableEvents[idx];
+        const color = getSituationColor(current.situation);
+
+        // Update indicators
+        currentTimeEl.textContent = current.time_captured || '--:--';
+        stepCounterEl.textContent = `${idx + 1} / ${trackableEvents.length}`;
+        eventSlider.value = idx;
+
+        // Highlight sidebar item
+        document.querySelectorAll('.event-item').forEach((item, i) => {
+            item.classList.toggle('active', i === idx);
+            if (i === idx) item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Clear layers
+        trajectoryLayer.innerHTML = '';
+        ballLayer.innerHTML = '';
+
+        // 1. Draw historical trail up to current step
+        for (let i = 0; i <= idx; i++) {
+            const ev = trackableEvents[i];
+            const evColor = getSituationColor(ev.situation);
+
+            // Trajectory polyline
+            if (ev.trajectory && ev.trajectory.length >= 2) {
+                const pts = [...ev.trajectory].reverse();
+                let pointsStr = pts.map(p => `${p.X},${p.Y}`).join(' ');
+                const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+                pathEl.setAttribute('points', pointsStr);
+                pathEl.setAttribute('fill', 'none');
+                pathEl.setAttribute('stroke', evColor);
+                pathEl.setAttribute('stroke-width', i === idx ? '1.5' : '0.8');
+                pathEl.setAttribute('stroke-dasharray', i === idx ? 'none' : '2,2');
+                pathEl.setAttribute('opacity', i === idx ? '0.9' : '0.4');
+                trajectoryLayer.appendChild(pathEl);
+            }
+
+            // Point marker
+            if (ev.x !== null && ev.y !== null) {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', ev.x);
+                circle.setAttribute('cy', ev.y);
+                circle.setAttribute('r', i === idx ? '2.4' : '1.2');
+                circle.setAttribute('fill', evColor);
+                circle.setAttribute('stroke', '#ffffff');
+                circle.setAttribute('stroke-width', i === idx ? '0.8' : '0.4');
+                circle.setAttribute('opacity', i === idx ? '1.0' : '0.5');
+                trajectoryLayer.appendChild(circle);
+            }
+        }
+
+        // 2. Render Active Ball with Glow
+        if (current.x !== null && current.y !== null) {
+            // Pulse wave
+            const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            pulse.setAttribute('cx', current.x);
+            pulse.setAttribute('cy', current.y);
+            pulse.setAttribute('class', 'ball-pulse');
+            pulse.setAttribute('fill', color);
+            ballLayer.appendChild(pulse);
+
+            // Actual Ball Marker
+            const ball = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            ball.setAttribute('cx', current.x);
+            ball.setAttribute('cy', current.y);
+            ball.setAttribute('r', '2.6');
+            ball.setAttribute('fill', '#ffffff');
+            ball.setAttribute('stroke', color);
+            ball.setAttribute('stroke-width', '1.2');
+            ballLayer.appendChild(ball);
+
+            // Situation Label Above Ball
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', current.x);
+            text.setAttribute('y', Math.max(5, current.y - 3.5));
+            text.setAttribute('fill', '#ffffff');
+            text.setAttribute('font-size', '2.8');
+            text.setAttribute('font-weight', 'bold');
+            text.setAttribute('text-anchor', 'middle');
+            text.textContent = `[${current.situation.toUpperCase()}] (${current.x.toFixed(0)}, ${current.y.toFixed(0)})`;
+            ballLayer.appendChild(text);
+        }
+    }
+
+    function setStep(idx) {
+        currentIndex = Math.max(0, Math.min(trackableEvents.length - 1, idx));
+        renderStep(currentIndex);
+    }
+
+    function togglePlay() {
+        isPlaying = !isPlaying;
+        btnPlay.textContent = isPlaying ? '⏸ Pause' : '▶ Play';
+        if (isPlaying) {
+            playInterval = setInterval(() => {
+                if (currentIndex >= trackableEvents.length - 1) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+                renderStep(currentIndex);
+            }, 1200);
+        } else {
+            clearInterval(playInterval);
+        }
+    }
+
+    btnPlay.addEventListener('click', togglePlay);
+    btnPrev.addEventListener('click', () => {
+        if (isPlaying) togglePlay();
+        setStep(currentIndex - 1);
+    });
+    btnNext.addEventListener('click', () => {
+        if (isPlaying) togglePlay();
+        setStep(currentIndex + 1);
+    });
+    eventSlider.addEventListener('input', (e) => {
+        if (isPlaying) togglePlay();
+        setStep(parseInt(e.target.value));
+    });
+
+    // Initialize
+    populateSidebar();
+    renderStep(0);
+</script>
+
+</body>
+</html>

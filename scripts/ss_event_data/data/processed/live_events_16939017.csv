@@ -1,0 +1,11 @@
+time_captured,match_minute,match_seconds,type,name,situation,team,possession,x,y,start_x,start_y,trajectory_points,event_id,home_score,away_score
+19:32:35,45.0,2700.0,matchsituation,matchsituation,safe,home,False,11,36,,,,a97d6c72-73e9-4e3a-abc4-5c52118aa610,,
+19:32:35,,,ballcoordinates,Pitch coordinates,,home,False,11,36,35.0,74.0,"[{'team': 'home', 'X': 11, 'Y': 36}, {'team': 'home', 'X': 28, 'Y': 35}, {'team': 'home', 'X': 21, 'Y': 69}, {'team': 'home', 'X': 35, 'Y': 74}]",a97d6c72-73e9-4e3a-abc4-5c52118aa610-1140,,
+19:32:42,45.0,2700.0,matchsituation,matchsituation,safe,home,False,15,50,,,,e70473d1-a90f-4281-902c-9d94f0b81d7b,,
+19:32:42,,,ballcoordinates,Pitch coordinates,,home,False,15,50,21.0,69.0,"[{'team': 'home', 'X': 15, 'Y': 50}, {'team': 'home', 'X': 11, 'Y': 36}, {'team': 'home', 'X': 28, 'Y': 35}, {'team': 'home', 'X': 21, 'Y': 69}]",e70473d1-a90f-4281-902c-9d94f0b81d7b-1140,,
+19:32:42,45.0,2700.0,matchsituation,matchsituation,safe,home,False,16,48,,,,0b27318d-4a97-4bd8-b2fc-26b6c08f061f,,
+19:32:42,,,ballcoordinates,Pitch coordinates,,home,False,16,48,28.0,35.0,"[{'team': 'home', 'X': 16, 'Y': 48}, {'team': 'home', 'X': 15, 'Y': 50}, {'team': 'home', 'X': 11, 'Y': 36}, {'team': 'home', 'X': 28, 'Y': 35}]",0b27318d-4a97-4bd8-b2fc-26b6c08f061f-1140,,
+19:32:46,45.0,2700.0,matchsituation,matchsituation,attack,home,False,62,21,,,,44b604b1-95c4-4510-92ac-c7760dfac0c3,,
+19:32:46,,,ballcoordinates,Pitch coordinates,,home,False,62,21,11.0,36.0,"[{'team': 'home', 'X': 62, 'Y': 21}, {'team': 'home', 'X': 16, 'Y': 48}, {'team': 'home', 'X': 15, 'Y': 50}, {'team': 'home', 'X': 11, 'Y': 36}]",44b604b1-95c4-4510-92ac-c7760dfac0c3-1140,,
+19:32:47,45.0,2700.0,matchsituation,matchsituation,attack,home,False,68,14,,,,91e53d6d-cb99-4852-9aab-f6c705b151cd,,
+19:32:47,,,ballcoordinates,Pitch coordinates,,home,False,68,14,15.0,50.0,"[{'team': 'home', 'X': 68, 'Y': 14}, {'team': 'home', 'X': 62, 'Y': 21}, {'team': 'home', 'X': 16, 'Y': 48}, {'team': 'home', 'X': 15, 'Y': 50}]",91e53d6d-cb99-4852-9aab-f6c705b151cd-1140,,

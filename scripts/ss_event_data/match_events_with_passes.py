@@ -10,8 +10,10 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 if __name__ == "__main__":
     match_id = 16483643
-    live_csv = "live_events_16483643.csv"
-    passes_csv = f"player_passes_{match_id}.csv"
+    DATA_DIR = os.path.join(os.path.dirname(__file__), "data", "processed")
+    live_csv = os.path.join(DATA_DIR, f"live_events_{match_id}.csv")
+    passes_csv = os.path.join(DATA_DIR, f"player_passes_{match_id}.csv")
+    output_matched_csv = os.path.join(DATA_DIR, f"matched_events_{match_id}.csv")
     
     # 1. Load cached or fetch passes
     if os.path.exists(passes_csv):
@@ -42,6 +44,5 @@ if __name__ == "__main__":
     print("\n--- Enriched Live Event Stream (Sample) ---")
     print(df_matched[avail_cols].to_string())
     
-    output_matched_csv = f"matched_events_{match_id}.csv"
     df_matched.to_csv(output_matched_csv, index=False)
     print(f"\nSaved enriched events to {output_matched_csv}")

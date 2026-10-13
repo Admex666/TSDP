@@ -36,10 +36,10 @@ A vizsgálat során elemezett DOM elem:
 <canvas id="renderCanvas" touch-action="none" data-engine="Babylon.js v8.22.0" ...></canvas>
 ```
 
-### Valós Tracking vs. Procedurális Animáció
-* **Labda pozíció (Valós idejű)**: A stream másodpercről másodpercre küldi a valós `(X, Y)` pálya koordinátákat és 4-pontos mozgásíveket (`ballcoordinates`). A Babylon.js a 3D labda modellt ezek mentén animálja.
-* **Játékosok mozgása (Szimulált/Procedurális)**: A 22 mezőnyjátékos pozíciója **nem** valós idejű 25/50 Hz-es optikai/GPS trackingből jön. A Sportradar widget a `/match_lineup` statikus kezdőfelállásból és a támadás irányából (`situation: dangerous/attack`) számol ki prediktív helyezkedést a 3D játékosmodellekhez.
-* **Coverage szint**: A SofaScore a Sportradar **VLMT Level 2 / LMT+** szintjét használja (`"coverage": {"depth": "DEEP", "level": 2}`). A teljes 22 fős egyéni játékos tracking a Sportradar különálló, licencelt Tracking Services terméke (Level 4/5).
+### Valós Tracking és Játékos Pozíciók
+* **Labda pozíció (Valós idejű)**: A stream másodpercről másodpercre közvetíti a valós `(X, Y)` pálya koordinátákat és 4-pontos mozgásíveket (`ballcoordinates`). A 3D Babylon.js modell ezek mentén animálja a labdát.
+* **Játékosok mozgása (Valós GPS / Tracking)**: Az újabb meccseken (pl. UEFA nemzetközi mérkőzések és kiemelt ligák esetén, mint a Sabah FK vs SK Slavia Praha `#16939017`) a Sportradar / SofaScore stream valós idejű GPS/optikai tracking adatokat közvetít mind a 22 játékosra.
+* **CDP (Chrome DevTools Protocol) Rögzítés**: A Cloudflare / Turnstile védelem miatt a közvetlen NATS kapcsolat helyett a legmegbízhatóbb módszer az élő Chrome böngésző munkamenethez való csatlakozás CDP-n (port 9222) keresztül (`live_cdp_recorder.py`).
 
 ---
 

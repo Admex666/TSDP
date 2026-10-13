@@ -643,6 +643,57 @@ def record_live_match_stream(event_id: Union[int, str], duration_seconds: int = 
     if not target_url:
         target_url = f"https://www.sofascore.com/hu/football/match/match/#id:{clean_id}"
     
+    # Check if active tab exists on local CDP port 9222
+    try:
+        import urllib.request
+        import websocket
+        resp = urllib.request.urlopen("http://127.0.0.1:9222/json", timeout=1.5)
+        tabs = json.loads(resp.read().decode())
+        target_tab = None
+        for t in tabs:
+            if clean_id in t.get("url", ""):
+                target_tab = t
+                break
+        if target_tab and "webSocketDebuggerUrl" in target_tab:
+            ws_url = target_tab["webSocketDebuggerUrl"]
+            ws = websocket.create_connection(ws_url, timeout=10, suppress_origin=True)
+            ws.send(json.dumps({"id": 1, "method": "Network.enable"}))
+            ws.settimeout(1.0)
+            
+            recorded_events = []
+            start_time = time.time()
+            while time.time() - start_time < duration_seconds:
+                try:
+                    msg = ws.recv()
+                    if not msg:
+                        continue
+                    data = json.loads(msg)
+                    if data.get("method") == "Network.webSocketFrameReceived":
+                        payload = data.get("params", {}).get("response", {}).get("payloadData", "")
+                        ts = data.get("params", {}).get("timestamp", time.time())
+                        if payload:
+                            try:
+                                decoded_bytes = base64.b64decode(payload)
+                                decoded_text = decoded_bytes.decode('utf-8', errors='ignore')
+                            except Exception:
+                                decoded_text = payload
+                            recorded_events.append({
+                                "timestamp": ts,
+                                "time_str": time.strftime("%H:%M:%S"),
+                                "raw_payload": decoded_text
+                            })
+                except websocket.WebSocketTimeoutException:
+                    continue
+                except Exception:
+                    continue
+            ws.close()
+            if output_file:
+                with open(output_file, "w", encoding="utf-8") as f:
+                    json.dump(recorded_events, f, ensure_ascii=False, indent=2)
+            return recorded_events
+    except Exception:
+        pass
+
     options = Options()
     options.add_argument("--headless=new")
     options.add_argument("--disable-gpu")
