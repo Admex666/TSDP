@@ -11,39 +11,47 @@ _session_pool = []
 _last_request_time = 0
 _request_count = 0
 
-# User-Agent rotation pool
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+# Browser profiles with matching client_identifier and user_agent
+BROWSER_PROFILES = [
+    {
+        "client_id": "safari_ios_16_0",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1",
+        "sec_ch_ua": None,
+        "platform": "iOS"
+    },
+    {
+        "client_id": "safari_16_0",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15",
+        "sec_ch_ua": None,
+        "platform": "macOS"
+    },
+    {
+        "client_id": "safari_ios_15_6",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
+        "sec_ch_ua": None,
+        "platform": "iOS"
+    },
 ]
 
-# Client identifier rotation
-CLIENT_IDENTIFIERS = [
-    "chrome_120",
-    "chrome_119", 
-    "chrome_118",
-    "safari_ios_16_0",
-    "firefox_120",
-]
+USER_AGENTS = [p["user_agent"] for p in BROWSER_PROFILES]
+CLIENT_IDENTIFIERS = [p["client_id"] for p in BROWSER_PROFILES]
 
-def _get_session():
-    """Get or create a TLS session from the pool"""
+def _get_session(profile: Optional[Dict[str, Any]] = None):
+    """Get or create a TLS session from the pool matching browser profile"""
     global _session_pool
     
-    if not _session_pool or random.random() < 0.3:  # 30% chance to create new session
-        client_id = random.choice(CLIENT_IDENTIFIERS)
-        sess = tls_client.Session(client_identifier=client_id)
+    if not _session_pool or random.random() < 0.2:
+        prof = profile or random.choice(BROWSER_PROFILES)
+        sess = tls_client.Session(client_identifier=prof["client_id"])
+        sess._profile = prof
         _session_pool.append(sess)
         
         # Keep pool size manageable
         if len(_session_pool) > 5:
             _session_pool.pop(0)
     
-    return random.choice(_session_pool)
+    selected_sess = random.choice(_session_pool)
+    return selected_sess
 
 def _rate_limit():
     """Implement rate limiting to avoid triggering anti-bot measures"""
@@ -54,14 +62,13 @@ def _rate_limit():
     
     # Adaptive delay based on request count
     if _request_count > 10:
-        min_delay = 2.0  # Slow down after many requests
-    elif _request_count > 5:
-        min_delay = 1.5
-    else:
         min_delay = 1.0
+    elif _request_count > 5:
+        min_delay = 0.8
+    else:
+        min_delay = 0.5
     
-    # Add random jitter to appear more human
-    delay = min_delay + random.uniform(0.5, 1.5)
+    delay = min_delay + random.uniform(0.2, 0.6)
     
     if time_since_last < delay:
         sleep_time = delay - time_since_last
@@ -71,16 +78,21 @@ def _rate_limit():
     _request_count += 1
     
     # Reset counter periodically
-    if _request_count > 20:
+    if _request_count > 30:
         _request_count = 0
-        time.sleep(random.uniform(3, 5))  # Longer break
+        time.sleep(random.uniform(1.5, 3.0))
 
-def _get_headers(url: str, referer: str = "https://www.sofascore.com/") -> Dict[str, str]:
-    """Generate realistic headers with rotation"""
-    user_agent = random.choice(USER_AGENTS)
+def _get_headers(url: str, referer: str = "https://www.sofascore.com/", user_agent: Optional[str] = None, profile: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
+    """Generate realistic headers matching client identifier"""
+    if profile:
+        ua = profile.get("user_agent", user_agent or random.choice(USER_AGENTS))
+    elif user_agent:
+        ua = user_agent
+    else:
+        ua = random.choice(USER_AGENTS)
     
     headers = {
-        "User-Agent": user_agent,
+        "User-Agent": ua,
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "en-US,en;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
@@ -95,8 +107,7 @@ def _get_headers(url: str, referer: str = "https://www.sofascore.com/") -> Dict[
         "Pragma": "no-cache",
     }
     
-    # Add realistic sec-ch-ua headers for Chrome
-    if "Chrome" in user_agent:
+    if "Chrome" in ua:
         headers["sec-ch-ua"] = '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"'
         headers["sec-ch-ua-mobile"] = "?0"
         headers["sec-ch-ua-platform"] = '"Windows"'
@@ -121,7 +132,7 @@ def scrape_sofascore(url: str, max_retries: int = 10, referer: str = "https://ww
         try:
             # Get session and headers
             sess = _get_session()
-            headers = _get_headers(url, referer=referer)
+            headers = _get_headers(url, referer=referer, profile=getattr(sess, '_profile', None))
             
             # Add small random delay before request
             time.sleep(random.uniform(0.2, 0.5))
