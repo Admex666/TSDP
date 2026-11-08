@@ -157,7 +157,7 @@ def create_adam_jakus_plot(
         fradi_grp["round"], fradi_grp["cum_diff"],
         color=mycolor, linewidth=4.0, marker="s", markersize=9,
         markeredgecolor="#ffffff", markeredgewidth=1.2,
-        label="Ferencváros TC (#1 Overperformer)", zorder=10
+        zorder=10
     )
 
     # Callout values for Ferencváros
@@ -181,7 +181,7 @@ def create_adam_jakus_plot(
     # End label for Ferencváros
     last_fradi_val = fradi_grp[fradi_grp["round"] == last_round]["cum_diff"].values[0]
     ax.text(
-        last_round + 0.06, last_fradi_val, f"Ferencváros TC (+{last_fradi_val:.2f} pts)",
+        last_round + 0.06, last_fradi_val, f"Ferencvárosi TC (+{last_fradi_val:.2f} pts)",
         color=mycolor, fontsize=12, fontweight="bold", va="center", zorder=12
     )
 
@@ -203,11 +203,11 @@ def create_adam_jakus_plot(
     ax.set_xlim(min(rounds) - 0.25, last_round + 1.25)
     ax.set_ylim(-4.5, 7.8)
 
-    ax.set_ylabel("Cumulative Overperformance (Actual Pts − Expected Pts)", color="white", fontsize=12, fontweight="bold", labelpad=12)
+    ax.set_ylabel("Cumulative Points Above Expected (Actual − xPts)", color="white", fontsize=12, fontweight="bold", labelpad=12)
 
     # Titles (in English)
     title_text = "UEFA EUROPA LEAGUE 2026/27"
-    subtitle_text = "Cumulative Points Overperformance vs Odds Expectation (xPts) | Matchweeks 1–4"
+    subtitle_text = "Cumulative Points Above Expected vs Odds | Matchweeks 1-4"
     
     if arvo_prop:
         fig.text(0.12, 0.955, title_text, color="white", fontsize=20, fontproperties=arvo_prop, ha="left")
@@ -216,26 +216,16 @@ def create_adam_jakus_plot(
         
     fig.text(0.12, 0.92, subtitle_text, color="#d1d5db", fontsize=12, ha="left")
 
-    # Legend
-    legend = ax.legend(
-        loc="upper left",
-        facecolor=background_color,
-        edgecolor=mycolor,
-        fontsize=10.5,
-        labelcolor="white",
-        framealpha=0.9
-    )
-    legend.get_frame().set_linewidth(1.2)
 
     # Signature / Branding (ADAM JAKUS)
     if nexa_prop:
-        fig.text(0.90, 0.02, "ADAM JAKUS", color=mycolor, fontsize=18, fontproperties=nexa_prop, ha="right", va="bottom")
+        fig.text(0.95, 0.04, "ADAM JAKUS", color=mycolor, fontsize=18, fontproperties=nexa_prop, ha="right", va="bottom")
     else:
-        fig.text(0.90, 0.02, "ADAM JAKUS", color=mycolor, fontsize=18, fontweight="bold", ha="right", va="bottom")
+        fig.text(0.95, 0.04, "ADAM JAKUS", color=mycolor, fontsize=18, fontweight="bold", ha="right", va="bottom")
 
     fig.text(
         0.12, 0.02,
-        "Data: SofaScore API | Expected points computed from 1X2 odds with proportional margin removal (no-vig)",
+        "Data: SofaScore",
         color="#9ca3af", fontsize=9.5, ha="left", va="bottom"
     )
 
